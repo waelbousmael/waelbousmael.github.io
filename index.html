@@ -3,10 +3,98 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>WB Studio</title>
+  <title>WB Studio — Architecture & Visualization</title>
+  <meta name="description" content="WB Studio — Architecture, BIM, and visualization. Berlin + Jeddah. Zero-risk start: 20% upfront, pay the rest only if satisfied." />
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
-<body style="font-family:system-ui; padding:40px;">
-  <h1>WB Studio — Live</h1>
-  <p>This is the homepage served from <strong>waelbousmael.github.io</strong>.</p>
+
+<body>
+  <header class="container" style="padding:28px 0;">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
+      <a href="#" style="font-weight:800; letter-spacing:.08em;">WB STUDIO</a>
+
+      <nav style="display:flex; gap:16px; flex-wrap:wrap;">
+        <a class="small" href="#services">Services</a>
+        <a class="small" href="#work">Work</a>
+        <a class="small" href="#strategy">Zero-Risk Start</a>
+        <a class="small" href="#contact">Contact</a>
+      </nav>
+
+      <a class="btn btn-primary" href="#contact">Request a Quote</a>
+    </div>
+  </header>
+
+  <main class="container" style="padding:36px 0 72px;">
+    <section class="card" style="padding:28px;">
+      <h1 style="margin:0 0 10px; font-size:clamp(28px, 4vw, 46px); line-height:1.1;">
+        Architecture + Visualization that moves fast — without risk.
+      </h1>
+      <p class="small" style="max-width:70ch; margin:0 0 18px;">
+        Berlin + Jeddah based. Concept to BIM to high-end visuals. Start with 20% upfront — pay the rest only if you’re satisfied.
+      </p>
+
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="btn btn-primary" href="#contact">Request a Free Quotation</a>
+        <a class="btn" href="#strategy">See the Strategy</a>
+      </div>
+    </section>
+
+    <section id="services" style="padding:34px 0;">
+      <h2 style="margin:0 0 10px;">Services</h2>
+      <p class="small" style="margin:0 0 16px;">Clear buckets. Easy to expand later.</p>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px;">
+        <div class="card" style="padding:18px;">
+          <strong>Architecture</strong>
+          <p class="small" style="margin:8px 0 0;">Concept, design development, documentation.</p>
+        </div>
+        <div class="card" style="padding:18px;">
+          <strong>BIM</strong>
+          <p class="small" style="margin:8px 0 0;">Clean models, coordinated outputs, exports.</p>
+        </div>
+        <div class="card" style="padding:18px;">
+          <strong>Visualization</strong>
+          <p class="small" style="margin:8px 0 0;">High-end stills, mood, and market-ready scenes.</p>
+        </div>
+        <div class="card" style="padding:18px;">
+          <strong>Landscape</strong>
+          <p class="small" style="margin:8px 0 0;">Outdoor design aligned with architecture.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="strategy" class="card" style="padding:22px;">
+      <h2 style="margin:0 0 10px;">3-Step Zero-Risk Start</h2>
+      <ol class="small" style="margin:0; padding-left:18px;">
+        <li><strong>Align:</strong> short call + goal definition</li>
+        <li><strong>Propose:</strong> scope + timeline + fixed quotation</li>
+        <li><strong>Deliver:</strong> 20% upfront, the rest only if satisfied</li>
+      </ol>
+    </section>
+
+    <section id="contact" style="padding:34px 0 0;">
+      <h2 style="margin:0 0 10px;">Contact</h2>
+      <p class="small" style="margin:0 0 16px;">Fastest route: WhatsApp.</p>
+
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="btn btn-primary"
+           href="https://wa.me/966538060383?text=Hello,%20I%27d%20like%20a%20dream-home%20concept%20call"
+           target="_blank" rel="noopener">
+          WhatsApp me
+        </a>
+        <a class="btn" href="mailto:hello@wbstudio.xyz">Email</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container small" style="padding:18px 0 40px;">
+    © <span id="y"></span> WB Studio — All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
