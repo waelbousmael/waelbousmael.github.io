@@ -396,37 +396,38 @@
         </div>
       </div>
 
-      <div class="booking-form-wrapper">
-        <!-- IMPORTANT: GitHub Pages is static. Replace action with a form endpoint (FormSubmit/Formspree) -->
-      <form class="booking-form" action="https://formsubmit.co/wbstudio2025@gmail.com" method="POST">
-  <input type="hidden" name="_subject" value="WB Studio — New Call Request">
-  <input type="hidden" name="_captcha" value="false">
-          <div class="form-group">
-            <input type="text" name="name" placeholder="Full Name" required class="form-input">
-          </div>
+<div class="booking-form-wrapper">
+  <!-- IMPORTANT: GitHub Pages is static. Replace action with a form endpoint (FormSubmit/Formspree) -->
+  <form class="booking-form" action="https://formsubmit.co/wbstudio2025@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="WB Studio — New Call Request">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://waelbousmael.github.io/thanks.html">
 
-          <div class="form-group">
-            <input type="email" name="email" placeholder="Email Address" required class="form-input">
-          </div>
-
-          <div class="form-group">
-            <select name="location" required class="form-input">
-              <option value="" disabled selected>Project Location</option>
-              <option value="ksa">Saudi Arabia / GCC</option>
-              <option value="eu">Germany / EU</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <textarea name="message" placeholder="One sentence: what are you building, and where?" required
-              class="form-input" rows="4"></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-secondary btn-lg">Request Call</button>
-        </form>
-      </div>
+    <div class="form-group">
+      <input type="text" name="name" placeholder="Full Name" required class="form-input">
     </div>
+
+    <div class="form-group">
+      <input type="email" name="email" placeholder="Email Address" required class="form-input">
+    </div>
+
+    <div class="form-group">
+      <select name="location" required class="form-input">
+        <option value="" disabled selected>Project Location</option>
+        <option value="ksa">Saudi Arabia / GCC</option>
+        <option value="eu">Germany / EU</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <textarea name="message" placeholder="One sentence: what are you building, and where?" required class="form-input" rows="4"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-secondary btn-lg">Request Call</button>
+  </form>
+</div>
+
   </section>
 
   <!-- PLOT INTAKE (END) -->
@@ -441,7 +442,7 @@
           </p>
         </div>
 
-        <form class="plot-form" action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST">
+        <form class="plot-form" action="https://formsubmit.co/wbstudio2025" method="POST">
   <input type="hidden" name="_subject" value="WB Studio — New Plot Intake">
   <input type="hidden" name="_captcha" value="false">
 
