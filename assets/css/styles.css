@@ -141,7 +141,10 @@ section{
 
 ========================================================= */
 .navigation-root{
-  position: static;
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
   width: 100%;
   background-color: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
