@@ -979,6 +979,25 @@ section{
   .hero-actions{ flex-direction: column; }
 }
 
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+
+  .btn,
+  .navigation-link,
+  .deliverable-card,
+  .showcase-img,
+  .showcase-overlay,
+  .footer-social-link,
+  .footer-nav-link,
+  .footer-legal-link{
+    transition: none;
+  }
+
+  .scroller-track{
+    animation: none;
+  }
+}
+
 @media (max-width: 479px){
   .showcase-grid{ grid-template-columns: 1fr; }
   .plot-card{ padding: var(--spacing-xl); }
