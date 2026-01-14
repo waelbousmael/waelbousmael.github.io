@@ -187,6 +187,12 @@ section{
   text-transform: uppercase;
 }
 
+.navigation-logo{
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
 .navigation-link{
   color: var(--color-on-surface-secondary);
   text-decoration:none;
