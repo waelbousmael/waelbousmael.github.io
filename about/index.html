@@ -2,15 +2,240 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About — WB Studio</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>About Wael Bousmael — WB Studio</title>
+  <meta name="description" content="Meet Wael Bousmael, architect and designer behind WB Studio. Based in Berlin + Jeddah, focused on premium private dream homes from concept to design direction." />
   <meta name="robots" content="index,follow" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://wbstudio.xyz/about/" />
+
+  <!-- Icons (Brand Plumbing) -->
+  <link rel="icon" href="/assets/icons/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.webmanifest">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://wbstudio.xyz/about/" />
+  <meta property="og:title" content="About Wael Bousmael — WB Studio" />
+  <meta property="og:description" content="Meet Wael Bousmael, architect and designer behind WB Studio. Based in Berlin + Jeddah, focused on premium private dream homes from concept to design direction." />
+  <meta property="og:site_name" content="WB Studio" />
+  <meta property="og:image" content="https://wbstudio.xyz/assets/images/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="WB Studio — Private luxury dream homes" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About Wael Bousmael — WB Studio" />
+  <meta name="twitter:description" content="Meet Wael Bousmael, architect and designer behind WB Studio. Based in Berlin + Jeddah, focused on premium private dream homes from concept to design direction." />
+  <meta name="twitter:image" content="https://wbstudio.xyz/assets/images/og.jpg" />
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="/assets/css/styles.css" />
 </head>
+
 <body>
-  <main style="max-width:900px;margin:48px auto;padding:0 20px;font-family:system-ui">
-    <h1>About</h1>
-    <p>Placeholder. Content will be generated and styled with Codex next.</p>
-    <p><a href="/">Back to Home</a></p>
+
+  <!-- NAVIGATION -->
+  <nav class="navigation-root">
+    <div class="navigation-container">
+      <div class="navigation-group navigation-left">
+        <a href="/#services" class="navigation-link">Services</a>
+        <a href="/#work" class="navigation-link">Work</a>
+        <a href="/#strategy" class="navigation-link">Studio Process</a>
+        <a href="/about/" class="navigation-link">About</a>
+      </div>
+
+      <a href="/#top" class="navigation-logo-wrapper" aria-label="WB Studio">
+        <img class="navigation-logo" src="/assets/images/icon-192.png" alt="WB Studio logo" width="32" height="32" />
+      </a>
+
+      <div class="navigation-group navigation-right">
+        <a href="/#contact" class="navigation-link">Contact</a>
+
+        <div class="navigation-cta-group">
+          <a href="/#booking" class="btn btn-secondary btn-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+              <path d="M8 2v4m8-4v4"/>
+              <rect width="18" height="18" x="3" y="4" rx="2"/>
+              <path d="M3 10h18"/>
+            </svg>
+            <span>Free Video Meeting</span>
+          </a>
+        </div>
+      </div>
+
+      <button class="navigation-mobile-toggle" id="navToggle" aria-label="Toggle Menu" aria-expanded="false">
+        <svg class="navigation-icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE OVERLAY -->
+  <div class="navigation-mobile-overlay" id="mobileOverlay">
+    <div class="navigation-mobile-header">
+      <span class="navigation-brand">WB Studio</span>
+
+      <button class="navigation-mobile-close" id="navClose" aria-label="Close Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="navigation-mobile-content">
+      <div class="navigation-mobile-links">
+        <a href="/#services" class="navigation-mobile-link">Services</a>
+        <a href="/#work" class="navigation-mobile-link">Work</a>
+        <a href="/#strategy" class="navigation-mobile-link">Studio Process</a>
+        <a href="/about/" class="navigation-mobile-link">About</a>
+        <a href="/#contact" class="navigation-mobile-link">Contact</a>
+      </div>
+
+      <div class="navigation-mobile-ctas">
+        <a href="/#booking" class="btn btn-secondary btn-lg navigation-mobile-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+            <path d="M8 2v4m8-4v4"/>
+            <rect width="18" height="18" x="3" y="4" rx="2"/>
+            <path d="M3 10h18"/>
+          </svg>
+          <span>Free Video Meeting</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="deliverables">
+      <div class="deliverables-container">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--spacing-3xl);align-items:center;">
+          <div>
+            <p class="section-subtitle" style="text-transform:uppercase;letter-spacing:0.28em;font-size:var(--font-size-xs);margin-bottom:var(--spacing-md);">About</p>
+            <h1 class="section-title" style="font-size:clamp(32px,4vw,48px);">Wael Bousmael — Architect &amp; Designer</h1>
+            <p class="section-content" style="font-size:var(--font-size-lg);max-width:60ch;">
+              WB Studio is a private practice based in Berlin and Jeddah, focused on premium private homes and dream-home
+              concepts that translate into clear design direction.
+            </p>
+            <p class="section-content" style="margin-top:var(--spacing-lg);max-width:60ch;">
+              I work directly with homeowners who want a calm, decisive process and a home that feels inevitable from the
+              first sketch to the final design package.
+            </p>
+            <div class="hero-actions" style="justify-content:flex-start;">
+              <a href="/#booking" class="btn btn-secondary btn-lg">Request a Free Video Meeting</a>
+              <a href="/#contact" class="btn btn-outline btn-lg">Start Project Intake</a>
+            </div>
+          </div>
+          <div class="plot-card" style="padding:0;overflow:hidden;">
+            <img src="/assets/images/about-hero.jpg" alt="Wael Bousmael, architect and designer behind WB Studio." width="1200" height="800" loading="lazy" decoding="async" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="deliverables">
+      <div class="deliverables-container">
+        <div class="deliverables-header">
+          <h2 class="section-title">What I do</h2>
+          <p class="section-content">Concept-to-design direction for private luxury dream homes, tailored to your plot, lifestyle, and long-term vision.</p>
+        </div>
+
+        <div class="deliverables-grid">
+          <div class="deliverable-card">
+            <h3 class="deliverable-title">Concept Architecture</h3>
+            <ul class="section-content" style="margin:0;padding-left:18px;">
+              <li>Early massing and spatial narratives that frame the home.</li>
+              <li>Architectural language, proportions, and site response.</li>
+            </ul>
+          </div>
+          <div class="deliverable-card">
+            <h3 class="deliverable-title">Interior Direction</h3>
+            <ul class="section-content" style="margin:0;padding-left:18px;">
+              <li>Room sequencing, material atmospheres, and daylight intent.</li>
+              <li>Design decisions that keep the experience cohesive.</li>
+            </ul>
+          </div>
+          <div class="deliverable-card">
+            <h3 class="deliverable-title">Execution-Ready Design</h3>
+            <ul class="section-content" style="margin:0;padding-left:18px;">
+              <li>Clear documentation that aligns consultants and builders.</li>
+              <li>Design direction that protects the original vision.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="flow-diagram">
+      <div class="flow-container">
+        <h2 class="section-title">How I work</h2>
+        <p class="section-content">A focused three-step path that keeps decisions calm and momentum steady.</p>
+
+        <div class="flow-stepper">
+          <div class="flow-step">
+            <div class="step-circle">1</div>
+            <div class="step-content">
+              <h3 class="step-title">Briefing &amp; Vision</h3>
+              <p class="section-content">Plot review, lifestyle goals, and clarity on the home you want to live in.</p>
+            </div>
+          </div>
+
+          <div class="flow-line"></div>
+
+          <div class="flow-step">
+            <div class="step-circle">2</div>
+            <div class="step-content">
+              <h3 class="step-title">Concept Direction</h3>
+              <p class="section-content">Architectural concept and interior atmosphere aligned with your priorities.</p>
+            </div>
+          </div>
+
+          <div class="flow-line"></div>
+
+          <div class="flow-step">
+            <div class="step-circle">3</div>
+            <div class="step-content">
+              <h3 class="step-title">Design Package</h3>
+              <p class="section-content">Execution-ready design direction that guides consultants and builders.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="deliverables">
+      <div class="deliverables-container">
+        <div style="display:flex;flex-wrap:wrap;gap:var(--spacing-2xl);align-items:center;">
+          <div style="flex:1;min-width:260px;">
+            <h2 class="section-title">Team</h2>
+            <p class="section-content">
+              WB Studio is led by Wael Bousmael. I remain your direct point of contact and bring in trusted specialists
+              when a project needs additional expertise.
+            </p>
+          </div>
+          <div class="cta-card" style="flex:1;min-width:260px;">
+            <h3 class="section-title" style="font-size:var(--font-size-lg);margin-bottom:var(--spacing-xs);">Ready to start?</h3>
+            <p class="section-content">Move from concept to a clear design direction with a focused, private process.</p>
+            <a class="btn btn-primary btn-lg" href="/#contact">Start Project Intake</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <!-- SCRIPTS -->
+  <script src="/assets/js/main.js"></script>
+
 </body>
 </html>
