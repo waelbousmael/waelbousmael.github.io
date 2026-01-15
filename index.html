@@ -364,7 +364,7 @@
             </svg>
 
             <p class="section-content">Submit your request, then we’ll confirm an available slot.</p>
-            <a href="#contact" class="btn btn-primary btn-sm">Go to Project Intake</a>
+            <a href="#contact" class="btn btn-primary btn-sm">Go to Submission Form</a>
           </div>
 
           <div class="cta-card">
@@ -384,36 +384,6 @@
         </div>
       </div>
 
-      <div class="booking-form-wrapper">
-        <form class="booking-form" action="https://formsubmit.co/wbstudio2025@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="WB Studio — New Video Meeting Request">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://wbstudio.xyz/thanks.html">
-
-          <div class="form-group">
-            <input type="text" name="name" placeholder="Full Name" required class="form-input">
-          </div>
-
-          <div class="form-group">
-            <input type="email" name="email" placeholder="Email Address" required class="form-input">
-          </div>
-
-          <div class="form-group">
-            <select name="location" required class="form-input">
-              <option value="" disabled selected>Project Location</option>
-              <option value="ksa">Saudi Arabia / GCC</option>
-              <option value="eu">Germany / EU</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <textarea name="message" placeholder="One sentence: what are you building, and where?" required class="form-input" rows="4"></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-secondary btn-lg">Request Video Meeting</button>
-        </form>
-      </div>
     </div>
   </section>
 
@@ -422,19 +392,44 @@
     <div class="plot-container">
       <div class="plot-card">
         <div class="plot-header">
-          <h2 class="section-title">Project Intake Form</h2>
+          <h2 class="section-title">Unified Project Intake</h2>
 
           <p class="section-content" style="margin-top:var(--spacing-sm);">
-            Share basic plot data and your goals. Budget is optional.
+            Share your details, plot data, and goals in one place. Budget is optional.
           </p>
         </div>
 
         <form class="plot-form" action="https://formsubmit.co/wbstudio2025@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="WB Studio — New Project Intake">
+          <input type="hidden" name="_subject" value="WB Studio — New Project & Meeting Request">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_next" value="https://wbstudio.xyz/thanks.html">
 
           <div class="plot-form-grid">
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input type="text" name="name" placeholder="Full Name" required class="form-input">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" name="email" placeholder="Email Address" required class="form-input">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" name="phone" placeholder="+966 5X XXX XXXX" required class="form-input">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Project Location</label>
+              <select name="location" required class="form-input">
+                <option value="" disabled selected>Select a region</option>
+                <option value="ksa">Saudi Arabia / GCC</option>
+                <option value="eu">Germany / EU</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
             <div class="form-group">
               <label class="form-label">Plot Location / Address</label>
               <input type="text" name="plot_location" placeholder="City, Country (or address)" required class="form-input">
@@ -477,6 +472,12 @@
               <p class="section-content" style="margin-top:var(--spacing-xs);font-size:var(--font-size-sm);">
                 Most static form endpoints won’t accept files. Submit the form, then send files via WhatsApp.
               </p>
+            </div>
+
+            <div class="form-group form-group-full">
+              <label class="form-label">Meeting Request</label>
+              <textarea name="message" placeholder="One sentence: what are you building, and where?" required
+                class="form-input" rows="4"></textarea>
             </div>
           </div>
 
