@@ -744,6 +744,10 @@ section{
   color: var(--color-on-surface-secondary);
 }
 
+.form-group-full{
+  grid-column: 1 / -1;
+}
+
 .file-upload-wrapper{ position:relative; }
 
 .file-input{
