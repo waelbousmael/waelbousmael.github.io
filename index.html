@@ -128,6 +128,12 @@
         <h1 class="hero-title">WB Studio</h1>
         <p class="hero-subtitle">Private luxury dream homes — concept-to-execution-ready design for clients who value discretion, certainty, and timeless taste.</p>
 
+        <ul class="hero-highlights" aria-label="Studio highlights">
+          <li>End-to-end clarity from concept to construction-ready decisions.</li>
+          <li>Discreet collaboration with a limited, high-touch project roster.</li>
+          <li>Berlin + Jeddah expertise for global private clients.</li>
+        </ul>
+
         <div class="hero-actions">
           <a href="#booking" class="btn btn-secondary btn-lg">Request a Free Video Meeting</a>
         </div>
@@ -273,6 +279,45 @@
     </div>
   </section>
 
+  <!-- CLIENT FIT -->
+  <section class="client-fit" aria-label="Client fit">
+    <div class="client-fit-container">
+      <div class="client-fit-header">
+        <h2 class="section-title">Client Fit</h2>
+        <p class="section-subtitle">Designed for private clients who want calm decision-making and architectural confidence.</p>
+      </div>
+
+      <div class="client-fit-grid">
+        <div class="client-fit-card">
+          <h3 class="deliverable-title">Best For</h3>
+          <ul class="client-fit-list">
+            <li>Luxury private-home projects with long-term value in mind.</li>
+            <li>Owners who want a clear roadmap before construction begins.</li>
+            <li>Clients who prioritize discretion and direct access to the studio.</li>
+          </ul>
+        </div>
+
+        <div class="client-fit-card">
+          <h3 class="deliverable-title">Not Ideal For</h3>
+          <ul class="client-fit-list">
+            <li>Projects requiring immediate construction without concept alignment.</li>
+            <li>High-volume developer pipelines or cost-only decisions.</li>
+            <li>Clients seeking public portfolio exposure.</li>
+          </ul>
+        </div>
+
+        <div class="client-fit-card">
+          <h3 class="deliverable-title">Response Expectations</h3>
+          <ul class="client-fit-list">
+            <li>Initial response within 24–48 hours.</li>
+            <li>Dedicated point of contact throughout the design phase.</li>
+            <li>Private documentation and controlled file sharing.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- WORK -->
   <section id="work" class="work-showcase" aria-label="Selected Work">
     <div class="showcase-grid">
@@ -406,23 +451,23 @@
 
           <div class="plot-form-grid">
             <div class="form-group">
-              <label class="form-label">Full Name</label>
-              <input type="text" name="name" placeholder="Full Name" required class="form-input">
+              <label class="form-label" for="fullName">Full Name</label>
+              <input id="fullName" type="text" name="name" placeholder="Full Name" required class="form-input">
             </div>
 
             <div class="form-group">
-              <label class="form-label">Email Address</label>
-              <input type="email" name="email" placeholder="Email Address" required class="form-input">
+              <label class="form-label" for="emailAddress">Email Address</label>
+              <input id="emailAddress" type="email" name="email" placeholder="Email Address" required class="form-input">
             </div>
 
             <div class="form-group">
-              <label class="form-label">Phone Number</label>
-              <input type="tel" name="phone" placeholder="+966 5X XXX XXXX" required class="form-input">
+              <label class="form-label" for="phoneNumber">Phone Number</label>
+              <input id="phoneNumber" type="tel" name="phone" placeholder="+966 5X XXX XXXX" required class="form-input">
             </div>
 
             <div class="form-group">
-              <label class="form-label">Project Location</label>
-              <select name="location" required class="form-input">
+              <label class="form-label" for="projectLocation">Project Location</label>
+              <select id="projectLocation" name="location" required class="form-input">
                 <option value="" disabled selected>Select a region</option>
                 <option value="ksa">Saudi Arabia / GCC</option>
                 <option value="eu">Germany / EU</option>
@@ -431,13 +476,13 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label">Plot Location / Address</label>
-              <input type="text" name="plot_location" placeholder="City, Country (or address)" required class="form-input">
+              <label class="form-label" for="plotLocation">Plot Location / Address</label>
+              <input id="plotLocation" type="text" name="plot_location" placeholder="City, Country (or address)" required class="form-input">
             </div>
 
             <div class="form-group">
-              <label class="form-label">Planned Budget Range (Optional)</label>
-              <select name="budget_range" class="form-input">
+              <label class="form-label" for="budgetRange">Planned Budget Range (Optional)</label>
+              <select id="budgetRange" name="budget_range" class="form-input">
                 <option value="" selected>Not sure / prefer not to say</option>
                 <option value="<500k">Under 500k</option>
                 <option value="500k-1m">500k — 1M</option>
@@ -448,8 +493,8 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label">Preferred Timeframe</label>
-              <input type="text" name="timeframe" placeholder="e.g. Start in 3 months" required class="form-input">
+              <label class="form-label" for="preferredTimeframe">Preferred Timeframe</label>
+              <input id="preferredTimeframe" type="text" name="timeframe" placeholder="e.g. Start in 3 months" required class="form-input">
             </div>
 
             <div class="form-group">
@@ -475,17 +520,19 @@
             </div>
 
             <div class="form-group form-group-full">
-              <label class="form-label">Meeting Request</label>
-              <textarea name="message" placeholder="One sentence: what are you building, and where?" required
+              <label class="form-label" for="meetingRequest">Meeting Request</label>
+              <textarea id="meetingRequest" name="message" placeholder="One sentence: what are you building, and where?" required
                 class="form-input" rows="4"></textarea>
             </div>
           </div>
 
           <div class="form-group" style="margin-bottom:var(--spacing-xl);">
-            <label class="form-label">Project Notes</label>
-            <textarea name="notes" placeholder="Goals, constraints, style direction, number of rooms, etc."
+            <label class="form-label" for="projectNotes">Project Notes</label>
+            <textarea id="projectNotes" name="notes" placeholder="Goals, constraints, style direction, number of rooms, etc."
               class="form-input" rows="4"></textarea>
           </div>
+
+          <p class="form-privacy-note">Your details stay private. We do not share information with third parties.</p>
 
           <div class="flex-row" style="justify-content:center;flex-wrap:wrap;gap:var(--spacing-md);">
             <button type="submit" class="btn btn-primary btn-lg">Submit Project Intake</button>
