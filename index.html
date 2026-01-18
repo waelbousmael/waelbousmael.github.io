@@ -126,14 +126,20 @@
 
       <div class="hero-content">
         <h1 class="hero-title">WB Studio</h1>
-        <p class="hero-subtitle">Private luxury dream homes — concept-to-execution-ready design for clients who value discretion, certainty, and timeless taste.</p>
+        <p class="hero-subtitle">Private luxury dream homes — clear, calm design from first sketch to build-ready decisions.</p>
+
+        <ul class="hero-highlights" aria-label="Studio highlights">
+          <li>One studio lead, fewer handoffs, and a clear plan.</li>
+          <li>Focused attention with a small monthly project list.</li>
+          <li>Berlin + Jeddah experience for private home clients.</li>
+        </ul>
 
         <div class="hero-actions">
           <a href="#booking" class="btn btn-secondary btn-lg">Request a Free Video Meeting</a>
         </div>
 
         <p class="hero-subtitle" style="margin-top:var(--spacing-md);font-size:var(--font-size-sm);opacity:.92;">
-          Capacity is limited to <strong>5 private-home projects per month</strong> to protect quality.
+          We take on <strong>5 private-home projects per month</strong> to stay fully present.
         </p>
       </div>
     </div>
@@ -163,9 +169,9 @@
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
           </svg>
-          <h3 class="cell-title">Discreet, High-Touch Delivery</h3>
+          <h3 class="cell-title">Focused, High-Touch Delivery</h3>
         </div>
-        <p class="cell-text">Private clients, clean communication, and decision clarity — without noise.</p>
+        <p class="cell-text">Private clients, clean communication, and decision clarity — without the noise.</p>
       </div>
     </div>
   </section>
@@ -174,7 +180,7 @@
   <section id="strategy" class="flow-diagram">
     <div class="flow-container">
       <h2 class="section-title">Studio Process</h2>
-      <p class="section-content">A premium workflow designed to protect taste, reduce risk, and keep the build aligned to the vision.</p>
+        <p class="section-content">A calm, focused workflow that protects quality and keeps the build aligned to the vision.</p>
 
       <div class="flow-stepper">
         <div class="flow-step">
@@ -220,7 +226,7 @@
       </div>
 
       <p class="section-content" style="max-width:70ch;margin:var(--spacing-3xl) auto 0;">
-        Positioning note: WB Studio is focused exclusively on private luxury homes. For discretion, selected work and detailed case studies are shared privately during onboarding.
+        Positioning note: WB Studio is focused exclusively on private luxury homes. Selected work and detailed case studies are shared during onboarding.
       </p>
     </div>
   </section>
@@ -232,14 +238,14 @@
         <span class="cred-item">WB Studio</span>
         <span class="cred-item">Private luxury homes</span>
         <span class="cred-item">Berlin + Jeddah</span>
-        <span class="cred-item">Discreet delivery</span>
+        <span class="cred-item">Focused delivery</span>
         <span class="cred-item">Execution-ready design</span>
         <span class="cred-item">Limited capacity: 5/month</span>
 
         <span class="cred-item">WB Studio</span>
         <span class="cred-item">Private luxury homes</span>
         <span class="cred-item">Berlin + Jeddah</span>
-        <span class="cred-item">Discreet delivery</span>
+        <span class="cred-item">Focused delivery</span>
         <span class="cred-item">Execution-ready design</span>
         <span class="cred-item">Limited capacity: 5/month</span>
       </div>
@@ -268,6 +274,45 @@
         <div class="deliverable-card">
           <h3 class="deliverable-title">Execution-Ready Design</h3>
           <p class="section-content">A structured design package with milestones and checkpoints—built to align consultants and reduce onsite surprises.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENT FIT -->
+  <section class="client-fit" aria-label="Client fit">
+    <div class="client-fit-container">
+      <div class="client-fit-header">
+        <h2 class="section-title">Client Fit</h2>
+        <p class="section-subtitle">For private clients who want steady guidance and confident decisions.</p>
+      </div>
+
+      <div class="client-fit-grid">
+        <div class="client-fit-card">
+          <h3 class="deliverable-title">Best For</h3>
+          <ul class="client-fit-list">
+            <li>Luxury private-home projects with long-term value in mind.</li>
+            <li>Owners who want a clear roadmap before construction begins.</li>
+            <li>Clients who want direct access to the studio.</li>
+          </ul>
+        </div>
+
+        <div class="client-fit-card">
+          <h3 class="deliverable-title">Not Ideal For</h3>
+          <ul class="client-fit-list">
+            <li>Projects requiring immediate construction without concept alignment.</li>
+            <li>High-volume developer pipelines or cost-only decisions.</li>
+            <li>Clients seeking public portfolio exposure.</li>
+          </ul>
+        </div>
+
+        <div class="client-fit-card">
+          <h3 class="deliverable-title">Response Expectations</h3>
+          <ul class="client-fit-list">
+            <li>Initial response within 24–48 hours.</li>
+            <li>Dedicated point of contact throughout the design phase.</li>
+            <li>Clear, organized documentation and handoff.</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -406,23 +451,23 @@
 
           <div class="plot-form-grid">
             <div class="form-group">
-              <label class="form-label">Full Name</label>
-              <input type="text" name="name" placeholder="Full Name" required class="form-input">
+              <label class="form-label" for="fullName">Full Name</label>
+              <input id="fullName" type="text" name="name" placeholder="Full Name" required class="form-input">
             </div>
 
             <div class="form-group">
-              <label class="form-label">Email Address</label>
-              <input type="email" name="email" placeholder="Email Address" required class="form-input">
+              <label class="form-label" for="emailAddress">Email Address</label>
+              <input id="emailAddress" type="email" name="email" placeholder="Email Address" required class="form-input">
             </div>
 
             <div class="form-group">
-              <label class="form-label">Phone Number</label>
-              <input type="tel" name="phone" placeholder="+966 5X XXX XXXX" required class="form-input">
+              <label class="form-label" for="phoneNumber">Phone Number</label>
+              <input id="phoneNumber" type="tel" name="phone" placeholder="+966 5X XXX XXXX" required class="form-input">
             </div>
 
             <div class="form-group">
-              <label class="form-label">Project Location</label>
-              <select name="location" required class="form-input">
+              <label class="form-label" for="projectLocation">Project Location</label>
+              <select id="projectLocation" name="location" required class="form-input">
                 <option value="" disabled selected>Select a region</option>
                 <option value="ksa">Saudi Arabia / GCC</option>
                 <option value="eu">Germany / EU</option>
@@ -431,13 +476,13 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label">Plot Location / Address</label>
-              <input type="text" name="plot_location" placeholder="City, Country (or address)" required class="form-input">
+              <label class="form-label" for="plotLocation">Plot Location / Address</label>
+              <input id="plotLocation" type="text" name="plot_location" placeholder="City, Country (or address)" required class="form-input">
             </div>
 
             <div class="form-group">
-              <label class="form-label">Planned Budget Range (Optional)</label>
-              <select name="budget_range" class="form-input">
+              <label class="form-label" for="budgetRange">Planned Budget Range (Optional)</label>
+              <select id="budgetRange" name="budget_range" class="form-input">
                 <option value="" selected>Not sure / prefer not to say</option>
                 <option value="<500k">Under 500k</option>
                 <option value="500k-1m">500k — 1M</option>
@@ -448,8 +493,8 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label">Preferred Timeframe</label>
-              <input type="text" name="timeframe" placeholder="e.g. Start in 3 months" required class="form-input">
+              <label class="form-label" for="preferredTimeframe">Preferred Timeframe</label>
+              <input id="preferredTimeframe" type="text" name="timeframe" placeholder="e.g. Start in 3 months" required class="form-input">
             </div>
 
             <div class="form-group">
@@ -475,17 +520,19 @@
             </div>
 
             <div class="form-group form-group-full">
-              <label class="form-label">Meeting Request</label>
-              <textarea name="message" placeholder="One sentence: what are you building, and where?" required
+              <label class="form-label" for="meetingRequest">Meeting Request</label>
+              <textarea id="meetingRequest" name="message" placeholder="One sentence: what are you building, and where?" required
                 class="form-input" rows="4"></textarea>
             </div>
           </div>
 
           <div class="form-group" style="margin-bottom:var(--spacing-xl);">
-            <label class="form-label">Project Notes</label>
-            <textarea name="notes" placeholder="Goals, constraints, style direction, number of rooms, etc."
+            <label class="form-label" for="projectNotes">Project Notes</label>
+            <textarea id="projectNotes" name="notes" placeholder="Goals, constraints, style direction, number of rooms, etc."
               class="form-input" rows="4"></textarea>
           </div>
+
+          <p class="form-privacy-note">Your details stay private. We do not share information with third parties.</p>
 
           <div class="flex-row" style="justify-content:center;flex-wrap:wrap;gap:var(--spacing-md);">
             <button type="submit" class="btn btn-primary btn-lg">Submit Project Intake</button>
@@ -512,7 +559,7 @@
           </div>
 
           <p class="section-content footer-description">
-            Private luxury dream homes with discreet, high-touch delivery. Berlin + Jeddah. Capacity limited to 5 projects per month.
+            Private luxury dream homes with focused, high-touch delivery. Berlin + Jeddah. Capacity limited to 5 projects per month.
           </p>
 
           <div class="footer-socials">
