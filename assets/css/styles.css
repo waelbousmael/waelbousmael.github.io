@@ -702,11 +702,42 @@ section{
   margin-bottom: var(--spacing-xl);
 }
 
+.plot-form-grid--optional{
+  margin-bottom: 0;
+}
+
 .form-label{
   display:block;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   margin-bottom: var(--spacing-xs);
+  color: var(--color-on-surface-secondary);
+}
+
+.form-note{
+  margin: 0 0 var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  color: var(--color-on-surface-secondary);
+}
+
+.form-required{
+  color: var(--color-accent);
+  font-weight: var(--font-weight-semibold);
+}
+
+.optional-details{
+  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-sm);
+  background: var(--color-surface-elevated);
+  border: 1px dashed var(--color-border);
+}
+
+.optional-title{
+  margin: 0 0 var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: .08em;
   color: var(--color-on-surface-secondary);
 }
 
