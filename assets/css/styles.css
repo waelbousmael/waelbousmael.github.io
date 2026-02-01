@@ -459,6 +459,25 @@ section{
   margin: 0 auto;
 }
 
+.step-content{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap: var(--spacing-xs);
+}
+
+.step-icon{
+  color: var(--color-primary);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.step-icon svg{
+  width:32px;
+  height:32px;
+}
+
 .step-circle{
   width:60px;
   height:60px;
@@ -491,6 +510,12 @@ section{
   max-width: 70ch;
   margin: var(--spacing-3xl) auto 0;
   text-align: center;
+}
+
+.flow-cta{
+  margin-top: var(--spacing-3xl);
+  display:flex;
+  justify-content:center;
 }
 
 /*
