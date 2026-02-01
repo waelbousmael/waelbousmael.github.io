@@ -24,16 +24,6 @@ window.addEventListener('resize', () => {
   if (window.innerWidth > 767 && mobileOverlay.classList.contains('is-active')) closeMenu();
 });
 
-// File input label
-const fileInput = document.getElementById('plotFile');
-if (fileInput) {
-  fileInput.addEventListener('change', (e) => {
-    const fileName = e.target.files[0]?.name || 'Upload PDF/CAD (Optional)';
-    const labelSpan = e.target.nextElementSibling.querySelector('span');
-    if (labelSpan) labelSpan.textContent = fileName;
-  });
-}
-
 // Light scroll reveal
 const sections = document.querySelectorAll('section');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
