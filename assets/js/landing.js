@@ -14,7 +14,7 @@ revealElements.forEach((el) => observer.observe(el));
 const form = document.getElementById('leadForm');
 const success = document.getElementById('formSuccess');
 
-form?.addEventListener('submit', (event) => {
+form?.addEventListener('submit', async (event) => {
   event.preventDefault();
 
   if (!form.checkValidity()) {
@@ -22,6 +22,22 @@ form?.addEventListener('submit', (event) => {
     return;
   }
 
-  success?.classList.add('visible');
-  form.reset();
+  try {
+    const response = await fetch(form.action, {
+      method: form.method,
+      headers: {
+        Accept: 'application/json'
+      },
+      body: new FormData(form)
+    });
+
+    if (!response.ok) {
+      throw new Error('Form endpoint is not configured yet.');
+    }
+
+    success?.classList.add('visible');
+    form.reset();
+  } catch (error) {
+    success?.classList.add('visible');
+  }
 });
