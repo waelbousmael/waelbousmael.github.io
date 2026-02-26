@@ -24,102 +24,96 @@
   <link rel="stylesheet" href="assets/css/landing.css" />
 </head>
 <body>
+  <button id="langToggle" class="lang-toggle" type="button" aria-label="Switch language" data-i18n="lang.toggle">EN / العربية</button>
+
   <main>
     <section class="hero section full-height" data-reveal>
-      <div class="container centered">
-        <div class="hero-brand" aria-label="هوية WB Studio">
-          <img class="hero-logo" src="assets/images/icon-192.png" alt="شعار WB" width="128" height="128" />
-          <p class="hero-studio">Studio</p>
-        </div>
-        <h1>صمّم فيلا أحلامك مع WB Studio.</h1>
-        <p class="lead">عمارة فاخرة في السعودية من الفكرة إلى التصميم التفصيلي.</p>
+      <div class="container centered narrow">
+        <h1 data-i18n="hero.title">حوّل أرضك إلى فيلا أحلامك — تصميم ذكي وفخم في السعودية.</h1>
+        <p class="lead" data-i18n="hero.subtitle">استشارة أولية مجانية وتصميم مبدئي قبل أي التزام.</p>
         <div class="cta-group">
-          <a class="btn btn-primary" href="https://wa.me/966538060383?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AD%D8%AC%D8%B2%20%D8%A7%D8%B3%D8%AA%D8%B4%D8%A7%D8%B1%D8%A9%20%D9%84%D8%AA%D8%B5%D9%85%D9%8A%D9%85%20%D9%81%D9%8A%D9%84%D8%A7.%20%D9%87%D8%B0%D9%87%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D8%A3%D8%B1%D8%B6%D9%8A%3A%0A%0A%D8%A7%D9%84%D8%A7%D8%B3%D9%85%3A%0A%0A%D9%85%D9%88%D9%82%D8%B9%20%D8%A7%D9%84%D8%A3%D8%B1%D8%B6%3A%0A%0A%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%AD%D8%A9%3A%0A%0A%D8%A7%D9%84%D9%85%D9%8A%D8%B2%D8%A7%D9%86%D9%8A%D8%A9%20%D8%A7%D9%84%D8%AA%D9%82%D8%B1%D9%8A%D8%A8%D9%8A%D8%A9%3A%0A%0A%D8%A7%D9%84%D8%B7%D8%B1%D8%A7%D8%B2%20%D8%A7%D9%84%D9%85%D8%B7%D9%84%D9%88%D8%A8%3A" target="_blank" rel="noopener">احجز استشارة مجانية عبر واتساب</a>
-          <a class="btn btn-secondary" href="#design-form">إرسال طلب تصميم</a>
+          <a id="whatsappCta" class="btn" target="_blank" rel="noopener" data-i18n="hero.whatsapp">احجز استشارة مجانية عبر واتساب</a>
+          <a class="btn" href="#design-form" data-i18n="hero.secondary">إرسال طلب تصميم</a>
         </div>
       </div>
     </section>
 
     <section class="section projects-section" data-reveal>
-      <div class="container centered projects-title">
-        <h2>نماذج من أعمالنا</h2>
+      <div class="container centered">
+        <h2 data-i18n="projects.title">نماذج من أعمالي</h2>
       </div>
       <div class="projects">
         <img src="assets/images/example-1.jpg" alt="نموذج تصميم فيلا" loading="lazy" />
         <img src="assets/images/example-2.jpg" alt="نموذج تصميم فيلا" loading="lazy" />
         <img src="assets/images/example-3.jpg" alt="نموذج تصميم فيلا" loading="lazy" />
-        <img src="assets/images/example-4.jpg" alt="نموذج تصميم فيلا" loading="lazy" />
       </div>
     </section>
 
     <section class="section authority" data-reveal>
-      <div class="container centered">
-        <img class="portrait" src="assets/images/icon-192.png" alt="وائل بو سماعيل" loading="lazy" />
-        <p class="name">وائل بو سماعيل — معماري</p>
-        <p class="subtitle">خبرة طويلة في تصميم الفلل الفاخرة</p>
+      <div class="container centered narrow">
+        <img class="portrait" src="assets/images/about-hero.jpg" alt="وائل بو سماعيل" loading="lazy" />
+        <p class="name" data-i18n="authority.name">وائل بو سماعيل — معماري</p>
+        <p class="subtitle" data-i18n="authority.subtitle">خبرة طويلة في تصميم الفلل الفاخرة</p>
       </div>
     </section>
 
     <section class="section" data-reveal>
-      <div class="container centered">
-        <h2>مساحة تعيش فيها كما تحلم.</h2>
-        <a class="btn btn-primary" href="#design-form">ابدأ الآن</a>
+      <div class="container centered narrow">
+        <h2 data-i18n="close.title">مساحة تعيش فيها كما تحلم.</h2>
+        <a class="btn" href="#design-form" data-i18n="close.cta">ابدأ الآن</a>
       </div>
     </section>
 
     <section id="design-form" class="section" data-reveal>
-      <div class="container form-wrap">
-        <h2>اطلب عرض تصميم</h2>
-        <p>أو تواصل مباشرة عبر البريد الإلكتروني: <a href="mailto:wbstudio2025@gmail.com">wbstudio2025@gmail.com</a></p>
-        <form id="leadForm" novalidate>
-          <label for="name">الاسم</label>
+      <div class="container form-wrap narrow">
+        <h2 class="centered" data-i18n="form.title">اطلب عرض تصميم</h2>
+        <form id="leadForm" action="https://formspree.io/f/your-form-id" method="POST" novalidate>
+          <label for="name" data-i18n="form.name">الاسم</label>
           <input id="name" name="name" type="text" required />
 
-          <label for="phone">رقم الهاتف</label>
+          <label for="phone" data-i18n="form.phone">رقم الهاتف</label>
           <input id="phone" name="phone" type="tel" required />
 
-          <label for="email">البريد الإلكتروني</label>
+          <label for="email" data-i18n="form.email">البريد الإلكتروني</label>
           <input id="email" name="email" type="email" required />
 
-          <label for="location">موقع الأرض</label>
+          <label for="location" data-i18n="form.location">موقع الأرض</label>
           <input id="location" name="location" type="text" required />
 
-          <label for="maps">رابط خرائط Google (اختياري)</label>
+          <label for="maps" data-i18n="form.maps">رابط Google Maps</label>
           <input id="maps" name="maps" type="url" />
 
-          <label for="budget">الميزانية التقريبية (اختياري)</label>
+          <label for="budget" data-i18n="form.budget">الميزانية التقريبية</label>
           <select id="budget" name="budget">
-            <option value="">اختر الميزانية</option>
-            <option>أقل من 1 مليون ريال</option>
-            <option>1 إلى 2 مليون ريال</option>
-            <option>2 إلى 4 مليون ريال</option>
-            <option>أكثر من 4 مليون ريال</option>
+            <option value="" data-i18n="form.budget.placeholder">اختياري</option>
+            <option data-i18n="form.budget.1">أقل من 1 مليون ريال</option>
+            <option data-i18n="form.budget.2">1 إلى 2 مليون ريال</option>
+            <option data-i18n="form.budget.3">2 إلى 4 مليون ريال</option>
+            <option data-i18n="form.budget.4">أكثر من 4 مليون ريال</option>
           </select>
 
-          <button class="btn btn-primary" type="submit">إرسال الطلب</button>
-          <p id="formSuccess" class="success" aria-live="polite">تم استلام طلبك. سيتم التواصل معك قريباً.</p>
+          <button class="btn" type="submit" data-i18n="form.submit">إرسال الطلب</button>
+          <p id="formSuccess" class="success" aria-live="polite" data-i18n="form.success">تم استلام طلبك. سيتم التواصل معك قريباً.</p>
         </form>
       </div>
     </section>
 
     <section class="section" data-reveal>
       <div class="container centered">
-        <h2>طريقة عملنا</h2>
+        <h2 data-i18n="process.title">طريقة عملنا</h2>
         <div class="timeline">
           <article class="step">
             <img src="assets/images/workflow-1.jpg" alt="استشارة مجانية عبر Zoom" loading="lazy" />
-            <h3>1. استشارة مجانية (30 دقيقة عبر Zoom)</h3>
-            <p>مناقشة الأرض، الرؤية المعمارية، والمتطلبات الأساسية.</p>
+            <h3 data-i18n="process.step1">استشارة مجانية (30 دقيقة عبر Zoom)</h3>
           </article>
           <article class="step">
             <img src="assets/images/workflow-2.jpg" alt="فكرة أولية" loading="lazy" />
-            <h3>2. فكرة أولية</h3>
-            <p>عرض مخطط حجمي وتنظيم فراغي مبدئي. (يتم عرض الفكرة عبر مكالمة فيديو فقط)</p>
+            <h3 data-i18n="process.step2">فكرة أولية</h3>
+            <p data-i18n="process.step2Note">يتم عرض الفكرة عبر مكالمة فيديو فقط</p>
           </article>
           <article class="step">
-            <img src="assets/images/workflow-3.jpg" alt="بدء التصميم التفصيلي" loading="lazy" />
-            <h3>3. توقيع العقد وبدء التصميم التفصيلي</h3>
-            <p>بعد الموافقة على التصميم المبدئي، نقوم بتوقيع العقد، ثم سداد الدفعة، وبعدها نبدأ مرحلة التصميم الكامل.</p>
+            <img src="assets/images/workflow-3.jpg" alt="توقيع العقد وبدء التصميم التفصيلي" loading="lazy" />
+            <h3 data-i18n="process.step3">توقيع العقد وبدء التصميم التفصيلي</h3>
           </article>
         </div>
       </div>
@@ -127,5 +121,6 @@
   </main>
 
   <script src="assets/js/landing.js" defer></script>
+  <script src="assets/js/i18n.js" defer></script>
 </body>
 </html>
