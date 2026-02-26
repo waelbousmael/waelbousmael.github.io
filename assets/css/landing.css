@@ -2,9 +2,11 @@
   --bg: #ffffff;
   --fg: #000000;
   --border: #000000;
+  --surface-soft: #f6f6f6;
   --space-xl: clamp(4rem, 10vw, 8rem);
   --space-lg: clamp(2.5rem, 6vw, 5rem);
   --space-md: clamp(1.5rem, 3vw, 2.5rem);
+  --section-gap: clamp(4rem, 8vw, 7rem);
 }
 
 * {
@@ -30,7 +32,15 @@ main {
 }
 
 .section {
-  padding: var(--space-xl) 1.5rem;
+  padding: var(--section-gap) 1.5rem;
+}
+
+.section + .section {
+  margin-top: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.section:nth-of-type(odd):not(.hero) {
+  background: var(--surface-soft);
 }
 
 .full-height {
@@ -90,15 +100,32 @@ h2 {
   border: 1px solid var(--border);
   color: var(--fg);
   text-decoration: none;
-  padding: 0.85rem 1.6rem;
+  padding: 0.85rem 1.75rem;
   font-weight: 500;
   background: transparent;
-  transition: background-color 220ms ease, color 220ms ease;
+  border-radius: 999px;
+  transition: background-color 220ms ease, color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
   cursor: pointer;
 }
 
 .btn:hover,
 .btn:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
+}
+
+.btn-primary {
+  background: #000;
+  color: #fff;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background: #1a1a1a;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
   background: #000;
   color: #fff;
 }
@@ -107,7 +134,7 @@ h2 {
   width: 100vw;
   margin: var(--space-lg) calc(50% - 50vw) 0;
   display: grid;
-  gap: var(--space-xl);
+  gap: clamp(2.5rem, 7vw, 5rem);
 }
 
 .projects img {
@@ -125,7 +152,7 @@ h2 {
 }
 
 .authority {
-  padding-top: 0;
+  padding-top: clamp(2rem, 4vw, 3.5rem);
 }
 
 .portrait {
@@ -152,7 +179,7 @@ h2 {
 form {
   margin-top: var(--space-lg);
   display: grid;
-  gap: 0.6rem;
+  gap: 0.75rem;
 }
 
 label {
