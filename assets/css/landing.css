@@ -59,6 +59,29 @@ main {
   text-align: center;
 }
 
+.hero-brand {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.4rem;
+}
+
+.hero-logo {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  border: 1px solid #000;
+}
+
+.hero-studio {
+  margin: 0;
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 h1,
 h2,
 h3,
