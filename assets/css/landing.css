@@ -104,8 +104,8 @@ h2 {
 }
 
 .projects {
-  max-width: 980px;
-  margin: var(--space-lg) auto 0;
+  width: 100vw;
+  margin: var(--space-lg) calc(50% - 50vw) 0;
   display: grid;
   gap: var(--space-xl);
 }
@@ -114,6 +114,14 @@ h2 {
   width: 100%;
   display: block;
   filter: saturate(0.75);
+}
+
+.projects-section {
+  padding-inline: 0;
+}
+
+.projects-title {
+  padding-inline: 1.5rem;
 }
 
 .authority {
