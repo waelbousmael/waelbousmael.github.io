@@ -46,3 +46,7 @@ if (!prefersReducedMotion) {
     observer.observe(section);
   });
 }
+
+// Dynamic year
+const currentYear = document.getElementById('currentYear');
+if (currentYear) currentYear.textContent = new Date().getFullYear();

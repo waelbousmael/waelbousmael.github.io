@@ -974,12 +974,39 @@ section{
  Responsive
 
 ========================================================= */
+
+.work-case-grid{
+  margin-top: var(--spacing-2xl);
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.work-case-card{
+  background: var(--surface-elevated);
+  border: var(--divider-value);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.work-case-title{
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+}
+
+.work-case-text{
+  font-size: var(--font-size-sm);
+  color: var(--color-on-surface-secondary);
+  margin: 0;
+}
 @media (max-width: 991px){
   .flow-stepper{ flex-direction:column; gap: var(--spacing-2xl); }
   .flow-line{ width:1px; height:60px; margin-top:0; }
   .showcase-grid{ grid-template-columns: 1fr 1fr; }
   .plot-form-grid{ grid-template-columns: 1fr; }
   .hero-actions{ flex-direction: column; }
+  .work-case-grid{ grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce){
