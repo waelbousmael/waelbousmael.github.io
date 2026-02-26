@@ -1,0 +1,233 @@
+:root {
+  --bg: #ffffff;
+  --fg: #000000;
+  --border: #000000;
+  --space-xl: clamp(4rem, 10vw, 8rem);
+  --space-lg: clamp(2.5rem, 6vw, 5rem);
+  --space-md: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+body {
+  font-family: "IBM Plex Sans Arabic", system-ui, sans-serif;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+main {
+  overflow: hidden;
+}
+
+.section {
+  padding: var(--space-xl) 1.5rem;
+}
+
+.full-height {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.centered {
+  text-align: center;
+}
+
+h1,
+h2,
+h3,
+.name {
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2rem, 4.6vw, 4rem);
+  max-width: 15ch;
+  margin-inline: auto;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.lead,
+.subtitle,
+.step p {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-weight: 300;
+  max-width: 44ch;
+  margin: 1rem auto 0;
+}
+
+.cta-group {
+  margin-top: var(--space-md);
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  border: 1px solid var(--border);
+  color: var(--fg);
+  text-decoration: none;
+  padding: 0.85rem 1.6rem;
+  font-weight: 500;
+  background: transparent;
+  transition: background-color 220ms ease, color 220ms ease;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background: #000;
+  color: #fff;
+}
+
+.projects {
+  max-width: 980px;
+  margin: var(--space-lg) auto 0;
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.projects img {
+  width: 100%;
+  display: block;
+  filter: saturate(0.75);
+}
+
+.authority {
+  padding-top: 0;
+}
+
+.portrait {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #000;
+}
+
+.name {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.subtitle {
+  margin-top: 0.4rem;
+}
+
+.form-wrap {
+  max-width: 720px;
+}
+
+form {
+  margin-top: var(--space-lg);
+  display: grid;
+  gap: 0.6rem;
+}
+
+label {
+  font-weight: 500;
+  margin-top: 0.8rem;
+}
+
+input,
+select {
+  width: 100%;
+  border: 1px solid #000;
+  background: transparent;
+  color: #000;
+  padding: 0.75rem;
+  font: inherit;
+}
+
+.success {
+  margin-top: 1rem;
+  display: none;
+  font-weight: 500;
+}
+
+.success.visible {
+  display: block;
+}
+
+.timeline {
+  margin-top: var(--space-lg);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 88px;
+  left: 16.666%;
+  right: 16.666%;
+  height: 1px;
+  background: #000;
+  z-index: 0;
+}
+
+.step {
+  position: relative;
+  z-index: 1;
+}
+
+.step img {
+  width: 176px;
+  height: 176px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 1rem;
+}
+
+.step h3 {
+  font-size: 1rem;
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+[data-reveal].visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .timeline::before {
+    display: none;
+  }
+}
