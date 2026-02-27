@@ -8,7 +8,9 @@
 
   const dictionary = {
     ar: {
-      'lang.toggle': 'EN / العربية',
+      'lang.toggle': 'العربية | EN',
+      'brand.studio': 'Studio',
+      'contact.phone': '00966538060383',
       'hero.title': 'حوّل أرضك إلى فيلا أحلامك — تصميم ذكي وفخم في السعودية.',
       'hero.subtitle': 'استشارة أولية مجانية وتصميم مبدئي قبل أي التزام.',
       'hero.whatsapp': 'احجز استشارة مجانية عبر واتساب',
@@ -31,7 +33,8 @@
       'form.budget.3': '2 إلى 4 مليون ريال',
       'form.budget.4': 'أكثر من 4 مليون ريال',
       'form.submit': 'إرسال الطلب',
-      'form.success': 'تم استلام طلبك. سيتم التواصل معك قريباً.',
+      'form.note': 'بتعبئة النموذج، سيتم إرسال رسالة تأكيد تلقائية إلى بريدك الإلكتروني.',
+      'form.success': 'تم استلام طلبك. شكراً لك.',
       'process.title': 'طريقة عملنا',
       'process.step1': 'استشارة مجانية (30 دقيقة عبر Zoom)',
       'process.step2': 'فكرة أولية',
@@ -39,7 +42,9 @@
       'process.step3': 'توقيع العقد وبدء التصميم التفصيلي'
     },
     en: {
-      'lang.toggle': 'EN / العربية',
+      'lang.toggle': 'AR | EN',
+      'brand.studio': 'Studio',
+      'contact.phone': '00966538060383',
       'hero.title': 'Turn your land into a dream villa — smart, luxurious design in Saudi Arabia.',
       'hero.subtitle': 'Free initial consultation and a concept preview before any commitment.',
       'hero.whatsapp': 'Book a free consultation on WhatsApp',
@@ -62,7 +67,8 @@
       'form.budget.3': 'SAR 2M to 4M',
       'form.budget.4': 'Above SAR 4M',
       'form.submit': 'Submit Request',
-      'form.success': 'Your request has been received. We will contact you soon.',
+      'form.note': 'After submission, an automatic confirmation email is sent to your inbox.',
+      'form.success': 'Your request has been received. Thank you.',
       'process.title': 'Our Process',
       'process.step1': 'Free consultation (30 minutes via Zoom)',
       'process.step2': 'Initial concept',
