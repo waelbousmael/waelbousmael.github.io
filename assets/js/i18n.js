@@ -18,6 +18,11 @@
       'projects.title': 'نماذج من أعمالي',
       'authority.name': 'وائل بو سماعيل — معماري',
       'authority.subtitle': 'خبرة طويلة في تصميم الفلل الفاخرة',
+      'authority.email': 'Email: w.bousmael@wbstudio.xyz',
+      'authority.phone': 'Phone: 00966538060383',
+      'authority.bioRead': 'Read Full Bio',
+      'authority.bioHide': 'Hide Bio',
+      'authority.bioText': 'Wael Bousmael is an Architect and BIM & Design Coordinator with over 12 years of experience delivering premium private residential projects. He manages the full process from early concept development to IFC documentation, ensuring each phase is clear, coordinated, and construction-ready. His scope includes authority submissions, multidisciplinary BIM coordination across architecture, MEP, and structural teams, and preparation of contractor-ready packages backed by accurate as-built documentation. His international project experience spans Berlin and Hamburg in Germany, Beirut in Lebanon, and luxury villa developments in Jeddah, Saudi Arabia. Across these contexts, he combines design intent with technical discipline to maintain quality, schedule alignment, and execution clarity. He works closely with consultants, specialists, and site teams to reduce clashes early, protect design quality, and support efficient decision-making throughout delivery. He works fluently with Archicad, Revit, AutoCAD, Lumion, Twinmotion, and Bluebeam, selecting the right tools to support efficient workflows and reliable deliverables. Known for a strong execution and coordination mindset, he focuses on translating refined design visions into buildable outcomes that meet the expectations of premium residential clients and their construction teams, from first brief to final handover.',
       'close.title': 'مساحة تعيش فيها كما تحلم.',
       'close.cta': 'ابدأ الآن',
       'form.title': 'اطلب عرض تصميم',
@@ -50,8 +55,13 @@
       'hero.whatsapp': 'Book a free consultation on WhatsApp',
       'hero.secondary': 'Send design request',
       'projects.title': 'Selected Projects',
-      'authority.name': 'Wael Bou Smaeil — Architect',
+      'authority.name': 'Wael Bousmael — Architect',
       'authority.subtitle': 'Extensive experience in luxury villa design',
+      'authority.email': 'Email: w.bousmael@wbstudio.xyz',
+      'authority.phone': 'Phone: 00966538060383',
+      'authority.bioRead': 'Read Full Bio',
+      'authority.bioHide': 'Hide Bio',
+      'authority.bioText': 'Wael Bousmael is an Architect and BIM & Design Coordinator with over 12 years of experience delivering premium private residential projects. He manages the full process from early concept development to IFC documentation, ensuring each phase is clear, coordinated, and construction-ready. His scope includes authority submissions, multidisciplinary BIM coordination across architecture, MEP, and structural teams, and preparation of contractor-ready packages backed by accurate as-built documentation. His international project experience spans Berlin and Hamburg in Germany, Beirut in Lebanon, and luxury villa developments in Jeddah, Saudi Arabia. Across these contexts, he combines design intent with technical discipline to maintain quality, schedule alignment, and execution clarity. He works closely with consultants, specialists, and site teams to reduce clashes early, protect design quality, and support efficient decision-making throughout delivery. He works fluently with Archicad, Revit, AutoCAD, Lumion, Twinmotion, and Bluebeam, selecting the right tools to support efficient workflows and reliable deliverables. Known for a strong execution and coordination mindset, he focuses on translating refined design visions into buildable outcomes that meet the expectations of premium residential clients and their construction teams, from first brief to final handover.',
       'close.title': 'A space to live exactly as you dream.',
       'close.cta': 'Start now',
       'form.title': 'Request a Design Proposal',
@@ -93,6 +103,14 @@
         node.textContent = dictionary[activeLang][key];
       }
     });
+
+    const bioToggle = document.getElementById('bioToggle');
+    const isExpanded = bioToggle?.getAttribute('aria-expanded') === 'true';
+    if (bioToggle) {
+      bioToggle.textContent = isExpanded
+        ? dictionary[activeLang]['authority.bioHide']
+        : dictionary[activeLang]['authority.bioRead'];
+    }
 
     const whatsappUrl = `https://wa.me/966538060383?text=${encodeURIComponent(waMessage[activeLang])}`;
     whatsappCta.setAttribute('href', whatsappUrl);
