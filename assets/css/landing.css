@@ -48,10 +48,17 @@ main {
 }
 
 .brand-header {
+  --header-shift: 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
   display: grid;
   justify-items: center;
   gap: 0.85rem;
-  padding: 1.5rem 1.5rem 0;
+  padding: 1rem 1.5rem 0;
+  pointer-events: none;
 }
 
 .brand-lockup {
@@ -60,6 +67,11 @@ main {
   gap: 0.35rem;
   text-decoration: none;
   color: var(--fg);
+  transform: translateY(calc(var(--header-shift) * 1px)) scale(0.76);
+  opacity: 0.55;
+  transform-origin: top center;
+  transition: opacity 220ms ease;
+  pointer-events: auto;
 }
 
 .brand-subtitle {
@@ -79,7 +91,9 @@ main {
   line-height: 1.4;
   padding: 0.2rem 0;
   cursor: pointer;
+  transform: translateY(calc(var(--header-shift) * 0.7px));
   transition: opacity 220ms ease;
+  pointer-events: auto;
 }
 
 .lang-toggle:hover,
@@ -94,6 +108,11 @@ main {
   letter-spacing: 0.06em;
   border-bottom: 1px solid transparent;
   transition: border-color 220ms ease;
+  pointer-events: auto;
+}
+
+main {
+  padding-top: 8.5rem;
 }
 
 .top-phone:hover,
