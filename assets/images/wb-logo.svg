@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title desc">
+  <title id="title">WB Studio Monogram</title>
+  <desc id="desc">Minimal black WB monogram on white background.</desc>
+  <rect width="120" height="120" fill="#fff"/>
+  <path d="M18 28h10l8 42 10-42h8l10 42 8-42h10L68 92h-8L50 53 40 92h-8L18 28zm68 0h16c10 0 16 6 16 14 0 6-3 10-8 12 7 2 10 7 10 14 0 10-7 16-18 16H86V28zm10 9v13h6c4 0 6-2 6-6s-2-7-6-7h-6zm0 22v15h7c5 0 8-2 8-7 0-5-3-8-8-8h-7z" fill="#000"/>
+</svg>
