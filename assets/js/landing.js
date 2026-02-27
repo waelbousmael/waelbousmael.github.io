@@ -11,6 +11,17 @@ const observer = new IntersectionObserver((entries) => {
 
 revealElements.forEach((el) => observer.observe(el));
 
+const brandHeader = document.querySelector('.brand-header');
+
+const syncHeaderMotion = () => {
+  if (!brandHeader) return;
+  const shift = Math.min(window.scrollY * 0.12, 22);
+  brandHeader.style.setProperty('--header-shift', `${shift.toFixed(2)}`);
+};
+
+window.addEventListener('scroll', syncHeaderMotion, { passive: true });
+syncHeaderMotion();
+
 const form = document.getElementById('leadForm');
 const success = document.getElementById('formSuccess');
 
