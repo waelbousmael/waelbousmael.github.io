@@ -59,3 +59,18 @@ form?.addEventListener('submit', async (event) => {
     }
   }
 });
+
+
+const bioToggle = document.getElementById('bioToggle');
+const bioPanel = document.getElementById('bioPanel');
+
+bioToggle?.addEventListener('click', () => {
+  const isOpen = bioToggle.getAttribute('aria-expanded') === 'true';
+  bioToggle.setAttribute('aria-expanded', String(!isOpen));
+  bioPanel?.setAttribute('aria-hidden', String(isOpen));
+
+  const lang = document.documentElement.lang === 'en' ? 'en' : 'ar';
+  const readText = lang === 'en' ? 'Read Full Bio' : 'Read Full Bio';
+  const hideText = lang === 'en' ? 'Hide Bio' : 'Hide Bio';
+  bioToggle.textContent = isOpen ? readText : hideText;
+});
