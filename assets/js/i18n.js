@@ -11,8 +11,9 @@
       'lang.toggle': 'العربية | EN',
       'brand.studio': 'Studio',
       'contact.phone': '00966538060383',
-      'hero.title': 'حوّل أرضك إلى فيلا أحلامك',
+      'hero.title': 'مهندس معماري تصميم فلل خاصة في جدة',
       'hero.subtitle': 'استشارة أولية مجانية وتصميم مبدئي قبل أي التزام.',
+      'hero.seo': 'نقدّم خدمات تصميم الفلل الخاصة في جدة والسعودية بأسلوب معماري حديث يوازن بين الجمال والوظيفة. يبدأ العمل بدراسة دقيقة لاحتياجات الأسرة وطبيعة الأرض، ثم تطوير حلول تصميمية واضحة تشمل توزيع المساحات والواجهات وتجربة المعيشة اليومية. نوفر الإشراف المعماري خلال مراحل المشروع لضمان جودة التنفيذ والتزام التفاصيل المعتمدة، مع تنسيق BIM بين التخصصات لخفض التعارضات ورفع كفاءة البناء. هدفنا أن تحصل على فيلا خاصة تعكس أسلوب حياتك وتُبنى بمعايير مهنية عالية، من الفكرة الأولى حتى المخططات التنفيذية.',
       'hero.whatsapp': 'احجز استشارة مجانية عبر واتساب',
       'hero.secondary': 'إرسال طلب تصميم',
       'projects.title': 'نماذج من أعمالي',
@@ -57,8 +58,9 @@
       'lang.toggle': 'AR | EN',
       'brand.studio': 'Studio',
       'contact.phone': '00966538060383',
-      'hero.title': 'Turn your land into a dream villa.',
+      'hero.title': 'Private villa architect in Jeddah',
       'hero.subtitle': 'Free initial consultation and a concept preview before any commitment.',
+      'hero.seo': 'We deliver private villa architecture in Jeddah and across Saudi Arabia with a modern design approach that balances aesthetics and function. Our process starts with understanding your family needs and site conditions, then shaping a clear architectural direction for plans, facades, and daily living quality. We provide architectural supervision throughout project phases and BIM coordination across disciplines to reduce clashes and improve build efficiency. The result is a refined, buildable villa design that reflects your lifestyle with precision from concept to IFC documentation.',
       'hero.whatsapp': 'Book a free consultation on WhatsApp',
       'hero.secondary': 'Send design request',
       'projects.title': 'Selected Projects',
@@ -98,6 +100,19 @@
       'process.step2': 'Initial concept',
       'process.step2Note': 'Concept is presented through a video call only',
       'process.step3': 'Contract signing and detailed design start'
+    }
+  };
+
+  const seoMeta = {
+    ar: {
+      title: 'تصميم فلل خاصة في جدة | مهندس معماري | Wael Bousmael',
+      description: 'مهندس معماري في جدة السعودية لتقديم تصميم فلل خاصة بتصميم معماري حديث، إشراف دقيق واستشارة مجانية لبدء مشروعك بثقة.',
+      locale: 'ar_SA'
+    },
+    en: {
+      title: 'Private Villa Design in Jeddah | Architect | Wael Bousmael',
+      description: 'Architect in Jeddah, Saudi Arabia for private villa design, modern architecture, BIM coordination, and a free consultation to start your project.',
+      locale: 'en_US'
     }
   };
 
@@ -141,6 +156,27 @@
 
     const whatsappUrl = `https://wa.me/966538060383?text=${encodeURIComponent(waMessage[activeLang])}`;
     whatsappCta.setAttribute('href', whatsappUrl);
+
+    const activeSeo = seoMeta[activeLang] || seoMeta.ar;
+    document.title = activeSeo.title;
+
+    const htmlEl = document.documentElement;
+    htmlEl.setAttribute('lang', activeLang);
+    htmlEl.setAttribute('dir', activeLang === 'ar' ? 'rtl' : 'ltr');
+
+    const metaDescription = document.querySelector('meta[name="description"]');
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    const ogLocale = document.querySelector('meta[property="og:locale"]');
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+
+    if (metaDescription) metaDescription.setAttribute('content', activeSeo.description);
+    if (ogTitle) ogTitle.setAttribute('content', activeSeo.title);
+    if (ogDescription) ogDescription.setAttribute('content', activeSeo.description);
+    if (ogLocale) ogLocale.setAttribute('content', activeSeo.locale);
+    if (twitterTitle) twitterTitle.setAttribute('content', activeSeo.title);
+    if (twitterDescription) twitterDescription.setAttribute('content', activeSeo.description);
 
     localStorage.setItem(storageKey, activeLang);
   };
