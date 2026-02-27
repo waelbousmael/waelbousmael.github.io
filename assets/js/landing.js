@@ -70,7 +70,7 @@ bioToggle?.addEventListener('click', () => {
   bioPanel?.setAttribute('aria-hidden', String(isOpen));
 
   const lang = document.documentElement.lang === 'en' ? 'en' : 'ar';
-  const readText = lang === 'en' ? 'Read Full Bio' : 'Read Full Bio';
-  const hideText = lang === 'en' ? 'Hide Bio' : 'Hide Bio';
+  const readText = lang === 'en' ? 'Read Full Bio' : 'قراءة النبذة';
+  const hideText = lang === 'en' ? 'Hide Bio' : 'إخفاء النبذة';
   bioToggle.textContent = isOpen ? readText : hideText;
 });
