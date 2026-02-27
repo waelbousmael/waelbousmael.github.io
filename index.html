@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>WB Studio | تصميم فلل فاخرة في المملكة العربية السعودية</title>
-  <meta name="description" content="تصميم فلل فاخرة في المملكة العربية السعودية مع استشارة مجانية لمدة 30 دقيقة ومعاينة فكرة أولية قبل الالتزام." />
+  <title>WB Studio | تصميم فلل فاخرة في السعودية</title>
+  <meta name="description" content="WB Studio لتصميم الفلل الفاخرة في السعودية: استشارة مجانية لمدة 30 دقيقة، تصور أولي قبل الالتزام، وتنفيذ تصميم معماري راقٍ." />
   <link rel="canonical" href="https://wbstudio.xyz/" />
   <link rel="icon" href="/assets/icons/favicon.ico" sizes="any" />
   <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
   <link rel="manifest" href="/manifest.webmanifest" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://wbstudio.xyz/" />
-  <meta property="og:title" content="WB Studio | تصميم فلل فاخرة في المملكة العربية السعودية" />
-  <meta property="og:description" content="استشارة أولية مجانية ومعاينة فكرة أولية قبل الالتزام." />
+  <meta property="og:title" content="WB Studio | تصميم فلل فاخرة في السعودية" />
+  <meta property="og:description" content="استشارة أولية مجانية ومعاينة فكرة قبل الالتزام لتصميم فيلتك الفاخرة." />
   <meta property="og:image" content="https://wbstudio.xyz/assets/images/hero-poster.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="WB Studio | تصميم فلل فاخرة في المملكة العربية السعودية" />
-  <meta name="twitter:description" content="استشارة أولية مجانية ومعاينة فكرة أولية قبل الالتزام." />
+  <meta name="twitter:title" content="WB Studio | تصميم فلل فاخرة في السعودية" />
+  <meta name="twitter:description" content="استشارة مجانية وتصميم مبدئي لفيلا فاخرة في السعودية." />
   <meta name="twitter:image" content="https://wbstudio.xyz/assets/images/hero-poster.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,16 +24,23 @@
   <link rel="stylesheet" href="assets/css/landing.css" />
 </head>
 <body>
-  <button id="langToggle" class="lang-toggle" type="button" aria-label="Switch language" data-i18n="lang.toggle">EN / العربية</button>
+  <header class="brand-header" data-reveal>
+    <button id="langToggle" class="lang-toggle" type="button" aria-label="Switch language" data-i18n="lang.toggle">العربية | EN</button>
+    <a class="brand-lockup" href="#top" aria-label="WB Studio">
+      <img src="assets/images/wb-logo.svg" alt="WB Studio logo" width="88" height="88" loading="eager" />
+      <span class="brand-subtitle" data-i18n="brand.studio">Studio</span>
+    </a>
+    <a class="top-phone" href="tel:00966538060383" dir="ltr" data-i18n="contact.phone">00966538060383</a>
+  </header>
 
-  <main>
-    <section class="hero section full-height" data-reveal>
+  <main id="top">
+    <section class="hero section" data-reveal>
       <div class="container centered narrow">
         <h1 data-i18n="hero.title">حوّل أرضك إلى فيلا أحلامك — تصميم ذكي وفخم في السعودية.</h1>
         <p class="lead" data-i18n="hero.subtitle">استشارة أولية مجانية وتصميم مبدئي قبل أي التزام.</p>
         <div class="cta-group">
-          <a id="whatsappCta" class="btn" target="_blank" rel="noopener" data-i18n="hero.whatsapp">احجز استشارة مجانية عبر واتساب</a>
-          <a class="btn" href="#design-form" data-i18n="hero.secondary">إرسال طلب تصميم</a>
+          <a id="whatsappCta" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="hero.whatsapp">احجز استشارة مجانية عبر واتساب</a>
+          <a class="btn btn-secondary" href="#design-form" data-i18n="hero.secondary">إرسال طلب تصميم</a>
         </div>
       </div>
     </section>
@@ -60,7 +67,9 @@
     <section class="section" data-reveal>
       <div class="container centered narrow">
         <h2 data-i18n="close.title">مساحة تعيش فيها كما تحلم.</h2>
-        <a class="btn" href="#design-form" data-i18n="close.cta">ابدأ الآن</a>
+        <div class="cta-group centered-single">
+          <a class="btn btn-secondary" href="#design-form" data-i18n="close.cta">ابدأ الآن</a>
+        </div>
       </div>
     </section>
 
@@ -68,14 +77,16 @@
       <div class="container form-wrap narrow">
         <h2 class="centered" data-i18n="form.title">اطلب عرض تصميم</h2>
         <form id="leadForm" action="https://formspree.io/f/your-form-id" method="POST" novalidate>
+          <!-- Replace /f/your-form-id with your Formspree endpoint configured for wbstudio2025@gmail.com -->
+          <input type="hidden" name="_subject" value="WB Studio - New Luxury Villa Lead" />
           <label for="name" data-i18n="form.name">الاسم</label>
-          <input id="name" name="name" type="text" required />
+          <input id="name" name="name" type="text" autocomplete="name" required />
 
           <label for="phone" data-i18n="form.phone">رقم الهاتف</label>
-          <input id="phone" name="phone" type="tel" required />
+          <input id="phone" name="phone" type="tel" autocomplete="tel" required />
 
           <label for="email" data-i18n="form.email">البريد الإلكتروني</label>
-          <input id="email" name="email" type="email" required />
+          <input id="email" name="_replyto" type="email" autocomplete="email" required />
 
           <label for="location" data-i18n="form.location">موقع الأرض</label>
           <input id="location" name="location" type="text" required />
@@ -92,8 +103,9 @@
             <option data-i18n="form.budget.4">أكثر من 4 مليون ريال</option>
           </select>
 
-          <button class="btn" type="submit" data-i18n="form.submit">إرسال الطلب</button>
-          <p id="formSuccess" class="success" aria-live="polite" data-i18n="form.success">تم استلام طلبك. سيتم التواصل معك قريباً.</p>
+          <button class="btn btn-primary" type="submit" data-i18n="form.submit">إرسال الطلب</button>
+          <p class="form-note" data-i18n="form.note">بتعبئة النموذج، سيتم إرسال رسالة تأكيد تلقائية إلى بريدك الإلكتروني.</p>
+          <p id="formSuccess" class="success" aria-live="polite" data-i18n="form.success">تم استلام طلبك. شكراً لك.</p>
         </form>
       </div>
     </section>

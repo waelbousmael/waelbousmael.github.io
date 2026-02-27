@@ -36,8 +36,15 @@ form?.addEventListener('submit', async (event) => {
     }
 
     success?.classList.add('visible');
+    success?.classList.remove('error');
     form.reset();
   } catch (error) {
-    success?.classList.add('visible');
+    if (success) {
+      const arabic = document.documentElement.lang === 'ar';
+      success.textContent = arabic
+        ? 'تعذر إرسال الطلب حالياً. الرجاء المحاولة مرة أخرى.'
+        : 'We could not submit your request right now. Please try again.';
+      success.classList.add('visible', 'error');
+    }
   }
 });
