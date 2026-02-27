@@ -95,23 +95,41 @@
     <section id="design-form" class="section" data-reveal>
       <div class="container form-wrap narrow">
         <h2 class="centered" data-i18n="form.title">اطلب عرض تصميم</h2>
-        <form id="leadForm" action="https://formspree.io/f/your-form-id" method="POST" novalidate>
-          <!-- Replace /f/your-form-id with your Formspree endpoint configured for wbstudio2025@gmail.com -->
+        <p class="form-subtitle centered" data-i18n="form.subtitle">سنعاود التواصل معك خلال يومين عمل بعد تعبئة النموذج.</p>
+        <form id="leadForm" action="https://formsubmit.co/ajax/wael.bousmael@gmail.com" method="POST" novalidate>
           <input type="hidden" name="_subject" value="WB Studio - New Luxury Villa Lead" />
-          <label for="name" data-i18n="form.name">الاسم</label>
-          <input id="name" name="name" type="text" autocomplete="name" required />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
 
-          <label for="phone" data-i18n="form.phone">رقم الهاتف</label>
-          <input id="phone" name="phone" type="tel" autocomplete="tel" required />
+          <label for="name">
+            <span data-i18n="form.name">الاسم</span>
+            <span class="required-mark" aria-hidden="true">*</span>
+          </label>
+          <input id="name" name="name" type="text" autocomplete="name" data-i18n-placeholder="form.name.placeholder" placeholder="أدخل اسمك الكامل" required />
 
-          <label for="email" data-i18n="form.email">البريد الإلكتروني</label>
-          <input id="email" name="_replyto" type="email" autocomplete="email" required />
+          <label for="phone">
+            <span data-i18n="form.phone">رقم الهاتف</span>
+            <span class="required-mark" aria-hidden="true">*</span>
+          </label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" data-i18n-placeholder="form.phone.placeholder" placeholder="مثال: +966 5X XXX XXXX" pattern="^[+\d\s]{7,}$" required />
 
-          <label for="location" data-i18n="form.location">موقع الأرض</label>
-          <input id="location" name="location" type="text" required />
+          <label for="email">
+            <span data-i18n="form.email">البريد الإلكتروني</span>
+            <span class="required-mark" aria-hidden="true">*</span>
+          </label>
+          <input id="email" name="_replyto" type="email" autocomplete="email" data-i18n-placeholder="form.email.placeholder" placeholder="example@email.com" required />
 
-          <label for="maps" data-i18n="form.maps">رابط Google Maps</label>
-          <input id="maps" name="maps" type="url" />
+          <div class="form-row">
+            <div class="field-group">
+              <label for="location" data-i18n="form.location">موقع الأرض</label>
+              <input id="location" name="location" type="text" data-i18n-placeholder="form.location.placeholder" placeholder="المدينة أو الحي أو العنوان" />
+            </div>
+            <div class="field-group">
+              <label for="maps" data-i18n="form.maps">رابط Google Maps</label>
+              <input id="maps" name="maps" type="url" data-i18n-placeholder="form.maps.placeholder" placeholder="https://maps.google.com/..." />
+            </div>
+          </div>
+          <p class="form-helper" data-i18n="form.location.helper">ابدأ بكتابة الموقع لاقتراحات أسرع عند تفعيل خدمة Google Maps.</p>
 
           <label for="budget" data-i18n="form.budget">الميزانية التقريبية</label>
           <select id="budget" name="budget">
@@ -123,8 +141,7 @@
           </select>
 
           <button class="btn btn-primary" type="submit" data-i18n="form.submit">إرسال الطلب</button>
-          <p class="form-note" data-i18n="form.note">بتعبئة النموذج، سيتم إرسال رسالة تأكيد تلقائية إلى بريدك الإلكتروني.</p>
-          <p id="formSuccess" class="success" aria-live="polite" data-i18n="form.success">تم استلام طلبك. شكراً لك.</p>
+          <p id="formFeedback" class="success" aria-live="polite" data-i18n="form.success">تم إرسال طلبك بنجاح. سنعاود التواصل معك خلال يومين عمل.</p>
         </form>
       </div>
     </section>
@@ -151,6 +168,9 @@
     </section>
   </main>
 
+  <script>
+    window.GOOGLE_MAPS_API_KEY = window.GOOGLE_MAPS_API_KEY || '';
+  </script>
   <script src="assets/js/landing.js" defer></script>
   <script src="assets/js/i18n.js" defer></script>
 </body>

@@ -300,8 +300,33 @@ form {
   gap: 0.78rem;
 }
 
+.form-subtitle {
+  margin: 0.55rem 0 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
 label {
   font-weight: 500;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.28rem;
+}
+
+.required-mark {
+  color: var(--fg);
+  font-weight: 700;
+}
+
+.field-group {
+  display: grid;
+  gap: 0.78rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
 }
 
 input,
@@ -330,6 +355,12 @@ select:focus-visible,
   color: var(--muted);
 }
 
+.form-helper {
+  margin: -0.15rem 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
 .success {
   display: none;
   margin-top: 0.3rem;
@@ -342,6 +373,12 @@ select:focus-visible,
 
 .success.error {
   opacity: 0.75;
+}
+
+@media (max-width: 680px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 .timeline {

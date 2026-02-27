@@ -26,11 +26,18 @@
       'close.title': 'مساحة تعيش فيها كما تحلم.',
       'close.cta': 'ابدأ الآن',
       'form.title': 'اطلب عرض تصميم',
+      'form.subtitle': 'سنعاود التواصل معك خلال يومين عمل بعد تعبئة النموذج.',
       'form.name': 'الاسم',
+      'form.name.placeholder': 'أدخل اسمك الكامل',
       'form.phone': 'رقم الهاتف',
+      'form.phone.placeholder': 'مثال: +966 5X XXX XXXX',
       'form.email': 'البريد الإلكتروني',
+      'form.email.placeholder': 'name@example.com',
       'form.location': 'موقع الأرض',
+      'form.location.placeholder': 'المدينة أو الحي أو العنوان',
+      'form.location.helper': 'ابدأ بكتابة الموقع لاقتراحات أسرع عند تفعيل خدمة Google Maps.',
       'form.maps': 'رابط Google Maps',
+      'form.maps.placeholder': 'https://maps.google.com/...',
       'form.budget': 'الميزانية التقريبية',
       'form.budget.placeholder': 'اختياري',
       'form.budget.1': 'أقل من 1 مليون ريال',
@@ -38,8 +45,8 @@
       'form.budget.3': '2 إلى 4 مليون ريال',
       'form.budget.4': 'أكثر من 4 مليون ريال',
       'form.submit': 'إرسال الطلب',
-      'form.note': 'بتعبئة النموذج، سيتم إرسال رسالة تأكيد تلقائية إلى بريدك الإلكتروني.',
-      'form.success': 'تم استلام طلبك. شكراً لك.',
+      'form.success': 'تم إرسال طلبك بنجاح. سنعاود التواصل معك خلال يومين عمل.',
+      'form.error': 'تعذر إرسال الطلب حالياً. الرجاء المحاولة مرة أخرى.',
       'process.title': 'طريقة عملنا',
       'process.step1': 'استشارة مجانية (30 دقيقة عبر Zoom)',
       'process.step2': 'فكرة أولية',
@@ -65,11 +72,18 @@
       'close.title': 'A space to live exactly as you dream.',
       'close.cta': 'Start now',
       'form.title': 'Request a Design Proposal',
+      'form.subtitle': 'We’ll get back to you within 2 business days after you submit the form.',
       'form.name': 'Name',
+      'form.name.placeholder': 'Enter your full name',
       'form.phone': 'Phone Number',
+      'form.phone.placeholder': 'Example: +966 5X XXX XXXX',
       'form.email': 'Email',
+      'form.email.placeholder': 'name@example.com',
       'form.location': 'Land Location',
+      'form.location.placeholder': 'City, district, or address',
+      'form.location.helper': 'Start typing to get faster suggestions when Google Maps is enabled.',
       'form.maps': 'Google Maps Link',
+      'form.maps.placeholder': 'https://maps.google.com/...',
       'form.budget': 'Estimated Budget',
       'form.budget.placeholder': 'Optional',
       'form.budget.1': 'Below SAR 1M',
@@ -77,8 +91,8 @@
       'form.budget.3': 'SAR 2M to 4M',
       'form.budget.4': 'Above SAR 4M',
       'form.submit': 'Submit Request',
-      'form.note': 'After submission, an automatic confirmation email is sent to your inbox.',
-      'form.success': 'Your request has been received. Thank you.',
+      'form.success': 'Your request was sent successfully. We’ll get back to you within 2 business days.',
+      'form.error': 'We could not submit your request right now. Please try again.',
       'process.title': 'Our Process',
       'process.step1': 'Free consultation (30 minutes via Zoom)',
       'process.step2': 'Initial concept',
@@ -103,6 +117,19 @@
         node.textContent = dictionary[activeLang][key];
       }
     });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach((node) => {
+      const key = node.dataset.i18nPlaceholder;
+      if (dictionary[activeLang][key]) {
+        node.setAttribute('placeholder', dictionary[activeLang][key]);
+      }
+    });
+
+    const feedback = document.getElementById('formFeedback');
+    if (feedback?.classList.contains('visible')) {
+      const messageKey = feedback.dataset.state === 'error' ? 'form.error' : 'form.success';
+      feedback.textContent = dictionary[activeLang][messageKey];
+    }
 
     const bioToggle = document.getElementById('bioToggle');
     const isExpanded = bioToggle?.getAttribute('aria-expanded') === 'true';
