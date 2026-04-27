@@ -30,6 +30,15 @@ Spawn specialized agents only when useful, not by default:
 - Conversion copywriter: messaging, trust signals, CTAs, service positioning for private villa clients.
 - Technical cleanup reviewer: static-site structure, maintainability, dead code, GitHub Pages compatibility.
 
+## Reusable Skills
+
+- When a task touches one of these domains, consult the relevant skill before editing website files. Keep skill use targeted; do not load every skill for every minor task.
+- `skills/seo-local-intent.md`: use for SEO, metadata, local Saudi/GCC search intent, sitemap/robots/Open Graph decisions.
+- `skills/conversion-copywriting.md`: use for offer clarity, CTA flow, trust-building copy, objection handling.
+- `skills/frontend-ux-mobile.md`: use for visual hierarchy, mobile UX, premium front-end direction, responsive layout.
+- `skills/performance-accessibility.md`: use for speed, accessibility, semantic HTML, media optimization, technical quality.
+- `skills/static-github-pages-architecture.md`: use for GitHub Pages compatibility, folder structure, forms, deployment discipline.
+
 ## Default Workflow
 
 1. Audit the current site before editing.
