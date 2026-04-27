@@ -9,6 +9,7 @@ Optimize the static GitHub Pages site to attract private house and villa design 
 ## Operating Rules
 
 - Do not edit website files before first auditing the current site and proposing a concise execution plan.
+- AGENTS.md may be updated when it improves the workflow, captures durable project decisions, preserves useful strategy, or prevents repeated mistakes. Keep updates concise, relevant, and non-sensitive. Do not add temporary ideas, private data, credentials, or long brainstorming notes.
 - Keep changes focused, minimal, and reversible. Avoid overengineering.
 - Preserve GitHub Pages compatibility. Prefer simple HTML, CSS, and JS unless a backend is truly justified.
 - Forms must use a static form service or a WhatsApp flow. Do not invent a custom backend unless there is a clear business or technical need.
