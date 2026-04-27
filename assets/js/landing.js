@@ -1,15 +1,20 @@
 const revealElements = document.querySelectorAll('[data-reveal]');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
+if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+  revealElements.forEach((el) => el.classList.add('visible'));
+} else {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
 
-revealElements.forEach((el) => observer.observe(el));
+  revealElements.forEach((el) => observer.observe(el));
+}
 
 const brandHeader = document.querySelector('.brand-header');
 
@@ -19,8 +24,10 @@ const syncHeaderMotion = () => {
   brandHeader.style.setProperty('--header-shift', `${shift.toFixed(2)}`);
 };
 
-window.addEventListener('scroll', syncHeaderMotion, { passive: true });
-syncHeaderMotion();
+if (!prefersReducedMotion) {
+  window.addEventListener('scroll', syncHeaderMotion, { passive: true });
+  syncHeaderMotion();
+}
 
 const form = document.getElementById('leadForm');
 const feedback = document.getElementById('formFeedback');
