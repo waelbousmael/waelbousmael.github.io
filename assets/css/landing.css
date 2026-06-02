@@ -460,6 +460,68 @@ select:focus-visible,
   box-shadow: 0 12px 30px rgba(39, 49, 38, 0.08);
 }
 
+.faq {
+  margin-top: 2.4rem;
+  display: grid;
+  gap: 0.75rem;
+  max-width: 760px;
+  margin-inline: auto;
+  text-align: start;
+}
+
+.faq details {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  padding: 0 1.15rem;
+  transition: border-color 180ms ease;
+}
+
+.faq details[open] {
+  border-color: var(--outline);
+}
+
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.05rem 0;
+  font-weight: 500;
+  color: var(--fg);
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: "+";
+  flex: 0 0 auto;
+  font-size: 1.35rem;
+  line-height: 1;
+  color: var(--muted);
+  transition: transform 180ms ease;
+}
+
+.faq details[open] summary::after {
+  content: "−";
+}
+
+.faq summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.faq p {
+  margin: 0 0 1.1rem;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
 [data-reveal] {
   opacity: 0;
   transform: translateY(10px);

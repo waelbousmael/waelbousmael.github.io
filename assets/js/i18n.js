@@ -17,6 +17,7 @@
       'nav.process': 'آلية العمل',
       'nav.about': 'من نحن',
       'nav.contact': 'تواصل',
+      'nav.faq': 'الأسئلة الشائعة',
       'nav.cta': 'اجتماع فيديو مجاني',
       'hero.title': 'صمّم فيلتك الخاصة بثقة قبل أي التزام',
       'hero.subtitle': 'مكالمة مجانية، ثم تصور مبدئي مجاني، ولا نبدأ أي اتفاق مدفوع إلا بعد وضوح الرؤية والتوافق.',
@@ -98,7 +99,18 @@
       'footer.explore': 'تصفّح',
       'footer.contactTitle': 'تواصل',
       'footer.whatsapp': 'واتساب',
-      'footer.rights': 'جميع الحقوق محفوظة.'
+      'footer.rights': 'جميع الحقوق محفوظة.',
+      'faq.title': 'أسئلة شائعة عن تصميم الفلل الخاصة',
+      'faq.q1': 'كم تكلفة تصميم فيلا خاصة؟',
+      'faq.a1': 'تعتمد التكلفة على مساحة الأرض ونطاق العمل والمخرجات المطلوبة. نبدأ دائماً بمكالمة مجانية وتصور مبدئي مجاني، ونوضح التكلفة والمسار بالكامل قبل أي اتفاق مدفوع.',
+      'faq.q2': 'هل تقدمون تصميم الفلل عن بُعد خارج جدة؟',
+      'faq.a2': 'نعم. نخدم عملاء جدة والسعودية ودول الخليج حضورياً أو عن بُعد عبر مكالمات الفيديو ومشاركة المخططات، مع الحفاظ على نفس الوضوح في كل خطوة.',
+      'faq.q3': 'ما المخرجات التي أحصل عليها؟',
+      'faq.a3': 'من الفكرة المعمارية والتوجه الداخلي حتى تصميم جاهز للتنفيذ يوحّد فهم الاستشاريين والمقاولين ويحافظ على الرؤية الأصلية للمشروع.',
+      'faq.q4': 'كم تستغرق مدة تصميم الفيلا؟',
+      'faq.a4': 'تختلف المدة حسب حجم المشروع وتعقيده. نوضح الجدول الزمني المتوقع ضمن التصور المبدئي قبل بدء أي عمل مدفوع.',
+      'faq.q5': 'متى يبدأ الدفع؟',
+      'faq.a5': 'المكالمة الأولى والتصور المبدئي مجانيان تماماً، ولا يبدأ أي اتفاق مدفوع إلا بعد وضوح الرؤية والتوافق على الاتجاه.'
     },
     en: {
       'lang.toggle': 'AR | EN',
@@ -109,6 +121,7 @@
       'nav.process': 'Process',
       'nav.about': 'About',
       'nav.contact': 'Contact',
+      'nav.faq': 'FAQ',
       'nav.cta': 'Free video meeting',
       'hero.title': 'Design your private villa with confidence before any commitment',
       'hero.subtitle': 'A free call, then a free preliminary concept. We only begin a paid agreement after the direction is clear and aligned.',
@@ -190,7 +203,18 @@
       'footer.explore': 'Explore',
       'footer.contactTitle': 'Contact',
       'footer.whatsapp': 'WhatsApp',
-      'footer.rights': 'All rights reserved.'
+      'footer.rights': 'All rights reserved.',
+      'faq.title': 'Frequently asked questions about private villa design',
+      'faq.q1': 'How much does private villa design cost?',
+      'faq.a1': 'Cost depends on the plot size, scope of work, and required deliverables. We always start with a free call and a free preliminary concept, and clarify the full cost and path before any paid agreement.',
+      'faq.q2': 'Do you design villas remotely outside Jeddah?',
+      'faq.a2': 'Yes. We serve clients in Jeddah, Saudi Arabia, and the Gulf in person or remotely via video calls and shared drawings, keeping the same clarity at every step.',
+      'faq.q3': 'What deliverables do I get?',
+      'faq.a3': 'From the architectural concept and interior direction through to build-ready design that aligns consultants and contractors and protects the project’s original vision.',
+      'faq.q4': 'How long does villa design take?',
+      'faq.a4': 'It varies with the size and complexity of the project. We outline the expected timeline within the preliminary concept before any paid work begins.',
+      'faq.q5': 'When does payment start?',
+      'faq.a5': 'The first call and preliminary concept are completely free; a paid agreement only begins after the vision is clear and the direction is agreed.'
     }
   };
 
