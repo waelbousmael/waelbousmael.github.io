@@ -240,10 +240,9 @@ h3 {
 
 .projects img {
   width: 100%;
+  height: auto;
   display: block;
   background: var(--surface-elevated);
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
   border-radius: 0;
   border: 0;
   filter: saturate(0.92) contrast(0.98);
