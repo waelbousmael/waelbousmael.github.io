@@ -1,13 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://wbstudio.xyz/</loc>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://wbstudio.xyz/assets/images/example-1.jpg</image:loc>
+      <image:title>تصميم واجهة فيلا خاصة حديثة في جدة</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://wbstudio.xyz/assets/images/example-2.jpg</image:loc>
+      <image:title>تصميم مساحة معيشة داخلية لفيلا خاصة</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://wbstudio.xyz/assets/images/example-3.jpg</image:loc>
+      <image:title>فيلا خاصة بواجهة حجرية ومسبح خارجي</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://wbstudio.xyz/assets/images/example-4.jpg</image:loc>
+      <image:title>تصميم داخلي لفيلا خاصة بفراغ معيشة مفتوح</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://wbstudio.xyz/about/</loc>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://wbstudio.xyz/assets/images/about-hero.jpg</image:loc>
+      <image:title>وائل بو سماعيل — معماري فلل ومنازل خاصة</image:title>
+    </image:image>
   </url>
 </urlset>
