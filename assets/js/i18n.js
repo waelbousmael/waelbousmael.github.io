@@ -1,16 +1,23 @@
 (() => {
   const storageKey = 'wb_lang';
   const html = document.documentElement;
-  const toggle = document.getElementById('langToggle');
+  const toggles = document.querySelectorAll('[data-lang-toggle]');
   const whatsappCta = document.getElementById('whatsappCta');
+  const page = html.dataset.page || 'home';
 
-  if (!toggle || !whatsappCta) return;
+  if (!toggles.length) return;
 
   const dictionary = {
     ar: {
       'lang.toggle': 'العربية | EN',
       'brand.studio': 'Studio',
-      'contact.phone': '00966538060383',
+      'contact.phone': '+966 53 806 0383',
+      'nav.services': 'الخدمات',
+      'nav.work': 'الأعمال',
+      'nav.process': 'آلية العمل',
+      'nav.about': 'من نحن',
+      'nav.contact': 'تواصل',
+      'nav.cta': 'اجتماع فيديو مجاني',
       'hero.title': 'صمّم فيلتك الخاصة بثقة قبل أي التزام',
       'hero.subtitle': 'مكالمة مجانية، ثم تصور مبدئي مجاني، ولا نبدأ أي اتفاق مدفوع إلا بعد وضوح الرؤية والتوافق.',
       'hero.seo': 'خدمة معمارية للبيوت والفلل الخاصة في جدة والسعودية والخليج. نراجع الأرض واحتياجات العائلة والميزانية المتوقعة، ونوضح المخرجات ومسار العمل قبل أي قرار دفع.',
@@ -20,7 +27,7 @@
       'authority.name': 'وائل بو سماعيل — معماري',
       'authority.subtitle': 'خبرة في الفلل السكنية الخاصة، مع وضوح في الخطوات والمخرجات قبل الاتفاق المدفوع.',
       'authority.email': 'w.bousmael@wbstudio.xyz',
-      'authority.phone': '00966538060383',
+      'authority.phone': '+966 53 806 0383',
       'authority.bioRead': 'قراءة النبذة',
       'authority.bioHide': 'إخفاء النبذة',
       'authority.bioText': 'وائل بو سماعيل معماري ومنسق BIM بخبرة تتجاوز 12 عامًا في تصميم الفلل السكنية الفاخرة. يقود المشروع من الفكرة الأولى حتى مخططات التنفيذ (IFC)، مع تنسيق كامل بين المعماري والإنشائي والميكانيكي لضمان جودة التنفيذ وتقليل التعارضات. عمل على مشاريع في ألمانيا ولبنان والسعودية، ويركّز على تحويل الرؤية التصميمية إلى نتائج قابلة للبناء بكفاءة ووضوح.',
@@ -53,12 +60,56 @@
       'process.step2': 'تصور مبدئي مجاني',
       'process.step2Note': 'نناقش الاتجاه الأولي عبر مكالمة فيديو قبل أي التزام.',
       'process.step3': 'اتفاق مدفوع بعد التوافق فقط',
-      'process.step3Note': 'إذا كان الاتجاه مناسباً، ننتقل إلى الاتفاق وبدء التصميم التفصيلي.'
+      'process.step3Note': 'إذا كان الاتجاه مناسباً، ننتقل إلى الاتفاق وبدء التصميم التفصيلي.',
+      'about.eyebrow': 'من نحن',
+      'about.title': 'WB Studio — تصميم فلل خاصة بمسار واضح',
+      'about.intro1': 'استوديو معماري متخصص في الفلل والمنازل الخاصة في جدة والسعودية والخليج — بيوت مدروسة بهوية واضحة، حضورياً أو عن بُعد.',
+      'about.intro2': 'عملية هادئة وشفافة من أول رسم حتى التصميم النهائي، مع ممارسات صديقة للبيئة في صميم كل قرار.',
+      'about.ctaPrimary': 'اطلب اجتماع فيديو مجاني',
+      'about.ctaSecondary': 'ابدأ طلب مشروعك',
+      'about.offerTitle': 'ماذا نقدم',
+      'about.offerLead': 'توجيه تصميمي متكامل من الفكرة إلى التصميم لمنازل خاصة فاخرة، بما يناسب أرضك وأسلوب حياتك ورؤيتك طويلة المدى.',
+      'about.card1Title': 'الفكرة المعمارية',
+      'about.card1a': 'دراسات الكتل المبكرة وسيناريوهات الفراغ التي تشكّل هوية المنزل.',
+      'about.card1b': 'لغة معمارية واضحة ونِسب مدروسة واستجابة دقيقة للموقع.',
+      'about.card2Title': 'التوجه الداخلي',
+      'about.card2a': 'تسلسل الغرف وأجواء المواد وتوظيف الإضاءة الطبيعية.',
+      'about.card2b': 'قرارات تصميمية تحافظ على تجربة متناسقة ومتكاملة.',
+      'about.card3Title': 'تصميم جاهز للتنفيذ',
+      'about.card3a': 'مخرجات واضحة توحّد فهم الاستشاريين والمقاولين.',
+      'about.card3b': 'توجيه تصميمي يحافظ على الرؤية الأصلية للمشروع.',
+      'about.card4Title': 'توجه صديق للبيئة',
+      'about.card4a': 'حلول تصميم سلبية تقلّل الأحمال الطاقية من المراحل المبكرة.',
+      'about.card4b': 'إرشادات مواد متينة ومنخفضة الأثر لقيمة طويلة المدى.',
+      'about.howTitle': 'كيف نعمل',
+      'about.howLead': 'مسار واضح من ثلاث خطوات يحافظ على هدوء القرارات واستمرار التقدم.',
+      'about.step1Title': 'الاحتياج والرؤية',
+      'about.step1Text': 'مراجعة الأرض وأهداف نمط الحياة وتحديد واضح للمنزل الذي تريد العيش فيه.',
+      'about.step2Title': 'التوجه المفاهيمي',
+      'about.step2Text': 'فكرة معمارية وأجواء داخلية منسجمة مع أولوياتك.',
+      'about.step3Title': 'حزمة التصميم',
+      'about.step3Text': 'توجيه تصميمي جاهز للتنفيذ يقود الاستشاريين والمقاولين بوضوح.',
+      'about.teamTitle': 'النهج',
+      'about.teamText': 'ممارسة معمارية مركّزة تمنح كل مشروع اهتماماً مباشراً وقيادة تصميمية متّسقة، مع شركاء موثوقين عند الحاجة.',
+      'about.readyTitle': 'جاهز للبدء؟',
+      'about.readyText': 'انتقل من الفكرة إلى توجه تصميمي واضح عبر عملية مركزة وخاصة.',
+      'about.readyCta': 'ابدأ طلب مشروعك',
+      'footer.tagline': 'تصميم فلل ومنازل خاصة في جدة والسعودية والخليج، بمسار واضح من المكالمة الأولى حتى التصميم التفصيلي.',
+      'footer.explore': 'تصفّح',
+      'footer.contactTitle': 'تواصل',
+      'footer.whatsapp': 'واتساب',
+      'footer.rights': 'جميع الحقوق محفوظة.'
     },
     en: {
       'lang.toggle': 'AR | EN',
       'brand.studio': 'Studio',
-      'contact.phone': '00966538060383',
+      'contact.phone': '+966 53 806 0383',
+      'nav.services': 'Services',
+      'nav.work': 'Work',
+      'nav.process': 'Process',
+      'nav.about': 'About',
+      'nav.contact': 'Contact',
+      'nav.cta': 'Free video meeting',
       'hero.title': 'Design your private villa with confidence before any commitment',
       'hero.subtitle': 'A free call, then a free preliminary concept. We only begin a paid agreement after the direction is clear and aligned.',
       'hero.seo': 'Architectural service for private houses and villas in Jeddah, Saudi Arabia, and the GCC. We review the plot, family needs, and expected budget, then clarify the deliverables and workflow before any payment decision.',
@@ -68,7 +119,7 @@
       'authority.name': 'Wael Bousmael — Architect',
       'authority.subtitle': 'Experience in private residential villas, with clear steps and deliverables before the paid agreement.',
       'authority.email': 'w.bousmael@wbstudio.xyz',
-      'authority.phone': '00966538060383',
+      'authority.phone': '+966 53 806 0383',
       'authority.bioRead': 'Read Full Bio',
       'authority.bioHide': 'Hide Bio',
       'authority.bioText': 'Wael Bousmael is an architect and BIM coordinator with 12+ years of experience in luxury residential villas. He leads projects from early concept to IFC documentation, coordinating architectural, structural, and MEP disciplines to ensure build quality and minimize clashes. He has delivered projects in Germany, Lebanon, and Saudi Arabia, with a clear focus on turning strong design ideas into efficient, buildable outcomes.',
@@ -101,20 +152,72 @@
       'process.step2': 'Free preliminary concept',
       'process.step2Note': 'We discuss the initial direction on a video call before any commitment.',
       'process.step3': 'Paid agreement only after alignment',
-      'process.step3Note': 'If the direction is right, we move into the agreement and detailed design.'
+      'process.step3Note': 'If the direction is right, we move into the agreement and detailed design.',
+      'about.eyebrow': 'About',
+      'about.title': 'WB Studio — private villa design with a clear path',
+      'about.intro1': 'An architecture studio dedicated to private villas and homes across Jeddah, Saudi Arabia, and the Gulf — considered houses with a clear identity, in person or remotely.',
+      'about.intro2': 'A calm, transparent process from the first sketch to the final design — with eco-conscious practice at the core of every decision.',
+      'about.ctaPrimary': 'Request a free video meeting',
+      'about.ctaSecondary': 'Start your project request',
+      'about.offerTitle': 'What we offer',
+      'about.offerLead': 'End-to-end design guidance, from concept to design, for luxury private homes — tailored to your plot, lifestyle, and long-term vision.',
+      'about.card1Title': 'Architectural concept',
+      'about.card1a': 'Early massing studies and spatial scenarios that shape the home’s identity.',
+      'about.card1b': 'A clear architectural language, considered proportions, and a precise response to the site.',
+      'about.card2Title': 'Interior direction',
+      'about.card2a': 'Room sequencing, material atmosphere, and the use of natural light.',
+      'about.card2b': 'Design decisions that keep the experience coherent and integrated.',
+      'about.card3Title': 'Build-ready design',
+      'about.card3a': 'Clear deliverables that align consultants and contractors.',
+      'about.card3b': 'Design guidance that protects the project’s original vision.',
+      'about.card4Title': 'Eco-friendly direction',
+      'about.card4a': 'Passive design solutions that reduce energy loads from the earliest stages.',
+      'about.card4b': 'Guidance on durable, low-impact materials for long-term value.',
+      'about.howTitle': 'How we work',
+      'about.howLead': 'A clear three-step path that keeps decisions calm and progress steady.',
+      'about.step1Title': 'Needs and vision',
+      'about.step1Text': 'A review of the plot and lifestyle goals, with a clear definition of the home you want to live in.',
+      'about.step2Title': 'Conceptual direction',
+      'about.step2Text': 'An architectural concept and interior atmosphere aligned with your priorities.',
+      'about.step3Title': 'Design package',
+      'about.step3Text': 'Build-ready design guidance that leads consultants and contractors with clarity.',
+      'about.teamTitle': 'Our approach',
+      'about.teamText': 'A focused architectural practice that gives every project direct attention and consistent design leadership, with trusted partners brought in when needed.',
+      'about.readyTitle': 'Ready to start?',
+      'about.readyText': 'Move from an idea to a clear design direction through a focused, private process.',
+      'about.readyCta': 'Start your project request',
+      'footer.tagline': 'Private villa and home design across Jeddah, Saudi Arabia, and the Gulf — a clear path from the first call to detailed design.',
+      'footer.explore': 'Explore',
+      'footer.contactTitle': 'Contact',
+      'footer.whatsapp': 'WhatsApp',
+      'footer.rights': 'All rights reserved.'
     }
   };
 
-  const seoMeta = {
-    ar: {
-      title: 'تصميم فلل خاصة في جدة | مهندس معماري | Wael Bousmael',
-      description: 'مهندس معماري في جدة السعودية لتقديم تصميم فلل خاصة بتصميم معماري حديث، إشراف دقيق واستشارة مجانية لبدء مشروعك بثقة.',
-      locale: 'ar_SA'
+  const pageSeo = {
+    home: {
+      ar: {
+        title: 'تصميم فلل ومنازل خاصة في جدة والخليج | Wael Bousmael',
+        description: 'مهندس معماري لتصميم الفلل والمنازل الخاصة في جدة والسعودية والخليج. مكالمة مجانية، تصور مبدئي مجاني، واتفاق مدفوع فقط بعد وضوح الرؤية والتوافق.',
+        locale: 'ar_SA'
+      },
+      en: {
+        title: 'Private Villa & Home Design in Jeddah & the Gulf | Wael Bousmael',
+        description: 'Architect for private villas and homes in Jeddah, Saudi Arabia, and the Gulf. A free call, a free preliminary concept, and a paid agreement only after the vision is clear and aligned.',
+        locale: 'en_US'
+      }
     },
-    en: {
-      title: 'Private Villa Design in Jeddah | Architect | Wael Bousmael',
-      description: 'Architect in Jeddah, Saudi Arabia for private villa design, modern architecture, BIM coordination, and a free consultation to start your project.',
-      locale: 'en_US'
+    about: {
+      ar: {
+        title: 'عن WB Studio | تصميم فلل خاصة في جدة والسعودية والخليج',
+        description: 'تعرّف على WB Studio بقيادة وائل بو سماعيل: خدمة معمارية لتصميم الفلل والمنازل الخاصة في جدة والسعودية والخليج عبر مسار واضح وعن بعد عند الحاجة.',
+        locale: 'ar_SA'
+      },
+      en: {
+        title: 'About WB Studio | Private Villa & Home Design in Jeddah & the Gulf',
+        description: 'Meet WB Studio, led by Wael Bousmael: an architectural service for private villas and homes in Jeddah, Saudi Arabia, and the Gulf, with a clear process and remote collaboration when needed.',
+        locale: 'en_US'
+      }
     }
   };
 
@@ -149,22 +252,21 @@
     }
 
     const bioToggle = document.getElementById('bioToggle');
-    const isExpanded = bioToggle?.getAttribute('aria-expanded') === 'true';
     if (bioToggle) {
+      const isExpanded = bioToggle.getAttribute('aria-expanded') === 'true';
       bioToggle.textContent = isExpanded
         ? dictionary[activeLang]['authority.bioHide']
         : dictionary[activeLang]['authority.bioRead'];
     }
 
-    const whatsappUrl = `https://wa.me/966538060383?text=${encodeURIComponent(waMessage[activeLang])}`;
-    whatsappCta.setAttribute('href', whatsappUrl);
+    if (whatsappCta) {
+      const whatsappUrl = `https://wa.me/966538060383?text=${encodeURIComponent(waMessage[activeLang])}`;
+      whatsappCta.setAttribute('href', whatsappUrl);
+    }
 
-    const activeSeo = seoMeta[activeLang] || seoMeta.ar;
+    const seoSet = pageSeo[page] || pageSeo.home;
+    const activeSeo = seoSet[activeLang] || seoSet.ar;
     document.title = activeSeo.title;
-
-    const htmlEl = document.documentElement;
-    htmlEl.setAttribute('lang', activeLang);
-    htmlEl.setAttribute('dir', activeLang === 'ar' ? 'rtl' : 'ltr');
 
     const metaDescription = document.querySelector('meta[name="description"]');
     const ogTitle = document.querySelector('meta[property="og:title"]');
@@ -183,9 +285,11 @@
     localStorage.setItem(storageKey, activeLang);
   };
 
-  toggle.addEventListener('click', () => {
-    const nextLang = html.lang === 'ar' ? 'en' : 'ar';
-    applyLanguage(nextLang);
+  toggles.forEach((toggle) => {
+    toggle.addEventListener('click', () => {
+      const nextLang = html.lang === 'ar' ? 'en' : 'ar';
+      applyLanguage(nextLang);
+    });
   });
 
   applyLanguage(localStorage.getItem(storageKey) || 'ar');

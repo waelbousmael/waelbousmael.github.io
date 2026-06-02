@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-page="about">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -33,8 +33,14 @@
   <meta name="twitter:description" content="خدمة معمارية لتصميم الفلل والمنازل الخاصة في جدة والسعودية والخليج، مع مسار واضح ومراجعة عن بعد عند الحاجة قبل بدء التصميم التفصيلي." />
   <meta name="twitter:image" content="https://wbstudio.xyz/assets/images/og.jpg" />
 
+  <!-- Fonts (match homepage) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
   <!-- Global CSS -->
   <link rel="stylesheet" href="/assets/css/styles.css" />
+  <link rel="stylesheet" href="/assets/css/shared.css" />
 </head>
 
 <body>
@@ -43,10 +49,10 @@
   <nav class="navigation-root">
     <div class="navigation-container">
       <div class="navigation-group navigation-left">
-        <a href="/#services" class="navigation-link">الخدمات</a>
-        <a href="/#work" class="navigation-link">الأعمال</a>
-        <a href="/#strategy" class="navigation-link">آلية العمل</a>
-        <a href="/about/" class="navigation-link">من نحن</a>
+        <a href="/#services" class="navigation-link" data-i18n="nav.services">الخدمات</a>
+        <a href="/#work" class="navigation-link" data-i18n="nav.work">الأعمال</a>
+        <a href="/#strategy" class="navigation-link" data-i18n="nav.process">آلية العمل</a>
+        <a href="/about/" class="navigation-link" data-i18n="nav.about">من نحن</a>
       </div>
 
       <a href="/#top" class="navigation-logo-wrapper" aria-label="WB Studio">
@@ -54,7 +60,8 @@
       </a>
 
       <div class="navigation-group navigation-right">
-        <a href="/#contact" class="navigation-link">تواصل</a>
+        <a href="/#contact" class="navigation-link" data-i18n="nav.contact">تواصل</a>
+        <button class="navigation-link lang-toggle-nav" type="button" data-lang-toggle data-i18n="lang.toggle" aria-label="Switch language">العربية | EN</button>
 
         <div class="navigation-cta-group">
           <a href="/#contact" class="btn btn-secondary btn-sm">
@@ -64,7 +71,7 @@
               <rect width="18" height="18" x="3" y="4" rx="2"/>
               <path d="M3 10h18"/>
             </svg>
-            <span>اجتماع فيديو مجاني</span>
+            <span data-i18n="nav.cta">اجتماع فيديو مجاني</span>
           </a>
         </div>
       </div>
@@ -95,11 +102,12 @@
 
     <div class="navigation-mobile-content">
       <div class="navigation-mobile-links">
-        <a href="/#services" class="navigation-mobile-link">الخدمات</a>
-        <a href="/#work" class="navigation-mobile-link">الأعمال</a>
-        <a href="/#strategy" class="navigation-mobile-link">آلية العمل</a>
-        <a href="/about/" class="navigation-mobile-link">من نحن</a>
-        <a href="/#contact" class="navigation-mobile-link">تواصل</a>
+        <a href="/#services" class="navigation-mobile-link" data-i18n="nav.services">الخدمات</a>
+        <a href="/#work" class="navigation-mobile-link" data-i18n="nav.work">الأعمال</a>
+        <a href="/#strategy" class="navigation-mobile-link" data-i18n="nav.process">آلية العمل</a>
+        <a href="/about/" class="navigation-mobile-link" data-i18n="nav.about">من نحن</a>
+        <a href="/#contact" class="navigation-mobile-link" data-i18n="nav.contact">تواصل</a>
+        <button class="navigation-mobile-link lang-toggle-nav" type="button" data-lang-toggle data-i18n="lang.toggle" aria-label="Switch language">العربية | EN</button>
       </div>
 
       <div class="navigation-mobile-ctas">
@@ -111,7 +119,7 @@
             <rect width="18" height="18" x="3" y="4" rx="2"/>
             <path d="M3 10h18"/>
           </svg>
-          <span>اجتماع فيديو مجاني</span>
+          <span data-i18n="nav.cta">اجتماع فيديو مجاني</span>
         </a>
       </div>
     </div>
@@ -122,20 +130,17 @@
       <div class="deliverables-container">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--spacing-3xl);align-items:center;">
           <div>
-            <p class="section-subtitle" style="text-transform:uppercase;letter-spacing:0.28em;font-size:var(--font-size-xs);margin-bottom:var(--spacing-md);">من نحن</p>
-            <h1 class="section-title" style="font-size:clamp(32px,4vw,48px);">WB Studio — تصميم فلل خاصة بمسار واضح</h1>
-            <p class="section-content" style="font-size:var(--font-size-lg);max-width:60ch;">
-              يقود WB Studio معماري واحد مع فريق دعم مرن بين برلين وجدة، مع تركيز على الفلل والمنازل الخاصة
-              لعملاء جدة والسعودية والخليج، حضورياً أو عن بعد عند الحاجة.
+            <p class="section-subtitle" style="text-transform:uppercase;letter-spacing:0.28em;font-size:var(--font-size-xs);margin-bottom:var(--spacing-md);" data-i18n="about.eyebrow">من نحن</p>
+            <h1 class="section-title" style="font-size:clamp(32px,4vw,48px);" data-i18n="about.title">WB Studio — تصميم فلل خاصة بمسار واضح</h1>
+            <p class="section-content" style="font-size:var(--font-size-lg);max-width:60ch;" data-i18n="about.intro1">
+              استوديو معماري متخصص في الفلل والمنازل الخاصة في جدة والسعودية والخليج — بيوت مدروسة بهوية واضحة، حضورياً أو عن بُعد.
             </p>
-            <p class="section-content" style="margin-top:var(--spacing-lg);max-width:60ch;">
-              نحافظ على عملية هادئة وشفافة، نحدد الأولويات مبكراً، ونبني التوافق بسرعة، ونوجّه
-              كل قرار من أول رسم حتى حزمة التصميم النهائية. الممارسات الصديقة للبيئة جزء أساسي من
-              آلية عملنا عبر الاستراتيجيات السلبية، واختيار المواد المتينة، وتخطيط المساحات بكفاءة.
+            <p class="section-content" style="margin-top:var(--spacing-lg);max-width:60ch;" data-i18n="about.intro2">
+              عملية هادئة وشفافة من أول رسم حتى التصميم النهائي، مع ممارسات صديقة للبيئة في صميم كل قرار.
             </p>
             <div class="hero-actions" style="justify-content:flex-start;">
-              <a href="/#contact" class="btn btn-secondary btn-lg">اطلب اجتماع فيديو مجاني</a>
-              <a href="/#contact" class="btn btn-outline btn-lg">ابدأ طلب مشروعك</a>
+              <a href="/#contact" class="btn btn-secondary btn-lg" data-i18n="about.ctaPrimary">اطلب اجتماع فيديو مجاني</a>
+              <a href="/#contact" class="btn btn-outline btn-lg" data-i18n="about.ctaSecondary">ابدأ طلب مشروعك</a>
             </div>
           </div>
           <div class="plot-card about-hero-card">
@@ -148,37 +153,37 @@
     <section class="deliverables">
       <div class="deliverables-container">
         <div class="deliverables-header">
-          <h2 class="section-title">ماذا نقدم</h2>
-          <p class="section-content">توجيه تصميمي متكامل من الفكرة إلى التصميم لمنازل خاصة فاخرة، بما يناسب أرضك وأسلوب حياتك ورؤيتك طويلة المدى.</p>
+          <h2 class="section-title" data-i18n="about.offerTitle">ماذا نقدم</h2>
+          <p class="section-content" data-i18n="about.offerLead">توجيه تصميمي متكامل من الفكرة إلى التصميم لمنازل خاصة فاخرة، بما يناسب أرضك وأسلوب حياتك ورؤيتك طويلة المدى.</p>
         </div>
 
         <div class="deliverables-grid">
           <div class="deliverable-card">
-            <h3 class="deliverable-title">الفكرة المعمارية</h3>
-            <ul class="section-content" style="margin:0;padding-left:18px;">
-              <li>دراسات الكتل المبكرة وسيناريوهات الفراغ التي تشكّل هوية المنزل.</li>
-              <li>لغة معمارية واضحة ونِسب مدروسة واستجابة دقيقة للموقع.</li>
+            <h3 class="deliverable-title" data-i18n="about.card1Title">الفكرة المعمارية</h3>
+            <ul class="section-content" style="margin:0;padding-inline-start:18px;">
+              <li data-i18n="about.card1a">دراسات الكتل المبكرة وسيناريوهات الفراغ التي تشكّل هوية المنزل.</li>
+              <li data-i18n="about.card1b">لغة معمارية واضحة ونِسب مدروسة واستجابة دقيقة للموقع.</li>
             </ul>
           </div>
           <div class="deliverable-card">
-            <h3 class="deliverable-title">التوجه الداخلي</h3>
-            <ul class="section-content" style="margin:0;padding-left:18px;">
-              <li>تسلسل الغرف وأجواء المواد وتوظيف الإضاءة الطبيعية.</li>
-              <li>قرارات تصميمية تحافظ على تجربة متناسقة ومتكاملة.</li>
+            <h3 class="deliverable-title" data-i18n="about.card2Title">التوجه الداخلي</h3>
+            <ul class="section-content" style="margin:0;padding-inline-start:18px;">
+              <li data-i18n="about.card2a">تسلسل الغرف وأجواء المواد وتوظيف الإضاءة الطبيعية.</li>
+              <li data-i18n="about.card2b">قرارات تصميمية تحافظ على تجربة متناسقة ومتكاملة.</li>
             </ul>
           </div>
           <div class="deliverable-card">
-            <h3 class="deliverable-title">تصميم جاهز للتنفيذ</h3>
-            <ul class="section-content" style="margin:0;padding-left:18px;">
-              <li>مخرجات واضحة توحّد فهم الاستشاريين والمقاولين.</li>
-              <li>توجيه تصميمي يحافظ على الرؤية الأصلية للمشروع.</li>
+            <h3 class="deliverable-title" data-i18n="about.card3Title">تصميم جاهز للتنفيذ</h3>
+            <ul class="section-content" style="margin:0;padding-inline-start:18px;">
+              <li data-i18n="about.card3a">مخرجات واضحة توحّد فهم الاستشاريين والمقاولين.</li>
+              <li data-i18n="about.card3b">توجيه تصميمي يحافظ على الرؤية الأصلية للمشروع.</li>
             </ul>
           </div>
           <div class="deliverable-card">
-            <h3 class="deliverable-title">توجه صديق للبيئة</h3>
-            <ul class="section-content" style="margin:0;padding-left:18px;">
-              <li>حلول تصميم سلبية تقلّل الأحمال الطاقية من المراحل المبكرة.</li>
-              <li>إرشادات مواد متينة ومنخفضة الأثر لقيمة طويلة المدى.</li>
+            <h3 class="deliverable-title" data-i18n="about.card4Title">توجه صديق للبيئة</h3>
+            <ul class="section-content" style="margin:0;padding-inline-start:18px;">
+              <li data-i18n="about.card4a">حلول تصميم سلبية تقلّل الأحمال الطاقية من المراحل المبكرة.</li>
+              <li data-i18n="about.card4b">إرشادات مواد متينة ومنخفضة الأثر لقيمة طويلة المدى.</li>
             </ul>
           </div>
         </div>
@@ -187,15 +192,15 @@
 
     <section class="flow-diagram">
       <div class="flow-container">
-        <h2 class="section-title">كيف نعمل</h2>
-        <p class="section-content">مسار واضح من ثلاث خطوات يحافظ على هدوء القرارات واستمرار التقدم.</p>
+        <h2 class="section-title" data-i18n="about.howTitle">كيف نعمل</h2>
+        <p class="section-content" data-i18n="about.howLead">مسار واضح من ثلاث خطوات يحافظ على هدوء القرارات واستمرار التقدم.</p>
 
         <div class="flow-stepper">
           <div class="flow-step">
             <div class="step-circle">1</div>
             <div class="step-content">
-              <h3 class="step-title">الاحتياج والرؤية</h3>
-              <p class="section-content">مراجعة الأرض وأهداف نمط الحياة وتحديد واضح للمنزل الذي تريد العيش فيه.</p>
+              <h3 class="step-title" data-i18n="about.step1Title">الاحتياج والرؤية</h3>
+              <p class="section-content" data-i18n="about.step1Text">مراجعة الأرض وأهداف نمط الحياة وتحديد واضح للمنزل الذي تريد العيش فيه.</p>
             </div>
           </div>
 
@@ -204,8 +209,8 @@
           <div class="flow-step">
             <div class="step-circle">2</div>
             <div class="step-content">
-              <h3 class="step-title">التوجه المفاهيمي</h3>
-              <p class="section-content">فكرة معمارية وأجواء داخلية منسجمة مع أولوياتك.</p>
+              <h3 class="step-title" data-i18n="about.step2Title">التوجه المفاهيمي</h3>
+              <p class="section-content" data-i18n="about.step2Text">فكرة معمارية وأجواء داخلية منسجمة مع أولوياتك.</p>
             </div>
           </div>
 
@@ -214,8 +219,8 @@
           <div class="flow-step">
             <div class="step-circle">3</div>
             <div class="step-content">
-              <h3 class="step-title">حزمة التصميم</h3>
-              <p class="section-content">توجيه تصميمي جاهز للتنفيذ يقود الاستشاريين والمقاولين بوضوح.</p>
+              <h3 class="step-title" data-i18n="about.step3Title">حزمة التصميم</h3>
+              <p class="section-content" data-i18n="about.step3Text">توجيه تصميمي جاهز للتنفيذ يقود الاستشاريين والمقاولين بوضوح.</p>
             </div>
           </div>
         </div>
@@ -226,24 +231,54 @@
       <div class="deliverables-container">
         <div style="display:flex;flex-wrap:wrap;gap:var(--spacing-2xl);align-items:center;">
           <div style="flex:1;min-width:260px;">
-            <h2 class="section-title">الفريق</h2>
-            <p class="section-content">
-              WB Studio فريق صغير متعدد التخصصات. ستعمل مع قائد مشروع مخصص، مع إشراك مختصين موثوقين
-              عند الحاجة للحفاظ على كفاءة العملية وروح التعاون.
+            <h2 class="section-title" data-i18n="about.teamTitle">النهج</h2>
+            <p class="section-content" data-i18n="about.teamText">
+              ممارسة معمارية مركّزة تمنح كل مشروع اهتماماً مباشراً وقيادة تصميمية متّسقة، مع شركاء موثوقين عند الحاجة.
             </p>
           </div>
           <div class="cta-card" style="flex:1;min-width:260px;">
-            <h3 class="section-title" style="font-size:var(--font-size-lg);margin-bottom:var(--spacing-xs);">جاهز للبدء؟</h3>
-            <p class="section-content">انتقل من الفكرة إلى توجه تصميمي واضح عبر عملية مركزة وخاصة.</p>
-            <a class="btn btn-primary btn-lg" href="/#contact">ابدأ طلب مشروعك</a>
+            <h3 class="section-title" style="font-size:var(--font-size-lg);margin-bottom:var(--spacing-xs);" data-i18n="about.readyTitle">جاهز للبدء؟</h3>
+            <p class="section-content" data-i18n="about.readyText">انتقل من الفكرة إلى توجه تصميمي واضح عبر عملية مركزة وخاصة.</p>
+            <a class="btn btn-primary btn-lg" href="/#contact" data-i18n="about.readyCta">ابدأ طلب مشروعك</a>
           </div>
         </div>
       </div>
     </section>
   </main>
 
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand">
+        <img src="/assets/images/wb-logo.svg" alt="WB Studio" width="44" height="44" loading="lazy" />
+        <p class="site-footer__tagline" data-i18n="footer.tagline">تصميم فلل ومنازل خاصة في جدة والسعودية والخليج، بمسار واضح من المكالمة الأولى حتى التصميم التفصيلي.</p>
+      </div>
+      <nav class="site-footer__nav" aria-label="روابط الموقع">
+        <p class="site-footer__col-title" data-i18n="footer.explore">تصفّح</p>
+        <a href="/#services" data-i18n="nav.services">الخدمات</a>
+        <a href="/#work" data-i18n="nav.work">الأعمال</a>
+        <a href="/#strategy" data-i18n="nav.process">آلية العمل</a>
+        <a href="/about/" data-i18n="nav.about">من نحن</a>
+        <a href="/#contact" data-i18n="nav.contact">تواصل</a>
+      </nav>
+      <div class="site-footer__contact">
+        <p class="site-footer__col-title" data-i18n="footer.contactTitle">تواصل</p>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=w.bousmael@wbstudio.xyz" target="_blank" rel="noopener">w.bousmael@wbstudio.xyz</a>
+        <a href="tel:+966538060383" dir="ltr">+966 53 806 0383</a>
+        <a href="https://wa.me/966538060383" target="_blank" rel="noopener" data-i18n="footer.whatsapp">واتساب</a>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <div class="site-footer__bottom-inner">
+        <p>© <span data-year></span> WB Studio. <span data-i18n="footer.rights">جميع الحقوق محفوظة.</span></p>
+        <p>Jeddah · Berlin</p>
+      </div>
+    </div>
+    <script>document.querySelectorAll('[data-year]').forEach(function (e) { e.textContent = new Date().getFullYear(); });</script>
+  </footer>
+
   <!-- SCRIPTS -->
   <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/i18n.js" defer></script>
 
 </body>
 </html>
