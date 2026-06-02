@@ -37,8 +37,8 @@
   --spacing-4xl: 72px;
 
   /* type */
-  --font-family-heading: ui-serif, "Georgia", "Times New Roman", serif;
-  --font-family-body: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-family-heading: "IBM Plex Sans Arabic", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-family-body: "IBM Plex Sans Arabic", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   --font-size-xs: 12px;
   --font-size-sm: 14px;
   --font-size-base: 16px;

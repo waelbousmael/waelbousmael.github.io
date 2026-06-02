@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-page="home">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -42,10 +42,11 @@
   }
   </script>
   <link rel="stylesheet" href="assets/css/landing.css" />
+  <link rel="stylesheet" href="assets/css/shared.css" />
 </head>
 <body>
   <header class="brand-header" data-reveal>
-    <button id="langToggle" class="lang-toggle" type="button" aria-label="Switch language" data-i18n="lang.toggle">العربية | EN</button>
+    <button id="langToggle" class="lang-toggle" type="button" aria-label="Switch language" data-lang-toggle data-i18n="lang.toggle">العربية | EN</button>
     <a class="brand-lockup" href="#top" aria-label="WB Studio">
       <img src="assets/icons/apple-touch-icon.png" alt="شعار WB Studio" width="72" height="72" loading="lazy" />
     </a>
@@ -86,11 +87,11 @@
             </svg>
             <span data-i18n="authority.email">w.bousmael@wbstudio.xyz</span>
           </a>
-          <a class="contact-link" href="tel:00966538060383">
+          <a class="contact-link" href="tel:+966538060383">
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path d="M7.1 2A2.1 2.1 0 0 0 5 4.1C5 13.43 10.57 19 19.9 19A2.1 2.1 0 0 0 22 16.9v-2.12a1.4 1.4 0 0 0-.96-1.33l-3.14-1.02a1.4 1.4 0 0 0-1.47.4l-.92 1.13a14.2 14.2 0 0 1-5.47-5.47l1.13-.92a1.4 1.4 0 0 0 .4-1.47L10.55 2.96A1.4 1.4 0 0 0 9.22 2H7.1Zm-.1 2.1a.1.1 0 0 1 .1-.1h2.12l1.02 3.14-1.58 1.28a1.4 1.4 0 0 0-.37 1.71 16.2 16.2 0 0 0 6.57 6.57 1.4 1.4 0 0 0 1.71-.37l1.28-1.58L20 15.78v1.12a.1.1 0 0 1-.1.1C11.68 17 7 12.32 7 4.1Z" fill="currentColor"/>
             </svg>
-            <span data-i18n="authority.phone">00966538060383</span>
+            <span dir="ltr" data-i18n="authority.phone">+966 53 806 0383</span>
           </a>
         </div>
         <button id="bioToggle" class="btn btn-outline" type="button" aria-expanded="false" data-i18n="authority.bioRead">قراءة النبذة</button>
@@ -181,7 +182,7 @@
             <p data-i18n="process.step2Note">نناقش الاتجاه الأولي عبر مكالمة فيديو قبل أي التزام.</p>
           </article>
           <article class="step">
-            <img src="assets/images/workflow-3.jpg" alt="الاتفاق وبدء التصميم التفصيلي بعد التوافق" loading="lazy" />
+            <img src="assets/images/example-4.jpg" alt="الاتفاق وبدء التصميم التفصيلي بعد التوافق" loading="lazy" />
             <h3 data-i18n="process.step3">اتفاق مدفوع بعد التوافق فقط</h3>
             <p data-i18n="process.step3Note">إذا كان الاتجاه مناسباً، ننتقل إلى الاتفاق وبدء التصميم التفصيلي.</p>
           </article>
@@ -189,6 +190,36 @@
       </div>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand">
+        <img src="/assets/images/wb-logo.svg" alt="WB Studio" width="44" height="44" loading="lazy" />
+        <p class="site-footer__tagline" data-i18n="footer.tagline">تصميم فلل ومنازل خاصة في جدة والسعودية والخليج، بمسار واضح من المكالمة الأولى حتى التصميم التفصيلي.</p>
+      </div>
+      <nav class="site-footer__nav" aria-label="روابط الموقع">
+        <p class="site-footer__col-title" data-i18n="footer.explore">تصفّح</p>
+        <a href="/#services" data-i18n="nav.services">الخدمات</a>
+        <a href="/#work" data-i18n="nav.work">الأعمال</a>
+        <a href="/#strategy" data-i18n="nav.process">آلية العمل</a>
+        <a href="/about/" data-i18n="nav.about">من نحن</a>
+        <a href="/#contact" data-i18n="nav.contact">تواصل</a>
+      </nav>
+      <div class="site-footer__contact">
+        <p class="site-footer__col-title" data-i18n="footer.contactTitle">تواصل</p>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=w.bousmael@wbstudio.xyz" target="_blank" rel="noopener">w.bousmael@wbstudio.xyz</a>
+        <a href="tel:+966538060383" dir="ltr">+966 53 806 0383</a>
+        <a href="https://wa.me/966538060383" target="_blank" rel="noopener" data-i18n="footer.whatsapp">واتساب</a>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <div class="site-footer__bottom-inner">
+        <p>© <span data-year></span> WB Studio. <span data-i18n="footer.rights">جميع الحقوق محفوظة.</span></p>
+        <p>Jeddah · Berlin</p>
+      </div>
+    </div>
+    <script>document.querySelectorAll('[data-year]').forEach(function (e) { e.textContent = new Date().getFullYear(); });</script>
+  </footer>
 
   <script>
     window.GOOGLE_MAPS_API_KEY = window.GOOGLE_MAPS_API_KEY || '';

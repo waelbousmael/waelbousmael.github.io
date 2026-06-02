@@ -1,0 +1,130 @@
+/*
+=========================================================
+ Shared chrome — site footer + language toggle.
+ Self-contained: works whether the page loads landing.css
+ or styles.css (palette hard-set here so both pages match).
+========================================================= */
+.site-footer {
+  --wb-surface: #f7f3ea;
+  --wb-elevated: #ebe2d4;
+  --wb-fg: #273126;
+  --wb-muted: #66705f;
+  --wb-border: rgba(39, 49, 38, 0.16);
+  --wb-accent: #7f98a0;
+  background: var(--wb-elevated);
+  border-top: 1px solid var(--wb-border);
+  color: var(--wb-fg);
+  font-family: "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.site-footer__inner {
+  width: min(100%, 1120px);
+  margin: 0 auto;
+  padding: clamp(2.5rem, 5vw, 4rem) 1.5rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.site-footer__brand {
+  display: grid;
+  gap: 0.85rem;
+  justify-items: start;
+}
+
+.site-footer__brand img {
+  display: block;
+}
+
+.site-footer__tagline {
+  margin: 0;
+  max-width: 34ch;
+  color: var(--wb-muted);
+  font-size: 0.92rem;
+  line-height: 1.8;
+}
+
+.site-footer__col-title {
+  margin: 0 0 0.9rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--wb-muted);
+  font-weight: 700;
+}
+
+.site-footer__nav,
+.site-footer__contact {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.site-footer__nav a {
+  color: var(--wb-fg);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.site-footer__contact a {
+  color: var(--wb-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.site-footer__nav a:hover,
+.site-footer__nav a:focus-visible,
+.site-footer__contact a:hover,
+.site-footer__contact a:focus-visible {
+  color: var(--wb-accent);
+}
+
+.site-footer__bottom {
+  border-top: 1px solid var(--wb-border);
+}
+
+.site-footer__bottom-inner {
+  width: min(100%, 1120px);
+  margin: 0 auto;
+  padding: 1.1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  color: var(--wb-muted);
+}
+
+.site-footer__bottom-inner p {
+  margin: 0;
+}
+
+/* Language toggle in the About navigation (desktop + mobile) */
+.lang-toggle-nav {
+  background: transparent;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+  color: inherit;
+  padding: 0;
+}
+
+.lang-toggle-nav:focus-visible {
+  outline: 2px solid var(--wb-accent, #7f98a0);
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .site-footer__inner {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+
+  .site-footer__bottom-inner {
+    justify-content: center;
+    text-align: center;
+  }
+}
