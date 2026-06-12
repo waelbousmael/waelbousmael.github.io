@@ -125,7 +125,7 @@ function header(lang, active) {
 </header>
 <div class="mobile-menu" id="mobileMenu" hidden>
   <div class="mobile-menu-head">
-    <span class="wordmark">WB&nbsp;Studio</span>
+    <span class="menu-brand"><img class="stamp" src="/assets/icons/brand-logo.png" alt="" width="40" height="40" decoding="async" /><span class="wordmark">WB&nbsp;Studio</span></span>
     <button class="mobile-close" type="button" data-nav-close aria-label="${esc(t(n.menuClose, lang))}">✕</button>
   </div>
   <nav class="mobile-links" aria-label="${lang === 'ar' ? 'قائمة الجوال' : 'Mobile navigation'}">
@@ -148,6 +148,7 @@ function footer(lang) {
   return `<footer class="site-footer">
   <div class="wrap footer-grid">
     <div class="footer-brand">
+      <img class="stamp stamp-footer" src="/assets/icons/brand-logo.png" alt="" width="72" height="72" loading="lazy" decoding="async" />
       <span class="wordmark">WB&nbsp;Studio</span>
       <p>${esc(t(f.tagline, lang))}</p>
     </div>
@@ -180,6 +181,7 @@ function contactBand(lang) {
   const c = site.contactBand;
   return `<section class="contact-band" data-reveal>
   <div class="wrap narrow centered">
+    <img class="stamp stamp-seal" src="/assets/icons/brand-logo.png" alt="" width="64" height="64" loading="lazy" decoding="async" />
     <h2 class="display">${esc(t(c.title, lang))}</h2>
     <p class="lead">${esc(t(c.text, lang))}</p>
     <div class="cta-row">
@@ -281,7 +283,10 @@ ${header(lang, null)}
 <main id="main">
   <section class="hero" data-reveal>
     <div class="wrap">
-      <p class="eyebrow">${esc(t(h.eyebrow, lang))}</p>
+      <div class="hero-brand">
+        <p class="eyebrow">${esc(t(h.eyebrow, lang))}</p>
+        <img class="stamp stamp-hero" src="/assets/icons/brand-logo.png" alt="" width="110" height="110" fetchpriority="high" decoding="async" />
+      </div>
       <h1 class="display-xl">${esc(t(h.h1, lang))}</h1>
       <p class="lead measure">${esc(t(h.positioning, lang))}</p>
       <p class="offer measure">${esc(t(site.offer, lang))}</p>

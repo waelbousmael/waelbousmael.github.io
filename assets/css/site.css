@@ -284,6 +284,38 @@ html[lang="ar"] .mobile-links a { font-weight: 700; }
 .mobile-contact { display: grid; gap: 0.5rem; margin-block-start: auto; }
 .mobile-contact a { color: var(--ink-soft); text-decoration: none; font-size: 0.95rem; }
 
+/* ── brand stamp (signature seal) ── */
+.stamp { display: block; height: auto; user-select: none; }
+
+.hero-brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-block-end: clamp(1.5rem, 3vw, 2.5rem);
+}
+.hero-brand .eyebrow { margin-block-end: 0; }
+
+.stamp-hero { width: clamp(84px, 10vw, 120px); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .stamp-hero {
+    animation: stamp-in 0.9s var(--ease) both;
+    animation-delay: 0.2s;
+  }
+  @keyframes stamp-in {
+    from { opacity: 0; transform: scale(1.14) rotate(-4deg); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+.stamp-footer { width: 72px; margin-block-end: 0.9rem; opacity: 0.92; }
+
+.stamp-seal { width: 64px; margin-inline: auto; margin-block-end: 1.4rem; opacity: 0.9; }
+
+.menu-brand { display: inline-flex; align-items: center; gap: 0.7rem; }
+.menu-brand .stamp { width: 40px; }
+
 /* ── hero ── */
 .hero { padding-block: clamp(3.5rem, 9vw, 7rem) clamp(2.5rem, 6vw, 4.5rem); }
 
