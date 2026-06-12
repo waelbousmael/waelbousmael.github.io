@@ -7,42 +7,46 @@
   <meta name="robots" content="noindex,follow" />
   <link rel="icon" href="/assets/icons/favicon.ico" sizes="any" />
   <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
-  <meta name="theme-color" content="#6b7562" />
+  <meta name="theme-color" content="#faf8f4" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500&display=swap" rel="stylesheet" />
   <style>
-    :root { --bg:#f7f3ea; --fg:#273126; --muted:#66705f; --cta:#9c7656; --border:rgba(39,49,38,.16); }
+    :root { --bg:#faf8f4; --ink:#1e1c19; --muted:#857f74; --line:rgba(30,28,25,.38); }
     * { box-sizing: border-box; }
     body {
       margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      padding: 2rem; background: var(--bg); color: var(--fg);
+      padding: 2rem; background: var(--bg); color: var(--ink);
       font-family: "IBM Plex Sans Arabic", system-ui, -apple-system, sans-serif;
-      line-height: 1.8; text-align: center;
+      line-height: 1.9; text-align: center;
     }
     .wrap { max-width: 560px; }
-    .code { font-size: clamp(3rem, 12vw, 6rem); font-weight: 700; letter-spacing: -.02em; margin: 0; }
-    h1 { font-size: clamp(1.3rem, 4vw, 1.8rem); margin: .4rem 0 0; }
+    .code { font-family: "Amiri", serif; font-size: clamp(3.5rem, 12vw, 6.5rem); font-weight: 400; margin: 0; line-height: 1; color: var(--muted); }
+    h1 { font-family: "Amiri", serif; font-weight: 700; font-size: clamp(1.4rem, 4vw, 2rem); margin: 1rem 0 0; }
     p { color: var(--muted); margin: 1rem 0 0; }
-    .en { font-size: .95rem; opacity: .85; }
-    .btns { margin-top: 2rem; display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
+    .en { font-size: .92rem; }
+    .btns { margin-top: 2.25rem; display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
     a.btn {
       display: inline-flex; align-items: center; justify-content: center; min-height: 3rem;
-      padding: .7rem 1.4rem; border-radius: 999px; text-decoration: none; font-weight: 500;
-      border: 1px solid var(--border); color: var(--fg);
+      padding: .75rem 1.6rem; text-decoration: none; font-size: .92rem;
+      border: 1px solid var(--ink); color: var(--ink);
+      transition: background-color .3s ease, color .3s ease;
     }
-    .primary { background: var(--cta); border-color: var(--cta); color: #fffaf2; }
+    a.btn:hover { background: var(--ink); color: var(--bg); }
+    a.primary { background: var(--ink); color: var(--bg); }
+    a.primary:hover { background: #4a463f; border-color: #4a463f; }
   </style>
 </head>
 <body>
   <main class="wrap">
     <p class="code">404</p>
     <h1>الصفحة غير موجودة</h1>
-    <p>عذراً، الرابط الذي طلبته غير متاح. يمكنك العودة إلى الصفحة الرئيسية لمتابعة تصفح خدمات تصميم الفلل والمنازل الخاصة في جدة والسعودية والخليج.</p>
+    <p>عذراً، الرابط الذي طلبته غير متاح. يمكنك العودة إلى الصفحة الرئيسية أو تصفح أعمال الاستوديو.</p>
     <p class="en">The page you’re looking for couldn’t be found.</p>
     <div class="btns">
-      <a class="btn primary" href="/">العودة للرئيسية · Home</a>
-      <a class="btn" href="/about/">من نحن · About</a>
+      <a class="btn primary" href="/">الرئيسية · Home</a>
+      <a class="btn" href="/work/">الأعمال · Work</a>
+      <a class="btn" href="/contact/">تواصل · Contact</a>
     </div>
   </main>
 </body>

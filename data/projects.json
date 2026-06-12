@@ -1,0 +1,313 @@
+{
+  "_readme": "Single source of truth for portfolio projects. Edit this file, then run `node scripts/build.mjs` to regenerate all pages and the sitemap. Every text field is bilingual: { ar, en }. Set `placeholder: false` once a project shows your own work. `featured: true` shows the project on the homepage (first featured project appears largest). Image paths live under /assets/projects/<slug>/. `sourceId` is the Unsplash CDN id recorded for licensing — see assets/licenses/LICENSES.md.",
+  "projects": [
+    {
+      "slug": "coastal-villa",
+      "featured": true,
+      "placeholder": true,
+      "year": 2025,
+      "title": { "ar": "فيلا الساحل", "en": "Coastal Villa" },
+      "category": { "ar": "فلل", "en": "Villas" },
+      "location": { "ar": "أبحر، جدة", "en": "Obhur, Jeddah" },
+      "status": { "ar": "دراسة مفاهيمية", "en": "Concept study" },
+      "excerpt": {
+        "ar": "فيلا بيضاء على ساحل أبحر، تفتح فراغات المعيشة على ضوء البحر عبر شرفات عميقة وخصوصية متدرجة.",
+        "en": "A white villa on the Obhur coast, opening its living spaces to sea light through deep terraces and layered privacy."
+      },
+      "thesis": {
+        "ar": "كيف يسكن البيت ضوءَ البحر دون أن يفقد خصوصيته؟ تتدرج الفيلا من واجهة صلبة هادئة نحو فراغات معيشة مفتوحة على الماء، حيث تعمل الشرفات العميقة كظلال دائمة تلطّف المناخ وتمدّ المعيشة نحو الخارج.",
+        "en": "How can a house hold sea light without giving up its privacy? The villa grades from a calm, solid street face toward living spaces open to the water, where deep terraces act as permanent shade — tempering the climate and extending life outdoors."
+      },
+      "body": [
+        {
+          "ar": "تنفتح المعيشة الرئيسية بكامل عرضها على المسبح والأفق، بينما تحتفظ غرف العائلة بطابق علوي أكثر خصوصية. الشرفات العميقة ليست عنصراً جمالياً فحسب؛ بل أداة مناخية تحجب شمس الظهيرة وتسمح بضوء الصباح المنخفض.",
+          "en": "The main living spaces open across their full width to the pool and horizon, while family rooms keep to a more private upper floor. The deep terraces are not ornament; they are a climate device, blocking the midday sun while admitting low morning light."
+        },
+        {
+          "ar": "المواد قليلة ومضبوطة: جص أبيض ناعم، خشب دافئ في الأسقف الخارجية، وحجر محلي عند القاعدة. النتيجة بيت ساطع في النهار، هادئ ومتوهج عند الغروب.",
+          "en": "The material palette is short and disciplined: smooth white render, warm timber to the outdoor soffits, and local stone at the base. The result is a house that is luminous by day and quietly glowing at dusk."
+        }
+      ],
+      "services": {
+        "ar": ["الفكرة المعمارية", "التوجه الداخلي", "تصميم جاهز للتنفيذ"],
+        "en": ["Architectural concept", "Interior direction", "Build-ready design"]
+      },
+      "cover": {
+        "src": "/assets/projects/coastal-villa/cover.webp",
+        "w": 2000, "h": 1250,
+        "alt": { "ar": "فيلا بيضاء حديثة بمسبح وشرفات مفتوحة على الحديقة", "en": "Modern white villa with a pool and terraces opening to the garden" },
+        "sourceId": "photo-1613977257363-707ba9348227"
+      },
+      "gallery": [
+        {
+          "src": "/assets/projects/coastal-villa/gallery-01.webp",
+          "w": 1100, "h": 1375,
+          "alt": { "ar": "واجهة مثقّبة بيضاء تظلل شرفة المسبح وجدار خشبي دافئ", "en": "Perforated white screen shading the pool terrace beside a warm timber wall" },
+          "sourceId": "photo-1600573472592-401b489a3cdc"
+        },
+        {
+          "src": "/assets/projects/coastal-villa/gallery-02.webp",
+          "w": 1400, "h": 933,
+          "alt": { "ar": "فراغ معيشة ينفتح بواجهة زجاجية على شرفة خارجية للطعام", "en": "Living space opening through full glazing to an outdoor dining terrace" },
+          "sourceId": "photo-1600585154084-4e5fe7c39198"
+        },
+        {
+          "src": "/assets/projects/coastal-villa/gallery-03.webp",
+          "w": 1600, "h": 1067,
+          "alt": { "ar": "كتلة بيضاء بسيطة للفيلا مع مسبح أزرق صافٍ", "en": "Simple white villa volumes beside a clear blue pool" },
+          "sourceId": "photo-1600596542815-ffad4c1539a9"
+        }
+      ]
+    },
+    {
+      "slug": "courtyard-villa",
+      "featured": false,
+      "placeholder": true,
+      "year": 2024,
+      "title": { "ar": "فيلا الفناء", "en": "Courtyard Villa" },
+      "category": { "ar": "فلل", "en": "Villas" },
+      "location": { "ar": "جدة", "en": "Jeddah" },
+      "status": { "ar": "دراسة مفاهيمية", "en": "Concept study" },
+      "excerpt": {
+        "ar": "فيلا تلتف حول فناء داخلي مظلل؛ خصوصية تامة نحو الشارع، وانفتاح كامل نحو الداخل.",
+        "en": "A villa wrapped around a shaded inner courtyard — fully private to the street, fully open within."
+      },
+      "thesis": {
+        "ar": "يستعيد المشروع منطق البيت العربي: واجهة بيضاء صامتة نحو الحي، وحياة كاملة تدور حول فناء مظلل بالماء والظل. الضوء يدخل من الأعلى ويتحرك على الجدران البيضاء على مدار اليوم.",
+        "en": "The project returns to the logic of the Arab house: a quiet white face to the neighbourhood, and a life that turns inward around a shaded courtyard of water and shade. Light enters from above and moves across the white walls through the day."
+      },
+      "body": [
+        {
+          "ar": "تتوزع الفراغات على حلقة متصلة حول الفناء: المجلس وصالة الطعام في الجناح الأمامي، والمعيشة العائلية وغرف النوم في العمق. كل فراغ يطل على الفناء عبر فتحات مظللة، فلا حاجة لنوافذ كبيرة نحو الشارع.",
+          "en": "The rooms form a continuous ring around the court: majlis and dining to the front wing, family living and bedrooms deeper in. Every space looks onto the courtyard through shaded openings, removing any need for large windows to the street."
+        },
+        {
+          "ar": "الفناء نفسه مصمم كغرفة خارجية: أرضية حجرية فاتحة، حوض ماء ضحل، وشجرة واحدة تصنع الظل وتقيس مرور الفصول.",
+          "en": "The court itself is designed as an outdoor room: pale stone paving, a shallow water basin, and a single tree that gives shade and marks the passing seasons."
+        }
+      ],
+      "services": {
+        "ar": ["الفكرة المعمارية", "التوجه الداخلي"],
+        "en": ["Architectural concept", "Interior direction"]
+      },
+      "cover": {
+        "src": "/assets/projects/courtyard-villa/cover.webp",
+        "w": 1800, "h": 1125,
+        "alt": { "ar": "بيت أبيض هادئ بممر حجري وحديقة خضراء وظلال ناعمة", "en": "Quiet white house with a stone path, green lawn and soft shadows" },
+        "sourceId": "photo-1523217582562-09d0def993a6"
+      },
+      "gallery": [
+        {
+          "src": "/assets/projects/courtyard-villa/gallery-01.webp",
+          "w": 1600, "h": 1067,
+          "alt": { "ar": "جناح أبيض بواجهة زجاجية يطل على فناء مع مسبح ونخلة", "en": "White wing with glazed face onto a court with pool and palm" },
+          "sourceId": "photo-1512917774080-9991f1c4c750"
+        },
+        {
+          "src": "/assets/projects/courtyard-villa/gallery-02.webp",
+          "w": 1200, "h": 1500,
+          "alt": { "ar": "ركن جلوس أبيض هادئ بطاولة خشبية فاتحة وضوء طبيعي", "en": "Calm white sitting corner with pale timber table and natural light" },
+          "sourceId": "photo-1519710164239-da123dc03ef4"
+        },
+        {
+          "src": "/assets/projects/courtyard-villa/gallery-03.webp",
+          "w": 1600, "h": 1067,
+          "alt": { "ar": "غرفة بيضاء ناعمة بستائر خفيفة ومكتب بسيط", "en": "Soft white room with light curtains and a simple writing desk" },
+          "sourceId": "photo-1519974719765-e6559eac2575"
+        },
+        {
+          "src": "/assets/projects/courtyard-villa/gallery-04.webp",
+          "w": 1400, "h": 933,
+          "alt": { "ar": "جناح معيشة زجاجي ينفتح على فناء المسبح في ضوء العصر", "en": "Glazed living pavilion opening to the pool court in afternoon light" },
+          "sourceId": "photo-1582268611958-ebfd161ef9cf"
+        }
+      ]
+    },
+    {
+      "slug": "stone-majlis",
+      "featured": false,
+      "placeholder": true,
+      "year": 2024,
+      "title": { "ar": "مجلس الحجر", "en": "Stone Majlis" },
+      "category": { "ar": "تصميم داخلي", "en": "Interiors" },
+      "location": { "ar": "الرياض", "en": "Riyadh" },
+      "status": { "ar": "دراسة مفاهيمية", "en": "Concept study" },
+      "excerpt": {
+        "ar": "تصميم داخلي لفراغات الضيافة العائلية: حجر دافئ، خشب هادئ، وضوء طبيعي متحكَّم فيه.",
+        "en": "Interior direction for family reception spaces — warm stone, quiet timber, and carefully controlled daylight."
+      },
+      "thesis": {
+        "ar": "المجلس قلب البيت السعودي. هنا يُعاد تصوره بلغة هادئة: مواد قليلة صادقة، مقاعد منخفضة ممتدة، وإضاءة تُكرّم الضيف دون مبالغة.",
+        "en": "The majlis is the heart of the Saudi home. Here it is reimagined in a quiet language: few honest materials, long low seating, and light that honours the guest without excess."
+      },
+      "body": [
+        {
+          "ar": "أعيد تنظيم الطابق الأرضي حول محور ضيافة واضح: مدخل مستقل للضيوف، مجلس رجال ومجلس عائلي متوازيان، وممر خدمة خلفي يحفظ الخصوصية الكاملة لأهل البيت.",
+          "en": "The ground floor is reorganised around a clear hospitality axis: an independent guest entrance, parallel men's and family majlis spaces, and a rear service corridor that protects the family's full privacy."
+        },
+        {
+          "ar": "الجدران من حجر رملي محلي بملمس ناعم، والأسقف خشب بلون هادئ، والإضاءة مخفية ضمن حلول معمارية بدل الثريات. الفخامة هنا في الملمس والنسب، لا في الزخرفة.",
+          "en": "Walls are local sandstone with a soft finish, ceilings a quiet timber, and lighting is concealed within the architecture rather than hung from it. Luxury here lives in texture and proportion, not ornament."
+        }
+      ],
+      "services": {
+        "ar": ["التوجه الداخلي", "توجيه المواد والتأثيث"],
+        "en": ["Interior direction", "Materials & furnishing guidance"]
+      },
+      "cover": {
+        "src": "/assets/projects/stone-majlis/cover.webp",
+        "w": 1800, "h": 1125,
+        "alt": { "ar": "فراغ معيشة مفتوح بجدار خشبي دافئ وأثاث هادئ وإضاءة طبيعية", "en": "Open living space with a warm timber wall, calm furniture and natural light" },
+        "sourceId": "photo-1600607687939-ce8a6c25118c"
+      },
+      "gallery": [
+        {
+          "src": "/assets/projects/stone-majlis/gallery-01.webp",
+          "w": 1600, "h": 1067,
+          "alt": { "ar": "ركن طعام بطاولة داكنة أمام جدار حجري ودرج معدني خفيف", "en": "Dining corner with a dark table before a stone wall and light steel stair" },
+          "sourceId": "photo-1600607687920-4e2a09cf159d"
+        },
+        {
+          "src": "/assets/projects/stone-majlis/gallery-02.webp",
+          "w": 1600, "h": 1067,
+          "alt": { "ar": "مطبخ بجزيرة بيضاء وخشب فاتح ومقاعد مرتفعة بسيطة", "en": "Kitchen with a white island, pale timber and simple high stools" },
+          "sourceId": "photo-1600585152220-90363fe7e115"
+        },
+        {
+          "src": "/assets/projects/stone-majlis/gallery-03.webp",
+          "w": 1200, "h": 1500,
+          "alt": { "ar": "درج داخلي بدرابزين أسود رفيع ودرجات خشبية دافئة", "en": "Interior stair with slim black balustrade and warm timber treads" },
+          "sourceId": "photo-1502005229762-cf1b2da7c5d6"
+        },
+        {
+          "src": "/assets/projects/stone-majlis/gallery-04.webp",
+          "w": 1200, "h": 1500,
+          "alt": { "ar": "حمام هادئ بدرجات الفحم وحوض مستقل وضوء علوي", "en": "Calm charcoal bathroom with a freestanding tub and high daylight" },
+          "sourceId": "photo-1600566752355-35792bedcfea"
+        }
+      ]
+    },
+    {
+      "slug": "desert-retreat",
+      "featured": true,
+      "placeholder": true,
+      "year": 2025,
+      "title": { "ar": "ملاذ الصحراء", "en": "Desert Retreat" },
+      "category": { "ar": "دراسات مفاهيمية", "en": "Concept studies" },
+      "location": { "ar": "العلا", "en": "AlUla" },
+      "status": { "ar": "دراسة مفاهيمية", "en": "Concept study" },
+      "excerpt": {
+        "ar": "دراسة لملاذ صغير بين رمال العلا: كتل ترابية منخفضة تتبع الكثبان وتحتمي بظلها.",
+        "en": "A study for a small retreat in the sands of AlUla — low earthen volumes that follow the dunes and shelter in their shade."
+      },
+      "thesis": {
+        "ar": "في الصحراء، العمارة إصغاء قبل أن تكون بناء. تنخفض الكتل وتلتف مع اتجاه الرياح، وتتلون بتراب المكان، فيصبح البيت امتداداً للكثيب لا ضيفاً عليه.",
+        "en": "In the desert, architecture is listening before it is building. The volumes sit low, turn with the wind, and take the colour of the ground — the house becomes a continuation of the dune, not its guest."
+      },
+      "body": [
+        {
+          "ar": "البرنامج بسيط: مجلس، فراغ معيشة وطعام، غرفتا نوم، وفناء نار خارجي. تتجمع الكتل حول ممر ظل ضيق يلتقط نسيم الليل ويصرف حرارة النهار.",
+          "en": "The brief is simple: a majlis, a living and dining space, two bedrooms, and an outdoor fire court. The volumes gather around a narrow shade corridor that catches the night breeze and sheds the day's heat."
+        },
+        {
+          "ar": "الجدران ترابية سميكة تخزن برودة الليل، والفتحات صغيرة وعميقة تؤطر المشهد بدل أن تستهلكه. الدراسة جزء من بحث الاستوديو المستمر في عمارة المناخ الصحراوي.",
+          "en": "Thick earthen walls store the cool of the night, and openings are small and deep, framing the landscape rather than consuming it. The study is part of the studio's ongoing research into desert-climate architecture."
+        }
+      ],
+      "services": {
+        "ar": ["الفكرة المعمارية", "دراسة مناخية سلبية"],
+        "en": ["Architectural concept", "Passive climate study"]
+      },
+      "cover": {
+        "src": "/assets/projects/desert-retreat/cover.webp",
+        "w": 2000, "h": 1250,
+        "alt": { "ar": "كثبان رملية دافئة تحت سماء وردية هادئة", "en": "Warm sand dunes under a calm rose-coloured sky" },
+        "sourceId": "photo-1542401886-65d6c61db217"
+      },
+      "gallery": [
+        {
+          "src": "/assets/projects/desert-retreat/gallery-01.webp",
+          "w": 1600, "h": 1067,
+          "alt": { "ar": "سهل صحراوي أحمر تحيط به كتل صخرية ضبابية", "en": "Red desert plain ringed by hazy rock massifs" },
+          "sourceId": "photo-1547234935-80c7145ec969"
+        },
+        {
+          "src": "/assets/projects/desert-retreat/gallery-02.webp",
+          "w": 1100, "h": 1375,
+          "alt": { "ar": "منحنيات معمارية بلون التراب المحروق تحت سماء صافية", "en": "Curved architectural forms in burnt-earth tones beneath a clear sky" },
+          "sourceId": "photo-1486718448742-163732cd1544"
+        },
+        {
+          "src": "/assets/projects/desert-retreat/gallery-03.webp",
+          "w": 1600, "h": 1067,
+          "alt": { "ar": "ضوء ناعم منخفض على كثبان رملية ممتدة", "en": "Soft low light across stretching sand dunes" },
+          "sourceId": "photo-1473580044384-7ba9967e16a0"
+        }
+      ]
+    },
+    {
+      "slug": "garden-house",
+      "featured": true,
+      "placeholder": true,
+      "year": 2023,
+      "title": { "ar": "بيت الحديقة", "en": "Garden House" },
+      "category": { "ar": "فلل", "en": "Villas" },
+      "location": { "ar": "جدة", "en": "Jeddah" },
+      "status": { "ar": "دراسة مفاهيمية", "en": "Concept study" },
+      "excerpt": {
+        "ar": "بيت داكن هادئ يحتضن حديقة خاصة؛ الخشب والظل يحولان الأرض إلى واحة عائلية.",
+        "en": "A quiet, dark-skinned house holding a private garden — timber and shade turning the plot into a family oasis."
+      },
+      "thesis": {
+        "ar": "بدل أن يستهلك البيت الأرض، ينسحب إلى حافتها ليترك للحديقة مكان الصدارة. الواجهة الداكنة تعمل إطاراً للخضرة، والمعيشة تمتد إلى الخارج تحت ظل عميق.",
+        "en": "Rather than consuming its plot, the house withdraws to the edge and gives the garden the leading role. The dark facade frames the green, and daily life extends outside beneath deep shade."
+      },
+      "body": [
+        {
+          "ar": "يصطف البيت على الحد الشمالي للأرض بكتلة داكنة طويلة، فتتحرر الجهة الجنوبية بكاملها للحديقة والشمس. المعيشة والمطبخ يفتحان عليها بواجهة زجاجية محمية بظلة عميقة.",
+          "en": "The house lines the plot's northern edge as a long, dark volume, freeing the entire southern side for garden and sun. Living and kitchen open onto it through a glazed face sheltered by a deep canopy."
+        },
+        {
+          "ar": "في الداخل تنقلب اللوحة: خشب فاتح وجص دافئ وضوء يتغير مع أوراق الشجر. بيت يكبر مع العائلة — ومع حديقته.",
+          "en": "Inside, the palette reverses: pale timber, warm plaster, and light that changes with the leaves. A house meant to grow with its family — and with its garden."
+        }
+      ],
+      "services": {
+        "ar": ["الفكرة المعمارية", "التوجه الداخلي", "توجيه تنسيق الموقع"],
+        "en": ["Architectural concept", "Interior direction", "Landscape direction"]
+      },
+      "cover": {
+        "src": "/assets/projects/garden-house/cover.webp",
+        "w": 1800, "h": 1125,
+        "alt": { "ar": "بيت بواجهة خشبية وداكنة خلف سور معدني هادئ", "en": "House with timber and dark cladding behind a quiet metal fence" },
+        "sourceId": "photo-1600566753190-17f0baa2a6c3"
+      },
+      "gallery": [
+        {
+          "src": "/assets/projects/garden-house/gallery-01.webp",
+          "w": 1400, "h": 933,
+          "alt": { "ar": "بيت داكن مضاء عند الغسق تحت شجرة كبيرة وحديقة خضراء", "en": "Dark house glowing at dusk beneath a large tree and green lawn" },
+          "sourceId": "photo-1600585154340-be6161a56a0c"
+        },
+        {
+          "src": "/assets/projects/garden-house/gallery-02.webp",
+          "w": 1100, "h": 1375,
+          "alt": { "ar": "مدخل دافئ الإضاءة بين كتلة داكنة وجدار خشبي", "en": "Warmly lit entry between a dark volume and a timber wall" },
+          "sourceId": "photo-1600585154526-990dced4db0d"
+        },
+        {
+          "src": "/assets/projects/garden-house/gallery-03.webp",
+          "w": 1600, "h": 1067,
+          "alt": { "ar": "واجهة داكنة بفتحات رأسية مضيئة فوق قاعدة بيضاء عند المساء", "en": "Dark facade with lit vertical openings above a white base at evening" },
+          "sourceId": "photo-1600573472550-8090b5e0745e"
+        },
+        {
+          "src": "/assets/projects/garden-house/gallery-04.webp",
+          "w": 1400, "h": 933,
+          "alt": { "ar": "معيشة بدرجات محايدة دافئة وجلد بني وضوء جانبي واسع", "en": "Living room in warm neutrals with tan leather and broad side light" },
+          "sourceId": "photo-1600210492486-724fe5c67fb0"
+        }
+      ]
+    }
+  ]
+}
