@@ -1,0 +1,6 @@
+# Local staging for source material — only optimized copies get committed
+assets/projects/_incoming/*
+!assets/projects/_incoming/README.md
+
+# Scratch
+_tmp-images/
