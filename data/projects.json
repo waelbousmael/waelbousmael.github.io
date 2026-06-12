@@ -2,6 +2,55 @@
   "_readme": "Single source of truth for portfolio projects. Edit this file, then run `node scripts/build.mjs` to regenerate all pages and the sitemap. Every text field is bilingual: { ar, en }. Set `placeholder: false` once a project shows your own work. `featured: true` shows the project on the homepage (first featured project appears largest). Image paths live under /assets/projects/<slug>/. `sourceId` is the Unsplash CDN id recorded for licensing — see assets/licenses/LICENSES.md.",
   "projects": [
     {
+      "slug": "montashiri-villa",
+      "featured": true,
+      "placeholder": false,
+      "year": 2025,
+      "title": { "ar": "فيلا المنتشري", "en": "Montashiri Villa" },
+      "category": { "ar": "فلل", "en": "Villas" },
+      "location": { "ar": "أبحر، جدة", "en": "Obhur, Jeddah" },
+      "status": { "ar": "قيد التصميم", "en": "In design" },
+      "excerpt": {
+        "ar": "فيلا عائلية على شارع سكني في أبحر: واجهة حجرية هادئة، شرفات مزروعة، وحياة خارجية تصعد حتى مسبح السطح.",
+        "en": "A family villa on a residential street in Obhur — a calm stone face, planted terraces, and outdoor life rising to a rooftop pool."
+      },
+      "thesis": {
+        "ar": "كيف يحفظ بيتٌ حضري خصوصيته دون أن ينغلق على نفسه؟ تتدرج الواجهة الحجرية بين كتل صلبة وفتحات مظللة بستائر خشبية، بينما تتحول الأسطح إلى طبقة معيشة ثانية: تراسات مزروعة، وبرجولات، ومسبح سماوي يطل على أبحر.",
+        "en": "How does an urban house keep its privacy without closing itself off? The stone facade grades between solid volumes and openings shaded by timber screens, while the roofscape becomes a second layer of living — planted terraces, pergolas, and a sky pool overlooking Obhur."
+      },
+      "body": [
+        {
+          "ar": "تترتب الكتل حول أفنية ضوء صغيرة، فيدخل الضوء الطبيعي إلى عمق البيت مع خصوصية كاملة تجاه الشارع والجيران. الزراعة ليست تجميلاً لاحقاً؛ بل جزء من تكوين الواجهة، تلطف المناخ وتظلل الفتحات.",
+          "en": "The volumes arrange themselves around small light courts, drawing daylight deep into the house while keeping full privacy from street and neighbours. Planting is not an afterthought — it is part of the facade's composition, tempering the climate and shading the openings."
+        },
+        {
+          "ar": "في الأعلى يستعيد البيت مساحة الأرض التي شغلها: تراسات مزروعة وجلسات مظللة ومسبح عائلي بإطلالة مفتوحة — طابق كامل للعيش في الهواء الطلق.",
+          "en": "Above, the house reclaims the ground it occupies: planted terraces, shaded sitting areas and a family pool with an open view — a full storey of open-air living."
+        }
+      ],
+      "services": {
+        "ar": ["الفكرة المعمارية", "التوجه الداخلي", "تصميم جاهز للتنفيذ"],
+        "en": ["Architectural concept", "Interior direction", "Build-ready design"]
+      },
+      "cover": {
+        "src": "/assets/projects/montashiri-villa/cover.webp",
+        "w": 1536, "h": 960,
+        "alt": { "ar": "واجهة فيلا المنتشري الحجرية مع شرفات مزروعة ونخيل في ضوء الغروب، أبحر، جدة", "en": "Stone street facade of Montashiri Villa with planted terraces and palms at dusk, Obhur, Jeddah" }
+      },
+      "gallery": [
+        {
+          "src": "/assets/projects/montashiri-villa/gallery-01.webp",
+          "w": 1600, "h": 900,
+          "alt": { "ar": "منظور أكسونومتري من الشارع يُظهر الكتل والبوابة والتراسات المزروعة", "en": "Street-corner axonometric showing the massing, gate and planted terraces" }
+        },
+        {
+          "src": "/assets/projects/montashiri-villa/gallery-02.webp",
+          "w": 1600, "h": 900,
+          "alt": { "ar": "منظور علوي لسطح الفيلا يُظهر المسبح والبرجولات والزراعة", "en": "Aerial view of the villa roofscape with pool, pergolas and planting" }
+        }
+      ]
+    },
+    {
       "slug": "coastal-villa",
       "featured": true,
       "placeholder": true,
@@ -247,7 +296,7 @@
     },
     {
       "slug": "garden-house",
-      "featured": true,
+      "featured": false,
       "placeholder": true,
       "year": 2023,
       "title": { "ar": "بيت الحديقة", "en": "Garden House" },

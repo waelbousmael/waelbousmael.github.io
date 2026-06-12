@@ -61,6 +61,7 @@ A human-readable version of this register is published on the site at
 
 | Local file | Origin / license |
 | --- | --- |
+| assets/projects/montashiri-villa/* | Owner-supplied renders (Montashiri Villa, Obhur — © Wael Bousmael / WB Studio). Source files staged locally in `assets/projects/_incoming/montashiri-villa-source/` (git-ignored). |
 | assets/images/about-hero.jpg | Owner-supplied portrait (pre-existing; owned by Wael Bousmael) |
 | assets/images/og.jpg | Pre-existing brand share image (owned) |
 | assets/images/icon-192.png, assets/icons/* | Pre-existing brand marks (owned) |

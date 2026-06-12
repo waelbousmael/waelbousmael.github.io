@@ -649,8 +649,8 @@ ${footer(lang)}
 function renderCredits(lang) {
   const c = site.credits;
   const src = (id) => `https://images.unsplash.com/${id}`;
-  const rows = projects.map((p) => {
-    const images = [p.cover, ...p.gallery];
+  const rows = projects.filter((p) => p.placeholder).map((p) => {
+    const images = [p.cover, ...p.gallery].filter((i) => i.sourceId);
     return `<div class="credit-block">
       <h2>${esc(t(p.title, lang))}</h2>
       <ul>
