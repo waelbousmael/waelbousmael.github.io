@@ -69,12 +69,12 @@ export default {
     },
     eyebrow: { ar: 'استوديو عمارة وتصميم داخلي — جدة', en: 'Architecture & interiors studio — Jeddah' },
     h1: {
-      ar: 'عمارة هادئة للفلل والمنازل الخاصة في جدة والخليج',
-      en: 'Quiet architecture for private villas in Jeddah and the Gulf'
+      ar: 'نصمم فلل ومنازل خاصة في جدة والخليج',
+      en: 'We design private villas and homes in Jeddah and the Gulf'
     },
     positioning: {
-      ar: 'WB Studio ممارسة معمارية شخصية بقيادة وائل بو سماعيل، متخصصة في عمارة الفلل الفاخرة والتصميم الداخلي والمفاهيم الفراغية — تصميم يقوم على الوضوح والاقتضاب والقيمة طويلة المدى.',
-      en: 'WB Studio is a personal architecture and design practice led by Wael Bousmael, focused on luxury residential villas, interiors and spatial concepts — design shaped by clarity, restraint and long-term value.'
+      ar: 'استوديو معماري متخصص في عمارة الفلل الفاخرة والمنازل الخاصة والتصميم الداخلي — تصميم يقوم على الوضوح والاقتضاب والقيمة طويلة المدى.',
+      en: 'An architecture studio focused on luxury private villas, homes and interiors — design shaped by clarity, restraint and long-term value.'
     },
     ctaWhatsapp: { ar: 'احجز مكالمة مجانية عبر واتساب', en: 'Book a free call on WhatsApp' },
     ctaWork: { ar: 'شاهد الأعمال', en: 'View the work' },
