@@ -21,6 +21,11 @@
   --gap-section: clamp(4.5rem, 10vw, 8.5rem);
   --gap-section-sm: clamp(2.75rem, 6vw, 5rem);
 
+  /* soft premium radii — subtle on surfaces, full-pill on small chips */
+  --radius: 22px;          /* media, cards, large surfaces */
+  --radius-sm: 12px;       /* buttons, inputs, panels */
+  --radius-pill: 999px;    /* tags, offer chip */
+
   --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -40,6 +45,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
+  overflow-x: hidden;
   font-family: var(--font-body);
   font-weight: 400;
   font-size: 1rem;
@@ -115,11 +121,12 @@ html[lang="en"] .eyebrow { text-transform: uppercase; letter-spacing: 0.2em; }
 
 .offer {
   margin-block-start: 1.6rem;
-  padding: 0.9rem 1.25rem;
+  padding: 0.9rem 1.4rem;
   background: var(--surface);
   color: var(--ink-soft);
   font-size: 0.95rem;
   display: inline-block;
+  border-radius: var(--radius-sm);
 }
 
 .thesis {
@@ -148,7 +155,7 @@ html[lang="ar"] .thesis { line-height: 1.9; }
   min-height: 3rem;
   padding: 0.8rem 1.7rem;
   border: 1px solid var(--ink);
-  border-radius: 0;
+  border-radius: var(--radius-sm);
   background: transparent;
   color: var(--ink);
   font: inherit;
@@ -332,12 +339,14 @@ html[lang="ar"] .mobile-links a { font-weight: 700; }
 /* ── project grid & cards ── */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 3vw, 2.5rem);
+  grid-template-columns: 1fr;
+  gap: clamp(3.5rem, 7vw, 6rem);
+  /* project photos run full-bleed, edge to edge */
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
 }
 
 .project-card { display: block; text-decoration: none; color: inherit; }
-.project-card.is-wide { grid-column: 1 / -1; }
 
 .card-media { overflow: hidden; background: var(--surface); }
 .card-media img {
@@ -345,9 +354,14 @@ html[lang="ar"] .mobile-links a { font-weight: 700; }
   transition: transform 1s var(--ease), opacity 0.6s var(--ease);
 }
 .project-card:hover .card-media img,
-.project-card:focus-visible .card-media img { transform: scale(1.025); opacity: 0.94; }
+.project-card:focus-visible .card-media img { transform: scale(1.015); opacity: 0.94; }
 
-.card-text { padding-block-start: 1.1rem; }
+/* image is full-bleed; text returns to the centred content column */
+.card-text {
+  width: min(100%, var(--wrap-max));
+  margin-inline: auto;
+  padding: 1.1rem var(--pad) 0;
+}
 .card-text h3 { margin: 0; }
 
 .card-meta {
@@ -359,11 +373,12 @@ html[lang="ar"] .mobile-links a { font-weight: 700; }
 .tag {
   display: inline-block;
   border: 1px solid var(--line-strong);
-  padding: 0.05em 0.6em;
+  padding: 0.1em 0.75em;
   font-size: 0.72rem;
   color: var(--muted);
   margin-inline-start: 0.5em;
   white-space: nowrap;
+  border-radius: var(--radius-pill);
 }
 
 /* ── project page ── */
@@ -371,7 +386,7 @@ html[lang="ar"] .mobile-links a { font-weight: 700; }
 .crumb a { color: var(--muted); text-decoration: none; }
 .crumb a:hover { color: var(--ink); }
 
-.project-cover { margin: 0; }
+.project-cover { margin: 0; width: 100vw; margin-inline: calc(50% - 50vw); }
 .project-cover img { width: 100%; }
 
 .details { margin: 0; }
@@ -388,12 +403,12 @@ html[lang="ar"] .mobile-links a { font-weight: 700; }
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(1.25rem, 3vw, 2.5rem);
-  align-items: start;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
 }
 .gallery figure { margin: 0; }
-.gallery .g-wide { grid-column: 1 / -1; }
 
 .gallery-note { margin-block-start: 1.5rem; }
 
@@ -564,9 +579,7 @@ form .btn-solid { justify-self: start; margin-block-start: 0.5rem; }
   .header-nav { display: none; }
   .nav-toggle { display: flex; }
 
-  .project-grid { grid-template-columns: 1fr; gap: 2.75rem; }
-  .gallery { grid-template-columns: 1fr; }
-  .gallery .g-tall img { max-height: 80vh; width: 100%; object-fit: cover; }
+  .project-grid { gap: clamp(2.75rem, 9vw, 4rem); }
 
   .steps { grid-template-columns: 1fr; }
   .service-row { grid-template-columns: 1fr; gap: 0.5rem; }

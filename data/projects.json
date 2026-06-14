@@ -237,64 +237,6 @@
       ]
     },
     {
-      "slug": "desert-retreat",
-      "featured": true,
-      "placeholder": true,
-      "year": 2025,
-      "title": { "ar": "ملاذ الصحراء", "en": "Desert Retreat" },
-      "category": { "ar": "دراسات مفاهيمية", "en": "Concept studies" },
-      "location": { "ar": "العلا", "en": "AlUla" },
-      "status": { "ar": "دراسة مفاهيمية", "en": "Concept study" },
-      "excerpt": {
-        "ar": "دراسة لملاذ صغير بين رمال العلا: كتل ترابية منخفضة تتبع الكثبان وتحتمي بظلها.",
-        "en": "A study for a small retreat in the sands of AlUla — low earthen volumes that follow the dunes and shelter in their shade."
-      },
-      "thesis": {
-        "ar": "في الصحراء، العمارة إصغاء قبل أن تكون بناء. تنخفض الكتل وتلتف مع اتجاه الرياح، وتتلون بتراب المكان، فيصبح البيت امتداداً للكثيب لا ضيفاً عليه.",
-        "en": "In the desert, architecture is listening before it is building. The volumes sit low, turn with the wind, and take the colour of the ground — the house becomes a continuation of the dune, not its guest."
-      },
-      "body": [
-        {
-          "ar": "البرنامج بسيط: مجلس، فراغ معيشة وطعام، غرفتا نوم، وفناء نار خارجي. تتجمع الكتل حول ممر ظل ضيق يلتقط نسيم الليل ويصرف حرارة النهار.",
-          "en": "The brief is simple: a majlis, a living and dining space, two bedrooms, and an outdoor fire court. The volumes gather around a narrow shade corridor that catches the night breeze and sheds the day's heat."
-        },
-        {
-          "ar": "الجدران ترابية سميكة تخزن برودة الليل، والفتحات صغيرة وعميقة تؤطر المشهد بدل أن تستهلكه. الدراسة جزء من بحث الاستوديو المستمر في عمارة المناخ الصحراوي.",
-          "en": "Thick earthen walls store the cool of the night, and openings are small and deep, framing the landscape rather than consuming it. The study is part of the studio's ongoing research into desert-climate architecture."
-        }
-      ],
-      "services": {
-        "ar": ["الفكرة المعمارية", "دراسة مناخية سلبية"],
-        "en": ["Architectural concept", "Passive climate study"]
-      },
-      "cover": {
-        "src": "/assets/projects/desert-retreat/cover.webp",
-        "w": 2000, "h": 1250,
-        "alt": { "ar": "كثبان رملية دافئة تحت سماء وردية هادئة", "en": "Warm sand dunes under a calm rose-coloured sky" },
-        "sourceId": "photo-1542401886-65d6c61db217"
-      },
-      "gallery": [
-        {
-          "src": "/assets/projects/desert-retreat/gallery-01.webp",
-          "w": 1600, "h": 1067,
-          "alt": { "ar": "سهل صحراوي أحمر تحيط به كتل صخرية ضبابية", "en": "Red desert plain ringed by hazy rock massifs" },
-          "sourceId": "photo-1547234935-80c7145ec969"
-        },
-        {
-          "src": "/assets/projects/desert-retreat/gallery-02.webp",
-          "w": 1100, "h": 1375,
-          "alt": { "ar": "منحنيات معمارية بلون التراب المحروق تحت سماء صافية", "en": "Curved architectural forms in burnt-earth tones beneath a clear sky" },
-          "sourceId": "photo-1486718448742-163732cd1544"
-        },
-        {
-          "src": "/assets/projects/desert-retreat/gallery-03.webp",
-          "w": 1600, "h": 1067,
-          "alt": { "ar": "ضوء ناعم منخفض على كثبان رملية ممتدة", "en": "Soft low light across stretching sand dunes" },
-          "sourceId": "photo-1473580044384-7ba9967e16a0"
-        }
-      ]
-    },
-    {
       "slug": "garden-house",
       "featured": false,
       "placeholder": true,
