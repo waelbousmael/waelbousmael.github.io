@@ -292,24 +292,24 @@
       "year": 2023,
       "title": { "ar": "بيت الحديقة", "en": "Garden House" },
       "category": { "ar": "فلل", "en": "Villas" },
-      "location": { "ar": "جدة", "en": "Jeddah" },
+      "location": { "ar": "جبل لبنان", "en": "Mount Lebanon" },
       "status": { "ar": "دراسة مفاهيمية", "en": "Concept study" },
       "excerpt": {
-        "ar": "بيت داكن هادئ يحتضن حديقة خاصة؛ الخشب والظل يحولان الأرض إلى واحة عائلية.",
-        "en": "A quiet, dark-skinned house holding a private garden — timber and shade turning the plot into a family oasis."
+        "ar": "بيت يستقرّ على منحدر مدرّج في جبل لبنان: حجر وخشب وظل تحوّل مصاطب الحديقة القديمة إلى قلب الحياة العائلية.",
+        "en": "A house settled into a terraced Mount Lebanon hillside — stone, timber and shade turning the old garden terraces into the heart of family life."
       },
       "thesis": {
-        "ar": "بدل أن يستهلك البيت الأرض، ينسحب إلى حافتها ليترك للحديقة مكان الصدارة. الواجهة الداكنة تعمل إطاراً للخضرة، والمعيشة تمتد إلى الخارج تحت ظل عميق.",
-        "en": "Rather than consuming its plot, the house withdraws to the edge and gives the garden the leading role. The dark facade frames the green, and daily life extends outside beneath deep shade."
+        "ar": "بدل أن يسوّي المنحدر، يتدرّج البيت معه. ينسحب إلى المصطبة العليا ويترك لمصاطب الحديقة الحجرية القديمة مكان الصدارة، مؤطّراً الوادي والصنوبر بينما تمتدّ الحياة اليومية نحو الخارج تحت ظل عميق.",
+        "en": "Rather than levelling the slope, the house steps with it. It withdraws to the upper terrace and gives the old stone garden terraces the leading role — framing the valley and the pines while daily life extends outside beneath deep shade."
       },
       "body": [
         {
-          "ar": "يصطف البيت على الحد الشمالي للأرض بكتلة داكنة طويلة، فتتحرر الجهة الجنوبية بكاملها للحديقة والشمس. المعيشة والمطبخ يفتحان عليها بواجهة زجاجية محمية بظلة عميقة.",
-          "en": "The house lines the plot's northern edge as a long, dark volume, freeing the entire southern side for garden and sun. Living and kitchen open onto it through a glazed face sheltered by a deep canopy."
+          "ar": "يصطفّ البيت على الحافة العليا للأرض، فتتحرّر المصاطب الجنوبية بكاملها للحديقة والشمس والإطلالة. تنفتح المعيشة والمطبخ بواجهة زجاجية على مصطبة محمية، فيبقى الجبل وجدرانه الاستنادية القديمة حاضرين من الداخل.",
+          "en": "The house lines the upper edge of the plot, freeing the southern terraces for garden, sun and view. Living and kitchen open through a glazed face onto a sheltered terrace, so the mountain and its old retaining walls stay present from within."
         },
         {
-          "ar": "في الداخل تنقلب اللوحة: خشب فاتح وجص دافئ وضوء يتغير مع أوراق الشجر. بيت يكبر مع العائلة — ومع حديقته.",
-          "en": "Inside, the palette reverses: pale timber, warm plaster, and light that changes with the leaves. A house meant to grow with its family — and with its garden."
+          "ar": "المواد محلية وتألف الزمن: حجر جبلي خشن عند القاعدة، خشب دافئ في الأعلى، وجصّ يتقبّل ضوء المرتفعات البارد. بيت بُني ليتعتّق مع مصاطبه — ومع فصول جبل لبنان.",
+          "en": "Materials are local and weathering: rough mountain stone at the base, warm timber above, and plaster that takes the cool light of altitude. A house built to age into its terraces — and into the seasons of Mount Lebanon."
         }
       ],
       "services": {
