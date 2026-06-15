@@ -25,9 +25,26 @@ assets/licenses/LICENSES.md ← license register for every external asset
 Generated output (do **not** edit by hand — files carry a banner comment):
 
 - Arabic (default, RTL) at the root: `/`, `/work/`, `/work/<slug>/`,
-  `/approach/`, `/about/`, `/contact/`, `/credits/`
+  `/services/`, `/<landing-slug>/`, `/approach/`, `/journal/`,
+  `/journal/<article-slug>/`, `/about/`, `/contact/`, `/credits/`
 - English (LTR) mirrored under `/en/...`
 - `sitemap.xml` with `hreflang` alternates
+
+### SEO landing pages & journal (data-driven)
+
+High-intent landing pages (e.g. `villa-design-jeddah`, `obhur-villa-design`)
+live in the `landings` array in `data/site.mjs`; SEO guides live in the
+`journal` array. Each is bilingual `{ ar, en }` and auto-generates its page,
+nav/footer links, internal links, `sitemap.xml` entry, and schema:
+
+- **landings** → `Service` + `FAQPage` + `BreadcrumbList` (each must target a
+  *distinct* search intent — do not duplicate copy between pages).
+- **journal** → `Article` + `BreadcrumbList`.
+
+To add one, copy an existing entry in the relevant array, give it a unique
+`slug`, write genuinely distinct bilingual copy, then run the build. Link new
+landings to related projects via `relatedProjects` (project slugs) and to
+sibling pages via `related` (landing slugs).
 
 ## Run / build
 

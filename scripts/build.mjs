@@ -101,7 +101,9 @@ function header(lang, active) {
   const n = site.nav;
   const items = [
     ['work', '/work/'],
+    ['services', '/services/'],
     ['approach', '/approach/'],
+    ['journal', '/journal/'],
     ['about', '/about/'],
     ['contact', '/contact/']
   ];
@@ -155,7 +157,9 @@ function footer(lang) {
     <nav class="footer-col" aria-label="${esc(t(f.explore, lang))}">
       <p class="footer-title">${esc(t(f.explore, lang))}</p>
       <a href="${langPath(lang, '/work/')}">${esc(t(n.work, lang))}</a>
+      <a href="${langPath(lang, '/services/')}">${esc(t(n.services, lang))}</a>
       <a href="${langPath(lang, '/approach/')}">${esc(t(n.approach, lang))}</a>
+      <a href="${langPath(lang, '/journal/')}">${esc(t(n.journal, lang))}</a>
       <a href="${langPath(lang, '/about/')}">${esc(t(n.about, lang))}</a>
       <a href="${langPath(lang, '/contact/')}">${esc(t(n.contact, lang))}</a>
     </nav>
@@ -265,6 +269,62 @@ function breadcrumb(lang, trail) {
   };
 }
 
+function faqSchema(faqArr, lang) {
+  return {
+    '@type': 'FAQPage', inLanguage: lang,
+    mainEntity: faqArr.map((item) => ({
+      '@type': 'Question', name: t(item.q, lang),
+      acceptedAnswer: { '@type': 'Answer', text: t(item.a, lang) }
+    }))
+  };
+}
+
+function serviceSchema(l, lang) {
+  return {
+    '@type': 'Service', '@id': `${absUrl(lang, `/${l.slug}/`)}#service`,
+    serviceType: l.serviceType, name: t(l.h1, lang), description: t(l.seoDesc, lang),
+    url: absUrl(lang, `/${l.slug}/`),
+    provider: { '@id': `${site.domain}/#business` },
+    areaServed: [{ '@type': 'City', name: 'Jeddah' }, { '@type': 'Country', name: 'Saudi Arabia' }],
+    availableChannel: { '@type': 'ServiceChannel', serviceUrl: waUrl(lang), availableLanguage: ['ar', 'en'] }
+  };
+}
+
+function articleSchema(a, lang) {
+  return {
+    '@type': 'Article', headline: t(a.h1, lang), description: t(a.desc, lang),
+    inLanguage: lang, datePublished: a.date, dateModified: a.date,
+    mainEntityOfPage: absUrl(lang, `/journal/${a.slug}/`), image: site.ogImage,
+    author: { '@id': `${site.domain}/#wael` }, publisher: { '@id': `${site.domain}/#organization` }
+  };
+}
+
+/* Visible breadcrumb nav (logical trail; last item is the current page). */
+function breadcrumbUI(lang, trail) {
+  const sep = lang === 'ar' ? '‹' : '›';
+  const parts = trail.map(([name, p], i) =>
+    i === trail.length - 1
+      ? `<span aria-current="page">${esc(name)}</span>`
+      : `<a href="${langPath(lang, p)}">${esc(name)}</a>`
+  );
+  return `<nav class="crumb" aria-label="${lang === 'ar' ? 'مسار التنقل' : 'Breadcrumb'}">${parts.join(` <span aria-hidden="true">${sep}</span> `)}</nav>`;
+}
+
+/* Service / landing card (used on the services hub, home, related sections). */
+function svcCard(x, lang, tag = 'h2') {
+  return `<a class="svc-card" href="${langPath(lang, `/${x.slug}/`)}" data-reveal>
+    <${tag}>${esc(t(x.label, lang))}</${tag}>
+    <p>${esc(t(x.summary, lang))}</p>
+    <span class="svc-more">${esc(t(site.services.explore, lang))} ${arrow(lang)}</span>
+  </a>`;
+}
+
+function fmtDate(iso, lang) {
+  const d = new Date(`${iso}T00:00:00Z`);
+  return new Intl.DateTimeFormat(lang === 'ar' ? 'ar' : 'en-GB',
+    { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC', calendar: 'gregory' }).format(d);
+}
+
 /* ───────────────────────── pages ───────────────────────── */
 
 function renderHome(lang) {
@@ -306,6 +366,18 @@ ${header(lang, null)}
       </div>
       <div class="project-grid home-grid">
         ${featured.map((p, i) => projectCard(p, lang, { wide: i === 0 })).join('\n        ')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section divided" data-reveal>
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="display">${esc(t(site.services.h1, lang))}</h2>
+        <a class="text-link" href="${langPath(lang, '/services/')}">${esc(t(site.nav.services, lang))} ${arrow(lang)}</a>
+      </div>
+      <div class="svc-list">
+        ${site.landings.map((l) => svcCard(l, lang, 'h3')).join('\n        ')}
       </div>
     </div>
   </section>
@@ -556,20 +628,12 @@ ${footer(lang)}
 function renderContact(lang) {
   const c = site.contactPage;
   const f = site.form;
-  const faqLd = {
-    '@type': 'FAQPage',
-    inLanguage: lang,
-    mainEntity: site.faq.map((item) => ({
-      '@type': 'Question', name: t(item.q, lang),
-      acceptedAnswer: { '@type': 'Answer', text: t(item.a, lang) }
-    }))
-  };
   return `${head({
     lang,
     title: t(c.seoTitle, lang),
     desc: t(c.seoDesc, lang),
     logicalPath: '/contact/',
-    jsonld: [faqLd, breadcrumb(lang, [[lang === 'ar' ? 'الرئيسية' : 'Home', '/'], [t(site.nav.contact, lang), '/contact/']])]
+    jsonld: [faqSchema(site.faq, lang), breadcrumb(lang, [[lang === 'ar' ? 'الرئيسية' : 'Home', '/'], [t(site.nav.contact, lang), '/contact/']])]
   })}
 <body data-page="contact">
 ${header(lang, 'contact')}
@@ -695,11 +759,201 @@ ${footer(lang)}
 </html>`;
 }
 
+/* ───────────────────────── services hub + landing pages ───────────────────────── */
+
+function renderServicesHub(lang) {
+  const s = site.services;
+  const home = lang === 'ar' ? 'الرئيسية' : 'Home';
+  const trail = [[home, '/'], [t(site.nav.services, lang), '/services/']];
+  return `${head({
+    lang, title: t(s.seoTitle, lang), desc: t(s.seoDesc, lang), logicalPath: '/services/',
+    jsonld: [breadcrumb(lang, trail), ...site.landings.map((l) => serviceSchema(l, lang))]
+  })}
+<body data-page="services">
+${header(lang, 'services')}
+<main id="main">
+  <section class="page-head" data-reveal>
+    <div class="wrap">
+      ${breadcrumbUI(lang, trail)}
+      <h1 class="display-xl">${esc(t(s.h1, lang))}</h1>
+      <p class="lead measure">${esc(t(s.intro, lang))}</p>
+    </div>
+  </section>
+  <section class="section" data-reveal>
+    <div class="wrap">
+      <div class="svc-list">
+        ${site.landings.map((l) => svcCard(l, lang, 'h2')).join('\n        ')}
+      </div>
+    </div>
+  </section>
+  ${contactBand(lang)}
+</main>
+${footer(lang)}
+</body>
+</html>`;
+}
+
+function renderLanding(l, lang) {
+  const home = lang === 'ar' ? 'الرئيسية' : 'Home';
+  const trail = [[home, '/'], [t(site.nav.services, lang), '/services/'], [t(l.label, lang), `/${l.slug}/`]];
+  const relProjects = (l.relatedProjects || []).map((slug) => projects.find((p) => p.slug === slug)).filter(Boolean);
+  const relLandings = (l.related || []).map((slug) => site.landings.find((x) => x.slug === slug)).filter(Boolean);
+  return `${head({
+    lang, title: t(l.seoTitle, lang), desc: t(l.seoDesc, lang), logicalPath: `/${l.slug}/`,
+    jsonld: [serviceSchema(l, lang), faqSchema(l.faq, lang), breadcrumb(lang, trail)]
+  })}
+<body data-page="landing">
+${header(lang, 'services')}
+<main id="main">
+  <section class="page-head" data-reveal>
+    <div class="wrap">
+      ${breadcrumbUI(lang, trail)}
+      <p class="eyebrow">${esc(t(l.eyebrow, lang))}</p>
+      <h1 class="display-xl">${esc(t(l.h1, lang))}</h1>
+      <p class="lead measure">${esc(t(l.intro, lang))}</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="${waUrl(lang)}" target="_blank" rel="noopener">${esc(t(site.home.ctaWhatsapp, lang))}</a>
+        <a class="btn" href="${langPath(lang, '/contact/')}">${esc(t(site.contactBand.primary, lang))}</a>
+      </div>
+    </div>
+  </section>
+  ${l.image ? `<div class="bleed" data-reveal>${img(l.image, lang, { eager: true })}</div>` : ''}
+  <section class="section" data-reveal>
+    <div class="wrap narrow flow">
+      ${l.sections.map((sec) => `<h2 class="display">${esc(t(sec.heading, lang))}</h2>
+      <p>${esc(t(sec.body, lang))}</p>`).join('\n      ')}
+    </div>
+  </section>
+  ${relProjects.length ? `<section class="section divided" data-reveal>
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="display">${lang === 'ar' ? 'من أعمالنا' : 'From our work'}</h2>
+        <a class="text-link" href="${langPath(lang, '/work/')}">${esc(t(site.home.allWork, lang))} ${arrow(lang)}</a>
+      </div>
+      <div class="project-grid">
+        ${relProjects.map((p) => projectCard(p, lang)).join('\n        ')}
+      </div>
+    </div>
+  </section>` : ''}
+  <section class="section divided" data-reveal>
+    <div class="wrap narrow">
+      <h2 class="display">${esc(t(site.contactPage.faqTitle, lang))}</h2>
+      <div class="faq">
+        ${l.faq.map((item) => `<details>
+          <summary>${esc(t(item.q, lang))}</summary>
+          <p>${esc(t(item.a, lang))}</p>
+        </details>`).join('\n        ')}
+      </div>
+    </div>
+  </section>
+  ${relLandings.length ? `<section class="section divided" data-reveal>
+    <div class="wrap">
+      <h2 class="display">${lang === 'ar' ? 'خدمات ذات صلة' : 'Related services'}</h2>
+      <div class="svc-list">
+        ${relLandings.map((x) => svcCard(x, lang, 'h3')).join('\n        ')}
+      </div>
+    </div>
+  </section>` : ''}
+  ${contactBand(lang)}
+</main>
+${footer(lang)}
+</body>
+</html>`;
+}
+
+/* ───────────────────────── journal hub + articles ───────────────────────── */
+
+function renderJournalHub(lang) {
+  const j = site.journalMeta;
+  const home = lang === 'ar' ? 'الرئيسية' : 'Home';
+  const trail = [[home, '/'], [t(site.nav.journal, lang), '/journal/']];
+  const sorted = [...site.journal].sort((a, b) => (a.date < b.date ? 1 : -1));
+  return `${head({
+    lang, title: t(j.seoTitle, lang), desc: t(j.seoDesc, lang), logicalPath: '/journal/',
+    jsonld: [breadcrumb(lang, trail)]
+  })}
+<body data-page="journal">
+${header(lang, 'journal')}
+<main id="main">
+  <section class="page-head" data-reveal>
+    <div class="wrap">
+      <h1 class="display-xl">${esc(t(j.h1, lang))}</h1>
+      <p class="lead measure">${esc(t(j.intro, lang))}</p>
+    </div>
+  </section>
+  <section class="section" data-reveal>
+    <div class="wrap narrow">
+      <ul class="journal-list">
+        ${sorted.map((a) => `<li><a href="${langPath(lang, `/journal/${a.slug}/`)}">
+          <time datetime="${a.date}">${fmtDate(a.date, lang)}</time>
+          <h2>${esc(t(a.h1, lang))}</h2>
+          <p>${esc(t(a.desc, lang))}</p>
+          <span class="svc-more">${esc(t(j.readMore, lang))} ${arrow(lang)}</span>
+        </a></li>`).join('\n        ')}
+      </ul>
+    </div>
+  </section>
+  ${contactBand(lang)}
+</main>
+${footer(lang)}
+</body>
+</html>`;
+}
+
+function renderArticle(a, lang) {
+  const j = site.journalMeta;
+  const home = lang === 'ar' ? 'الرئيسية' : 'Home';
+  const trail = [[home, '/'], [t(site.nav.journal, lang), '/journal/'], [t(a.h1, lang), `/journal/${a.slug}/`]];
+  const relLandings = (a.related || []).map((slug) => site.landings.find((x) => x.slug === slug)).filter(Boolean);
+  return `${head({
+    lang, title: t(a.title, lang), desc: t(a.desc, lang), logicalPath: `/journal/${a.slug}/`,
+    jsonld: [articleSchema(a, lang), breadcrumb(lang, trail)]
+  })}
+<body data-page="article">
+${header(lang, 'journal')}
+<main id="main">
+  <article>
+    <section class="page-head" data-reveal>
+      <div class="wrap narrow">
+        ${breadcrumbUI(lang, trail)}
+        <h1 class="display-xl">${esc(t(a.h1, lang))}</h1>
+        <p class="note"><time datetime="${a.date}">${fmtDate(a.date, lang)}</time></p>
+        <p class="lead">${esc(t(a.intro, lang))}</p>
+      </div>
+    </section>
+    <section class="section-sm" data-reveal>
+      <div class="wrap narrow flow">
+        ${a.sections.map((sec) => `<h2 class="display">${esc(t(sec.heading, lang))}</h2>
+        <p>${esc(t(sec.body, lang))}</p>`).join('\n        ')}
+      </div>
+    </section>
+    ${relLandings.length ? `<section class="section-sm divided" data-reveal>
+      <div class="wrap narrow">
+        <h2 class="display">${esc(t(j.relatedTitle, lang))}</h2>
+        <div class="svc-list">
+          ${relLandings.map((x) => svcCard(x, lang, 'h3')).join('\n          ')}
+        </div>
+      </div>
+    </section>` : ''}
+  </article>
+  ${contactBand(lang)}
+</main>
+${footer(lang)}
+</body>
+</html>`;
+}
+
 /* ───────────────────────── sitemap ───────────────────────── */
 
 function renderSitemap() {
   const today = new Date().toISOString().slice(0, 10);
-  const logicalPaths = ['/', '/work/', ...projects.map((p) => `/work/${p.slug}/`), '/approach/', '/about/', '/contact/', '/credits/'];
+  const logicalPaths = [
+    '/', '/work/', ...projects.map((p) => `/work/${p.slug}/`),
+    '/services/', ...site.landings.map((l) => `/${l.slug}/`),
+    '/approach/',
+    '/journal/', ...site.journal.map((a) => `/journal/${a.slug}/`),
+    '/about/', '/contact/', '/credits/'
+  ];
   const entries = [];
   for (const p of logicalPaths) {
     for (const lang of LANGS) {
@@ -744,8 +998,24 @@ for (const lang of LANGS) {
     write(`${prefix}work/${p.slug}/index.html`, renderProject(p, lang));
   }
 
+  activeLogicalPath = '/services/';
+  write(`${prefix}services/index.html`, renderServicesHub(lang));
+
+  for (const l of site.landings) {
+    activeLogicalPath = `/${l.slug}/`;
+    write(`${prefix}${l.slug}/index.html`, renderLanding(l, lang));
+  }
+
   activeLogicalPath = '/approach/';
   write(`${prefix}approach/index.html`, renderApproach(lang));
+
+  activeLogicalPath = '/journal/';
+  write(`${prefix}journal/index.html`, renderJournalHub(lang));
+
+  for (const a of site.journal) {
+    activeLogicalPath = `/journal/${a.slug}/`;
+    write(`${prefix}journal/${a.slug}/index.html`, renderArticle(a, lang));
+  }
 
   activeLogicalPath = '/about/';
   write(`${prefix}about/index.html`, renderAbout(lang));
@@ -757,4 +1027,4 @@ for (const lang of LANGS) {
   write(`${prefix}credits/index.html`, renderCredits(lang));
 }
 write('sitemap.xml', renderSitemap());
-console.log(`Done: ${LANGS.length * (6 + projects.length)} pages + sitemap.xml`);
+console.log(`Done: ${LANGS.length * (8 + projects.length + site.landings.length + site.journal.length)} pages + sitemap.xml`);

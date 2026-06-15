@@ -382,9 +382,48 @@ html[lang="ar"] .mobile-links a { font-weight: 700; }
 }
 
 /* ── project page ── */
-.crumb { margin-block-end: 1.5rem; font-size: 0.88rem; }
+.crumb { margin-block-end: 1.5rem; font-size: 0.88rem; color: var(--muted); }
 .crumb a { color: var(--muted); text-decoration: none; }
 .crumb a:hover { color: var(--ink); }
+.crumb span[aria-current] { color: var(--ink-soft); }
+
+/* ── service / landing cards (services hub, home, related) ── */
+.svc-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin-block-start: clamp(1.5rem, 3vw, 2.5rem);
+}
+.svc-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.svc-card:hover, .svc-card:focus-visible { border-color: var(--line-strong); transform: translateY(-2px); }
+.svc-card h2, .svc-card h3 { margin: 0 0 0.5rem; font-size: clamp(1.15rem, 1.8vw, 1.4rem); }
+.svc-card p { color: var(--ink-soft); font-size: 0.95rem; margin: 0 0 0.9rem; }
+.svc-more { font-size: 0.85rem; color: var(--muted); }
+.svc-card:hover .svc-more, .svc-card:focus-visible .svc-more { color: var(--ink); }
+
+/* ── journal list ── */
+.journal-list { list-style: none; margin: 0; padding: 0; }
+.journal-list li { border-block-start: 1px solid var(--line); }
+.journal-list li:last-child { border-block-end: 1px solid var(--line); }
+.journal-list a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding-block: clamp(1.5rem, 3vw, 2.25rem);
+  transition: opacity 0.25s var(--ease);
+}
+.journal-list a:hover { opacity: 0.7; }
+.journal-list time { font-size: 0.8rem; color: var(--muted); }
+.journal-list h2 { margin: 0.5rem 0 0.4rem; font-size: clamp(1.3rem, 2.2vw, 1.7rem); }
+.journal-list p { color: var(--ink-soft); font-size: 0.95rem; margin: 0 0 0.8rem; max-width: 62ch; }
 
 .project-cover { margin: 0; width: 100vw; margin-inline: calc(50% - 50vw); }
 .project-cover img { width: 100%; }
@@ -638,6 +677,7 @@ form .btn-solid { justify-self: start; margin-block-start: 0.5rem; }
   .steps { grid-template-columns: 1fr; }
   .workflow { grid-template-columns: 1fr; gap: clamp(2.25rem, 9vw, 3rem); }
   .workflow::before { display: none; }
+  .svc-list { grid-template-columns: 1fr; }
   .service-row { grid-template-columns: 1fr; gap: 0.5rem; }
 
   .about-preview, .about-grid { grid-template-columns: 1fr; }
