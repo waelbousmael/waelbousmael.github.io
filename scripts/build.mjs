@@ -434,7 +434,6 @@ ${header(lang, 'work')}
   <section class="page-head" data-reveal>
     <div class="wrap">
       <h1 class="display-xl">${esc(t(w.h1, lang))}</h1>
-      <p class="note measure">${esc(t(w.note, lang))} <a href="${langPath(lang, '/credits/')}">${esc(t(w.noteLink, lang))}</a>.</p>
     </div>
   </section>
   <section class="section" data-reveal>
@@ -442,6 +441,7 @@ ${header(lang, 'work')}
       <div class="project-grid">
         ${projects.map((p, i) => projectCard(p, lang, { eager: i < 2 })).join('\n        ')}
       </div>
+      <p class="note work-credits"><a href="${langPath(lang, '/credits/')}">${esc(t(w.noteLink, lang))}</a></p>
     </div>
   </section>
   ${contactBand(lang)}

@@ -451,6 +451,8 @@ html[lang="ar"] .mobile-links a { font-weight: 700; }
 
 .gallery-note { margin-block-start: 1.5rem; }
 
+.work-credits { margin-block-start: clamp(2.5rem, 5vw, 4rem); font-size: 0.85rem; }
+
 .next-project { text-align: center; }
 .next-link { display: inline-block; margin-block-start: 0.75rem; text-decoration: none; color: var(--ink); transition: opacity 0.3s var(--ease); }
 .next-link:hover { opacity: 0.65; }
