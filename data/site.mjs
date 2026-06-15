@@ -188,6 +188,10 @@ export default {
         text: {
           ar: 'مراجعة الأرض وأهداف نمط الحياة وتحديد واضح للمنزل الذي تريد العيش فيه.',
           en: 'A review of the plot and lifestyle goals, with a clear definition of the home you want to live in.'
+        },
+        image: {
+          src: '/assets/images/workflow-1.webp', w: 600, h: 600,
+          alt: { ar: 'مكالمة فيديو مع العميل لمراجعة الأرض والأهداف', en: 'A video call with the client to review the plot and goals' }
         }
       },
       {
@@ -195,6 +199,10 @@ export default {
         text: {
           ar: 'نناقش الاتجاه الأولي عبر مكالمة فيديو قبل أي التزام — فكرة معمارية وأجواء داخلية منسجمة مع أولوياتك.',
           en: 'We discuss the initial direction on a video call before any commitment — an architectural concept and interior atmosphere aligned with your priorities.'
+        },
+        image: {
+          src: '/assets/images/workflow-2.webp', w: 571, h: 571,
+          alt: { ar: 'نموذج كتلي مبدئي للفيلا يوضح التصور المعماري الأول', en: 'An early massing model of the villa showing the first architectural concept' }
         }
       },
       {
@@ -202,6 +210,10 @@ export default {
         text: {
           ar: 'إذا كان الاتجاه مناسباً، ننتقل إلى الاتفاق وبدء التصميم التفصيلي — حزمة تصميم تقود الاستشاريين والمقاولين بوضوح.',
           en: 'If the direction is right, we move into the agreement and detailed design — a design package that leads consultants and contractors with clarity.'
+        },
+        image: {
+          src: '/assets/images/workflow-3.webp', w: 600, h: 600,
+          alt: { ar: 'منظور نهائي واقعي للفيلا بعد تطوير التصميم التفصيلي', en: 'A final photoreal render of the villa after the detailed design is developed' }
         }
       }
     ]
