@@ -47,10 +47,6 @@ A human-readable version of this register is published on the site at
 | assets/projects/stone-majlis/gallery-02.webp | https://images.unsplash.com/photo-1600585152220-90363fe7e115 |
 | assets/projects/stone-majlis/gallery-03.webp | https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6 |
 | assets/projects/stone-majlis/gallery-04.webp | https://images.unsplash.com/photo-1600566752355-35792bedcfea |
-| assets/projects/desert-retreat/cover.webp | https://images.unsplash.com/photo-1542401886-65d6c61db217 |
-| assets/projects/desert-retreat/gallery-01.webp | https://images.unsplash.com/photo-1547234935-80c7145ec969 |
-| assets/projects/desert-retreat/gallery-02.webp | https://images.unsplash.com/photo-1486718448742-163732cd1544 |
-| assets/projects/desert-retreat/gallery-03.webp | https://images.unsplash.com/photo-1473580044384-7ba9967e16a0 |
 | assets/projects/garden-house/cover.webp | https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3 |
 | assets/projects/garden-house/gallery-01.webp | https://images.unsplash.com/photo-1600585154340-be6161a56a0c |
 | assets/projects/garden-house/gallery-02.webp | https://images.unsplash.com/photo-1600585154526-990dced4db0d |
@@ -62,6 +58,7 @@ A human-readable version of this register is published on the site at
 | Local file | Origin / license |
 | --- | --- |
 | assets/projects/montashiri-villa/* | Owner-supplied renders (Montashiri Villa, Obhur — © Wael Bousmael / WB Studio). Source files staged locally in `assets/projects/_incoming/montashiri-villa-source/` (git-ignored). |
+| assets/projects/byblos-resort/* | Owner-supplied renders (Byblos Resort, Jbeil, Lebanon — © Wael Bousmael / WB Studio). Source files staged locally in `assets/projects/_incoming/byblos-resort-source/` (git-ignored). |
 | assets/images/about-hero.jpg | Owner-supplied portrait (pre-existing; owned by Wael Bousmael) |
 | assets/images/og.jpg | Pre-existing brand share image (owned) |
 | assets/images/icon-192.png, assets/icons/* | Pre-existing brand marks (owned) |
