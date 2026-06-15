@@ -51,6 +51,55 @@
       ]
     },
     {
+      "slug": "byblos-resort",
+      "featured": true,
+      "placeholder": false,
+      "year": 2025,
+      "title": { "ar": "منتجع جبيل", "en": "Byblos Resort" },
+      "category": { "ar": "منتجعات", "en": "Hospitality" },
+      "location": { "ar": "جبيل، لبنان", "en": "Byblos, Lebanon" },
+      "status": { "ar": "قيد التصميم", "en": "In design" },
+      "excerpt": {
+        "ar": "منتجع على شاطئ جبيل في لبنان: وحدات بكساء حجري تتدرّج نحو المتوسط عبر مصاطب مظللة وحدائق ومسابح تطلّ على البحر.",
+        "en": "A beachfront resort at Byblos, Lebanon — stone-clad residences stepping down to the Mediterranean through shaded terraces, gardens and sea-view pools."
+      },
+      "thesis": {
+        "ar": "كيف ينتمي منتجع إلى ساحله بدل أن يحطّ عليه؟ يتدرّج منتجع جبيل على المنحدر في مصاطب حجرية، حيث تنفتح كل وحدة على البحر المتوسط بينما تعيد الحدائق والمسابح والمصاطب المظللة ربط الكتل بالأرض.",
+        "en": "How does a resort belong to its coast rather than sit upon it? Byblos Resort steps down the hillside in stone-clad terraces — each residence opens to the Mediterranean while gardens, pools and shaded decks knit the volumes back into the slope."
+      },
+      "body": [
+        {
+          "ar": "تمثّل البرنامج في مجموعة محدودة من الوحدات والفراغات المشتركة فوق البحر في جبيل. بدل كتلة واحدة، ينقسم المنتجع إلى أحجار منخفضة تتبع تضاريس الموقع — شرفات خشبية ومصاطب مزروعة تلطّف كل مستوى، فتبدو العمارة امتداداً للساحل اللبناني المدرّج لا ضيفاً عليه.",
+          "en": "The brief was a small collection of residences and shared spaces above the sea at Jbeil. Rather than a single mass, the resort breaks into low stone volumes that follow the contours — timber balconies and planted setbacks soften every level, so the architecture reads as part of the terraced Lebanese coast rather than an object placed upon it."
+        },
+        {
+          "ar": "في الداخل تبقى لوحة المواد هادئة وملموسة: أرضيات حجرية فاتحة، أسقف خشبية دافئة، وزجاج بكامل الارتفاع يؤطّر الماء. تنفتح فراغات المعيشة على مصاطب عميقة مظللة ومسابح صغيرة، فتمتدّ الغرف نحو الخارج ويبقى البحر حاضراً منذ لحظة الوصول.",
+          "en": "Inside, the palette stays calm and tactile: pale stone floors, warm timber soffits, and full-height glazing that frames the water. Living spaces open onto deep shaded terraces and plunge pools, extending the rooms outward and keeping the sea present from the moment you arrive."
+        }
+      ],
+      "services": {
+        "ar": ["الفكرة المعمارية", "التوجه الداخلي", "تصميم المناظر والمسابح"],
+        "en": ["Architectural concept", "Interior direction", "Landscape & pool design"]
+      },
+      "cover": {
+        "src": "/assets/projects/byblos-resort/cover.webp",
+        "w": 1536, "h": 826,
+        "alt": { "ar": "فراغ معيشة مزدوج الارتفاع في منتجع جبيل بأرضيات حجرية فاتحة وسقف خشبي وزجاج بكامل الارتفاع يطلّ على فناء مزروع", "en": "Double-height living space at Byblos Resort with pale stone floors, a timber ceiling and full-height glazing onto a planted courtyard" }
+      },
+      "gallery": [
+        {
+          "src": "/assets/projects/byblos-resort/gallery-01.webp",
+          "w": 1536, "h": 1024,
+          "alt": { "ar": "وحدات سكنية مدرّجة بكساء حجري متوهّجة عند الغسق فوق مسبح وممشى خشبي، منتجع جبيل", "en": "Stone-clad terraced residences glowing at dusk above a swimming pool and timber deck, Byblos Resort" }
+        },
+        {
+          "src": "/assets/projects/byblos-resort/gallery-02.webp",
+          "w": 1536, "h": 1024,
+          "alt": { "ar": "غرفة معيشة تنفتح على مصطبة مظللة ومسبح صغير بإطلالة على البحر المتوسط، منتجع جبيل", "en": "Living room opening to a shaded terrace and plunge pool with a Mediterranean sea view, Byblos Resort" }
+        }
+      ]
+    },
+    {
       "slug": "coastal-villa",
       "featured": true,
       "placeholder": true,
