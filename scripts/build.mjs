@@ -492,9 +492,10 @@ ${header(lang, 'approach')}
   <section class="section divided" data-reveal>
     <div class="wrap">
       <h2 class="display">${esc(t(a.processTitle, lang))}</h2>
-      <ol class="steps">
-        ${a.steps.map((s, i) => `<li data-reveal>
-          <span class="step-num">0${i + 1}</span>
+      <ol class="workflow" data-reveal>
+        ${a.steps.map((s, i) => `<li class="workflow-step">
+          <div class="workflow-media">${s.image ? img(s.image, lang) : ''}</div>
+          <span class="workflow-num">0${i + 1}</span>
           <h3>${esc(t(s.title, lang))}</h3>
           <p>${esc(t(s.text, lang))}</p>
         </li>`).join('\n        ')}

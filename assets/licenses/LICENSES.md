@@ -62,7 +62,8 @@ A human-readable version of this register is published on the site at
 | assets/images/about-hero.jpg | Owner-supplied portrait (pre-existing; owned by Wael Bousmael) |
 | assets/images/og.jpg | Pre-existing brand share image (owned) |
 | assets/images/icon-192.png, assets/icons/* | Pre-existing brand marks (owned) |
-| assets/images/example-1..4.jpg, workflow-1..2.jpg, hero-poster.jpg | Legacy images from the previous site, no longer referenced by any page; provenance unrecorded. Kept only in the repo; safe to delete. |
+| assets/images/workflow-1..3.webp | Process-timeline medallions on `/approach/`. workflow-2 (massing model) and workflow-3 (final render) are owner-supplied (© Wael Bousmael / WB Studio). **workflow-1** (video-call photo) is a legacy image from the previous site with **unrecorded provenance** — replace with an owned/licensed image when available. |
+| assets/images/example-1..4.jpg, workflow-1..3.jpg, hero-poster.jpg | Legacy source JPGs from the previous site (workflow-*.jpg are the originals of the square WebP crops above); not referenced directly by any page. Provenance of the people photo (workflow-1) is unrecorded. |
 
 Fonts (Amiri, IBM Plex Sans Arabic, Cormorant Garamond, Inter) are served by
 Google Fonts under the SIL Open Font License.

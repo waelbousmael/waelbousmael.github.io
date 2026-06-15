@@ -431,6 +431,60 @@ html[lang="ar"] .mobile-links a { font-weight: 700; }
 .steps h3 { margin-block-end: 0.5rem; }
 .steps p { font-size: 0.93rem; color: var(--ink-soft); }
 
+/* ── workflow (process timeline with circular photo medallions) ── */
+.workflow {
+  list-style: none;
+  margin: clamp(2.75rem, 6vw, 4.5rem) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.75rem, 3.5vw, 3rem);
+  position: relative;
+  --circle: clamp(120px, 17vw, 188px);
+}
+/* connecting hairline running through the circle centres */
+.workflow::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset-inline: 17%;
+  top: calc(var(--circle) / 2);
+  height: 1px;
+  background: var(--line-strong);
+}
+.workflow-step { position: relative; z-index: 1; text-align: center; }
+.workflow-media {
+  width: var(--circle);
+  height: var(--circle);
+  margin-inline: auto;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: 0 0 0 7px var(--bg); /* halo: line appears to stop at each circle */
+}
+.workflow-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease);
+}
+.workflow-step:hover .workflow-media img { transform: scale(1.05); }
+.workflow-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-block-start: 1.5rem;
+}
+.workflow h3 { margin-block-start: 0.45rem; }
+.workflow p {
+  margin-block-start: 0.55rem;
+  font-size: 0.93rem;
+  color: var(--ink-soft);
+  max-width: 32ch;
+  margin-inline: auto;
+}
+
 /* ── services (approach) ── */
 .service-list { margin-block-start: clamp(1.5rem, 3vw, 2.5rem); }
 .service-row {
@@ -582,6 +636,8 @@ form .btn-solid { justify-self: start; margin-block-start: 0.5rem; }
   .project-grid { gap: clamp(2.75rem, 9vw, 4rem); }
 
   .steps { grid-template-columns: 1fr; }
+  .workflow { grid-template-columns: 1fr; gap: clamp(2.25rem, 9vw, 3rem); }
+  .workflow::before { display: none; }
   .service-row { grid-template-columns: 1fr; gap: 0.5rem; }
 
   .about-preview, .about-grid { grid-template-columns: 1fr; }
