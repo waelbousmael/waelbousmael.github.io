@@ -29,7 +29,9 @@ export default {
 
   nav: {
     work: { ar: 'الأعمال', en: 'Work' },
+    services: { ar: 'الخدمات', en: 'Services' },
     approach: { ar: 'النهج', en: 'Approach' },
+    journal: { ar: 'المدوّنة', en: 'Journal' },
     about: { ar: 'من نحن', en: 'About' },
     contact: { ar: 'تواصل', en: 'Contact' },
     menuOpen: { ar: 'فتح القائمة', en: 'Open menu' },
@@ -67,19 +69,19 @@ export default {
       ar: 'مهندس معماري لتصميم الفلل والمنازل الخاصة في جدة والسعودية والخليج. مكالمة مجانية، تصور مبدئي مجاني، واتفاق مدفوع فقط بعد وضوح الرؤية والتوافق.',
       en: 'Architect for private villas and homes in Jeddah, Saudi Arabia and the Gulf. A free call, a free preliminary concept, and a paid agreement only after the vision is clear and aligned.'
     },
-    eyebrow: { ar: 'استوديو عمارة وتصميم داخلي — جدة', en: 'Architecture & interiors studio — Jeddah' },
+    eyebrow: { ar: 'عمارة الفلل الخاصة — جدة', en: 'Private villa architecture — Jeddah' },
     h1: {
       ar: 'نصمم فلل ومنازل خاصة في جدة والخليج',
       en: 'We design private villas and homes in Jeddah and the Gulf'
     },
     positioning: {
-      ar: 'استوديو معماري متخصص في عمارة الفلل الفاخرة والمنازل الخاصة والتصميم الداخلي — تصميم يقوم على الوضوح والاقتضاب والقيمة طويلة المدى.',
-      en: 'An architecture studio focused on luxury private villas, homes and interiors — design shaped by clarity, restraint and long-term value.'
+      ar: 'استوديو معماري بوتيكي لعملاء الفلل الخاصة في جدة — تصميم حديث مدروس، وعينٌ دقيقة على الحجر والضوء والنسب، وفهمٌ عميق لطريقة عيش العائلات في جدة وعموم الخليج.',
+      en: 'A boutique architecture studio for private villa clients in Jeddah — refined modern design, a careful eye for stone, light and proportion, and a close understanding of how families live in Jeddah and across the Gulf.'
     },
     ctaWhatsapp: { ar: 'احجز مكالمة مجانية عبر واتساب', en: 'Book a free call on WhatsApp' },
     ctaWork: { ar: 'شاهد الأعمال', en: 'View the work' },
     heroImage: {
-      src: '/assets/images/home-hero.webp', w: 2000, h: 1125,
+      src: '/assets/images/home-hero.webp', w: 1448, h: 1086,
       alt: {
         ar: 'فيلا حديثة بسقف خشبي دافئ وفراغ معيشة مفتوح على مسبح هادئ',
         en: 'Modern villa with a warm timber soffit and living space opening to a still pool'
@@ -230,8 +232,8 @@ export default {
     },
     h1: { ar: 'من نحن', en: 'About' },
     intro: {
-      ar: 'استوديو معماري شخصي متخصص في الفلل والمنازل الخاصة في جدة والسعودية والخليج — بيوت مدروسة بهوية واضحة، حضورياً أو عن بُعد.',
-      en: 'A personal architecture studio dedicated to private villas and homes across Jeddah, Saudi Arabia and the Gulf — considered houses with a clear identity, in person or remotely.'
+      ar: 'استوديو معماري بوتيكي يقوده مؤسسه، متخصص في الفلل والمنازل الخاصة في جدة وعموم الخليج. يجمع بين تصميم حديث مدروس وحسٍّ لبنانيّ في التعامل مع الحجر والضوء والنسب، وقراءةٍ دقيقة لطريقة عيش العائلات السعودية — بيوت مدروسة بهوية واضحة، حضورياً أو عن بُعد.',
+      en: 'A boutique, founder-led architecture studio dedicated to private villas and homes in Jeddah and across the Gulf. It pairs refined modern design with a Lebanese sensibility for stone, light and proportion, and a close read of how Saudi families actually live — considered houses with a clear identity, delivered in person or remotely.'
     },
     name: { ar: 'وائل بو سماعيل — معماري', en: 'Wael Bousmael — Architect' },
     // Bio preserved verbatim from the original site.
@@ -379,5 +381,464 @@ export default {
     },
     sourceLabel: { ar: 'المصدر', en: 'Source' },
     heroLabel: { ar: 'صورة الواجهة الرئيسية', en: 'Homepage hero image' }
-  }
+  },
+
+  // ── Services hub (lists the high-intent landing pages) ──
+  services: {
+    seoTitle: {
+      ar: 'خدمات تصميم الفلل في جدة | WB Studio',
+      en: 'Villa Design Services in Jeddah | WB Studio'
+    },
+    seoDesc: {
+      ar: 'خدمات تصميم الفلل الخاصة في جدة: فلل فاخرة، تصميم مودرن، فلل أبحر وشمال جدة، وعمارة حجازية حديثة — مكالمة مجانية وتصور مبدئي مجاني قبل أي اتفاق.',
+      en: 'Private villa design services in Jeddah: luxury villas, modern design, Obhur & North Jeddah villas, and modern Hijazi architecture — a free call and preliminary concept before any agreement.'
+    },
+    h1: { ar: 'خدمات تصميم الفلل في جدة', en: 'Villa design services in Jeddah' },
+    intro: {
+      ar: 'مسارات تصميم مركّزة لعملاء الفلل الخاصة في جدة وعموم الخليج. اختر ما يناسب أرضك ورؤيتك — وكلها تبدأ بمكالمة مجانية وتصور مبدئي مجاني.',
+      en: 'Focused design paths for private villa clients in Jeddah and across the Gulf. Choose what fits your plot and vision — each begins with a free call and a free preliminary concept.'
+    },
+    explore: { ar: 'تعرّف أكثر', en: 'Learn more' }
+  },
+
+  // ── High-intent landing pages (root-level keyword slugs, bilingual) ──
+  landings: [
+    {
+      slug: 'villa-design-jeddah',
+      label: { ar: 'تصميم فيلا في جدة', en: 'Villa design in Jeddah' },
+      summary: {
+        ar: 'نقطة البداية لأصحاب الأراضي والعائلات: كيف نصمم فيلا خاصة في جدة من الفكرة حتى التنفيذ.',
+        en: 'The starting point for landowners and families: how we design a private villa in Jeddah from concept to construction.'
+      },
+      seoTitle: { ar: 'تصميم فيلا في جدة | مصمم فلل خاصة — WB Studio', en: 'Villa Design in Jeddah | Private Villa Designer — WB Studio' },
+      seoDesc: {
+        ar: 'تصميم فلل خاصة في جدة لأصحاب الأراضي والعائلات والمستثمرين. استوديو بوتيكي يقود المشروع من الفكرة حتى مخططات التنفيذ. مكالمة مجانية وتصور مبدئي مجاني.',
+        en: 'Private villa design in Jeddah for landowners, families and investors. A boutique studio that leads the project from concept to construction drawings. Free call and preliminary concept.'
+      },
+      eyebrow: { ar: 'تصميم الفلل الخاصة — جدة', en: 'Private villa design — Jeddah' },
+      h1: { ar: 'تصميم فيلا خاصة في جدة', en: 'Private villa design in Jeddah' },
+      intro: {
+        ar: 'إذا كنت تملك أرضاً في جدة وتخطّط لبناء فيلتك، فأنت بحاجة إلى مصمم يفهم الأرض والخصوصية وطريقة عيش عائلتك. WB Studio استوديو بوتيكي يصمم الفلل الخاصة في جدة وعموم الخليج — من الفكرة الأولى حتى مخططات قابلة للتنفيذ.',
+        en: 'If you own a plot in Jeddah and plan to build your villa, you need a designer who understands the land, privacy, and how your family lives. WB Studio is a boutique studio designing private villas in Jeddah and across the Gulf — from the first idea to build-ready drawings.'
+      },
+      sections: [
+        {
+          heading: { ar: 'لمن نصمم', en: 'Who we design for' },
+          body: {
+            ar: 'نعمل مع أصحاب الأراضي والعائلات والمستثمرين الخاصين الذين يريدون فيلا مدروسة لا نسخة مكرّرة. كل مشروع يحصل على اهتمام مباشر من المصمم، لا على خط إنتاج.',
+            en: 'We work with landowners, families and private investors who want a considered villa, not a repeated template. Every project gets the designer’s direct attention, not a production line.'
+          }
+        },
+        {
+          heading: { ar: 'من الفكرة إلى التنفيذ', en: 'From concept to construction' },
+          body: {
+            ar: 'يبدأ المسار بدراسة الأرض والخصوصية والتوجيه الشمسي، ثم فكرة معمارية وأجواء داخلية، وصولاً إلى حزمة تصميم تقود الاستشاريين والمقاولين بوضوح وتقلّل التعارضات في الموقع.',
+            en: 'The path starts with a study of the plot, privacy and solar orientation, then an architectural concept and interior atmosphere, through to a design package that leads consultants and contractors clearly and reduces clashes on site.'
+          }
+        }
+      ],
+      serviceType: 'Villa design',
+      faq: [
+        {
+          q: { ar: 'كيف أبدأ تصميم فيلتي في جدة؟', en: 'How do I start designing my villa in Jeddah?' },
+          a: { ar: 'أرسل موقع الأرض ومساحتها وفكرتك العامة عبر واتساب أو النموذج. نبدأ بمكالمة مجانية وتصور مبدئي مجاني قبل أي اتفاق مدفوع.', en: 'Send the plot location, area and your general idea via WhatsApp or the form. We start with a free call and a free preliminary concept before any paid agreement.' }
+        },
+        {
+          q: { ar: 'هل تصممون لأراضٍ في كل أحياء جدة؟', en: 'Do you design for plots in any Jeddah district?' },
+          a: { ar: 'نعم — شمال جدة وأبحر والأحياء الراقية وغيرها. نراعي أنظمة البناء والخصوصية وطبيعة كل حي.', en: 'Yes — North Jeddah, Obhur, premium districts and beyond. We account for building regulations, privacy and the character of each district.' }
+        },
+        {
+          q: { ar: 'هل يمكن العمل إذا كنت خارج جدة؟', en: 'Can we work together if I’m outside Jeddah?' },
+          a: { ar: 'بالتأكيد. نخدم عملاء السعودية والخليج عن بُعد عبر مكالمات الفيديو ومشاركة المخططات بنفس الوضوح.', en: 'Absolutely. We serve clients across Saudi Arabia and the Gulf remotely via video calls and shared drawings, with the same clarity.' }
+        }
+      ],
+      related: ['luxury-villa-design-jeddah', 'modern-villa-design-jeddah', 'obhur-villa-design', 'modern-hijazi-villa-design'],
+      relatedProjects: ['montashiri-villa', 'byblos-resort'],
+      image: { src: '/assets/projects/montashiri-villa/cover.webp', w: 1536, h: 960, alt: { ar: 'فيلا حجرية حديثة في جدة بشرفات مزروعة', en: 'Modern stone villa in Jeddah with planted terraces' } }
+    },
+    {
+      slug: 'luxury-villa-design-jeddah',
+      label: { ar: 'تصميم فلل فاخرة في جدة', en: 'Luxury villa design in Jeddah' },
+      summary: {
+        ar: 'للفلل الفاخرة التي توازن بين الخصوصية والضيافة والتفاصيل الراقية والقيمة طويلة المدى.',
+        en: 'For luxury villas that balance privacy, hospitality, refined detail and long-term value.'
+      },
+      seoTitle: { ar: 'تصميم فلل فاخرة في جدة | عمارة راقية — WB Studio', en: 'Luxury Villa Design in Jeddah | Refined Architecture — WB Studio' },
+      seoDesc: {
+        ar: 'تصميم فلل فاخرة في جدة: خصوصية متدرّجة، فراغات ضيافة، مواد راقية، وتفاصيل مصمّمة لتدوم. استوديو بوتيكي — مكالمة وتصور مبدئي مجاني.',
+        en: 'Luxury villa design in Jeddah: layered privacy, hospitality spaces, refined materials and detail built to last. A boutique studio — free call and preliminary concept.'
+      },
+      eyebrow: { ar: 'الفلل الفاخرة — جدة', en: 'Luxury villas — Jeddah' },
+      h1: { ar: 'تصميم فلل فاخرة في جدة', en: 'Luxury villa design in Jeddah' },
+      intro: {
+        ar: 'الفخامة الحقيقية هدوء لا ضجيج: نِسب مدروسة، مواد صادقة، وخصوصية تُدار بعناية. نصمم فللاً فاخرة في جدة توازن بين استقبال الضيوف وراحة العائلة، وتحتفظ بقيمتها مع الزمن.',
+        en: 'Real luxury is calm, not loud: considered proportions, honest materials, and privacy handled with care. We design luxury villas in Jeddah that balance receiving guests with family comfort — and hold their value over time.'
+      },
+      sections: [
+        {
+          heading: { ar: 'الخصوصية والضيافة', en: 'Privacy and hospitality' },
+          body: {
+            ar: 'مسار ضيوف مستقل، مجلس رجال ومجلس عائلي، وتدرّج واضح بين العام والخاص — جوهر الفيلا السعودية الفاخرة، مُعاد تصوّره بلغة حديثة.',
+            en: 'An independent guest route, men’s and family majlis, and a clear gradient between public and private — the heart of the luxury Saudi villa, reimagined in a modern language.'
+          }
+        },
+        {
+          heading: { ar: 'مواد تدوم', en: 'Materials that last' },
+          body: {
+            ar: 'نختار مواد قليلة وراقية تتقادم بكرامة: حجر طبيعي، خشب دافئ، ومعادن مدروسة. الفخامة في الملمس والنسب، لا في الزخرفة الزائدة.',
+            en: 'We choose a short, refined material palette that ages with dignity: natural stone, warm timber and considered metals. Luxury lives in texture and proportion, not excess ornament.'
+          }
+        }
+      ],
+      serviceType: 'Luxury villa design',
+      faq: [
+        {
+          q: { ar: 'ما الذي يجعل تصميم الفيلا فاخراً فعلاً؟', en: 'What makes a villa design truly luxurious?' },
+          a: { ar: 'ليست المساحة وحدها، بل النسب والضوء والخصوصية وجودة المواد والتفاصيل. هذه ما نركّز عليه.', en: 'Not size alone, but proportion, light, privacy, and the quality of materials and detail. That is what we focus on.' }
+        },
+        {
+          q: { ar: 'هل تصممون المجالس وفراغات الضيافة؟', en: 'Do you design majlis and hospitality spaces?' },
+          a: { ar: 'نعم، وهي محور تصميم الفيلا الفاخرة في جدة: استقبال كريم مع حماية كاملة لخصوصية العائلة.', en: 'Yes — they are central to luxury villa design in Jeddah: gracious reception with full protection of family privacy.' }
+        },
+        {
+          q: { ar: 'هل تعملون ضمن ميزانية فاخرة محددة؟', en: 'Do you work to a defined luxury budget?' },
+          a: { ar: 'نوضح نطاق الميزانية مبكراً ونصمم ضمنه بذكاء، فالقيمة طويلة المدى أهم من الإبهار اللحظي.', en: 'We clarify the budget range early and design within it intelligently — long-term value matters more than momentary impact.' }
+        }
+      ],
+      related: ['villa-design-jeddah', 'modern-villa-design-jeddah', 'obhur-villa-design', 'modern-hijazi-villa-design'],
+      relatedProjects: ['byblos-resort', 'montashiri-villa'],
+      image: { src: '/assets/projects/byblos-resort/cover.webp', w: 1536, h: 826, alt: { ar: 'فراغ معيشة فاخر مزدوج الارتفاع بإطلالة', en: 'Luxurious double-height living space with a view' } }
+    },
+    {
+      slug: 'modern-villa-design-jeddah',
+      label: { ar: 'تصميم فيلا مودرن في جدة', en: 'Modern villa design in Jeddah' },
+      summary: {
+        ar: 'خطوط نظيفة وضوء طبيعي وعلاقة سلسة بين الداخل والخارج — لعملاء يفضّلون العمارة الحديثة.',
+        en: 'Clean lines, natural light and a seamless indoor–outdoor relationship — for clients who prefer modern architecture.'
+      },
+      seoTitle: { ar: 'تصميم فيلا مودرن في جدة | معماري فلل حديثة — WB Studio', en: 'Modern Villa Design in Jeddah | Modern Villa Architect — WB Studio' },
+      seoDesc: {
+        ar: 'تصميم فيلا مودرن في جدة: خطوط نظيفة، ضوء متحكَّم فيه، وفراغات مفتوحة تحترم الخصوصية والمناخ. معماري فلل حديثة — مكالمة وتصور مبدئي مجاني.',
+        en: 'Modern villa design in Jeddah: clean lines, controlled light, and open spaces that respect privacy and climate. A modern villa architect — free call and preliminary concept.'
+      },
+      eyebrow: { ar: 'الفلل الحديثة — جدة', en: 'Modern villas — Jeddah' },
+      h1: { ar: 'تصميم فيلا مودرن في جدة', en: 'Modern villa design in Jeddah' },
+      intro: {
+        ar: 'العمارة الحديثة في جدة ليست واجهات زجاجية تحت الشمس، بل ضوء يُدار بذكاء وفراغات تتنفّس. نصمم فللاً مودرن بخطوط هادئة وعلاقة سلسة بين الداخل والخارج، مع احترام الخصوصية والمناخ الحار.',
+        en: 'Modern architecture in Jeddah isn’t glass walls under the sun — it’s light handled intelligently and spaces that breathe. We design modern villas with calm lines and a seamless indoor–outdoor relationship, while respecting privacy and the hot climate.'
+      },
+      sections: [
+        {
+          heading: { ar: 'حداثة تناسب المناخ', en: 'Modernism that suits the climate' },
+          body: {
+            ar: 'شرفات عميقة، فتحات مدروسة، وتظليل معماري بدل الاعتماد على التكييف وحده — جمال حديث يعمل في حرّ جدة.',
+            en: 'Deep terraces, considered openings and architectural shading instead of relying on cooling alone — modern beauty that works in Jeddah’s heat.'
+          }
+        },
+        {
+          heading: { ar: 'الداخل والخارج', en: 'Indoor and outdoor' },
+          body: {
+            ar: 'نربط المعيشة بالحديقة والمسبح والسطح بانسياب، فتتضاعف مساحة العيش وتبقى الخصوصية محفوظة.',
+            en: 'We connect living spaces to the garden, pool and roof fluidly, so usable space multiplies while privacy stays protected.'
+          }
+        }
+      ],
+      serviceType: 'Modern villa design',
+      faq: [
+        {
+          q: { ar: 'هل التصميم المودرن مناسب لمناخ جدة الحار؟', en: 'Is modern design suitable for Jeddah’s hot climate?' },
+          a: { ar: 'نعم، إذا صُمّم بذكاء: تظليل وتوجيه وفتحات مدروسة تجعل الفيلا الحديثة مريحة وموفّرة للطاقة.', en: 'Yes, when designed intelligently: shading, orientation and considered openings make a modern villa comfortable and energy-efficient.' }
+        },
+        {
+          q: { ar: 'هل يمكن دمج لمسات محلية في تصميم مودرن؟', en: 'Can local touches blend into a modern design?' },
+          a: { ar: 'بالتأكيد — يمكن إعادة تأويل عناصر حجازية مثل المشربيات والأفنية بلغة حديثة نظيفة.', en: 'Absolutely — Hijazi elements like mashrabiya screens and courtyards can be reinterpreted in a clean modern language.' }
+        },
+        {
+          q: { ar: 'كيف تحافظون على الخصوصية مع الفتحات الكبيرة؟', en: 'How do you keep privacy with large openings?' },
+          a: { ar: 'عبر توجيه الفتحات نحو أفنية وحدائق داخلية، وستائر معمارية، وتدرّج المستويات.', en: 'By orienting openings toward internal courts and gardens, using architectural screens, and layering levels.' }
+        }
+      ],
+      related: ['villa-design-jeddah', 'luxury-villa-design-jeddah', 'modern-hijazi-villa-design', 'obhur-villa-design'],
+      relatedProjects: ['montashiri-villa', 'coastal-villa'],
+      image: { src: '/assets/projects/montashiri-villa/cover.webp', w: 1536, h: 960, alt: { ar: 'فيلا مودرن بخطوط نظيفة وحجر في جدة', en: 'Modern villa with clean lines and stone in Jeddah' } }
+    },
+    {
+      slug: 'obhur-villa-design',
+      label: { ar: 'تصميم فلل أبحر', en: 'Obhur villa design' },
+      summary: {
+        ar: 'للأراضي الساحلية في أبحر وشمال جدة: ضوء البحر، الخصوصية على الواجهة البحرية، والحياة الخارجية.',
+        en: 'For coastal plots in Obhur and North Jeddah: sea light, waterfront privacy and outdoor living.'
+      },
+      seoTitle: { ar: 'تصميم فلل أبحر | فلل شمال جدة الساحلية — WB Studio', en: 'Obhur Villa Design | North Jeddah Coastal Villas — WB Studio' },
+      seoDesc: {
+        ar: 'تصميم فلل في أبحر وشمال جدة: استثمار ضوء البحر مع خصوصية كاملة، شرفات مظللة، ومسابح بإطلالة. مكالمة وتصور مبدئي مجاني.',
+        en: 'Villa design in Obhur and North Jeddah: capturing sea light with full privacy, shaded terraces and view-facing pools. Free call and preliminary concept.'
+      },
+      eyebrow: { ar: 'الساحل — أبحر وشمال جدة', en: 'The coast — Obhur & North Jeddah' },
+      h1: { ar: 'تصميم فلل في أبحر وشمال جدة', en: 'Villa design in Obhur & North Jeddah' },
+      intro: {
+        ar: 'أبحر ساحل مختلف: ضوء قوي، نسيم بحري، وقيمة عالية للإطلالة. لكنها تتطلب توازناً دقيقاً بين الانفتاح على البحر والخصوصية تجاه الجيران والطريق. نصمم فللاً ساحلية تستثمر الإطلالة دون أن تفقد حميميتها.',
+        en: 'Obhur is a different coast: strong light, sea breeze, and a high premium on the view. But it demands a careful balance between opening to the sea and privacy from neighbours and the street. We design coastal villas that capture the view without losing their intimacy.'
+      },
+      sections: [
+        {
+          heading: { ar: 'ضوء البحر والخصوصية', en: 'Sea light and privacy' },
+          body: {
+            ar: 'نوجّه فراغات المعيشة نحو البحر بشرفات عميقة تظلّل من شمس الظهيرة، ونحجب الجهات الأخرى بذكاء — فتطلّ على الماء دون أن يطلّ عليك أحد.',
+            en: 'We orient living spaces toward the sea with deep terraces that shade the midday sun, and screen the other sides intelligently — so you face the water without anyone facing you.'
+          }
+        },
+        {
+          heading: { ar: 'الحياة الخارجية', en: 'Outdoor living' },
+          body: {
+            ar: 'مسابح بإطلالة، جلسات مظللة، وأسطح معيشة — لأن قيمة أرض أبحر في حياتها الخارجية بقدر داخلها.',
+            en: 'View-facing pools, shaded seating and rooftop living — because the value of an Obhur plot is in its outdoor life as much as its interior.'
+          }
+        }
+      ],
+      serviceType: 'Coastal villa design',
+      faq: [
+        {
+          q: { ar: 'هل لديكم خبرة بأراضي أبحر تحديداً؟', en: 'Do you have experience with Obhur plots specifically?' },
+          a: { ar: 'نعم، من أعمالنا فلل في أبحر مثل فيلا المنتشري — نراعي الملوحة والرياح والإطلالة والخصوصية الساحلية.', en: 'Yes — our work includes Obhur villas such as Montashiri Villa. We account for salt, wind, the view and coastal privacy.' }
+        },
+        {
+          q: { ar: 'كيف تحمون الخصوصية على واجهة بحرية مفتوحة؟', en: 'How do you protect privacy on an open waterfront?' },
+          a: { ar: 'عبر تدرّج الشرفات، التوجيه، والستائر المعمارية — انفتاح كامل على البحر وحجب كامل عن الجيران.', en: 'Through layered terraces, orientation and architectural screens — full openness to the sea, full screening from neighbours.' }
+        },
+        {
+          q: { ar: 'هل تصممون فللاً في شمال جدة عموماً؟', en: 'Do you design villas in North Jeddah generally?' },
+          a: { ar: 'نعم، أبحر وشمال جدة من أكثر المناطق التي نعمل فيها.', en: 'Yes — Obhur and North Jeddah are among the areas we work in most.' }
+        }
+      ],
+      related: ['villa-design-jeddah', 'luxury-villa-design-jeddah', 'modern-villa-design-jeddah', 'modern-hijazi-villa-design'],
+      relatedProjects: ['montashiri-villa', 'coastal-villa', 'byblos-resort'],
+      image: { src: '/assets/projects/montashiri-villa/cover.webp', w: 1536, h: 960, alt: { ar: 'فيلا ساحلية في أبحر بإطلالة وخصوصية', en: 'Coastal villa in Obhur with a view and privacy' } }
+    },
+    {
+      slug: 'modern-hijazi-villa-design',
+      label: { ar: 'تصميم فلل حجازية حديثة', en: 'Modern Hijazi villa design' },
+      summary: {
+        ar: 'إعادة تأويل العمارة الحجازية — الروشان والفناء والحجر — بلغة حديثة تناسب الحياة اليوم.',
+        en: 'Reinterpreting Hijazi architecture — rawasheen, courtyards and stone — in a modern language for life today.'
+      },
+      seoTitle: { ar: 'تصميم فلل حجازية حديثة في جدة | روشان وفناء — WB Studio', en: 'Modern Hijazi Villa Design in Jeddah | Rawasheen & Courtyards — WB Studio' },
+      seoDesc: {
+        ar: 'تصميم فلل حجازية حديثة في جدة: روشان ومشربيات وأفنية وحجر، بلغة معاصرة نظيفة تحترم الخصوصية والمناخ والهوية. مكالمة وتصور مبدئي مجاني.',
+        en: 'Modern Hijazi villa design in Jeddah: rawasheen, mashrabiya, courtyards and stone in a clean contemporary language that respects privacy, climate and identity. Free call and preliminary concept.'
+      },
+      eyebrow: { ar: 'العمارة الحجازية الحديثة — جدة', en: 'Modern Hijazi architecture — Jeddah' },
+      h1: { ar: 'تصميم فلل حجازية حديثة', en: 'Modern Hijazi villa design' },
+      intro: {
+        ar: 'العمارة الحجازية حلّت مشكلات المناخ والخصوصية قبل قرون عبر الروشان والفناء والحجر. نعيد تأويل هذه الحكمة بلغة حديثة نظيفة — فيلا تنتمي إلى جدة بهوية واضحة، لا نسخة غربية ولا استنساخ تراثي.',
+        en: 'Hijazi architecture solved climate and privacy centuries ago through the rawshan, the courtyard and stone. We reinterpret that wisdom in a clean modern language — a villa that belongs to Jeddah with a clear identity, neither a Western copy nor a heritage replica.'
+      },
+      sections: [
+        {
+          heading: { ar: 'الروشان والمشربية', en: 'Rawshan and mashrabiya' },
+          body: {
+            ar: 'الستائر الخشبية المثقّبة تظلّل وتهوّي وتمنح خصوصية — نعيد تصميمها بنِسب حديثة وتنفيذ معاصر بدل النسخ الحرفي.',
+            en: 'Perforated timber screens shade, ventilate and give privacy — we redesign them in modern proportions and contemporary fabrication rather than literal copying.'
+          }
+        },
+        {
+          heading: { ar: 'الفناء والحجر', en: 'Courtyard and stone' },
+          body: {
+            ar: 'فناء داخلي يجلب الضوء والهواء إلى عمق البيت بخصوصية تامة، وحجر محلي يربط الفيلا بأرضها ويلطّف مناخها.',
+            en: 'An internal courtyard brings light and air deep into the home in full privacy, and local stone ties the villa to its ground while tempering its climate.'
+          }
+        }
+      ],
+      serviceType: 'Hijazi villa design',
+      faq: [
+        {
+          q: { ar: 'ما الفرق بين الحجازي الحديث والتراثي؟', en: 'What’s the difference between modern Hijazi and traditional?' },
+          a: { ar: 'نأخذ مبادئ الحجازي (الخصوصية، التظليل، الفناء) ونعبّر عنها بخطوط ومواد حديثة، لا بزخرفة منسوخة.', en: 'We take Hijazi principles (privacy, shading, the courtyard) and express them in modern lines and materials, not copied ornament.' }
+        },
+        {
+          q: { ar: 'هل تصممون واجهات فلل بطابع حجازي حديث؟', en: 'Do you design villa façades with a modern Hijazi character?' },
+          a: { ar: 'نعم — الواجهة الحجازية الحديثة من أكثر ما يميّز أعمالنا: حجر، روشان معاصر، وتدرّج للظل.', en: 'Yes — the modern Hijazi façade is among the most distinctive parts of our work: stone, a contemporary rawshan and layered shade.' }
+        },
+        {
+          q: { ar: 'هل يناسب هذا الطابع الأحياء الحديثة في جدة؟', en: 'Does this character suit Jeddah’s modern districts?' },
+          a: { ar: 'تماماً — يمنح الفيلا تميّزاً وهوية بين الفلل المتشابهة، مع أداء مناخي أفضل.', en: 'Perfectly — it gives the villa distinction and identity among look-alike houses, with better climate performance.' }
+        }
+      ],
+      related: ['villa-design-jeddah', 'luxury-villa-design-jeddah', 'modern-villa-design-jeddah', 'obhur-villa-design'],
+      relatedProjects: ['montashiri-villa', 'stone-majlis'],
+      image: { src: '/assets/projects/montashiri-villa/cover.webp', w: 1536, h: 960, alt: { ar: 'واجهة فيلا حجازية حديثة بالحجر في جدة', en: 'Modern Hijazi villa façade in stone, Jeddah' } }
+    }
+  ],
+
+  // ── Journal (SEO guides for pre-hire searches) ──
+  journalMeta: {
+    seoTitle: { ar: 'المدوّنة | أدلة تصميم الفلل في جدة — WB Studio', en: 'Journal | Villa Design Guides for Jeddah — WB Studio' },
+    seoDesc: {
+      ar: 'أدلة عملية لأصحاب الأراضي قبل تصميم فيلا في جدة: التكلفة، الاستعداد، الفرق بين التصور والتنفيذ، واعتبارات أبحر الساحلية.',
+      en: 'Practical guides for landowners before designing a villa in Jeddah: cost, preparation, concept vs. execution drawings, and Obhur coastal considerations.'
+    },
+    h1: { ar: 'المدوّنة', en: 'Journal' },
+    intro: {
+      ar: 'أدلة قصيرة وصادقة لمن يفكّر في بناء فيلا خاصة في جدة — لتتّخذ قرارات أوضح قبل أن تبدأ.',
+      en: 'Short, honest guides for anyone considering building a private villa in Jeddah — to help you make clearer decisions before you start.'
+    },
+    readMore: { ar: 'اقرأ الدليل', en: 'Read the guide' },
+    backToJournal: { ar: 'المدوّنة', en: 'Journal' },
+    relatedTitle: { ar: 'خدمات ذات صلة', en: 'Related services' }
+  },
+
+  journal: [
+    {
+      slug: 'villa-design-cost-jeddah',
+      date: '2026-05-20',
+      title: { ar: 'كم تكلفة تصميم فيلا في جدة؟ دليل عملي — WB Studio', en: 'How Much Does Villa Design Cost in Jeddah? A Practical Guide — WB Studio' },
+      desc: {
+        ar: 'ما الذي يحدّد تكلفة تصميم فيلا خاصة في جدة، وكيف تخطّط لميزانية التصميم بوضوح قبل أن تبدأ.',
+        en: 'What determines the cost of designing a private villa in Jeddah, and how to plan your design budget clearly before you start.'
+      },
+      h1: { ar: 'كم تكلفة تصميم فيلا في جدة؟', en: 'How much does villa design cost in Jeddah?' },
+      intro: {
+        ar: 'سؤال يطرحه كل صاحب أرض، والإجابة الصادقة: «حسب». لكن هناك عوامل واضحة تحدّد التكلفة، وفهمها يساعدك على التخطيط بثقة.',
+        en: 'It’s the first question every landowner asks, and the honest answer is “it depends.” But clear factors drive the cost, and understanding them helps you plan with confidence.'
+      },
+      sections: [
+        {
+          heading: { ar: 'ما الذي يحدّد التكلفة', en: 'What drives the cost' },
+          body: {
+            ar: 'مساحة الأرض والبناء، تعقيد التصميم، نطاق المخرجات (فكرة فقط أم حزمة تنفيذ كاملة)، ومستوى التنسيق الهندسي. كلما زاد النطاق والتفصيل، زادت القيمة والتكلفة.',
+            en: 'Plot and built-up area, design complexity, the scope of deliverables (concept only vs. a full construction package), and the level of engineering coordination. The greater the scope and detail, the greater the value — and the cost.'
+          }
+        },
+        {
+          heading: { ar: 'رسوم التصميم مقابل تكلفة البناء', en: 'Design fees vs. construction cost' },
+          body: {
+            ar: 'رسوم التصميم جزء صغير من ميزانية المشروع الكلية، لكنها الأكثر تأثيراً على النتيجة. تصميم جيد يوفّر أضعافه في التنفيذ بتقليل الأخطاء والهدر.',
+            en: 'Design fees are a small part of the total project budget, but the most influential on the outcome. Good design saves many times its cost in construction by reducing errors and waste.'
+          }
+        },
+        {
+          heading: { ar: 'كيف نوضح التكلفة', en: 'How we clarify cost' },
+          body: {
+            ar: 'نبدأ بمكالمة مجانية وتصور مبدئي مجاني، ثم نوضح نطاق العمل والرسوم بالكامل قبل أي اتفاق مدفوع — بلا مفاجآت.',
+            en: 'We start with a free call and a free preliminary concept, then clarify the scope and fees fully before any paid agreement — no surprises.'
+          }
+        }
+      ],
+      related: ['villa-design-jeddah', 'luxury-villa-design-jeddah']
+    },
+    {
+      slug: 'before-designing-private-villa',
+      date: '2026-04-28',
+      title: { ar: 'ما الذي تجهّزه قبل تصميم فيلتك الخاصة — WB Studio', en: 'What to Prepare Before Designing Your Private Villa — WB Studio' },
+      desc: {
+        ar: 'قائمة عملية بما تحتاج تجهيزه — صك الأرض، الاحتياجات، الميزانية، والمراجع — قبل بدء تصميم فيلتك في جدة.',
+        en: 'A practical checklist of what to prepare — your deed, needs, budget and references — before starting your villa design in Jeddah.'
+      },
+      h1: { ar: 'ما الذي تجهّزه قبل تصميم فيلتك', en: 'What to prepare before designing your villa' },
+      intro: {
+        ar: 'كلما وضحت رؤيتك وأوراقك من البداية، كان التصميم أسرع وأدق. إليك ما نطلبه عادةً قبل الخطوة الأولى.',
+        en: 'The clearer your vision and paperwork from the start, the faster and more accurate the design. Here’s what we usually ask for before the first step.'
+      },
+      sections: [
+        {
+          heading: { ar: 'أوراق الأرض', en: 'The plot documents' },
+          body: {
+            ar: 'صك الأرض، الكروكي/المخطط، ومساحة وأبعاد الأرض واتجاهها — تحدّد ما يمكن بناؤه وكيف توجَّه الفيلا.',
+            en: 'The deed, the site plan/croquis, and the plot’s area, dimensions and orientation — these define what can be built and how the villa is oriented.'
+          }
+        },
+        {
+          heading: { ar: 'احتياجات العائلة', en: 'Your family’s needs' },
+          body: {
+            ar: 'عدد الغرف، فراغات الضيافة، خصوصية النساء، احتياجات السائق والخدم، والمستقبل (توسّع، أطفال). كلما صدقت القائمة، نجح التصميم.',
+            en: 'Number of rooms, hospitality spaces, women’s privacy, driver and staff needs, and the future (expansion, children). The more honest the list, the better the design.'
+          }
+        },
+        {
+          heading: { ar: 'الميزانية والمراجع', en: 'Budget and references' },
+          body: {
+            ar: 'نطاق ميزانية واقعي وصور لمشاريع تعجبك — لا لننسخها، بل لنفهم ذوقك بدقة.',
+            en: 'A realistic budget range and images of projects you like — not to copy, but to understand your taste precisely.'
+          }
+        }
+      ],
+      related: ['villa-design-jeddah', 'modern-villa-design-jeddah']
+    },
+    {
+      slug: 'concept-design-vs-execution-drawings',
+      date: '2026-04-10',
+      title: { ar: 'التصور المبدئي مقابل مخططات التنفيذ: الفرق — WB Studio', en: 'Concept Design vs. Execution Drawings: The Difference — WB Studio' },
+      desc: {
+        ar: 'ما الفرق بين التصور المعماري ومخططات التنفيذ (IFC)، ولماذا تحتاج الاثنين لبناء فيلا ناجحة في جدة.',
+        en: 'The difference between architectural concept and execution (IFC) drawings, and why you need both to build a successful villa in Jeddah.'
+      },
+      h1: { ar: 'التصور المبدئي مقابل مخططات التنفيذ', en: 'Concept design vs. execution drawings' },
+      intro: {
+        ar: 'كثير من المشاكل في الموقع تبدأ من خلط هاتين المرحلتين. فهم الفرق يحميك من التأخير والتكاليف الإضافية.',
+        en: 'Many problems on site begin with confusing these two stages. Understanding the difference protects you from delays and extra costs.'
+      },
+      sections: [
+        {
+          heading: { ar: 'التصور المعماري', en: 'The architectural concept' },
+          body: {
+            ar: 'يحدّد الفكرة والكتل والفراغات والأجواء — الرؤية. يجيب عن «كيف ستبدو الفيلا وكيف نعيش فيها».',
+            en: 'Defines the idea, massing, spaces and atmosphere — the vision. It answers “how will the villa look and how will we live in it.”'
+          }
+        },
+        {
+          heading: { ar: 'مخططات التنفيذ', en: 'Execution drawings' },
+          body: {
+            ar: 'تترجم الرؤية إلى تفاصيل دقيقة وأبعاد ومواصفات ومخططات منسّقة بين التخصصات — ما يبني منه المقاول فعلاً.',
+            en: 'Translate the vision into precise details, dimensions, specifications and coordinated multi-discipline drawings — what the contractor actually builds from.'
+          }
+        },
+        {
+          heading: { ar: 'لماذا تحتاج الاثنين', en: 'Why you need both' },
+          body: {
+            ar: 'تصور بلا تنفيذ يبقى حلماً، وتنفيذ بلا تصور قوي يبني بيتاً بلا روح. نقود المشروع عبر المرحلتين بتنسيق BIM كامل.',
+            en: 'A concept without execution stays a dream; execution without a strong concept builds a house without soul. We lead the project through both, with full BIM coordination.'
+          }
+        }
+      ],
+      related: ['villa-design-jeddah', 'modern-villa-design-jeddah']
+    },
+    {
+      slug: 'obhur-villa-design-considerations',
+      date: '2026-03-22',
+      title: { ar: 'اعتبارات تصميم فلل أبحر الساحلية — WB Studio', en: 'Obhur Coastal Villa Design Considerations — WB Studio' },
+      desc: {
+        ar: 'ما يجب مراعاته عند تصميم فيلا في أبحر: الإطلالة، الخصوصية الساحلية، الملوحة والرياح، والحياة الخارجية.',
+        en: 'What to consider when designing a villa in Obhur: the view, coastal privacy, salt and wind, and outdoor living.'
+      },
+      h1: { ar: 'اعتبارات تصميم فلل أبحر', en: 'Obhur coastal villa design considerations' },
+      intro: {
+        ar: 'أرض أبحر فرصة ثمينة وتحدٍّ في آنٍ. هذه أهم النقاط التي نراعيها لنحوّل الإطلالة إلى قيمة دائمة.',
+        en: 'An Obhur plot is both a precious opportunity and a challenge. These are the key points we account for to turn the view into lasting value.'
+      },
+      sections: [
+        {
+          heading: { ar: 'الإطلالة مقابل الخصوصية', en: 'View vs. privacy' },
+          body: {
+            ar: 'الانفتاح على البحر مطلوب، لكن دون كشف العائلة للجيران والطريق. الحل في التوجيه وتدرّج الشرفات والستائر المعمارية.',
+            en: 'Opening to the sea is desirable, but without exposing the family to neighbours and the street. The answer is orientation, layered terraces and architectural screens.'
+          }
+        },
+        {
+          heading: { ar: 'المناخ الساحلي', en: 'The coastal climate' },
+          body: {
+            ar: 'الملوحة والرطوبة والرياح تتطلب مواد وتفاصيل مقاومة، وتظليلاً يحمي من شمس منعكسة على الماء.',
+            en: 'Salt, humidity and wind demand resistant materials and detailing, and shading that protects from sun reflected off the water.'
+          }
+        },
+        {
+          heading: { ar: 'الحياة الخارجية', en: 'Outdoor living' },
+          body: {
+            ar: 'مسبح بإطلالة، جلسات مظللة، وسطح معيشة — قيمة أرض أبحر في خارجها بقدر داخلها.',
+            en: 'A view-facing pool, shaded seating and a rooftop — the value of an Obhur plot is in its exterior as much as its interior.'
+          }
+        }
+      ],
+      related: ['obhur-villa-design', 'luxury-villa-design-jeddah']
+    }
+  ]
 };
