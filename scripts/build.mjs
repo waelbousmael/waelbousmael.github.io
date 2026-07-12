@@ -120,9 +120,12 @@ function header(lang, active) {
       ${items.map(link).join('\n      ')}
       ${langLink('lang-link')}
     </nav>
-    <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobileMenu" aria-label="${esc(t(n.menuOpen, lang))}">
-      <span></span><span></span>
-    </button>
+    <div class="mobile-header-actions">
+      ${langLink('mobile-lang-link')}
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobileMenu" aria-label="${esc(t(n.menuOpen, lang))}">
+        <span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
 <div class="mobile-menu" id="mobileMenu" hidden>
@@ -132,7 +135,6 @@ function header(lang, active) {
   </div>
   <nav class="mobile-links" aria-label="${lang === 'ar' ? 'قائمة الجوال' : 'Mobile navigation'}">
     ${items.map(link).join('\n    ')}
-    ${langLink('lang-link')}
   </nav>
   <div class="mobile-contact">
     <a href="${waUrl(lang)}" target="_blank" rel="noopener">${esc(t(site.footer.whatsappLabel, lang))}</a>
@@ -148,7 +150,7 @@ function footer(lang) {
   const f = site.footer;
   const n = site.nav;
   return `<footer class="site-footer">
-  <div class="wrap footer-grid">
+  <div class="wrap footer-grid footer-editorial">
     <div class="footer-brand">
       <img class="stamp stamp-footer" src="/assets/icons/brand-logo.png" alt="" width="72" height="72" loading="lazy" decoding="async" />
       <span class="wordmark">WB&nbsp;Studio</span>
@@ -341,22 +343,28 @@ function renderHome(lang) {
 <body data-page="home">
 ${header(lang, null)}
 <main id="main">
-  <section class="hero" data-reveal>
-    <div class="wrap">
-      <div class="hero-brand">
+  <section class="home-hero" data-reveal>
+    <div class="wrap home-hero-grid">
+      <div class="home-hero-copy">
         <p class="eyebrow">${esc(t(h.eyebrow, lang))}</p>
-        <img class="stamp stamp-hero" src="/assets/icons/brand-logo.png" alt="" width="110" height="110" fetchpriority="high" decoding="async" />
+        <h1 class="display-xl">${esc(t(h.h1, lang))}</h1>
+        <p class="lead measure">${esc(t(h.positioning, lang))}</p>
+        <p class="offer measure">${esc(t(site.offer, lang))}</p>
+        <div class="cta-row">
+          <a class="btn btn-solid" href="${waUrl(lang)}" target="_blank" rel="noopener">${esc(t(h.ctaWhatsapp, lang))}</a>
+          <a class="btn" href="${langPath(lang, '/work/')}">${esc(t(h.ctaWork, lang))}</a>
+        </div>
       </div>
-      <h1 class="display-xl">${esc(t(h.h1, lang))}</h1>
-      <p class="lead measure">${esc(t(h.positioning, lang))}</p>
-      <p class="offer measure">${esc(t(site.offer, lang))}</p>
-      <div class="cta-row">
-        <a class="btn btn-solid" href="${waUrl(lang)}" target="_blank" rel="noopener">${esc(t(h.ctaWhatsapp, lang))}</a>
-        <a class="btn" href="${langPath(lang, '/work/')}">${esc(t(h.ctaWork, lang))}</a>
+      <div class="home-hero-media">
+        ${img(h.heroImage, lang, { eager: true })}
       </div>
     </div>
   </section>
-  <div class="bleed" data-reveal>${img(h.heroImage, lang, { eager: true })}</div>
+  <div class="wrap">
+    <ul class="trust-strip" aria-label="${lang === 'ar' ? 'مزايا الاستوديو' : 'Studio credentials'}">
+      ${h.trustItems.map((item) => `<li>${esc(t(item, lang))}</li>`).join('\n      ')}
+    </ul>
+  </div>
 
   <section class="section" data-reveal>
     <div class="wrap">
@@ -364,20 +372,25 @@ ${header(lang, null)}
         <h2 class="display">${esc(t(h.selectedTitle, lang))}</h2>
         <a class="text-link" href="${langPath(lang, '/work/')}">${esc(t(h.allWork, lang))} ${arrow(lang)}</a>
       </div>
-      <div class="project-grid home-grid">
+      <div class="home-work-grid">
         ${featured.map((p, i) => projectCard(p, lang, { wide: i === 0 })).join('\n        ')}
       </div>
     </div>
   </section>
 
-  <section class="section divided" data-reveal>
-    <div class="wrap">
-      <div class="section-head">
+  <section class="section home-services" data-reveal>
+    <div class="wrap home-services-grid">
+      <div>
+        <p class="eyebrow">${esc(t(site.nav.services, lang))}</p>
         <h2 class="display">${esc(t(site.services.h1, lang))}</h2>
-        <a class="text-link" href="${langPath(lang, '/services/')}">${esc(t(site.nav.services, lang))} ${arrow(lang)}</a>
       </div>
-      <div class="svc-list">
-        ${site.landings.map((l) => svcCard(l, lang, 'h3')).join('\n        ')}
+      <div class="home-service-list">
+        ${h.serviceThemes.map((item) => `<a href="${langPath(lang, item.href)}">
+          <h3>${esc(t(item.title, lang))}</h3>
+          <p>${esc(t(item.text, lang))}</p>
+          <span aria-hidden="true">${arrow(lang)}</span>
+        </a>`).join('\n        ')}
+        <a class="home-services-all" href="${langPath(lang, '/services/')}">${esc(t(site.nav.services, lang))} ${arrow(lang)}</a>
       </div>
     </div>
   </section>
