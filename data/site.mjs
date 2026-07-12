@@ -80,6 +80,29 @@ export default {
     },
     ctaWhatsapp: { ar: 'احجز مكالمة مجانية عبر واتساب', en: 'Book a free call on WhatsApp' },
     ctaWork: { ar: 'شاهد الأعمال', en: 'View the work' },
+    trustItems: [
+      { ar: 'خبرة تتجاوز 12 عاماً', en: '12+ years of experience' },
+      { ar: 'معماري ومنسق BIM', en: 'Architect & BIM coordinator' },
+      { ar: 'جدة · السعودية · الخليج', en: 'Jeddah · Saudi Arabia · GCC' },
+      { ar: 'من الفكرة إلى مخططات التنفيذ', en: 'From concept to construction documentation' }
+    ],
+    serviceThemes: [
+      {
+        title: { ar: 'تصميم فيلا خاصة في جدة', en: 'Private villa design in Jeddah' },
+        text: { ar: 'من قراءة الأرض والاحتياجات إلى فكرة معمارية بهوية واضحة.', en: 'From reading the plot and brief to an architectural idea with a clear identity.' },
+        href: '/villa-design-jeddah/'
+      },
+      {
+        title: { ar: 'الخصوصية والضيافة والمناخ', en: 'Privacy, hospitality and climate' },
+        text: { ar: 'فراغات توازن حياة العائلة واستقبال الضيوف والضوء والتظليل.', en: 'Spaces balancing family life, hospitality, daylight and shade.' },
+        href: '/modern-villa-design-jeddah/'
+      },
+      {
+        title: { ar: 'تصميم جاهز للتنفيذ وتنسيق BIM', en: 'Build-ready design & BIM coordination' },
+        text: { ar: 'وضوح بين المعماري والإنشائي والميكانيكي قبل الوصول إلى الموقع.', en: 'Clarity across architectural, structural and MEP disciplines before site work.' },
+        href: '/approach/'
+      }
+    ],
     heroImage: {
       src: '/assets/images/home-hero.webp', w: 1448, h: 1086,
       alt: {
