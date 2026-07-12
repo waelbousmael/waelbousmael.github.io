@@ -97,6 +97,69 @@ const cssRuleSelectors = (text) => {
   }
   return selectors;
 };
+const cssDeclarations = (text) => {
+  const source = withoutBlockComments(text);
+  const declarations = [];
+  const blocks = [];
+  let segmentStart = 0;
+  let quote = null;
+  let bracketDepth = 0;
+  let parenDepth = 0;
+  const addDeclaration = (end) => {
+    const match = source.slice(segmentStart, end).match(/^\s*([\w-]+)\s*:\s*([\s\S]*?)\s*$/);
+    if (match) declarations.push({ property: match[1].toLowerCase(), value: match[2], selector: blocks.at(-1) ?? '' });
+  };
+  for (let index = 0; index < source.length; index += 1) {
+    const char = source[index];
+    if (quote) {
+      if (char === '\\') index += 1;
+      else if (char === quote) quote = null;
+      continue;
+    }
+    if (char === '"' || char === "'") quote = char;
+    else if (char === '[') bracketDepth += 1;
+    else if (char === ']') bracketDepth = Math.max(0, bracketDepth - 1);
+    else if (char === '(') parenDepth += 1;
+    else if (char === ')') parenDepth = Math.max(0, parenDepth - 1);
+    else if (char === '{' && bracketDepth === 0 && parenDepth === 0) {
+      blocks.push(source.slice(segmentStart, index).trim());
+      segmentStart = index + 1;
+    } else if (char === ';' && bracketDepth === 0 && parenDepth === 0) {
+      addDeclaration(index);
+      segmentStart = index + 1;
+    } else if (char === '}' && bracketDepth === 0 && parenDepth === 0) {
+      addDeclaration(index);
+      blocks.pop();
+      segmentStart = index + 1;
+    }
+  }
+  return declarations;
+};
+const withoutCssStringsAndUrls = (text) => {
+  let masked = '';
+  for (let index = 0; index < text.length;) {
+    const char = text[index];
+    if (char === '"' || char === "'") {
+      const start = index;
+      const quote = char;
+      index += 1;
+      while (index < text.length && text[index] !== quote) index += text[index] === '\\' ? 2 : 1;
+      index = Math.min(text.length, index + 1);
+      masked += ' '.repeat(index - start);
+      continue;
+    }
+    const urlMatch = text.slice(index).match(/^url\s*\(/i);
+    if (urlMatch && (index === 0 || !/[\w-]/.test(text[index - 1]))) {
+      const start = index;
+      index = skipBalanced(text, index + urlMatch[0].length - 1, '(', ')');
+      masked += ' '.repeat(index - start);
+      continue;
+    }
+    masked += char;
+    index += 1;
+  }
+  return masked;
+};
 const hasCssSelector = (text, selector, label) => {
   assert.match(selector, /^\.[a-z_-][\w-]*$/i, 'CSS selector guard accepts a single class selector');
   const escapedSelector = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -105,11 +168,12 @@ const hasCssSelector = (text, selector, label) => {
 };
 const assertEditorialCss = (text, requireLockedTokens = false) => {
   const source = withoutBlockComments(text);
+  const declarations = cssDeclarations(source);
   const isZeroValue = (value) => /^0(?:px|rem|em|%|vh|vw|vmin|vmax|ch|ex|cm|mm|in|pt|pc|q)?$/i.test(value);
   assert.doesNotMatch(source, /\bstamp-in\b/i, 'CSS must not contain the stamp-in motion token');
 
   for (const match of source.matchAll(/\bbox-shadow\s*:\s*([^;{}]+)/gi)) {
-    const value = match[1].trim();
+    const value = match[1].replace(/\s*!important\s*$/i, '').trim();
     const parts = value.split(/\s+/);
     const isTransparentZeroShadow = parts.length === 5
       && parts.slice(0, 4).every(isZeroValue)
@@ -137,6 +201,15 @@ const assertEditorialCss = (text, requireLockedTokens = false) => {
     ['--line', 'rgba(30,28,25,.13)'],
     ['--line-strong', 'rgba(30,28,25,.38)']
   ]);
+  for (const [token, expected] of lockedColors) {
+    const matches = declarations.filter(({ property }) => property === token);
+    if (requireLockedTokens || matches.length > 0) {
+      assert.equal(matches.length, 1, `CSS must declare locked token ${token} exactly once`);
+      assert.equal(matches[0].selector, ':root', `CSS must declare locked token ${token} exactly once in canonical :root`);
+      assert.equal(matches[0].value.replace(/\s+/g, '').toLowerCase(), expected, `CSS ${token} must retain its locked value`);
+    }
+  }
+
   const rootMatch = source.match(/:root\s*\{([^{}]*)\}/i);
   let sourceWithoutLockedColors = source;
   if (rootMatch) {
@@ -145,19 +218,29 @@ const assertEditorialCss = (text, requireLockedTokens = false) => {
       const escapedToken = token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const declaration = new RegExp(`(${escapedToken}\\s*:\\s*)([^;{}]+)(\\s*;)`, 'i');
       const match = rootMatch[0].match(declaration);
-      if (requireLockedTokens) assert.ok(match, `CSS :root must declare ${token} with its locked value`);
       if (!match) continue;
-      assert.equal(match[2].replace(/\s+/g, '').toLowerCase(), expected, `CSS ${token} must retain its locked value`);
       rootWithoutLockedColors = rootWithoutLockedColors.replace(declaration, `$1var(--locked-color)$3`);
     }
     sourceWithoutLockedColors = source.replace(rootMatch[0], rootWithoutLockedColors);
-  } else if (requireLockedTokens) {
-    assert.fail('CSS must contain a :root block with locked palette tokens');
   }
+
+  const namedColors = new Set(`aliceblue antiquewhite aqua aquamarine azure beige bisque black blanchedalmond blue blueviolet brown burlywood cadetblue chartreuse chocolate coral cornflowerblue cornsilk crimson cyan darkblue darkcyan darkgoldenrod darkgray darkgreen darkgrey darkkhaki darkmagenta darkolivegreen darkorange darkorchid darkred darksalmon darkseagreen darkslateblue darkslategray darkslategrey darkturquoise darkviolet deeppink deepskyblue dimgray dimgrey dodgerblue firebrick floralwhite forestgreen fuchsia gainsboro ghostwhite gold goldenrod gray green greenyellow grey honeydew hotpink indianred indigo ivory khaki lavender lavenderblush lawngreen lemonchiffon lightblue lightcoral lightcyan lightgoldenrodyellow lightgray lightgreen lightgrey lightpink lightsalmon lightseagreen lightskyblue lightslategray lightslategrey lightsteelblue lightyellow lime limegreen linen magenta maroon mediumaquamarine mediumblue mediumorchid mediumpurple mediumseagreen mediumslateblue mediumspringgreen mediumturquoise mediumvioletred midnightblue mintcream mistyrose moccasin navajowhite navy oldlace olive olivedrab orange orangered orchid palegoldenrod palegreen paleturquoise palevioletred papayawhip peachpuff peru pink plum powderblue purple rebeccapurple red rosybrown royalblue saddlebrown salmon sandybrown seagreen seashell sienna silver skyblue slateblue slategray slategrey snow springgreen steelblue tan teal thistle tomato turquoise violet wheat white whitesmoke yellow yellowgreen`.split(/\s+/));
+  const colorBearingProperty = /^(?:color|[\w-]+-color|background|border|border-(?:block|inline)(?:-(?:start|end))?|border-(?:top|right|bottom|left)|outline|fill|stroke|text-shadow|box-shadow)$/;
+  for (const { property, value } of declarations.filter(({ property }) => colorBearingProperty.test(property))) {
+    const inspectableValue = withoutCssStringsAndUrls(value);
+    for (const match of inspectableValue.matchAll(/var\(\s*(--[\w-]+)/gi)) {
+      assert.ok(lockedColors.has(match[1].toLowerCase()), `CSS ${property} must use a locked color token`);
+    }
+    for (const match of inspectableValue.matchAll(/\b[a-z][a-z0-9-]*\b/gi)) {
+      assert.ok(!namedColors.has(match[0].toLowerCase()), `CSS must not contain hardcoded or named colors: ${property}: ${value}`);
+    }
+  }
+
+  const inspectableSource = withoutCssStringsAndUrls(sourceWithoutLockedColors);
   assert.doesNotMatch(
-    sourceWithoutLockedColors,
-    /#[0-9a-f]{3,8}\b|\b(?:rgb|rgba|hsl|hsla)\s*\(/i,
-    'CSS must not contain hardcoded colors outside locked :root token declarations'
+    inspectableSource,
+    /#[0-9a-f]{3,8}\b|\b(?:rgb|rgba|hsl|hsla|hwb|lab|lch|oklab|oklch|color)\s*\(/i,
+    'CSS must not contain hardcoded or named colors outside locked :root token declarations'
   );
 };
 const leadForm = (page, label) => {
@@ -207,7 +290,7 @@ for (const [probe, expected] of [
   ['@keyframes stamp-in { from { opacity: 0; } }', /stamp-in motion token/],
   [':root { --radius : 1px; } .panel { border-radius : var(--radius); }', /radius token must be zero-valued/],
   ['.panel { border-radius : 50%; }', /radius must resolve to zero/],
-  ['.panel { color : #fff; }', /hardcoded colors/]
+  ['.panel { color : #fff; }', /hardcoded or named colors/]
 ]) {
   assert.throws(() => assertEditorialCss(probe), expected, `Editorial CSS guard must reject: ${probe}`);
 }
@@ -222,13 +305,39 @@ assert.throws(
 );
 assert.throws(
   () => assertEditorialCss('.panel { color: rgb(1, 2, 3); }'),
-  /hardcoded colors/,
+  /hardcoded or named colors/,
   'Editorial CSS guard must reject rgb colors outside palette tokens'
 );
 assert.throws(
   () => assertEditorialCss('.panel { color: hsl(0 0% 0%); }'),
-  /hardcoded colors/,
+  /hardcoded or named colors/,
   'Editorial CSS guard must reject hsl colors outside palette tokens'
+);
+assert.doesNotThrow(
+  () => assertEditorialCss('.panel { background: url(data:image/svg+xml,<svg fill=red></svg>); } /* color: oklch(0% 0 0); */'),
+  'Editorial CSS guard must ignore color-like content inside URLs and comments'
+);
+for (const colorValue of [
+  'red',
+  'oklch(50% 0.2 30)',
+  'hwb(30 10% 20%)',
+  'color(display-p3 1 0 0)'
+]) {
+  assert.throws(
+    () => assertEditorialCss(`.panel { color: ${colorValue}; }`),
+    /hardcoded or named colors/,
+    `Editorial CSS guard must reject color: ${colorValue}`
+  );
+}
+assert.throws(
+  () => assertEditorialCss(':root { --bg: #faf8f4; --bg: #faf8f4; }'),
+  /exactly once/,
+  'Editorial CSS guard must reject duplicate locked token declarations'
+);
+assert.throws(
+  () => assertEditorialCss(':root { --bg: #faf8f4; } html { --bg: var(--surface); }'),
+  /exactly once/,
+  'Editorial CSS guard must reject locked token overrides outside :root'
 );
 assert.doesNotThrow(
   () => assertEditorialCss('.panel { box-shadow: none; }'),
@@ -238,10 +347,23 @@ assert.doesNotThrow(
   () => assertEditorialCss('.panel { box-shadow: 0 0 0 0 transparent; }'),
   'Editorial CSS guard must allow a safely recognized zero-effect shadow'
 );
+assert.doesNotThrow(
+  () => assertEditorialCss('.panel { box-shadow: none !important; }'),
+  'Editorial CSS guard must allow no-shadow with !important'
+);
+assert.doesNotThrow(
+  () => assertEditorialCss('.panel { box-shadow: 0 0 0 0 transparent !important; }'),
+  'Editorial CSS guard must allow a safely recognized zero-effect shadow with !important'
+);
 assert.throws(
   () => assertEditorialCss('.panel { box-shadow: 0 1px 2px var(--line); }'),
   /box shadows/,
   'Editorial CSS guard must reject visible shadows'
+);
+assert.throws(
+  () => assertEditorialCss('.panel { box-shadow: 0 1px 2px var(--line) !important; }'),
+  /box shadows/,
+  'Editorial CSS guard must reject visible shadows with !important'
 );
 
 assert.throws(
