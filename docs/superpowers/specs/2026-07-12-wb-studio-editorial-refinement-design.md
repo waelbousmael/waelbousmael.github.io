@@ -131,7 +131,7 @@ Desktop presents four restrained columns; mobile collapses to a two-column grid.
 - Lead with project title and cover image, followed by a compact facts table.
 - Place project intent and design reasoning before the gallery.
 - Use recorded image dimensions to create a deliberate landscape/portrait gallery rhythm.
-- Preserve lazy loading, intrinsic dimensions, captions where present, credits, next-project navigation, and related-service links.
+- Preserve lazy loading, intrinsic dimensions, captions where present, credits, and next-project navigation.
 - Do not invent project claims, client names, built status, or testimonials.
 
 ## Services Hub and SEO Landing Pages
