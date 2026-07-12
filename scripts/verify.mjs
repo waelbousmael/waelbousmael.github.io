@@ -8,14 +8,73 @@ import site from '../data/site.mjs';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (relative) => fs.readFileSync(path.join(ROOT, relative), 'utf8');
 const has = (text, fragment, label) => assert.ok(text.includes(fragment), label);
-const hasClasses = (text, requiredClasses, label) => {
+const htmlEscape = (value) => String(value)
+  .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+  .replaceAll('"', '&quot;');
+const escapeRegExp = (value) => String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const VOID_ELEMENTS = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr']);
+const classTokens = (openingTag) => {
+  const classAttribute = openingTag.match(/[\t\n\f\r ]class="([^"]*)"/);
+  return new Set((classAttribute?.[1] ?? '').trim().split(/\s+/).filter(Boolean));
+};
+const hasClassTokens = (openingTag, requiredClasses) => {
   const required = Array.isArray(requiredClasses) ? requiredClasses : [requiredClasses];
-  const hasMatchingElement = [...text.matchAll(/<[^>]+>/g)].some(([element]) => {
-    const classAttribute = element.match(/[\t\n\f\r ]class="([^"]*)"/);
-    if (!classAttribute) return false;
-    const tokens = new Set(classAttribute[1].trim().split(/\s+/).filter(Boolean));
-    return required.every((className) => tokens.has(className));
-  });
+  const tokens = classTokens(openingTag);
+  return required.every((className) => tokens.has(className));
+};
+const elements = (text, { tag, classes = [] } = {}) => {
+  const found = [];
+  const openingTags = /<([a-z][\w:-]*)\b[^>]*>/gi;
+  for (const match of text.matchAll(openingTags)) {
+    const elementTag = match[1].toLowerCase();
+    if (tag && elementTag !== tag.toLowerCase()) continue;
+    if (!hasClassTokens(match[0], classes)) continue;
+
+    const start = match.index;
+    const openingEnd = start + match[0].length;
+    if (VOID_ELEMENTS.has(elementTag) || /\/\s*>$/.test(match[0])) {
+      found.push({ tag: elementTag, open: match[0], inner: '', outer: match[0], index: start });
+      continue;
+    }
+
+    const sameTag = new RegExp(`<\\/?${escapeRegExp(elementTag)}\\b[^>]*>`, 'gi');
+    sameTag.lastIndex = openingEnd;
+    let depth = 1;
+    let closing;
+    for (const candidate of text.matchAll(sameTag)) {
+      if (candidate[0].startsWith('</')) depth -= 1;
+      else if (!/\/\s*>$/.test(candidate[0])) depth += 1;
+      if (depth === 0) {
+        closing = candidate;
+        break;
+      }
+    }
+    assert.ok(closing, `HTML element <${elementTag}> must have a closing tag`);
+    const closingStart = closing.index;
+    const end = closingStart + closing[0].length;
+    found.push({
+      tag: elementTag,
+      open: match[0],
+      inner: text.slice(openingEnd, closingStart),
+      outer: text.slice(start, end),
+      index: start
+    });
+  }
+  return found;
+};
+const elementWithClasses = (text, requiredClasses, label, tag) => {
+  const matches = elements(text, { tag, classes: requiredClasses });
+  assert.ok(matches.length > 0, label);
+  return matches[0];
+};
+const attribute = (element, name, label) => {
+  const match = element.open.match(new RegExp(`[\\t\\n\\f\\r ]${escapeRegExp(name)}="([^"]*)"`));
+  assert.ok(match, label);
+  return match[1];
+};
+const hasAttribute = (element, name) => new RegExp(`[\\t\\n\\f\\r ]${escapeRegExp(name)}(?:[\\t\\n\\f\\r =/>])`).test(element.open);
+const hasClasses = (text, requiredClasses, label) => {
+  const hasMatchingElement = [...text.matchAll(/<[^>]+>/g)].some(([openingTag]) => hasClassTokens(openingTag, requiredClasses));
   assert.ok(hasMatchingElement, label);
 };
 const assertPair = (field, label) => {
@@ -248,17 +307,106 @@ const leadForm = (page, label) => {
   assert.ok(match, `${label} contact page must contain the lead form`);
   return match[0];
 };
+const assertWorkCredits = (page, lang, prefix, label) => {
+  const credits = elementWithClasses(page, 'work-credits', `${label} work page must retain its scoped credits note`);
+  const links = elements(credits.inner, { tag: 'a' });
+  assert.ok(links.length > 0, `${label} work credits must contain a link`);
+  assert.equal(attribute(links[0], 'href', `${label} work credits link must have an href`), `${prefix}/credits/`, `${label} work credits must link to the localized credits page`);
+  has(links[0].inner, htmlEscape(site.work.noteLink[lang]), `${label} work credits must retain the localized note link text`);
+};
+const assertImage = (scope, image, lang, { eager, label }) => {
+  const imageElement = elements(scope, { tag: 'img' })[0];
+  assert.ok(imageElement, `${label} must contain an image`);
+  assert.equal(attribute(imageElement, 'src', `${label} image must have src`), htmlEscape(image.src), `${label} must retain its image source`);
+  assert.equal(attribute(imageElement, 'width', `${label} image must have intrinsic width`), String(image.w), `${label} must retain intrinsic width`);
+  assert.equal(attribute(imageElement, 'height', `${label} image must have intrinsic height`), String(image.h), `${label} must retain intrinsic height`);
+  assert.equal(attribute(imageElement, 'alt', `${label} image must have localized alt text`), htmlEscape(image.alt[lang]), `${label} must retain localized escaped alt text`);
+  assert.equal(attribute(imageElement, 'decoding', `${label} image must declare decoding semantics`), 'async', `${label} image must decode asynchronously`);
+  if (eager) {
+    assert.equal(attribute(imageElement, 'fetchpriority', `${label} eager image must have fetch priority`), 'high', `${label} eager image must use high fetch priority`);
+    assert.ok(!hasAttribute(imageElement, 'loading'), `${label} eager image must not be lazy loaded`);
+  } else {
+    assert.equal(attribute(imageElement, 'loading', `${label} lazy image must declare loading semantics`), 'lazy', `${label} gallery image must be lazy loaded`);
+    assert.ok(!hasAttribute(imageElement, 'fetchpriority'), `${label} lazy image must not use eager fetch priority`);
+  }
+};
+const assertProjectPage = (page, project, projectIndex, lang, prefix, label) => {
+  const pageLabel = `${label} ${project.slug}`;
+  const heading = elementWithClasses(page, 'display-xl', `${pageLabel} must retain its page heading`, 'h1');
+  has(heading.inner, htmlEscape(project.title[lang]), `${pageLabel} heading must retain the localized title`);
+
+  const cover = elementWithClasses(page, 'project-cover', `${pageLabel} must retain its cover figure`, 'figure');
+  assert.ok(heading.index < cover.index, `${pageLabel} heading must remain before the project cover`);
+  assertImage(cover.inner, project.cover, lang, { eager: true, label: `${pageLabel} cover` });
+
+  const intro = elementWithClasses(page, 'project-intro-grid', `${pageLabel} must use the editorial intro grid`);
+  const story = elementWithClasses(intro.inner, ['project-story', 'flow'], `${pageLabel} must group its narrative in the project story`);
+  const storyParagraphs = elements(story.inner, { tag: 'p' });
+  assert.equal(storyParagraphs.length, project.body.length + 1, `${pageLabel} story must contain the thesis followed by every body paragraph`);
+  assert.ok(hasClassTokens(storyParagraphs[0].open, 'thesis'), `${pageLabel} story must begin with the thesis`);
+  has(storyParagraphs[0].inner, htmlEscape(project.thesis[lang]), `${pageLabel} must retain its localized thesis`);
+  for (const [bodyIndex, paragraph] of project.body.entries()) {
+    has(storyParagraphs[bodyIndex + 1].inner, htmlEscape(paragraph[lang]), `${pageLabel} must retain localized body paragraph ${bodyIndex + 1}`);
+  }
+
+  const details = elementWithClasses(intro.inner, 'details', `${pageLabel} must retain its project details`, 'dl');
+  const detailRows = elements(details.inner, { classes: 'details-row' });
+  const detailValues = [
+    [site.project.location[lang], project.location[lang]],
+    [site.project.year[lang], String(project.year)],
+    [site.project.category[lang], project.category[lang]],
+    [site.project.status[lang], project.status[lang]],
+    [site.project.services[lang], project.services[lang].join(' · ')]
+  ];
+  assert.equal(detailRows.length, detailValues.length, `${pageLabel} must retain exactly five token-matched detail rows`);
+  detailValues.forEach(([term, value], detailIndex) => {
+    const terms = elements(detailRows[detailIndex].inner, { tag: 'dt' });
+    const descriptions = elements(detailRows[detailIndex].inner, { tag: 'dd' });
+    assert.equal(terms.length, 1, `${pageLabel} detail row ${detailIndex + 1} must contain one term`);
+    assert.equal(descriptions.length, 1, `${pageLabel} detail row ${detailIndex + 1} must contain one description`);
+    has(terms[0].inner, htmlEscape(term), `${pageLabel} detail row ${detailIndex + 1} must retain its localized label`);
+    has(descriptions[0].inner, htmlEscape(value), `${pageLabel} detail row ${detailIndex + 1} must retain its data-derived value`);
+  });
+
+  const gallery = elementWithClasses(page, 'gallery', `${pageLabel} must retain its gallery`);
+  const galleryFigures = elements(gallery.inner, { tag: 'figure' });
+  assert.equal(galleryFigures.length, project.gallery.length, `${pageLabel} must retain every gallery figure`);
+  project.gallery.forEach((galleryImage, galleryIndex) => {
+    const figure = galleryFigures[galleryIndex];
+    const expectedLayout = galleryImage.w >= galleryImage.h ? 'g-wide' : 'g-tall';
+    assert.ok(hasClassTokens(figure.open, expectedLayout), `${pageLabel} gallery figure ${galleryIndex + 1} must use ${expectedLayout}`);
+    assert.ok(hasAttribute(figure, 'data-reveal'), `${pageLabel} gallery figure ${galleryIndex + 1} must retain data-reveal`);
+    assertImage(figure.inner, galleryImage, lang, { eager: false, label: `${pageLabel} gallery figure ${galleryIndex + 1}` });
+  });
+
+  const galleryNotes = elements(page, { classes: 'gallery-note' });
+  if (project.placeholder) {
+    assert.equal(galleryNotes.length, 1, `${pageLabel} placeholder project must retain one gallery note`);
+    has(galleryNotes[0].inner, htmlEscape(site.project.galleryNote[lang]), `${pageLabel} gallery note must retain its localized text`);
+    const noteLink = elements(galleryNotes[0].inner, { tag: 'a' })[0];
+    assert.ok(noteLink, `${pageLabel} gallery note must contain its credits link`);
+    assert.equal(attribute(noteLink, 'href', `${pageLabel} gallery note link must have href`), `${prefix}/credits/`, `${pageLabel} gallery note must use the localized credits href`);
+    has(noteLink.inner, htmlEscape(site.project.galleryNoteLink[lang]), `${pageLabel} gallery note must retain localized link text`);
+  } else {
+    assert.equal(galleryNotes.length, 0, `${pageLabel} non-placeholder project must not render a gallery note`);
+  }
+
+  const next = projects[(projectIndex + 1) % projects.length];
+  const nextContainer = elementWithClasses(page, 'next-project', `${pageLabel} must retain its next-project container`);
+  has(nextContainer.inner, htmlEscape(site.project.nextProject[lang]), `${pageLabel} must retain the localized next-project label`);
+  const nextLink = elementWithClasses(nextContainer.inner, 'next-link', `${pageLabel} must retain its next-project link`, 'a');
+  assert.equal(attribute(nextLink, 'href', `${pageLabel} next-project link must have href`), `${prefix}/work/${next.slug}/`, `${pageLabel} next-project link must target the correct localized project`);
+  has(nextLink.inner, htmlEscape(next.title[lang]), `${pageLabel} next-project link must retain the localized project title`);
+  has(nextLink.inner, lang === 'ar' ? '←' : '→', `${pageLabel} next-project link must retain the directional arrow`);
+};
 
 const homeAr = read('index.html');
 const homeEn = read('en/index.html');
 const workAr = read('work/index.html');
 const workEn = read('en/work/index.html');
-const projectAr = read('work/montashiri-villa/index.html');
-const projectEn = read('en/work/montashiri-villa/index.html');
 const contactAr = read('contact/index.html');
 const contactEn = read('en/contact/index.html');
 const { projects } = JSON.parse(read('data/projects.json'));
-const sampleProject = projects.find(({ slug }) => slug === 'montashiri-villa');
 const css = read('assets/css/site.css');
 const siteJs = read('assets/js/site.js');
 const contactJs = read('assets/js/contact.js');
@@ -426,36 +574,60 @@ for (const [label, page] of [['Arabic', homeAr], ['English', homeEn]]) {
   hasClasses(page, ['footer-grid', 'footer-editorial'], `${label} home must use the editorial footer`);
 }
 
-assert.ok(sampleProject, 'Portfolio data must retain the Montashiri Villa sample project');
-for (const [label, page, prefix] of [
-  ['Arabic', workAr, ''],
-  ['English', workEn, '/en']
+for (const [label, page, prefix, lang] of [
+  ['Arabic', workAr, '', 'ar'],
+  ['English', workEn, '/en', 'en']
 ]) {
   hasClasses(page, 'work-editorial-grid', `${label} work page must use the editorial portfolio grid`);
-  has(page, `href="${prefix}/credits/"`, `${label} work page must retain its credits link`);
+  assertWorkCredits(page, lang, prefix, label);
   for (const project of projects) {
     has(page, `href="${prefix}/work/${project.slug}/"`, `${label} work page must retain the ${project.slug} project card`);
   }
 }
 
-const nextProject = projects[(projects.indexOf(sampleProject) + 1) % projects.length];
-for (const [label, lang, page, prefix] of [
-  ['Arabic', 'ar', projectAr, ''],
-  ['English', 'en', projectEn, '/en']
+assert.throws(
+  () => assertWorkCredits(`<footer><a href="/credits/">${htmlEscape(site.work.noteLink.en)}</a></footer><p class="work-credits">Missing</p>`, 'en', '', 'Probe'),
+  /work credits/,
+  'Work credits checks must reject a credits link found only in the footer'
+);
+
+for (const [label, lang, prefix] of [
+  ['Arabic', 'ar', ''],
+  ['English', 'en', '/en']
 ]) {
-  hasClasses(page, 'project-intro-grid', `${label} sample project must use the editorial intro grid`);
-  hasClasses(page, ['project-story', 'flow'], `${label} sample project must group its narrative in the project story`);
-  has(page, `src="${sampleProject.cover.src}"`, `${label} sample project must retain its cover image`);
-  for (const image of sampleProject.gallery) {
-    has(page, `src="${image.src}"`, `${label} sample project must retain gallery image ${image.src}`);
-  }
-  has(page, sampleProject.thesis[lang], `${label} sample project must retain its thesis`);
-  for (const paragraph of sampleProject.body) {
-    has(page, paragraph[lang], `${label} sample project must retain every narrative paragraph`);
-  }
-  assert.equal((page.match(/class="details-row"/g) ?? []).length, 5, `${label} sample project must retain all five detail rows`);
-  has(page, `href="${prefix}/work/${nextProject.slug}/"`, `${label} sample project must retain next-project navigation`);
+  projects.forEach((project, projectIndex) => {
+    const localizedDirectory = prefix ? `${prefix.slice(1)}/` : '';
+    const page = read(`${localizedDirectory}work/${project.slug}/index.html`);
+    assertProjectPage(page, project, projectIndex, lang, prefix, label);
+  });
 }
+
+const semanticProbeProject = projects[0];
+const semanticProbePage = read(`en/work/${semanticProbeProject.slug}/index.html`);
+assert.throws(
+  () => assertProjectPage(
+    semanticProbePage.replace(/(<figure class="g-(?:wide|tall)") data-reveal/, '$1'),
+    semanticProbeProject,
+    0,
+    'en',
+    '/en',
+    'Probe'
+  ),
+  /gallery figure 1 must retain data-reveal/,
+  'Project checks must reject a gallery figure that loses reveal semantics'
+);
+assert.throws(
+  () => assertProjectPage(
+    semanticProbePage.replace(' loading="lazy"', ''),
+    semanticProbeProject,
+    0,
+    'en',
+    '/en',
+    'Probe'
+  ),
+  /gallery figure 1 lazy image must declare loading semantics/,
+  'Project checks must reject a gallery image that loses lazy-loading semantics'
+);
 
 has(homeAr, '<link rel="canonical" href="https://wbstudio.xyz/" />', 'Arabic home canonical must target the root');
 has(homeAr, '<link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/" />', 'Arabic home must link its Arabic alternate');
