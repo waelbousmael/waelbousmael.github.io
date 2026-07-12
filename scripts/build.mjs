@@ -451,8 +451,8 @@ ${header(lang, 'work')}
   </section>
   <section class="section" data-reveal>
     <div class="wrap">
-      <div class="project-grid">
-        ${projects.map((p, i) => projectCard(p, lang, { eager: i < 2 })).join('\n        ')}
+      <div class="work-editorial-grid">
+        ${projects.map((p, i) => projectCard(p, lang, { wide: i === 0, eager: i === 0 })).join('\n        ')}
       </div>
       <p class="note work-credits"><a href="${langPath(lang, '/credits/')}">${esc(t(w.noteLink, lang))}</a></p>
     </div>
@@ -507,20 +507,14 @@ ${header(lang, 'work')}
       <figure class="project-cover">${img(p.cover, lang, { eager: true })}</figure>
     </div>
     <section class="section-sm" data-reveal>
-      <div class="wrap narrow">
-        <p class="thesis">${esc(t(p.thesis, lang))}</p>
-      </div>
-    </section>
-    <section class="section-sm" data-reveal>
-      <div class="wrap narrow">
+      <div class="wrap project-intro-grid">
+        <div class="project-story flow">
+          <p class="thesis">${esc(t(p.thesis, lang))}</p>
+          ${p.body.map((para) => `<p>${esc(t(para, lang))}</p>`).join('\n          ')}
+        </div>
         <dl class="details">
           ${details.map(([l, v]) => `<div class="details-row"><dt>${esc(t(l, lang))}</dt><dd>${esc(v)}</dd></div>`).join('\n          ')}
         </dl>
-      </div>
-    </section>
-    <section class="section-sm" data-reveal>
-      <div class="wrap narrow flow">
-        ${p.body.map((para) => `<p>${esc(t(para, lang))}</p>`).join('\n        ')}
       </div>
     </section>
     <section class="section-sm">
