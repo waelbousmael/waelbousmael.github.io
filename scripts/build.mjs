@@ -314,7 +314,7 @@ function breadcrumbUI(lang, trail) {
 
 /* Service / landing card (used on the services hub, home, related sections). */
 function svcCard(x, lang, tag = 'h2') {
-  return `<a class="svc-card" href="${langPath(lang, `/${x.slug}/`)}" data-reveal>
+  return `<a class="service-editorial-row" href="${langPath(lang, `/${x.slug}/`)}" data-reveal>
     <${tag}>${esc(t(x.label, lang))}</${tag}>
     <p>${esc(t(x.summary, lang))}</p>
     <span class="svc-more">${esc(t(site.services.explore, lang))} ${arrow(lang)}</span>
@@ -571,12 +571,13 @@ ${header(lang, 'approach')}
   <section class="section divided" data-reveal>
     <div class="wrap">
       <h2 class="display">${esc(t(a.processTitle, lang))}</h2>
-      <ol class="workflow" data-reveal>
-        ${a.steps.map((s, i) => `<li class="workflow-step">
-          <div class="workflow-media">${s.image ? img(s.image, lang) : ''}</div>
-          <span class="workflow-num">0${i + 1}</span>
-          <h3>${esc(t(s.title, lang))}</h3>
-          <p>${esc(t(s.text, lang))}</p>
+      <ol class="approach-sequence" data-reveal>
+        ${a.steps.map((s, i) => `<li>
+          <span class="step-num">${String(i + 1).padStart(2, '0')}</span>
+          <div>
+            <h3>${esc(t(s.title, lang))}</h3>
+            <p>${esc(t(s.text, lang))}</p>
+          </div>
         </li>`).join('\n        ')}
       </ol>
       <p class="offer measure">${esc(t(site.offer, lang))}</p>
@@ -788,7 +789,7 @@ ${header(lang, 'services')}
   </section>
   <section class="section" data-reveal>
     <div class="wrap">
-      <div class="svc-list">
+      <div class="service-editorial-list">
         ${site.landings.map((l) => svcCard(l, lang, 'h2')).join('\n        ')}
       </div>
     </div>
@@ -826,9 +827,11 @@ ${header(lang, 'services')}
   </section>
   ${l.image ? `<div class="bleed" data-reveal>${img(l.image, lang, { eager: true })}</div>` : ''}
   <section class="section" data-reveal>
-    <div class="wrap narrow flow">
-      ${l.sections.map((sec) => `<h2 class="display">${esc(t(sec.heading, lang))}</h2>
-      <p>${esc(t(sec.body, lang))}</p>`).join('\n      ')}
+    <div class="wrap landing-content-grid">
+      ${l.sections.map((sec) => `<section class="landing-section-row">
+        <h2 class="display">${esc(t(sec.heading, lang))}</h2>
+        <p>${esc(t(sec.body, lang))}</p>
+      </section>`).join('\n      ')}
     </div>
   </section>
   ${relProjects.length ? `<section class="section divided" data-reveal>
@@ -856,7 +859,7 @@ ${header(lang, 'services')}
   ${relLandings.length ? `<section class="section divided" data-reveal>
     <div class="wrap">
       <h2 class="display">${lang === 'ar' ? 'خدمات ذات صلة' : 'Related services'}</h2>
-      <div class="svc-list">
+      <div class="service-editorial-list">
         ${relLandings.map((x) => svcCard(x, lang, 'h3')).join('\n        ')}
       </div>
     </div>
@@ -937,7 +940,7 @@ ${header(lang, 'journal')}
     ${relLandings.length ? `<section class="section-sm divided" data-reveal>
       <div class="wrap narrow">
         <h2 class="display">${esc(t(j.relatedTitle, lang))}</h2>
-        <div class="svc-list">
+        <div class="service-editorial-list">
           ${relLandings.map((x) => svcCard(x, lang, 'h3')).join('\n          ')}
         </div>
       </div>

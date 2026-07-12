@@ -232,6 +232,15 @@ const hasCssSelectorBranch = (text, selector, label) => {
   );
   assert.ok(hasExactBranch, label);
 };
+const assertCssDeclarations = (text, selector, expected, label) => {
+  const escaped = escapeRegExp(selector).replace(/\s+/g, '\\s+');
+  const match = withoutBlockComments(text).match(new RegExp(`(?:^|\\})\\s*${escaped}\\s*\\{([^{}]*)\\}`));
+  assert.ok(match, `${label} must define ${selector}`);
+  const actual = new Map([...match[1].matchAll(/([\w-]+)\s*:\s*([^;]+);/g)].map((declaration) => [declaration[1], declaration[2].trim().replace(/\s+/g, ' ')]));
+  for (const [property, value] of Object.entries(expected)) {
+    assert.equal(actual.get(property), value, `${label} ${selector} must set ${property}: ${value}`);
+  }
+};
 const assertEditorialCss = (text, requireLockedTokens = false) => {
   const source = withoutBlockComments(text);
   const declarations = cssDeclarations(source);
@@ -457,6 +466,108 @@ const assertProjectPage = (page, project, projectIndex, lang, prefix, label, por
   );
 };
 
+const jsonLdGraph = (page, label) => {
+  const match = page.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  assert.ok(match, `${label} must retain its JSON-LD graph`);
+  return JSON.parse(match[1])['@graph'];
+};
+const assertSeoShell = (page, data, lang, logicalPath, label) => {
+  const localizedPath = lang === 'ar' ? logicalPath : `/en${logicalPath}`;
+  has(page, `<title>${htmlEscape(data.seoTitle[lang])}</title>`, `${label} must retain its SEO title`);
+  has(page, `<meta name="description" content="${htmlEscape(data.seoDesc[lang])}" />`, `${label} must retain its SEO description`);
+  has(page, `<link rel="canonical" href="${site.domain}${localizedPath}" />`, `${label} must retain its canonical URL`);
+  has(page, `<link rel="alternate" hreflang="ar" href="${site.domain}${logicalPath}" />`, `${label} must retain its Arabic alternate`);
+  has(page, `<link rel="alternate" hreflang="en" href="${site.domain}/en${logicalPath}" />`, `${label} must retain its English alternate`);
+};
+const assertServiceRows = (scope, landings, lang, prefix, headingTag, label) => {
+  const list = elementWithClasses(scope, 'service-editorial-list', `${label} must use service-editorial-list`);
+  const rows = elements(list.inner, { tag: 'a', classes: 'service-editorial-row' });
+  assert.equal(rows.length, landings.length, `${label} service row count must match landing data`);
+  landings.forEach((landing, index) => {
+    const row = rows[index];
+    assert.equal(attribute(row, 'href', `${label} row ${index + 1} must have an href`), `${prefix}/${landing.slug}/`, `${label} row ${index + 1} must retain its localized path`);
+    assert.ok(hasAttribute(row, 'data-reveal'), `${label} row ${index + 1} must retain data-reveal`);
+    const heading = elements(row.inner, { tag: headingTag })[0];
+    assert.ok(heading, `${label} row ${index + 1} must use ${headingTag}`);
+    assert.equal(heading.inner.trim(), htmlEscape(landing.label[lang]), `${label} row ${index + 1} must retain its localized label`);
+    const summary = elements(row.inner, { tag: 'p' })[0];
+    assert.ok(summary, `${label} row ${index + 1} must retain its summary`);
+    assert.equal(summary.inner.trim(), htmlEscape(landing.summary[lang]), `${label} row ${index + 1} must retain its localized summary`);
+    const more = elementWithClasses(row.inner, 'svc-more', `${label} row ${index + 1} must retain svc-more`, 'span');
+    has(more.inner, htmlEscape(site.services.explore[lang]), `${label} row ${index + 1} must retain localized explore copy`);
+    has(more.inner, lang === 'ar' ? '←' : '→', `${label} row ${index + 1} must retain its directional arrow`);
+  });
+};
+const assertServicesPage = (page, lang, prefix, label) => {
+  assertSeoShell(page, site.services, lang, '/services/', label);
+  has(page, htmlEscape(site.services.h1[lang]), `${label} must retain its localized heading`);
+  has(page, htmlEscape(site.services.intro[lang]), `${label} must retain its localized introduction`);
+  assertServiceRows(page, site.landings, lang, prefix, 'h2', label);
+  const graph = jsonLdGraph(page, label);
+  assert.equal(graph.filter((node) => node['@type'] === 'Service').length, site.landings.length, `${label} must retain one Service schema node per landing`);
+  assert.equal(graph.filter((node) => node['@type'] === 'BreadcrumbList').length, 1, `${label} must retain BreadcrumbList schema`);
+};
+const assertLandingPage = (page, landing, lang, prefix, label) => {
+  const logicalPath = `/${landing.slug}/`;
+  assertSeoShell(page, landing, lang, logicalPath, label);
+  for (const field of [landing.eyebrow, landing.h1, landing.intro]) has(page, htmlEscape(field[lang]), `${label} must retain localized landing copy`);
+  const contentGrid = elementWithClasses(page, ['wrap', 'landing-content-grid'], `${label} must use landing-content-grid`);
+  const sections = elements(contentGrid.inner, { tag: 'section', classes: 'landing-section-row' });
+  assert.equal(sections.length, landing.sections.length, `${label} content row count must match landing data`);
+  landing.sections.forEach((section, index) => {
+    const heading = elements(sections[index].inner, { tag: 'h2', classes: 'display' })[0];
+    assert.ok(heading, `${label} content row ${index + 1} must retain its display heading`);
+    assert.equal(heading.inner.trim(), htmlEscape(section.heading[lang]), `${label} content row ${index + 1} must retain its heading text`);
+    const paragraph = elements(sections[index].inner, { tag: 'p' })[0];
+    assert.ok(paragraph, `${label} content row ${index + 1} must retain its paragraph`);
+    assert.equal(paragraph.inner.trim(), htmlEscape(section.body[lang]), `${label} content row ${index + 1} must retain its body text`);
+  });
+  landing.faq.forEach((item) => {
+    has(page, htmlEscape(item.q[lang]), `${label} must retain every FAQ question`);
+    has(page, htmlEscape(item.a[lang]), `${label} must retain every FAQ answer`);
+  });
+  has(page, `href="https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(site.waMessage[lang])}"`, `${label} must retain its WhatsApp CTA`);
+  has(page, `href="${prefix}/contact/"`, `${label} must retain its contact CTA`);
+  has(page, htmlEscape(site.contactBand.text[lang]), `${label} must retain the core offer copy`);
+  for (const slug of landing.relatedProjects || []) has(page, `href="${prefix}/work/${slug}/"`, `${label} must retain related project links`);
+  const relatedLandings = (landing.related || []).map((slug) => site.landings.find((candidate) => candidate.slug === slug)).filter(Boolean);
+  if (relatedLandings.length) assertServiceRows(page, relatedLandings, lang, prefix, 'h3', `${label} related services`);
+  const graph = jsonLdGraph(page, label);
+  assert.deepEqual(graph.map((node) => node['@type']), ['Service', 'FAQPage', 'BreadcrumbList'], `${label} must retain its Service, FAQPage and BreadcrumbList graph`);
+  const service = graph[0];
+  assert.equal(service.name, landing.h1[lang], `${label} Service schema must retain its name`);
+  assert.equal(service.description, landing.seoDesc[lang], `${label} Service schema must retain its description`);
+  assert.equal(service.url, `${site.domain}${prefix}${logicalPath}`, `${label} Service schema must retain its localized URL`);
+  assert.deepEqual(graph[1].mainEntity.map((entity) => [entity.name, entity.acceptedAnswer.text]), landing.faq.map((item) => [item.q[lang], item.a[lang]]), `${label} FAQPage schema must retain every localized FAQ`);
+  assert.equal(graph[2].itemListElement.at(-1).item, `${site.domain}${prefix}${logicalPath}`, `${label} breadcrumb schema must retain its current URL`);
+};
+const assertApproachPage = (page, lang, prefix, label) => {
+  const approach = site.approach;
+  assertSeoShell(page, approach, lang, '/approach/', label);
+  for (const field of [approach.h1, approach.intro, approach.servicesTitle, approach.processTitle]) has(page, htmlEscape(field[lang]), `${label} must retain all approach headings and introduction`);
+  approach.services.forEach((service) => {
+    has(page, htmlEscape(service.title[lang]), `${label} must retain every service title`);
+    has(page, htmlEscape(service.text[lang]), `${label} must retain every service description`);
+  });
+  const sequence = elementWithClasses(page, 'approach-sequence', `${label} must use approach-sequence`, 'ol');
+  const steps = elements(sequence.inner, { tag: 'li' });
+  assert.equal(steps.length, approach.steps.length, `${label} step count must match approach data`);
+  approach.steps.forEach((step, index) => {
+    const number = elementWithClasses(steps[index].inner, 'step-num', `${label} step ${index + 1} must retain its number`, 'span');
+    assert.equal(number.inner.trim(), String(index + 1).padStart(2, '0'), `${label} step ${index + 1} must retain its ordered number`);
+    const content = elements(steps[index].inner, { tag: 'div' })[0];
+    assert.ok(content, `${label} step ${index + 1} must group heading and text in a div`);
+    assert.equal(elements(content.inner, { tag: 'h3' })[0]?.inner.trim(), htmlEscape(step.title[lang]), `${label} step ${index + 1} must retain its title in order`);
+    assert.equal(elements(content.inner, { tag: 'p' })[0]?.inner.trim(), htmlEscape(step.text[lang]), `${label} step ${index + 1} must retain its text in order`);
+  });
+  assert.doesNotMatch(page, /class="[^"]*\bworkflow(?:-media|-step|-num)?\b/, `${label} must not render obsolete workflow classes`);
+  for (const step of approach.steps) assert.ok(!page.includes(step.image.src), `${label} must not render workflow image output`);
+  has(page, htmlEscape(site.offer[lang]), `${label} must retain the offer`);
+  has(page, `href="${prefix}/contact/"`, `${label} must retain its contact CTA`);
+  has(page, `href="https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(site.waMessage[lang])}"`, `${label} must retain its WhatsApp CTA`);
+  assert.equal(jsonLdGraph(page, label)[0]['@type'], 'BreadcrumbList', `${label} must retain BreadcrumbList schema`);
+};
+
 const homeAr = read('index.html');
 const homeEn = read('en/index.html');
 const workAr = read('work/index.html');
@@ -467,6 +578,20 @@ const { projects } = JSON.parse(read('data/projects.json'));
 const css = read('assets/css/site.css');
 const siteJs = read('assets/js/site.js');
 const contactJs = read('assets/js/contact.js');
+
+for (const [label, lang, prefix, directory] of [
+  ['Arabic', 'ar', '', ''],
+  ['English', 'en', '/en', 'en/']
+]) {
+  const servicesPage = read(`${directory}services/index.html`);
+  assertServicesPage(servicesPage, lang, prefix, `${label} services`);
+  site.landings.forEach((landing) => {
+    const landingPage = read(`${directory}${landing.slug}/index.html`);
+    assertLandingPage(landingPage, landing, lang, prefix, `${label} ${landing.slug}`);
+  });
+  const approachPage = read(`${directory}approach/index.html`);
+  assertApproachPage(approachPage, lang, prefix, `${label} approach`);
+}
 
 assert.throws(
   () => hasCssSelector('.home-hero-grid-extra {}', '.home-hero-grid', 'Required CSS selector token is missing'),
@@ -861,6 +986,72 @@ for (const selector of [
   '.project-story'
 ]) {
   hasCssSelector(css, selector, `CSS must define the ${selector} selector`);
+}
+assertCssDeclarations(css, '.service-editorial-list', {
+  'border-block-start': '1px solid var(--line-strong)'
+}, 'Service editorial CSS');
+assertCssDeclarations(css, '.service-editorial-row', {
+  display: 'grid',
+  'grid-template-columns': 'minmax(200px, 0.8fr) minmax(0, 1.2fr) auto',
+  gap: '1.25rem',
+  'align-items': 'baseline',
+  'padding-block': '1.4rem',
+  'border-block-end': '1px solid var(--line)',
+  color: 'inherit',
+  'text-decoration': 'none'
+}, 'Service editorial CSS');
+assertCssDeclarations(css, '.service-editorial-row h2, .service-editorial-row h3, .service-editorial-row p', { margin: '0' }, 'Service editorial CSS');
+assertCssDeclarations(css, '.service-editorial-row p', { color: 'var(--ink-soft)' }, 'Service editorial CSS');
+assertCssDeclarations(css, '.landing-content-grid', { 'border-block-start': '1px solid var(--line-strong)' }, 'Landing content CSS');
+assertCssDeclarations(css, '.landing-section-row', {
+  display: 'grid',
+  'grid-template-columns': 'minmax(220px, 0.8fr) minmax(0, 1.2fr)',
+  gap: 'clamp(1.5rem, 5vw, 5rem)',
+  'padding-block': '1.75rem',
+  'border-block-end': '1px solid var(--line)'
+}, 'Landing content CSS');
+assertCssDeclarations(css, '.landing-section-row h2, .landing-section-row p', { margin: '0' }, 'Landing content CSS');
+assertCssDeclarations(css, '.landing-section-row p', { color: 'var(--ink-soft)' }, 'Landing content CSS');
+assertCssDeclarations(css, '.approach-sequence', {
+  'list-style': 'none',
+  margin: '2.5rem 0 0',
+  padding: '0',
+  'border-block-start': '1px solid var(--line-strong)'
+}, 'Approach sequence CSS');
+assertCssDeclarations(css, '.approach-sequence li', {
+  display: 'grid',
+  'grid-template-columns': '5rem 1fr',
+  gap: '1rem',
+  'padding-block': '1.5rem',
+  'border-block-end': '1px solid var(--line)'
+}, 'Approach sequence CSS');
+assertCssDeclarations(css, '.approach-sequence h3', { 'margin-block-end': '0.45rem' }, 'Approach sequence CSS');
+assertCssDeclarations(css, '.approach-sequence p', { color: 'var(--ink-soft)' }, 'Approach sequence CSS');
+const responsiveCss = css.slice(css.indexOf('@media (max-width: 860px)'), css.indexOf('@media (prefers-reduced-motion: reduce)'));
+assertCssDeclarations(responsiveCss, '.service-editorial-row', { 'grid-template-columns': '1fr auto' }, 'Responsive service editorial CSS');
+assertCssDeclarations(responsiveCss, '.service-editorial-row p', { 'grid-column': '1 / -1' }, 'Responsive service editorial CSS');
+assertCssDeclarations(responsiveCss, '.landing-section-row', { 'grid-template-columns': '1fr', gap: '0.75rem' }, 'Responsive landing content CSS');
+assertCssDeclarations(responsiveCss, '.approach-sequence li', { 'grid-template-columns': '3rem 1fr' }, 'Responsive approach sequence CSS');
+for (const obsolete of ['.svc-list', '.svc-card', '.workflow', '.workflow-media', '.workflow-step', '.workflow-num']) {
+  assert.ok(!cssRuleSelectors(css).some((selector) => new RegExp(`(?:^|[^\\w-])${escapeRegExp(obsolete)}(?![\\w-])`).test(positiveSelectorText(selector))), `CSS must not retain obsolete selector ${obsolete}`);
+}
+const generatedHtml = [];
+const collectHtml = (directory) => {
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    if (entry.name === '.git' || entry.name === '.worktrees') continue;
+    const fullPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) collectHtml(fullPath);
+    else if (entry.name.endsWith('.html') && entry.name !== '404.html') generatedHtml.push(read(path.relative(ROOT, fullPath)));
+  }
+};
+collectHtml(ROOT);
+for (const page of generatedHtml) {
+  for (const openingTag of page.matchAll(/<[^>]+>/g)) {
+    const tokens = classTokens(openingTag[0]);
+    for (const obsolete of ['svc-list', 'svc-card', 'workflow', 'workflow-media', 'workflow-step', 'workflow-num']) {
+      assert.ok(!tokens.has(obsolete), `Generated pages must not retain obsolete class ${obsolete}`);
+    }
+  }
 }
 hasCssSelectorBranch(css, '.work-editorial-grid .card-media img', 'CSS must size every editorial work-grid image, not only the first card image');
 assertEditorialCss(css, true);
