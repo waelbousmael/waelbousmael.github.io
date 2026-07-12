@@ -8,6 +8,12 @@ import site from '../data/site.mjs';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (relative) => fs.readFileSync(path.join(ROOT, relative), 'utf8');
 const has = (text, fragment, label) => assert.ok(text.includes(fragment), label);
+const assertPair = (field, label) => {
+  assert.equal(typeof field?.ar, 'string', `${label}.ar must be a string`);
+  assert.ok(field.ar.trim(), `${label}.ar must not be empty`);
+  assert.equal(typeof field?.en, 'string', `${label}.en must be a string`);
+  assert.ok(field.en.trim(), `${label}.en must not be empty`);
+};
 const withoutBlockComments = (text) => text.replace(/\/\*[\s\S]*?\*\//g, '');
 const leadForm = (page, label) => {
   const match = page.match(/<form id="leadForm"(?=[\s>])[\s\S]*?<\/form>/);
@@ -22,6 +28,19 @@ const contactEn = read('en/contact/index.html');
 const css = read('assets/css/site.css');
 const siteJs = read('assets/js/site.js');
 const contactJs = read('assets/js/contact.js');
+
+assert.ok(Array.isArray(site.home.trustItems), 'Homepage trust items must be an array');
+assert.equal(site.home.trustItems.length, 4, 'Homepage must have exactly four trust items');
+site.home.trustItems.forEach((item, index) => assertPair(item, `Homepage trust item ${index + 1}`));
+
+assert.ok(Array.isArray(site.home.serviceThemes), 'Homepage service themes must be an array');
+assert.equal(site.home.serviceThemes.length, 3, 'Homepage must have exactly three service themes');
+site.home.serviceThemes.forEach((theme, index) => {
+  const label = `Homepage service theme ${index + 1}`;
+  assertPair(theme.title, `${label} title`);
+  assertPair(theme.text, `${label} text`);
+  assert.equal(typeof theme.href, 'string', `${label} href must be a string`);
+});
 
 has(homeAr, '<html lang="ar" dir="rtl">', 'Arabic root must use RTL Arabic markup');
 has(homeEn, '<html lang="en" dir="ltr">', 'English mirror must use LTR English markup');
