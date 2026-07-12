@@ -10,8 +10,10 @@ const read = (relative) => fs.readFileSync(path.join(ROOT, relative), 'utf8');
 const has = (text, fragment, label) => assert.ok(text.includes(fragment), label);
 const hasClasses = (text, requiredClasses, label) => {
   const required = Array.isArray(requiredClasses) ? requiredClasses : [requiredClasses];
-  const hasMatchingElement = [...text.matchAll(/\bclass="([^"]*)"/g)].some((match) => {
-    const tokens = new Set(match[1].trim().split(/\s+/).filter(Boolean));
+  const hasMatchingElement = [...text.matchAll(/<[^>]+>/g)].some(([element]) => {
+    const classAttribute = element.match(/[\t\n\f\r ]class="([^"]*)"/);
+    if (!classAttribute) return false;
+    const tokens = new Set(classAttribute[1].trim().split(/\s+/).filter(Boolean));
     return required.every((className) => tokens.has(className));
   });
   assert.ok(hasMatchingElement, label);
@@ -41,6 +43,11 @@ assert.throws(
   () => hasClasses('<a class="mobile-lang-link-extra">', 'mobile-lang-link', 'Required class token is missing'),
   /Required class token is missing/,
   'Class checks must reject suffix-only matches'
+);
+assert.throws(
+  () => hasClasses('<div data-class="mobile-lang-link">', 'mobile-lang-link', 'Required class attribute is missing'),
+  /Required class attribute is missing/,
+  'Class checks must ignore data-class attributes'
 );
 assert.doesNotThrow(
   () => hasClasses('<div class="footer-editorial wrap footer-grid extra">', ['footer-grid', 'footer-editorial'], 'Required footer classes are missing'),
