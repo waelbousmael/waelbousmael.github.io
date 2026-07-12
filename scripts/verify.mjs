@@ -8,6 +8,12 @@ import site from '../data/site.mjs';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (relative) => fs.readFileSync(path.join(ROOT, relative), 'utf8');
 const has = (text, fragment, label) => assert.ok(text.includes(fragment), label);
+const withoutBlockComments = (text) => text.replace(/\/\*[\s\S]*?\*\//g, '');
+const leadForm = (page, label) => {
+  const match = page.match(/<form id="leadForm"(?=[\s>])[\s\S]*?<\/form>/);
+  assert.ok(match, `${label} contact page must contain the lead form`);
+  return match[0];
+};
 
 const homeAr = read('index.html');
 const homeEn = read('en/index.html');
@@ -28,10 +34,23 @@ has(homeEn, '<link rel="canonical" href="https://wbstudio.xyz/en/" />', 'English
 has(homeEn, '<link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/" />', 'English home must link its Arabic alternate');
 has(homeEn, '<link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/" />', 'English home must link its English alternate');
 
+const whatsappHrefAr = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(site.waMessage.ar)}`;
+const whatsappHrefEn = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(site.waMessage.en)}`;
+has(homeAr, `href="${whatsappHrefAr}`, 'Arabic home must contain its generated WhatsApp href');
+has(homeEn, `href="${whatsappHrefEn}`, 'English home must contain its generated WhatsApp href');
+
+has(contactAr, '<link rel="canonical" href="https://wbstudio.xyz/contact/" />', 'Arabic contact canonical must target /contact/');
+has(contactAr, '<link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/contact/" />', 'Arabic contact must link its Arabic alternate');
+has(contactAr, '<link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/contact/" />', 'Arabic contact must link its English alternate');
+has(contactEn, '<link rel="canonical" href="https://wbstudio.xyz/en/contact/" />', 'English contact canonical must target /en/contact/');
+has(contactEn, '<link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/contact/" />', 'English contact must link its Arabic alternate');
+has(contactEn, '<link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/contact/" />', 'English contact must link its English alternate');
+
 for (const [label, page] of [['Arabic', contactAr], ['English', contactEn]]) {
-  has(page, 'action="https://formsubmit.co/ajax/wael.bousmael@gmail.com"', `${label} contact form must use FormSubmit`);
+  const form = leadForm(page, label);
+  has(form, 'action="https://formsubmit.co/ajax/wael.bousmael@gmail.com"', `${label} contact form must use FormSubmit`);
   for (const field of ['name', 'phone', 'email', 'location', 'maps', 'budget']) {
-    has(page, `name="${field}"`, `${label} contact form must retain the ${field} field`);
+    has(form, `name="${field}"`, `${label} contact form must retain the ${field} field`);
   }
   has(page, 'window.GOOGLE_MAPS_API_KEY', `${label} contact page must retain the Google Maps hook`);
 }
@@ -39,9 +58,8 @@ for (const [label, page] of [['Arabic', contactAr], ['English', contactEn]]) {
 has(build, 'const waUrl =', 'The build must own the WhatsApp URL');
 assert.equal(site.whatsappNumber, '966538060383', 'The WhatsApp number must remain unchanged');
 assert.equal(site.formAction, 'https://formsubmit.co/ajax/wael.bousmael@gmail.com', 'The FormSubmit endpoint must remain unchanged');
-has(siteJs, 'prefers-reduced-motion', 'Site motion must respect reduced-motion preferences');
-has(contactJs, 'window.GOOGLE_MAPS_API_KEY', 'Contact JavaScript must retain the Google Maps hook');
-assert.ok(!css.includes('linear-gradient'), 'CSS must not contain linear gradients');
-assert.ok(!css.includes('radial-gradient'), 'CSS must not contain radial gradients');
+assert.match(withoutBlockComments(siteJs), /window\.matchMedia\(\s*(['"])\(prefers-reduced-motion:\s*reduce\)\1\s*\)/, 'Site motion must query reduced-motion preferences');
+assert.match(withoutBlockComments(contactJs), /typeof\s+window\.GOOGLE_MAPS_API_KEY\s*===\s*(['"])string\1/, 'Contact JavaScript must functionally read the Google Maps hook');
+assert.doesNotMatch(withoutBlockComments(css), /(?:repeating-)?(?:linear|radial|conic)-gradient\s*\(/i, 'CSS must not contain gradients');
 
 console.log('Verification passed: bilingual shell, SEO alternates, contact plumbing, and motion invariants.');
