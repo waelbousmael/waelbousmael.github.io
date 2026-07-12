@@ -25,6 +25,14 @@ const assertPair = (field, label) => {
   assert.ok(field.en.trim(), `${label}.en must not be empty`);
 };
 const withoutBlockComments = (text) => text.replace(/\/\*[\s\S]*?\*\//g, '');
+const hasCssSelector = (text, selector, label) => {
+  const escapedSelector = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const selectorToken = new RegExp(`(?:^|[^\\w-])${escapedSelector}(?![\\w-])`);
+  const selectors = [...withoutBlockComments(text).matchAll(/(?:^|})([^{}]+)\{/g)]
+    .map((match) => match[1].trim())
+    .filter((candidate) => !candidate.startsWith('@'));
+  assert.ok(selectors.some((candidate) => selectorToken.test(candidate)), label);
+};
 const leadForm = (page, label) => {
   const match = page.match(/<form id="leadForm"(?=[\s>])[\s\S]*?<\/form>/);
   assert.ok(match, `${label} contact page must contain the lead form`);
@@ -38,6 +46,12 @@ const contactEn = read('en/contact/index.html');
 const css = read('assets/css/site.css');
 const siteJs = read('assets/js/site.js');
 const contactJs = read('assets/js/contact.js');
+
+assert.throws(
+  () => hasCssSelector('.home-hero-grid-extra {}', '.home-hero-grid', 'Required CSS selector token is missing'),
+  /Required CSS selector token is missing/,
+  'CSS selector checks must reject suffix-only matches'
+);
 
 assert.throws(
   () => hasClasses('<a class="mobile-lang-link-extra">', 'mobile-lang-link', 'Required class token is missing'),
@@ -127,5 +141,15 @@ assert.equal(site.formAction, 'https://formsubmit.co/ajax/wael.bousmael@gmail.co
 assert.match(withoutBlockComments(siteJs), /const\s+prefersReducedMotion\s*=\s*window\.matchMedia\(\s*(['"])\(prefers-reduced-motion:\s*reduce\)\1\s*\)\.matches\s*;[\s\S]*?if\s*\(\s*prefersReducedMotion\b[\s\S]*?\)\s*\{\s*revealElements\.forEach\s*\(/, 'Reduced-motion preference must control the reveal fallback');
 assert.match(withoutBlockComments(contactJs), /const\s+apiKey\s*=\s*typeof\s+window\.GOOGLE_MAPS_API_KEY\s*===\s*(['"])string\1[\s\S]*?;[\s\S]*?loadGoogleMapsPlaces\(\s*apiKey\s*\)/, 'The Google Maps API key must flow into the Places loader');
 assert.doesNotMatch(withoutBlockComments(css), /(?:repeating-)?(?:linear|radial|conic)-gradient\s*\(/i, 'CSS must not contain gradients');
+for (const selector of [
+  '.home-hero-grid',
+  '.trust-strip',
+  '.home-work-grid',
+  '.home-services-grid',
+  '.mobile-header-actions'
+]) {
+  hasCssSelector(css, selector, `CSS must define the ${selector} selector`);
+}
+assert.doesNotMatch(withoutBlockComments(css), /animation\s*:\s*stamp-in\b/i, 'CSS must not animate the hero stamp entrance');
 
 console.log('Verification passed: bilingual shell, SEO alternates, contact plumbing, and motion invariants.');
