@@ -52,9 +52,12 @@
       <a href="/en/contact/">Contact</a>
       <a class="lang-link" href="/" hreflang="ar" lang="ar" data-lang-switch="ar" aria-label="التبديل إلى العربية">عربي</a>
     </nav>
-    <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
-      <span></span><span></span>
-    </button>
+    <div class="mobile-header-actions">
+      <a class="mobile-lang-link" href="/" hreflang="ar" lang="ar" data-lang-switch="ar" aria-label="التبديل إلى العربية">عربي</a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
 <div class="mobile-menu" id="mobileMenu" hidden>
@@ -69,7 +72,6 @@
     <a href="/en/journal/">Journal</a>
     <a href="/en/about/">About</a>
     <a href="/en/contact/">Contact</a>
-    <a class="lang-link" href="/" hreflang="ar" lang="ar" data-lang-switch="ar" aria-label="التبديل إلى العربية">عربي</a>
   </nav>
   <div class="mobile-contact">
     <a href="https://wa.me/966538060383?text=Hello%2C%20I%20would%20like%20to%20book%20a%20consultation%20for%20a%20villa%20design.%20Here%20are%20my%20land%20details%3A%0A%E2%80%A2%20Name%3A%0A%E2%80%A2%20Land%20location%3A%0A%E2%80%A2%20Area%3A%0A%E2%80%A2%20Estimated%20budget%3A" target="_blank" rel="noopener">WhatsApp</a>
@@ -77,22 +79,31 @@
   </div>
 </div>
 <main id="main">
-  <section class="hero" data-reveal>
-    <div class="wrap">
-      <div class="hero-brand">
+  <section class="home-hero" data-reveal>
+    <div class="wrap home-hero-grid">
+      <div class="home-hero-copy">
         <p class="eyebrow">Private villa architecture — Jeddah</p>
-        <img class="stamp stamp-hero" src="/assets/icons/brand-logo.png" alt="" width="110" height="110" fetchpriority="high" decoding="async" />
+        <h1 class="display-xl">We design private villas and homes in Jeddah and the Gulf</h1>
+        <p class="lead measure">A boutique architecture studio for private villa clients in Jeddah — refined modern design, a careful eye for stone, light and proportion, and a close understanding of how families live in Jeddah and across the Gulf.</p>
+        <p class="offer measure">We begin with a free call and a free preliminary concept — a paid agreement starts only once the direction is clear and aligned.</p>
+        <div class="cta-row">
+          <a class="btn btn-solid" href="https://wa.me/966538060383?text=Hello%2C%20I%20would%20like%20to%20book%20a%20consultation%20for%20a%20villa%20design.%20Here%20are%20my%20land%20details%3A%0A%E2%80%A2%20Name%3A%0A%E2%80%A2%20Land%20location%3A%0A%E2%80%A2%20Area%3A%0A%E2%80%A2%20Estimated%20budget%3A" target="_blank" rel="noopener">Book a free call on WhatsApp</a>
+          <a class="btn" href="/en/work/">View the work</a>
+        </div>
       </div>
-      <h1 class="display-xl">We design private villas and homes in Jeddah and the Gulf</h1>
-      <p class="lead measure">A boutique architecture studio for private villa clients in Jeddah — refined modern design, a careful eye for stone, light and proportion, and a close understanding of how families live in Jeddah and across the Gulf.</p>
-      <p class="offer measure">We begin with a free call and a free preliminary concept — a paid agreement starts only once the direction is clear and aligned.</p>
-      <div class="cta-row">
-        <a class="btn btn-solid" href="https://wa.me/966538060383?text=Hello%2C%20I%20would%20like%20to%20book%20a%20consultation%20for%20a%20villa%20design.%20Here%20are%20my%20land%20details%3A%0A%E2%80%A2%20Name%3A%0A%E2%80%A2%20Land%20location%3A%0A%E2%80%A2%20Area%3A%0A%E2%80%A2%20Estimated%20budget%3A" target="_blank" rel="noopener">Book a free call on WhatsApp</a>
-        <a class="btn" href="/en/work/">View the work</a>
+      <div class="home-hero-media">
+        <img src="/assets/images/home-hero.webp" width="1448" height="1086" alt="Modern villa with a warm timber soffit and living space opening to a still pool" fetchpriority="high" decoding="async" />
       </div>
     </div>
   </section>
-  <div class="bleed" data-reveal><img src="/assets/images/home-hero.webp" width="1448" height="1086" alt="Modern villa with a warm timber soffit and living space opening to a still pool" fetchpriority="high" decoding="async" /></div>
+  <div class="wrap">
+    <ul class="trust-strip" aria-label="Studio credentials">
+      <li>12+ years of experience</li>
+      <li>Architect &amp; BIM coordinator</li>
+      <li>Jeddah · Saudi Arabia · GCC</li>
+      <li>From concept to construction documentation</li>
+    </ul>
+  </div>
 
   <section class="section" data-reveal>
     <div class="wrap">
@@ -100,7 +111,7 @@
         <h2 class="display">Selected work</h2>
         <a class="text-link" href="/en/work/">All work →</a>
       </div>
-      <div class="project-grid home-grid">
+      <div class="home-work-grid">
         <a class="project-card is-wide" href="/en/work/montashiri-villa/" data-reveal>
   <div class="card-media"><img src="/assets/projects/montashiri-villa/cover.webp" width="1536" height="960" alt="Stone street facade of Montashiri Villa with planted terraces and palms at dusk, Obhur, Jeddah" loading="lazy" decoding="async" /></div>
   <div class="card-text">
@@ -126,38 +137,29 @@
     </div>
   </section>
 
-  <section class="section divided" data-reveal>
-    <div class="wrap">
-      <div class="section-head">
+  <section class="section home-services" data-reveal>
+    <div class="wrap home-services-grid">
+      <div>
+        <p class="eyebrow">Services</p>
         <h2 class="display">Villa design services in Jeddah</h2>
-        <a class="text-link" href="/en/services/">Services →</a>
       </div>
-      <div class="svc-list">
-        <a class="svc-card" href="/en/villa-design-jeddah/" data-reveal>
-    <h3>Villa design in Jeddah</h3>
-    <p>The starting point for landowners and families: how we design a private villa in Jeddah from concept to construction.</p>
-    <span class="svc-more">Learn more →</span>
-  </a>
-        <a class="svc-card" href="/en/luxury-villa-design-jeddah/" data-reveal>
-    <h3>Luxury villa design in Jeddah</h3>
-    <p>For luxury villas that balance privacy, hospitality, refined detail and long-term value.</p>
-    <span class="svc-more">Learn more →</span>
-  </a>
-        <a class="svc-card" href="/en/modern-villa-design-jeddah/" data-reveal>
-    <h3>Modern villa design in Jeddah</h3>
-    <p>Clean lines, natural light and a seamless indoor–outdoor relationship — for clients who prefer modern architecture.</p>
-    <span class="svc-more">Learn more →</span>
-  </a>
-        <a class="svc-card" href="/en/obhur-villa-design/" data-reveal>
-    <h3>Obhur villa design</h3>
-    <p>For coastal plots in Obhur and North Jeddah: sea light, waterfront privacy and outdoor living.</p>
-    <span class="svc-more">Learn more →</span>
-  </a>
-        <a class="svc-card" href="/en/modern-hijazi-villa-design/" data-reveal>
-    <h3>Modern Hijazi villa design</h3>
-    <p>Reinterpreting Hijazi architecture — rawasheen, courtyards and stone — in a modern language for life today.</p>
-    <span class="svc-more">Learn more →</span>
-  </a>
+      <div class="home-service-list">
+        <a href="/en/villa-design-jeddah/">
+          <h3>Private villa design in Jeddah</h3>
+          <p>From reading the plot and brief to an architectural idea with a clear identity.</p>
+          <span aria-hidden="true">→</span>
+        </a>
+        <a href="/en/modern-villa-design-jeddah/">
+          <h3>Privacy, hospitality and climate</h3>
+          <p>Spaces balancing family life, hospitality, daylight and shade.</p>
+          <span aria-hidden="true">→</span>
+        </a>
+        <a href="/en/approach/">
+          <h3>Build-ready design &amp; BIM coordination</h3>
+          <p>Clarity across architectural, structural and MEP disciplines before site work.</p>
+          <span aria-hidden="true">→</span>
+        </a>
+        <a class="home-services-all" href="/en/services/">Services →</a>
       </div>
     </div>
   </section>
@@ -215,7 +217,7 @@
 </section>
 </main>
 <footer class="site-footer">
-  <div class="wrap footer-grid">
+  <div class="wrap footer-grid footer-editorial">
     <div class="footer-brand">
       <img class="stamp stamp-footer" src="/assets/icons/brand-logo.png" alt="" width="72" height="72" loading="lazy" decoding="async" />
       <span class="wordmark">WB&nbsp;Studio</span>

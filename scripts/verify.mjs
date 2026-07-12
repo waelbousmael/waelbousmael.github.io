@@ -53,6 +53,21 @@ site.home.serviceThemes.forEach((theme, index) => {
 has(homeAr, '<html lang="ar" dir="rtl">', 'Arabic root must use RTL Arabic markup');
 has(homeEn, '<html lang="en" dir="ltr">', 'English mirror must use LTR English markup');
 
+for (const [label, page] of [['Arabic', homeAr], ['English', homeEn]]) {
+  for (const className of [
+    'mobile-lang-link',
+    'home-hero-grid',
+    'home-hero-copy',
+    'home-hero-media',
+    'trust-strip',
+    'home-work-grid',
+    'home-service-list'
+  ]) {
+    has(page, className, `${label} home must contain the ${className} class`);
+  }
+  has(page, 'footer-grid footer-editorial', `${label} home must use the editorial footer`);
+}
+
 has(homeAr, '<link rel="canonical" href="https://wbstudio.xyz/" />', 'Arabic home canonical must target the root');
 has(homeAr, '<link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/" />', 'Arabic home must link its Arabic alternate');
 has(homeAr, '<link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/" />', 'Arabic home must link its English alternate');
@@ -74,6 +89,7 @@ has(contactEn, '<link rel="alternate" hreflang="en" href="https://wbstudio.xyz/e
 
 for (const [label, page] of [['Arabic', contactAr], ['English', contactEn]]) {
   const form = leadForm(page, label);
+  has(page, 'footer-grid footer-editorial', `${label} contact page must use the shared editorial footer`);
   has(form, 'action="https://formsubmit.co/ajax/wael.bousmael@gmail.com"', `${label} contact form must use FormSubmit`);
   for (const field of ['name', 'phone', 'email', 'location', 'maps', 'budget']) {
     has(form, `name="${field}"`, `${label} contact form must retain the ${field} field`);
