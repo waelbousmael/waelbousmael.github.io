@@ -251,8 +251,14 @@ const leadForm = (page, label) => {
 
 const homeAr = read('index.html');
 const homeEn = read('en/index.html');
+const workAr = read('work/index.html');
+const workEn = read('en/work/index.html');
+const projectAr = read('work/montashiri-villa/index.html');
+const projectEn = read('en/work/montashiri-villa/index.html');
 const contactAr = read('contact/index.html');
 const contactEn = read('en/contact/index.html');
+const { projects } = JSON.parse(read('data/projects.json'));
+const sampleProject = projects.find(({ slug }) => slug === 'montashiri-villa');
 const css = read('assets/css/site.css');
 const siteJs = read('assets/js/site.js');
 const contactJs = read('assets/js/contact.js');
@@ -420,6 +426,37 @@ for (const [label, page] of [['Arabic', homeAr], ['English', homeEn]]) {
   hasClasses(page, ['footer-grid', 'footer-editorial'], `${label} home must use the editorial footer`);
 }
 
+assert.ok(sampleProject, 'Portfolio data must retain the Montashiri Villa sample project');
+for (const [label, page, prefix] of [
+  ['Arabic', workAr, ''],
+  ['English', workEn, '/en']
+]) {
+  hasClasses(page, 'work-editorial-grid', `${label} work page must use the editorial portfolio grid`);
+  has(page, `href="${prefix}/credits/"`, `${label} work page must retain its credits link`);
+  for (const project of projects) {
+    has(page, `href="${prefix}/work/${project.slug}/"`, `${label} work page must retain the ${project.slug} project card`);
+  }
+}
+
+const nextProject = projects[(projects.indexOf(sampleProject) + 1) % projects.length];
+for (const [label, lang, page, prefix] of [
+  ['Arabic', 'ar', projectAr, ''],
+  ['English', 'en', projectEn, '/en']
+]) {
+  hasClasses(page, 'project-intro-grid', `${label} sample project must use the editorial intro grid`);
+  hasClasses(page, ['project-story', 'flow'], `${label} sample project must group its narrative in the project story`);
+  has(page, `src="${sampleProject.cover.src}"`, `${label} sample project must retain its cover image`);
+  for (const image of sampleProject.gallery) {
+    has(page, `src="${image.src}"`, `${label} sample project must retain gallery image ${image.src}`);
+  }
+  has(page, sampleProject.thesis[lang], `${label} sample project must retain its thesis`);
+  for (const paragraph of sampleProject.body) {
+    has(page, paragraph[lang], `${label} sample project must retain every narrative paragraph`);
+  }
+  assert.equal((page.match(/class="details-row"/g) ?? []).length, 5, `${label} sample project must retain all five detail rows`);
+  has(page, `href="${prefix}/work/${nextProject.slug}/"`, `${label} sample project must retain next-project navigation`);
+}
+
 has(homeAr, '<link rel="canonical" href="https://wbstudio.xyz/" />', 'Arabic home canonical must target the root');
 has(homeAr, '<link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/" />', 'Arabic home must link its Arabic alternate');
 has(homeAr, '<link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/" />', 'Arabic home must link its English alternate');
@@ -459,7 +496,10 @@ for (const selector of [
   '.trust-strip',
   '.home-work-grid',
   '.home-services-grid',
-  '.mobile-header-actions'
+  '.mobile-header-actions',
+  '.work-editorial-grid',
+  '.project-intro-grid',
+  '.project-story'
 ]) {
   hasCssSelector(css, selector, `CSS must define the ${selector} selector`);
 }

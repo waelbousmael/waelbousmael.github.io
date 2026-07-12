@@ -428,6 +428,21 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
 }
 
 /* ── project grid & cards ── */
+.work-editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(4rem, 8vw, 8rem) clamp(1.5rem, 4vw, 4rem);
+}
+.work-editorial-grid .project-card:first-child { grid-column: 1 / -1; }
+.work-editorial-grid .project-card:first-child .card-media img {
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+.work-editorial-grid .card-text {
+  width: 100%;
+  padding-inline: 0;
+}
+
 .project-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -518,6 +533,14 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
 
 .project-cover { margin: 0; width: 100vw; margin-inline: calc(50% - 50vw); }
 .project-cover img { width: 100%; }
+
+.project-intro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: start;
+}
+.project-story { max-width: 70ch; }
 
 .details { margin: 0; }
 .details-row {
@@ -788,6 +811,10 @@ form .btn-solid { justify-self: start; margin-block-start: 0.5rem; }
     gap: clamp(2.75rem, 9vw, 4rem);
   }
   .home-work-grid .project-card:first-child { grid-row: auto; }
+
+  .work-editorial-grid,
+  .project-intro-grid { grid-template-columns: 1fr; }
+  .work-editorial-grid .project-card:first-child { grid-column: auto; }
 
   .home-services-grid { grid-template-columns: 1fr; }
   .home-service-list > a:not(.home-services-all) {
