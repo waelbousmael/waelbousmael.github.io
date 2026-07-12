@@ -13,8 +13,8 @@
   --ink: #1e1c19;           /* warm charcoal */
   --ink-soft: #4a463f;
   --muted: #857f74;         /* warm grey */
-  --line: rgba(30, 28, 25, 0.13);
-  --line-strong: rgba(30, 28, 25, 0.38);
+  --line: rgba(30, 28, 25, .13);
+  --line-strong: rgba(30, 28, 25, .38);
 
   --wrap-max: 1200px;
   --pad: clamp(1.25rem, 4vw, 2.5rem);
@@ -195,7 +195,7 @@ html[lang="ar"] .thesis { line-height: 1.9; }
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(250, 248, 244, 0.92);
+  background: var(--bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-block-end: 1px solid var(--line);
@@ -242,6 +242,11 @@ html[lang="ar"] .thesis { line-height: 1.9; }
 }
 
 .mobile-lang-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: 2.75rem;
+  min-block-size: 2.75rem;
   color: var(--ink);
   font-size: 0.85rem;
   text-decoration: none;
@@ -558,7 +563,7 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
 .steps h3 { margin-block-end: 0.5rem; }
 .steps p { font-size: 0.93rem; color: var(--ink-soft); }
 
-/* ── workflow (process timeline with circular photo medallions) ── */
+/* ── workflow (process timeline with square project media) ── */
 .workflow {
   list-style: none;
   margin: clamp(2.75rem, 6vw, 4.5rem) 0 0;
@@ -567,22 +572,22 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(1.75rem, 3.5vw, 3rem);
   position: relative;
-  --circle: clamp(120px, 17vw, 188px);
+  --media-size: clamp(120px, 17vw, 188px);
 }
-/* connecting hairline running through the circle centres */
+/* connecting hairline running through the media centres */
 .workflow::before {
   content: "";
   position: absolute;
   z-index: 0;
   inset-inline: 17%;
-  top: calc(var(--circle) / 2);
+  top: calc(var(--media-size) / 2);
   height: 1px;
   background: var(--line-strong);
 }
 .workflow-step { position: relative; z-index: 1; text-align: center; }
 .workflow-media {
-  width: var(--circle);
-  height: var(--circle);
+  width: var(--media-size);
+  height: var(--media-size);
   margin-inline: auto;
   overflow: hidden;
   background: var(--surface);
@@ -676,7 +681,7 @@ form .btn-solid { justify-self: start; margin-block-start: 0.5rem; }
 
 .form-feedback { display: none; font-size: 0.92rem; color: var(--ink); }
 .form-feedback.visible { display: block; }
-.form-feedback.error { color: var(--ink); }
+.form-feedback.error { color: var(--ink); font-weight: 600; }
 
 /* ── faq ── */
 .faq { margin-block-start: clamp(1.5rem, 3vw, 2.5rem); }

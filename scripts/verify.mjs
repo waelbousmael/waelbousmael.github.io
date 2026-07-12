@@ -25,19 +25,97 @@ const assertPair = (field, label) => {
   assert.ok(field.en.trim(), `${label}.en must not be empty`);
 };
 const withoutBlockComments = (text) => text.replace(/\/\*[\s\S]*?\*\//g, '');
+const skipBalanced = (text, start, open, close) => {
+  let depth = 0;
+  let quote = null;
+  for (let index = start; index < text.length; index += 1) {
+    const char = text[index];
+    if (quote) {
+      if (char === '\\') index += 1;
+      else if (char === quote) quote = null;
+      continue;
+    }
+    if (char === '"' || char === "'") quote = char;
+    else if (char === open) depth += 1;
+    else if (char === close && --depth === 0) return index + 1;
+  }
+  return text.length;
+};
+const positiveSelectorText = (selector) => {
+  let positive = '';
+  for (let index = 0; index < selector.length;) {
+    const char = selector[index];
+    if (char === '[') {
+      index = skipBalanced(selector, index, '[', ']');
+      continue;
+    }
+    if (char === '"' || char === "'") {
+      const quote = char;
+      index += 1;
+      while (index < selector.length && selector[index] !== quote) {
+        index += selector[index] === '\\' ? 2 : 1;
+      }
+      index += 1;
+      continue;
+    }
+    const notMatch = selector.slice(index).match(/^:not\s*\(/i);
+    if (notMatch) {
+      index = skipBalanced(selector, index + notMatch[0].length - 1, '(', ')');
+      continue;
+    }
+    positive += char;
+    index += 1;
+  }
+  return positive;
+};
+const cssRuleSelectors = (text) => {
+  const source = withoutBlockComments(text);
+  const selectors = [];
+  let statementStart = 0;
+  let quote = null;
+  let bracketDepth = 0;
+  let parenDepth = 0;
+  for (let index = 0; index < source.length; index += 1) {
+    const char = source[index];
+    if (quote) {
+      if (char === '\\') index += 1;
+      else if (char === quote) quote = null;
+      continue;
+    }
+    if (char === '"' || char === "'") quote = char;
+    else if (char === '[') bracketDepth += 1;
+    else if (char === ']') bracketDepth = Math.max(0, bracketDepth - 1);
+    else if (char === '(') parenDepth += 1;
+    else if (char === ')') parenDepth = Math.max(0, parenDepth - 1);
+    else if (char === '{' && bracketDepth === 0 && parenDepth === 0) {
+      const prelude = source.slice(statementStart, index).trim();
+      if (prelude && !prelude.startsWith('@')) selectors.push(prelude);
+      statementStart = index + 1;
+    } else if ((char === '}' || char === ';') && bracketDepth === 0 && parenDepth === 0) {
+      statementStart = index + 1;
+    }
+  }
+  return selectors;
+};
 const hasCssSelector = (text, selector, label) => {
+  assert.match(selector, /^\.[a-z_-][\w-]*$/i, 'CSS selector guard accepts a single class selector');
   const escapedSelector = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const selectorToken = new RegExp(`(?:^|[^\\w-])${escapedSelector}(?![\\w-])`);
-  const selectors = [...withoutBlockComments(text).matchAll(/(?:^|})([^{}]+)\{/g)]
-    .map((match) => match[1].trim())
-    .filter((candidate) => !candidate.startsWith('@'));
-  assert.ok(selectors.some((candidate) => selectorToken.test(candidate)), label);
+  assert.ok(cssRuleSelectors(text).some((candidate) => selectorToken.test(positiveSelectorText(candidate))), label);
 };
-const assertEditorialCss = (text) => {
+const assertEditorialCss = (text, requireLockedTokens = false) => {
   const source = withoutBlockComments(text);
   const isZeroValue = (value) => /^0(?:px|rem|em|%|vh|vw|vmin|vmax|ch|ex|cm|mm|in|pt|pc|q)?$/i.test(value);
   assert.doesNotMatch(source, /\bstamp-in\b/i, 'CSS must not contain the stamp-in motion token');
-  assert.doesNotMatch(source, /\bbox-shadow\s*:/i, 'CSS must not contain box shadows');
+
+  for (const match of source.matchAll(/\bbox-shadow\s*:\s*([^;{}]+)/gi)) {
+    const value = match[1].trim();
+    const parts = value.split(/\s+/);
+    const isTransparentZeroShadow = parts.length === 5
+      && parts.slice(0, 4).every(isZeroValue)
+      && parts[4].toLowerCase() === 'transparent';
+    assert.ok(value.toLowerCase() === 'none' || isTransparentZeroShadow, `CSS must not contain visible box shadows: ${match[0].trim()}`);
+  }
 
   for (const match of source.matchAll(/--radius(?:-sm|-pill)?\s*:\s*([^;{}]+)/gi)) {
     assert.ok(isZeroValue(match[1].trim()), `CSS radius token must be zero-valued: ${match[0].trim()}`);
@@ -50,16 +128,37 @@ const assertEditorialCss = (text) => {
     assert.ok(isZeroRadius, `CSS radius must resolve to zero: ${match[0].trim()}`);
   }
 
+  const lockedColors = new Map([
+    ['--bg', '#faf8f4'],
+    ['--surface', '#f2eee7'],
+    ['--ink', '#1e1c19'],
+    ['--ink-soft', '#4a463f'],
+    ['--muted', '#857f74'],
+    ['--line', 'rgba(30,28,25,.13)'],
+    ['--line-strong', 'rgba(30,28,25,.38)']
+  ]);
   const rootMatch = source.match(/:root\s*\{([^{}]*)\}/i);
-  let sourceWithoutPaletteHex = source;
+  let sourceWithoutLockedColors = source;
   if (rootMatch) {
-    const rootWithoutPaletteHex = rootMatch[0].replace(
-      /(--(?:bg|surface|ink|ink-soft|muted)\s*:\s*)#[0-9a-f]{3,8}(\s*;)/gi,
-      '$1var(--allowed-palette-hex)$2'
-    );
-    sourceWithoutPaletteHex = source.replace(rootMatch[0], rootWithoutPaletteHex);
+    let rootWithoutLockedColors = rootMatch[0];
+    for (const [token, expected] of lockedColors) {
+      const escapedToken = token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const declaration = new RegExp(`(${escapedToken}\\s*:\\s*)([^;{}]+)(\\s*;)`, 'i');
+      const match = rootMatch[0].match(declaration);
+      if (requireLockedTokens) assert.ok(match, `CSS :root must declare ${token} with its locked value`);
+      if (!match) continue;
+      assert.equal(match[2].replace(/\s+/g, '').toLowerCase(), expected, `CSS ${token} must retain its locked value`);
+      rootWithoutLockedColors = rootWithoutLockedColors.replace(declaration, `$1var(--locked-color)$3`);
+    }
+    sourceWithoutLockedColors = source.replace(rootMatch[0], rootWithoutLockedColors);
+  } else if (requireLockedTokens) {
+    assert.fail('CSS must contain a :root block with locked palette tokens');
   }
-  assert.doesNotMatch(sourceWithoutPaletteHex, /#[0-9a-f]{3,8}\b/i, 'CSS hex colors must be declared as allowed :root palette tokens');
+  assert.doesNotMatch(
+    sourceWithoutLockedColors,
+    /#[0-9a-f]{3,8}\b|\b(?:rgb|rgba|hsl|hsla)\s*\(/i,
+    'CSS must not contain hardcoded colors outside locked :root token declarations'
+  );
 };
 const leadForm = (page, label) => {
   const match = page.match(/<form id="leadForm"(?=[\s>])[\s\S]*?<\/form>/);
@@ -80,20 +179,69 @@ assert.throws(
   /Required CSS selector token is missing/,
   'CSS selector checks must reject suffix-only matches'
 );
+assert.throws(
+  () => hasCssSelector('.foo:not(.home-hero-grid) {}', '.home-hero-grid', 'Required positive CSS class selector is missing'),
+  /Required positive CSS class selector is missing/,
+  'CSS selector checks must reject classes used only inside :not()'
+);
+assert.throws(
+  () => hasCssSelector('[data-x=".home-hero-grid"] {}', '.home-hero-grid', 'Required positive CSS class selector is missing'),
+  /Required positive CSS class selector is missing/,
+  'CSS selector checks must reject classes used only inside attribute values'
+);
+assert.doesNotThrow(
+  () => hasCssSelector('@media (max-width: 860px) { .home-hero-grid { display: grid; } }', '.home-hero-grid', 'Nested selector is missing'),
+  'CSS selector checks must find positive classes nested in at-rules'
+);
+assert.doesNotThrow(
+  () => hasCssSelector('.home-hero-grid { display: grid; }', '.home-hero-grid', 'Normal selector is missing'),
+  'CSS selector checks must find a normal positive class selector'
+);
+assert.doesNotThrow(
+  () => hasCssSelector('.foo, .home-hero-grid > img { display: block; }', '.home-hero-grid', 'Listed selector is missing'),
+  'CSS selector checks must find positive classes in selector lists'
+);
 for (const [probe, expected] of [
   ['.stamp { animation : 900ms ease stamp-in both; }', /stamp-in motion token/],
   ['.stamp { animation-name : stamp-in; }', /stamp-in motion token/],
   ['@keyframes stamp-in { from { opacity: 0; } }', /stamp-in motion token/],
-  ['.panel { box-shadow : none; }', /box shadows/],
   [':root { --radius : 1px; } .panel { border-radius : var(--radius); }', /radius token must be zero-valued/],
   ['.panel { border-radius : 50%; }', /radius must resolve to zero/],
-  ['.panel { color : #fff; }', /hex colors/]
+  ['.panel { color : #fff; }', /hardcoded colors/]
 ]) {
   assert.throws(() => assertEditorialCss(probe), expected, `Editorial CSS guard must reject: ${probe}`);
 }
 assert.doesNotThrow(
   () => assertEditorialCss(':root { --bg: #faf8f4; --radius: 0px; } .panel { border-radius: var(--radius); }'),
   'Editorial CSS guard must allow palette-token declarations and zero-valued radii'
+);
+assert.throws(
+  () => assertEditorialCss(':root { --bg: #ffffff; }'),
+  /locked value/,
+  'Editorial CSS guard must reject changed palette tokens'
+);
+assert.throws(
+  () => assertEditorialCss('.panel { color: rgb(1, 2, 3); }'),
+  /hardcoded colors/,
+  'Editorial CSS guard must reject rgb colors outside palette tokens'
+);
+assert.throws(
+  () => assertEditorialCss('.panel { color: hsl(0 0% 0%); }'),
+  /hardcoded colors/,
+  'Editorial CSS guard must reject hsl colors outside palette tokens'
+);
+assert.doesNotThrow(
+  () => assertEditorialCss('.panel { box-shadow: none; }'),
+  'Editorial CSS guard must allow an explicit no-shadow value'
+);
+assert.doesNotThrow(
+  () => assertEditorialCss('.panel { box-shadow: 0 0 0 0 transparent; }'),
+  'Editorial CSS guard must allow a safely recognized zero-effect shadow'
+);
+assert.throws(
+  () => assertEditorialCss('.panel { box-shadow: 0 1px 2px var(--line); }'),
+  /box shadows/,
+  'Editorial CSS guard must reject visible shadows'
 );
 
 assert.throws(
@@ -193,6 +341,6 @@ for (const selector of [
 ]) {
   hasCssSelector(css, selector, `CSS must define the ${selector} selector`);
 }
-assertEditorialCss(css);
+assertEditorialCss(css, true);
 
 console.log('Verification passed: bilingual shell, SEO alternates, contact plumbing, and motion invariants.');
