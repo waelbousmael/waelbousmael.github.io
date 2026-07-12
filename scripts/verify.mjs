@@ -40,6 +40,14 @@ site.home.serviceThemes.forEach((theme, index) => {
   assertPair(theme.title, `${label} title`);
   assertPair(theme.text, `${label} text`);
   assert.equal(typeof theme.href, 'string', `${label} href must be a string`);
+  assert.ok(theme.href.trim(), `${label} href must not be empty`);
+  assert.match(theme.href, /^\/(?:[a-z0-9-]+\/)+$/, `${label} href must be a canonical internal path`);
+
+  const hrefSegments = theme.href.slice(1).split('/').filter(Boolean);
+  const arTarget = path.join(ROOT, ...hrefSegments, 'index.html');
+  const enTarget = path.join(ROOT, 'en', ...hrefSegments, 'index.html');
+  assert.ok(fs.existsSync(arTarget), `${label} Arabic target must exist: ${theme.href}index.html`);
+  assert.ok(fs.existsSync(enTarget), `${label} English target must exist: /en${theme.href}index.html`);
 });
 
 has(homeAr, '<html lang="ar" dir="rtl">', 'Arabic root must use RTL Arabic markup');
