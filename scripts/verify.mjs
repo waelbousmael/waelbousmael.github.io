@@ -19,7 +19,6 @@ const homeAr = read('index.html');
 const homeEn = read('en/index.html');
 const contactAr = read('contact/index.html');
 const contactEn = read('en/contact/index.html');
-const build = read('scripts/build.mjs');
 const css = read('assets/css/site.css');
 const siteJs = read('assets/js/site.js');
 const contactJs = read('assets/js/contact.js');
@@ -36,8 +35,8 @@ has(homeEn, '<link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/"
 
 const whatsappHrefAr = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(site.waMessage.ar)}`;
 const whatsappHrefEn = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(site.waMessage.en)}`;
-has(homeAr, `href="${whatsappHrefAr}`, 'Arabic home must contain its generated WhatsApp href');
-has(homeEn, `href="${whatsappHrefEn}`, 'English home must contain its generated WhatsApp href');
+has(homeAr, `href="${whatsappHrefAr}"`, 'Arabic home must contain its generated WhatsApp href');
+has(homeEn, `href="${whatsappHrefEn}"`, 'English home must contain its generated WhatsApp href');
 
 has(contactAr, '<link rel="canonical" href="https://wbstudio.xyz/contact/" />', 'Arabic contact canonical must target /contact/');
 has(contactAr, '<link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/contact/" />', 'Arabic contact must link its Arabic alternate');
@@ -55,11 +54,10 @@ for (const [label, page] of [['Arabic', contactAr], ['English', contactEn]]) {
   has(page, 'window.GOOGLE_MAPS_API_KEY', `${label} contact page must retain the Google Maps hook`);
 }
 
-has(build, 'const waUrl =', 'The build must own the WhatsApp URL');
 assert.equal(site.whatsappNumber, '966538060383', 'The WhatsApp number must remain unchanged');
 assert.equal(site.formAction, 'https://formsubmit.co/ajax/wael.bousmael@gmail.com', 'The FormSubmit endpoint must remain unchanged');
-assert.match(withoutBlockComments(siteJs), /window\.matchMedia\(\s*(['"])\(prefers-reduced-motion:\s*reduce\)\1\s*\)/, 'Site motion must query reduced-motion preferences');
-assert.match(withoutBlockComments(contactJs), /typeof\s+window\.GOOGLE_MAPS_API_KEY\s*===\s*(['"])string\1/, 'Contact JavaScript must functionally read the Google Maps hook');
+assert.match(withoutBlockComments(siteJs), /const\s+prefersReducedMotion\s*=\s*window\.matchMedia\(\s*(['"])\(prefers-reduced-motion:\s*reduce\)\1\s*\)\.matches\s*;[\s\S]*?if\s*\(\s*prefersReducedMotion\b[\s\S]*?\)\s*\{\s*revealElements\.forEach\s*\(/, 'Reduced-motion preference must control the reveal fallback');
+assert.match(withoutBlockComments(contactJs), /const\s+apiKey\s*=\s*typeof\s+window\.GOOGLE_MAPS_API_KEY\s*===\s*(['"])string\1[\s\S]*?;[\s\S]*?loadGoogleMapsPlaces\(\s*apiKey\s*\)/, 'The Google Maps API key must flow into the Places loader');
 assert.doesNotMatch(withoutBlockComments(css), /(?:repeating-)?(?:linear|radial|conic)-gradient\s*\(/i, 'CSS must not contain gradients');
 
 console.log('Verification passed: bilingual shell, SEO alternates, contact plumbing, and motion invariants.');
