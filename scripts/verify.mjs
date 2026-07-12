@@ -314,6 +314,26 @@ const assertWorkCredits = (page, lang, prefix, label) => {
   assert.equal(attribute(links[0], 'href', `${label} work credits link must have an href`), `${prefix}/credits/`, `${label} work credits must link to the localized credits page`);
   has(links[0].inner, htmlEscape(site.work.noteLink[lang]), `${label} work credits must retain the localized note link text`);
 };
+const replaceElement = (text, element, replacement) =>
+  text.slice(0, element.index) + replacement + text.slice(element.index + element.outer.length);
+const replaceElementInner = (text, element, inner) =>
+  replaceElement(text, element, `${element.open}${inner}</${element.tag}>`);
+const assertWorkPage = (page, lang, prefix, label) => {
+  const grid = elementWithClasses(page, 'work-editorial-grid', `${label} work page must use the editorial portfolio grid`);
+  const cards = elements(grid.inner, { tag: 'a', classes: 'project-card' });
+  assert.equal(cards.length, projects.length, `${label} work project card count must match portfolio data`);
+  projects.forEach((project, projectIndex) => {
+    const card = cards[projectIndex];
+    const cardLabel = `${label} work project card ${projectIndex + 1}`;
+    assert.equal(attribute(card, 'href', `${cardLabel} must have an href`), `${prefix}/work/${project.slug}/`, `${cardLabel} must follow portfolio data order`);
+    const title = elements(card.inner, { tag: 'h3' })[0];
+    assert.ok(title, `${cardLabel} must retain its title`);
+    has(title.inner, htmlEscape(project.title[lang]), `${cardLabel} must retain its localized title`);
+    assert.equal(hasClassTokens(card.open, 'is-wide'), projectIndex === 0, `${cardLabel} must ${projectIndex === 0 ? '' : 'not '}be the wide card`);
+    assertImage(card.inner, project.cover, lang, { eager: projectIndex === 0, label: cardLabel });
+  });
+  assertWorkCredits(page, lang, prefix, label);
+};
 const assertImage = (scope, image, lang, { eager, label }) => {
   const imageElement = elements(scope, { tag: 'img' })[0];
   assert.ok(imageElement, `${label} must contain an image`);
@@ -398,6 +418,13 @@ const assertProjectPage = (page, project, projectIndex, lang, prefix, label) => 
   assert.equal(attribute(nextLink, 'href', `${pageLabel} next-project link must have href`), `${prefix}/work/${next.slug}/`, `${pageLabel} next-project link must target the correct localized project`);
   has(nextLink.inner, htmlEscape(next.title[lang]), `${pageLabel} next-project link must retain the localized project title`);
   has(nextLink.inner, lang === 'ar' ? '←' : '→', `${pageLabel} next-project link must retain the directional arrow`);
+  assert.ok(
+    heading.index < cover.index
+      && cover.index < intro.index
+      && intro.index < gallery.index
+      && gallery.index < nextContainer.index,
+    `${pageLabel} must retain the heading, cover, intro, gallery, next-project structural sequence`
+  );
 };
 
 const homeAr = read('index.html');
@@ -578,17 +605,48 @@ for (const [label, page, prefix, lang] of [
   ['Arabic', workAr, '', 'ar'],
   ['English', workEn, '/en', 'en']
 ]) {
-  hasClasses(page, 'work-editorial-grid', `${label} work page must use the editorial portfolio grid`);
-  assertWorkCredits(page, lang, prefix, label);
-  for (const project of projects) {
-    has(page, `href="${prefix}/work/${project.slug}/"`, `${label} work page must retain the ${project.slug} project card`);
-  }
+  assertWorkPage(page, lang, prefix, label);
 }
 
 assert.throws(
   () => assertWorkCredits(`<footer><a href="/credits/">${htmlEscape(site.work.noteLink.en)}</a></footer><p class="work-credits">Missing</p>`, 'en', '', 'Probe'),
   /work credits/,
   'Work credits checks must reject a credits link found only in the footer'
+);
+
+const workProbeGrid = elementWithClasses(workEn, 'work-editorial-grid', 'Work probe must contain its grid');
+const workProbeCards = elements(workProbeGrid.inner, { tag: 'a', classes: 'project-card' });
+const firstProbeCard = workProbeCards[0];
+const secondProbeCard = workProbeCards[1];
+const swappedCardsInner = workProbeGrid.inner.slice(0, firstProbeCard.index)
+  + secondProbeCard.outer
+  + workProbeGrid.inner.slice(firstProbeCard.index + firstProbeCard.outer.length, secondProbeCard.index)
+  + firstProbeCard.outer
+  + workProbeGrid.inner.slice(secondProbeCard.index + secondProbeCard.outer.length);
+assert.throws(
+  () => assertWorkPage(replaceElementInner(workEn, workProbeGrid, swappedCardsInner), 'en', '/en', 'Probe'),
+  /project card 1/,
+  'Work checks must reject project cards rendered out of data order'
+);
+
+const laterWideEagerCard = secondProbeCard.outer
+  .replace('class="project-card"', 'class="project-card is-wide"')
+  .replace('loading="lazy"', 'fetchpriority="high"');
+const laterWideEagerInner = replaceElement(workProbeGrid.inner, secondProbeCard, laterWideEagerCard);
+assert.throws(
+  () => assertWorkPage(replaceElementInner(workEn, workProbeGrid, laterWideEagerInner), 'en', '/en', 'Probe'),
+  /project card 2/,
+  'Work checks must reject a later card that becomes wide and eager'
+);
+
+const outsideCard = workProbeCards.at(-1);
+const gridWithoutLastCard = replaceElement(workProbeGrid.inner, outsideCard, '');
+const outsideGridCardPage = replaceElementInner(workEn, workProbeGrid, gridWithoutLastCard)
+  .replace('</body>', `${outsideCard.outer}</body>`);
+assert.throws(
+  () => assertWorkPage(outsideGridCardPage, 'en', '/en', 'Probe'),
+  /project card count/,
+  'Work checks must not accept a project card link found outside the editorial grid'
 );
 
 for (const [label, lang, prefix] of [
@@ -604,6 +662,17 @@ for (const [label, lang, prefix] of [
 
 const semanticProbeProject = projects[0];
 const semanticProbePage = read(`en/work/${semanticProbeProject.slug}/index.html`);
+const sequenceProbeCover = elementWithClasses(semanticProbePage, 'project-cover', 'Sequence probe must contain its cover');
+const sequencePageWithoutCover = replaceElement(semanticProbePage, sequenceProbeCover, '');
+const sequenceProbeIntro = elementWithClasses(sequencePageWithoutCover, 'project-intro-grid', 'Sequence probe must contain its intro');
+const coverAfterIntroPage = sequencePageWithoutCover.slice(0, sequenceProbeIntro.index + sequenceProbeIntro.outer.length)
+  + sequenceProbeCover.outer
+  + sequencePageWithoutCover.slice(sequenceProbeIntro.index + sequenceProbeIntro.outer.length);
+assert.throws(
+  () => assertProjectPage(coverAfterIntroPage, semanticProbeProject, 0, 'en', '/en', 'Probe'),
+  /structural sequence/,
+  'Project checks must reject a cover moved after the intro'
+);
 assert.throws(
   () => assertProjectPage(
     semanticProbePage.replace(/(<figure class="g-(?:wide|tall)") data-reveal/, '$1'),
