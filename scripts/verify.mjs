@@ -33,6 +33,34 @@ const hasCssSelector = (text, selector, label) => {
     .filter((candidate) => !candidate.startsWith('@'));
   assert.ok(selectors.some((candidate) => selectorToken.test(candidate)), label);
 };
+const assertEditorialCss = (text) => {
+  const source = withoutBlockComments(text);
+  const isZeroValue = (value) => /^0(?:px|rem|em|%|vh|vw|vmin|vmax|ch|ex|cm|mm|in|pt|pc|q)?$/i.test(value);
+  assert.doesNotMatch(source, /\bstamp-in\b/i, 'CSS must not contain the stamp-in motion token');
+  assert.doesNotMatch(source, /\bbox-shadow\s*:/i, 'CSS must not contain box shadows');
+
+  for (const match of source.matchAll(/--radius(?:-sm|-pill)?\s*:\s*([^;{}]+)/gi)) {
+    assert.ok(isZeroValue(match[1].trim()), `CSS radius token must be zero-valued: ${match[0].trim()}`);
+  }
+  for (const match of source.matchAll(/\bborder(?:-[a-z]+)*-radius\s*:\s*([^;{}]+)/gi)) {
+    const values = match[1].trim().split(/\s+/);
+    const isZeroRadius = values.every((value) =>
+      isZeroValue(value) || /^var\(--radius(?:-sm|-pill)?\)$/i.test(value)
+    );
+    assert.ok(isZeroRadius, `CSS radius must resolve to zero: ${match[0].trim()}`);
+  }
+
+  const rootMatch = source.match(/:root\s*\{([^{}]*)\}/i);
+  let sourceWithoutPaletteHex = source;
+  if (rootMatch) {
+    const rootWithoutPaletteHex = rootMatch[0].replace(
+      /(--(?:bg|surface|ink|ink-soft|muted)\s*:\s*)#[0-9a-f]{3,8}(\s*;)/gi,
+      '$1var(--allowed-palette-hex)$2'
+    );
+    sourceWithoutPaletteHex = source.replace(rootMatch[0], rootWithoutPaletteHex);
+  }
+  assert.doesNotMatch(sourceWithoutPaletteHex, /#[0-9a-f]{3,8}\b/i, 'CSS hex colors must be declared as allowed :root palette tokens');
+};
 const leadForm = (page, label) => {
   const match = page.match(/<form id="leadForm"(?=[\s>])[\s\S]*?<\/form>/);
   assert.ok(match, `${label} contact page must contain the lead form`);
@@ -51,6 +79,21 @@ assert.throws(
   () => hasCssSelector('.home-hero-grid-extra {}', '.home-hero-grid', 'Required CSS selector token is missing'),
   /Required CSS selector token is missing/,
   'CSS selector checks must reject suffix-only matches'
+);
+for (const [probe, expected] of [
+  ['.stamp { animation : 900ms ease stamp-in both; }', /stamp-in motion token/],
+  ['.stamp { animation-name : stamp-in; }', /stamp-in motion token/],
+  ['@keyframes stamp-in { from { opacity: 0; } }', /stamp-in motion token/],
+  ['.panel { box-shadow : none; }', /box shadows/],
+  [':root { --radius : 1px; } .panel { border-radius : var(--radius); }', /radius token must be zero-valued/],
+  ['.panel { border-radius : 50%; }', /radius must resolve to zero/],
+  ['.panel { color : #fff; }', /hex colors/]
+]) {
+  assert.throws(() => assertEditorialCss(probe), expected, `Editorial CSS guard must reject: ${probe}`);
+}
+assert.doesNotThrow(
+  () => assertEditorialCss(':root { --bg: #faf8f4; --radius: 0px; } .panel { border-radius: var(--radius); }'),
+  'Editorial CSS guard must allow palette-token declarations and zero-valued radii'
 );
 
 assert.throws(
@@ -150,6 +193,6 @@ for (const selector of [
 ]) {
   hasCssSelector(css, selector, `CSS must define the ${selector} selector`);
 }
-assert.doesNotMatch(withoutBlockComments(css), /animation\s*:\s*stamp-in\b/i, 'CSS must not animate the hero stamp entrance');
+assertEditorialCss(css);
 
 console.log('Verification passed: bilingual shell, SEO alternates, contact plumbing, and motion invariants.');

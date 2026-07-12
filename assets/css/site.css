@@ -316,7 +316,6 @@ html[lang="ar"] .mobile-links a { font-weight: 700; }
 .hero-brand .eyebrow { margin-block-end: 0; }
 
 .stamp-hero { width: clamp(84px, 10vw, 120px); }
-.stamp-footer { width: 56px; margin-block-end: 0.9rem; opacity: 0.75; }
 
 .stamp-seal { width: 64px; margin-inline: auto; margin-block-end: 1.4rem; opacity: 0.9; }
 
@@ -327,13 +326,13 @@ html[lang="ar"] .mobile-links a { font-weight: 700; }
 .hero { padding-block: clamp(3.5rem, 9vw, 7rem) clamp(2.5rem, 6vw, 4.5rem); }
 
 /* ── editorial homepage ── */
-.home-hero { padding-block: clamp(4rem, 8vw, 7rem) clamp(3rem, 6vw, 5rem); }
+.home-hero { padding-block: clamp(3rem, 7vw, 6rem) clamp(2rem, 5vw, 4rem); }
 
 .home-hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
   align-items: end;
-  gap: clamp(3rem, 7vw, 7rem);
+  gap: clamp(2.5rem, 6vw, 6rem);
 }
 
 .home-hero-copy h1 { max-width: 13ch; }
@@ -366,8 +365,8 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
 
 .home-work-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.75fr);
-  gap: clamp(2rem, 4vw, 4rem);
+  grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.75fr);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
 }
 
 .home-work-grid .project-card:first-child { grid-row: span 2; }
@@ -386,17 +385,17 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
 
 .home-services-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: clamp(3rem, 7vw, 7rem);
+  grid-template-columns: minmax(240px, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(2rem, 6vw, 6rem);
 }
 
-.home-service-list { border-block-start: 1px solid var(--line); }
+.home-service-list { border-block-start: 1px solid var(--line-strong); }
 .home-service-list > a:not(.home-services-all) {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) auto;
+  grid-template-columns: minmax(180px, 0.8fr) minmax(0, 1.2fr) auto;
   align-items: baseline;
   gap: 1rem;
-  padding-block: clamp(1.25rem, 2.5vw, 2rem);
+  padding-block: 1.25rem;
   border-block-end: 1px solid var(--line);
   color: inherit;
   text-decoration: none;
@@ -585,10 +584,8 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
   width: var(--circle);
   height: var(--circle);
   margin-inline: auto;
-  border-radius: 50%;
   overflow: hidden;
   background: var(--surface);
-  box-shadow: 0 0 0 7px var(--bg); /* halo: line appears to stop at each circle */
 }
 .workflow-media img {
   width: 100%;
@@ -679,7 +676,7 @@ form .btn-solid { justify-self: start; margin-block-start: 0.5rem; }
 
 .form-feedback { display: none; font-size: 0.92rem; color: var(--ink); }
 .form-feedback.visible { display: block; }
-.form-feedback.error { color: #8a4b3c; }
+.form-feedback.error { color: var(--ink); }
 
 /* ── faq ── */
 .faq { margin-block-start: clamp(1.5rem, 3vw, 2.5rem); }
@@ -724,7 +721,10 @@ form .btn-solid { justify-self: start; margin-block-start: 0.5rem; }
   padding-block: clamp(3rem, 6vw, 4.5rem) clamp(2rem, 4vw, 3rem);
 }
 
-.footer-editorial { grid-template-columns: 1.8fr 0.8fr 0.8fr; }
+.footer-editorial {
+  grid-template-columns: minmax(0, 1.8fr) minmax(150px, 0.8fr) minmax(180px, 0.8fr);
+}
+.footer-editorial .stamp-footer { width: 56px; margin-block-end: 0.9rem; opacity: 0.75; }
 
 .footer-brand p { margin-block-start: 1rem; max-width: 38ch; font-size: 0.9rem; color: var(--muted); }
 
