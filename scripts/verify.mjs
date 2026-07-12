@@ -241,6 +241,15 @@ const assertCssDeclarations = (text, selector, expected, label) => {
     assert.equal(actual.get(property), value, `${label} ${selector} must set ${property}: ${value}`);
   }
 };
+const assertServiceInteractionCss = (text, label) => {
+  assertCssDeclarations(text, '.service-editorial-row:hover, .service-editorial-row:focus-visible', { 'border-block-end-color': 'var(--line-strong)' }, label);
+  assertCssDeclarations(text, '.service-editorial-row:hover .svc-more, .service-editorial-row:focus-visible .svc-more', { color: 'var(--ink)' }, label);
+  const serviceRule = /(?:^|[^\w-])\.service-editorial-row(?![\w-])/;
+  for (const rule of withoutBlockComments(text).matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+    if (!serviceRule.test(positiveSelectorText(rule[1]))) continue;
+    assert.doesNotMatch(rule[2], /\b(?:transition|animation)(?:-[\w-]+)?\s*:/i, `${label} must not add motion to service rows`);
+  }
+};
 const assertEditorialCss = (text, requireLockedTokens = false) => {
   const source = withoutBlockComments(text);
   const declarations = cssDeclarations(source);
@@ -550,11 +559,13 @@ const assertApproachPage = (page, lang, prefix, label) => {
     has(page, htmlEscape(service.text[lang]), `${label} must retain every service description`);
   });
   const sequence = elementWithClasses(page, 'approach-sequence', `${label} must use approach-sequence`, 'ol');
+  assert.equal(attribute(sequence, 'role', `${label} approach sequence must declare a role`), 'list', `${label} approach sequence must retain Safari/VoiceOver list semantics`);
   const steps = elements(sequence.inner, { tag: 'li' });
   assert.equal(steps.length, approach.steps.length, `${label} step count must match approach data`);
   approach.steps.forEach((step, index) => {
     const number = elementWithClasses(steps[index].inner, 'step-num', `${label} step ${index + 1} must retain its number`, 'span');
     assert.equal(number.inner.trim(), String(index + 1).padStart(2, '0'), `${label} step ${index + 1} must retain its ordered number`);
+    assert.equal(attribute(number, 'aria-hidden', `${label} step ${index + 1} number must declare aria-hidden`), 'true', `${label} step ${index + 1} visible number must not duplicate spoken numbering`);
     const content = elements(steps[index].inner, { tag: 'div' })[0];
     assert.ok(content, `${label} step ${index + 1} must group heading and text in a div`);
     assert.equal(elements(content.inner, { tag: 'h3' })[0]?.inner.trim(), htmlEscape(step.title[lang]), `${label} step ${index + 1} must retain its title in order`);
@@ -591,6 +602,17 @@ for (const [label, lang, prefix, directory] of [
   });
   const approachPage = read(`${directory}approach/index.html`);
   assertApproachPage(approachPage, lang, prefix, `${label} approach`);
+  const approachSequenceProbe = elementWithClasses(approachPage, 'approach-sequence', `${label} approach probe must contain its sequence`, 'ol');
+  assert.throws(
+    () => assertApproachPage(approachPage.replace(approachSequenceProbe.open, approachSequenceProbe.open.replace(' role="list"', '')), lang, prefix, `${label} approach role probe`),
+    /approach sequence must declare a role/,
+    `${label} approach checks must reject a sequence missing role=list`
+  );
+  assert.throws(
+    () => assertApproachPage(approachPage.replace(/(<span class="step-num") aria-hidden="true"/, '$1'), lang, prefix, `${label} approach number probe`),
+    /number must declare aria-hidden/,
+    `${label} approach checks must reject a visible step number missing aria-hidden=true`
+  );
 }
 
 assert.throws(
@@ -624,6 +646,37 @@ assert.throws(
   () => hasCssSelectorBranch('.work-editorial-grid .project-card:first-child .card-media img {}', '.work-editorial-grid .card-media img', 'Generic work image selector is missing'),
   /Generic work image selector is missing/,
   'CSS branch checks must reject a first-child-only work image selector'
+);
+const serviceInteractionFixture = `.service-editorial-row:hover, .service-editorial-row:focus-visible { border-block-end-color: var(--line-strong); }
+.service-editorial-row:hover .svc-more, .service-editorial-row:focus-visible .svc-more { color: var(--ink); }`;
+assert.doesNotThrow(
+  () => assertServiceInteractionCss(serviceInteractionFixture, 'Service interaction probe'),
+  'Service interaction checks must accept hover and focus-visible parity using locked tokens'
+);
+assert.throws(
+  () => assertCssDeclarations('.service-editorial-row:hover { border-block-end-color: var(--line-strong); }', '.service-editorial-row:hover, .service-editorial-row:focus-visible', { 'border-block-end-color': 'var(--line-strong)' }, 'Service interaction probe'),
+  /must define/,
+  'Service interaction checks must reject hover feedback without focus-visible parity'
+);
+assert.throws(
+  () => assertCssDeclarations('.service-editorial-row:hover, .service-editorial-row:focus-visible { border-block-end-color: var(--line); }', '.service-editorial-row:hover, .service-editorial-row:focus-visible', { 'border-block-end-color': 'var(--line-strong)' }, 'Service interaction probe'),
+  /must set border-block-end-color/,
+  'Service interaction checks must reject a weak or changed feedback token'
+);
+assert.throws(
+  () => assertServiceInteractionCss(serviceInteractionFixture.replace('.service-editorial-row:hover .svc-more, .service-editorial-row:focus-visible .svc-more', '.service-editorial-row:hover .svc-more'), 'Service interaction probe'),
+  /must define/,
+  'Service interaction checks must reject svc-more hover feedback without focus-visible parity'
+);
+assert.throws(
+  () => assertServiceInteractionCss(serviceInteractionFixture.replace('color: var(--ink)', 'color: var(--ink-soft)'), 'Service interaction probe'),
+  /must set color/,
+  'Service interaction checks must reject a changed svc-more feedback token'
+);
+assert.throws(
+  () => assertServiceInteractionCss(`${serviceInteractionFixture}\n.service-editorial-row { transition: color 0.2s; }`, 'Service interaction motion probe'),
+  /must not add motion/,
+  'Service interaction checks must reject newly introduced row motion'
 );
 for (const [probe, expected] of [
   ['.stamp { animation : 900ms ease stamp-in both; }', /stamp-in motion token/],
@@ -1002,6 +1055,8 @@ assertCssDeclarations(css, '.service-editorial-row', {
 }, 'Service editorial CSS');
 assertCssDeclarations(css, '.service-editorial-row h2, .service-editorial-row h3, .service-editorial-row p', { margin: '0' }, 'Service editorial CSS');
 assertCssDeclarations(css, '.service-editorial-row p', { color: 'var(--ink-soft)' }, 'Service editorial CSS');
+assertServiceInteractionCss(css, 'Service interaction CSS');
+assertCssDeclarations(css, ':focus-visible', { outline: '2px solid var(--ink)', 'outline-offset': '3px' }, 'Global focus CSS');
 assertCssDeclarations(css, '.landing-content-grid', { 'border-block-start': '1px solid var(--line-strong)' }, 'Landing content CSS');
 assertCssDeclarations(css, '.landing-section-row', {
   display: 'grid',

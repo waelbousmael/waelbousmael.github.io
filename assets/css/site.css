@@ -508,6 +508,8 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
 .service-editorial-row h2, .service-editorial-row h3, .service-editorial-row p { margin: 0; }
 .service-editorial-row p { color: var(--ink-soft); }
 .svc-more { font-size: 0.85rem; color: var(--muted); }
+.service-editorial-row:hover, .service-editorial-row:focus-visible { border-block-end-color: var(--line-strong); }
+.service-editorial-row:hover .svc-more, .service-editorial-row:focus-visible .svc-more { color: var(--ink); }
 
 /* ── landing content rows ── */
 .landing-content-grid { border-block-start: 1px solid var(--line-strong); }

@@ -571,9 +571,9 @@ ${header(lang, 'approach')}
   <section class="section divided" data-reveal>
     <div class="wrap">
       <h2 class="display">${esc(t(a.processTitle, lang))}</h2>
-      <ol class="approach-sequence" data-reveal>
+      <ol class="approach-sequence" data-reveal role="list">
         ${a.steps.map((s, i) => `<li>
-          <span class="step-num">${String(i + 1).padStart(2, '0')}</span>
+          <span class="step-num" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>
           <div>
             <h3>${esc(t(s.title, lang))}</h3>
             <p>${esc(t(s.text, lang))}</p>
