@@ -325,11 +325,11 @@ const replaceElement = (text, element, replacement) =>
   text.slice(0, element.index) + replacement + text.slice(element.index + element.outer.length);
 const replaceElementInner = (text, element, inner) =>
   replaceElement(text, element, `${element.open}${inner}</${element.tag}>`);
-const assertWorkPage = (page, lang, prefix, label) => {
+const assertWorkPage = (page, lang, prefix, label, portfolio = projects) => {
   const grid = elementWithClasses(page, 'work-editorial-grid', `${label} work page must use the editorial portfolio grid`);
   const cards = elements(grid.inner, { tag: 'a', classes: 'project-card' });
-  assert.equal(cards.length, projects.length, `${label} work project card count must match portfolio data`);
-  projects.forEach((project, projectIndex) => {
+  assert.equal(cards.length, portfolio.length, `${label} work project card count must match portfolio data`);
+  portfolio.forEach((project, projectIndex) => {
     const card = cards[projectIndex];
     const cardLabel = `${label} work project card ${projectIndex + 1}`;
     assert.equal(attribute(card, 'href', `${cardLabel} must have an href`), `${prefix}/work/${project.slug}/`, `${cardLabel} must follow portfolio data order`);
@@ -369,7 +369,7 @@ const assertImage = (scope, image, lang, { eager, label }) => {
     assert.ok(!hasAttribute(imageElement, 'fetchpriority'), `${label} lazy image must not use eager fetch priority`);
   }
 };
-const assertProjectPage = (page, project, projectIndex, lang, prefix, label) => {
+const assertProjectPage = (page, project, projectIndex, lang, prefix, label, portfolio = projects) => {
   const pageLabel = `${label} ${project.slug}`;
   const heading = elementWithClasses(page, 'display-xl', `${pageLabel} must retain its page heading`, 'h1');
   has(heading.inner, htmlEscape(project.title[lang]), `${pageLabel} heading must retain the localized title`);
@@ -441,7 +441,7 @@ const assertProjectPage = (page, project, projectIndex, lang, prefix, label) => 
     assert.equal(galleryNotes.length, 0, `${pageLabel} non-placeholder gallery region must not render a gallery note`);
   }
 
-  const next = projects[(projectIndex + 1) % projects.length];
+  const next = portfolio[(projectIndex + 1) % portfolio.length];
   const nextContainer = elementWithClasses(page, 'next-project', `${pageLabel} must retain its next-project container`);
   has(nextContainer.inner, htmlEscape(site.project.nextProject[lang]), `${pageLabel} must retain the localized next-project label`);
   const nextLink = elementWithClasses(nextContainer.inner, 'next-link', `${pageLabel} must retain its next-project link`, 'a');
@@ -697,19 +697,44 @@ assert.throws(
   'Work checks must reject a project card with removed metadata'
 );
 
-const placeholderCardIndex = projects.findIndex((project) => project.placeholder);
-const placeholderProbeCard = workProbeCards[placeholderCardIndex];
-const placeholderStatusTag = elementWithClasses(placeholderProbeCard.inner, 'tag', 'Status probe must contain its placeholder tag');
-const placeholderCardWithoutStatus = placeholderProbeCard.outer.replace(placeholderStatusTag.outer, '');
+const syntheticPlaceholderProject = { ...projects[0], placeholder: true };
+const syntheticPlaceholderPortfolio = [syntheticPlaceholderProject, ...projects.slice(1)];
+const firstMetaWithoutTags = elements(firstCardMeta.inner, { classes: 'tag' })
+  .reduce((content, tag) => content.replace(tag.outer, ''), firstCardMeta.inner);
+const syntheticStatusTag = ` <span class="tag">${htmlEscape(syntheticPlaceholderProject.status.en)}</span>`;
+const syntheticPlaceholderMeta = `${firstCardMeta.open}${firstMetaWithoutTags}${syntheticStatusTag}</p>`;
+const syntheticPlaceholderCard = firstProbeCard.outer.replace(firstCardMeta.outer, syntheticPlaceholderMeta);
+const syntheticPlaceholderWorkPage = replaceElementInner(
+  workEn,
+  workProbeGrid,
+  replaceElement(workProbeGrid.inner, firstProbeCard, syntheticPlaceholderCard)
+);
+assert.doesNotThrow(
+  () => assertWorkPage(syntheticPlaceholderWorkPage, 'en', '/en', 'Synthetic placeholder probe', syntheticPlaceholderPortfolio),
+  'Work verifier must accept a synthetic placeholder card with localized status'
+);
+const syntheticCardWithoutStatus = syntheticPlaceholderCard.replace(syntheticStatusTag, '');
 const workWithoutStatus = replaceElementInner(
   workEn,
   workProbeGrid,
-  replaceElement(workProbeGrid.inner, placeholderProbeCard, placeholderCardWithoutStatus)
+  replaceElement(workProbeGrid.inner, firstProbeCard, syntheticCardWithoutStatus)
 );
 assert.throws(
-  () => assertWorkPage(workWithoutStatus, 'en', '/en', 'Probe'),
+  () => assertWorkPage(workWithoutStatus, 'en', '/en', 'Probe', syntheticPlaceholderPortfolio),
   /status tag/,
-  'Work checks must reject a placeholder card with removed status'
+  'Work checks must reject a synthetic placeholder card with removed status'
+);
+
+const allRealProjects = projects.map((project) => ({ ...project, placeholder: false }));
+const allRealGridInner = [...workProbeCards].reverse().reduce((gridInner, card) => {
+  const cardWithoutTags = elements(card.inner, { classes: 'tag' })
+    .reduce((cardHtml, tag) => cardHtml.replace(tag.outer, ''), card.outer);
+  return replaceElement(gridInner, card, cardWithoutTags);
+}, workProbeGrid.inner);
+const allRealWorkPage = replaceElementInner(workEn, workProbeGrid, allRealGridInner);
+assert.doesNotThrow(
+  () => assertWorkPage(allRealWorkPage, 'en', '/en', 'All-real probe', allRealProjects),
+  'Work verifier logic must support a portfolio dataset with no placeholders'
 );
 
 for (const [label, lang, prefix] of [
@@ -761,16 +786,34 @@ assert.throws(
   'Project checks must reject a gallery image that loses lazy-loading semantics'
 );
 
-const galleryNoteProbeIndex = projects.findIndex((project) => project.placeholder);
-const galleryNoteProbeProject = projects[galleryNoteProbeIndex];
-const galleryNoteProbePage = read(`en/work/${galleryNoteProbeProject.slug}/index.html`);
-const galleryNoteProbe = elementWithClasses(galleryNoteProbePage, 'gallery-note', 'Gallery-note probe must contain its note');
-const pageWithoutScopedGalleryNote = replaceElement(galleryNoteProbePage, galleryNoteProbe, '');
+const allRealProjectPage = [...elements(semanticProbePage, { classes: 'gallery-note' })].reverse()
+  .reduce((page, note) => replaceElement(page, note, ''), semanticProbePage);
+assert.doesNotThrow(
+  () => assertProjectPage(allRealProjectPage, allRealProjects[0], 0, 'en', '/en', 'All-real probe', allRealProjects),
+  'Project verifier logic must support a portfolio dataset with no placeholders'
+);
+
+const syntheticGalleryWrap = elements(allRealProjectPage, { classes: 'wrap' }).find((wrap) =>
+  elements(wrap.inner, { classes: 'gallery' }).length > 0
+);
+assert.ok(syntheticGalleryWrap, 'Synthetic gallery-note fixture must contain a gallery wrap');
+const syntheticGallery = elementWithClasses(syntheticGalleryWrap.inner, 'gallery', 'Synthetic gallery-note fixture must contain its gallery');
+const syntheticGalleryNote = `<p class="note gallery-note">${htmlEscape(site.project.galleryNote.en)} <a href="/en/credits/">${htmlEscape(site.project.galleryNoteLink.en)}</a>.</p>`;
+const syntheticGalleryWrapInner = syntheticGalleryWrap.inner.slice(0, syntheticGallery.index + syntheticGallery.outer.length)
+  + `\n        ${syntheticGalleryNote}`
+  + syntheticGalleryWrap.inner.slice(syntheticGallery.index + syntheticGallery.outer.length);
+const syntheticGalleryNotePage = replaceElementInner(allRealProjectPage, syntheticGalleryWrap, syntheticGalleryWrapInner);
+assert.doesNotThrow(
+  () => assertProjectPage(syntheticGalleryNotePage, syntheticPlaceholderProject, 0, 'en', '/en', 'Synthetic placeholder probe', syntheticPlaceholderPortfolio),
+  'Project verifier must accept a synthetic placeholder gallery note in the gallery region'
+);
+const galleryNoteProbe = elementWithClasses(syntheticGalleryNotePage, 'gallery-note', 'Synthetic gallery-note probe must contain its note');
+const pageWithoutScopedGalleryNote = replaceElement(syntheticGalleryNotePage, galleryNoteProbe, '');
 const galleryNoteOutsideRegionPage = pageWithoutScopedGalleryNote.replace('</article>', `${galleryNoteProbe.outer}</article>`);
 assert.throws(
-  () => assertProjectPage(galleryNoteOutsideRegionPage, galleryNoteProbeProject, galleryNoteProbeIndex, 'en', '/en', 'Probe'),
+  () => assertProjectPage(galleryNoteOutsideRegionPage, syntheticPlaceholderProject, 0, 'en', '/en', 'Probe', syntheticPlaceholderPortfolio),
   /gallery region/,
-  'Project checks must reject a gallery note moved outside the gallery region'
+  'Project checks must reject a synthetic gallery note moved outside the gallery region'
 );
 
 has(homeAr, '<link rel="canonical" href="https://wbstudio.xyz/" />', 'Arabic home canonical must target the root');
