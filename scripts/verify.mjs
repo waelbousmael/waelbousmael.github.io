@@ -8,6 +8,14 @@ import site from '../data/site.mjs';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (relative) => fs.readFileSync(path.join(ROOT, relative), 'utf8');
 const has = (text, fragment, label) => assert.ok(text.includes(fragment), label);
+const hasClasses = (text, requiredClasses, label) => {
+  const required = Array.isArray(requiredClasses) ? requiredClasses : [requiredClasses];
+  const hasMatchingElement = [...text.matchAll(/\bclass="([^"]*)"/g)].some((match) => {
+    const tokens = new Set(match[1].trim().split(/\s+/).filter(Boolean));
+    return required.every((className) => tokens.has(className));
+  });
+  assert.ok(hasMatchingElement, label);
+};
 const assertPair = (field, label) => {
   assert.equal(typeof field?.ar, 'string', `${label}.ar must be a string`);
   assert.ok(field.ar.trim(), `${label}.ar must not be empty`);
@@ -28,6 +36,16 @@ const contactEn = read('en/contact/index.html');
 const css = read('assets/css/site.css');
 const siteJs = read('assets/js/site.js');
 const contactJs = read('assets/js/contact.js');
+
+assert.throws(
+  () => hasClasses('<a class="mobile-lang-link-extra">', 'mobile-lang-link', 'Required class token is missing'),
+  /Required class token is missing/,
+  'Class checks must reject suffix-only matches'
+);
+assert.doesNotThrow(
+  () => hasClasses('<div class="footer-editorial wrap footer-grid extra">', ['footer-grid', 'footer-editorial'], 'Required footer classes are missing'),
+  'Class checks must ignore token order and allow additional classes'
+);
 
 assert.ok(Array.isArray(site.home.trustItems), 'Homepage trust items must be an array');
 assert.equal(site.home.trustItems.length, 4, 'Homepage must have exactly four trust items');
@@ -63,9 +81,9 @@ for (const [label, page] of [['Arabic', homeAr], ['English', homeEn]]) {
     'home-work-grid',
     'home-service-list'
   ]) {
-    has(page, className, `${label} home must contain the ${className} class`);
+    hasClasses(page, className, `${label} home must contain the ${className} class`);
   }
-  has(page, 'footer-grid footer-editorial', `${label} home must use the editorial footer`);
+  hasClasses(page, ['footer-grid', 'footer-editorial'], `${label} home must use the editorial footer`);
 }
 
 has(homeAr, '<link rel="canonical" href="https://wbstudio.xyz/" />', 'Arabic home canonical must target the root');
@@ -89,7 +107,7 @@ has(contactEn, '<link rel="alternate" hreflang="en" href="https://wbstudio.xyz/e
 
 for (const [label, page] of [['Arabic', contactAr], ['English', contactEn]]) {
   const form = leadForm(page, label);
-  has(page, 'footer-grid footer-editorial', `${label} contact page must use the shared editorial footer`);
+  hasClasses(page, ['footer-grid', 'footer-editorial'], `${label} contact page must use the shared editorial footer`);
   has(form, 'action="https://formsubmit.co/ajax/wael.bousmael@gmail.com"', `${label} contact form must use FormSubmit`);
   for (const field of ['name', 'phone', 'email', 'location', 'maps', 'budget']) {
     has(form, `name="${field}"`, `${label} contact form must retain the ${field} field`);
