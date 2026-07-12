@@ -434,7 +434,7 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
   gap: clamp(4rem, 8vw, 8rem) clamp(1.5rem, 4vw, 4rem);
 }
 .work-editorial-grid .project-card:first-child { grid-column: 1 / -1; }
-.work-editorial-grid .project-card:first-child .card-media img {
+.work-editorial-grid .card-media img {
   aspect-ratio: 16 / 10;
   object-fit: cover;
 }

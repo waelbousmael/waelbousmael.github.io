@@ -225,6 +225,13 @@ const hasCssSelector = (text, selector, label) => {
   const selectorToken = new RegExp(`(?:^|[^\\w-])${escapedSelector}(?![\\w-])`);
   assert.ok(cssRuleSelectors(text).some((candidate) => selectorToken.test(positiveSelectorText(candidate))), label);
 };
+const hasCssSelectorBranch = (text, selector, label) => {
+  const normalizedSelector = selector.trim().replace(/\s+/g, ' ');
+  const hasExactBranch = cssRuleSelectors(text).some((candidate) =>
+    candidate.split(',').some((branch) => branch.trim().replace(/\s+/g, ' ') === normalizedSelector)
+  );
+  assert.ok(hasExactBranch, label);
+};
 const assertEditorialCss = (text, requireLockedTokens = false) => {
   const source = withoutBlockComments(text);
   const declarations = cssDeclarations(source);
@@ -326,9 +333,21 @@ const assertWorkPage = (page, lang, prefix, label) => {
     const card = cards[projectIndex];
     const cardLabel = `${label} work project card ${projectIndex + 1}`;
     assert.equal(attribute(card, 'href', `${cardLabel} must have an href`), `${prefix}/work/${project.slug}/`, `${cardLabel} must follow portfolio data order`);
-    const title = elements(card.inner, { tag: 'h3' })[0];
-    assert.ok(title, `${cardLabel} must retain its title`);
+    const cardText = elementWithClasses(card.inner, 'card-text', `${cardLabel} must retain card-text`);
+    const title = elements(cardText.inner, { tag: 'h3' })[0];
+    assert.ok(title, `${cardLabel} card-text must retain its title`);
     has(title.inner, htmlEscape(project.title[lang]), `${cardLabel} must retain its localized title`);
+    const metadata = elementWithClasses(cardText.inner, 'card-meta', `${cardLabel} must retain card metadata`);
+    const statusTags = elements(metadata.inner, { classes: 'tag' });
+    if (project.placeholder) {
+      assert.equal(statusTags.length, 1, `${cardLabel} placeholder must retain exactly one status tag`);
+      assert.equal(statusTags[0].inner.trim(), htmlEscape(project.status[lang]), `${cardLabel} status tag must retain localized status`);
+    } else {
+      assert.equal(statusTags.length, 0, `${cardLabel} real project must not render a status tag`);
+    }
+    const metadataWithoutTag = statusTags.reduce((content, tag) => content.replace(tag.outer, ''), metadata.inner).trim();
+    const expectedMetadata = htmlEscape([project.category[lang], project.location[lang], project.year].join(' · '));
+    assert.equal(metadataWithoutTag, expectedMetadata, `${cardLabel} must retain exact localized card metadata`);
     assert.equal(hasClassTokens(card.open, 'is-wide'), projectIndex === 0, `${cardLabel} must ${projectIndex === 0 ? '' : 'not '}be the wide card`);
     assertImage(card.inner, project.cover, lang, { eager: projectIndex === 0, label: cardLabel });
   });
@@ -389,7 +408,17 @@ const assertProjectPage = (page, project, projectIndex, lang, prefix, label) => 
   });
 
   const gallery = elementWithClasses(page, 'gallery', `${pageLabel} must retain its gallery`);
-  const galleryFigures = elements(gallery.inner, { tag: 'figure' });
+  const gallerySections = elements(page, { tag: 'section' }).filter((section) =>
+    elements(section.inner, { classes: 'gallery' }).length > 0
+  );
+  assert.equal(gallerySections.length, 1, `${pageLabel} must retain exactly one gallery section`);
+  const galleryWraps = elements(gallerySections[0].inner, { classes: 'wrap' }).filter((wrap) =>
+    elements(wrap.inner, { classes: 'gallery' }).length > 0
+  );
+  assert.equal(galleryWraps.length, 1, `${pageLabel} gallery section must retain exactly one gallery wrap`);
+  const galleryWrap = galleryWraps[0];
+  const scopedGallery = elementWithClasses(galleryWrap.inner, 'gallery', `${pageLabel} gallery region must contain its gallery`);
+  const galleryFigures = elements(scopedGallery.inner, { tag: 'figure' });
   assert.equal(galleryFigures.length, project.gallery.length, `${pageLabel} must retain every gallery figure`);
   project.gallery.forEach((galleryImage, galleryIndex) => {
     const figure = galleryFigures[galleryIndex];
@@ -399,16 +428,17 @@ const assertProjectPage = (page, project, projectIndex, lang, prefix, label) => 
     assertImage(figure.inner, galleryImage, lang, { eager: false, label: `${pageLabel} gallery figure ${galleryIndex + 1}` });
   });
 
-  const galleryNotes = elements(page, { classes: 'gallery-note' });
+  const galleryNotes = elements(galleryWrap.inner, { classes: 'gallery-note' });
   if (project.placeholder) {
-    assert.equal(galleryNotes.length, 1, `${pageLabel} placeholder project must retain one gallery note`);
+    assert.equal(galleryNotes.length, 1, `${pageLabel} placeholder gallery region must retain one gallery note`);
+    assert.ok(galleryNotes[0].index > scopedGallery.index + scopedGallery.outer.length, `${pageLabel} gallery note must follow the gallery within the same wrap`);
     has(galleryNotes[0].inner, htmlEscape(site.project.galleryNote[lang]), `${pageLabel} gallery note must retain its localized text`);
     const noteLink = elements(galleryNotes[0].inner, { tag: 'a' })[0];
     assert.ok(noteLink, `${pageLabel} gallery note must contain its credits link`);
     assert.equal(attribute(noteLink, 'href', `${pageLabel} gallery note link must have href`), `${prefix}/credits/`, `${pageLabel} gallery note must use the localized credits href`);
     has(noteLink.inner, htmlEscape(site.project.galleryNoteLink[lang]), `${pageLabel} gallery note must retain localized link text`);
   } else {
-    assert.equal(galleryNotes.length, 0, `${pageLabel} non-placeholder project must not render a gallery note`);
+    assert.equal(galleryNotes.length, 0, `${pageLabel} non-placeholder gallery region must not render a gallery note`);
   }
 
   const next = projects[(projectIndex + 1) % projects.length];
@@ -464,6 +494,11 @@ assert.doesNotThrow(
 assert.doesNotThrow(
   () => hasCssSelector('.foo, .home-hero-grid > img { display: block; }', '.home-hero-grid', 'Listed selector is missing'),
   'CSS selector checks must find positive classes in selector lists'
+);
+assert.throws(
+  () => hasCssSelectorBranch('.work-editorial-grid .project-card:first-child .card-media img {}', '.work-editorial-grid .card-media img', 'Generic work image selector is missing'),
+  /Generic work image selector is missing/,
+  'CSS branch checks must reject a first-child-only work image selector'
 );
 for (const [probe, expected] of [
   ['.stamp { animation : 900ms ease stamp-in both; }', /stamp-in motion token/],
@@ -649,6 +684,34 @@ assert.throws(
   'Work checks must not accept a project card link found outside the editorial grid'
 );
 
+const firstCardMeta = elementWithClasses(firstProbeCard.inner, 'card-meta', 'Metadata probe must contain card metadata');
+const firstCardWithoutMeta = firstProbeCard.outer.replace(firstCardMeta.outer, '');
+const workWithoutMetadata = replaceElementInner(
+  workEn,
+  workProbeGrid,
+  replaceElement(workProbeGrid.inner, firstProbeCard, firstCardWithoutMeta)
+);
+assert.throws(
+  () => assertWorkPage(workWithoutMetadata, 'en', '/en', 'Probe'),
+  /card metadata/,
+  'Work checks must reject a project card with removed metadata'
+);
+
+const placeholderCardIndex = projects.findIndex((project) => project.placeholder);
+const placeholderProbeCard = workProbeCards[placeholderCardIndex];
+const placeholderStatusTag = elementWithClasses(placeholderProbeCard.inner, 'tag', 'Status probe must contain its placeholder tag');
+const placeholderCardWithoutStatus = placeholderProbeCard.outer.replace(placeholderStatusTag.outer, '');
+const workWithoutStatus = replaceElementInner(
+  workEn,
+  workProbeGrid,
+  replaceElement(workProbeGrid.inner, placeholderProbeCard, placeholderCardWithoutStatus)
+);
+assert.throws(
+  () => assertWorkPage(workWithoutStatus, 'en', '/en', 'Probe'),
+  /status tag/,
+  'Work checks must reject a placeholder card with removed status'
+);
+
 for (const [label, lang, prefix] of [
   ['Arabic', 'ar', ''],
   ['English', 'en', '/en']
@@ -698,6 +761,18 @@ assert.throws(
   'Project checks must reject a gallery image that loses lazy-loading semantics'
 );
 
+const galleryNoteProbeIndex = projects.findIndex((project) => project.placeholder);
+const galleryNoteProbeProject = projects[galleryNoteProbeIndex];
+const galleryNoteProbePage = read(`en/work/${galleryNoteProbeProject.slug}/index.html`);
+const galleryNoteProbe = elementWithClasses(galleryNoteProbePage, 'gallery-note', 'Gallery-note probe must contain its note');
+const pageWithoutScopedGalleryNote = replaceElement(galleryNoteProbePage, galleryNoteProbe, '');
+const galleryNoteOutsideRegionPage = pageWithoutScopedGalleryNote.replace('</article>', `${galleryNoteProbe.outer}</article>`);
+assert.throws(
+  () => assertProjectPage(galleryNoteOutsideRegionPage, galleryNoteProbeProject, galleryNoteProbeIndex, 'en', '/en', 'Probe'),
+  /gallery region/,
+  'Project checks must reject a gallery note moved outside the gallery region'
+);
+
 has(homeAr, '<link rel="canonical" href="https://wbstudio.xyz/" />', 'Arabic home canonical must target the root');
 has(homeAr, '<link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/" />', 'Arabic home must link its Arabic alternate');
 has(homeAr, '<link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/" />', 'Arabic home must link its English alternate');
@@ -744,6 +819,7 @@ for (const selector of [
 ]) {
   hasCssSelector(css, selector, `CSS must define the ${selector} selector`);
 }
+hasCssSelectorBranch(css, '.work-editorial-grid .card-media img', 'CSS must size every editorial work-grid image, not only the first card image');
 assertEditorialCss(css, true);
 
 console.log('Verification passed: bilingual shell, SEO alternates, contact plumbing, and motion invariants.');
