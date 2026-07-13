@@ -34,7 +34,7 @@
     menu.hidden = true;
     document.body.style.overflow = '';
     toggle.setAttribute('aria-expanded', 'false');
-    requestAnimationFrame(() => toggle.focus());
+    requestAnimationFrame(() => requestAnimationFrame(() => toggle.focus()));
   };
 
   if (toggle && menu) {
