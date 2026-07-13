@@ -609,7 +609,7 @@ ${header(lang, 'about')}
     </div>
   </section>
   <section class="section divided" data-reveal>
-    <div class="wrap about-grid">
+    <div class="wrap founder-grid">
       <div class="about-portrait">${img(a.portrait, lang)}</div>
       <div class="flow">
         <h2 class="display">${esc(t(a.name, lang))}</h2>
@@ -670,32 +670,41 @@ ${header(lang, 'contact')}
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_captcha" value="false" />
 
-        <label for="name"><span>${esc(t(f.name, lang))}</span> <span class="required-mark" aria-hidden="true">*</span></label>
-        <input id="name" name="name" type="text" autocomplete="name" placeholder="${esc(t(f.namePh, lang))}" required />
+        <fieldset class="contact-field-group">
+          <legend>${esc(t(f.contactGroupLabel, lang))}</legend>
+          <label for="name"><span>${esc(t(f.name, lang))}</span> <span class="required-mark" aria-hidden="true">*</span></label>
+          <input id="name" name="name" type="text" autocomplete="name" placeholder="${esc(t(f.namePh, lang))}" required />
 
-        <label for="phone"><span>${esc(t(f.phone, lang))}</span> <span class="required-mark" aria-hidden="true">*</span></label>
-        <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="${esc(t(f.phonePh, lang))}" pattern="^[+\\d\\s]{7,}$" required />
+          <label for="phone"><span>${esc(t(f.phone, lang))}</span> <span class="required-mark" aria-hidden="true">*</span></label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="${esc(t(f.phonePh, lang))}" pattern="^[+\\d\\s]{7,}$" required />
 
-        <label for="email"><span>${esc(t(f.email, lang))}</span> <span class="required-mark" aria-hidden="true">*</span></label>
-        <input id="email" name="email" type="email" autocomplete="email" placeholder="${esc(t(f.emailPh, lang))}" required />
+          <label for="email"><span>${esc(t(f.email, lang))}</span> <span class="required-mark" aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="${esc(t(f.emailPh, lang))}" required />
+        </fieldset>
 
-        <div class="form-row">
-          <div class="field-group">
-            <label for="location">${esc(t(f.location, lang))}</label>
-            <input id="location" name="location" type="text" placeholder="${esc(t(f.locationPh, lang))}" />
+        <fieldset class="contact-field-group">
+          <legend>${esc(t(f.plotGroupLabel, lang))}</legend>
+          <div class="form-row">
+            <div class="field-group">
+              <label for="location">${esc(t(f.location, lang))}</label>
+              <input id="location" name="location" type="text" placeholder="${esc(t(f.locationPh, lang))}" />
+            </div>
+            <div class="field-group">
+              <label for="maps">${esc(t(f.maps, lang))}</label>
+              <input id="maps" name="maps" type="url" placeholder="${esc(t(f.mapsPh, lang))}" />
+            </div>
           </div>
-          <div class="field-group">
-            <label for="maps">${esc(t(f.maps, lang))}</label>
-            <input id="maps" name="maps" type="url" placeholder="${esc(t(f.mapsPh, lang))}" />
-          </div>
-        </div>
-        <p class="form-helper">${esc(t(f.locationHelper, lang))}</p>
+          <p class="form-helper">${esc(t(f.locationHelper, lang))}</p>
+        </fieldset>
 
-        <label for="budget">${esc(t(f.budget, lang))}</label>
-        <select id="budget" name="budget">
-          <option value="">${esc(t(f.budgetPh, lang))}</option>
-          ${f.budgetOptions[lang].map((o) => `<option>${esc(o)}</option>`).join('\n          ')}
-        </select>
+        <fieldset class="contact-field-group">
+          <legend>${esc(t(f.budgetGroupLabel, lang))}</legend>
+          <label for="budget">${esc(t(f.budget, lang))}</label>
+          <select id="budget" name="budget">
+            <option value="">${esc(t(f.budgetPh, lang))}</option>
+            ${f.budgetOptions[lang].map((o) => `<option>${esc(o)}</option>`).join('\n            ')}
+          </select>
+        </fieldset>
 
         <button class="btn btn-solid" type="submit">${esc(t(f.submit, lang))}</button>
         <p id="formFeedback" class="form-feedback" aria-live="polite"
@@ -893,11 +902,13 @@ ${header(lang, 'journal')}
   </section>
   <section class="section" data-reveal>
     <div class="wrap narrow">
-      <ul class="journal-list">
+      <ul class="journal-editorial-list">
         ${sorted.map((a) => `<li><a href="${langPath(lang, `/journal/${a.slug}/`)}">
           <time datetime="${a.date}">${fmtDate(a.date, lang)}</time>
-          <h2>${esc(t(a.h1, lang))}</h2>
-          <p>${esc(t(a.desc, lang))}</p>
+          <div class="journal-entry-copy">
+            <h2>${esc(t(a.h1, lang))}</h2>
+            <p>${esc(t(a.desc, lang))}</p>
+          </div>
           <span class="svc-more">${esc(t(j.readMore, lang))} ${arrow(lang)}</span>
         </a></li>`).join('\n        ')}
       </ul>
@@ -932,7 +943,7 @@ ${header(lang, 'journal')}
       </div>
     </section>
     <section class="section-sm" data-reveal>
-      <div class="wrap narrow flow">
+      <div class="wrap article-reading-column flow">
         ${a.sections.map((sec) => `<h2 class="display">${esc(t(sec.heading, lang))}</h2>
         <p>${esc(t(sec.body, lang))}</p>`).join('\n        ')}
       </div>

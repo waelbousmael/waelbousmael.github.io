@@ -11,6 +11,9 @@ const has = (text, fragment, label) => assert.ok(text.includes(fragment), label)
 const htmlEscape = (value) => String(value)
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
   .replaceAll('"', '&quot;');
+const formattedDate = (iso, lang) => new Intl.DateTimeFormat(lang === 'ar' ? 'ar' : 'en-GB', {
+  year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC', calendar: 'gregory'
+}).format(new Date(`${iso}T00:00:00Z`));
 const escapeRegExp = (value) => String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const VOID_ELEMENTS = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr']);
 const classTokens = (openingTag) => {
@@ -579,6 +582,140 @@ const assertApproachPage = (page, lang, prefix, label) => {
   assert.equal(jsonLdGraph(page, label)[0]['@type'], 'BreadcrumbList', `${label} must retain BreadcrumbList schema`);
 };
 
+const assertAboutPage = (page, lang, prefix, label) => {
+  const about = site.about;
+  assertSeoShell(page, about, lang, '/about/', label);
+  const founder = elementWithClasses(page, ['wrap', 'founder-grid'], `${label} must use founder-grid`);
+  assert.equal(elements(page, { classes: 'founder-grid' }).length, 1, `${label} must contain exactly one founder-grid`);
+  for (const field of [about.h1, about.intro, about.name, about.bio, about.practiceTitle, about.practiceText]) {
+    has(page, htmlEscape(field[lang]), `${label} must retain all localized founder copy`);
+  }
+  has(founder.inner, `src="${htmlEscape(about.portrait.src)}"`, `${label} must retain the founder portrait`);
+  has(founder.inner, `alt="${htmlEscape(about.portrait.alt[lang])}"`, `${label} must retain localized founder portrait alt text`);
+  about.facts.forEach((fact) => {
+    has(page, htmlEscape(fact.label[lang]), `${label} must retain every founder fact label`);
+    has(page, htmlEscape(fact.value[lang]), `${label} must retain every founder fact value`);
+  });
+  has(page, `href="${prefix}/contact/"`, `${label} must retain its contact CTA`);
+  has(page, `href="https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(site.waMessage[lang])}"`, `${label} must retain its WhatsApp CTA`);
+};
+
+const assertJournalHub = (page, lang, prefix, label) => {
+  const meta = site.journalMeta;
+  assertSeoShell(page, meta, lang, '/journal/', label);
+  const list = elementWithClasses(page, 'journal-editorial-list', `${label} must use journal-editorial-list`, 'ul');
+  const rows = elements(list.inner, { tag: 'li' });
+  const sorted = [...site.journal].sort((a, b) => (a.date < b.date ? 1 : -1));
+  assert.equal(rows.length, sorted.length, `${label} must retain every journal article`);
+  sorted.forEach((article, index) => {
+    const links = elements(rows[index].inner, { tag: 'a' });
+    assert.equal(links.length, 1, `${label} row ${index + 1} must contain exactly one link`);
+    const link = links[0];
+    assert.equal(attribute(link, 'href', `${label} row ${index + 1} must have a route`), `${prefix}/journal/${article.slug}/`, `${label} row ${index + 1} must preserve localized article order and route`);
+    const time = elements(link.inner, { tag: 'time' })[0];
+    assert.ok(time, `${label} row ${index + 1} must retain its date`);
+    assert.equal(attribute(time, 'datetime', `${label} row ${index + 1} date must have datetime`), article.date, `${label} row ${index + 1} must retain its machine-readable date`);
+    assert.equal(time.inner.trim(), formattedDate(article.date, lang), `${label} row ${index + 1} must retain its exact localized formatted date`);
+    const copy = elementWithClasses(link.inner, 'journal-entry-copy', `${label} row ${index + 1} must group article copy`);
+    assert.equal(elements(copy.inner, { tag: 'h2' })[0]?.inner.trim(), htmlEscape(article.h1[lang]), `${label} row ${index + 1} must retain its title`);
+    assert.equal(elements(copy.inner, { tag: 'p' })[0]?.inner.trim(), htmlEscape(article.desc[lang]), `${label} row ${index + 1} must retain its description`);
+    const more = elementWithClasses(link.inner, 'svc-more', `${label} row ${index + 1} must retain read-more copy`, 'span');
+    has(more.inner, htmlEscape(meta.readMore[lang]), `${label} row ${index + 1} must retain localized read-more copy`);
+    has(more.inner, lang === 'ar' ? '←' : '→', `${label} row ${index + 1} must retain its directional arrow`);
+  });
+};
+
+const assertArticlePage = (page, article, lang, prefix, label) => {
+  const logicalPath = `/journal/${article.slug}/`;
+  assertSeoShell(page, { seoTitle: article.title, seoDesc: article.desc }, lang, logicalPath, label);
+  const readingColumn = elementWithClasses(page, ['wrap', 'article-reading-column', 'flow'], `${label} must use article-reading-column`);
+  assert.equal(elements(page, { classes: 'article-reading-column' }).length, 1, `${label} must contain exactly one article reading column`);
+  for (const field of [article.h1, article.intro]) has(page, htmlEscape(field[lang]), `${label} must retain article metadata and introduction`);
+  has(page, `<time datetime="${article.date}">`, `${label} must retain article date metadata`);
+  assert.equal(elements(readingColumn.inner, { tag: 'h2', classes: 'display' }).length, article.sections.length, `${label} must retain every article section`);
+  article.sections.forEach((section) => {
+    has(readingColumn.inner, htmlEscape(section.heading[lang]), `${label} must retain every section heading`);
+    has(readingColumn.inner, htmlEscape(section.body[lang]), `${label} must retain every section body`);
+  });
+  const related = (article.related || []).map((slug) => site.landings.find((candidate) => candidate.slug === slug)).filter(Boolean);
+  if (related.length) assertServiceRows(page, related, lang, prefix, 'h3', `${label} related services`);
+  const graph = jsonLdGraph(page, label);
+  assert.deepEqual(graph.map((node) => node['@type']), ['Article', 'BreadcrumbList'], `${label} must retain Article and BreadcrumbList schema`);
+  assert.equal(graph[0].headline, article.h1[lang], `${label} Article schema must retain its headline`);
+  assert.equal(graph[0].description, article.desc[lang], `${label} Article schema must retain its description`);
+  assert.equal(graph[0].datePublished, article.date, `${label} Article schema must retain its publication date`);
+  assert.equal(graph[0].mainEntityOfPage, `${site.domain}${prefix}${logicalPath}`, `${label} Article schema must retain its localized URL`);
+};
+
+const assertField = (scope, expected, label) => {
+  const fields = elements(scope, { tag: expected.tag });
+  const field = fields.find((candidate) => attribute(candidate, 'name', `${label} field must have a name`) === expected.name);
+  assert.ok(field, `${label} must retain the ${expected.name} field`);
+  for (const [name, value] of Object.entries(expected.attributes)) {
+    assert.equal(attribute(field, name, `${label} ${expected.name} must retain ${name}`), value, `${label} ${expected.name} must retain ${name}="${value}"`);
+  }
+  for (const name of expected.booleanAttributes || []) assert.ok(hasAttribute(field, name), `${label} ${expected.name} must retain ${name}`);
+  return field;
+};
+
+const assertContactPage = (page, lang, label) => {
+  const form = leadForm(page, label);
+  assert.equal(attribute(elements(form, { tag: 'form' })[0], 'action', `${label} form must have action`), site.formAction, `${label} form must retain FormSubmit endpoint`);
+  assert.equal(attribute(elements(form, { tag: 'form' })[0], 'method', `${label} form must have method`), 'POST', `${label} form must retain POST method`);
+  assert.ok(hasAttribute(elements(form, { tag: 'form' })[0], 'novalidate'), `${label} form must retain novalidate behavior`);
+  const hidden = elements(form, { tag: 'input' }).filter((input) => /\stype="hidden"/.test(input.open));
+  assert.deepEqual(hidden.map((input) => [attribute(input, 'name', `${label} hidden field name`), attribute(input, 'value', `${label} hidden field value`)]), [
+    ['_subject', 'WB Studio - Plot Details Free Call Request'],
+    ['_template', 'table'],
+    ['_captcha', 'false']
+  ], `${label} must retain every hidden field exactly`);
+  const groups = elements(form, { tag: 'fieldset', classes: 'contact-field-group' });
+  assert.equal(groups.length, 3, `${label} contact form must contain exactly three contact field groups`);
+  const expectations = [
+    { legend: site.form.contactGroupLabel[lang], fields: ['name', 'phone', 'email'] },
+    { legend: site.form.plotGroupLabel[lang], fields: ['location', 'maps'] },
+    { legend: site.form.budgetGroupLabel[lang], fields: ['budget'] }
+  ];
+  expectations.forEach((expected, index) => {
+    const legends = elements(groups[index].inner, { tag: 'legend' });
+    assert.equal(legends.length, 1, `${label} group ${index + 1} must contain exactly one legend`);
+    assert.equal(legends[0].inner.trim(), htmlEscape(expected.legend), `${label} group ${index + 1} must use its localized legend`);
+    const names = [
+      ...elements(groups[index].inner, { tag: 'input' }),
+      ...elements(groups[index].inner, { tag: 'select' })
+    ].map((field) => attribute(field, 'name', `${label} grouped field must have a name`));
+    assert.deepEqual(names, expected.fields, `${label} group ${index + 1} must contain the exact fields in order`);
+  });
+  const name = assertField(groups[0].inner, { tag: 'input', name: 'name', attributes: { id: 'name', type: 'text', autocomplete: 'name', placeholder: htmlEscape(site.form.namePh[lang]) }, booleanAttributes: ['required'] }, label);
+  const phone = assertField(groups[0].inner, { tag: 'input', name: 'phone', attributes: { id: 'phone', type: 'tel', autocomplete: 'tel', placeholder: htmlEscape(site.form.phonePh[lang]), pattern: '^[+\\d\\s]{7,}$' }, booleanAttributes: ['required'] }, label);
+  const email = assertField(groups[0].inner, { tag: 'input', name: 'email', attributes: { id: 'email', type: 'email', autocomplete: 'email', placeholder: htmlEscape(site.form.emailPh[lang]) }, booleanAttributes: ['required'] }, label);
+  const location = assertField(groups[1].inner, { tag: 'input', name: 'location', attributes: { id: 'location', type: 'text', placeholder: htmlEscape(site.form.locationPh[lang]) } }, label);
+  const maps = assertField(groups[1].inner, { tag: 'input', name: 'maps', attributes: { id: 'maps', type: 'url', placeholder: htmlEscape(site.form.mapsPh[lang]) } }, label);
+  const budget = assertField(groups[2].inner, { tag: 'select', name: 'budget', attributes: { id: 'budget' } }, label);
+  for (const field of [name, phone, email]) assert.ok(hasAttribute(field, 'required'), `${label} required contact fields must remain required`);
+  for (const field of [location, maps, budget]) {
+    assert.ok(!hasAttribute(field, 'required'), `${label} optional plot and budget fields must remain optional`);
+    assert.ok(!hasAttribute(field, 'autocomplete'), `${label} optional plot and budget fields must not gain autocomplete attributes`);
+  }
+  const options = elements(budget.inner, { tag: 'option' });
+  assert.deepEqual(options.map((option) => option.inner.trim()), [htmlEscape(site.form.budgetPh[lang]), ...site.form.budgetOptions[lang].map(htmlEscape)], `${label} must retain every budget option in order`);
+  has(groups[1].inner, htmlEscape(site.form.locationHelper[lang]), `${label} plot group must retain its helper text`);
+  const feedback = elements(form, { tag: 'p', classes: 'form-feedback' })[0];
+  assert.ok(feedback, `${label} must retain form feedback`);
+  assert.equal(attribute(feedback, 'id', `${label} feedback must retain id`), 'formFeedback', `${label} feedback must retain id`);
+  assert.equal(attribute(feedback, 'aria-live', `${label} feedback must retain aria-live`), 'polite', `${label} feedback must remain polite`);
+  assert.equal(attribute(feedback, 'data-msg-success', `${label} feedback must retain success copy`), htmlEscape(site.form.success[lang]), `${label} feedback must retain localized success copy`);
+  assert.equal(attribute(feedback, 'data-msg-error', `${label} feedback must retain error copy`), htmlEscape(site.form.error[lang]), `${label} feedback must retain localized error copy`);
+  assert.ok(elements(form, { tag: 'button' }).some((button) => /\stype="submit"/.test(button.open)), `${label} must retain its submit button`);
+  has(page, 'window.GOOGLE_MAPS_API_KEY', `${label} must retain the Google Maps hook`);
+  has(page, `href="https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(site.waMessage[lang])}"`, `${label} must retain its WhatsApp contact CTA`);
+  has(page, `href="tel:${site.phoneE164}"`, `${label} must retain direct phone contact`);
+  has(page, `href="${site.gmailCompose}"`, `${label} must retain direct email contact`);
+  for (const field of [site.contactPage.h1, site.contactPage.intro, site.contactPage.whatsappCta, site.contactPage.directTitle, site.contactPage.faqTitle]) {
+    has(page, htmlEscape(field[lang]), `${label} must retain all localized contact content`);
+  }
+};
+
 const homeAr = read('index.html');
 const homeEn = read('en/index.html');
 const workAr = read('work/index.html');
@@ -602,6 +739,15 @@ for (const [label, lang, prefix, directory] of [
   });
   const approachPage = read(`${directory}approach/index.html`);
   assertApproachPage(approachPage, lang, prefix, `${label} approach`);
+  const aboutPage = read(`${directory}about/index.html`);
+  assertAboutPage(aboutPage, lang, prefix, `${label} about`);
+  const journalPage = read(`${directory}journal/index.html`);
+  assertJournalHub(journalPage, lang, prefix, `${label} journal`);
+  site.journal.forEach((article) => {
+    const articlePage = read(`${directory}journal/${article.slug}/index.html`);
+    assertArticlePage(articlePage, article, lang, prefix, `${label} article ${article.slug}`);
+  });
+  assertContactPage(read(`${directory}contact/index.html`), lang, `${label} contact`);
   const approachSequenceProbe = elementWithClasses(approachPage, 'approach-sequence', `${label} approach probe must contain its sequence`, 'ol');
   assert.throws(
     () => assertApproachPage(approachPage.replace(approachSequenceProbe.open, approachSequenceProbe.open.replace(' role="list"', '')), lang, prefix, `${label} approach role probe`),
@@ -1025,6 +1171,9 @@ for (const [label, page] of [['Arabic', contactAr], ['English', contactEn]]) {
 
 assert.equal(site.whatsappNumber, '966538060383', 'The WhatsApp number must remain unchanged');
 assert.equal(site.formAction, 'https://formsubmit.co/ajax/wael.bousmael@gmail.com', 'The FormSubmit endpoint must remain unchanged');
+assert.deepEqual(site.form.contactGroupLabel, { ar: 'بيانات التواصل', en: 'Contact details' }, 'Lead form contactGroupLabel must retain exact bilingual copy');
+assert.deepEqual(site.form.plotGroupLabel, { ar: 'بيانات الأرض', en: 'Plot details' }, 'Lead form plotGroupLabel must retain exact bilingual copy');
+assert.deepEqual(site.form.budgetGroupLabel, { ar: 'نطاق الميزانية', en: 'Budget range' }, 'Lead form budgetGroupLabel must retain exact bilingual copy');
 assert.match(withoutBlockComments(siteJs), /const\s+prefersReducedMotion\s*=\s*window\.matchMedia\(\s*(['"])\(prefers-reduced-motion:\s*reduce\)\1\s*\)\.matches\s*;[\s\S]*?if\s*\(\s*prefersReducedMotion\b[\s\S]*?\)\s*\{\s*revealElements\.forEach\s*\(/, 'Reduced-motion preference must control the reveal fallback');
 assert.match(withoutBlockComments(contactJs), /const\s+apiKey\s*=\s*typeof\s+window\.GOOGLE_MAPS_API_KEY\s*===\s*(['"])string\1[\s\S]*?;[\s\S]*?loadGoogleMapsPlaces\(\s*apiKey\s*\)/, 'The Google Maps API key must flow into the Places loader');
 assert.doesNotMatch(withoutBlockComments(css), /(?:repeating-)?(?:linear|radial|conic)-gradient\s*\(/i, 'CSS must not contain gradients');
@@ -1082,11 +1231,53 @@ assertCssDeclarations(css, '.approach-sequence li', {
 }, 'Approach sequence CSS');
 assertCssDeclarations(css, '.approach-sequence h3', { 'margin-block-end': '0.45rem' }, 'Approach sequence CSS');
 assertCssDeclarations(css, '.approach-sequence p', { color: 'var(--ink-soft)' }, 'Approach sequence CSS');
+assertCssDeclarations(css, '.founder-grid', {
+  display: 'grid',
+  'grid-template-columns': 'minmax(260px, 0.75fr) minmax(0, 1.25fr)',
+  gap: 'clamp(2.5rem, 7vw, 7rem)',
+  'align-items': 'start'
+}, 'Founder grid CSS');
+assertCssDeclarations(css, '.journal-editorial-list', {
+  'list-style': 'none', margin: '0', padding: '0',
+  'border-block-start': '1px solid var(--line-strong)'
+}, 'Journal editorial CSS');
+assertCssDeclarations(css, '.journal-editorial-list li', { 'border-block-end': '1px solid var(--line)' }, 'Journal editorial CSS');
+assertCssDeclarations(css, '.journal-editorial-list a', {
+  display: 'grid',
+  'grid-template-columns': '8rem minmax(0, 1fr) auto',
+  gap: '1rem',
+  padding: '1.5rem',
+  color: 'inherit',
+  'text-decoration': 'none'
+}, 'Journal editorial CSS');
+assertCssDeclarations(css, '.journal-entry-copy h2', { margin: '0 0 0.4rem' }, 'Journal editorial CSS');
+assertCssDeclarations(css, '.journal-entry-copy p', { margin: '0', color: 'var(--ink-soft)' }, 'Journal editorial CSS');
+assertCssDeclarations(css, '.journal-editorial-list a:hover, .journal-editorial-list a:focus-visible', { background: 'var(--surface)' }, 'Journal interaction CSS');
+assertCssDeclarations(css, '.journal-editorial-list a:hover .svc-more, .journal-editorial-list a:focus-visible .svc-more', { color: 'var(--ink)' }, 'Journal interaction CSS');
+for (const rule of withoutBlockComments(css).matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+  if (!/\.journal-editorial-list\b/.test(positiveSelectorText(rule[1]))) continue;
+  assert.doesNotMatch(rule[2], /\b(?:transition|animation)(?:-[\w-]+)?\s*:/i, 'Journal row interactions must not add motion');
+}
+assertCssDeclarations(css, '.article-reading-column', { 'max-width': '70ch', 'margin-inline': 'auto' }, 'Article reading CSS');
+assertCssDeclarations(css, '.article-reading-column p', { 'line-height': '1.9' }, 'Article reading CSS');
+assertCssDeclarations(css, '.contact-field-group', { border: '0', margin: '0', padding: '0', display: 'grid', gap: '1.4rem' }, 'Contact field group CSS');
+assertCssDeclarations(css, '.contact-field-group + .contact-field-group', {
+  'margin-block-start': '1.5rem',
+  'padding-block-start': '1.5rem',
+  'border-block-start': '1px solid var(--line)'
+}, 'Contact field group CSS');
+assertCssDeclarations(css, '.contact-field-group legend', { width: '100%', 'margin-block-end': '1rem', color: 'var(--muted)', 'font-size': '0.8rem' }, 'Contact legend CSS');
+assertCssDeclarations(css, 'html[lang="en"] .contact-field-group legend', { 'text-transform': 'uppercase', 'letter-spacing': '0.12em' }, 'English contact legend CSS');
 const responsiveCss = css.slice(css.indexOf('@media (max-width: 860px)'), css.indexOf('@media (prefers-reduced-motion: reduce)'));
 assertCssDeclarations(responsiveCss, '.service-editorial-row', { 'grid-template-columns': '1fr auto' }, 'Responsive service editorial CSS');
 assertCssDeclarations(responsiveCss, '.service-editorial-row p', { 'grid-column': '1 / -1' }, 'Responsive service editorial CSS');
 assertCssDeclarations(responsiveCss, '.landing-section-row', { 'grid-template-columns': '1fr', gap: '0.75rem' }, 'Responsive landing content CSS');
 assertCssDeclarations(responsiveCss, '.approach-sequence li', { 'grid-template-columns': '3rem 1fr' }, 'Responsive approach sequence CSS');
+assertCssDeclarations(responsiveCss, '.founder-grid', { 'grid-template-columns': '1fr' }, 'Responsive founder grid CSS');
+assertCssDeclarations(responsiveCss, '.journal-editorial-list a', { 'grid-template-columns': '1fr auto' }, 'Responsive journal CSS');
+assertCssDeclarations(responsiveCss, '.journal-entry-copy', { 'grid-column': '1 / -1' }, 'Responsive journal CSS');
+assertCssDeclarations(responsiveCss, '.journal-entry-copy p', { 'grid-column': '1 / -1' }, 'Responsive journal CSS');
+assertCssDeclarations(responsiveCss, '.journal-editorial-list .svc-more', { 'grid-column': '2', 'grid-row': '1' }, 'Responsive journal CSS');
 for (const obsolete of ['.svc-list', '.svc-card', '.workflow', '.workflow-media', '.workflow-step', '.workflow-num']) {
   assert.ok(!cssRuleSelectors(css).some((selector) => new RegExp(`(?:^|[^\\w-])${escapeRegExp(obsolete)}(?![\\w-])`).test(positiveSelectorText(selector))), `CSS must not retain obsolete selector ${obsolete}`);
 }

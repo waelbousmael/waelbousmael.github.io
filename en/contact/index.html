@@ -103,35 +103,44 @@
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_captcha" value="false" />
 
-        <label for="name"><span>Name</span> <span class="required-mark" aria-hidden="true">*</span></label>
-        <input id="name" name="name" type="text" autocomplete="name" placeholder="Enter your full name" required />
+        <fieldset class="contact-field-group">
+          <legend>Contact details</legend>
+          <label for="name"><span>Name</span> <span class="required-mark" aria-hidden="true">*</span></label>
+          <input id="name" name="name" type="text" autocomplete="name" placeholder="Enter your full name" required />
 
-        <label for="phone"><span>Phone Number</span> <span class="required-mark" aria-hidden="true">*</span></label>
-        <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Example: +966 5X XXX XXXX" pattern="^[+\d\s]{7,}$" required />
+          <label for="phone"><span>Phone Number</span> <span class="required-mark" aria-hidden="true">*</span></label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Example: +966 5X XXX XXXX" pattern="^[+\d\s]{7,}$" required />
 
-        <label for="email"><span>Email</span> <span class="required-mark" aria-hidden="true">*</span></label>
-        <input id="email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required />
+          <label for="email"><span>Email</span> <span class="required-mark" aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required />
+        </fieldset>
 
-        <div class="form-row">
-          <div class="field-group">
-            <label for="location">Land Location</label>
-            <input id="location" name="location" type="text" placeholder="City, district, or address" />
+        <fieldset class="contact-field-group">
+          <legend>Plot details</legend>
+          <div class="form-row">
+            <div class="field-group">
+              <label for="location">Land Location</label>
+              <input id="location" name="location" type="text" placeholder="City, district, or address" />
+            </div>
+            <div class="field-group">
+              <label for="maps">Google Maps Link</label>
+              <input id="maps" name="maps" type="url" placeholder="https://maps.google.com/..." />
+            </div>
           </div>
-          <div class="field-group">
-            <label for="maps">Google Maps Link</label>
-            <input id="maps" name="maps" type="url" placeholder="https://maps.google.com/..." />
-          </div>
-        </div>
-        <p class="form-helper">Start typing to get faster suggestions when Google Maps is enabled.</p>
+          <p class="form-helper">Start typing to get faster suggestions when Google Maps is enabled.</p>
+        </fieldset>
 
-        <label for="budget">Estimated Budget</label>
-        <select id="budget" name="budget">
-          <option value="">Optional</option>
-          <option>Below SAR 1M</option>
-          <option>SAR 1M to 2M</option>
-          <option>SAR 2M to 4M</option>
-          <option>Above SAR 4M</option>
-        </select>
+        <fieldset class="contact-field-group">
+          <legend>Budget range</legend>
+          <label for="budget">Estimated Budget</label>
+          <select id="budget" name="budget">
+            <option value="">Optional</option>
+            <option>Below SAR 1M</option>
+            <option>SAR 1M to 2M</option>
+            <option>SAR 2M to 4M</option>
+            <option>Above SAR 4M</option>
+          </select>
+        </fieldset>
 
         <button class="btn btn-solid" type="submit">Send plot details</button>
         <p id="formFeedback" class="form-feedback" aria-live="polite"

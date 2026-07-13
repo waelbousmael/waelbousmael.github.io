@@ -307,6 +307,9 @@ export default {
       ar: 'شارك موقع الأرض والميزانية التقريبية. سنراجع التفاصيل ونعود إليك خلال يومين عمل لتحديد الخطوة الأنسب.',
       en: 'Share the plot location and estimated budget. We will review the details and get back to you within two business days to define the right next step.'
     },
+    contactGroupLabel: { ar: 'بيانات التواصل', en: 'Contact details' },
+    plotGroupLabel: { ar: 'بيانات الأرض', en: 'Plot details' },
+    budgetGroupLabel: { ar: 'نطاق الميزانية', en: 'Budget range' },
     name: { ar: 'الاسم', en: 'Name' },
     namePh: { ar: 'أدخل اسمك الكامل', en: 'Enter your full name' },
     phone: { ar: 'رقم الهاتف', en: 'Phone Number' },

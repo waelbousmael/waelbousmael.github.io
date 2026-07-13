@@ -524,20 +524,29 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
 .landing-section-row p { color: var(--ink-soft); }
 
 /* ── journal list ── */
-.journal-list { list-style: none; margin: 0; padding: 0; }
-.journal-list li { border-block-start: 1px solid var(--line); }
-.journal-list li:last-child { border-block-end: 1px solid var(--line); }
-.journal-list a {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  padding-block: clamp(1.5rem, 3vw, 2.25rem);
-  transition: opacity 0.25s var(--ease);
+.journal-editorial-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-block-start: 1px solid var(--line-strong);
 }
-.journal-list a:hover { opacity: 0.7; }
-.journal-list time { font-size: 0.8rem; color: var(--muted); }
-.journal-list h2 { margin: 0.5rem 0 0.4rem; font-size: clamp(1.3rem, 2.2vw, 1.7rem); }
-.journal-list p { color: var(--ink-soft); font-size: 0.95rem; margin: 0 0 0.8rem; max-width: 62ch; }
+.journal-editorial-list li { border-block-end: 1px solid var(--line); }
+.journal-editorial-list a {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr) auto;
+  gap: 1rem;
+  padding: 1.5rem;
+  color: inherit;
+  text-decoration: none;
+}
+.journal-editorial-list time { font-size: 0.8rem; color: var(--muted); }
+.journal-entry-copy h2 { margin: 0 0 0.4rem; font-size: clamp(1.3rem, 2.2vw, 1.7rem); }
+.journal-entry-copy p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; max-width: 62ch; }
+.journal-editorial-list a:hover, .journal-editorial-list a:focus-visible { background: var(--surface); }
+.journal-editorial-list a:hover .svc-more, .journal-editorial-list a:focus-visible .svc-more { color: var(--ink); }
+
+.article-reading-column { max-width: 70ch; margin-inline: auto; }
+.article-reading-column p { line-height: 1.9; }
 
 .project-cover { margin: 0; width: 100vw; margin-inline: calc(50% - 50vw); }
 .project-cover img { width: 100%; }
@@ -624,14 +633,20 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
 .service-row p { color: var(--ink-soft); font-size: 0.97rem; }
 
 /* ── about ── */
-.about-preview, .about-grid {
+.about-preview {
   display: grid;
   grid-template-columns: minmax(220px, 380px) 1fr;
   gap: clamp(2rem, 5vw, 4.5rem);
   align-items: start;
 }
+.founder-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.75fr) minmax(0, 1.25fr);
+  gap: clamp(2.5rem, 7vw, 7rem);
+  align-items: start;
+}
 .about-portrait img { width: 100%; }
-.about-preview .text-link, .about-grid .text-link { display: inline-block; margin-block-start: 1.5rem; }
+.about-preview .text-link, .founder-grid .text-link { display: inline-block; margin-block-start: 1.5rem; }
 
 /* ── contact ── */
 .direct-contact { margin-block-start: 2.5rem; display: grid; gap: 0.45rem; justify-items: start; }
@@ -649,6 +664,26 @@ html[lang="en"] .footer-title { text-transform: uppercase; letter-spacing: 0.16e
 .form-wrap { max-width: 680px; }
 
 form { margin-block-start: 2.25rem; display: grid; gap: 1.4rem; }
+
+.contact-field-group {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.4rem;
+}
+.contact-field-group + .contact-field-group {
+  margin-block-start: 1.5rem;
+  padding-block-start: 1.5rem;
+  border-block-start: 1px solid var(--line);
+}
+.contact-field-group legend {
+  width: 100%;
+  margin-block-end: 1rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+html[lang="en"] .contact-field-group legend { text-transform: uppercase; letter-spacing: 0.12em; }
 
 label { font-size: 0.9rem; color: var(--ink-soft); display: inline-flex; gap: 0.3rem; margin-block-end: -0.9rem; }
 .required-mark { color: var(--ink); }
@@ -804,8 +839,14 @@ form .btn-solid { justify-self: start; margin-block-start: 0.5rem; }
   .approach-sequence li { grid-template-columns: 3rem 1fr; }
   .service-row { grid-template-columns: 1fr; gap: 0.5rem; }
 
-  .about-preview, .about-grid { grid-template-columns: 1fr; }
+  .about-preview { grid-template-columns: 1fr; }
+  .founder-grid { grid-template-columns: 1fr; }
   .about-portrait { max-width: 420px; }
+
+  .journal-editorial-list a { grid-template-columns: 1fr auto; }
+  .journal-entry-copy { grid-column: 1 / -1; }
+  .journal-entry-copy p { grid-column: 1 / -1; }
+  .journal-editorial-list .svc-more { grid-column: 2; grid-row: 1; }
 
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
   .form-row { grid-template-columns: 1fr; }
