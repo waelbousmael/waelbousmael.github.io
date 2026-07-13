@@ -294,6 +294,19 @@ const assertMobileMenuFocusRestoration = (text, label) => {
     `${label} closeMenu must restore toggle focus after two frames so close-button click completion cannot overwrite it`
   );
 };
+const assertMinimumTouchTarget = (text, selector, label) => {
+  const declarations = cssDeclarations(text).filter(({ selector: candidate }) => candidate === selector);
+  const values = new Map(declarations.map(({ property, value }) => [property, value.trim()]));
+  const inlineSize = values.get('min-inline-size') ?? values.get('width');
+  const blockSize = values.get('min-block-size') ?? values.get('height');
+  const isAtLeast48px = (value) => {
+    const match = value?.match(/^(\d*\.?\d+)(px|rem)$/);
+    if (!match) return false;
+    return Number(match[1]) * (match[2] === 'rem' ? 16 : 1) >= 48;
+  };
+  assert.ok(isAtLeast48px(inlineSize), `${label} must provide at least 48px inline target size`);
+  assert.ok(isAtLeast48px(blockSize), `${label} must provide at least 48px block target size`);
+};
 const assertEditorialCss = (text, requireLockedTokens = false) => {
   const source = withoutBlockComments(text);
   const declarations = cssDeclarations(source);
@@ -1485,13 +1498,17 @@ assert.deepEqual(
 
 assertCssDeclarations(css, '.btn', { 'min-height': '3rem' }, 'Primary control sizing');
 for (const selector of ['.mobile-lang-link', '.nav-toggle', '.mobile-close']) {
-  const declarations = cssDeclarations(css).filter(({ selector: candidate }) => candidate === selector);
-  const values = new Map(declarations.map(({ property, value }) => [property, value.trim()]));
-  const inlineSize = values.get('min-inline-size') ?? values.get('width');
-  const blockSize = values.get('min-block-size') ?? values.get('height');
-  assert.equal(inlineSize, '2.75rem', `${selector} must retain a minimum 44px inline touch target`);
-  assert.equal(blockSize, '2.75rem', `${selector} must retain a minimum 44px block touch target`);
+  assertMinimumTouchTarget(css, selector, selector);
 }
+assert.throws(
+  () => assertMinimumTouchTarget('.probe { width: 2.75rem; height: 2.75rem; }', '.probe', 'Touch-target probe'),
+  /at least 48px/,
+  'Touch-target verifier must reject 44px controls'
+);
+assert.doesNotThrow(
+  () => assertMinimumTouchTarget('.probe { min-inline-size: 3rem; min-block-size: 48px; }', '.probe', 'Touch-target probe'),
+  'Touch-target verifier must accept 48px controls'
+);
 hasCssSelectorBranch(css, '.work-editorial-grid .card-media img', 'CSS must size every editorial work-grid image, not only the first card image');
 assertEditorialCss(css, true);
 
