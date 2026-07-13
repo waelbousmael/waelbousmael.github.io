@@ -967,7 +967,6 @@ ${footer(lang)}
 /* ───────────────────────── sitemap ───────────────────────── */
 
 function renderSitemap() {
-  const today = new Date().toISOString().slice(0, 10);
   const logicalPaths = [
     '/', '/work/', ...projects.map((p) => `/work/${p.slug}/`),
     '/services/', ...site.landings.map((l) => `/${l.slug}/`),
@@ -980,7 +979,6 @@ function renderSitemap() {
     for (const lang of LANGS) {
       entries.push(`  <url>
     <loc>${absUrl(lang, p)}</loc>
-    <lastmod>${today}</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="${absUrl('ar', p)}"/>
     <xhtml:link rel="alternate" hreflang="en" href="${absUrl('en', p)}"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="${absUrl('ar', p)}"/>
