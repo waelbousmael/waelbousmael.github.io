@@ -244,6 +244,13 @@ const assertCssDeclarations = (text, selector, expected, label) => {
     assert.equal(actual.get(property), value, `${label} ${selector} must set ${property}: ${value}`);
   }
 };
+const assertCssOmitsDeclarations = (text, selector, forbidden, label) => {
+  const escaped = escapeRegExp(selector).replace(/\s+/g, '\\s+');
+  const match = withoutBlockComments(text).match(new RegExp(`(?:^|\\})\\s*${escaped}\\s*\\{([^{}]*)\\}`));
+  assert.ok(match, `${label} must define ${selector}`);
+  const actual = new Set([...match[1].matchAll(/([\w-]+)\s*:/g)].map((declaration) => declaration[1]));
+  for (const property of forbidden) assert.ok(!actual.has(property), `${label} ${selector} must not set ${property}`);
+};
 const assertServiceInteractionCss = (text, label) => {
   assertCssDeclarations(text, '.service-editorial-row:hover, .service-editorial-row:focus-visible', { 'border-block-end-color': 'var(--line-strong)' }, label);
   assertCssDeclarations(text, '.service-editorial-row:hover .svc-more, .service-editorial-row:focus-visible .svc-more', { color: 'var(--ink)' }, label);
@@ -1246,10 +1253,24 @@ assertCssDeclarations(css, '.journal-editorial-list a', {
   display: 'grid',
   'grid-template-columns': '8rem minmax(0, 1fr) auto',
   gap: '1rem',
-  padding: '1.5rem',
+  'padding-block': '1.5rem',
   color: 'inherit',
   'text-decoration': 'none'
 }, 'Journal editorial CSS');
+assertCssOmitsDeclarations(css, '.journal-editorial-list a', [
+  'padding', 'padding-inline', 'padding-inline-start', 'padding-inline-end', 'padding-left', 'padding-right'
+], 'Journal editorial CSS');
+assert.doesNotThrow(
+  () => assertCssOmitsDeclarations('.journal-editorial-list a { padding-block: 1.5rem; }', '.journal-editorial-list a', ['padding', 'padding-inline'], 'Journal padding probe'),
+  'Journal padding verifier must allow block-only padding'
+);
+for (const forbiddenPadding of ['padding', 'padding-inline', 'padding-inline-start', 'padding-inline-end']) {
+  assert.throws(
+    () => assertCssOmitsDeclarations(`.journal-editorial-list a { padding-block: 1.5rem; ${forbiddenPadding}: 1rem; }`, '.journal-editorial-list a', [forbiddenPadding], 'Journal padding probe'),
+    new RegExp(`must not set ${forbiddenPadding}`),
+    `Journal padding verifier must reject ${forbiddenPadding}`
+  );
+}
 assertCssDeclarations(css, '.journal-entry-copy h2', { margin: '0 0 0.4rem' }, 'Journal editorial CSS');
 assertCssDeclarations(css, '.journal-entry-copy p', { margin: '0', color: 'var(--ink-soft)' }, 'Journal editorial CSS');
 assertCssDeclarations(css, '.journal-editorial-list a:hover, .journal-editorial-list a:focus-visible', { background: 'var(--surface)' }, 'Journal interaction CSS');
@@ -1275,9 +1296,17 @@ assertCssDeclarations(responsiveCss, '.landing-section-row', { 'grid-template-co
 assertCssDeclarations(responsiveCss, '.approach-sequence li', { 'grid-template-columns': '3rem 1fr' }, 'Responsive approach sequence CSS');
 assertCssDeclarations(responsiveCss, '.founder-grid', { 'grid-template-columns': '1fr' }, 'Responsive founder grid CSS');
 assertCssDeclarations(responsiveCss, '.journal-editorial-list a', { 'grid-template-columns': '1fr auto' }, 'Responsive journal CSS');
-assertCssDeclarations(responsiveCss, '.journal-entry-copy', { 'grid-column': '1 / -1' }, 'Responsive journal CSS');
-assertCssDeclarations(responsiveCss, '.journal-entry-copy p', { 'grid-column': '1 / -1' }, 'Responsive journal CSS');
-assertCssDeclarations(responsiveCss, '.journal-editorial-list .svc-more', { 'grid-column': '2', 'grid-row': '1' }, 'Responsive journal CSS');
+assertCssDeclarations(responsiveCss, '.journal-editorial-list p', { 'grid-column': '1 / -1' }, 'Responsive journal CSS');
+assert.throws(
+  () => assertCssDeclarations('.journal-entry-copy p { grid-column: 1 / -1; }', '.journal-editorial-list p', { 'grid-column': '1 / -1' }, 'Responsive journal selector probe'),
+  /must define \.journal-editorial-list p/,
+  'Responsive journal verifier must reject the divergent journal-entry-copy selector'
+);
+assert.throws(
+  () => assertCssDeclarations('.journal-editorial-list .copy p { grid-column: 1 / -1; }', '.journal-editorial-list p', { 'grid-column': '1 / -1' }, 'Responsive journal selector probe'),
+  /must define \.journal-editorial-list p/,
+  'Responsive journal verifier must reject a descendant selector that is not the exact row paragraph selector'
+);
 for (const obsolete of ['.svc-list', '.svc-card', '.workflow', '.workflow-media', '.workflow-step', '.workflow-num']) {
   assert.ok(!cssRuleSelectors(css).some((selector) => new RegExp(`(?:^|[^\\w-])${escapeRegExp(obsolete)}(?![\\w-])`).test(positiveSelectorText(selector))), `CSS must not retain obsolete selector ${obsolete}`);
 }
