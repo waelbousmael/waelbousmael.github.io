@@ -284,6 +284,12 @@ const assertDirectContactInteractionCss = (text, label) => {
     assert.doesNotMatch(rule[2], /\b(?:transition|animation)(?:-[\w-]+)?\s*:/i, `${label} must not add motion to direct-contact links`);
   }
 };
+const assertMobileMenuFocusRestoration = (text, label) => {
+  const source = withoutBlockComments(text);
+  const closeMenu = source.match(/const\s+closeMenu\s*=\s*\(\)\s*=>\s*\{([\s\S]*?)\n\s*\};/);
+  assert.ok(closeMenu, `${label} must define closeMenu`);
+  assert.match(closeMenu[1], /toggle\.focus\(\s*\)/, `${label} closeMenu must restore focus to the navigation toggle`);
+};
 const assertEditorialCss = (text, requireLockedTokens = false) => {
   const source = withoutBlockComments(text);
   const declarations = cssDeclarations(source);
@@ -1223,6 +1229,12 @@ const reproducibilitySource = fs.readFileSync(reproducibilityScriptPath, 'utf8')
 assert.match(reproducibilitySource, /spawnSync\(process\.execPath,\s*\['scripts\/build\.mjs'\]/, 'Reproducibility helper must invoke the real generator');
 assert.match(reproducibilitySource, /first[\s\S]*second[\s\S]*(?:deepEqual|notDeepEqual|===|!==)/, 'Reproducibility helper must compare two build snapshots');
 assert.match(withoutBlockComments(siteJs), /const\s+prefersReducedMotion\s*=\s*window\.matchMedia\(\s*(['"])\(prefers-reduced-motion:\s*reduce\)\1\s*\)\.matches\s*;[\s\S]*?if\s*\(\s*prefersReducedMotion\b[\s\S]*?\)\s*\{\s*revealElements\.forEach\s*\(/, 'Reduced-motion preference must control the reveal fallback');
+assertMobileMenuFocusRestoration(siteJs, 'Mobile menu behavior');
+assert.throws(
+  () => assertMobileMenuFocusRestoration('const closeMenu = () => {\n  menu.hidden = true;\n};', 'Mobile menu probe'),
+  /must restore focus/,
+  'Mobile menu verifier must reject close behavior that loses keyboard focus'
+);
 assert.match(withoutBlockComments(contactJs), /const\s+apiKey\s*=\s*typeof\s+window\.GOOGLE_MAPS_API_KEY\s*===\s*(['"])string\1[\s\S]*?;[\s\S]*?loadGoogleMapsPlaces\(\s*apiKey\s*\)/, 'The Google Maps API key must flow into the Places loader');
 assert.doesNotMatch(withoutBlockComments(css), /(?:repeating-)?(?:linear|radial|conic)-gradient\s*\(/i, 'CSS must not contain gradients');
 for (const selector of [
@@ -1386,17 +1398,93 @@ const collectHtml = (directory) => {
     if (entry.name === '.git' || entry.name === '.worktrees') continue;
     const fullPath = path.join(directory, entry.name);
     if (entry.isDirectory()) collectHtml(fullPath);
-    else if (entry.name.endsWith('.html') && entry.name !== '404.html') generatedHtml.push(read(path.relative(ROOT, fullPath)));
+    else if (entry.name === 'index.html') {
+      const relativePath = path.relative(ROOT, fullPath).replaceAll('\\', '/');
+      generatedHtml.push({ relativePath, page: read(relativePath) });
+    }
   }
 };
 collectHtml(ROOT);
-for (const page of generatedHtml) {
+assert.equal(generatedHtml.length, 46, 'Repository must contain exactly 46 generated index pages');
+for (const { relativePath, page } of generatedHtml) {
+  const label = `Generated page ${relativePath}`;
+  const isEnglish = relativePath.startsWith('en/');
+  const localizedPath = relativePath === 'index.html' ? '/' : `/${relativePath.replace(/index\.html$/, '')}`;
+  const logicalPath = isEnglish ? localizedPath.replace(/^\/en/, '') : localizedPath;
+  const expectedLang = isEnglish ? 'en' : 'ar';
+  const expectedDir = isEnglish ? 'ltr' : 'rtl';
+  const expectedCanonical = `${site.domain}${localizedPath}`;
+
+  assert.match(page, new RegExp(`<html\\s+lang="${expectedLang}"\\s+dir="${expectedDir}">`), `${label} must use the correct language and direction`);
+  assert.equal(elements(page, { tag: 'h1' }).length, 1, `${label} must contain exactly one h1`);
+  assert.equal((page.match(/<link rel="canonical"/g) || []).length, 1, `${label} must contain exactly one canonical link`);
+  has(page, `<link rel="canonical" href="${expectedCanonical}" />`, `${label} canonical must match its path`);
+  const alternates = [
+    ['ar', `${site.domain}${logicalPath}`],
+    ['en', `${site.domain}/en${logicalPath}`],
+    ['x-default', `${site.domain}${logicalPath}`]
+  ];
+  for (const [hreflang, href] of alternates) {
+    assert.equal((page.match(new RegExp(`<link rel="alternate" hreflang="${hreflang}"`, 'g')) || []).length, 1, `${label} must contain exactly one ${hreflang} alternate`);
+    has(page, `<link rel="alternate" hreflang="${hreflang}" href="${href}" />`, `${label} must retain its ${hreflang} alternate`);
+  }
+
+  for (const image of elements(page, { tag: 'img' })) {
+    const imageLabel = `${label} image ${attribute(image, 'src', `${label} image must have src`)}`;
+    assert.match(attribute(image, 'width', `${imageLabel} must have intrinsic width`), /^\d+$/, `${imageLabel} width must be numeric`);
+    assert.match(attribute(image, 'height', `${imageLabel} must have intrinsic height`), /^\d+$/, `${imageLabel} height must be numeric`);
+    const alt = attribute(image, 'alt', `${imageLabel} must have alt text`);
+    if (!alt.trim()) assert.ok(classTokens(image.open).has('stamp'), `${imageLabel} may use empty alt only when it is a decorative stamp`);
+    const isHeaderStamp = classTokens(image.open).has('stamp') && !hasAttribute(image, 'loading');
+    const isLazy = hasAttribute(image, 'loading') && attribute(image, 'loading', `${imageLabel} loading policy`) === 'lazy';
+    const isPrioritized = hasAttribute(image, 'fetchpriority') && attribute(image, 'fetchpriority', `${imageLabel} fetch priority`) === 'high';
+    assert.ok(isHeaderStamp || isLazy || isPrioritized, `${imageLabel} must be lazy-loaded or explicitly prioritized`);
+  }
+
+  const scripts = elements(page, { tag: 'script' });
+  for (const script of scripts) {
+    if (!hasAttribute(script, 'src')) {
+      assert.ok(/type="application\/ld\+json"/.test(script.open) || /window\.GOOGLE_MAPS_API_KEY/.test(script.inner), `${label} must not contain unapproved inline scripts`);
+      continue;
+    }
+    assert.match(attribute(script, 'src', `${label} script must have src`), /^\/assets\/js\/(?:site|contact)\.js$/, `${label} may load only first-party protected scripts`);
+  }
+  assert.doesNotMatch(page, /\b(?:googletagmanager|google-analytics|gtag\s*\(|analytics\.js|plausible|hotjar|segment\.com)\b/i, `${label} must remain analytics-free`);
+  assert.doesNotMatch(page, /(?:width|min-width|max-width)\s*:\s*\d{4,}px|margin-(?:left|right)\s*:\s*-\d{3,}px/i, `${label} must not contain obvious inline overflow-prone fixed sizing`);
+
   for (const openingTag of page.matchAll(/<[^>]+>/g)) {
     const tokens = classTokens(openingTag[0]);
     for (const obsolete of ['svc-list', 'svc-card', 'workflow', 'workflow-media', 'workflow-step', 'workflow-num']) {
       assert.ok(!tokens.has(obsolete), `Generated pages must not retain obsolete class ${obsolete}`);
     }
   }
+}
+
+assert.equal(read('CNAME').trim(), 'wbstudio.xyz', 'CNAME must retain the production domain');
+assert.ok(fs.existsSync(path.join(ROOT, '.nojekyll')), '.nojekyll must exist');
+assert.ok(fs.existsSync(path.join(ROOT, 'manifest.webmanifest')), 'manifest.webmanifest must exist');
+const manifest = JSON.parse(read('manifest.webmanifest'));
+assert.ok(Array.isArray(manifest.icons) && manifest.icons.length > 0, 'Web manifest must retain icon entries');
+for (const icon of manifest.icons) {
+  assert.match(icon.src, /^\/assets\/(?:icons|images)\//, 'Manifest icons must remain local assets');
+  assert.ok(fs.existsSync(path.join(ROOT, icon.src.slice(1))), `Manifest icon must exist: ${icon.src}`);
+}
+const protectedAssets = ['assets/icons/favicon.ico', 'assets/icons/apple-touch-icon.png', 'assets/icons/brand-logo.png'];
+for (const asset of protectedAssets) assert.ok(fs.existsSync(path.join(ROOT, asset)), `Protected icon must exist: ${asset}`);
+assert.deepEqual(
+  fs.readdirSync(path.join(ROOT, 'assets/js')).filter((name) => name.endsWith('.js')).sort(),
+  ['contact.js', 'site.js'],
+  'The site must retain only its two protected JavaScript files'
+);
+
+assertCssDeclarations(css, '.btn', { 'min-height': '3rem' }, 'Primary control sizing');
+for (const selector of ['.mobile-lang-link', '.nav-toggle', '.mobile-close']) {
+  const declarations = cssDeclarations(css).filter(({ selector: candidate }) => candidate === selector);
+  const values = new Map(declarations.map(({ property, value }) => [property, value.trim()]));
+  const inlineSize = values.get('min-inline-size') ?? values.get('width');
+  const blockSize = values.get('min-block-size') ?? values.get('height');
+  assert.equal(inlineSize, '2.75rem', `${selector} must retain a minimum 44px inline touch target`);
+  assert.equal(blockSize, '2.75rem', `${selector} must retain a minimum 44px block touch target`);
 }
 hasCssSelectorBranch(css, '.work-editorial-grid .card-media img', 'CSS must size every editorial work-grid image, not only the first card image');
 assertEditorialCss(css, true);

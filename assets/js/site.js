@@ -34,6 +34,7 @@
     menu.hidden = true;
     document.body.style.overflow = '';
     toggle.setAttribute('aria-expanded', 'false');
+    toggle.focus();
   };
 
   if (toggle && menu) {
