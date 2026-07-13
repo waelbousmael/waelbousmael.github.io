@@ -535,7 +535,7 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
   display: grid;
   grid-template-columns: 8rem minmax(0, 1fr) auto;
   gap: 1rem;
-  padding: 1.5rem;
+  padding-block: 1.5rem;
   color: inherit;
   text-decoration: none;
 }
@@ -844,9 +844,7 @@ form .btn-solid { justify-self: start; margin-block-start: 0.5rem; }
   .about-portrait { max-width: 420px; }
 
   .journal-editorial-list a { grid-template-columns: 1fr auto; }
-  .journal-entry-copy { grid-column: 1 / -1; }
-  .journal-entry-copy p { grid-column: 1 / -1; }
-  .journal-editorial-list .svc-more { grid-column: 2; grid-row: 1; }
+  .journal-editorial-list p { grid-column: 1 / -1; }
 
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
   .form-row { grid-template-columns: 1fr; }
