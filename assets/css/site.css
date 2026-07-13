@@ -651,7 +651,7 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
 /* ── contact ── */
 .direct-contact { margin-block-start: 2.5rem; display: grid; gap: 0.45rem; justify-items: start; }
 .direct-contact a { color: var(--ink-soft); text-decoration: none; font-size: 0.95rem; }
-.direct-contact a:hover { color: var(--ink); }
+.direct-contact a:hover, .direct-contact a:focus-visible { color: var(--ink); }
 
 .footer-title {
   font-size: 0.75rem;
@@ -845,6 +845,9 @@ form .btn-solid { justify-self: start; margin-block-start: 0.5rem; }
 
   .journal-editorial-list a { grid-template-columns: 1fr auto; }
   .journal-editorial-list p { grid-column: 1 / -1; }
+  .journal-editorial-list a > time { grid-column: 1; grid-row: 1; }
+  .journal-editorial-list a > .svc-more { grid-column: 2; grid-row: 1; }
+  .journal-editorial-list a > .journal-entry-copy { grid-column: 1 / -1; grid-row: 2; min-width: 0; }
 
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
   .form-row { grid-template-columns: 1fr; }

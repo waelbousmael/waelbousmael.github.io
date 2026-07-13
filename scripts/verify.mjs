@@ -70,6 +70,14 @@ const elementWithClasses = (text, requiredClasses, label, tag) => {
   assert.ok(matches.length > 0, label);
   return matches[0];
 };
+const directChildElements = (text) => {
+  const found = elements(text);
+  return found.filter((candidate) => !found.some((possibleParent) =>
+    possibleParent !== candidate
+      && possibleParent.index < candidate.index
+      && possibleParent.index + possibleParent.outer.length >= candidate.index + candidate.outer.length
+  ));
+};
 const attribute = (element, name, label) => {
   const match = element.open.match(new RegExp(`[\\t\\n\\f\\r ]${escapeRegExp(name)}="([^"]*)"`));
   assert.ok(match, label);
@@ -258,6 +266,22 @@ const assertServiceInteractionCss = (text, label) => {
   for (const rule of withoutBlockComments(text).matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
     if (!serviceRule.test(positiveSelectorText(rule[1]))) continue;
     assert.doesNotMatch(rule[2], /\b(?:transition|animation)(?:-[\w-]+)?\s*:/i, `${label} must not add motion to service rows`);
+  }
+};
+const assertResponsiveJournalPlacement = (text, label) => {
+  assertCssDeclarations(text, '.journal-editorial-list a', { 'grid-template-columns': '1fr auto' }, label);
+  assertCssDeclarations(text, '.journal-editorial-list p', { 'grid-column': '1 / -1' }, label);
+  assertCssDeclarations(text, '.journal-editorial-list a > time', { 'grid-column': '1', 'grid-row': '1' }, label);
+  assertCssDeclarations(text, '.journal-editorial-list a > .svc-more', { 'grid-column': '2', 'grid-row': '1' }, label);
+  assertCssDeclarations(text, '.journal-editorial-list a > .journal-entry-copy', {
+    'grid-column': '1 / -1', 'grid-row': '2', 'min-width': '0'
+  }, label);
+};
+const assertDirectContactInteractionCss = (text, label) => {
+  assertCssDeclarations(text, '.direct-contact a:hover, .direct-contact a:focus-visible', { color: 'var(--ink)' }, label);
+  for (const rule of withoutBlockComments(text).matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+    if (!/\.direct-contact\s+a\b/.test(positiveSelectorText(rule[1]))) continue;
+    assert.doesNotMatch(rule[2], /\b(?:transition|animation)(?:-[\w-]+)?\s*:/i, `${label} must not add motion to direct-contact links`);
   }
 };
 const assertEditorialCss = (text, requireLockedTokens = false) => {
@@ -619,6 +643,10 @@ const assertJournalHub = (page, lang, prefix, label) => {
     assert.equal(links.length, 1, `${label} row ${index + 1} must contain exactly one link`);
     const link = links[0];
     assert.equal(attribute(link, 'href', `${label} row ${index + 1} must have a route`), `${prefix}/journal/${article.slug}/`, `${label} row ${index + 1} must preserve localized article order and route`);
+    const directChildren = directChildElements(link.inner);
+    assert.deepEqual(directChildren.map((child) => [child.tag, [...classTokens(child.open)]]), [
+      ['time', []], ['div', ['journal-entry-copy']], ['span', ['svc-more']]
+    ], `${label} row ${index + 1} must keep time, journal copy and read-more as direct link children`);
     const time = elements(link.inner, { tag: 'time' })[0];
     assert.ok(time, `${label} row ${index + 1} must retain its date`);
     assert.equal(attribute(time, 'datetime', `${label} row ${index + 1} date must have datetime`), article.date, `${label} row ${index + 1} must retain its machine-readable date`);
@@ -733,6 +761,8 @@ const { projects } = JSON.parse(read('data/projects.json'));
 const css = read('assets/css/site.css');
 const siteJs = read('assets/js/site.js');
 const contactJs = read('assets/js/contact.js');
+const buildSource = read('scripts/build.mjs');
+const sitemap = read('sitemap.xml');
 
 for (const [label, lang, prefix, directory] of [
   ['Arabic', 'ar', '', ''],
@@ -1181,6 +1211,17 @@ assert.equal(site.formAction, 'https://formsubmit.co/ajax/wael.bousmael@gmail.co
 assert.deepEqual(site.form.contactGroupLabel, { ar: 'بيانات التواصل', en: 'Contact details' }, 'Lead form contactGroupLabel must retain exact bilingual copy');
 assert.deepEqual(site.form.plotGroupLabel, { ar: 'بيانات الأرض', en: 'Plot details' }, 'Lead form plotGroupLabel must retain exact bilingual copy');
 assert.deepEqual(site.form.budgetGroupLabel, { ar: 'نطاق الميزانية', en: 'Budget range' }, 'Lead form budgetGroupLabel must retain exact bilingual copy');
+assert.doesNotMatch(sitemap, /<lastmod\b/i, 'Generated sitemap must omit unreliable lastmod values');
+const sitemapSourceStart = buildSource.indexOf('function renderSitemap()');
+const sitemapSourceEnd = buildSource.indexOf('write everything', sitemapSourceStart);
+assert.ok(sitemapSourceStart >= 0 && sitemapSourceEnd > sitemapSourceStart, 'Build verifier must locate the sitemap generator source');
+const sitemapGeneratorSource = buildSource.slice(sitemapSourceStart, sitemapSourceEnd);
+assert.doesNotMatch(sitemapGeneratorSource, /\bnew\s+Date\b|\bDate\.now\b|<lastmod\b/i, 'Sitemap generator must not depend on the current date or emit lastmod');
+const reproducibilityScriptPath = path.join(ROOT, 'scripts/check-reproducible-build.mjs');
+assert.ok(fs.existsSync(reproducibilityScriptPath), 'Repository must provide the repeat-build reproducibility helper');
+const reproducibilitySource = fs.readFileSync(reproducibilityScriptPath, 'utf8');
+assert.match(reproducibilitySource, /spawnSync\(process\.execPath,\s*\['scripts\/build\.mjs'\]/, 'Reproducibility helper must invoke the real generator');
+assert.match(reproducibilitySource, /first[\s\S]*second[\s\S]*(?:deepEqual|notDeepEqual|===|!==)/, 'Reproducibility helper must compare two build snapshots');
 assert.match(withoutBlockComments(siteJs), /const\s+prefersReducedMotion\s*=\s*window\.matchMedia\(\s*(['"])\(prefers-reduced-motion:\s*reduce\)\1\s*\)\.matches\s*;[\s\S]*?if\s*\(\s*prefersReducedMotion\b[\s\S]*?\)\s*\{\s*revealElements\.forEach\s*\(/, 'Reduced-motion preference must control the reveal fallback');
 assert.match(withoutBlockComments(contactJs), /const\s+apiKey\s*=\s*typeof\s+window\.GOOGLE_MAPS_API_KEY\s*===\s*(['"])string\1[\s\S]*?;[\s\S]*?loadGoogleMapsPlaces\(\s*apiKey\s*\)/, 'The Google Maps API key must flow into the Places loader');
 assert.doesNotMatch(withoutBlockComments(css), /(?:repeating-)?(?:linear|radial|conic)-gradient\s*\(/i, 'CSS must not contain gradients');
@@ -1212,6 +1253,21 @@ assertCssDeclarations(css, '.service-editorial-row', {
 assertCssDeclarations(css, '.service-editorial-row h2, .service-editorial-row h3, .service-editorial-row p', { margin: '0' }, 'Service editorial CSS');
 assertCssDeclarations(css, '.service-editorial-row p', { color: 'var(--ink-soft)' }, 'Service editorial CSS');
 assertServiceInteractionCss(css, 'Service interaction CSS');
+assertDirectContactInteractionCss(css, 'Direct-contact interaction CSS');
+assert.doesNotThrow(
+  () => assertDirectContactInteractionCss('.direct-contact a:hover, .direct-contact a:focus-visible { color: var(--ink); }', 'Direct-contact probe'),
+  'Direct-contact verifier must accept matching hover and keyboard-focus feedback'
+);
+assert.throws(
+  () => assertDirectContactInteractionCss('.direct-contact a:hover { color: var(--ink); }', 'Direct-contact probe'),
+  /must define \.direct-contact a:hover, \.direct-contact a:focus-visible/,
+  'Direct-contact verifier must reject hover-only feedback'
+);
+assert.throws(
+  () => assertDirectContactInteractionCss('.direct-contact a:hover, .direct-contact a:focus-visible { color: var(--ink); transition: color 0.2s; }', 'Direct-contact probe'),
+  /must not add motion/,
+  'Direct-contact verifier must reject interaction motion'
+);
 assertCssDeclarations(css, ':focus-visible', { outline: '2px solid var(--ink)', 'outline-offset': '3px' }, 'Global focus CSS');
 assertCssDeclarations(css, '.landing-content-grid', { 'border-block-start': '1px solid var(--line-strong)' }, 'Landing content CSS');
 assertCssDeclarations(css, '.landing-section-row', {
@@ -1295,8 +1351,7 @@ assertCssDeclarations(responsiveCss, '.service-editorial-row p', { 'grid-column'
 assertCssDeclarations(responsiveCss, '.landing-section-row', { 'grid-template-columns': '1fr', gap: '0.75rem' }, 'Responsive landing content CSS');
 assertCssDeclarations(responsiveCss, '.approach-sequence li', { 'grid-template-columns': '3rem 1fr' }, 'Responsive approach sequence CSS');
 assertCssDeclarations(responsiveCss, '.founder-grid', { 'grid-template-columns': '1fr' }, 'Responsive founder grid CSS');
-assertCssDeclarations(responsiveCss, '.journal-editorial-list a', { 'grid-template-columns': '1fr auto' }, 'Responsive journal CSS');
-assertCssDeclarations(responsiveCss, '.journal-editorial-list p', { 'grid-column': '1 / -1' }, 'Responsive journal CSS');
+assertResponsiveJournalPlacement(responsiveCss, 'Responsive journal CSS');
 assert.throws(
   () => assertCssDeclarations('.journal-entry-copy p { grid-column: 1 / -1; }', '.journal-editorial-list p', { 'grid-column': '1 / -1' }, 'Responsive journal selector probe'),
   /must define \.journal-editorial-list p/,
@@ -1306,6 +1361,21 @@ assert.throws(
   () => assertCssDeclarations('.journal-editorial-list .copy p { grid-column: 1 / -1; }', '.journal-editorial-list p', { 'grid-column': '1 / -1' }, 'Responsive journal selector probe'),
   /must define \.journal-editorial-list p/,
   'Responsive journal verifier must reject a descendant selector that is not the exact row paragraph selector'
+);
+assert.throws(
+  () => assertResponsiveJournalPlacement('.journal-editorial-list p { grid-column: 1 / -1; }', 'Responsive journal placement probe'),
+  /must define \.journal-editorial-list a/,
+  'Responsive journal verifier must reject the paragraph-only rule because it cannot place the direct grid children'
+);
+assert.throws(
+  () => assertResponsiveJournalPlacement(`
+    .journal-editorial-list a { grid-template-columns: 1fr auto; }
+    .journal-editorial-list p { grid-column: 1 / -1; }
+    .journal-editorial-list a > time { grid-column: 1; grid-row: 1; }
+    .journal-editorial-list a > .journal-entry-copy { grid-column: 1 / -1; grid-row: 2; min-width: 0; }
+  `, 'Responsive journal placement probe'),
+  /must define \.journal-editorial-list a > \.svc-more/,
+  'Responsive journal verifier must reject missing direct-child read-more placement'
 );
 for (const obsolete of ['.svc-list', '.svc-card', '.workflow', '.workflow-media', '.workflow-step', '.workflow-num']) {
   assert.ok(!cssRuleSelectors(css).some((selector) => new RegExp(`(?:^|[^\\w-])${escapeRegExp(obsolete)}(?![\\w-])`).test(positiveSelectorText(selector))), `CSS must not retain obsolete selector ${obsolete}`);
