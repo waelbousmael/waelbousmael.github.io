@@ -290,8 +290,8 @@ const assertMobileMenuFocusRestoration = (text, label) => {
   assert.ok(closeMenu, `${label} must define closeMenu`);
   assert.match(
     closeMenu[1],
-    /requestAnimationFrame\(\s*\(\)\s*=>\s*toggle\.focus\(\s*\)\s*\)/,
-    `${label} closeMenu must restore toggle focus after the closing event completes`
+    /requestAnimationFrame\(\s*\(\)\s*=>\s*requestAnimationFrame\(\s*\(\)\s*=>\s*toggle\.focus\(\s*\)\s*\)\s*\)/,
+    `${label} closeMenu must restore toggle focus after two frames so close-button click completion cannot overwrite it`
   );
 };
 const assertEditorialCss = (text, requireLockedTokens = false) => {
@@ -1238,8 +1238,8 @@ assert.match(withoutBlockComments(siteJs), /closeBtn\?\.addEventListener\(\s*(['
 assert.match(withoutBlockComments(siteJs), /event\.key\s*===\s*(['"])Escape\1[\s\S]*?closeMenu\(\s*\)/, 'Escape must use focus-restoring closeMenu behavior');
 assert.throws(
   () => assertMobileMenuFocusRestoration('const closeMenu = () => {\n  menu.hidden = true;\n  toggle.focus();\n};', 'Mobile menu probe'),
-  /after the closing event completes/,
-  'Mobile menu verifier must reject synchronous focus restoration that can be overwritten by click handling'
+  /after two frames/,
+  'Mobile menu verifier must reject focus restoration that can be overwritten by close-button click handling'
 );
 assert.match(withoutBlockComments(contactJs), /const\s+apiKey\s*=\s*typeof\s+window\.GOOGLE_MAPS_API_KEY\s*===\s*(['"])string\1[\s\S]*?;[\s\S]*?loadGoogleMapsPlaces\(\s*apiKey\s*\)/, 'The Google Maps API key must flow into the Places loader');
 assert.doesNotMatch(withoutBlockComments(css), /(?:repeating-)?(?:linear|radial|conic)-gradient\s*\(/i, 'CSS must not contain gradients');
