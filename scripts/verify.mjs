@@ -288,7 +288,11 @@ const assertMobileMenuFocusRestoration = (text, label) => {
   const source = withoutBlockComments(text);
   const closeMenu = source.match(/const\s+closeMenu\s*=\s*\(\)\s*=>\s*\{([\s\S]*?)\n\s*\};/);
   assert.ok(closeMenu, `${label} must define closeMenu`);
-  assert.match(closeMenu[1], /toggle\.focus\(\s*\)/, `${label} closeMenu must restore focus to the navigation toggle`);
+  assert.match(
+    closeMenu[1],
+    /requestAnimationFrame\(\s*\(\)\s*=>\s*toggle\.focus\(\s*\)\s*\)/,
+    `${label} closeMenu must restore toggle focus after the closing event completes`
+  );
 };
 const assertEditorialCss = (text, requireLockedTokens = false) => {
   const source = withoutBlockComments(text);
@@ -1230,10 +1234,12 @@ assert.match(reproducibilitySource, /spawnSync\(process\.execPath,\s*\['scripts\
 assert.match(reproducibilitySource, /first[\s\S]*second[\s\S]*(?:deepEqual|notDeepEqual|===|!==)/, 'Reproducibility helper must compare two build snapshots');
 assert.match(withoutBlockComments(siteJs), /const\s+prefersReducedMotion\s*=\s*window\.matchMedia\(\s*(['"])\(prefers-reduced-motion:\s*reduce\)\1\s*\)\.matches\s*;[\s\S]*?if\s*\(\s*prefersReducedMotion\b[\s\S]*?\)\s*\{\s*revealElements\.forEach\s*\(/, 'Reduced-motion preference must control the reveal fallback');
 assertMobileMenuFocusRestoration(siteJs, 'Mobile menu behavior');
+assert.match(withoutBlockComments(siteJs), /closeBtn\?\.addEventListener\(\s*(['"])click\1\s*,\s*closeMenu\s*\)/, 'Mobile close button must use focus-restoring closeMenu behavior');
+assert.match(withoutBlockComments(siteJs), /event\.key\s*===\s*(['"])Escape\1[\s\S]*?closeMenu\(\s*\)/, 'Escape must use focus-restoring closeMenu behavior');
 assert.throws(
-  () => assertMobileMenuFocusRestoration('const closeMenu = () => {\n  menu.hidden = true;\n};', 'Mobile menu probe'),
-  /must restore focus/,
-  'Mobile menu verifier must reject close behavior that loses keyboard focus'
+  () => assertMobileMenuFocusRestoration('const closeMenu = () => {\n  menu.hidden = true;\n  toggle.focus();\n};', 'Mobile menu probe'),
+  /after the closing event completes/,
+  'Mobile menu verifier must reject synchronous focus restoration that can be overwritten by click handling'
 );
 assert.match(withoutBlockComments(contactJs), /const\s+apiKey\s*=\s*typeof\s+window\.GOOGLE_MAPS_API_KEY\s*===\s*(['"])string\1[\s\S]*?;[\s\S]*?loadGoogleMapsPlaces\(\s*apiKey\s*\)/, 'The Google Maps API key must flow into the Places loader');
 assert.doesNotMatch(withoutBlockComments(css), /(?:repeating-)?(?:linear|radial|conic)-gradient\s*\(/i, 'CSS must not contain gradients');
