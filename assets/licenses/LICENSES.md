@@ -59,6 +59,7 @@ A human-readable version of this register is published on the site at
 | --- | --- |
 | assets/projects/montashiri-villa/* | Owner-supplied renders (Montashiri Villa, Obhur — © Wael Bousmael / WB Studio). Source files staged locally in `assets/projects/_incoming/montashiri-villa-source/` (git-ignored). |
 | assets/projects/byblos-resort/* | Owner-supplied renders (Byblos Resort, Jbeil, Lebanon — © Wael Bousmael / WB Studio). Source files staged locally in `assets/projects/_incoming/byblos-resort-source/` (git-ignored). |
+| assets/projects/private-villa-renovation-chouf/* | Owner-supplied architectural render and execution drawings for an anonymized private-villa renovation in Chouf, Mount Lebanon (© Wael Bousmael / WB Studio). Public crops remove the client/project name, exact village, map, QR code, contact details, and title blocks. |
 | assets/images/about-hero.jpg | Owner-supplied portrait (pre-existing; owned by Wael Bousmael) |
 | assets/images/og.jpg | Pre-existing brand share image (owned) |
 | assets/images/icon-192.png, assets/icons/* | Pre-existing brand marks (owned) |
