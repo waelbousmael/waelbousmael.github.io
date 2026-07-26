@@ -307,223 +307,745 @@ function breadcrumbUI(lang, trail) {
   const parts = trail.map(([name, p], i) =>
     i === trail.length - 1
       ? `<span aria-current="page">${esc(name)}</span>`
-      : `<a href="${langPathã:¶‰Ëkºwµç[›İ˜[Y]O‚ˆ[œ]\OHšY[ˆˆ˜[YOH—ÜİXš™Xİˆ˜[YOH•ĞˆİY[ÈHİ]Z[Èœ™YHØ[™\]Y\İˆÏ‚ˆ[œ]\OHšY[ˆˆ˜[YOH—İ[\]Hˆ˜[YOHX›HˆÏ‚ˆ[œ]\OHšY[ˆˆ˜[YOH—ØØ\ÚHˆ˜[YOH™˜[ÙHˆÏ‚‚ˆšY[Ù]Û\ÜÏH˜ÛÛXİYšY[YÜ›İ\‚ˆYÙ[™‰Ù\ØÊ
-‹˜ÛÛXİÜ›İ\X™[[™ÊJ_OÛYÙ[™‚ˆX™[›ÜH›˜[YHÜ[‰Ù\ØÊ
-‹›˜[YK[™ÊJ_OÜÜ[ˆÜ[ˆÛ\ÜÏHœ™\]Z\™Y[X\šÈˆ\šXKZY[HYHŠÜÜ[ÛX™[‚ˆ[œ]YH›˜[YHˆ˜[YOH›˜[YHˆ\OH^ˆ]]ØÛÛ\]OH›˜[YHˆXÙZÛ\H‰Ù\ØÊ
-‹›˜[YT[™ÊJ_Hˆ™\]Z\™YÏ‚‚ˆX™[›ÜHœÛ™HÜ[‰Ù\ØÊ
-‹œÛ™K[™ÊJ_OÜÜ[ˆÜ[ˆÛ\ÜÏHœ™\]Z\™Y[X\šÈˆ\šXKZY[HYHŠÜÜ[ÛX™[‚ˆ[œ]YHœÛ™Hˆ˜[YOHœÛ™Hˆ\OH[ˆ]]ØÛÛ\]OH[ˆXÙZÛ\H‰Ù\ØÊ
-‹œÛ™T[™ÊJ_Hˆ]\›H—–Ê××^ÍËIˆ™\]Z\™YÏ‚‚ˆX™[›ÜH™[XZ[Ü[‰Ù\ØÊ
-‹™[XZ[[™ÊJ_OÜÜ[ˆÜ[ˆÛ\ÜÏHœ™\]Z\™Y[X\šÈˆ\šXKZY[HYHŠÜÜ[ÛX™[‚ˆ[œ]YH™[XZ[ˆ˜[YOH™[XZ[ˆ\OH™[XZ[ˆ]]ØÛÛ\]OH™[XZ[ˆXÙZÛ\H‰Ù\ØÊ
-‹™[XZ[[™ÊJ_Hˆ™\]Z\™YÏ‚ˆÙšY[Ù]‚‚ˆšY[Ù]Û\ÜÏH˜ÛÛXİYšY[YÜ›İ\‚ˆYÙ[™‰Ù\ØÊ
-‹œİÜ›İ\X™[[™ÊJ_OÛYÙ[™‚ˆ]ˆÛ\ÜÏH™›Ü›K\›İÈ‚ˆ]ˆÛ\ÜÏH™šY[YÜ›İ\‚ˆX™[›ÜH›ØØ][Ûˆ‰Ù\ØÊ
-‹›ØØ][Û‹[™ÊJ_OÛX™[‚ˆ[œ]YH›ØØ][Ûˆˆ˜[YOH›ØØ][Ûˆˆ\OH^ˆXÙZÛ\H‰Ù\ØÊ
-‹›ØØ][Û”[™ÊJ_HˆÏ‚ˆÙ]‚ˆ]ˆÛ\ÜÏH™šY[YÜ›İ\‚ˆX™[›ÜH›X\È‰Ù\ØÊ
-‹›X\Ë[™ÊJ_OÛX™[‚ˆ[œ]YH›X\Èˆ˜[YOH›X\Èˆ\OH\›ˆXÙZÛ\H‰Ù\ØÊ
-‹›X\Ô[™ÊJ_HˆÏ‚ˆÙ]‚ˆÙ]‚ˆÛ\ÜÏH™›Ü›KZ[\ˆ‰Ù\ØÊ
-‹›ØØ][Û’[\‹[™ÊJ_OÜ‚ˆÙšY[Ù]‚‚ˆšY[Ù]Û\ÜÏH˜ÛÛXİYšY[YÜ›İ\‚ˆYÙ[™‰Ù\ØÊ
-‹˜YÙ]Ü›İ\X™[[™ÊJ_OÛYÙ[™‚ˆX™[›ÜH˜YÙ]‰Ù\ØÊ
-‹˜YÙ][™ÊJ_OÛX™[‚ˆÙ[XİYH˜YÙ]ˆ˜[YOH˜YÙ]‚ˆÜ[Ûˆ˜[YOHˆ‰Ù\ØÊ
-‹˜YÙ][™ÊJ_OÛÜ[Û‚ˆ	Ù‹˜YÙ]Ü[ÛœÖÛ[™×K›X\
+      : `<a href="${langPath(lang, p)}">${esc(name)}</a>`
+  );
+  return `<nav class="crumb" aria-label="${lang === 'ar' ? 'Ù…Ø³Ø§Ø± Ø§Ù„ØªÙ†Ù‚Ù„' : 'Breadcrumb'}">${parts.join(` <span aria-hidden="true">${sep}</span> `)}</nav>`;
+}
 
-ÊHOˆÜ[Û‰Ù\ØÊÊ_OÛÜ[Û˜
-Kš›Ú[Š	×ˆ	Ê_BˆÜÙ[Xİ‚ˆÙšY[Ù]‚‚ˆ]ÛˆÛ\ÜÏH˜ˆ‹\ÛÛYˆ\OHœİX›Z]‰Ù\ØÊ
-‹œİX›Z][™ÊJ_OØ]Û‚ˆYH™›Ü›Q™YY˜XÚÈˆÛ\ÜÏH™›Ü›KY™YY˜XÚÈˆ\šXK[]™OHœÛ]H‚ˆ]K[\ÙË\İXØÙ\ÜÏH‰Ù\ØÊ
-‹œİXØÙ\ÜË[™ÊJ_H‚ˆ]K[\ÙËY\œ›ÜH‰Ù\ØÊ
-‹™\œ›Ü‹[™ÊJ_HÜ‚ˆÙ›Ü›O‚ˆÙ]‚ˆÜÙXİ[Û‚‚ˆÙXİ[ÛˆÛ\ÜÏHœÙXİ[Ûˆ]šYYˆ]K\™]™X[‚ˆ]ˆÛ\ÜÏHÜ˜\˜\œ›İÈ‚ˆˆÛ\ÜÏH™\Ü^H‰Ù\ØÊ
-Ë™˜\U]K[™ÊJ_OÚ‚ˆ]ˆÛ\ÜÏH™˜\H‚ˆ	ÜÚ]K™˜\K›X\
+/* Service / landing card (used on the services hub, home, related sections). */
+function svcCard(x, lang, tag = 'h2') {
+  return `<a class="service-editorial-row" href="${langPath(lang, `/${x.slug}/`)}" data-reveal>
+    <${tag}>${esc(t(x.label, lang))}</${tag}>
+    <p>${esc(t(x.summary, lang))}</p>
+    <span class="svc-more">${esc(t(site.services.explore, lang))} ${arrow(lang)}</span>
+  </a>`;
+}
 
-][JHOˆ]Z[Ï‚ˆİ[[X\O‰Ù\ØÊ
-][KœK[™ÊJ_OÜİ[[X\O‚ˆ‰Ù\ØÊ
-][K˜K[™ÊJ_OÜ‚ˆÙ]Z[Ï˜
-Kš›Ú[Š	×ˆ	Ê_BˆÙ]‚ˆÙ]‚ˆÜÙXİ[Û‚ÛXZ[‚‰Ù›Ûİ\Š[™Ê_BØÜš\Ú[™İË‘ÓÓÑÓWÓPT×ĞTWÒÑVHHÚ[™İË‘ÓÓÑÓWÓPT×ĞTWÒÑVH	ÉÎÏÜØÜš\‚ØÜš\Ü˜ÏH‹Ø\ÜÙ]ËÚœËØÛÛXİšœÈˆY™\ÜØÜš\‚Ø›ÙO‚Ú[˜ÂŸB‚™[˜İ[Ûˆ™[™\Ü™Y]Ê[™ÊHÂˆÛÛœİÈHÚ]K˜Ü™Y]ÎÂˆÛÛœİÜ˜ÈH
-Y
-HOˆÎ‹ËÚ[XYÙ\Ë[œÜ\Ú˜ÛÛKÉÚYXÂˆÛÛœİ›İÜÈH›Ú™XİË™š[\Š
-
-HOˆœXÙZÛ\ŠK›X\
+function fmtDate(iso, lang) {
+  const d = new Date(`${iso}T00:00:00Z`);
+  return new Intl.DateTimeFormat(lang === 'ar' ? 'ar' : 'en-GB',
+    { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC', calendar: 'gregory' }).format(d);
+}
 
-
-HOˆÂˆÛÛœİ[XYÙ\ÈHÜ˜Ûİ™\‹‹‹œ™Ø[\WK™š[\Š
-JHOˆKœÛİ\˜ÙRY
-NÂˆ™]\›ˆ]ˆÛ\ÜÏH˜Ü™Y]X›ØÚÈ‚ˆ‰Ù\ØÊ
-]K[™ÊJ_OÚ‚ˆ[‚ˆ	Ú[XYÙ\Ë›X\
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ pages â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
-JHOˆOÜ[ˆ\H›ˆ‰ÚKœÜ˜ËœÜ]
-	ËÉÊKœÜ
+function renderHome(lang) {
+  const h = site.home;
+  const featured = projects.filter((p) => p.featured).slice(0, 3);
+  const steps = site.approach.steps;
+  return `${head({
+    lang,
+    title: t(h.seoTitle, lang),
+    desc: t(h.seoDesc, lang),
+    logicalPath: '/',
+    jsonld: businessGraph(lang)
+  })}
+<body data-page="home">
+${header(lang, null)}
+<main id="main">
+  <section class="home-hero" data-reveal>
+    <div class="wrap home-hero-grid">
+      <div class="home-hero-copy">
+        <p class="eyebrow">${esc(t(h.eyebrow, lang))}</p>
+        <h1 class="display-xl">${esc(t(h.h1, lang))}</h1>
+        <p class="lead measure">${esc(t(h.positioning, lang))}</p>
+        <p class="offer measure">${esc(t(site.offer, lang))}</p>
+        <div class="cta-row">
+          <a class="btn btn-solid" href="${waUrl(lang)}" target="_blank" rel="noopener">${esc(t(h.ctaWhatsapp, lang))}</a>
+          <a class="btn" href="${langPath(lang, '/work/')}">${esc(t(h.ctaWork, lang))}</a>
+        </div>
+      </div>
+      <div class="home-hero-media">
+        ${img(h.heroImage, lang, { eager: true })}
+      </div>
+    </div>
+  </section>
+  <div class="wrap">
+    <ul class="trust-strip" aria-label="${lang === 'ar' ? 'Ù…Ø²Ø§ÙŠØ§ Ø§Ù„Ø§Ø³ØªÙˆØ¯ÙŠÙˆ' : 'Studio credentials'}">
+      ${h.trustItems.map((item) => `<li>${esc(t(item, lang))}</li>`).join('\n      ')}
+    </ul>
+  </div>
 
-_OÜÜ[ˆ8 %H™YH‰ÜÜ˜ÊKœÛİ\˜ÙRY
-_Hˆ\™Ù]H—Ø›[šÈˆ™[H››ÛÜ[™\ˆ‰Ù\ØÊ
-ËœÛİ\˜ÙSX™[[™ÊJ_OØOÛO˜
-Kš›Ú[Š	×ˆ	Ê_Bˆİ[‚ˆÙ]˜ÂˆJKš›Ú[Š	×ˆ	ÊNÂˆ™]\›ˆ	ÚXY
-Âˆ[™Ëˆ]Nˆ
-ËœÙ[Õ]K[™ÊKˆ\ØÎˆ
-ËœÙ[Ñ\ØË[™ÊKˆÙÚXØ[]ˆ	ËØÜ™Y]ËÉÂˆJ_B›ÙH]K\YÙOH˜Ü™Y]È‚‰ÚXY\Š[™Ë[
-_BXZ[ˆYH›XZ[ˆ‚ˆÙXİ[ÛˆÛ\ÜÏHœYÙKZXYˆ]K\™]™X[‚ˆ]ˆÛ\ÜÏHÜ˜\˜\œ›İÈ‚ˆHÛ\ÜÏH™\Ü^K^‰Ù\ØÊ
-ËšK[™ÊJ_OÚO‚ˆÛ\ÜÏH›XY‰Ù\ØÊ
-Ëš[›Ë[™ÊJ_OÜ‚ˆÛ\ÜÏH››İH‰Ù\ØÊ
-Ë›XÙ[œÙS›İK[™ÊJ_OÜ‚ˆÙ]‚ˆÜÙXİ[Û‚ˆÙXİ[ÛˆÛ\ÜÏHœÙXİ[Û‹\ÛHˆ]K\™]™X[‚ˆ]ˆÛ\ÜÏHÜ˜\˜\œ›İÈÜ™Y]Ë[\İ‚ˆ]ˆÛ\ÜÏH˜Ü™Y]X›ØÚÈ‚ˆ‰Ù\ØÊ
-Ëš\›ÓX™[[™ÊJ_OÚ‚ˆ[OÜ[ˆ\H›ˆšÛYKZ\›ËÙXœÜÜ[ˆ8 %H™YH‰ÜÜ˜ÊÓQWÒT“×ÔÓÕTÑWÒQ
-_Hˆ\™Ù]H—Ø›[šÈˆ™[H››ÛÜ[™\ˆ‰Ù\ØÊ
-ËœÛİ\˜ÙSX™[[™ÊJ_OØOÛOİ[‚ˆÙ]‚ˆ	Ü›İÜßBˆÙ]‚ˆÜÙXİ[Û‚ÛXZ[‚‰Ù›Ûİ\Š[™Ê_BØ›ÙO‚Ú[˜ÂŸB‚‹Êˆ8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ Ù\šXÙ\ÈXˆ
-È[™[™ÈYÙ\È8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 
-‹Â‚™[˜İ[Ûˆ™[™\”Ù\šXÙ\ÒXŠ[™ÊHÂˆÛÛœİÈHÚ]KœÙ\šXÙ\ÎÂˆÛÛœİÛYHH[™ÈOOH	Ø\‰ÈÈ	ö)öa6,v)¶b¶,öb¶*IÈˆ	ÒÛYIÎÂˆÛÛœİ˜Z[HÖÚÛYK	ËÉ×Kİ
-Ú]K›˜]‹œÙ\šXÙ\Ë[™ÊK	ËÜÙ\šXÙ\ËÉ×WNÂˆ™]\›ˆ	ÚXY
-Âˆ[™Ë]Nˆ
-ËœÙ[Õ]K[™ÊK\ØÎˆ
-ËœÙ[Ñ\ØË[™ÊKÙÚXØ[]ˆ	ËÜÙ\šXÙ\ËÉËˆœÛÛ›ˆØœ™XYÜ[XŠ[™Ë˜Z[
-K‹‹œÚ]K›[™[™ÜË›X\
+  <section class="section" data-reveal>
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="display">${esc(t(h.selectedTitle, lang))}</h2>
+        <a class="text-link" href="${langPath(lang, '/work/')}">${esc(t(h.allWork, lang))} ${arrow(lang)}</a>
+      </div>
+      <div class="home-work-grid">
+        ${featured.map((p, i) => projectCard(p, lang, { wide: i === 0 })).join('\n        ')}
+      </div>
+    </div>
+  </section>
 
-
-HOˆÙ\šXÙTØÚ[XJ[™ÊJWBˆJ_B›ÙH]K\YÙOHœÙ\šXÙ\È‚‰ÚXY\Š[™Ë	ÜÙ\šXÙ\ÉÊ_BXZ[ˆYH›XZ[ˆ‚ˆÙXİ[ÛˆÛ\ÜÏHœYÙKZXYˆ]K\™]™X[‚ˆ]ˆÛ\ÜÏHÜ˜\‚ˆ	Øœ™XYÜ[X•RJ[™Ë˜Z[
-_BˆHÛ\ÜÏH™\Ü^K^‰Ù\ØÊ
-ËšK[™ÊJ_OÚO‚ˆÛ\ÜÏH›XYYX\İ\™H‰Ù\ØÊ
-Ëš[›Ë[™ÊJ_OÜ‚ˆÙ]‚ˆÜÙXİ[Û‚ˆÙXİ[ÛˆÛ\ÜÏHœÙXİ[Ûˆˆ]K\™]™X[‚ˆ]ˆÛ\ÜÏHÜ˜\‚ˆ]ˆÛ\ÜÏHœÙ\šXÙKYY]ÜšX[[\İ‚ˆ	ÜÚ]K›[™[™ÜË›X\
+  <section class="section home-services" data-reveal>
+    <div class="wrap home-services-grid">
+      <div>
+        <p class="eyebrow">${esc(t(site.nav.services, lang))}</p>
+        <h2 class="display">${esc(t(site.services.h1, lang))}</h2>
+      </div>
+      <div class="home-service-list">
+        ${h.serviceThemes.map((item) => `<a href="${langPath(lang, item.href)}">
+          <h3>${esc(t(item.title, lang))}</h3>
+          <p>${esc(t(item.text, lang))}</p>
+          <span aria-hidden="true">${arrow(lang)}</span>
+        </a>`).join('\n        ')}
+        <a class="home-services-all" href="${langPath(lang, '/services/')}">${esc(t(site.nav.services, lang))} ${arrow(lang)}</a>
+      </div>
+    </div>
+  </section>
 
-
-HOˆİ˜ĞØ\™
-[™Ë	Ú‰ÊJKš›Ú[Š	×ˆ	Ê_BˆÙ]‚ˆÙ]‚ˆÜÙXİ[Û‚ˆ	ØÛÛXİ˜[™
-[™Ê_BÛXZ[‚‰Ù›Ûİ\Š[™Ê_BØ›ÙO‚Ú[˜ÂŸB‚™[˜İ[Ûˆ™[™\“[™[™Ê[™ÊHÂˆÛÛœİÛYHH[™ÈOOH	Ø\‰ÈÈ	ö)öa6,v)¶b¶,öb¶*IÈˆ	ÒÛYIÎÂˆÛÛœİ˜Z[HÖÚÛYK	ËÉ×Kİ
-Ú]K›˜]‹œÙ\šXÙ\Ë[™ÊK	ËÜÙ\šXÙ\ËÉ×Kİ
-›X™[[™ÊKÉÛœÛYßKØWNÂˆÛÛœİ™[›Ú™XİÈH
-œ™[]Y›Ú™XİÈ×JK›X\
+  <section class="section divided" data-reveal>
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="display">${esc(t(h.approachTitle, lang))}</h2>
+        <a class="text-link" href="${langPath(lang, '/approach/')}">${esc(t(h.approachMore, lang))} ${arrow(lang)}</a>
+      </div>
+      <p class="lead measure">${esc(t(h.approachLead, lang))}</p>
+      <ol class="steps">
+        ${steps.map((s, i) => `<li>
+          <span class="step-num">0${i + 1}</span>
+          <h3>${esc(t(s.title, lang))}</h3>
+          <p>${esc(t(s.text, lang))}</p>
+        </li>`).join('\n        ')}
+      </ol>
+    </div>
+  </section>
 
-ÛYÊHOˆ›Ú™XİË™š[™
+  <section class="section divided" data-reveal>
+    <div class="wrap about-preview">
+      <div class="about-portrait">
+        ${img(site.about.portrait, lang)}
+      </div>
+      <div>
+        <h2 class="display">${esc(t(h.aboutTitle, lang))}</h2>
+        <p class="lead">${esc(t(h.aboutText, lang))}</p>
+        <a class="text-link" href="${langPath(lang, '/about/')}">${esc(t(h.aboutMore, lang))} ${arrow(lang)}</a>
+      </div>
+    </div>
+  </section>
 
-
-HOˆœÛYÈOOHÛYÊJK™š[\Š›ÛÛX[ŠNÂˆÛÛœİ™[[™[™ÜÈH
-œ™[]Y×JK›X\
+  ${contactBand(lang)}
+</main>
+${footer(lang)}
+</body>
+</html>`;
+}
 
-ÛYÊHOˆÚ]K›[™[™ÜË™š[™
+function renderWork(lang) {
+  const w = site.work;
+  return `${head({
+    lang,
+    title: t(w.seoTitle, lang),
+    desc: t(w.seoDesc, lang),
+    logicalPath: '/work/',
+    jsonld: [breadcrumb(lang, [[lang === 'ar' ? 'Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©' : 'Home', '/'], [t(site.nav.work, lang), '/work/']])]
+  })}
+<body data-page="work">
+${header(lang, 'work')}
+<main id="main">
+  <section class="page-head" data-reveal>
+    <div class="wrap">
+      <h1 class="display-xl">${esc(t(w.h1, lang))}</h1>
+    </div>
+  </section>
+  <section class="section" data-reveal>
+    <div class="wrap">
+      <div class="work-editorial-grid">
+        ${projects.map((p, i) => projectCard(p, lang, { wide: i === 0, eager: i === 0 })).join('\n        ')}
+      </div>
+      <p class="note work-credits"><a href="${langPath(lang, '/credits/')}">${esc(t(w.noteLink, lang))}</a></p>
+    </div>
+  </section>
+  ${contactBand(lang)}
+</main>
+${footer(lang)}
+</body>
+</html>`;
+}
 
-
-HOˆœÛYÈOOHÛYÊJK™š[\Š›ÛÛX[ŠNÂˆ™]\›ˆ	ÚXY
-Âˆ[™Ë]Nˆ
-œÙ[Õ]K[™ÊK\ØÎˆ
-œÙ[Ñ\ØË[™ÊKÙÚXØ[]ˆÉÛœÛYßKØˆœÛÛ›ˆÜÙ\šXÙTØÚ[XJ[™ÊK˜\TØÚ[XJ™˜\K[™ÊKœ™XYÜ[XŠ[™Ë˜Z[
-WBˆJ_B›ÙH]K\YÙOH›[™[™È‚‰ÚXY\Š[™Ë	ÜÙ\šXÙ\ÉÊ_BXZ[ˆYH›XZ[ˆ‚ˆÙXİ[ÛˆÛ\ÜÏHœYÙKZXYˆ]K\™]™X[‚ˆ]ˆÛ\ÜÏHÜ˜\‚ˆ	Øœ™XYÜ[X•RJ[™Ë˜Z[
-_BˆÛ\ÜÏH™^YXœ›İÈ‰Ù\ØÊ
-™^YXœ›İË[™ÊJ_OÜ‚ˆHÛ\ÜÏH™\Ü^K^‰Ù\ØÊ
-šK[™ÊJ_OÚO‚ˆÛ\ÜÏH›XYYX\İ\™H‰Ù\ØÊ
-š[›Ë[™ÊJ_OÜ‚ˆ]ˆÛ\ÜÏH˜İK\›İÈ‚ˆHÛ\ÜÏH˜ˆ‹\ÛÛYˆ™YH‰İØU\›
-[™Ê_Hˆ\™Ù]H—Ø›[šÈˆ™[H››ÛÜ[™\ˆ‰Ù\ØÊ
-Ú]KšÛYK˜İUÚ]Ø\[™ÊJ_OØO‚ˆHÛ\ÜÏH˜ˆˆ™YH‰Û[™Ô]
-[™Ë	ËØÛÛXİÉÊ_H‰Ù\ØÊ
-Ú]K˜ÛÛXİ˜[™œš[X\K[™ÊJ_OØO‚ˆÙ]‚ˆÙ]‚ˆÜÙXİ[Û‚ˆ	Ûš[XYÙHÈ]ˆÛ\ÜÏH˜›YYˆ]K\™]™X[‰Ú[YÊš[XYÙK[™ËÈXYÙ\ˆYHJ_OÙ]˜ˆ	ÉßBˆÙXİ[ÛˆÛ\ÜÏHœÙXİ[Ûˆˆ]K\™]™X[‚ˆ]ˆÛ\ÜÏHÜ˜\[™[™ËXÛÛ[YÜšY‚ˆ	ÛœÙXİ[ÛœË›X\
+function renderProject(p, lang) {
+  const pr = site.project;
+  const idx = projects.indexOf(p);
+  const next = projects[(idx + 1) % projects.length];
+  const metaTitle = `${t(p.title, lang)} â€” ${t(p.category, lang)} Â· ${t(p.location, lang)} | ${site.brand}`;
+  const gallery = p.gallery.map((g) => {
+    const layoutClass = g.layout === 'half' ? 'g-half' : (g.w >= g.h ? 'g-wide' : 'g-tall');
+    return `<figure class="${layoutClass}" data-reveal>${img(g, lang)}${g.caption ? `
+          <figcaption>${esc(t(g.caption, lang))}</figcaption>` : ''}</figure>`;
+  }).join('\n        ');
+  const details = [
+    [pr.location, t(p.location, lang)],
+    [pr.year, String(p.year)],
+    [pr.category, t(p.category, lang)],
+    [pr.status, t(p.status, lang)],
+    [pr.services, t(p.services, lang).join(' Â· ')]
+  ];
+  return `${head({
+    lang,
+    title: metaTitle,
+    desc: t(p.excerpt, lang),
+    logicalPath: `/work/${p.slug}/`,
+    ogImage: site.domain + p.cover.src,
+    jsonld: [breadcrumb(lang, [
+      [lang === 'ar' ? 'Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©' : 'Home', '/'],
+      [t(site.nav.work, lang), '/work/'],
+      [t(p.title, lang), `/work/${p.slug}/`]
+    ])]
+  })}
+<body data-page="project">
+${header(lang, 'work')}
+<main id="main">
+  <article>
+    <section class="page-head" data-reveal>
+      <div class="wrap">
+        <p class="crumb"><a href="${langPath(lang, '/work/')}">${arrow(lang) === 'â†’' ? 'â†' : 'â†’'} ${esc(t(pr.backToWork, lang))}</a></p>
+        <h1 class="display-xl">${esc(t(p.title, lang))}</h1>
+        <p class="card-meta">${esc([t(p.category, lang), t(p.location, lang), p.year].join(' Â· '))}${p.placeholder ? ` <span class="tag">${esc(t(p.status, lang))}</span>` : ''}</p>
+      </div>
+    </section>
+    <div class="wrap" data-reveal>
+      <figure class="project-cover${p.cover.fit === 'contain' ? ' fit-contain' : ''}">${img(p.cover, lang, { eager: true })}</figure>
+    </div>
+    <section class="section-sm" data-reveal>
+      <div class="wrap project-intro-grid">
+        <div class="project-story flow">
+          <p class="thesis">${esc(t(p.thesis, lang))}</p>
+          ${p.body.map((para) => `<p>${esc(t(para, lang))}</p>`).join('\n          ')}${p.relatedService ? `
+          <a class="project-service-link text-link" href="${langPath(lang, `/${p.relatedService.slug}/`)}">${esc(t(p.relatedService.label, lang))} ${arrow(lang)}</a>` : ''}
+        </div>
+        <dl class="details">
+          ${details.map(([l, v]) => `<div class="details-row"><dt>${esc(t(l, lang))}</dt><dd>${esc(v)}</dd></div>`).join('\n          ')}
+        </dl>
+      </div>
+    </section>
+    <section class="section-sm">
+      <div class="wrap">
+        <div class="gallery">
+        ${gallery}
+        </div>${p.placeholder ? `
+        <p class="note gallery-note">${esc(t(pr.galleryNote, lang))} <a href="${langPath(lang, '/credits/')}">${esc(t(pr.galleryNoteLink, lang))}</a>.</p>` : ''}
+      </div>
+    </section>
+    <section class="section-sm divided" data-reveal>
+      <div class="wrap next-project">
+        <p class="eyebrow">${esc(t(pr.nextProject, lang))}</p>
+        <a class="next-link display" href="${langPath(lang, `/work/${next.slug}/`)}">${esc(t(next.title, lang))} ${arrow(lang)}</a>
+      </div>
+    </section>
+  </article>
+  ${contactBand(lang)}
+</main>
+${footer(lang)}
+</body>
+</html>`;
+}
 
-ÙXÊHOˆÙXİ[ÛˆÛ\ÜÏH›[™[™Ë\ÙXİ[Û‹\›İÈ‚ˆˆÛ\ÜÏH™\Ü^H‰Ù\ØÊ
-ÙXËšXY[™Ë[™ÊJ_OÚ‚ˆ‰Ù\ØÊ
-ÙXË˜›ÙK[™ÊJ_OÜ‚ˆÜÙXİ[Û˜
-Kš›Ú[Š	×ˆ	Ê_BˆÙ]‚ˆÜÙXİ[Û‚ˆ	Ü™[›Ú™XİË›[™İÈÙXİ[ÛˆÛ\ÜÏHœÙXİ[Ûˆ]šYYˆ]K\™]™X[‚ˆ]ˆÛ\ÜÏHÜ˜\‚ˆ]ˆÛ\ÜÏHœÙXİ[Û‹ZXY‚ˆˆÛ\ÜÏH™\Ü^H‰Û[™ÈOOH	Ø\‰ÈÈ	öavaˆ6(ö.vav)öa6a¶)ÉÈˆ	Ñœ›ÛHİ\ˆÛÜšÉßOÚ‚ˆHÛ\ÜÏH^[[šÈˆ™YH‰Û[™Ô]
-[™Ë	ËİÛÜšËÉÊ_H‰Ù\ØÊ
-Ú]KšÛYK˜[ÛÜšË[™ÊJ_H	Ø\œ›İÊ[™Ê_OØO‚ˆÙ]‚ˆ]ˆÛ\ÜÏHœ›Ú™XİYÜšY‚ˆ	Ü™[›Ú™XİË›X\
+function renderApproach(lang) {
+  const a = site.approach;
+  return `${head({
+    lang,
+    title: t(a.seoTitle, lang),
+    desc: t(a.seoDesc, lang),
+    logicalPath: '/approach/',
+    jsonld: [breadcrumb(lang, [[lang === 'ar' ? 'Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©' : 'Home', '/'], [t(site.nav.approach, lang), '/approach/']])]
+  })}
+<body data-page="approach">
+${header(lang, 'approach')}
+<main id="main">
+  <section class="page-head" data-reveal>
+    <div class="wrap">
+      <h1 class="display-xl">${esc(t(a.h1, lang))}</h1>
+      <p class="lead measure">${esc(t(a.intro, lang))}</p>
+    </div>
+  </section>
+  <section class="section divided" data-reveal>
+    <div class="wrap">
+      <h2 class="display">${esc(t(a.servicesTitle, lang))}</h2>
+      <div class="service-list">
+        ${a.services.map((s) => `<div class="service-row" data-reveal>
+          <h3>${esc(t(s.title, lang))}</h3>
+          <p>${esc(t(s.text, lang))}</p>
+        </div>`).join('\n        ')}
+      </div>
+    </div>
+  </section>
+  <section class="section divided" data-reveal>
+    <div class="wrap">
+      <h2 class="display">${esc(t(a.processTitle, lang))}</h2>
+      <ol class="approach-sequence" data-reveal role="list">
+        ${a.steps.map((s, i) => `<li>
+          <span class="step-num" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>
+          <div>
+            <h3>${esc(t(s.title, lang))}</h3>
+            <p>${esc(t(s.text, lang))}</p>
+          </div>
+        </li>`).join('\n        ')}
+      </ol>
+      <p class="offer measure">${esc(t(site.offer, lang))}</p>
+    </div>
+  </section>
+  ${contactBand(lang)}
+</main>
+${footer(lang)}
+</body>
+</html>`;
+}
 
-
-HOˆ›Ú™XİØ\™
-[™ÊJKš›Ú[Š	×ˆ	Ê_BˆÙ]‚ˆÙ]‚ˆÜÙXİ[Û˜ˆ	ÉßBˆÙXİ[ÛˆÛ\ÜÏHœÙXİ[Ûˆ]šYYˆ]K\™]™X[‚ˆ]ˆÛ\ÜÏHÜ˜\˜\œ›İÈ‚ˆˆÛ\ÜÏH™\Ü^H‰Ù\ØÊ
-Ú]K˜ÛÛXİYÙK™˜\U]K[™ÊJ_OÚ‚ˆ]ˆÛ\ÜÏH™˜\H‚ˆ	Û™˜\K›X\
+function renderAbout(lang) {
+  const a = site.about;
+  return `${head({
+    lang,
+    title: t(a.seoTitle, lang),
+    desc: t(a.seoDesc, lang),
+    logicalPath: '/about/',
+    jsonld: [...businessGraph(lang), breadcrumb(lang, [[lang === 'ar' ? 'Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©' : 'Home', '/'], [t(site.nav.about, lang), '/about/']])]
+  })}
+<body data-page="about">
+${header(lang, 'about')}
+<main id="main">
+  <section class="page-head" data-reveal>
+    <div class="wrap">
+      <h1 class="display-xl">${esc(t(a.h1, lang))}</h1>
+      <p class="lead measure">${esc(t(a.intro, lang))}</p>
+    </div>
+  </section>
+  <section class="section divided" data-reveal>
+    <div class="wrap founder-grid">
+      <div class="about-portrait">${img(a.portrait, lang)}</div>
+      <div class="flow">
+        <h2 class="display">${esc(t(a.name, lang))}</h2>
+        <p>${esc(t(a.bio, lang))}</p>
+        <h3>${esc(t(a.practiceTitle, lang))}</h3>
+        <p>${esc(t(a.practiceText, lang))}</p>
+      </div>
+    </div>
+  </section>
+  <section class="section-sm divided" data-reveal>
+    <div class="wrap narrow">
+      <dl class="details">
+        ${a.facts.map((f) => `<div class="details-row"><dt>${esc(t(f.label, lang))}</dt><dd>${esc(t(f.value, lang))}</dd></div>`).join('\n        ')}
+      </dl>
+    </div>
+  </section>
+  ${contactBand(lang)}
+</main>
+${footer(lang)}
+</body>
+</html>`;
+}
 
-][JHOˆ]Z[Ï‚ˆİ[[X\O‰Ù\ØÊ
-][KœK[™ÊJ_OÜİ[[X\O‚ˆ‰Ù\ØÊ
-][K˜K[™ÊJ_OÜ‚ˆÙ]Z[Ï˜
-Kš›Ú[Š	×ˆ	Ê_BˆÙ]‚ˆÙ]‚ˆÜÙXİ[Û‚ˆ	Ü™[[™[™ÜË›[™İÈÙXİ[ÛˆÛ\ÜÏHœÙXİ[Ûˆ]šYYˆ]K\™]™X[‚ˆ]ˆÛ\ÜÏHÜ˜\‚ˆˆÛ\ÜÏH™\Ü^H‰Û[™ÈOOH	Ø\‰ÈÈ	ö+¶+öav)ö*ˆ6,6)ö*ˆ6-va6*IÈˆ	Ô™[]YÙ\šXÙ\ÉßOÚ‚ˆ]ˆÛ\ÜÏHœÙ\šXÙKYY]ÜšX[[\İ‚ˆ	Ü™[[™[™ÜË›X\
+function renderContact(lang) {
+  const c = site.contactPage;
+  const f = site.form;
+  return `${head({
+    lang,
+    title: t(c.seoTitle, lang),
+    desc: t(c.seoDesc, lang),
+    logicalPath: '/contact/',
+    jsonld: [faqSchema(site.faq, lang), breadcrumb(lang, [[lang === 'ar' ? 'Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©' : 'Home', '/'], [t(site.nav.contact, lang), '/contact/']])]
+  })}
+<body data-page="contact">
+${header(lang, 'contact')}
+<main id="main">
+  <section class="page-head" data-reveal>
+    <div class="wrap">
+      <h1 class="display-xl">${esc(t(c.h1, lang))}</h1>
+      <p class="lead measure">${esc(t(c.intro, lang))}</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="${waUrl(lang)}" target="_blank" rel="noopener">${esc(t(c.whatsappCta, lang))}</a>
+      </div>
+      <div class="direct-contact">
+        <p class="footer-title">${esc(t(c.directTitle, lang))}</p>
+        <a href="${site.gmailCompose}" target="_blank" rel="noopener" dir="ltr">${site.email}</a>
+        <a href="tel:${site.phoneE164}" dir="ltr">${site.phoneDisplay}</a>
+      </div>
+    </div>
+  </section>
 
-
-HOˆİ˜ĞØ\™
-[™Ë	ÚÉÊJKš›Ú[Š	×ˆ	Ê_BˆÙ]‚ˆÙ]‚ˆÜÙXİ[Û˜ˆ	ÉßBˆ	ØÛÛXİ˜[™
-[™Ê_BÛXZ[‚‰Ù›Ûİ\Š[™Ê_BØ›ÙO‚Ú[˜ÂŸB‚‹Êˆ8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ ›İ\›˜[Xˆ
-È\XÛ\È8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 
-‹Â‚™[˜İ[Ûˆ™[™\’›İ\›˜[XŠ[™ÊHÂˆÛÛœİˆHÚ]Kš›İ\›˜[Y]NÂˆÛÛœİÛYHH[™ÈOOH	Ø\‰ÈÈ	ö)öa6,v)¶b¶,öb¶*IÈˆ	ÒÛYIÎÂˆÛÛœİ˜Z[HÖÚÛYK	ËÉ×Kİ
-Ú]K›˜]‹š›İ\›˜[[™ÊK	ËÚ›İ\›˜[É×WNÂˆÛÛœİÛÜYHË‹‹œÚ]Kš›İ\›˜[KœÛÜ
+  <section class="section divided" data-reveal>
+    <div class="wrap form-wrap">
+      <h2 class="display">${esc(t(f.title, lang))}</h2>
+      <p class="note">${esc(t(f.subtitle, lang))}</p>
+      <form id="leadForm" action="${site.formAction}" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="WB Studio - Plot Details Free Call Request" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
 
-KŠHOˆ
-K™]H‹™]HÈHˆLJJNÂˆ™]\›ˆ	ÚXY
-Âˆ[™Ë]Nˆ
-‹œÙ[Õ]K[™ÊK\ØÎˆ
-‹œÙ[Ñ\ØË[™ÊKÙÚXØ[]ˆ	ËÚ›İ\›˜[ÉËˆœÛÛ›ˆØœ™XYÜ[XŠ[™Ë˜Z[
-WBˆJ_B›ÙH]K\YÙOHš›İ\›˜[‚‰ÚXY\Š[™Ë	Ú›İ\›˜[	Ê_BXZ[ˆYH›XZ[ˆ‚ˆÙXİ[ÛˆÛ\ÜÏHœYÙKZXYˆ]K\™]™X[‚ˆ]ˆÛ\ÜÏHÜ˜\‚ˆHÛ\ÜÏH™\Ü^K^‰Ù\ØÊ
-‹šK[™ÊJ_OÚO‚ˆÛ\ÜÏH›XYYX\İ\™H‰Ù\ØÊ
-‹š[›Ë[™ÊJ_OÜ‚ˆÙ]‚ˆÜÙXİ[Û‚ˆÙXİ[ÛˆÛ\ÜÏHœÙXİ[Ûˆˆ]K\™]™X[‚ˆ]ˆÛ\ÜÏHÜ˜\˜\œ›İÈ‚ˆ[Û\ÜÏHš›İ\›˜[YY]ÜšX[[\İ‚ˆ	ÜÛÜY›X\
+        <fieldset class="contact-field-group">
+          <legend>${esc(t(f.contactGroupLabel, lang))}</legend>
+          <label for="name"><span>${esc(t(f.name, lang))}</span> <span class="required-mark" aria-hidden="true">*</span></label>
+          <input id="name" name="name" type="text" autocomplete="name" placeholder="${esc(t(f.namePh, lang))}" required />
 
-JHOˆOH™YH‰Û[™Ô]
-[™ËÚ›İ\›˜[ÉØKœÛYßKØ
-_H‚ˆ[YH]][YOH‰ØK™]_H‰Ù›]]JK™]K[™Ê_Oİ[YO‚ˆ]ˆÛ\ÜÏHš›İ\›˜[Y[KXÛÜH‚ˆ‰Ù\ØÊ
-KšK[™ÊJ_OÚ‚ˆ‰Ù\ØÊ
-K™\ØË[™ÊJ_OÜ‚ˆÙ]‚ˆÜ[ˆÛ\ÜÏHœİ˜Ë[[Ü™H‰Ù\ØÊ
-‹œ™XY[Ü™K[™ÊJ_H	Ø\œ›İÊ[™Ê_OÜÜ[‚ˆØOÛO˜
-Kš›Ú[Š	×ˆ	Ê_Bˆİ[‚ˆÙ]‚ˆÜÙXİ[Û‚ˆ	ØÛÛXİ˜[™
-[™Ê_BÛXZ[‚‰Ù›Ûİ\Š[™Ê_BØ›ÙO‚Ú[˜ÂŸB‚™[˜İ[Ûˆ™[™\\XÛJK[™ÊHÂˆÛÛœİˆHÚ]Kš›İ\›˜[Y]NÂˆÛÛœİÛYHH[™ÈOOH	Ø\‰ÈÈ	ö)öa6,v)¶b¶,öb¶*IÈˆ	ÒÛYIÎÂˆÛÛœİ˜Z[HÖÚÛYK	ËÉ×Kİ
-Ú]K›˜]‹š›İ\›˜[[™ÊK	ËÚ›İ\›˜[É×Kİ
-KšK[™ÊKÚ›İ\›˜[ÉØKœÛYßKØWNÂˆÛÛœİ™[[™[™ÜÈH
-Kœ™[]Y×JK›X\
+          <label for="phone"><span>${esc(t(f.phone, lang))}</span> <span class="required-mark" aria-hidden="true">*</span></label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="${esc(t(f.phonePh, lang))}" pattern="^[+\\d\\s]{7,}$" required />
 
-ÛYÊHOˆÚ]K›[™[™ÜË™š[™
+          <label for="email"><span>${esc(t(f.email, lang))}</span> <span class="required-mark" aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="${esc(t(f.emailPh, lang))}" required />
+        </fieldset>
 
-
-HOˆœÛYÈOOHÛYÊJK™š[\Š›ÛÛX[ŠNÂˆ™]\›ˆ	ÚXY
-Âˆ[™Ë]Nˆ
-K]K[™ÊK\ØÎˆ
-K™\ØË[™ÊKÙÚXØ[]ˆÚ›İ\›˜[ÉØKœÛYßKØˆœÛÛ›ˆØ\XÛTØÚ[XJK[™ÊKœ™XYÜ[XŠ[™Ë˜Z[
-WBˆJ_B›ÙH]K\YÙOH˜\XÛH‚‰ÚXY\Š[™Ë	Ú›İ\›˜[	Ê_BXZ[ˆYH›XZ[ˆ‚ˆ\XÛO‚ˆÙXİ[ÛˆÛ\ÜÏHœYÙKZXYˆ]K\™]™X[‚ˆ]ˆÛ\ÜÏHÜ˜\˜\œ›İÈ‚ˆ	Øœ™XYÜ[X•RJ[™Ë˜Z[
-_BˆHÛ\ÜÏH™\Ü^K^‰Ù\ØÊ
-KšK[™ÊJ_OÚO‚ˆÛ\ÜÏH››İH[YH]][YOH‰ØK™]_H‰Ù›]]JK™]K[™Ê_Oİ[YOÜ‚ˆÛ\ÜÏH›XY‰Ù\ØÊ
-Kš[›Ë[™ÊJ_OÜ‚ˆÙ]‚ˆÜÙXİ[Û‚ˆÙXİ[ÛˆÛ\ÜÏHœÙXİ[Û‹\ÛHˆ]K\™]™X[‚ˆ]ˆÛ\ÜÏHÜ˜\\XÛK\™XY[™ËXÛÛ[[ˆ›İÈ‚ˆ	ØKœÙXİ[ÛœË›X\
+        <fieldset class="contact-field-group">
+          <legend>${esc(t(f.plotGroupLabel, lang))}</legend>
+          <div class="form-row">
+            <div class="field-group">
+              <label for="location">${esc(t(f.location, lang))}</label>
+              <input id="location" name="location" type="text" placeholder="${esc(t(f.locationPh, lang))}" />
+            </div>
+            <div class="field-group">
+              <label for="maps">${esc(t(f.maps, lang))}</label>
+              <input id="maps" name="maps" type="url" placeholder="${esc(t(f.mapsPh, lang))}" />
+            </div>
+          </div>
+          <p class="form-helper">${esc(t(f.locationHelper, lang))}</p>
+        </fieldset>
 
-ÙXÊHOˆˆÛ\ÜÏH™\Ü^H‰Ù\ØÊ
-ÙXËšXY[™Ë[™ÊJ_OÚ‚ˆ‰Ù\ØÊ
-ÙXË˜›ÙK[™ÊJ_OÜ˜
-Kš›Ú[Š	×ˆ	Ê_BˆÙ]‚ˆÜÙXİ[Û‚ˆ	Ü™[[™[™ÜË›[™İÈÙXİ[ÛˆÛ\ÜÏHœÙXİ[Û‹\ÛH]šYYˆ]K\™]™X[‚ˆ]ˆÛ\ÜÏHÜ˜\˜\œ›İÈ‚ˆˆÛ\ÜÏH™\Ü^H‰Ù\ØÊ
-‹œ™[]Y]K[™ÊJ_OÚ‚ˆ]ˆÛ\ÜÏHœÙ\šXÙKYY]ÜšX[[\İ‚ˆ	Ü™[[™[™ÜË›X\
+        <fieldset class="contact-field-group">
+          <legend>${esc(t(f.budgetGroupLabel, lang))}</legend>
+          <label for="budget">${esc(t(f.budget, lang))}</label>
+          <select id="budget" name="budget">
+            <option value="">${esc(t(f.budgetPh, lang))}</option>
+            ${f.budgetOptions[lang].map((o) => `<option>${esc(o)}</option>`).join('\n            ')}
+          </select>
+        </fieldset>
 
-
-HOˆİ˜ĞØ\™
-[™Ë	ÚÉÊJKš›Ú[Š	×ˆ	Ê_BˆÙ]‚ˆÙ]‚ˆÜÙXİ[Û˜ˆ	ÉßBˆØ\XÛO‚ˆ	ØÛÛXİ˜[™
-[™Ê_BÛXZ[‚‰Ù›Ûİ\Š[™Ê_BØ›ÙO‚Ú[˜ÂŸB‚‹Êˆ8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ Ú][X\8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 
-‹Â‚™[˜İ[Ûˆ™[™\”Ú][X\
+        <button class="btn btn-solid" type="submit">${esc(t(f.submit, lang))}</button>
+        <p id="formFeedback" class="form-feedback" aria-live="polite"
+           data-msg-success="${esc(t(f.success, lang))}"
+           data-msg-error="${esc(t(f.error, lang))}"></p>
+      </form>
+    </div>
+  </section>
 
-HÂˆÛÛœİÙÚXØ[]ÈHÂˆ	ËÉË	ËİÛÜšËÉË‹‹œ›Ú™XİË›X\
+  <section class="section divided" data-reveal>
+    <div class="wrap narrow">
+      <h2 class="display">${esc(t(c.faqTitle, lang))}</h2>
+      <div class="faq">
+        ${site.faq.map((item) => `<details>
+          <summary>${esc(t(item.q, lang))}</summary>
+          <p>${esc(t(item.a, lang))}</p>
+        </details>`).join('\n        ')}
+      </div>
+    </div>
+  </section>
+</main>
+${footer(lang)}
+<script>window.GOOGLE_MAPS_API_KEY = window.GOOGLE_MAPS_API_KEY || '';</script>
+<script src="/assets/js/contact.js" defer></script>
+</body>
+</html>`;
+}
 
-
-HOˆİÛÜšËÉÜœÛYßKØ
-Kˆ	ËÜÙ\šXÙ\ËÉË‹‹œÚ]K›[™[™ÜË›X\
+function renderCredits(lang) {
+  const c = site.credits;
+  const src = (id) => `https://images.unsplash.com/${id}`;
+  const rows = projects.filter((p) => p.placeholder).map((p) => {
+    const images = [p.cover, ...p.gallery].filter((i) => i.sourceId);
+    return `<div class="credit-block">
+      <h2>${esc(t(p.title, lang))}</h2>
+      <ul>
+        ${images.map((i) => `<li><span dir="ltr">${i.src.split('/').pop()}</span> â€” <a href="${src(i.sourceId)}" target="_blank" rel="noopener">${esc(t(c.sourceLabel, lang))}</a></li>`).join('\n        ')}
+      </ul>
+    </div>`;
+  }).join('\n      ');
+  return `${head({
+    lang,
+    title: t(c.seoTitle, lang),
+    desc: t(c.seoDesc, lang),
+    logicalPath: '/credits/'
+  })}
+<body data-page="credits">
+${header(lang, null)}
+<main id="main">
+  <section class="page-head" data-reveal>
+    <div class="wrap narrow">
+      <h1 class="display-xl">${esc(t(c.h1, lang))}</h1>
+      <p class="lead">${esc(t(c.intro, lang))}</p>
+      <p class="note">${esc(t(c.licenseNote, lang))}</p>
+    </div>
+  </section>
+  <section class="section-sm" data-reveal>
+    <div class="wrap narrow credits-list">
+      <div class="credit-block">
+        <h2>${esc(t(c.heroLabel, lang))}</h2>
+        <ul><li><span dir="ltr">home-hero.webp</span> â€” <a href="${src(HOME_HERO_SOURCE_ID)}" target="_blank" rel="noopener">${esc(t(c.sourceLabel, lang))}</a></li></ul>
+      </div>
+      ${rows}
+    </div>
+  </section>
+</main>
+${footer(lang)}
+</body>
+</html>`;
+}
 
-
-HOˆÉÛœÛYßKØ
-Kˆ	ËØ\›ØXÚÉËˆ	ËÚ›İ\›˜[ÉË‹‹œÚ]Kš›İ\›˜[›X\
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ services hub + landing pages â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
-JHOˆÚ›İ\›˜[ÉØKœÛYßKØ
-Kˆ	ËØX›İ]ÉË	ËØÛÛXİÉË	ËØÜ™Y]ËÉÂˆNÂˆÛÛœİ[šY\ÈH×NÂˆ›Üˆ
-ÛÛœİÙˆÙÚXØ[]ÊHÂˆ›Üˆ
-ÛÛœİ[™ÈÙˆS‘ÔÊHÂˆ[šY\Ëœ\Ú
-\›‚ˆØÏ‰ØXœÕ\›
-[™Ë
-_OÛØÏ‚ˆ[›[šÈ™[H˜[\›˜]Hˆ™Y›[™ÏH˜\ˆˆ™YH‰ØXœÕ\›
-	Ø\‰Ë
-_H‹Ï‚ˆ[›[šÈ™[H˜[\›˜]Hˆ™Y›[™ÏH™[ˆˆ™YH‰ØXœÕ\›
-	Ù[‰Ë
-_H‹Ï‚ˆ[›[šÈ™[H˜[\›˜]Hˆ™Y›[™ÏHYY˜][ˆ™YH‰ØXœÕ\›
-	Ø\‰Ë
-_H‹Ï‚ˆİ\›˜
-NÂˆBˆBˆ™]\›ˆŞ[™\œÚ[ÛHŒKŒˆ[˜ÛÙ[™ÏH•U‹NÏ‚\›Ù][œÏHš‹ËİİİËœÚ][X\Ë›Ü™ËÜØÚ[X\ËÜÚ][X\ÌH‚ˆ[œÎ[Hš‹ËİİİËÌË›Ü™ËÌNNNKŞ[‚‰Ù[šY\Ëš›Ú[Š	×‰Ê_Bİ\›Ù]‚˜ÂŸB‚‹Êˆ8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ Üš]H]™\][™È8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 8¥ 
-‹Â‚™[˜İ[ÛˆÜš]J™[][
-HÂˆÛÛœİ[H]š›Ú[Š“ÓÕ™[]
-NÂˆœË›ZÙ\”Ş[˜Ê]™\›˜[YJ[
-KÈ™Xİ\œÚ]™NˆYHJNÂˆœËÜš]Qš[TŞ[˜Ê[[	İ]	ÊNÂˆÛÛœÛÛK›ÙÊ	ÈÜ›İIË™[]
-NÂŸB‚˜ÛÛœÛÛK›ÙÊ	ĞZ[[™ÈĞˆİY[ø )‰ÊNÂ™›Üˆ
-ÛÛœİ[™ÈÙˆS‘ÔÊHÂˆÛÛœİ™Yš^H[™ÈOOH	Ø\‰ÈÈ	ÉÈˆ	Ù[‹ÉÎÂ‚ˆXİ]™SÙÚXØ[]H	ËÉÎÂˆÜš]J	Ü™Yš^Z[™^š[™[™\’ÛYJ[™ÊJNÂ‚ˆXİ]™SÙÚXØ[]H	ËİÛÜšËÉÎÂˆÜš]J	Ü™Yš^]ÛÜšËÚ[™^š[™[™\•ÛÜšÊ[™ÊJNÂ‚ˆ›Üˆ
-ÛÛœİÙˆ›Ú™XİÊHÂˆXİ]™SÙÚXØ[]HİÛÜšËÉÜœÛYßKØÂˆÜš]J	Ü™Yš^]ÛÜšËÉÜœÛYßKÚ[™^š[™[™\”›Ú™Xİ
-[™ÊJNÂˆB‚ˆXİ]™SÙÚXØ[]H	ËÜÙ\šXÙ\ËÉÎÂˆÜš]J	Ü™Yš^\Ù\šXÙ\ËÚ[™^š[™[™\”Ù\šXÙ\ÒXŠ[™ÊJNÂ‚ˆ›Üˆ
-ÛÛœİÙˆÚ]K›[™[™ÜÊHÂˆXİ]™SÙÚXØ[]HÉÛœÛYßKØÂˆÜš]J	Ü™Yš^IÛœÛYßKÚ[™^š[™[™\“[™[™Ê[™ÊJNÂˆB‚ˆXİ]™SÙÚXØ[]H	ËØ\›ØXÚÉÎÂˆÜš]J	Ü™Yš^X\›ØXÚÚ[™^š[™[™\\›ØXÚ
-[™ÊJNÂ‚ˆXİ]™SÙÚXØ[]H	ËÚ›İ\›˜[ÉÎÂˆÜš]J	Ü™Yš^Z›İ\›˜[Ú[™^š[™[™\’›İ\›˜[XŠ[™ÊJNÂ‚ˆ›Üˆ
-ÛÛœİHÙˆÚ]Kš›İ\›˜[
-HÂˆXİ]™SÙÚXØ[]HÚ›İ\›˜[ÉØKœÛYßKØÂˆÜš]J	Ü™Yš^Z›İ\›˜[ÉØKœÛYßKÚ[™^š[™[™\\XÛJK[™ÊJNÂˆB‚ˆXİ]™SÙÚXØ[]H	ËØX›İ]ÉÎÂˆÜš]J	Ü™Yš^XX›İ]Ú[™^š[™[™\X›İ]
-[™ÊJNÂ‚ˆXİ]™SÙÚXØ[]H	ËØÛÛXİÉÎÂˆÜš]J	Ü™Yš^XÛÛXİÚ[™^š[™[™\ÛÛXİ
-[™ÊJNÂ‚ˆXİ]™SÙÚXØ[]H	ËØÜ™Y]ËÉÎÂˆÜš]J	Ü™Yš^XÜ™Y]ËÚ[™^š[™[™\Ü™Y]Ê[™ÊJNÂŸBÜš]J	ÜÚ][X\[	Ë™[™\”Ú][X\
+function renderServicesHub(lang) {
+  const s = site.services;
+  const home = lang === 'ar' ? 'Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©' : 'Home';
+  const trail = [[home, '/'], [t(site.nav.services, lang), '/services/']];
+  return `${head({
+    lang, title: t(s.seoTitle, lang), desc: t(s.seoDesc, lang), logicalPath: '/services/',
+    jsonld: [breadcrumb(lang, trail), ...site.landings.map((l) => serviceSchema(l, lang))]
+  })}
+<body data-page="services">
+${header(lang, 'services')}
+<main id="main">
+  <section class="page-head" data-reveal>
+    <div class="wrap">
+      ${breadcrumbUI(lang, trail)}
+      <h1 class="display-xl">${esc(t(s.h1, lang))}</h1>
+      <p class="lead measure">${esc(t(s.intro, lang))}</p>
+    </div>
+  </section>
+  <section class="section" data-reveal>
+    <div class="wrap">
+      <div class="service-editorial-list">
+        ${site.landings.map((l) => svcCard(l, lang, 'h2')).join('\n        ')}
+      </div>
+    </div>
+  </section>
+  ${contactBand(lang)}
+</main>
+${footer(lang)}
+</body>
+</html>`;
+}
 
-JNÂ˜ÛÛœÛÛK›ÙÊÛ™Nˆ	ÓS‘ÔË›[™İ
-ˆ
-
-È›Ú™XİË›[™İ
-ÈÚ]K›[™[™ÜË›[™İ
-ÈÚ]Kš›İ\›˜[›[™İ
-_HYÙ\È
-ÈÚ][X\[
-NÂ
+function renderLanding(l, lang) {
+  const home = lang === 'ar' ? 'Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©' : 'Home';
+  const trail = [[home, '/'], [t(site.nav.services, lang), '/services/'], [t(l.label, lang), `/${l.slug}/`]];
+  const relProjects = (l.relatedProjects || []).map((slug) => projects.find((p) => p.slug === slug)).filter(Boolean);
+  const relLandings = (l.related || []).map((slug) => site.landings.find((x) => x.slug === slug)).filter(Boolean);
+  return `${head({
+    lang, title: t(l.seoTitle, lang), desc: t(l.seoDesc, lang), logicalPath: `/${l.slug}/`,
+    jsonld: [serviceSchema(l, lang), faqSchema(l.faq, lang), breadcrumb(lang, trail)]
+  })}
+<body data-page="landing">
+${header(lang, 'services')}
+<main id="main">
+  <section class="page-head" data-reveal>
+    <div class="wrap">
+      ${breadcrumbUI(lang, trail)}
+      <p class="eyebrow">${esc(t(l.eyebrow, lang))}</p>
+      <h1 class="display-xl">${esc(t(l.h1, lang))}</h1>
+      <p class="lead measure">${esc(t(l.intro, lang))}</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="${waUrl(lang)}" target="_blank" rel="noopener">${esc(t(site.home.ctaWhatsapp, lang))}</a>
+        <a class="btn" href="${langPath(lang, '/contact/')}">${esc(t(site.contactBand.primary, lang))}</a>
+      </div>
+    </div>
+  </section>
+  ${l.image ? `<div class="bleed" data-reveal>${img(l.image, lang, { eager: true })}</div>` : ''}
+  <section class="section" data-reveal>
+    <div class="wrap landing-content-grid">
+      ${l.sections.map((sec) => `<section class="landing-section-row">
+        <h2 class="display">${esc(t(sec.heading, lang))}</h2>
+        <p>${esc(t(sec.body, lang))}</p>
+      </section>`).join('\n      ')}
+    </div>
+  </section>
+  ${relProjects.length ? `<section class="section divided" data-reveal>
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="display">${lang === 'ar' ? 'Ù…Ù† Ø£Ø¹Ù…Ø§Ù„Ù†Ø§' : 'From our work'}</h2>
+        <a class="text-link" href="${langPath(lang, '/work/')}">${esc(t(site.home.allWork, lang))} ${arrow(lang)}</a>
+      </div>
+      <div class="project-grid">
+        ${relProjects.map((p) => projectCard(p, lang)).join('\n        ')}
+      </div>
+    </div>
+  </section>` : ''}
+  <section class="section divided" data-reveal>
+    <div class="wrap narrow">
+      <h2 class="display">${esc(t(site.contactPage.faqTitle, lang))}</h2>
+      <div class="faq">
+        ${l.faq.map((item) => `<details>
+          <summary>${esc(t(item.q, lang))}</summary>
+          <p>${esc(t(item.a, lang))}</p>
+        </details>`).join('\n        ')}
+      </div>
+    </div>
+  </section>
+  ${relLandings.length ? `<section class="section divided" data-reveal>
+    <div class="wrap">
+      <h2 class="display">${lang === 'ar' ? 'Ø®Ø¯Ù…Ø§Øª Ø°Ø§Øª ØµÙ„Ø©' : 'Related services'}</h2>
+      <div class="service-editorial-list">
+        ${relLandings.map((x) => svcCard(x, lang, 'h3')).join('\n        ')}
+      </div>
+    </div>
+  </section>` : ''}
+  ${contactBand(lang)}
+</main>
+${footer(lang)}
+</body>
+</html>`;
+}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ journal hub + articles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+
+function renderJournalHub(lang) {
+  const j = site.journalMeta;
+  const home = lang === 'ar' ? 'Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©' : 'Home';
+  const trail = [[home, '/'], [t(site.nav.journal, lang), '/journal/']];
+  const sorted = [...site.journal].sort((a, b) => (a.date < b.date ? 1 : -1));
+  return `${head({
+    lang, title: t(j.seoTitle, lang), desc: t(j.seoDesc, lang), logicalPath: '/journal/',
+    jsonld: [breadcrumb(lang, trail)]
+  })}
+<body data-page="journal">
+${header(lang, 'journal')}
+<main id="main">
+  <section class="page-head" data-reveal>
+    <div class="wrap">
+      <h1 class="display-xl">${esc(t(j.h1, lang))}</h1>
+      <p class="lead measure">${esc(t(j.intro, lang))}</p>
+    </div>
+  </section>
+  <section class="section" data-reveal>
+    <div class="wrap narrow">
+      <ul class="journal-editorial-list">
+        ${sorted.map((a) => `<li><a href="${langPath(lang, `/journal/${a.slug}/`)}">
+          <time datetime="${a.date}">${fmtDate(a.date, lang)}</time>
+          <div class="journal-entry-copy">
+            <h2>${esc(t(a.h1, lang))}</h2>
+            <p>${esc(t(a.desc, lang))}</p>
+          </div>
+          <span class="svc-more">${esc(t(j.readMore, lang))} ${arrow(lang)}</span>
+        </a></li>`).join('\n        ')}
+      </ul>
+    </div>
+  </section>
+  ${contactBand(lang)}
+</main>
+${footer(lang)}
+</body>
+</html>`;
+}
+
+function renderArticle(a, lang) {
+  const j = site.journalMeta;
+  const home = lang === 'ar' ? 'Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©' : 'Home';
+  const trail = [[home, '/'], [t(site.nav.journal, lang), '/journal/'], [t(a.h1, lang), `/journal/${a.slug}/`]];
+  const relLandings = (a.related || []).map((slug) => site.landings.find((x) => x.slug === slug)).filter(Boolean);
+  return `${head({
+    lang, title: t(a.title, lang), desc: t(a.desc, lang), logicalPath: `/journal/${a.slug}/`,
+    jsonld: [articleSchema(a, lang), breadcrumb(lang, trail)]
+  })}
+<body data-page="article">
+${header(lang, 'journal')}
+<main id="main">
+  <article>
+    <section class="page-head" data-reveal>
+      <div class="wrap narrow">
+        ${breadcrumbUI(lang, trail)}
+        <h1 class="display-xl">${esc(t(a.h1, lang))}</h1>
+        <p class="note"><time datetime="${a.date}">${fmtDate(a.date, lang)}</time></p>
+        <p class="lead">${esc(t(a.intro, lang))}</p>
+      </div>
+    </section>
+    <section class="section-sm" data-reveal>
+      <div class="wrap article-reading-column flow">
+        ${a.sections.map((sec) => `<h2 class="display">${esc(t(sec.heading, lang))}</h2>
+        <p>${esc(t(sec.body, lang))}</p>`).join('\n        ')}
+      </div>
+    </section>
+    ${relLandings.length ? `<section class="section-sm divided" data-reveal>
+      <div class="wrap narrow">
+        <h2 class="display">${esc(t(j.relatedTitle, lang))}</h2>
+        <div class="service-editorial-list">
+          ${relLandings.map((x) => svcCard(x, lang, 'h3')).join('\n          ')}
+        </div>
+      </div>
+    </section>` : ''}
+  </article>
+  ${contactBand(lang)}
+</main>
+${footer(lang)}
+</body>
+</html>`;
+}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ sitemap â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+
+function renderSitemap() {
+  const logicalPaths = [
+    '/', '/work/', ...projects.map((p) => `/work/${p.slug}/`),
+    '/services/', ...site.landings.map((l) => `/${l.slug}/`),
+    '/approach/',
+    '/journal/', ...site.journal.map((a) => `/journal/${a.slug}/`),
+    '/about/', '/contact/', '/credits/'
+  ];
+  const entries = [];
+  for (const p of logicalPaths) {
+    for (const lang of LANGS) {
+      entries.push(`  <url>
+    <loc>${absUrl(lang, p)}</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="${absUrl('ar', p)}"/>
+    <xhtml:link rel="alternate" hreflang="en" href="${absUrl('en', p)}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${absUrl('ar', p)}"/>
+  </url>`);
+    }
+  }
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${entries.join('\n')}
+</urlset>
+`;
+}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ write everything â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+
+function write(relPath, html) {
+  const full = path.join(ROOT, relPath);
+  fs.mkdirSync(path.dirname(full), { recursive: true });
+  fs.writeFileSync(full, html, 'utf8');
+  console.log('  wrote', relPath);
+}
+
+console.log('Building WB Studioâ€¦');
+for (const lang of LANGS) {
+  const prefix = lang === 'ar' ? '' : 'en/';
+
+  activeLogicalPath = '/';
+  write(`${prefix}index.html`, renderHome(lang));
+
+  activeLogicalPath = '/work/';
+  write(`${prefix}work/index.html`, renderWork(lang));
+
+  for (const p of projects) {
+    activeLogicalPath = `/work/${p.slug}/`;
+    write(`${prefix}work/${p.slug}/index.html`, renderProject(p, lang));
+  }
+
+  activeLogicalPath = '/services/';
+  write(`${prefix}services/index.html`, renderServicesHub(lang));
+
+  for (const l of site.landings) {
+    activeLogicalPath = `/${l.slug}/`;
+    write(`${prefix}${l.slug}/index.html`, renderLanding(l, lang));
+  }
+
+  activeLogicalPath = '/approach/';
+  write(`${prefix}approach/index.html`, renderApproach(lang));
+
+  activeLogicalPath = '/journal/';
+  write(`${prefix}journal/index.html`, renderJournalHub(lang));
+
+  for (const a of site.journal) {
+    activeLogicalPath = `/journal/${a.slug}/`;
+    write(`${prefix}journal/${a.slug}/index.html`, renderArticle(a, lang));
+  }
+
+  activeLogicalPath = '/about/';
+  write(`${prefix}about/index.html`, renderAbout(lang));
+
+  activeLogicalPath = '/contact/';
+  write(`${prefix}contact/index.html`, renderContact(lang));
+
+  activeLogicalPath = '/credits/';
+  write(`${prefix}credits/index.html`, renderCredits(lang));
+}
+write('sitemap.xml', renderSitemap());
+console.log(`Done: ${LANGS.length * (8 + projects.length + site.landings.length + site.journal.length)} pages + sitemap.xml`);
