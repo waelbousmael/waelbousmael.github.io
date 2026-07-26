@@ -50,6 +50,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/work/byblos-resort/"/>
   </url>
   <url>
+    <loc>https://wbstudio.xyz/work/private-villa-renovation-chouf/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/work/private-villa-renovation-chouf/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/private-villa-renovation-chouf/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/work/private-villa-renovation-chouf/"/>
+  </url>
+  <url>
+    <loc>https://wbstudio.xyz/en/work/private-villa-renovation-chouf/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/work/private-villa-renovation-chouf/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/private-villa-renovation-chouf/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/work/private-villa-renovation-chouf/"/>
+  </url>
+  <url>
     <loc>https://wbstudio.xyz/work/coastal-villa/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/work/coastal-villa/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/coastal-villa/"/>
@@ -120,6 +132,18 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/villa-design-jeddah/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/villa-design-jeddah/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/villa-design-jeddah/"/>
+  </url>
+  <url>
+    <loc>https://wbstudio.xyz/villa-renovation-design-jeddah/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/villa-renovation-design-jeddah/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/villa-renovation-design-jeddah/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/villa-renovation-design-jeddah/"/>
+  </url>
+  <url>
+    <loc>https://wbstudio.xyz/en/villa-renovation-design-jeddah/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/villa-renovation-design-jeddah/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/villa-renovation-design-jeddah/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/villa-renovation-design-jeddah/"/>
   </url>
   <url>
     <loc>https://wbstudio.xyz/luxury-villa-design-jeddah/</loc>

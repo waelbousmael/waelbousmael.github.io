@@ -101,6 +101,11 @@ export default {
         title: { ar: 'ØªØµÙ…ÙŠÙ… Ø¬Ø§Ù‡Ø² Ù„Ù„ØªÙ†ÙÙŠØ° ÙˆØªÙ†Ø³ÙŠÙ‚ BIM', en: 'Build-ready design & BIM coordination' },
         text: { ar: 'ÙˆØ¶ÙˆØ­ Ø¨ÙŠÙ† Ø§Ù„Ù…Ø¹Ù…Ø§Ø±ÙŠ ÙˆØ§Ù„Ø¥Ù†Ø´Ø§Ø¦ÙŠ ÙˆØ§Ù„Ù…ÙŠÙƒØ§Ù†ÙŠÙƒÙŠ Ù‚Ø¨Ù„ Ø§Ù„ÙˆØµÙˆÙ„ Ø¥Ù„Ù‰ Ø§Ù„Ù…ÙˆÙ‚Ø¹.', en: 'Clarity across architectural, structural and MEP disciplines before site work.' },
         href: '/approach/'
+      },
+      {
+        title: { ar: 'ØªØ¬Ø¯ÙŠØ¯ Ø§Ù„ÙÙ„Ù„ ÙˆÙ…Ø®Ø·Ø·Ø§Øª Ø§Ù„ØªÙ†ÙÙŠØ°', en: 'Villa renovation & execution drawings' },
+        text: { ar: 'Ù…Ù† ØªÙˆØ«ÙŠÙ‚ Ø§Ù„ÙˆØ¶Ø¹ Ø§Ù„Ù‚Ø§Ø¦Ù… Ø¥Ù„Ù‰ Ù…Ø®Ø·Ø·Ø§Øª Ø§Ù„Ù‡Ø¯Ù… ÙˆØ§Ù„Ø¥Ù†Ø´Ø§Ø¡ ÙˆØ­Ø²Ù…Ø© ÙˆØ§Ø¶Ø­Ø© Ù„Ù„Ù…Ù‚Ø§ÙˆÙ„.', en: 'From existing-condition records to demolition, construction and a clear contractor package.' },
+        href: '/villa-renovation-design-jeddah/'
       }
     ],
     heroImage: {
@@ -209,662 +214,4 @@ export default {
     processTitle: { ar: 'Ù…Ø³Ø§Ø± ØªØµÙ…ÙŠÙ… Ø§Ù„ÙÙŠÙ„Ø§ Ù‚Ø¨Ù„ Ø§Ù„Ø§ØªÙØ§Ù‚ Ø§Ù„Ù…Ø¯ÙÙˆØ¹', en: 'The villa design path before the paid agreement' },
     steps: [
       {
-        title: { ar: 'Ù…ÙƒØ§Ù„Ù…Ø© Ù…Ø¬Ø§Ù†ÙŠØ© Ù„Ù…Ø±Ø§Ø¬Ø¹Ø© Ø§Ù„Ø£Ø±Ø¶', en: 'Free call to review the plot' },
-        text: {
-          ar: 'Ù…Ø±Ø§Ø¬Ø¹Ø© Ø§Ù„Ø£Ø±Ø¶ ÙˆØ£Ù‡Ø¯Ø§Ù Ù†Ù…Ø· Ø§Ù„Ø­ÙŠØ§Ø© ÙˆØªØ­Ø¯ÙŠØ¯ ÙˆØ§Ø¶Ø­ Ù„Ù„Ù…Ù†Ø²Ù„ Ø§Ù„Ø°ÙŠ ØªØ±ÙŠØ¯ Ø§Ù„Ø¹ÙŠØ´ ÙÙŠÙ‡.',
-          en: 'A review of the plot and lifestyle goals, with a clear definition of the home you want to live in.'
-        },
-        image: {
-          src: '/assets/images/workflow-1.webp', w: 600, h: 600,
-          alt: { ar: 'Ù…ÙƒØ§Ù„Ù…Ø© ÙÙŠØ¯ÙŠÙˆ Ù…Ø¹ Ø§Ù„Ø¹Ù…ÙŠÙ„ Ù„Ù…Ø±Ø§Ø¬Ø¹Ø© Ø§Ù„Ø£Ø±Ø¶ ÙˆØ§Ù„Ø£Ù‡Ø¯Ø§Ù', en: 'A video call with the client to review the plot and goals' }
-        }
-      },
-      {
-        title: { ar: 'ØªØµÙˆØ± Ù…Ø¨Ø¯Ø¦ÙŠ Ù…Ø¬Ø§Ù†ÙŠ', en: 'Free preliminary concept' },
-        text: {
-          ar: 'Ù†Ù†Ø§Ù‚Ø´ Ø§Ù„Ø§ØªØ¬Ø§Ù‡ Ø§Ù„Ø£ÙˆÙ„ÙŠ Ø¹Ø¨Ø± Ù…ÙƒØ§Ù„Ù…Ø© ÙÙŠØ¯ÙŠÙˆ Ù‚Ø¨Ù„ Ø£ÙŠ Ø§Ù„ØªØ²Ø§Ù… â€” ÙÙƒØ±Ø© Ù…Ø¹Ù…Ø§Ø±ÙŠØ© ÙˆØ£Ø¬ÙˆØ§Ø¡ Ø¯Ø§Ø®Ù„ÙŠØ© Ù…Ù†Ø³Ø¬Ù…Ø© Ù…Ø¹ Ø£ÙˆÙ„ÙˆÙŠØ§ØªÙƒ.',
-          en: 'We discuss the initial direction on a video call before any commitment â€” an architectural concept and interior atmosphere aligned with your priorities.'
-        },
-        image: {
-          src: '/assets/images/workflow-2.webp', w: 571, h: 571,
-          alt: { ar: 'Ù†Ù…ÙˆØ°Ø¬ ÙƒØªÙ„ÙŠ Ù…Ø¨Ø¯Ø¦ÙŠ Ù„Ù„ÙÙŠÙ„Ø§ ÙŠÙˆØ¶Ø­ Ø§Ù„ØªØµÙˆØ± Ø§Ù„Ù…Ø¹Ù…Ø§Ø±ÙŠ Ø§Ù„Ø£ÙˆÙ„', en: 'An early massing model of the villa showing the first architectural concept' }
-        }
-      },
-      {
-        title: { ar: 'Ø§ØªÙØ§Ù‚ Ù…Ø¯ÙÙˆØ¹ Ø¨Ø¹Ø¯ Ø§Ù„ØªÙˆØ§ÙÙ‚ ÙÙ‚Ø·', en: 'Paid agreement only after alignment' },
-        text: {
-          ar: 'Ø¥Ø°Ø§ ÙƒØ§Ù† Ø§Ù„Ø§ØªØ¬Ø§Ù‡ Ù…Ù†Ø§Ø³Ø¨Ø§Ù‹ØŒ Ù†Ù†ØªÙ‚Ù„ Ø¥Ù„Ù‰ Ø§Ù„Ø§ØªÙØ§Ù‚ ÙˆØ¨Ø¯Ø¡ Ø§Ù„ØªØµÙ…ÙŠÙ… Ø§Ù„ØªÙØµÙŠÙ„ÙŠ â€” Ø­Ø²Ù…Ø© ØªØµÙ…ÙŠÙ… ØªÙ‚ÙˆØ¯ Ø§Ù„Ø§Ø³ØªØ´Ø§Ø±ÙŠÙŠÙ† ÙˆØ§Ù„Ù…Ù‚Ø§ÙˆÙ„ÙŠÙ† Ø¨ÙˆØ¶ÙˆØ­.',
-          en: 'If the direction is right, we move into the agreement and detailed design â€” a design package that leads consultants and contractors with clarity.'
-        },
-        image: {
-          src: '/assets/images/workflow-3.webp', w: 600, h: 600,
-          alt: { ar: 'Ù…Ù†Ø¸ÙˆØ± Ù†Ù‡Ø§Ø¦ÙŠ ÙˆØ§Ù‚Ø¹ÙŠ Ù„Ù„ÙÙŠÙ„Ø§ Ø¨Ø¹Ø¯ ØªØ·ÙˆÙŠØ± Ø§Ù„ØªØµÙ…ÙŠÙ… Ø§Ù„ØªÙØµÙŠÙ„ÙŠ', en: 'A final photoreal render of the villa after the detailed design is developed' }
-        }
-      }
-    ]
-  },
-
-  about: {
-    seoTitle: {
-      ar: 'Ø¹Ù† WB Studio | ÙˆØ§Ø¦Ù„ Ø¨Ùˆ Ø³Ù…Ø§Ø¹ÙŠÙ„ â€” Ù…Ø¹Ù…Ø§Ø±ÙŠ ÙÙ„Ù„ Ø®Ø§ØµØ© ÙÙŠ Ø¬Ø¯Ø©',
-      en: 'About WB Studio | Wael Bousmael â€” Private Villa Architect in Jeddah'
-    },
-    seoDesc: {
-      ar: 'ØªØ¹Ø±Ù Ø¹Ù„Ù‰ WB Studio Ø¨Ù‚ÙŠØ§Ø¯Ø© ÙˆØ§Ø¦Ù„ Ø¨Ùˆ Ø³Ù…Ø§Ø¹ÙŠÙ„: Ù…Ù…Ø§Ø±Ø³Ø© Ù…Ø¹Ù…Ø§Ø±ÙŠØ© Ø´Ø®ØµÙŠØ© Ù„ØªØµÙ…ÙŠÙ… Ø§Ù„ÙÙ„Ù„ ÙˆØ§Ù„Ù…Ù†Ø§Ø²Ù„ Ø§Ù„Ø®Ø§ØµØ© ÙÙŠ Ø¬Ø¯Ø© ÙˆØ§Ù„Ø³Ø¹ÙˆØ¯ÙŠØ© ÙˆØ§Ù„Ø®Ù„ÙŠØ¬ Ø¹Ø¨Ø± Ù…Ø³Ø§Ø± ÙˆØ§Ø¶Ø­ØŒ Ø­Ø¶ÙˆØ±ÙŠØ§Ù‹ Ø£Ùˆ Ø¹Ù† Ø¨ÙØ¹Ø¯.',
-      en: 'Meet WB Studio, led by Wael Bousmael: a personal architecture practice for private villas and homes in Jeddah, Saudi Arabia and the Gulf, with a clear process, in person or remotely.'
-    },
-    h1: { ar: 'Ù…Ù† Ù†Ø­Ù†', en: 'About' },
-    intro: {
-      ar: 'Ø§Ø³ØªÙˆØ¯ÙŠÙˆ Ù…Ø¹Ù…Ø§Ø±ÙŠ Ø¨ÙˆØªÙŠÙƒÙŠ ÙŠÙ‚ÙˆØ¯Ù‡ Ù…Ø¤Ø³Ø³Ù‡ØŒ Ù…ØªØ®ØµØµ ÙÙŠ Ø§Ù„ÙÙ„Ù„ ÙˆØ§Ù„Ù…Ù†Ø§Ø²Ù„ Ø§Ù„Ø®Ø§ØµØ© ÙÙŠ Ø¬Ø¯Ø© ÙˆØ¹Ù…ÙˆÙ… Ø§Ù„Ø®Ù„ÙŠØ¬. ÙŠØ¬Ù…Ø¹ Ø¨ÙŠÙ† ØªØµÙ…ÙŠÙ… Ø­Ø¯ÙŠØ« Ù…Ø¯Ø±ÙˆØ³ ÙˆØ­Ø³ÙÙ‘ Ù„Ø¨Ù†Ø§Ù†ÙŠÙ‘ ÙÙŠ Ø§Ù„ØªØ¹Ø§Ù…Ù„ Ù…Ø¹ Ø§Ù„Ø­Ø¬Ø± ÙˆØ§Ù„Ø¶ÙˆØ¡ ÙˆØ§Ù„Ù†Ø³Ø¨ØŒ ÙˆÙ‚Ø±Ø§Ø¡Ø©Ù Ø¯Ù‚ÙŠÙ‚Ø© Ù„Ø·Ø±ÙŠÙ‚Ø© Ø¹ÙŠØ´ Ø§Ù„Ø¹Ø§Ø¦Ù„Ø§Øª Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠØ© â€” Ø¨ÙŠÙˆØª Ù…Ø¯Ø±ÙˆØ³Ø© Ø¨Ù‡ÙˆÙŠØ© ÙˆØ§Ø¶Ø­Ø©ØŒ Ø­Ø¶ÙˆØ±ÙŠØ§Ù‹ Ø£Ùˆ Ø¹Ù† Ø¨ÙØ¹Ø¯.',
-      en: 'A boutique, founder-led architecture studio dedicated to private villas and homes in Jeddah and across the Gulf. It pairs refined modern design with a Lebanese sensibility for stone, light and proportion, and a close read of how Saudi families actually live â€” considered houses with a clear identity, delivered in person or remotely.'
-    },
-    name: { ar: 'ÙˆØ§Ø¦Ù„ Ø¨Ùˆ Ø³Ù…Ø§Ø¹ÙŠÙ„ â€” Ù…Ø¹Ù…Ø§Ø±ÙŠ', en: 'Wael Bousmael â€” Architect' },
-    // Bio preserved verbatim from the original site.
-    bio: {
-      ar: 'ÙˆØ§Ø¦Ù„ Ø¨Ùˆ Ø³Ù…Ø§Ø¹ÙŠÙ„ Ù…Ø¹Ù…Ø§Ø±ÙŠ ÙˆÙ…Ù†Ø³Ù‚ BIM Ø¨Ø®Ø¨Ø±Ø© ØªØªØ¬Ø§ÙˆØ² 12 Ø¹Ø§Ù…Ù‹Ø§ ÙÙŠ ØªØµÙ…ÙŠÙ… Ø§Ù„ÙÙ„Ù„ Ø§Ù„Ø³ÙƒÙ†ÙŠØ© Ø§Ù„ÙØ§Ø®Ø±Ø©. ÙŠÙ‚ÙˆØ¯ Ø§Ù„Ù…Ø´Ø±ÙˆØ¹ Ù…Ù† Ø§Ù„ÙÙƒØ±Ø© Ø§Ù„Ø£ÙˆÙ„Ù‰ Ø­ØªÙ‰ Ù…Ø®Ø·Ø·Ø§Øª Ø§Ù„ØªÙ†ÙÙŠØ° (IFC)ØŒ Ù…Ø¹ ØªÙ†Ø³ÙŠÙ‚ ÙƒØ§Ù…Ù„ Ø¨ÙŠÙ† Ø§Ù„Ù…Ø¹Ù…Ø§Ø±ÙŠ ÙˆØ§Ù„Ø¥Ù†Ø´Ø§Ø¦ÙŠ ÙˆØ§Ù„Ù…ÙŠÙƒØ§Ù†ÙŠÙƒÙŠ Ù„Ø¶Ù…Ø§Ù† Ø¬ÙˆØ¯Ø© Ø§Ù„ØªÙ†ÙÙŠØ° ÙˆØªÙ‚Ù„ÙŠÙ„ Ø§Ù„ØªØ¹Ø§Ø±Ø¶Ø§Øª. Ø¹Ù…Ù„ Ø¹Ù„Ù‰ Ù…Ø´Ø§Ø±ÙŠØ¹ ÙÙŠ Ø£Ù„Ù…Ø§Ù†ÙŠØ§ ÙˆÙ„Ø¨Ù†Ø§Ù† ÙˆØ§Ù„Ø³Ø¹ÙˆØ¯ÙŠØ©ØŒ ÙˆÙŠØ±ÙƒÙ‘Ø² Ø¹Ù„Ù‰ ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø±Ø¤ÙŠØ© Ø§Ù„ØªØµÙ…ÙŠÙ…ÙŠØ© Ø¥Ù„Ù‰ Ù†ØªØ§Ø¦Ø¬ Ù‚Ø§Ø¨Ù„Ø© Ù„Ù„Ø¨Ù†Ø§Ø¡ Ø¨ÙƒÙØ§Ø¡Ø© ÙˆÙˆØ¶ÙˆØ­.',
-      en: 'Wael Bousmael is an architect and BIM coordinator with 12+ years of experience in luxury residential villas. He leads projects from early concept to IFC documentation, coordinating architectural, structural, and MEP disciplines to ensure build quality and minimize clashes. He has delivered projects in Germany, Lebanon, and Saudi Arabia, with a clear focus on turning strong design ideas into efficient, buildable outcomes.'
-    },
-    practiceTitle: { ar: 'Ø§Ù„Ù…Ù…Ø§Ø±Ø³Ø©', en: 'The practice' },
-    practiceText: {
-      ar: 'Ù…Ù…Ø§Ø±Ø³Ø© Ù…Ø¹Ù…Ø§Ø±ÙŠØ© Ù…Ø±ÙƒØ²Ø© ØªÙ…Ù†Ø­ ÙƒÙ„ Ù…Ø´Ø±ÙˆØ¹ Ø§Ù‡ØªÙ…Ø§Ù…Ø§Ù‹ Ù…Ø¨Ø§Ø´Ø±Ø§Ù‹ ÙˆÙ‚ÙŠØ§Ø¯Ø© ØªØµÙ…ÙŠÙ…ÙŠØ© Ù…ØªØ³Ù‚Ø©ØŒ Ù…Ø¹ Ø´Ø±ÙƒØ§Ø¡ Ù…ÙˆØ«ÙˆÙ‚ÙŠÙ† Ø¹Ù†Ø¯ Ø§Ù„Ø­Ø§Ø¬Ø©. Ø¹Ù…Ù„ÙŠØ© Ù‡Ø§Ø¯Ø¦Ø© ÙˆØ´ÙØ§ÙØ© Ù…Ù† Ø£ÙˆÙ„ Ø±Ø³Ù… Ø­ØªÙ‰ Ø§Ù„ØªØµÙ…ÙŠÙ… Ø§Ù„Ù†Ù‡Ø§Ø¦ÙŠ.',
-      en: 'A focused architectural practice that gives every project direct attention and consistent design leadership, with trusted partners brought in when needed. A calm, transparent process from the first sketch to the final design.'
-    },
-    facts: [
-      { label: { ar: 'Ø§Ù„Ù…Ù‚Ø±', en: 'Based in' }, value: { ar: 'Ø¬Ø¯Ø© Â· Ø¨Ø±Ù„ÙŠÙ†', en: 'Jeddah Â· Berlin' } },
-      { label: { ar: 'Ù†Ø·Ø§Ù‚ Ø§Ù„Ø¹Ù…Ù„', en: 'Working across' }, value: { ar: 'Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠØ© ÙˆØ§Ù„Ø®Ù„ÙŠØ¬ â€” Ø­Ø¶ÙˆØ±ÙŠØ§Ù‹ ÙˆØ¹Ù† Ø¨ÙØ¹Ø¯', en: 'Saudi Arabia & the Gulf â€” in person and remotely' } },
-      { label: { ar: 'Ø§Ù„Ù„ØºØ§Øª', en: 'Languages' }, value: { ar: 'Ø§Ù„Ø¹Ø±Ø¨ÙŠØ© Â· Ø§Ù„Ø¥Ù†Ø¬Ù„ÙŠØ²ÙŠØ© Â· Ø§Ù„Ø£Ù„Ù…Ø§Ù†ÙŠØ©', en: 'Arabic Â· English Â· German' } },
-      { label: { ar: 'Ø§Ù„ØªØ®ØµØµ', en: 'Focus' }, value: { ar: 'ÙÙ„Ù„ Ø®Ø§ØµØ© Â· ØªØµÙ…ÙŠÙ… Ø¯Ø§Ø®Ù„ÙŠ Â· ØªÙ†Ø³ÙŠÙ‚ BIM', en: 'Private villas Â· Interiors Â· BIM coordination' } }
-    ],
-    portrait: {
-      src: '/assets/images/about-hero.jpg', w: 584, h: 800,
-      alt: { ar: 'ÙˆØ§Ø¦Ù„ Ø¨Ùˆ Ø³Ù…Ø§Ø¹ÙŠÙ„ØŒ Ù…Ø¹Ù…Ø§Ø±ÙŠ ÙÙ„Ù„ ÙˆÙ…Ù†Ø§Ø²Ù„ Ø®Ø§ØµØ©', en: 'Wael Bousmael, architect of private villas and homes' }
-    }
-  },
-
-  contactPage: {
-    seoTitle: {
-      ar: 'ØªÙˆØ§ØµÙ„ | Ø§Ø­Ø¬Ø² Ù…ÙƒØ§Ù„Ù…Ø© Ù…Ø¬Ø§Ù†ÙŠØ© Ù„ØªØµÙ…ÙŠÙ… ÙÙŠÙ„ØªÙƒ â€” WB Studio',
-      en: 'Contact | Book a Free Villa Design Call â€” WB Studio'
-    },
-    seoDesc: {
-      ar: 'Ø£Ø±Ø³Ù„ ØªÙØ§ØµÙŠÙ„ Ø§Ù„Ø£Ø±Ø¶ Ù„Ø·Ù„Ø¨ Ù…ÙƒØ§Ù„Ù…Ø© Ù…Ø¬Ø§Ù†ÙŠØ© ÙˆØªØµÙˆØ± Ù…Ø¨Ø¯Ø¦ÙŠ Ù…Ø¬Ø§Ù†ÙŠ Ù„ØªØµÙ…ÙŠÙ… ÙÙŠÙ„ØªÙƒ ÙÙŠ Ø¬Ø¯Ø© ÙˆØ§Ù„Ø³Ø¹ÙˆØ¯ÙŠØ© ÙˆØ§Ù„Ø®Ù„ÙŠØ¬. Ù„Ø§ ÙŠØ¨Ø¯Ø£ Ø£ÙŠ Ø§ØªÙØ§Ù‚ Ù…Ø¯ÙÙˆØ¹ Ø¥Ù„Ø§ Ø¨Ø¹Ø¯ Ø§Ù„ØªÙˆØ§ÙÙ‚.',
-      en: 'Send your plot details to request a free call and a free preliminary concept for your villa in Jeddah, Saudi Arabia or the Gulf. No paid agreement before alignment.'
-    },
-    h1: { ar: 'ØªÙˆØ§ØµÙ„', en: 'Contact' },
-    intro: {
-      ar: 'Ø¬Ø§Ù‡Ø² Ù„Ù…Ø±Ø§Ø¬Ø¹Ø© Ø£Ø±Ø¶ÙƒØŸ Ù†Ø¨Ø¯Ø£ Ø¨Ù…ÙƒØ§Ù„Ù…Ø© Ù…Ø¬Ø§Ù†ÙŠØ© ÙˆØªØµÙˆØ± Ù…Ø¨Ø¯Ø¦ÙŠ Ù…Ø¬Ø§Ù†ÙŠ â€” ÙˆÙ„Ø§ ÙŠØ¨Ø¯Ø£ Ø£ÙŠ Ø§ØªÙØ§Ù‚ Ù…Ø¯ÙÙˆØ¹ Ø¥Ù„Ø§ Ø¨Ø¹Ø¯ ÙˆØ¶ÙˆØ­ Ø§Ù„Ø±Ø¤ÙŠØ© ÙˆØ§Ù„ØªÙˆØ§ÙÙ‚.',
-      en: 'Ready to review your plot? We begin with a free call and a free preliminary concept â€” a paid agreement starts only once the direction is clear and aligned.'
-    },
-    whatsappCta: { ar: 'Ø§Ø­Ø¬Ø² Ù…ÙƒØ§Ù„Ù…Ø© Ù…Ø¬Ø§Ù†ÙŠØ© Ø¹Ø¨Ø± ÙˆØ§ØªØ³Ø§Ø¨', en: 'Book a free call on WhatsApp' },
-    directTitle: { ar: 'ØªÙˆØ§ØµÙ„ Ù…Ø¨Ø§Ø´Ø±', en: 'Direct contact' },
-    faqTitle: { ar: 'Ø£Ø³Ø¦Ù„Ø© Ø´Ø§Ø¦Ø¹Ø© Ø¹Ù† ØªØµÙ…ÙŠÙ… Ø§Ù„ÙÙ„Ù„ Ø§Ù„Ø®Ø§ØµØ©', en: 'Frequently asked questions about private villa design' }
-  },
-
-  // â”€â”€ Lead form (labels, placeholders and options preserved verbatim) â”€â”€
-  form: {
-    title: { ar: 'Ø£Ø±Ø³Ù„ ØªÙØ§ØµÙŠÙ„ Ø§Ù„Ø£Ø±Ø¶ Ù„Ø·Ù„Ø¨ Ù…ÙƒØ§Ù„Ù…Ø© Ù…Ø¬Ø§Ù†ÙŠØ©', en: 'Send plot details to request a free call' },
-    subtitle: {
-      ar: 'Ø´Ø§Ø±Ùƒ Ù…ÙˆÙ‚Ø¹ Ø§Ù„Ø£Ø±Ø¶ ÙˆØ§Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ© Ø§Ù„ØªÙ‚Ø±ÙŠØ¨ÙŠØ©. Ø³Ù†Ø±Ø§Ø¬Ø¹ Ø§Ù„ØªÙØ§ØµÙŠÙ„ ÙˆÙ†Ø¹ÙˆØ¯ Ø¥Ù„ÙŠÙƒ Ø®Ù„Ø§Ù„ ÙŠÙˆÙ…ÙŠÙ† Ø¹Ù…Ù„ Ù„ØªØ­Ø¯ÙŠØ¯ Ø§Ù„Ø®Ø·ÙˆØ© Ø§Ù„Ø£Ù†Ø³Ø¨.',
-      en: 'Share the plot location and estimated budget. We will review the details and get back to you within two business days to define the right next step.'
-    },
-    contactGroupLabel: { ar: 'Ø¨ÙŠØ§Ù†Ø§Øª Ø§Ù„ØªÙˆØ§ØµÙ„', en: 'Contact details' },
-    plotGroupLabel: { ar: 'Ø¨ÙŠØ§Ù†Ø§Øª Ø§Ù„Ø£Ø±Ø¶', en: 'Plot details' },
-    budgetGroupLabel: { ar: 'Ù†Ø·Ø§Ù‚ Ø§Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ©', en: 'Budget range' },
-    name: { ar: 'Ø§Ù„Ø§Ø³Ù…', en: 'Name' },
-    namePh: { ar: 'Ø£Ø¯Ø®Ù„ Ø§Ø³Ù…Ùƒ Ø§Ù„ÙƒØ§Ù…Ù„', en: 'Enter your full name' },
-    phone: { ar: 'Ø±Ù‚Ù… Ø§Ù„Ù‡Ø§ØªÙ', en: 'Phone Number' },
-    phonePh: { ar: 'Ù…Ø«Ø§Ù„: +966 5X XXX XXXX', en: 'Example: +966 5X XXX XXXX' },
-    email: { ar: 'Ø§Ù„Ø¨Ø±ÙŠØ¯ Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠ', en: 'Email' },
-    emailPh: { ar: 'example@email.com', en: 'name@example.com' },
-    location: { ar: 'Ù…ÙˆÙ‚Ø¹ Ø§Ù„Ø£Ø±Ø¶', en: 'Land Location' },
-    locationPh: { ar: 'Ø§Ù„Ù…Ø¯ÙŠÙ†Ø© Ø£Ùˆ Ø§Ù„Ø­ÙŠ Ø£Ùˆ Ø§Ù„Ø¹Ù†ÙˆØ§Ù†', en: 'City, district, or address' },
-    locationHelper: {
-      ar: 'Ø§Ø¨Ø¯Ø£ Ø¨ÙƒØªØ§Ø¨Ø© Ø§Ù„Ù…ÙˆÙ‚Ø¹ Ù„Ø§Ù‚ØªØ±Ø§Ø­Ø§Øª Ø£Ø³Ø±Ø¹ Ø¹Ù†Ø¯ ØªÙØ¹ÙŠÙ„ Ø®Ø¯Ù…Ø© Google Maps.',
-      en: 'Start typing to get faster suggestions when Google Maps is enabled.'
-    },
-    maps: { ar: 'Ø±Ø§Ø¨Ø· Google Maps', en: 'Google Maps Link' },
-    mapsPh: { ar: 'https://maps.google.com/...', en: 'https://maps.google.com/...' },
-    budget: { ar: 'Ø§Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ© Ø§Ù„ØªÙ‚Ø±ÙŠØ¨ÙŠØ©', en: 'Estimated Budget' },
-    budgetPh: { ar: 'Ø§Ø®ØªÙŠØ§Ø±ÙŠ', en: 'Optional' },
-    budgetOptions: {
-      ar: ['Ø£Ù‚Ù„ Ù…Ù† 1 Ù…Ù„ÙŠÙˆÙ† Ø±ÙŠØ§Ù„', '1 Ø¥Ù„Ù‰ 2 Ù…Ù„ÙŠÙˆÙ† Ø±ÙŠØ§Ù„', '2 Ø¥Ù„Ù‰ 4 Ù…Ù„ÙŠÙˆÙ† Ø±ÙŠØ§Ù„', 'Ø£ÙƒØ«Ø± Ù…Ù† 4 Ù…Ù„ÙŠÙˆÙ† Ø±ÙŠØ§Ù„'],
-      en: ['Below SAR 1M', 'SAR 1M to 2M', 'SAR 2M to 4M', 'Above SAR 4M']
-    },
-    submit: { ar: 'Ø£Ø±Ø³Ù„ ØªÙØ§ØµÙŠÙ„ Ø§Ù„Ø£Ø±Ø¶', en: 'Send plot details' },
-    success: {
-      ar: 'ØªÙ… Ø¥Ø±Ø³Ø§Ù„ Ø·Ù„Ø¨Ùƒ Ø¨Ù†Ø¬Ø§Ø­. Ø³Ù†Ø¹Ø§ÙˆØ¯ Ø§Ù„ØªÙˆØ§ØµÙ„ Ù…Ø¹Ùƒ Ø®Ù„Ø§Ù„ ÙŠÙˆÙ…ÙŠÙ† Ø¹Ù…Ù„.',
-      en: 'Your request was sent successfully. We will get back to you within two business days.'
-    },
-    error: {
-      ar: 'ØªØ¹Ø°Ø± Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø·Ù„Ø¨ Ø­Ø§Ù„ÙŠØ§Ù‹. Ø§Ù„Ø±Ø¬Ø§Ø¡ Ø§Ù„Ù…Ø­Ø§ÙˆÙ„Ø© Ù…Ø±Ø© Ø£Ø®Ø±Ù‰.',
-      en: 'We could not submit your request right now. Please try again.'
-    }
-  },
-
-  // â”€â”€ FAQ (preserved verbatim; rendered on the contact page + FAQPage schema) â”€â”€
-  faq: [
-    {
-      q: { ar: 'ÙƒÙ… ØªÙƒÙ„ÙØ© ØªØµÙ…ÙŠÙ… ÙÙŠÙ„Ø§ Ø®Ø§ØµØ©ØŸ', en: 'How much does private villa design cost?' },
-      a: {
-        ar: 'ØªØ¹ØªÙ…Ø¯ Ø§Ù„ØªÙƒÙ„ÙØ© Ø¹Ù„Ù‰ Ù…Ø³Ø§Ø­Ø© Ø§Ù„Ø£Ø±Ø¶ ÙˆÙ†Ø·Ø§Ù‚ Ø§Ù„Ø¹Ù…Ù„ ÙˆØ§Ù„Ù…Ø®Ø±Ø¬Ø§Øª Ø§Ù„Ù…Ø·Ù„ÙˆØ¨Ø©. Ù†Ø¨Ø¯Ø£ Ø¯Ø§Ø¦Ù…Ø§Ù‹ Ø¨Ù…ÙƒØ§Ù„Ù…Ø© Ù…Ø¬Ø§Ù†ÙŠØ© ÙˆØªØµÙˆØ± Ù…Ø¨Ø¯Ø¦ÙŠ Ù…Ø¬Ø§Ù†ÙŠØŒ ÙˆÙ†ÙˆØ¶Ø­ Ø§Ù„ØªÙƒÙ„ÙØ© ÙˆØ§Ù„Ù…Ø³Ø§Ø± Ø¨Ø§Ù„ÙƒØ§Ù…Ù„ Ù‚Ø¨Ù„ Ø£ÙŠ Ø§ØªÙØ§Ù‚ Ù…Ø¯ÙÙˆØ¹.',
-        en: 'Cost depends on the plot size, scope of work, and required deliverables. We always start with a free call and a free preliminary concept, and clarify the full cost and path before any paid agreement.'
-      }
-    },
-    {
-      q: { ar: 'Ù‡Ù„ ØªÙ‚Ø¯Ù…ÙˆÙ† ØªØµÙ…ÙŠÙ… Ø§Ù„ÙÙ„Ù„ Ø¹Ù† Ø¨ÙØ¹Ø¯ Ø®Ø§Ø±Ø¬ Ø¬Ø¯Ø©ØŸ', en: 'Do you design villas remotely outside Jeddah?' },
-      a: {
-        ar: 'Ù†Ø¹Ù…. Ù†Ø®Ø¯Ù… Ø¹Ù…Ù„Ø§Ø¡ Ø¬Ø¯Ø© ÙˆØ§Ù„Ø³Ø¹ÙˆØ¯ÙŠØ© ÙˆØ¯ÙˆÙ„ Ø§Ù„Ø®Ù„ÙŠØ¬ Ø­Ø¶ÙˆØ±ÙŠØ§Ù‹ Ø£Ùˆ Ø¹Ù† Ø¨ÙØ¹Ø¯ Ø¹Ø¨Ø± Ù…ÙƒØ§Ù„Ù…Ø§Øª Ø§Ù„ÙÙŠØ¯ÙŠÙˆ ÙˆÙ…Ø´Ø§Ø±ÙƒØ© Ø§Ù„Ù…Ø®Ø·Ø·Ø§ØªØŒ Ù…Ø¹ Ø§Ù„Ø­ÙØ§Ø¸ Ø¹Ù„Ù‰ Ù†ÙØ³ Ø§Ù„ÙˆØ¶ÙˆØ­ ÙÙŠ ÙƒÙ„ Ø®Ø·ÙˆØ©.',
-        en: 'Yes. We serve clients in Jeddah, Saudi Arabia, and the Gulf in person or remotely via video calls and shared drawings, keeping the same clarity at every step.'
-      }
-    },
-    {
-      q: { ar: 'Ù…Ø§ Ø§Ù„Ù…Ø®Ø±Ø¬Ø§Øª Ø§Ù„ØªÙŠ Ø£Ø­ØµÙ„ Ø¹Ù„ÙŠÙ‡Ø§ØŸ', en: 'What deliverables do I get?' },
-      a: {
-        ar: 'Ù…Ù† Ø§Ù„ÙÙƒØ±Ø© Ø§Ù„Ù…Ø¹Ù…Ø§Ø±ÙŠØ© ÙˆØ§Ù„ØªÙˆØ¬Ù‡ Ø§Ù„Ø¯Ø§Ø®Ù„ÙŠ Ø­ØªÙ‰ ØªØµÙ…ÙŠÙ… Ø¬Ø§Ù‡Ø² Ù„Ù„ØªÙ†ÙÙŠØ° ÙŠÙˆØ­Ø¯ ÙÙ‡Ù… Ø§Ù„Ø§Ø³ØªØ´Ø§Ø±ÙŠÙŠÙ† ÙˆØ§Ù„Ù…Ù‚Ø§ÙˆÙ„ÙŠÙ† ÙˆÙŠØ­Ø§ÙØ¸ Ø¹Ù„Ù‰ Ø§Ù„Ø±Ø¤ÙŠØ© Ø§Ù„Ø£ØµÙ„ÙŠØ© Ù„Ù„Ù…Ø´Ø±ÙˆØ¹.',
-        en: 'From the architectural concept and interior direction through to build-ready design that aligns consultants and contractors and protects the projectâ€™s original vision.'
-      }
-    },
-    {
-      q: { ar: 'ÙƒÙ… ØªØ³ØªØºØ±Ù‚ Ù…Ø¯Ø© ØªØµÙ…ÙŠÙ… Ø§Ù„ÙÙŠÙ„Ø§ØŸ', en: 'How long does villa design take?' },
-      a: {
-        ar: 'ØªØ®ØªÙ„Ù Ø§Ù„Ù…Ø¯Ø© Ø­Ø³Ø¨ Ø­Ø¬Ù… Ø§Ù„Ù…Ø´Ø±ÙˆØ¹ ÙˆØªØ¹Ù‚ÙŠØ¯Ù‡. Ù†ÙˆØ¶Ø­ Ø§Ù„Ø¬Ø¯ÙˆÙ„ Ø§Ù„Ø²Ù…Ù†ÙŠ Ø§Ù„Ù…ØªÙˆÙ‚Ø¹ Ø¶Ù…Ù† Ø§Ù„ØªØµÙˆØ± Ø§Ù„Ù…Ø¨Ø¯Ø¦ÙŠ Ù‚Ø¨Ù„ Ø¨Ø¯Ø¡ Ø£ÙŠ Ø¹Ù…Ù„ Ù…Ø¯ÙÙˆØ¹.',
-        en: 'It varies with the size and complexity of the project. We outline the expected timeline within the preliminary concept before any paid work begins.'
-      }
-    },
-    {
-      q: { ar: 'Ù…ØªÙ‰ ÙŠØ¨Ø¯Ø£ Ø§Ù„Ø¯ÙØ¹ØŸ', en: 'When does payment start?' },
-      a: {
-        ar: 'Ø§Ù„Ù…ÙƒØ§Ù„Ù…Ø© Ø§Ù„Ø£ÙˆÙ„Ù‰ ÙˆØ§Ù„ØªØµÙˆØ± Ø§Ù„Ù…Ø¨Ø¯Ø¦ÙŠ Ù…Ø¬Ø§Ù†ÙŠØ§Ù† ØªÙ…Ø§Ù…Ø§Ù‹ØŒ ÙˆÙ„Ø§ ÙŠØ¨Ø¯Ø£ Ø£ÙŠ Ø§ØªÙØ§Ù‚ Ù…Ø¯ÙÙˆØ¹ Ø¥Ù„Ø§ Ø¨Ø¹Ø¯ ÙˆØ¶ÙˆØ­ Ø§Ù„Ø±Ø¤ÙŠØ© ÙˆØ§Ù„ØªÙˆØ§ÙÙ‚ Ø¹Ù„Ù‰ Ø§Ù„Ø§ØªØ¬Ø§Ù‡.',
-        en: 'The first call and preliminary concept are completely free; a paid agreement only begins after the vision is clear and the direction is agreed.'
-      }
-    }
-  ],
-
-  contactBand: {
-    title: { ar: 'Ø¬Ø§Ù‡Ø² Ù„Ù…Ø±Ø§Ø¬Ø¹Ø© Ø£Ø±Ø¶ÙƒØŸ', en: 'Ready to review your plot?' },
-    text: {
-      ar: 'Ù…ÙƒØ§Ù„Ù…Ø© Ù…Ø¬Ø§Ù†ÙŠØ©ØŒ Ø«Ù… ØªØµÙˆØ± Ù…Ø¨Ø¯Ø¦ÙŠ Ù…Ø¬Ø§Ù†ÙŠ â€” ÙˆÙ„Ø§ Ù†Ø¨Ø¯Ø£ Ø£ÙŠ Ø§ØªÙØ§Ù‚ Ù…Ø¯ÙÙˆØ¹ Ø¥Ù„Ø§ Ø¨Ø¹Ø¯ ÙˆØ¶ÙˆØ­ Ø§Ù„Ø±Ø¤ÙŠØ© ÙˆØ§Ù„ØªÙˆØ§ÙÙ‚.',
-      en: 'A free call, then a free preliminary concept â€” we only begin a paid agreement after the direction is clear and aligned.'
-    },
-    primary: { ar: 'Ø£Ø±Ø³Ù„ ØªÙØ§ØµÙŠÙ„ Ø§Ù„Ø£Ø±Ø¶', en: 'Send plot details' },
-    secondary: { ar: 'ÙˆØ§ØªØ³Ø§Ø¨', en: 'WhatsApp' }
-  },
-
-  credits: {
-    seoTitle: { ar: 'Ø§Ø¹ØªÙ…Ø§Ø¯Ø§Øª Ø§Ù„ØµÙˆØ± | WB Studio', en: 'Image Credits | WB Studio' },
-    seoDesc: {
-      ar: 'Ù…ØµØ§Ø¯Ø± ÙˆØªØ±Ø§Ø®ÙŠØµ Ø§Ù„ØµÙˆØ± Ø§Ù„Ù…Ø¤Ù‚ØªØ© Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù…Ø© ÙÙŠ Ù†Ù…Ø§Ø°Ø¬ Ø§Ù„Ø¹Ø±Ø¶ Ø¹Ù„Ù‰ Ù…ÙˆÙ‚Ø¹ WB Studio.',
-      en: 'Sources and licenses for the temporary placeholder imagery used in WB Studioâ€™s sample presentations.'
-    },
-    h1: { ar: 'Ø§Ø¹ØªÙ…Ø§Ø¯Ø§Øª Ø§Ù„ØµÙˆØ±', en: 'Image credits' },
-    intro: {
-      ar: 'Ø§Ù„Ù…Ø´Ø§Ø±ÙŠØ¹ Ø§Ù„Ù…Ø¹Ø±ÙˆØ¶Ø© ÙÙŠ Ù‚Ø³Ù… Ø§Ù„Ø£Ø¹Ù…Ø§Ù„ Ø¯Ø±Ø§Ø³Ø§Øª Ù…ÙØ§Ù‡ÙŠÙ…ÙŠØ© ÙˆÙ†Ù…Ø§Ø°Ø¬ Ø¹Ø±Ø¶ Ù…Ø¤Ù‚ØªØ©. Ø§Ù„ØµÙˆØ± Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù…Ø© ÙÙŠÙ‡Ø§ Ù…Ø±Ø§Ø¬Ø¹ Ø£Ø¬ÙˆØ§Ø¡ ÙˆÙ…ÙˆØ§Ø¯ Ù…Ù† Ù…ØµÙˆØ±ÙŠÙ† Ø¹Ø¨Ø± Ù…Ù†ØµØ© UnsplashØŒ Ù…Ø±Ø®ØµØ© Ø¨Ù…ÙˆØ¬Ø¨ Ø±Ø®ØµØ© Unsplash Ø§Ù„ØªÙŠ ØªØªÙŠØ­ Ø§Ù„Ø§Ø³ØªØ®Ø¯Ø§Ù… Ø§Ù„ØªØ¬Ø§Ø±ÙŠ Ù…Ø¬Ø§Ù†Ø§Ù‹. Ø³ØªÙØ³ØªØ¨Ø¯Ù„ Ù‡Ø°Ù‡ Ø§Ù„ØµÙˆØ± ØªØ¯Ø±ÙŠØ¬ÙŠØ§Ù‹ Ø¨ØµÙˆØ± Ø£Ø¹Ù…Ø§Ù„ Ø§Ù„Ø§Ø³ØªÙˆØ¯ÙŠÙˆ Ø§Ù„Ù…Ù†ÙØ°Ø©.',
-      en: 'The projects shown in the Work section are concept studies and temporary sample presentations. Their imagery consists of atmosphere and material references by photographers on Unsplash, licensed under the Unsplash License, which permits free commercial use. These images will be progressively replaced with photography of the studioâ€™s own built work.'
-    },
-    licenseNote: {
-      ar: 'Ø§Ù„Ø±Ø®ØµØ©: Ø±Ø®ØµØ© Unsplash (Ø§Ø³ØªØ®Ø¯Ø§Ù… ØªØ¬Ø§Ø±ÙŠ Ù…Ø¬Ø§Ù†ÙŠØŒ Ù„Ø§ ØªØªØ·Ù„Ø¨ Ù†Ø³Ø¨ Ø§Ù„Ø¹Ù…Ù„ Ù„ØµØ§Ø­Ø¨Ù‡). Ø±ÙˆØ§Ø¨Ø· Ø§Ù„Ù…ØµØ¯Ø± Ø£Ø¯Ù†Ø§Ù‡ Ù„ÙƒÙ„ ØµÙˆØ±Ø©. Ø§Ù„Ù‚Ø§Ø¦Ù…Ø© Ø§Ù„ÙƒØ§Ù…Ù„Ø© ÙÙŠ Ù…Ù„Ù assets/licenses/LICENSES.md Ø¶Ù…Ù† Ù…Ø³ØªÙˆØ¯Ø¹ Ø§Ù„Ù…ÙˆÙ‚Ø¹.',
-      en: 'License: the Unsplash License (free commercial use, attribution not required). Source links for every image are listed below. The full register lives in assets/licenses/LICENSES.md in the site repository.'
-    },
-    sourceLabel: { ar: 'Ø§Ù„Ù…ØµØ¯Ø±', en: 'Source' },
-    heroLabel: { ar: 'ØµÙˆØ±Ø© Ø§Ù„ÙˆØ§Ø¬Ù‡Ø© Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©', en: 'Homepage hero image' }
-  },
-
-  // â”€â”€ Services hub (lists the high-intent landing pages) â”€â”€
-  services: {
-    seoTitle: {
-      ar: 'Ø®Ø¯Ù…Ø§Øª ØªØµÙ…ÙŠÙ… Ø§Ù„ÙÙ„Ù„ ÙÙŠ Ø¬Ø¯Ø© | WB Studio',
-      en: 'Villa Design Services in Jeddah | WB Studio'
-    },
-    seoDesc: {
-      ar: 'Ø®Ø¯Ù…Ø§Øª ØªØµÙ…ÙŠÙ… Ø§Ù„ÙÙ„Ù„ Ø§Ù„Ø®Ø§ØµØ© ÙÙŠ Ø¬Ø¯Ø©: ÙÙ„Ù„ ÙØ§Ø®Ø±Ø©ØŒ ØªØµÙ…ÙŠÙ… Ù…ÙˆØ¯Ø±Ù†ØŒ ÙÙ„Ù„ Ø£Ø¨Ø­Ø± ÙˆØ´Ù…Ø§Ù„ Ø¬Ø¯Ø©ØŒ ÙˆØ¹Ù…Ø§Ø±Ø© Ø­Ø¬Ø§Ø²ÙŠØ© Ø­Ø¯ÙŠØ«Ø© â€” Ù…ÙƒØ§Ù„Ù…Ø© Ù…Ø¬Ø§Ù†ÙŠØ© ÙˆØªØµÙˆØ± Ù…Ø¨Ø¯Ø¦ÙŠ Ù…Ø¬Ø§Ù†ÙŠ Ù‚Ø¨Ù„ Ø£ÙŠ Ø§ØªÙØ§Ù‚.',
-      en: 'Private villa design services in Jeddah: luxury villas, modern design, Obhur & North Jeddah villas, and modern Hijazi architecture â€” a free call and preliminary concept before any agreement.'
-    },
-    h1: { ar: 'Ø®Ø¯Ù…Ø§Øª ØªØµÙ…ÙŠÙ… Ø§Ù„ÙÙ„Ù„ ÙÙŠ Ø¬Ø¯Ø©', en: 'Villa design services in Jeddah' },
-    intro: {
-      ar: 'Ù…Ø³Ø§Ø±Ø§Øª ØªØµÙ…ÙŠÙ… Ù…Ø±ÙƒÙ‘Ø²Ø© Ù„Ø¹Ù…Ù„Ø§Ø¡ Ø§Ù„ÙÙ„Ù„ Ø§Ù„Ø®Ø§ØµØ© ÙÙŠ Ø¬Ø¯Ø© ÙˆØ¹Ù…ÙˆÙ… Ø§Ù„Ø®Ù„ÙŠØ¬. Ø§Ø®ØªØ± Ù…Ø§ ÙŠÙ†Ø§Ø³Ø¨ Ø£Ø±Ø¶Ùƒ ÙˆØ±Ø¤ÙŠØªÙƒ â€” ÙˆÙƒÙ„Ù‡Ø§ ØªØ¨Ø¯Ø£ Ø¨Ù…ÙƒØ§Ù„Ù…Ø© Ù…Ø¬Ø§Ù†ÙŠØ© ÙˆØªØµÙˆØ± Ù…Ø¨Ø¯Ø¦ÙŠ Ù…Ø¬Ø§Ù†ÙŠ.',
-      en: 'Focused design paths for private villa clients in Jeddah and across the Gulf. Choose what fits your plot and vision â€” each begins with a free call and a free preliminary concept.'
-    },
-    explore: { ar: 'ØªØ¹Ø±Ù‘Ù Ø£ÙƒØ«Ø±', en: 'Learn more' }
-  },
-
-  // â”€â”€ High-intent landing pages (root-level keyword slugs, bilingual) â”€â”€
-  landings: [
-    {
-      slug: 'villa-design-jeddah',
-      label: { ar: 'ØªØµÙ…ÙŠÙ… ÙÙŠÙ„Ø§ ÙÙŠ Ø¬Ø¯Ø©', en: 'Villa design in Jeddah' },
-      summary: {
-        ar: 'Ù†Ù‚Ø·Ø© Ø§Ù„Ø¨Ø¯Ø§ÙŠØ© Ù„Ø£ØµØ­Ø§Ø¨ Ø§Ù„Ø£Ø±Ø§Ø¶ÙŠ ÙˆØ§Ù„Ø¹Ø§Ø¦Ù„Ø§Øª: ÙƒÙŠÙ Ù†ØµÙ…Ù… ÙÙŠÙ„Ø§ Ø®Ø§ØµØ© ÙÙŠ Ø¬Ø¯Ø© Ù…Ù† Ø§Ù„ÙÙƒØ±Ø© Ø­ØªÙ‰ Ø§Ù„ØªÙ†ÙÙŠØ°.',
-        en: 'The starting point for landowners and families: how we design a private villa in Jeddah from concept to construction.'
-      },
-      seoTitle: { ar: 'ØªØµÙ…ÙŠÙ… ÙÙŠÙ„Ø§ ÙÙŠ Ø¬Ø¯Ø© | Ù…ØµÙ…Ù… ÙÙ„Ù„ Ø®Ø§ØµØ© â€” WB Studio', en: 'Villa Design in Jeddah | Private Villa Designer â€” WB Studio' },
-      seoDesc: {
-        ar: 'ØªØµÙ…ÙŠÙ… ÙÙ„Ù„ Ø®Ø§ØµØ© ÙÙŠ Ø¬Ø¯Ø© Ù„Ø£ØµØ­Ø§Ø¨ Ø§Ù„Ø£Ø±Ø§Ø¶ÙŠ ÙˆØ§Ù„Ø¹Ø§Ø¦Ù„Ø§Øª ÙˆØ§Ù„Ù…Ø³ØªØ«Ù…Ø±ÙŠÙ†. Ø§Ø³ØªÙˆØ¯ÙŠÙˆ Ø¨ÙˆØªÙŠÙƒÙŠ ÙŠÙ‚ÙˆØ¯ Ø§Ù„Ù…Ø´Ø±ÙˆØ¹ Ù…Ù† Ø§Ù„ÙÙƒØ±Ø© Ø­ØªÙ‰ Ù…Ø®Ø·Ø·Ø§Øª Ø§Ù„ØªÙ†ÙÙŠØ°. Ù…ÙƒØ§Ù„Ù…Ø© Ù…Ø¬Ø§Ù†ÙŠØ© ÙˆØªØµÙˆØ± Ù…Ø¨Ø¯Ø¦ÙŠ Ù…Ø¬Ø§Ù†ÙŠ.',
-        en: 'Private villa design in Jeddah for landowners, families and investors. A boutique studio that leads the project from concept to construction drawings. Free call and preliminary concept.'
-      },
-      eyebrow: { ar: 'ØªØµÙ…ÙŠÙ… Ø§Ù„ÙÙ„Ù„ Ø§Ù„Ø®Ø§ØµØ© â€” Ø¬Ø¯Ø©', en: 'Private villa design â€” Jeddah' },
-      h1: { ar: 'ØªØµÙ…ÙŠÙ… ÙÙŠÙ„Ø§ Ø®Ø§ØµØ© ÙÙŠ Ø¬Ø¯Ø©', en: 'Private villa design in Jeddah' },
-      intro: {
-        ar: 'Ø¥Ø°Ø§ ÙƒÙ†Øª ØªÙ…Ù„Ùƒ Ø£Ø±Ø¶Ø§Ù‹ ÙÙŠ Ø¬Ø¯Ø© ÙˆØªØ®Ø·Ù‘Ø· Ù„Ø¨Ù†Ø§Ø¡ ÙÙŠÙ„ØªÙƒØŒ ÙØ£Ù†Øª Ø¨Ø­Ø§Ø¬Ø© Ø¥Ù„Ù‰ Ù…ØµÙ…Ù… ÙŠÙÙ‡Ù… Ø§Ù„Ø£Ø±Ø¶ ÙˆØ§Ù„Ø®ØµÙˆØµÙŠØ© ÙˆØ·Ø±ÙŠÙ‚Ø© Ø¹ÙŠØ´ Ø¹Ø§Ø¦Ù„ØªÙƒ. WB Studio Ø§Ø³ØªÙˆØ¯ÙŠÙˆ Ø¨ÙˆØªÙŠÙƒÙŠ ÙŠØµÙ…Ù… Ø§Ù„ÙÙ„Ù„ Ø§Ù„Ø®Ø§ØµØ© ÙÙŠ Ø¬Ø¯Ø© ÙˆØ¹Ù…ÙˆÙ… Ø§Ù„Ø®Ù„ÙŠØ¬ â€” Ù…Ù† Ø§Ù„ÙÙƒØ±Ø© Ø§Ù„Ø£ÙˆÙ„Ù‰ Ø­ØªÙ‰ Ù…Ø®Ø·Ø·Ø§Øª Ù‚Ø§Ø¨Ù„Ø© Ù„Ù„ØªÙ†ÙÙŠØ°.',
-        en: 'If you own a plot in Jeddah and plan to build your villa, you need a designer who understands the land, privacy, and how your family lives. WB Studio is a boutique studio designing private villas in Jeddah and across the Gulf â€” from the first idea to build-ready drawings.'
-      },
-      sections: [
-        {
-          heading: { ar: 'Ù„Ù…Ù† Ù†ØµÙ…Ù…', en: 'Who we design for' },
-          body: {
-            ar: 'Ù†Ø¹Ù…Ù„ Ù…Ø¹ Ø£ØµØ­Ø§Ø¨ Ø§Ù„Ø£Ø±Ø§Ø¶ÙŠ ÙˆØ§Ù„Ø¹Ø§Ø¦Ù„Ø§Øª ÙˆØ§Ù„Ù…Ø³ØªØ«Ù…Ø±ÙŠÙ† Ø§Ù„Ø®Ø§ØµÙŠÙ† Ø§Ù„Ø°ÙŠÙ† ÙŠØ±ÙŠØ¯ÙˆÙ† ÙÙŠÙ„Ø§ Ù…Ø¯Ø±ÙˆØ³Ø© Ù„Ø§ Ù†Ø³Ø®Ø© Ù…ÙƒØ±Ù‘Ø±Ø©. ÙƒÙ„ Ù…Ø´Ø±ÙˆØ¹ ÙŠØ­ØµÙ„ Ø¹Ù„Ù‰ Ø§Ù‡ØªÙ…Ø§Ù… Ù…Ø¨Ø§Ø´Ø± Ù…Ù† Ø§Ù„Ù…ØµÙ…Ù…ØŒ Ù„Ø§ Ø¹Ù„Ù‰ Ø®Ø· Ø¥Ù†ØªØ§Ø¬.',
-            en: 'We work with landowners, families and private investors who want a considered villa, not a repeated template. Every project gets the designerâ€™s direct attention, not a production line.'
-          }
-        },
-        {
-          heading: { ar: 'Ù…Ù† Ø§Ù„ÙÙƒØ±Ø© Ø¥Ù„Ù‰ Ø§Ù„ØªÙ†ÙÙŠØ°', en: 'From concept to construction' },
-          body: {
-            ar: 'ÙŠØ¨Ø¯Ø£ Ø§Ù„Ù…Ø³Ø§Ø± Ø¨Ø¯Ø±Ø§Ø³Ø© Ø§Ù„Ø£Ø±Ø¶ ÙˆØ§Ù„Ø®ØµÙˆØµÙŠØ© ÙˆØ§Ù„ØªÙˆØ¬ÙŠÙ‡ Ø§Ù„Ø´Ù…Ø³ÙŠØŒ Ø«Ù… ÙÙƒØ±Ø© Ù…Ø¹Ù…Ø§Ø±ÙŠØ© ÙˆØ£Ø¬ÙˆØ§Ø¡ Ø¯Ø§Ø®Ù„ÙŠØ©ØŒ ÙˆØµÙˆÙ„Ø§Ù‹ Ø¥Ù„Ù‰ Ø­Ø²Ù…Ø© ØªØµÙ…ÙŠÙ… ØªÙ‚ÙˆØ¯ Ø§Ù„Ø§Ø³ØªØ´Ø§Ø±ÙŠÙŠÙ† ÙˆØ§Ù„Ù…Ù‚Ø§ÙˆÙ„ÙŠÙ† Ø¨ÙˆØ¶ÙˆØ­ ÙˆØªÙ‚Ù„Ù‘Ù„ Ø§Ù„ØªØ¹Ø§Ø±Ø¶Ø§Øª ÙÙŠ Ø§Ù„Ù…ÙˆÙ‚Ø¹.',
-            en: 'The path starts with a study of the plot, privacy and solar orientation, then an architectural concept and interior atmosphere, through to a design package that leads consultants and contractors clearly and reduces clashes on site.'
-          }
-        }
-      ],
-      serviceType: 'Villa design',
-      faq: [
-        {
-          q: { ar: 'ÙƒÙŠÙ Ø£Ø¨Ø¯Ø£ ØªØµÙ…ÙŠÙ… ÙÙŠÙ„ØªÙŠ ÙÙŠ Ø¬Ø¯Ø©ØŸ', en: 'How do I start designing my villa in Jeddah?' },
-          a: { ar: 'Ø£Ø±Ø³Ù„ Ù…ÙˆÙ‚Ø¹ Ø§Ù„Ø£Ø±Ø¶ ÙˆÙ…Ø³Ø§Ø­ØªÙ‡Ø§ ÙˆÙÙƒØ±ØªÙƒ Ø§Ù„Ø¹Ø§Ù…Ø© Ø¹Ø¨Ø± ÙˆØ§ØªØ³Ø§Ø¨ Ø£Ùˆ Ø§Ù„Ù†Ù…ÙˆØ°Ø¬. Ù†Ø¨Ø¯Ø£ Ø¨Ù…ÙƒØ§Ù„Ù…Ø© Ù…Ø¬Ø§Ù†ÙŠØ© ÙˆØªØµÙˆØ± Ù…Ø¨Ø¯Ø¦ÙŠ Ù…Ø¬Ø§Ù†ÙŠ Ù‚Ø¨Ù„ Ø£ÙŠ Ø§ØªÙØ§Ù‚ Ù…Ø¯ÙÙˆØ¹.', en: 'Send the plot location, area and your general idea via WhatsApp or the form. We start with a free call and a free preliminary concept before any paid agreement.' }
-        },
-        {
-          q: { ar: 'Ù‡Ù„ ØªØµÙ…Ù…ÙˆÙ† Ù„Ø£Ø±Ø§Ø¶Ù ÙÙŠ ÙƒÙ„ Ø£Ø­ÙŠØ§Ø¡ Ø¬Ø¯Ø©ØŸ', en: 'Do you design for plots in any Jeddah district?' },
-          a: { ar: 'Ù†Ø¹Ù… â€” Ø´Ù…Ø§Ù„ Ø¬Ø¯Ø© ÙˆØ£Ø¨Ø­Ø± ÙˆØ§Ù„Ø£Ø­ÙŠØ§Ø¡ Ø§Ù„Ø±Ø§Ù‚ÙŠØ© ÙˆØºÙŠØ±Ù‡Ø§. Ù†Ø±Ø§Ø¹ÙŠ Ø£Ù†Ø¸Ù…Ø© Ø§Ù„Ø¨Ù†Ø§Ø¡ ÙˆØ§Ù„Ø®ØµÙˆØµÙŠØ© ÙˆØ·Ø¨ÙŠØ¹Ø© ÙƒÙ„ Ø­ÙŠ.', en: 'Yes â€” North Jeddah, Obhur, premium districts and beyond. We account for building regulations, privacy and the character of each district.' }
-        },
-        {
-          q: { ar: 'Ù‡Ù„ ÙŠÙ…ÙƒÙ† Ø§Ù„Ø¹Ù…Ù„ Ø¥Ø°Ø§ ÙƒÙ†Øª Ø®Ø§Ø±Ø¬ Ø¬Ø¯Ø©ØŸ', en: 'Can we work together if Iâ€™m outside Jeddah?' },
-          a: { ar: 'Ø¨Ø§Ù„ØªØ£ÙƒÙŠØ¯. Ù†Ø®Ø¯Ù… Ø¹Ù…Ù„Ø§Ø¡ Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠØ© ÙˆØ§Ù„Ø®Ù„ÙŠØ¬ Ø¹Ù† Ø¨ÙØ¹Ø¯ Ø¹Ø¨Ø± Ù…ÙƒØ§Ù„Ù…Ø§Øª Ø§Ù„ÙÙŠØ¯ÙŠÙˆ ÙˆÙ…Ø´Ø§Ø±ÙƒØ© Ø§Ù„Ù…Ø®Ø·Ø·Ø§Øª Ø¨Ù†ÙØ³ Ø§Ù„ÙˆØ¶ÙˆØ­.', en: 'Absolutely. We serve clients across Saudi Arabia and the Gulf remotely via video calls and shared drawings, with the same clarity.' }
-        }
-      ],
-      related: ['luxury-villa-design-jeddah', 'modern-villa-design-jeddah', 'obhur-villa-design', 'modern-hijazi-villa-design'],
-      relatedProjects: ['montashiri-villa', 'byblos-resort'],
-      image: { src: '/assets/projects/montashiri-villa/cover.webp', w: 1536, h: 960, alt: { ar: 'ÙÙŠÙ„Ø§ Ø­Ø¬Ø±ÙŠØ© Ø­Ø¯ÙŠØ«Ø© ÙÙŠ Ø¬Ø¯Ø© Ø¨Ø´Ø±ÙØ§Øª Ù…Ø²Ø±ÙˆØ¹Ø©', en: 'Modern stone villa in Jeddah with planted terraces' } }
-    },
-    {
-      slug: 'luxury-villa-design-jeddah',
-      label: { ar: 'ØªØµÙ…ÙŠÙ… ÙÙ„Ù„ ÙØ§Ø®Ø±Ø© ÙÙŠ Ø¬Ø¯Ø©', en: 'Luxury villa design in Jeddah' },
-      summary: {
-        ar: 'Ù„Ù„ÙÙ„Ù„ Ø§Ù„ÙØ§Ø®Ø±Ø© Ø§Ù„ØªÙŠ ØªÙˆØ§Ø²Ù† Ø¨ÙŠÙ† Ø§Ù„Ø®ØµÙˆØµÙŠØ© ÙˆØ§Ù„Ø¶ÙŠØ§ÙØ© ÙˆØ§Ù„ØªÙØ§ØµÙŠÙ„ Ø§Ù„Ø±Ø§Ù‚ÙŠØ© ÙˆØ§Ù„Ù‚ÙŠÙ…Ø© Ø·ÙˆÙŠÙ„Ø© Ø§Ù„Ù…Ø¯Ù‰.',
-        en: 'For luxury villas that balance privacy, hospitality, refined detail and long-term value.'
-      },
-      seoTitle: { ar: 'ØªØµÙ…ÙŠÙ… ÙÙ„Ù„ ÙØ§Ø®Ø±Ø© ÙÙŠ Ø¬Ø¯Ø© | Ø¹Ù…Ø§Ø±Ø© Ø±Ø§Ù‚ÙŠØ© â€” WB Studio', en: 'Luxury Villa Design in Jeddah | Refined Architecture â€” WB Studio' },
-      seoDesc: {
-        ar: 'ØªØµÙ…ÙŠÙ… ÙÙ„Ù„ ÙØ§Ø®Ø±Ø© ÙÙŠ Ø¬Ø¯Ø©: Ø®ØµÙˆØµÙŠØ© Ù…ØªØ¯Ø±Ù‘Ø¬Ø©ØŒ ÙØ±Ø§ØºØ§Øª Ø¶ÙŠØ§ÙØ©ØŒ Ù…ÙˆØ§Ø¯ Ø±Ø§Ù‚ÙŠØ©ØŒ ÙˆØªÙØ§ØµÙŠÙ„ Ù…ØµÙ…Ù‘Ù…Ø© Ù„ØªØ¯ÙˆÙ…. Ø§Ø³ØªÙˆØ¯ÙŠÙˆ Ø¨ÙˆØªÙŠÙƒÙŠ â€” Ù…ÙƒØ§Ù„Ù…Ø© ÙˆØªØµÙˆØ± Ù…Ø¨Ø¯Ø¦ÙŠ Ù…Ø¬Ø§Ù†ÙŠ.',
-        en: 'Luxury villa design in Jeddah: layered privacy, hospitality spaces, refined materials and detail built to last. A boutique studio â€” free call and preliminary concept.'
-      },
-      eyebrow: { ar: 'Ø§Ù„ÙÙ„Ù„ Ø§Ù„ÙØ§Ø®Ø±Ø© â€” Ø¬Ø¯Ø©', en: 'Luxury villas â€” Jeddah' },
-      h1: { ar: 'ØªØµÙ…ÙŠÙ… ÙÙ„Ù„ ÙØ§Ø®Ø±Ø© ÙÙŠ Ø¬Ø¯Ø©', en: 'Luxury villa design in Jeddah' },
-      intro: {
-        ar: 'Ø§Ù„ÙØ®Ø§Ù…Ø© Ø§Ù„Ø­Ù‚ÙŠÙ‚ÙŠØ© Ù‡Ø¯ÙˆØ¡ Ù„Ø§ Ø¶Ø¬ÙŠØ¬: Ù†ÙØ³Ø¨ Ù…Ø¯Ø±ÙˆØ³Ø©ØŒ Ù…ÙˆØ§Ø¯ ØµØ§Ø¯Ù‚Ø©ØŒ ÙˆØ®ØµÙˆØµÙŠØ© ØªÙØ¯Ø§Ø± Ø¨Ø¹Ù†Ø§ÙŠØ©. Ù†ØµÙ…Ù… ÙÙ„Ù„Ø§Ù‹ ÙØ§Ø®Ø±Ø© ÙÙŠ Ø¬Ø¯Ø© ØªÙˆØ§Ø²Ù† Ø¨ÙŠÙ† Ø§Ø³ØªÙ‚Ø¨Ø§Ù„ Ø§Ù„Ø¶ÙŠÙˆÙ ÙˆØ±Ø§Ø­Ø© Ø§Ù„Ø¹Ø§Ø¦Ù„Ø©ØŒ ÙˆØªØ­ØªÙØ¸ Ø¨Ù‚ÙŠÙ…ØªÙ‡Ø§ Ù…Ø¹ Ø§Ù„Ø²Ù…Ù†.',
-        en: 'Real luxury is calm, not loud: considered proportions, honest materials, and privacy handled with care. We design luxury villas in Jeddah that balance receiving guests with family comfort â€” and hold their value over time.'
-      },
-      sections: [
-        {
-          heading: { ar: 'Ø§Ù„Ø®ØµÙˆØµÙŠØ© ÙˆØ§Ù„Ø¶ÙŠØ§ÙØ©', en: 'Privacy and hospitality' },
-          body: {
-            ar: 'Ù…Ø³Ø§Ø± Ø¶ÙŠÙˆÙ Ù…Ø³ØªÙ‚Ù„ØŒ Ù…Ø¬Ù„Ø³ Ø±Ø¬Ø§Ù„ ÙˆÙ…Ø¬Ù„Ø³ Ø¹Ø§Ø¦Ù„ÙŠØŒ ÙˆØªØ¯Ø±Ù‘Ø¬ ÙˆØ§Ø¶Ø­ Ø¨ÙŠÙ† Ø§Ù„Ø¹Ø§Ù… ÙˆØ§Ù„Ø®Ø§Øµ â€” Ø¬ÙˆÙ‡Ø± Ø§Ù„ÙÙŠÙ„Ø§ Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠØ© Ø§Ù„ÙØ§Ø®Ø±Ø©ØŒ Ù…ÙØ¹Ø§Ø¯ ØªØµÙˆÙ‘Ø±Ù‡ Ø¨Ù„ØºØ© Ø­Ø¯ÙŠØ«Ø©.',
-            en: 'An independent guest route, menâ€™s and family majlis, and a clear gradient between public and private â€” the heart of the luxury Saudi villa, reimagined in a modern language.'
-          }
-        },
-        {
-          heading: { ar: 'Ù…ÙˆØ§Ø¯ ØªØ¯ÙˆÙ…', en: 'Materials that last' },
-          body: {
-            ar: 'Ù†Ø®ØªØ§Ø± Ù…ÙˆØ§Ø¯ Ù‚Ù„ÙŠÙ„Ø© ÙˆØ±Ø§Ù‚ÙŠØ© ØªØªÙ‚Ø§Ø¯Ù… Ø¨ÙƒØ±Ø§Ù…Ø©: Ø­Ø¬Ø± Ø·Ø¨ÙŠØ¹ÙŠØŒ Ø®Ø´Ø¨ Ø¯Ø§ÙØ¦ØŒ ÙˆÙ…Ø¹Ø§Ø¯Ù† Ù…Ø¯Ø±ÙˆØ³Ø©. Ø§Ù„ÙØ®Ø§Ù…Ø© ÙÙŠ Ø§Ù„Ù…Ù„Ù…Ø³ ÙˆØ§Ù„Ù†Ø³Ø¨ØŒ Ù„Ø§ ÙÙŠ Ø§Ù„Ø²Ø®Ø±ÙØ© Ø§Ù„Ø²Ø§Ø¦Ø¯Ø©.',
-            en: 'We choose a short, refined material palette that ages with dignity: natural stone, warm timber and considered metals. Luxury lives in texture and proportion, not excess ornament.'
-          }
-        }
-      ],
-      serviceType: 'Luxury villa design',
-      faq: [
-        {
-          q: { ar: 'Ù…Ø§ Ø§Ù„Ø°ÙŠ ÙŠØ¬Ø¹Ù„ ØªØµÙ…ÙŠÙ… Ø§Ù„ÙÙŠÙ„Ø§ ÙØ§Ø®Ø±Ø§Ù‹ ÙØ¹Ù„Ø§Ù‹ØŸ', en: 'What makes a villa design truly luxurious?' },
-          a: { ar: 'Ù„ÙŠØ³Øª Ø§Ù„Ù…Ø³Ø§Ø­Ø© ÙˆØ­Ø¯Ù‡Ø§ØŒ Ø¨Ù„ Ø§Ù„Ù†Ø³Ø¨ ÙˆØ§Ù„Ø¶ÙˆØ¡ ÙˆØ§Ù„Ø®ØµÙˆØµÙŠØ© ÙˆØ¬ÙˆØ¯Ø© Ø§Ù„Ù…ÙˆØ§Ø¯ ÙˆØ§Ù„ØªÙØ§ØµÙŠÙ„. Ù‡Ø°Ù‡ Ù…Ø§ Ù†Ø±ÙƒÙ‘Ø² Ø¹Ù„ÙŠÙ‡.', en: 'Not size alone, but proportion, light, privacy, and the quality of materials and detail. That is what we focus on.' }
-        },
-        {
-          q: { ar: 'Ù‡Ù„ ØªØµÙ…Ù…ÙˆÙ† Ø§Ù„Ù…Ø¬Ø§Ù„Ø³ ÙˆÙØ±Ø§ØºØ§Øª Ø§Ù„Ø¶ÙŠØ§ÙØ©ØŸ', en: 'Do you design majlis and hospitality spaces?' },
-          a: { ar: 'Ù†Ø¹Ù…ØŒ ÙˆÙ‡ÙŠ Ù…Ø­ÙˆØ± ØªØµÙ…ÙŠÙ… Ø§Ù„ÙÙŠÙ„Ø§ Ø§Ù„ÙØ§Ø®Ø±Ø© ÙÙŠ Ø¬Ø¯Ø©: Ø§Ø³ØªÙ‚Ø¨Ø§Ù„ ÙƒØ±ÙŠÙ… Ù…Ø¹ Ø­Ù…Ø§ÙŠØ© ÙƒØ§Ù…Ù„Ø© Ù„Ø®ØµÙˆØµÙŠØ© Ø§Ù„Ø¹Ø§Ø¦Ù„Ø©.', en: 'Yes â€” they are central to luxury villa design in Jeddah: gracious reception with full protection of family privacy.' }
-        },
-        {
-          q: { ar: 'Ù‡Ù„ ØªØ¹Ù…Ù„ÙˆÙ† Ø¶Ù…Ù† Ù…ÙŠØ²Ø§Ù†ÙŠØ© ÙØ§Ø®Ø±Ø© Ù…Ø­Ø¯Ø¯Ø©ØŸ', en: 'Do you work to a defined luxury budget?' },
-          a: { ar: 'Ù†ÙˆØ¶Ø­ Ù†Ø·Ø§Ù‚ Ø§Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ© Ù…Ø¨ÙƒØ±Ø§Ù‹ ÙˆÙ†ØµÙ…Ù… Ø¶Ù…Ù†Ù‡ Ø¨Ø°ÙƒØ§Ø¡ØŒ ÙØ§Ù„Ù‚ÙŠÙ…Ø© Ø·ÙˆÙŠÙ„Ø© Ø§Ù„Ù…Ø¯Ù‰ Ø£Ù‡Ù… Ù…Ù† Ø§Ù„Ø¥Ø¨Ù‡Ø§Ø± Ø§Ù„Ù„Ø­Ø¸ÙŠ.', en: 'We clarify the budget range early and design within it intelligently â€” long-term value matters more than momentary impact.' }
-        }
-      ],
-      related: ['villa-design-jeddah', 'modern-villa-design-jeddah', 'obhur-villa-design', 'modern-hijazi-villa-design'],
-      relatedProjects: ['byblos-resort', 'montashiri-villa'],
-      image: { src: '/assets/projects/byblos-resort/cover.webp', w: 1536, h: 826, alt: { ar: 'ÙØ±Ø§Øº Ù…Ø¹ÙŠØ´Ø© ÙØ§Ø®Ø± Ù…Ø²Ø¯ÙˆØ¬ Ø§Ù„Ø§Ø±ØªÙØ§Ø¹ Ø¨Ø¥Ø·Ù„Ø§Ù„Ø©', en: 'Luxurious double-height living space with a view' } }
-    },
-    {
-      slug: 'modern-villa-design-jeddah',
-      label: { ar: 'ØªØµÙ…ÙŠÙ… ÙÙŠÙ„Ø§ Ù…ÙˆØ¯Ø±Ù† ÙÙŠ Ø¬Ø¯Ø©', en: 'Modern villa design in Jeddah' },
-      summary: {
-        ar: 'Ø®Ø·ÙˆØ· Ù†Ø¸ÙŠÙØ© ÙˆØ¶ÙˆØ¡ Ø·Ø¨ÙŠØ¹ÙŠ ÙˆØ¹Ù„Ø§Ù‚Ø© Ø³Ù„Ø³Ø© Ø¨ÙŠÙ† Ø§Ù„Ø¯Ø§Ø®Ù„ ÙˆØ§Ù„Ø®Ø§Ø±Ø¬ â€” Ù„Ø¹Ù…Ù„Ø§Ø¡ ÙŠÙØ¶Ù‘Ù„ÙˆÙ† Ø§Ù„Ø¹Ù…Ø§Ø±Ø© Ø§Ù„Ø­Ø¯ÙŠØ«Ø©.',
-        en: 'Clean lines, natural light and a seamless indoorâ€“outdoor relationship â€” for clients who prefer modern architecture.'
-      },
-      seoTitle: { ar: 'ØªØµÙ…ÙŠÙ… ÙÙŠÙ„Ø§ Ù…ÙˆØ¯Ø±Ù† ÙÙŠ Ø¬Ø¯Ø© | Ù…Ø¹Ù…Ø§Ø±ÙŠ ÙÙ„Ù„ Ø­Ø¯ÙŠØ«Ø© â€” WB Studio', en: 'Modern Villa Design in Jeddah | Modern Villa Architect â€” WB Studio' },
-      seoDesc: {
-        ar: 'ØªØµÙ…ÙŠÙ… ÙÙŠÙ„Ø§ Ù…ÙˆØ¯Ø±Ù† ÙÙŠ Ø¬Ø¯Ø©: Ø®Ø·ÙˆØ· Ù†Ø¸ÙŠÙØ©ØŒ Ø¶ÙˆØ¡ Ù…ØªØ­ÙƒÙÙ‘Ù… ÙÙŠÙ‡ØŒ ÙˆÙØ±Ø§ØºØ§Øª Ù…ÙØªÙˆØ­Ø© ØªØ­ØªØ±Ù… Ø§Ù„Ø®ØµÙˆØµÙŠØ© ÙˆØ§Ù„Ù…Ù†Ø§Ø®. Ù…Ø¹Ù…Ø§Ø±ÙŠ ÙÙ„Ù„ Ø­Ø¯ÙŠØ«Ø© â€” Ù…ÙƒØ§Ù„Ù…Ø© ÙˆØªØµÙˆØ± Ù…Ø¨Ø¯Ø¦ÙŠ Ù…Ø¬Ø§Ù†ÙŠ.',
-        en: 'Modern villa design in Jeddah: clean lines, controlled light, and open spaces that respect privacy and climate. A modern villa architect â€” free call and preliminary concept.'
-      },
-      eyebrow: { ar: 'Ø§Ù„ÙÙ„Ù„ Ø§Ù„Ø­Ø¯ÙŠØ«Ø© â€” Ø¬Ø¯Ø©', en: 'Modern villas â€” Jeddah' },
-      h1: { ar: 'ØªØµÙ…ÙŠÙ… ÙÙŠÙ„Ø§ Ù…ÙˆØ¯Ø±Ù† ÙÙŠ Ø¬Ø¯Ø©', en: 'Modern villa design in Jeddah' },
-      intro: {
-        ar: 'Ø§Ù„Ø¹Ù…Ø§Ø±Ø© Ø§Ù„Ø­Ø¯ÙŠØ«Ø© ÙÙŠ Ø¬Ø¯Ø© Ù„ÙŠØ³Øª ÙˆØ§Ø¬Ù‡Ø§Øª Ø²Ø¬Ø§Ø¬ÙŠØ© ØªØ­Øª Ø§Ù„Ø´Ù…Ø³ØŒ Ø¨Ù„ Ø¶ÙˆØ¡ ÙŠÙØ¯Ø§Ø± Ø¨Ø°ÙƒØ§Ø¡ ÙˆÙØ±Ø§ØºØ§Øª ØªØªÙ†ÙÙ‘Ø³. Ù†ØµÙ…Ù… ÙÙ„Ù„Ø§Ù‹ Ù…ÙˆØ¯Ø±Ù† Ø¨Ø®Ø·ÙˆØ· Ù‡Ø§Ø¯Ø¦Ø© ÙˆØ¹Ù„Ø§Ù‚Ø© Ø³Ù„Ø³Ø© Ø¨ÙŠÙ† Ø§Ù„Ø¯Ø§Ø®Ù„ ÙˆØ§Ù„Ø®Ø§Ø±Ø¬ØŒ Ù…Ø¹ Ø§Ø­ØªØ±Ø§Ù… Ø§Ù„Ø®ØµÙˆØµÙŠØ© ÙˆØ§Ù„Ù…Ù†Ø§Ø® Ø§Ù„Ø­Ø§Ø±.',
-        en: 'Modern architecture in Jeddah isnâ€™t glass walls under the sun â€” itâ€™s light handled intelligently and spaces that breathe. We design modern villas with calm lines and a seamless indoorâ€“outdoor relationship, while respecting privacy and the hot climate.'
-      },
-      sections: [
-        {
-          heading: { ar: 'Ø­Ø¯Ø§Ø«Ø© ØªÙ†Ø§Ø³Ø¨ Ø§Ù„Ù…Ù†Ø§Ø®', en: 'Modernism that suits the climate' },
-          body: {
-            ar: 'Ø´Ø±ÙØ§Øª Ø¹Ù…ÙŠÙ‚Ø©ØŒ ÙØªØ­Ø§Øª Ù…Ø¯Ø±ÙˆØ³Ø©ØŒ ÙˆØªØ¸Ù„ÙŠÙ„ Ù…Ø¹Ù…Ø§Ø±ÙŠ Ø¨Ø¯Ù„ Ø§Ù„Ø§Ø¹ØªÙ…Ø§Ø¯ Ø¹Ù„Ù‰ Ø§Ù„ØªÙƒÙŠÙŠÙ ÙˆØ­Ø¯Ù‡ â€” Ø¬Ù…Ø§Ù„ Ø­Ø¯ÙŠØ« ÙŠØ¹Ù…Ù„ ÙÙŠ Ø­Ø±Ù‘ Ø¬Ø¯Ø©.',
-            en: 'Deep terraces, considered openings and architectural shading instead of relying on cooling alone â€” modern beauty that works in Jeddahâ€™s heat.'
-          }
-        },
-        {
-          heading: { ar: 'Ø§Ù„Ø¯Ø§Ø®Ù„ ÙˆØ§Ù„Ø®Ø§Ø±Ø¬', en: 'Indoor and outdoor' },
-          body: {
-            ar: 'Ù†Ø±Ø¨Ø· Ø§Ù„Ù…Ø¹ÙŠØ´Ø© Ø¨Ø§Ù„Ø­Ø¯ÙŠÙ‚Ø© ÙˆØ§Ù„Ù…Ø³Ø¨Ø­ ÙˆØ§Ù„Ø³Ø·Ø­ Ø¨Ø§Ù†Ø³ÙŠØ§Ø¨ØŒ ÙØªØªØ¶Ø§Ø¹Ù Ù…Ø³Ø§Ø­Ø© Ø§Ù„Ø¹ÙŠØ´ ÙˆØªØ¨Ù‚Ù‰ Ø§Ù„Ø®ØµÙˆØµÙŠØ© Ù…Ø­ÙÙˆØ¸Ø©.',
-            en: 'We connect living spaces to the garden, pool and roof fluidly, so usable space multiplies while privacy stays protected.'
-          }
-        }
-      ],
-      serviceType: 'Modern villa design',
-      faq: [
-        {
-          q: { ar: 'Ù‡Ù„ Ø§Ù„ØªØµÙ…ÙŠÙ… Ø§Ù„Ù…ÙˆØ¯Ø±Ù† Ù…Ù†Ø§Ø³Ø¨ Ù„Ù…Ù†Ø§Ø® Ø¬Ø¯Ø© Ø§Ù„Ø­Ø§Ø±ØŸ', en: 'Is modern design suitable for Jeddahâ€™s hot climate?' },
-          a: { ar: 'Ù†Ø¹Ù…ØŒ Ø¥Ø°Ø§ ØµÙÙ…Ù‘Ù… Ø¨Ø°ÙƒØ§Ø¡: ØªØ¸Ù„ÙŠÙ„ ÙˆØªÙˆØ¬ÙŠÙ‡ ÙˆÙØªØ­Ø§Øª Ù…Ø¯Ø±ÙˆØ³Ø© ØªØ¬Ø¹Ù„ Ø§Ù„ÙÙŠÙ„Ø§ Ø§Ù„Ø­Ø¯ÙŠØ«Ø© Ù…Ø±ÙŠØ­Ø© ÙˆÙ…ÙˆÙÙ‘Ø±Ø© Ù„Ù„Ø·Ø§Ù‚Ø©.', en: 'Yes, when designed intelligently: shading, orientation and considered openings make a modern villa comfortable and energy-efficient.' }
-        },
-        {
-          q: { ar: 'Ù‡Ù„ ÙŠÙ…ÙƒÙ† Ø¯Ù…Ø¬ Ù„Ù…Ø³Ø§Øª Ù…Ø­Ù„ÙŠØ© ÙÙŠ ØªØµÙ…ÙŠÙ… Ù…ÙˆØ¯Ø±Ù†ØŸ', en: 'Can local touches blend into a modern design?' },
-          a: { ar: 'Ø¨Ø§Ù„ØªØ£ÙƒÙŠØ¯ â€” ÙŠÙ…ÙƒÙ† Ø¥Ø¹Ø§Ø¯Ø© ØªØ£ÙˆÙŠÙ„ Ø¹Ù†Ø§ØµØ± Ø­Ø¬Ø§Ø²ÙŠØ© Ù…Ø«Ù„ Ø§Ù„Ù…Ø´Ø±Ø¨ÙŠØ§Øª ÙˆØ§Ù„Ø£ÙÙ†ÙŠØ© Ø¨Ù„ØºØ© Ø­Ø¯ÙŠØ«Ø© Ù†Ø¸ÙŠÙØ©.', en: 'Absolutely â€” Hijazi elements like mashrabiya screens and courtyards can be reinterpreted in a clean modern language.' }
-        },
-        {
-          q: { ar: 'ÙƒÙŠÙ ØªØ­Ø§ÙØ¸ÙˆÙ† Ø¹Ù„Ù‰ Ø§Ù„Ø®ØµÙˆØµÙŠØ© Ù…Ø¹ Ø§Ù„ÙØªØ­Ø§Øª Ø§Ù„ÙƒØ¨ÙŠØ±Ø©ØŸ', en: 'How do you keep privacy with large openings?' },
-          a: { ar: 'Ø¹Ø¨Ø± ØªÙˆØ¬ÙŠÙ‡ Ø§Ù„ÙØªØ­Ø§Øª Ù†Ø­Ùˆ Ø£ÙÙ†ÙŠØ© ÙˆØ­Ø¯Ø§Ø¦Ù‚ Ø¯Ø§Ø®Ù„ÙŠØ©ØŒ ÙˆØ³ØªØ§Ø¦Ø± Ù…Ø¹Ù…Ø§Ø±ÙŠØ©ØŒ ÙˆØªØ¯Ø±Ù‘Ø¬ Ø§Ù„Ù…Ø³ØªÙˆÙŠØ§Øª.', en: 'By orienting openings toward internal courts and gardens, using architectural screens, and layering levels.' }
-        }
-      ],
-      related: ['villa-design-jeddah', 'luxury-villa-design-jeddah', 'modern-hijazi-villa-design', 'obhur-villa-design'],
-      relatedProjects: ['montashiri-villa', 'coastal-villa'],
-      image: { src: '/assets/projects/montashiri-villa/cover.webp', w: 1536, h: 960, alt: { ar: 'ÙÙŠÙ„Ø§ Ù…ÙˆØ¯Ø±Ù† Ø¨Ø®Ø·ÙˆØ· Ù†Ø¸ÙŠÙØ© ÙˆØ­Ø¬Ø± ÙÙŠ Ø¬Ø¯Ø©', en: 'Modern villa with clean lines and stone in Jeddah' } }
-    },
-    {
-      slug: 'obhur-villa-design',
-      label: { ar: 'ØªØµÙ…ÙŠÙ… ÙÙ„Ù„ Ø£Ø¨Ø­Ø±', en: 'Obhur villa design' },
-      summary: {
-        ar: 'Ù„Ù„Ø£Ø±Ø§Ø¶ÙŠ Ø§Ù„Ø³Ø§Ø­Ù„ÙŠØ© ÙÙŠ Ø£Ø¨Ø­Ø± ÙˆØ´Ù…Ø§Ù„ Ø¬Ø¯Ø©: Ø¶ÙˆØ¡ Ø§Ù„Ø¨Ø­Ø±ØŒ Ø§Ù„Ø®ØµÙˆØµÙŠØ© Ø¹Ù„Ù‰ Ø§Ù„ÙˆØ§Ø¬Ù‡Ø© Ø§Ù„Ø¨Ø­Ø±ÙŠØ©ØŒ ÙˆØ§Ù„Ø­ÙŠØ§Ø© Ø§Ù„Ø®Ø§Ø±Ø¬ÙŠØ©.',
-        en: 'For coastal plots in Obhur and North Jeddah: sea light, waterfront privacy and outdoor living.'
-      },
-      seoTitle: { ar: 'ØªØµÙ…ÙŠÙ… ÙÙ„Ù„ Ø£Ø¨Ø­Ø± | ÙÙ„Ù„ Ø´Ù…Ø§Ù„ Ø¬Ø¯Ø© Ø§Ù„Ø³Ø§Ø­Ù„ÙŠØ© â€” WB Studio', en: 'Obhur Villa Design | North Jeddah Coastal Villas â€” WB Studio' },
-      seoDesc: {
-        ar: 'ØªØµÙ…ÙŠÙ… ÙÙ„Ù„ ÙÙŠ Ø£Ø¨Ø­Ø± ÙˆØ´Ù…Ø§Ù„ Ø¬Ø¯Ø©: Ø§Ø³ØªØ«Ù…Ø§Ø± Ø¶ÙˆØ¡ Ø§Ù„Ø¨Ø­Ø± Ù…Ø¹ Ø®ØµÙˆØµÙŠØ© ÙƒØ§Ù…Ù„Ø©ØŒ Ø´Ø±ÙØ§Øª Ù…Ø¸Ù„Ù„Ø©ØŒ ÙˆÙ…Ø³Ø§Ø¨Ø­ Ø¨Ø¥Ø·Ù„Ø§Ù„Ø©. Ù…ÙƒØ§Ù„Ù…Ø© ÙˆØªØµÙˆØ± Ù…Ø¨Ø¯Ø¦ÙŠ Ù…Ø¬Ø§Ù†ÙŠ.',
-        en: 'Villa design in Obhur and North Jeddah: capturing sea light with full privacy, shaded terraces and view-facing pools. Free call and preliminary concept.'
-      },
-      eyebrow: { ar: 'Ø§Ù„Ø³Ø§Ø­Ù„ â€” Ø£Ø¨Ø­Ø± ÙˆØ´Ù…Ø§Ù„ Ø¬Ø¯Ø©', en: 'The coast â€” Obhur & North Jeddah' },
-      h1: { ar: 'ØªØµÙ…ÙŠÙ… ÙÙ„Ù„ ÙÙŠ Ø£Ø¨Ø­Ø± ÙˆØ´Ù…Ø§Ù„ Ø¬Ø¯Ø©', en: 'Villa design in Obhur & North Jeddah' },
-      intro: {
-        ar: 'Ø£Ø¨Ø­Ø± Ø³Ø§Ø­Ù„ Ù…Ø®ØªÙ„Ù: Ø¶ÙˆØ¡ Ù‚ÙˆÙŠØŒ Ù†Ø³ÙŠÙ… Ø¨Ø­Ø±ÙŠØŒ ÙˆÙ‚ÙŠÙ…Ø© Ø¹Ø§Ù„ÙŠØ© Ù„Ù„Ø¥Ø·Ù„Ø§Ù„Ø©. Ù„ÙƒÙ†Ù‡Ø§ ØªØªØ·Ù„Ø¨ ØªÙˆØ§Ø²Ù†Ø§Ù‹ Ø¯Ù‚ÙŠÙ‚Ø§Ù‹ Ø¨ÙŠÙ† Ø§Ù„Ø§Ù†ÙØªØ§Ø­ Ø¹Ù„Ù‰ Ø§Ù„Ø¨Ø­Ø± ÙˆØ§Ù„Ø®ØµÙˆØµÙŠØ© ØªØ¬Ø§Ù‡ Ø§Ù„Ø¬ÙŠØ±Ø§Ù† ÙˆØ§Ù„Ø·Ø±ÙŠÙ‚. Ù†ØµÙ…Ù… ÙÙ„Ù„Ø§Ù‹ Ø³Ø§Ø­Ù„ÙŠØ© ØªØ³ØªØ«Ù…Ø± Ø§Ù„Ø¥Ø·Ù„Ø§Ù„Ø© Ø¯ÙˆÙ† Ø£Ù† ØªÙÙ‚Ø¯ Ø­Ù…ÙŠÙ…ÙŠØªÙ‡Ø§.',
-        en: 'Obhur is a different coast: strong light, sea breeze, and a high premium on the view. But it demands a careful balance between opening to the sea and privacy from neighbours and the street. We design coastal villas that capture the view without losing their intimacy.'
-      },
-      sections: [
-        {
-          heading: { ar: 'Ø¶ÙˆØ¡ Ø§Ù„Ø¨Ø­Ø± ÙˆØ§Ù„Ø®ØµÙˆØµÙŠØ©', en: 'Sea light and privacy' },
-          body: {
-            ar: 'Ù†ÙˆØ¬Ù‘Ù‡ ÙØ±Ø§ØºØ§Øª Ø§Ù„Ù…Ø¹ÙŠØ´Ø© Ù†Ø­Ùˆ Ø§Ù„Ø¨Ø­Ø± Ø¨Ø´Ø±ÙØ§Øª Ø¹Ù…ÙŠÙ‚Ø© ØªØ¸Ù„Ù‘Ù„ Ù…Ù† Ø´Ù…Ø³ Ø§Ù„Ø¸Ù‡ÙŠØ±Ø©ØŒ ÙˆÙ†Ø­Ø¬Ø¨ Ø§Ù„Ø¬Ù‡Ø§Øª Ø§Ù„Ø£Ø®Ø±Ù‰ Ø¨Ø°ÙƒØ§Ø¡ â€” ÙØªØ·Ù„Ù‘ Ø¹Ù„Ù‰ Ø§Ù„Ù…Ø§Ø¡ Ø¯ÙˆÙ† Ø£Ù† ÙŠØ·Ù„Ù‘ Ø¹Ù„ÙŠÙƒ Ø£Ø­Ø¯.',
-            en: 'We orient living spaces toward the sea with deep terraces that shade the midday sun, and screen the other sides intelligently â€” so you face the water without anyone facing you.'
-          }
-        },
-        {
-          heading: { ar: 'Ø§Ù„Ø­ÙŠØ§Ø© Ø§Ù„Ø®Ø§Ø±Ø¬ÙŠØ©', en: 'Outdoor living' },
-          body: {
-            ar: 'Ù…Ø³Ø§Ø¨Ø­ Ø¨Ø¥Ø·Ù„Ø§Ù„Ø©ØŒ Ø¬Ù„Ø³Ø§Øª Ù…Ø¸Ù„Ù„Ø©ØŒ ÙˆØ£Ø³Ø·Ø­ Ù…Ø¹ÙŠØ´Ø© â€” Ù„Ø£Ù† Ù‚ÙŠÙ…Ø© Ø£Ø±Ø¶ Ø£Ø¨Ø­Ø± ÙÙŠ Ø­ÙŠØ§ØªÙ‡Ø§ Ø§Ù„Ø®Ø§Ø±Ø¬ÙŠØ© Ø¨Ù‚Ø¯Ø± Ø¯Ø§Ø®Ù„Ù‡Ø§.',
-            en: 'View-facing pools, shaded seating and rooftop living â€” because the value of an Obhur plot is in its outdoor life as much as its interior.'
-          }
-        }
-      ],
-      serviceType: 'Coastal villa design',
-      faq: [
-        {
-          q: { ar: 'Ù‡Ù„ Ù„Ø¯ÙŠÙƒÙ… Ø®Ø¨Ø±Ø© Ø¨Ø£Ø±Ø§Ø¶ÙŠ Ø£Ø¨Ø­Ø± ØªØ­Ø¯ÙŠØ¯Ø§Ù‹ØŸ', en: 'Do you have experience with Obhur plots specifically?' },
-          a: { ar: 'Ù†Ø¹Ù…ØŒ Ù…Ù† Ø£Ø¹Ù…Ø§Ù„Ù†Ø§ ÙÙ„Ù„ ÙÙŠ Ø£Ø¨Ø­Ø± Ù…Ø«Ù„ ÙÙŠÙ„Ø§ Ø§Ù„Ù…Ù†ØªØ´Ø±ÙŠ â€” Ù†Ø±Ø§Ø¹ÙŠ Ø§Ù„Ù…Ù„ÙˆØ­Ø© ÙˆØ§Ù„Ø±ÙŠØ§Ø­ ÙˆØ§Ù„Ø¥Ø·Ù„Ø§Ù„Ø© ÙˆØ§Ù„Ø®ØµÙˆØµÙŠØ© Ø§Ù„Ø³Ø§Ø­Ù„ÙŠØ©.', en: 'Yes â€” our work includes Obhur villas such as Montashiri Villa. We account for salt, wind, the view and coastal privacy.' }
-        },
-        {
-          q: { ar: 'ÙƒÙŠÙ ØªØ­Ù…ÙˆÙ† Ø§Ù„Ø®ØµÙˆØµÙŠØ© Ø¹Ù„Ù‰ ÙˆØ§Ø¬Ù‡Ø© Ø¨Ø­Ø±ÙŠØ© Ù…ÙØªÙˆØ­Ø©ØŸ', en: 'How do you protect privacy on an open waterfront?' },
-          a: { ar: 'Ø¹Ø¨Ø± ØªØ¯Ø±Ù‘Ø¬ Ø§Ù„Ø´Ø±ÙØ§ØªØŒ Ø§Ù„ØªÙˆØ¬ÙŠÙ‡ØŒ ÙˆØ§Ù„Ø³ØªØ§Ø¦Ø± Ø§Ù„Ù…Ø¹Ù…Ø§Ø±ÙŠØ© â€” Ø§Ù†ÙØªØ§Ø­ ÙƒØ§Ù…Ù„ Ø¹Ù„Ù‰ Ø§Ù„Ø¨Ø­Ø± ÙˆØ­Ø¬Ø¨ ÙƒØ§Ù…Ù„ Ø¹Ù† Ø§Ù„Ø¬ÙŠØ±Ø§Ù†.', en: 'Through layered terraces, orientation and architectural screens â€” full openness to the sea, full screening from neighbours.' }
-        },
-        {
-          q: { ar: 'Ù‡Ù„ ØªØµÙ…Ù…ÙˆÙ† ÙÙ„Ù„Ø§Ù‹ ÙÙŠ Ø´Ù…Ø§Ù„ Ø¬Ø¯Ø© Ø¹Ù…ÙˆÙ…Ø§Ù‹ØŸ', en: 'Do you design villas in North Jeddah generally?' },
-          a: { ar: 'Ù†Ø¹Ù…ØŒ Ø£Ø¨Ø­Ø± ÙˆØ´Ù…Ø§Ù„ Ø¬Ø¯Ø© Ù…Ù† Ø£ÙƒØ«Ø± Ø§Ù„Ù…Ù†Ø§Ø·Ù‚ Ø§Ù„ØªÙŠ Ù†Ø¹Ù…Ù„ ÙÙŠÙ‡Ø§.', en: 'Yes â€” Obhur and North Jeddah are among the areas we work in most.' }
-        }
-      ],
-      related: ['villa-design-jeddah', 'luxury-villa-design-jeddah', 'modern-villa-design-jeddah', 'modern-hijazi-villa-design'],
-      relatedProjects: ['montashiri-villa', 'coastal-villa', 'byblos-resort'],
-      image: { src: '/assets/projects/montashiri-villa/cover.webp', w: 1536, h: 960, alt: { ar: 'ÙÙŠÙ„Ø§ Ø³Ø§Ø­Ù„ÙŠØ© ÙÙŠ Ø£Ø¨Ø­Ø± Ø¨Ø¥Ø·Ù„Ø§Ù„Ø© ÙˆØ®ØµÙˆØµÙŠØ©', en: 'Coastal villa in Obhur with a view and privacy' } }
-    },
-    {
-      slug: 'modern-hijazi-villa-design',
-      label: { ar: 'ØªØµÙ…ÙŠÙ… ÙÙ„Ù„ Ø­Ø¬Ø§Ø²ÙŠØ© Ø­Ø¯ÙŠØ«Ø©', en: 'Modern Hijazi villa design' },
-      summary: {
-        ar: 'Ø¥Ø¹Ø§Ø¯Ø© ØªØ£ÙˆÙŠÙ„ Ø§Ù„Ø¹Ù…Ø§Ø±Ø© Ø§Ù„Ø­Ø¬Ø§Ø²ÙŠØ© â€” Ø§Ù„Ø±ÙˆØ´Ø§Ù† ÙˆØ§Ù„ÙÙ†Ø§Ø¡ ÙˆØ§Ù„Ø­Ø¬Ø± â€” Ø¨Ù„ØºØ© Ø­Ø¯ÙŠØ«Ø© ØªÙ†Ø§Ø³Ø¨ Ø§Ù„Ø­ÙŠØ§Ø© Ø§Ù„ÙŠÙˆÙ….',
-        en: 'Reinterpreting Hijazi architecture â€” rawasheen, courtyards and stone â€” in a modern language for life today.'
-      },
-      seoTitle: { ar: 'ØªØµÙ…ÙŠÙ… ÙÙ„Ù„ Ø­Ø¬Ø§Ø²ÙŠØ© Ø­Ø¯ÙŠØ«Ø© ÙÙŠ Ø¬Ø¯Ø© | Ø±ÙˆØ´Ø§Ù† ÙˆÙÙ†Ø§Ø¡ â€” WB Studio', en: 'Modern Hijazi Villa Design in Jeddah | Rawasheen & Courtyards â€” WB Studio' },
-      seoDesc: {
-        ar: 'ØªØµÙ…ÙŠÙ… ÙÙ„Ù„ Ø­Ø¬Ø§Ø²ÙŠØ© Ø­Ø¯ÙŠØ«Ø© ÙÙŠ Ø¬Ø¯Ø©: Ø±ÙˆØ´Ø§Ù† ÙˆÙ…Ø´Ø±Ø¨ÙŠØ§Øª ÙˆØ£ÙÙ†ÙŠØ© ÙˆØ­Ø¬Ø±ØŒ Ø¨Ù„ØºØ© Ù…Ø¹Ø§ØµØ±Ø© Ù†Ø¸ÙŠÙØ© ØªØ­ØªØ±Ù… Ø§Ù„Ø®ØµÙˆØµÙŠØ© ÙˆØ§Ù„Ù…Ù†Ø§Ø® ÙˆØ§Ù„Ù‡ÙˆÙŠØ©. Ù…ÙƒØ§Ù„Ù…Ø© ÙˆØªØµÙˆØ± Ù…Ø¨Ø¯Ø¦ÙŠ Ù…Ø¬Ø§Ù†ÙŠ.',
-        en: 'Modern Hijazi villa design in Jeddah: rawasheen, mashrabiya, courtyards and stone in a clean contemporary language that respects privacy, climate and identity. Free call and preliminary concept.'
-      },
-      eyebrow: { ar: 'Ø§Ù„Ø¹Ù…Ø§Ø±Ø© Ø§Ù„Ø­Ø¬Ø§Ø²ÙŠØ© Ø§Ù„Ø­Ø¯ÙŠØ«Ø© â€” Ø¬Ø¯Ø©', en: 'Modern Hijazi architecture â€” Jeddah' },
-      h1: { ar: 'ØªØµÙ…ÙŠÙ… ÙÙ„Ù„ Ø­Ø¬Ø§Ø²ÙŠØ© Ø­Ø¯ÙŠØ«Ø©', en: 'Modern Hijazi villa design' },
-      intro: {
-        ar: 'Ø§Ù„Ø¹Ù…Ø§Ø±Ø© Ø§Ù„Ø­Ø¬Ø§Ø²ÙŠØ© Ø­Ù„Ù‘Øª Ù…Ø´ÙƒÙ„Ø§Øª Ø§Ù„Ù…Ù†Ø§Ø® ÙˆØ§Ù„Ø®ØµÙˆØµÙŠØ© Ù‚Ø¨Ù„ Ù‚Ø±ÙˆÙ† Ø¹Ø¨Ø± Ø§Ù„Ø±ÙˆØ´Ø§Ù† ÙˆØ§Ù„ÙÙ†Ø§Ø¡ ÙˆØ§Ù„Ø­Ø¬Ø±. Ù†Ø¹ÙŠØ¯ ØªØ£ÙˆÙŠÙ„ Ù‡Ø°Ù‡ Ø§Ù„Ø­ÙƒÙ…Ø© Ø¨Ù„ØºØ© Ø­Ø¯ÙŠØ«Ø© Ù†Ø¸ÙŠÙØ© â€” ÙÙŠÙ„Ø§ ØªÙ†ØªÙ…ÙŠ Ø¥Ù„Ù‰ Ø¬Ø¯Ø© Ø¨Ù‡ÙˆÙŠØ© ÙˆØ§Ø¶Ø­Ø©ØŒ Ù„Ø§ Ù†Ø³Ø®Ø© ØºØ±Ø¨ÙŠØ© ÙˆÙ„Ø§ Ø§Ø³ØªÙ†Ø³Ø§Ø® ØªØ±Ø§Ø«ÙŠ.',
-        en: 'Hijazi architecture solved climate and privacy centuries ago through the rawshan, the courtyard and stone. We reinterpret that wisdom in a clean modern language â€” a villa that belongs to Jeddah with a clear identity, neither a Western copy nor a heritage replica.'
-      },
-      sections: [
-        {
-          heading: { ar: 'Ø§Ù„Ø±ÙˆØ´Ø§Ù† ÙˆØ§Ù„Ù…Ø´Ø±Ø¨ÙŠØ©', en: 'Rawshan and mashrabiya' },
-          body: {
-            ar: 'Ø§Ù„Ø³ØªØ§Ø¦Ø± Ø§Ù„Ø®Ø´Ø¨ÙŠØ© Ø§Ù„Ù…Ø«Ù‚Ù‘Ø¨Ø© ØªØ¸Ù„Ù‘Ù„ ÙˆØªÙ‡ÙˆÙ‘ÙŠ ÙˆØªÙ…Ù†Ø­ Ø®ØµÙˆØµÙŠØ© â€” Ù†Ø¹ÙŠØ¯ ØªØµÙ…ÙŠÙ…Ù‡Ø§ Ø¨Ù†ÙØ³Ø¨ Ø­Ø¯ÙŠØ«Ø© ÙˆØªÙ†ÙÙŠØ° Ù…Ø¹Ø§ØµØ± Ø¨Ø¯Ù„ Ø§Ù„Ù†Ø³Ø® Ø§Ù„Ø­Ø±ÙÙŠ.',
-            en: 'Perforated timber screens shade, ventilate and give privacy â€” we redesign them in modern proportions and contemporary fabrication rather than literal copying.'
-          }
-        },
-        {
-          heading: { ar: 'Ø§Ù„ÙÙ†Ø§Ø¡ ÙˆØ§Ù„Ø­Ø¬Ø±', en: 'Courtyard and stone' },
-          body: {
-            ar: 'ÙÙ†Ø§Ø¡ Ø¯Ø§Ø®Ù„ÙŠ ÙŠØ¬Ù„Ø¨ Ø§Ù„Ø¶ÙˆØ¡ ÙˆØ§Ù„Ù‡ÙˆØ§Ø¡ Ø¥Ù„Ù‰ Ø¹Ù…Ù‚ Ø§Ù„Ø¨ÙŠØª Ø¨Ø®ØµÙˆØµÙŠØ© ØªØ§Ù…Ø©ØŒ ÙˆØ­Ø¬Ø± Ù…Ø­Ù„ÙŠ ÙŠØ±Ø¨Ø· Ø§Ù„ÙÙŠÙ„Ø§ Ø¨Ø£Ø±Ø¶Ù‡Ø§ ÙˆÙŠÙ„Ø·Ù‘Ù Ù…Ù†Ø§Ø®Ù‡Ø§.',
-            en: 'An internal courtyard brings light and air deep into the home in full privacy, and local stone ties the villa to its ground while tempering its climate.'
-          }
-        }
-      ],
-      serviceType: 'Hijazi villa design',
-      faq: [
-        {
-          q: { ar: 'Ù…Ø§ Ø§Ù„ÙØ±Ù‚ Ø¨ÙŠÙ† Ø§Ù„Ø­Ø¬Ø§Ø²ÙŠ Ø§Ù„Ø­Ø¯ÙŠØ« ÙˆØ§Ù„ØªØ±Ø§Ø«ÙŠØŸ', en: 'Whatâ€™s the difference between modern Hijazi and traditional?' },
-          a: { ar: 'Ù†Ø£Ø®Ø° Ù…Ø¨Ø§Ø¯Ø¦ Ø§Ù„Ø­Ø¬Ø§Ø²ÙŠ (Ø§Ù„Ø®ØµÙˆØµÙŠØ©ØŒ Ø§Ù„ØªØ¸Ù„ÙŠÙ„ØŒ Ø§Ù„ÙÙ†Ø§Ø¡) ÙˆÙ†Ø¹Ø¨Ù‘Ø± Ø¹Ù†Ù‡Ø§ Ø¨Ø®Ø·ÙˆØ· ÙˆÙ…ÙˆØ§Ø¯ Ø­Ø¯ÙŠØ«Ø©ØŒ Ù„Ø§ Ø¨Ø²Ø®Ø±ÙØ© Ù…Ù†Ø³ÙˆØ®Ø©.', en: 'We take Hijazi principles (privacy, shading, the courtyard) and express them in modern lines and materials, not copied ornament.' }
-        },
-        {
-          q: { ar: 'Ù‡Ù„ ØªØµÙ…Ù…ÙˆÙ† ÙˆØ§Ø¬Ù‡Ø§Øª ÙÙ„Ù„ Ø¨Ø·Ø§Ø¨Ø¹ Ø­Ø¬Ø§Ø²ÙŠ Ø­Ø¯ÙŠØ«ØŸ', en: 'Do you design villa faÃ§ades with a modern Hijazi character?' },
-          a: { ar: 'Ù†Ø¹Ù… â€” Ø§Ù„ÙˆØ§Ø¬Ù‡Ø© Ø§Ù„Ø­Ø¬Ø§Ø²ÙŠØ© Ø§Ù„Ø­Ø¯ÙŠØ«Ø© Ù…Ù† Ø£ÙƒØ«Ø± Ù…Ø§ ÙŠÙ…ÙŠÙ‘Ø² Ø£Ø¹Ù…Ø§Ù„Ù†Ø§: Ø­Ø¬Ø±ØŒ Ø±ÙˆØ´Ø§Ù† Ù…Ø¹Ø§ØµØ±ØŒ ÙˆØªØ¯Ø±Ù‘Ø¬ Ù„Ù„Ø¸Ù„.', en: 'Yes â€” the modern Hijazi faÃ§ade is among the most distinctive parts of our work: stone, a contemporary rawshan and layered shade.' }
-        },
-        {
-          q: { ar: 'Ù‡Ù„ ÙŠÙ†Ø§Ø³Ø¨ Ù‡Ø°Ø§ Ø§Ù„Ø·Ø§Ø¨Ø¹ Ø§Ù„Ø£Ø­ÙŠØ§Ø¡ Ø§Ù„Ø­Ø¯ÙŠØ«Ø© ÙÙŠ Ø¬Ø¯Ø©ØŸ', en: 'Does this character suit Jeddahâ€™s modern districts?' },
-          a: { ar: 'ØªÙ…Ø§Ù…Ø§Ù‹ â€” ÙŠÙ…Ù†Ø­ Ø§Ù„ÙÙŠÙ„Ø§ ØªÙ…ÙŠÙ‘Ø²Ø§Ù‹ ÙˆÙ‡ÙˆÙŠØ© Ø¨ÙŠÙ† Ø§Ù„ÙÙ„Ù„ Ø§Ù„Ù…ØªØ´Ø§Ø¨Ù‡Ø©ØŒ Ù…Ø¹ Ø£Ø¯Ø§Ø¡ Ù…Ù†Ø§Ø®ÙŠ Ø£ÙØ¶Ù„.', en: 'Perfectly â€” it gives the villa distinction and identity among look-alike houses, with better climate performance.' }
-        }
-      ],
-      related: ['villa-design-jeddah', 'luxury-villa-design-jeddah', 'modern-villa-design-jeddah', 'obhur-villa-design'],
-      relatedProjects: ['montashiri-villa', 'stone-majlis'],
-      image: { src: '/assets/projects/montashiri-villa/cover.webp', w: 1536, h: 960, alt: { ar: 'ÙˆØ§Ø¬Ù‡Ø© ÙÙŠÙ„Ø§ Ø­Ø¬Ø§Ø²ÙŠØ© Ø­Ø¯ÙŠØ«Ø© Ø¨Ø§Ù„Ø­Ø¬Ø± ÙÙŠ Ø¬Ø¯Ø©', en: 'Modern Hijazi villa faÃ§ade in stone, Jeddah' } }
-    }
-  ],
-
-  // â”€â”€ Journal (SEO guides for pre-hire searches) â”€â”€
-  journalMeta: {
-    seoTitle: { ar: 'Ø§Ù„Ù…Ø¯ÙˆÙ‘Ù†Ø© | Ø£Ø¯Ù„Ø© ØªØµÙ…ÙŠÙ… Ø§Ù„ÙÙ„Ù„ ÙÙŠ Ø¬Ø¯Ø© â€” WB Studio', en: 'Journal | Villa Design Guides for Jeddah â€” WB Studio' },
-    seoDesc: {
-      ar: 'Ø£Ø¯Ù„Ø© Ø¹Ù…Ù„ÙŠØ© Ù„Ø£ØµØ­Ø§Ø¨ Ø§Ù„Ø£Ø±Ø§Ø¶ÙŠ Ù‚Ø¨Ù„ ØªØµÙ…ÙŠÙ… ÙÙŠÙ„Ø§ ÙÙŠ Ø¬Ø¯Ø©: Ø§Ù„ØªÙƒÙ„ÙØ©ØŒ Ø§Ù„Ø§Ø³ØªØ¹Ø¯Ø§Ø¯ØŒ Ø§Ù„ÙØ±Ù‚ Ø¨ÙŠÙ† Ø§Ù„ØªØµÙˆØ± ÙˆØ§Ù„ØªÙ†ÙÙŠØ°ØŒ ÙˆØ§Ø¹ØªØ¨Ø§Ø±Ø§Øª Ø£Ø¨Ø­Ø± Ø§Ù„Ø³Ø§Ø­Ù„ÙŠØ©.',
-      en: 'Practical guides for landowners before designing a villa in Jeddah: cost, preparation, concept vs. execution drawings, and Obhur coastal considerations.'
-    },
-    h1: { ar: 'Ø§Ù„Ù…Ø¯ÙˆÙ‘Ù†Ø©', en: 'Journal' },
-    intro: {
-      ar: 'Ø£Ø¯Ù„Ø© Ù‚ØµÙŠØ±Ø© ÙˆØµØ§Ø¯Ù‚Ø© Ù„Ù…Ù† ÙŠÙÙƒÙ‘Ø± ÙÙŠ Ø¨Ù†Ø§Ø¡ ÙÙŠÙ„Ø§ Ø®Ø§ØµØ© ÙÙŠ Ø¬Ø¯Ø© â€” Ù„ØªØªÙ‘Ø®Ø° Ù‚Ø±Ø§Ø±Ø§Øª Ø£ÙˆØ¶Ø­ Ù‚Ø¨Ù„ Ø£Ù† ØªØ¨Ø¯Ø£.',
-      en: 'Short, honest guides for anyone considering building a private villa in Jeddah â€” to help you make clearer decisions before you start.'
-    },
-    readMore: { ar: 'Ø§Ù‚Ø±Ø£ Ø§Ù„Ø¯Ù„ÙŠÙ„', en: 'Read the guide' },
-    backToJournal: { ar: 'Ø§Ù„Ù…Ø¯ÙˆÙ‘Ù†Ø©', en: 'Journal' },
-    relatedTitle: { ar: 'Ø®Ø¯Ù…Ø§Øª Ø°Ø§Øª ØµÙ„Ø©', en: 'Related services' }
-  },
-
-  journal: [
-    {
-      slug: 'villa-design-cost-jeddah',
-      date: '2026-05-20',
-      title: { ar: 'ÙƒÙ… ØªÙƒÙ„ÙØ© ØªØµÙ…ÙŠÙ… ÙÙŠÙ„Ø§ ÙÙŠ Ø¬Ø¯Ø©ØŸ Ø¯Ù„ÙŠÙ„ Ø¹Ù…Ù„ÙŠ â€” WB Studio', en: 'How Much Does Villa Design Cost in Jeddah? A Practical Guide â€” WB Studio' },
-      desc: {
-        ar: 'Ù…Ø§ Ø§Ù„Ø°ÙŠ ÙŠØ­Ø¯Ù‘Ø¯ ØªÙƒÙ„ÙØ© ØªØµÙ…ÙŠÙ… ÙÙŠÙ„Ø§ Ø®Ø§ØµØ© ÙÙŠ Ø¬Ø¯Ø©ØŒ ÙˆÙƒÙŠÙ ØªØ®Ø·Ù‘Ø· Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ© Ø§Ù„ØªØµÙ…ÙŠÙ… Ø¨ÙˆØ¶ÙˆØ­ Ù‚Ø¨Ù„ Ø£Ù† ØªØ¨Ø¯Ø£.',
-        en: 'What determines the cost of designing a private villa in Jeddah, and how to plan your design budget clearly before you start.'
-      },
-      h1: { ar: 'ÙƒÙ… ØªÙƒÙ„ÙØ© ØªØµÙ…ÙŠÙ… ÙÙŠÙ„Ø§ ÙÙŠ Ø¬Ø¯Ø©ØŸ', en: 'How much does villa design cost in Jeddah?' },
-      intro: {
-        ar: 'Ø³Ø¤Ø§Ù„ ÙŠØ·Ø±Ø­Ù‡ ÙƒÙ„ ØµØ§Ø­Ø¨ Ø£Ø±Ø¶ØŒ ÙˆØ§Ù„Ø¥Ø¬Ø§Ø¨Ø© Ø§Ù„ØµØ§Ø¯Ù‚Ø©: Â«Ø­Ø³Ø¨Â». Ù„ÙƒÙ† Ù‡Ù†Ø§Ùƒ Ø¹ÙˆØ§Ù…Ù„ ÙˆØ§Ø¶Ø­Ø© ØªØ­Ø¯Ù‘Ø¯ Ø§Ù„ØªÙƒÙ„ÙØ©ØŒ ÙˆÙÙ‡Ù…Ù‡Ø§ ÙŠØ³Ø§Ø¹Ø¯Ùƒ Ø¹Ù„Ù‰ Ø§Ù„ØªØ®Ø·ÙŠØ· Ø¨Ø«Ù‚Ø©.',
-        en: 'Itâ€™s the first question every landowner asks, and the honest answer is â€œit depends.â€ But clear factors drive the cost, and understanding them helps you plan with confidence.'
-      },
-      sections: [
-        {
-          heading: { ar: 'Ù…Ø§ Ø§Ù„Ø°ÙŠ ÙŠØ­Ø¯Ù‘Ø¯ Ø§Ù„ØªÙƒÙ„ÙØ©', en: 'What drives the cost' },
-          body: {
-            ar: 'Ù…Ø³Ø§Ø­Ø© Ø§Ù„Ø£Ø±Ø¶ ÙˆØ§Ù„Ø¨Ù†Ø§Ø¡ØŒ ØªØ¹Ù‚ÙŠØ¯ Ø§Ù„ØªØµÙ…ÙŠÙ…ØŒ Ù†Ø·Ø§Ù‚ Ø§Ù„Ù…Ø®Ø±Ø¬Ø§Øª (ÙÙƒØ±Ø© ÙÙ‚Ø· Ø£Ù… Ø­Ø²Ù…Ø© ØªÙ†ÙÙŠØ° ÙƒØ§Ù…Ù„Ø©)ØŒ ÙˆÙ…Ø³ØªÙˆÙ‰ Ø§Ù„ØªÙ†Ø³ÙŠÙ‚ Ø§Ù„Ù‡Ù†Ø¯Ø³ÙŠ. ÙƒÙ„Ù…Ø§ Ø²Ø§Ø¯ Ø§Ù„Ù†Ø·Ø§Ù‚ ÙˆØ§Ù„ØªÙØµÙŠÙ„ØŒ Ø²Ø§Ø¯Øª Ø§Ù„Ù‚ÙŠÙ…Ø© ÙˆØ§Ù„ØªÙƒÙ„ÙØ©.',
-            en: 'Plot and built-up area, design complexity, the scope of deliverables (concept only vs. a full construction package), and the level of engineering coordination. The greater the scope and detail, the greater the value â€” and the cost.'
-          }
-        },
-        {
-          heading: { ar: 'Ø±Ø³ÙˆÙ… Ø§Ù„ØªØµÙ…ÙŠÙ… Ù…Ù‚Ø§Ø¨Ù„ ØªÙƒÙ„ÙØ© Ø§Ù„Ø¨Ù†Ø§Ø¡', en: 'Design fees vs. construction cost' },
-          body: {
-            ar: 'Ø±Ø³ÙˆÙ… Ø§Ù„ØªØµÙ…ÙŠÙ… Ø¬Ø²Ø¡ ØµØºÙŠØ± Ù…Ù† Ù…ÙŠØ²Ø§Ù†ÙŠØ© Ø§Ù„Ù…Ø´Ø±ÙˆØ¹ Ø§Ù„ÙƒÙ„ÙŠØ©ØŒ Ù„ÙƒÙ†Ù‡Ø§ Ø§Ù„Ø£ÙƒØ«Ø± ØªØ£Ø«ÙŠØ±Ø§Ù‹ Ø¹Ù„Ù‰ Ø§Ù„Ù†ØªÙŠØ¬Ø©. ØªØµÙ…ÙŠÙ… Ø¬ÙŠØ¯ ÙŠÙˆÙÙ‘Ø± Ø£Ø¶Ø¹Ø§ÙÙ‡ ÙÙŠ Ø§Ù„ØªÙ†ÙÙŠØ° Ø¨ØªÙ‚Ù„ÙŠÙ„ Ø§Ù„Ø£Ø®Ø·Ø§Ø¡ ÙˆØ§Ù„Ù‡Ø¯Ø±.',
-            en: 'Design fees are a small part of the total project budget, but the most influential on the outcome. Good design saves many times its cost in construction by reducing errors and waste.'
-          }
-        },
-        {
-          heading: { ar: 'ÙƒÙŠÙ Ù†ÙˆØ¶Ø­ Ø§Ù„ØªÙƒÙ„ÙØ©', en: 'How we clarify cost' },
-          body: {
-            ar: 'Ù†Ø¨Ø¯Ø£ Ø¨Ù…ÙƒØ§Ù„Ù…Ø© Ù…Ø¬Ø§Ù†ÙŠØ© ÙˆØªØµÙˆØ± Ù…Ø¨Ø¯Ø¦ÙŠ Ù…Ø¬Ø§Ù†ÙŠØŒ Ø«Ù… Ù†ÙˆØ¶Ø­ Ù†Ø·Ø§Ù‚ Ø§Ù„Ø¹Ù…Ù„ ÙˆØ§Ù„Ø±Ø³ÙˆÙ… Ø¨Ø§Ù„ÙƒØ§Ù…Ù„ Ù‚Ø¨Ù„ Ø£ÙŠ Ø§ØªÙØ§Ù‚ Ù…Ø¯ÙÙˆØ¹ â€” Ø¨Ù„Ø§ Ù…ÙØ§Ø¬Ø¢Øª.',
-            en: 'We start with a free call and a free preliminary concept, then clarify the scope and fees fully before any paid agreement â€” no surprises.'
-          }
-        }
-      ],
-      related: ['villa-design-jeddah', 'luxury-villa-design-jeddah']
-    },
-    {
-      slug: 'before-designing-private-villa',
-      date: '2026-04-28',
-      title: { ar: 'Ù…Ø§ Ø§Ù„Ø°ÙŠ ØªØ¬Ù‡Ù‘Ø²Ù‡ Ù‚Ø¨Ù„ ØªØµÙ…ÙŠÙ… ÙÙŠÙ„ØªÙƒ Ø§Ù„Ø®Ø§ØµØ© â€” WB Studio', en: 'What to Prepare Before Designing Your Private Villa â€” WB Studio' },
-      desc: {
-        ar: 'Ù‚Ø§Ø¦Ù…Ø© Ø¹Ù…Ù„ÙŠØ© Ø¨Ù…Ø§ ØªØ­ØªØ§Ø¬ ØªØ¬Ù‡ÙŠØ²Ù‡ â€” ØµÙƒ Ø§Ù„Ø£Ø±Ø¶ØŒ Ø§Ù„Ø§Ø­ØªÙŠØ§Ø¬Ø§ØªØŒ Ø§Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ©ØŒ ÙˆØ§Ù„Ù…Ø±Ø§Ø¬Ø¹ â€” Ù‚Ø¨Ù„ Ø¨Ø¯Ø¡ ØªØµÙ…ÙŠÙ… ÙÙŠÙ„ØªÙƒ ÙÙŠ Ø¬Ø¯Ø©.',
-        en: 'A practical checklist of what to prepare â€” your deed, needs, budget and references â€” before starting your villa design in Jeddah.'
-      },
-      h1: { ar: 'Ù…Ø§ Ø§Ù„Ø°ÙŠ ØªØ¬Ù‡Ù‘Ø²Ù‡ Ù‚Ø¨Ù„ ØªØµÙ…ÙŠÙ… ÙÙŠÙ„ØªÙƒ', en: 'What to prepare before designing your villa' },
-      intro: {
-        ar: 'ÙƒÙ„Ù…Ø§ ÙˆØ¶Ø­Øª Ø±Ø¤ÙŠØªÙƒ ÙˆØ£ÙˆØ±Ø§Ù‚Ùƒ Ù…Ù† Ø§Ù„Ø¨Ø¯Ø§ÙŠØ©ØŒ ÙƒØ§Ù† Ø§Ù„ØªØµÙ…ÙŠÙ… Ø£Ø³Ø±Ø¹ ÙˆØ£Ø¯Ù‚. Ø¥Ù„ÙŠÙƒ Ù…Ø§ Ù†Ø·Ù„Ø¨Ù‡ Ø¹Ø§Ø¯Ø©Ù‹ Ù‚Ø¨Ù„ Ø§Ù„Ø®Ø·ÙˆØ© Ø§Ù„Ø£ÙˆÙ„Ù‰.',
-        en: 'The clearer your vision and paperwork from the start, the faster and more accurate the design. Hereâ€™s what we usually ask for before the first step.'
-      },
-      sections: [
-        {
-          heading: { ar: 'Ø£ÙˆØ±Ø§Ù‚ Ø§Ù„Ø£Ø±Ø¶', en: 'The plot documents' },
-          body: {
-            ar: 'ØµÙƒ Ø§Ù„Ø£Ø±Ø¶ØŒ Ø§Ù„ÙƒØ±ÙˆÙƒÙŠ/Ø§Ù„Ù…Ø®Ø·Ø·ØŒ ÙˆÙ…Ø³Ø§Ø­Ø© ÙˆØ£Ø¨Ø¹Ø§Ø¯ Ø§Ù„Ø£Ø±Ø¶ ÙˆØ§ØªØ¬Ø§Ù‡Ù‡Ø§ â€” ØªØ­Ø¯Ù‘Ø¯ Ù…Ø§ ÙŠÙ…ÙƒÙ† Ø¨Ù†Ø§Ø¤Ù‡ ÙˆÙƒÙŠÙ ØªÙˆØ¬ÙÙ‘Ù‡ Ø§Ù„ÙÙŠÙ„Ø§.',
-            en: 'The deed, the site plan/croquis, and the plotâ€™s area, dimensions and orientation â€” these define what can be built and how the villa is oriented.'
-          }
-        },
-        {
-          heading: { ar: 'Ø§Ø­ØªÙŠØ§Ø¬Ø§Øª Ø§Ù„Ø¹Ø§Ø¦Ù„Ø©', en: 'Your familyâ€™s needs' },
-          body: {
-            ar: 'Ø¹Ø¯Ø¯ Ø§Ù„ØºØ±ÙØŒ ÙØ±Ø§ØºØ§Øª Ø§Ù„Ø¶ÙŠØ§ÙØ©ØŒ Ø®ØµÙˆØµÙŠØ© Ø§Ù„Ù†Ø³Ø§Ø¡ØŒ Ø§Ø­ØªÙŠØ§Ø¬Ø§Øª Ø§Ù„Ø³Ø§Ø¦Ù‚ ÙˆØ§Ù„Ø®Ø¯Ù…ØŒ ÙˆØ§Ù„Ù…Ø³ØªÙ‚Ø¨Ù„ (ØªÙˆØ³Ù‘Ø¹ØŒ Ø£Ø·ÙØ§Ù„). ÙƒÙ„Ù…Ø§ ØµØ¯Ù‚Øª Ø§Ù„Ù‚Ø§Ø¦Ù…Ø©ØŒ Ù†Ø¬Ø­ Ø§Ù„ØªØµÙ…ÙŠÙ….',
-            en: 'Number of rooms, hospitality spaces, womenâ€™s privacy, driver and staff needs, and the future (expansion, children). The more honest the list, the better the design.'
-          }
-        },
-        {
-          heading: { ar: 'Ø§Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ© ÙˆØ§Ù„Ù…Ø±Ø§Ø¬Ø¹', en: 'Budget and references' },
-          body: {
-            ar: 'Ù†Ø·Ø§Ù‚ Ù…ÙŠØ²Ø§Ù†ÙŠØ© ÙˆØ§Ù‚Ø¹ÙŠ ÙˆØµÙˆØ± Ù„Ù…Ø´Ø§Ø±ÙŠØ¹ ØªØ¹Ø¬Ø¨Ùƒ â€” Ù„Ø§ Ù„Ù†Ù†Ø³Ø®Ù‡Ø§ØŒ Ø¨Ù„ Ù„Ù†ÙÙ‡Ù… Ø°ÙˆÙ‚Ùƒ Ø¨Ø¯Ù‚Ø©.',
-            en: 'A realistic budget range and images of projects you like â€” not to copy, but to understand your taste precisely.'
-          }
-        }
-      ],
-      related: ['villa-design-jeddah', 'modern-villa-design-jeddah']
-    },
-    {
-      slug: 'concept-design-vs-execution-drawings',
-      date: '2026-04-10',
-      title: { ar: 'Ø§Ù„ØªØµÙˆØ± Ø§Ù„Ù…Ø¨Ø¯Ø¦ÙŠ Ù…Ù‚Ø§Ø¨Ù„ Ù…Ø®Ø·Ø·Ø§Øª Ø§Ù„ØªÙ†ÙÙŠØ°: Ø§Ù„ÙØ±Ù‚ â€” WB Studio', en: 'Concept Design vs. Execution Drawings: The Difference â€” WB Studio' },
-      desc: {
-        ar: 'Ù…Ø§ Ø§Ù„ÙØ±Ù‚ Ø¨ÙŠÙ† Ø§Ù„ØªØµÙˆØ± Ø§Ù„Ù…Ø¹Ù…Ø§Ø±ÙŠ ÙˆÙ…Ø®Ø·Ø·Ø§Øª Ø§Ù„ØªÙ†ÙÙŠØ° (IFC)ØŒ ÙˆÙ„Ù…Ø§Ø°Ø§ ØªØ­ØªØ§Ø¬ Ø§Ù„Ø§Ø«Ù†ÙŠÙ† Ù„Ø¨Ù†Ø§Ø¡ ÙÙŠÙ„Ø§ Ù†Ø§Ø¬Ø­Ø© ÙÙŠ Ø¬Ø¯Ø©.',
-        en: 'The difference between architectural concept and execution (IFC) drawings, and why you need both to build a successful villa in Jeddah.'
-      },
-      h1: { ar: 'Ø§Ù„ØªØµÙˆØ± Ø§Ù„Ù…Ø¨Ø¯Ø¦ÙŠ Ù…Ù‚Ø§Ø¨Ù„ Ù…Ø®Ø·Ø·Ø§Øª Ø§Ù„ØªÙ†ÙÙŠØ°', en: 'Concept design vs. execution drawings' },
-      intro: {
-        ar: 'ÙƒØ«ÙŠØ± Ù…Ù† Ø§Ù„Ù…Ø´Ø§ÙƒÙ„ ÙÙŠ Ø§Ù„Ù…ÙˆÙ‚Ø¹ ØªØ¨Ø¯Ø£ Ù…Ù† Ø®Ù„Ø· Ù‡Ø§ØªÙŠÙ† Ø§Ù„Ù…Ø±Ø­Ù„ØªÙŠÙ†. ÙÙ‡Ù… Ø§Ù„ÙØ±Ù‚ ÙŠØ­Ù…ÙŠÙƒ Ù…Ù† Ø§Ù„ØªØ£Ø®ÙŠØ± ÙˆØ§Ù„ØªÙƒØ§Ù„ÙŠÙ Ø§Ù„Ø¥Ø¶Ø§ÙÙŠØ©.',
-        en: 'Many problems on site begin with confusing these two stages. Understanding the difference protects you from delays and extra costs.'
-      },
-      sections: [
-        {
-          heading: { ar: 'Ø§Ù„ØªØµÙˆØ± Ø§Ù„Ù…Ø¹Ù…Ø§Ø±ÙŠ', en: 'The architectural concept' },
-          body: {
-            ar: 'ÙŠØ­Ø¯Ù‘Ø¯ Ø§Ù„ÙÙƒØ±Ø© ÙˆØ§Ù„ÙƒØªÙ„ ÙˆØ§Ù„ÙØ±Ø§ØºØ§Øª ÙˆØ§Ù„Ø£Ø¬ÙˆØ§Ø¡ â€” Ø§Ù„Ø±Ø¤ÙŠØ©. ÙŠØ¬ÙŠØ¨ Ø¹Ù† Â«ÙƒÙŠÙ Ø³ØªØ¨Ø¯Ùˆ Ø§Ù„ÙÙŠÙ„Ø§ ÙˆÙƒÙŠÙ Ù†Ø¹ÙŠØ´ ÙÙŠÙ‡Ø§Â».',
-            en: 'Defines the idea, massing, spaces and atmosphere â€” the vision. It answers â€œhow will the villa look and how will we live in it.â€'
-          }
-        },
-        {
-          heading: { ar: 'Ù…Ø®Ø·Ø·Ø§Øª Ø§Ù„ØªÙ†ÙÙŠØ°', en: 'Execution drawings' },
-          body: {
-            ar: 'ØªØªØ±Ø¬Ù… Ø§Ù„Ø±Ø¤ÙŠØ© Ø¥Ù„Ù‰ ØªÙØ§ØµÙŠÙ„ Ø¯Ù‚ÙŠÙ‚Ø© ÙˆØ£Ø¨Ø¹Ø§Ø¯ ÙˆÙ…ÙˆØ§ØµÙØ§Øª ÙˆÙ…Ø®Ø·Ø·Ø§Øª Ù…Ù†Ø³Ù‘Ù‚Ø© Ø¨ÙŠÙ† Ø§Ù„ØªØ®ØµØµØ§Øª â€” Ù…Ø§ ÙŠØ¨Ù†ÙŠ Ù…Ù†Ù‡ Ø§Ù„Ù…Ù‚Ø§ÙˆÙ„ ÙØ¹Ù„Ø§Ù‹.',
-            en: 'Translate the vision into precise details, dimensions, specifications and coordinated multi-discipline drawings â€” what the contractor actually builds from.'
-          }
-        },
-        {
-          heading: { ar: 'Ù„Ù…Ø§Ø°Ø§ ØªØ­ØªØ§Ø¬ Ø§Ù„Ø§Ø«Ù†ÙŠÙ†', en: 'Why you need both' },
-          body: {
-            ar: 'ØªØµÙˆØ± Ø¨Ù„Ø§ ØªÙ†ÙÙŠØ° ÙŠØ¨Ù‚Ù‰ Ø­Ù„Ù…Ø§Ù‹ØŒ ÙˆØªÙ†ÙÙŠØ° Ø¨Ù„Ø§ ØªØµÙˆØ± Ù‚ÙˆÙŠ ÙŠØ¨Ù†ÙŠ Ø¨ÙŠØªØ§Ù‹ Ø¨Ù„Ø§ Ø±ÙˆØ­. Ù†Ù‚ÙˆØ¯ Ø§Ù„Ù…Ø´Ø±ÙˆØ¹ Ø¹Ø¨Ø± Ø§Ù„Ù…Ø±Ø­Ù„ØªÙŠÙ† Ø¨ØªÙ†Ø³ÙŠÙ‚ BIM ÙƒØ§Ù…Ù„.',
-            en: 'A concept without execution stays a dream; execution without a strong concept builds a house without soul. We lead the project through both, with full BIM coordination.'
-          }
-        }
-      ],
-      related: ['villa-design-jeddah', 'modern-villa-design-jeddah']
-    },
-    {
-      slug: 'obhur-villa-design-considerations',
-      date: '2026-03-22',
-      title: { ar: 'Ø§Ø¹ØªØ¨Ø§Ø±Ø§Øª ØªØµÙ…ÙŠÙ… ÙÙ„Ù„ Ø£Ø¨Ø­Ø± Ø§Ù„Ø³Ø§Ø­Ù„ÙŠØ© â€” WB Studio', en: 'Obhur Coastal Villa Design Considerations â€” WB Studio' },
-      desc: {
-        ar: 'Ù…Ø§ ÙŠØ¬Ø¨ Ù…Ø±Ø§Ø¹Ø§ØªÙ‡ Ø¹Ù†Ø¯ ØªØµÙ…ÙŠÙ… ÙÙŠÙ„Ø§ ÙÙŠ Ø£Ø¨Ø­Ø±: Ø§Ù„Ø¥Ø·Ù„Ø§Ù„Ø©ØŒ Ø§Ù„Ø®ØµÙˆØµÙŠØ© Ø§Ù„Ø³Ø§Ø­Ù„ÙŠØ©ØŒ Ø§Ù„Ù…Ù„ÙˆØ­Ø© ÙˆØ§Ù„Ø±ÙŠØ§Ø­ØŒ ÙˆØ§Ù„Ø­ÙŠØ§Ø© Ø§Ù„Ø®Ø§Ø±Ø¬ÙŠØ©.',
-        en: 'What to consider when designing a villa in Obhur: the view, coastal privacy, salt and wind, and outdoor living.'
-      },
-      h1: { ar: 'Ø§Ø¹ØªØ¨Ø§Ø±Ø§Øª ØªØµÙ…ÙŠÙ… ÙÙ„Ù„ Ø£Ø¨Ø­Ø±', en: 'Obhur coastal villa design considerations' },
-      intro: {
-        ar: 'Ø£Ø±Ø¶ Ø£Ø¨Ø­Ø± ÙØ±ØµØ© Ø«Ù…ÙŠÙ†Ø© ÙˆØªØ­Ø¯ÙÙ‘ ÙÙŠ Ø¢Ù†Ù. Ù‡Ø°Ù‡ Ø£Ù‡Ù… Ø§Ù„Ù†Ù‚Ø§Ø· Ø§Ù„ØªÙŠ Ù†Ø±Ø§Ø¹ÙŠÙ‡Ø§ Ù„Ù†Ø­ÙˆÙ‘Ù„ Ø§Ù„Ø¥Ø·Ù„Ø§Ù„Ø© Ø¥Ù„Ù‰ Ù‚ÙŠÙ…Ø© Ø¯Ø§Ø¦Ù…Ø©.',
-        en: 'An Obhur plot is both a precious opportunity and a challenge. These are the key points we account for to turn the view into lasting value.'
-      },
-      sections: [
-        {
-          heading: { ar: 'Ø§Ù„Ø¥Ø·Ù„Ø§Ù„Ø© Ù…Ù‚Ø§Ø¨Ù„ Ø§Ù„Ø®ØµÙˆØµÙŠØ©', en: 'View vs. privacy' },
-          body: {
-            ar: 'Ø§Ù„Ø§Ù†ÙØªØ§Ø­ Ø¹Ù„Ù‰ Ø§Ù„Ø¨Ø­Ø± Ù…Ø·Ù„ÙˆØ¨ØŒ Ù„ÙƒÙ† Ø¯ÙˆÙ† ÙƒØ´Ù Ø§Ù„Ø¹Ø§Ø¦Ù„Ø© Ù„Ù„Ø¬ÙŠØ±Ø§Ù† ÙˆØ§Ù„Ø·Ø±ÙŠÙ‚. Ø§Ù„Ø­Ù„ ÙÙŠ Ø§Ù„ØªÙˆØ¬ÙŠÙ‡ ÙˆØªØ¯Ø±Ù‘Ø¬ Ø§Ù„Ø´Ø±ÙØ§Øª ÙˆØ§Ù„Ø³ØªØ§Ø¦Ø± Ø§Ù„Ù…Ø¹Ù…Ø§Ø±ÙŠØ©.',
-            en: 'Opening to the sea is desirable, but without exposing the family to neighbours and the street. The answer is orientation, layered terraces and architectural screens.'
-          }
-        },
-        {
-          heading: { ar: 'Ø§Ù„Ù…Ù†Ø§Ø® Ø§Ù„Ø³Ø§Ø­Ù„ÙŠ', en: 'The coastal climate' },
-          body: {
-            ar: 'Ø§Ù„Ù…Ù„ÙˆØ­Ø© ÙˆØ§Ù„Ø±Ø·ÙˆØ¨Ø© ÙˆØ§Ù„Ø±ÙŠØ§Ø­ ØªØªØ·Ù„Ø¨ Ù…ÙˆØ§Ø¯ ÙˆØªÙØ§ØµÙŠÙ„ Ù…Ù‚Ø§ÙˆÙ…Ø©ØŒ ÙˆØªØ¸Ù„ÙŠÙ„Ø§Ù‹ ÙŠØ­Ù…ÙŠ Ù…Ù† Ø´Ù…Ø³ Ù…Ù†Ø¹ÙƒØ³Ø© Ø¹Ù„Ù‰ Ø§Ù„Ù…Ø§Ø¡.',
-            en: 'Salt, humidity and wind demand resistant materials and detailing, and shading that protects from sun reflected off the water.'
-          }
-        },
-        {
-          heading: { ar: 'Ø§Ù„Ø­ÙŠØ§Ø© Ø§Ù„Ø®Ø§Ø±Ø¬ÙŠØ©', en: 'Outdoor living' },
-          body: {
-            ar: 'Ù…Ø³Ø¨Ø­ Ø¨Ø¥Ø·Ù„Ø§Ù„Ø©ØŒ Ø¬Ù„Ø³Ø§Øª Ù…Ø¸Ù„Ù„Ø©ØŒ ÙˆØ³Ø·Ø­ Ù…Ø¹ÙŠØ´Ø© â€” Ù‚ÙŠÙ…Ø© Ø£Ø±Ø¶ Ø£Ø¨Ø­Ø± ÙÙŠ Ø®Ø§Ø±Ø¬Ù‡Ø§ Ø¨Ù‚Ø¯Ø± Ø¯Ø§Ø®Ù„Ù‡Ø§.',
-            en: 'A view-facing pool, shaded seating and a rooftop â€” the value of an Obhur plot is in its exterior as much as its interior.'
-          }
-        }
-      ],
-      related: ['obhur-villa-design', 'luxury-villa-design-jeddah']
-    }
-  ]
-};
+        title: { ar: 'Ù…ÙƒØ§Ù„Ù…Ø© Ù…×®:ŞÚ$z{-®éÜj×Vã¢tâ–çFW&æÂ6÷W'G–&B'&–æw2Æ–v‡BæB—"FVW–çFòF†R†öÖR–âgVÆÂ&—f7’ÂæBÆö6Â7FöæRF–W2F†Rf–ÆÆFò—G2w&÷VæBv†–ÆRFV×W&–ær—G26Æ–ÖFRâpĞ¢ĞĞ¢ĞĞ¢ÒÀĞ¢6W'f–6UG—S¢t†–¦¦’f–ÆÆFW6–vârÀĞ¢f¢°Ğ¢°Ğ¢¢²#¢}˜]ŠrŠ}˜M˜‹˜"Š˜­˜bŠ}˜MŠİŠÍŠ}‹-˜¢Š}˜MŠİŠı˜­Š²˜Š}˜MŠ­‹Š}Š½˜­‰òrÂVã¢uv†N(	—2F†RF–ffW&Væ6R&WGvVVâÖöFW&â†–¦¦’æBG&F—F–öæÃòrÒÀĞ¢¢²#¢}˜mŠ=Ší‹˜]ŠŠ}ŠıŠbŠ}˜MŠİŠÍŠ}‹-˜¢Š}˜MŠí‹]˜‹]˜­ŠˆÂŠ}˜MŠ­‹˜M˜­˜MˆÂŠ}˜M˜˜mŠ}Š’˜˜m‹Š™‹‹˜m˜}ŠrŠŠí‹}˜‹r˜˜]˜Š}ŠòŠİŠı˜­Š½ŠˆÂ˜MŠrŠ‹-Ší‹˜Š’˜]˜m‹=˜ŠíŠ’ârÂVã¢uvRF¶R†–¦¦’&–æ6—ÆW2‡&—f7’Â6†F–ærÂF†R6÷W'G–&B’æBW‡&W72F†VÒ–âÖöFW&âÆ–æW2æBÖFW&–Ç2Âæ÷B6÷–VB÷&æÖVçBârĞĞ¢ÒÀĞ¢°Ğ¢¢²#¢}˜}˜BŠ­‹]˜]˜]˜˜b˜Š}ŠÍ˜}Š}Š¢˜˜M˜BŠ‹}Š}Š‹’ŠİŠÍŠ}‹-˜¢ŠİŠı˜­Š½‰òrÂVã¢tFò–÷RFW6–vâf–ÆÆf:vFW2v—F‚ÖöFW&â†–¦¦’6†&7FW#òrÒÀĞ¢¢²#¢}˜m‹˜R(	BŠ}˜M˜Š}ŠÍ˜}Š’Š}˜MŠİŠÍŠ}‹-˜­Š’Š}˜MŠİŠı˜­Š½Š’˜]˜bŠ=˜=Š½‹˜]Šr˜­˜]˜­™‹"Š=‹˜]Š}˜M˜mŠs¢ŠİŠÍ‹ˆÂ‹˜‹MŠ}˜b˜]‹Š}‹]‹ˆÂ˜Š­Šı‹™ŠÂ˜M˜M‹˜BârÂVã¢u–W2(	BF†RÖöFW&â†–¦¦’f:vFR—2ÖöærF†RÖ÷7BF—7F–æ7F—fR'G2öb÷W"v÷&³¢7FöæRÂ6öçFV×÷&'’&w6†âæBÆ–W&VB6†FRârĞĞ¢ÒÀĞ¢°Ğ¢¢²#¢}˜}˜B˜­˜mŠ}‹=Š‚˜}‹ŠrŠ}˜M‹}Š}Š‹’Š}˜MŠ=Šİ˜­Š}ŠŠ}˜MŠİŠı˜­Š½Š’˜˜¢ŠÍŠıŠ‰òrÂVã¢tFöW2F†—26†&7FW"7V—B¦VFF(	—2ÖöFW&âF—7G&–7G3òrÒÀĞ¢¢²#¢}Š­˜]Š}˜]Š}˜²(	B˜­˜]˜mŠÒŠ}˜M˜˜­˜MŠrŠ­˜]˜­™‹-Š}˜²˜˜}˜˜­Š’Š˜­˜bŠ}˜M˜˜M˜BŠ}˜M˜]Š­‹MŠ}Š˜}ŠˆÂ˜]‹’Š=ŠıŠ}Š˜]˜mŠ}Ší˜¢Š=˜‹m˜BârÂVã¢uW&fV7FÇ’(	B—Bv—fW2F†Rf–ÆÆF—7F–æ7F–öâæB–FVçF—G’ÖöærÆöö²ÖÆ–¶R†÷W6W2Âv—F‚&WGFW"6Æ–ÖFRW&f÷&Öæ6RârĞĞ¢ĞĞ¢ÒÀĞ¢&VÆFVC¢²wf–ÆÆÖFW6–vâÖ¦VFF‚rÂvÇW‡W'’×f–ÆÆÖFW6–vâÖ¦VFF‚rÂvÖöFW&â×f–ÆÆÖFW6–vâÖ¦VFF‚rÂvö&‡W"×f–ÆÆÖFW6–vâuÒÀĞ¢&VÆFVE&ö¦V7G3¢²vÖöçF6†—&’×f–ÆÆrÂw7FöæRÖÖ¦Æ—2uÒÀĞ¢–ÖvS¢²7&3¢rö76WG2÷&ö¦V7G2öÖöçF6†—&’×f–ÆÆö6÷fW"çvV'rÂs¢S3bÂƒ¢“cÂÇC¢²#¢}˜Š}ŠÍ˜}Š’˜˜­˜MŠrŠİŠÍŠ}‹-˜­Š’ŠİŠı˜­Š½Š’ŠŠ}˜MŠİŠÍ‹˜˜¢ŠÍŠıŠ’rÂVã¢tÖöFW&â†–¦¦’f–ÆÆf:vFR–â7FöæRÂ¦VFF‚rÒĞĞ¢ĞĞ¢ÒÀĞ Ğ¢òò)H)H¦÷W&æÂ…4TòwV–FW2f÷"&RÖ†—&R6V&6†W2’)H)H Ğ¢¦÷W&æÄÖWF¢°Ğ¢6VõF—FÆS¢²#¢}Š}˜M˜]Šı˜™˜mŠ’ÂŠ=Šı˜MŠ’Š­‹]˜]˜­˜RŠ}˜M˜˜M˜B˜˜¢ŠÍŠıŠ’(	Bt"7GVF–òrÂVã¢t¦÷W&æÂÂf–ÆÆFW6–vâwV–FW2f÷"¦VFF‚(	Bt"7GVF–òrÒÀĞ¢6VôFW63¢°Ğ¢#¢}Š=Šı˜MŠ’‹˜]˜M˜­Š’˜MŠ=‹]ŠİŠ}Š‚Š}˜MŠ=‹Š}‹m˜¢˜-Š˜BŠ­‹]˜]˜­˜R˜˜­˜MŠr˜˜¢ŠÍŠıŠ“¢Š}˜MŠ­˜=˜M˜ŠˆÂŠ}˜MŠ}‹=Š­‹ŠıŠ}ŠıˆÂŠ}˜M˜‹˜"Š˜­˜bŠ}˜MŠ­‹]˜‹˜Š}˜MŠ­˜m˜˜­‹ˆÂ˜Š}‹Š­ŠŠ}‹Š}Š¢Š=ŠŠİ‹Š}˜M‹=Š}Šİ˜M˜­Š’ârÀĞ¢Vã¢u&7F–6ÂwV–FW2f÷"ÆæF÷væW'2&Vf÷&RFW6–væ–ærf–ÆÆ–â¦VFFƒ¢6÷7BÂ&W&F–öâÂ6öæ6WBg2âW†V7WF–öâG&v–æw2ÂæBö&‡W"6ö7FÂ6öç6–FW&F–öç2âpĞ¢ÒÀĞ¢ƒ¢²#¢}Š}˜M˜]Šı˜™˜mŠ’rÂVã¢t¦÷W&æÂrÒÀĞ¢–çG&ó¢°Ğ¢#¢}Š=Šı˜MŠ’˜-‹]˜­‹Š’˜‹]Š}Šı˜-Š’˜M˜]˜b˜­˜˜=™‹˜˜¢Š˜mŠ}Š˜˜­˜MŠrŠíŠ}‹]Š’˜˜¢ŠÍŠıŠ’(	B˜MŠ­Š­™Ší‹˜-‹Š}‹Š}Š¢Š=˜‹mŠÒ˜-Š˜BŠ=˜bŠ­ŠŠıŠ2ârÀĞ¢Vã¢u6†÷'BÂ†öæW7BwV–FW2f÷"ç–öæR6öç6–FW&–ær'V–ÆF–ær&—fFRf–ÆÆ–â¦VFF‚(	BFò†VÇ–÷RÖ¶R6ÆV&W"FV6—6–öç2&Vf÷&R–÷R7F'BâpĞ¢ÒÀĞ¢&VDÖ÷&S¢²#¢}Š}˜-‹Š2Š}˜MŠı˜M˜­˜BrÂVã¢u&VBF†RwV–FRrÒÀĞ¢&6µFô¦÷W&æÃ¢²#¢}Š}˜M˜]Šı˜™˜mŠ’rÂVã¢t¦÷W&æÂrÒÀĞ¢&VÆFVEF—FÆS¢²#¢}ŠíŠı˜]Š}Š¢‹Š}Š¢‹]˜MŠ’rÂVã¢u&VÆFVB6W'f–6W2rĞĞ¢ÒÀĞ Ğ¢¦÷W&æÃ¢°Ğ¢°Ğ¢6ÇVs¢wf–ÆÆÖFW6–vâÖ6÷7BÖ¦VFF‚rÀĞ¢FFS¢s##bÓRÓ#rÀĞ¢F—FÆS¢²#¢}˜=˜RŠ­˜=˜M˜Š’Š­‹]˜]˜­˜R˜˜­˜MŠr˜˜¢ŠÍŠıŠ‰òŠı˜M˜­˜B‹˜]˜M˜¢(	Bt"7GVF–òrÂVã¢t†÷r×V6‚FöW2f–ÆÆFW6–vâ6÷7B–â¦VFFƒò&7F–6ÂwV–FR(	Bt"7GVF–òrÒÀĞ¢FW63¢°Ğ¢#¢}˜]ŠrŠ}˜M‹˜¢˜­ŠİŠı™ŠòŠ­˜=˜M˜Š’Š­‹]˜]˜­˜R˜˜­˜MŠrŠíŠ}‹]Š’˜˜¢ŠÍŠıŠˆÂ˜˜=˜­˜Š­Ší‹}™‹r˜M˜]˜­‹-Š}˜m˜­Š’Š}˜MŠ­‹]˜]˜­˜RŠ˜‹m˜ŠÒ˜-Š˜BŠ=˜bŠ­ŠŠıŠ2ârÀĞ¢Vã¢uv†BFWFW&Ö–æW2F†R6÷7BöbFW6–væ–ær&—fFRf–ÆÆ–â¦VFF‚ÂæB†÷rFòÆâ–÷W"FW6–vâ'VFvWB6ÆV&Ç’&Vf÷&R–÷R7F'BâpĞ¢ÒÀĞ¢ƒ¢²#¢}˜=˜RŠ­˜=˜M˜Š’Š­‹]˜]˜­˜R˜˜­˜MŠr˜˜¢ŠÍŠıŠ‰òrÂVã¢t†÷r×V6‚FöW2f–ÆÆFW6–vâ6÷7B–â¦VFFƒòrÒÀĞ¢–çG&ó¢°Ğ¢#¢}‹=ŠMŠ}˜B˜­‹}‹Šİ˜r˜=˜B‹]Š}ŠİŠ‚Š=‹‹mˆÂ˜Š}˜MŠ]ŠÍŠ}ŠŠ’Š}˜M‹]Š}Šı˜-Š“¢*½Šİ‹=ŠŒ+²â˜M˜=˜b˜}˜mŠ}˜2‹˜Š}˜]˜B˜Š}‹mŠİŠ’Š­ŠİŠı™ŠòŠ}˜MŠ­˜=˜M˜ŠˆÂ˜˜˜}˜]˜}Šr˜­‹=Š}‹Šı˜2‹˜M˜’Š}˜MŠ­Ší‹}˜­‹rŠŠ½˜-Š’ârÀĞ¢Vã¢t—N(	—2F†Rf—'7BVW7F–öâWfW'’ÆæF÷væW"6·2ÂæBF†R†öæW7Bç7vW"—2(	Æ—BFWVæG2î(	Ò'WB6ÆV"f7F÷'2G&—fRF†R6÷7BÂæBVæFW'7FæF–ærF†VÒ†VÇ2–÷RÆâv—F‚6öæf–FVæ6RâpĞ¢ÒÀĞ¢6V7F–öç3¢°Ğ¢°Ğ¢†VF–æs¢²#¢}˜]ŠrŠ}˜M‹˜¢˜­ŠİŠı™ŠòŠ}˜MŠ­˜=˜M˜Š’rÂVã¢uv†BG&—fW2F†R6÷7BrÒÀĞ¢&öG“¢°Ğ¢#¢}˜]‹=Š}ŠİŠ’Š}˜MŠ=‹‹b˜Š}˜MŠ˜mŠ}ŠˆÂŠ­‹˜-˜­ŠòŠ}˜MŠ­‹]˜]˜­˜]ˆÂ˜m‹}Š}˜"Š}˜M˜]Ší‹ŠÍŠ}Š¢˜˜=‹Š’˜˜-‹rŠ=˜RŠİ‹-˜]Š’Š­˜m˜˜­‹˜=Š}˜]˜MŠ’ˆÂ˜˜]‹=Š­˜˜’Š}˜MŠ­˜m‹=˜­˜"Š}˜M˜}˜mŠı‹=˜¢â˜=˜M˜]Šr‹-Š}ŠòŠ}˜M˜m‹}Š}˜"˜Š}˜MŠ­˜‹]˜­˜MˆÂ‹-Š}ŠıŠ¢Š}˜M˜-˜­˜]Š’˜Š}˜MŠ­˜=˜M˜Š’ârÀĞ¢Vã¢uÆ÷BæB'V–ÇB×W&VÂFW6–vâ6ö×ÆW†—G’ÂF†R66÷RöbFVÆ—fW&&ÆW2†6öæ6WBöæÇ’g2âgVÆÂ6öç7G'V7F–öâ6¶vR’ÂæBF†RÆWfVÂöbVæv–æVW&–ær6ö÷&F–æF–öââF†Rw&VFW"F†R66÷RæBFWF–ÂÂF†Rw&VFW"F†RfÇVR(	BæBF†R6÷7BâpĞ¢ĞĞ¢ÒÀĞ¢°Ğ¢†VF–æs¢²#¢}‹‹=˜˜RŠ}˜MŠ­‹]˜]˜­˜R˜]˜-Š}Š˜BŠ­˜=˜M˜Š’Š}˜MŠ˜mŠ}ŠrÂVã¢tFW6–vâfVW2g2â6öç7G'V7F–öâ6÷7BrÒÀĞ¢&öG“¢°Ğ¢#¢}‹‹=˜˜RŠ}˜MŠ­‹]˜]˜­˜RŠÍ‹-Š‹]‹­˜­‹˜]˜b˜]˜­‹-Š}˜m˜­Š’Š}˜M˜]‹M‹˜‹’Š}˜M˜=˜M˜­ŠˆÂ˜M˜=˜m˜}ŠrŠ}˜MŠ=˜=Š½‹Š­Š=Š½˜­‹Š}˜²‹˜M˜’Š}˜M˜mŠ­˜­ŠÍŠ’âŠ­‹]˜]˜­˜RŠÍ˜­Šò˜­˜˜™‹Š=‹m‹Š}˜˜r˜˜¢Š}˜MŠ­˜m˜˜­‹ŠŠ­˜-˜M˜­˜BŠ}˜MŠ=Ší‹}Š}Š˜Š}˜M˜}Šı‹ârÀĞ¢Vã¢tFW6–vâfVW2&R6ÖÆÂ'BöbF†RF÷FÂ&ö¦V7B'VFvWBÂ'WBF†RÖ÷7B–æfÇVVçF–ÂöâF†R÷WF6öÖRâvööBFW6–vâ6fW2Öç’F–ÖW2—G26÷7B–â6öç7G'V7F–öâ'’&VGV6–ærW'&÷'2æBv7FRâpĞ¢ĞĞ¢ÒÀĞ¢°Ğ¢†VF–æs¢²#¢}˜=˜­˜˜m˜‹mŠÒŠ}˜MŠ­˜=˜M˜Š’rÂVã¢t†÷rvR6Æ&–g’6÷7BrÒÀĞ¢&öG“¢°Ğ¢#¢}˜mŠŠıŠ2Š˜]˜=Š}˜M˜]Š’˜]ŠÍŠ}˜m˜­Š’˜Š­‹]˜‹˜]ŠŠıŠm˜¢˜]ŠÍŠ}˜m˜­ˆÂŠ½˜R˜m˜‹mŠÒ˜m‹}Š}˜"Š}˜M‹˜]˜B˜Š}˜M‹‹=˜˜RŠŠ}˜M˜=Š}˜]˜B˜-Š˜BŠ=˜¢Š}Š­˜Š}˜"˜]Šı˜˜‹’(	BŠ˜MŠr˜]˜Š}ŠÍŠ-Š¢ârÀĞ¢Vã¢uvR7F'Bv—F‚g&VR6ÆÂæBg&VR&VÆ–Ö–æ'’6öæ6WBÂF†Vâ6Æ&–g’F†R66÷RæBfVW2gVÆÇ’&Vf÷&Rç’–Bw&VVÖVçB(	Bæò7W'&—6W2âpĞ¢ĞĞ¢ĞĞ¢ÒÀĞ¢&VÆFVC¢²wf–ÆÆÖFW6–vâÖ¦VFF‚rÂvÇW‡W'’×f–ÆÆÖFW6–vâÖ¦VFF‚uĞĞ¢ÒÀĞ¢°Ğ¢6ÇVs¢v&Vf÷&RÖFW6–væ–ær×&—fFR×f–ÆÆrÀĞ¢FFS¢s##bÓBÓ#‚rÀĞ¢F—FÆS¢²#¢}˜]ŠrŠ}˜M‹˜¢Š­ŠÍ˜}™‹-˜r˜-Š˜BŠ­‹]˜]˜­˜R˜˜­˜MŠ­˜2Š}˜MŠíŠ}‹]Š’(	Bt"7GVF–òrÂVã¢uv†BFò&W&R&Vf÷&RFW6–væ–ær–÷W"&—fFRf–ÆÆ(	Bt"7GVF–òrÒÀĞ¢FW63¢°Ğ¢#¢}˜-Š}Šm˜]Š’‹˜]˜M˜­Š’Š˜]ŠrŠ­ŠİŠ­Š}ŠÂŠ­ŠÍ˜}˜­‹-˜r(	B‹]˜2Š}˜MŠ=‹‹mˆÂŠ}˜MŠ}ŠİŠ­˜­Š}ŠÍŠ}Š­ˆÂŠ}˜M˜]˜­‹-Š}˜m˜­ŠˆÂ˜Š}˜M˜]‹Š}ŠÍ‹’(	B˜-Š˜BŠŠıŠŠ­‹]˜]˜­˜R˜˜­˜MŠ­˜2˜˜¢ŠÍŠıŠ’ârÀĞ¢Vã¢t&7F–6Â6†V6¶Æ—7Böbv†BFò&W&R(	B–÷W"FVVBÂæVVG2Â'VFvWBæB&VfW&Væ6W2(	B&Vf÷&R7F'F–ær–÷W"f–ÆÆFW6–vâ–â¦VFF‚âpĞ¢ÒÀĞ¢ƒ¢²#¢}˜]ŠrŠ}˜M‹˜¢Š­ŠÍ˜}™‹-˜r˜-Š˜BŠ­‹]˜]˜­˜R˜˜­˜MŠ­˜2rÂVã¢uv†BFò&W&R&Vf÷&RFW6–væ–ær–÷W"f–ÆÆrÒÀĞ¢–çG&ó¢°Ğ¢#¢}˜=˜M˜]Šr˜‹mŠİŠ¢‹ŠM˜­Š­˜2˜Š=˜‹Š}˜-˜2˜]˜bŠ}˜MŠŠıŠ}˜­ŠˆÂ˜=Š}˜bŠ}˜MŠ­‹]˜]˜­˜RŠ=‹=‹‹’˜Š=Šı˜"âŠ]˜M˜­˜2˜]Šr˜m‹}˜MŠ˜r‹Š}ŠıŠ˜²˜-Š˜BŠ}˜MŠí‹}˜Š’Š}˜MŠ=˜˜M˜’ârÀĞ¢Vã¢uF†R6ÆV&W"–÷W"f—6–öâæBW'v÷&²g&öÒF†R7F'BÂF†Rf7FW"æBÖ÷&R67W&FRF†RFW6–vââ†W&^(	—2v†BvRW7VÆÇ’6²f÷"&Vf÷&RF†Rf—'7B7FWâpĞ¢ÒÀĞ¢6V7F–öç3¢°Ğ¢°Ğ¢†VF–æs¢²#¢}Š=˜‹Š}˜"Š}˜MŠ=‹‹brÂVã¢uF†RÆ÷BFö7VÖVçG2rÒÀĞ¢&öG“¢°Ğ¢#¢}‹]˜2Š}˜MŠ=‹‹mˆÂŠ}˜M˜=‹˜˜=˜¢ıŠ}˜M˜]Ší‹}‹}ˆÂ˜˜]‹=Š}ŠİŠ’˜Š=Š‹Š}ŠòŠ}˜MŠ=‹‹b˜Š}Š­ŠÍŠ}˜}˜}Šr(	BŠ­ŠİŠı™Šò˜]Šr˜­˜]˜=˜bŠ˜mŠ}ŠM˜r˜˜=˜­˜Š­˜ŠÍ˜í™˜rŠ}˜M˜˜­˜MŠrârÀĞ¢Vã¢uF†RFVVBÂF†R6—FRÆâö7&÷V—2ÂæBF†RÆ÷N(	—2&VÂF–ÖVç6–öç2æB÷&–VçFF–öâ(	BF†W6RFVf–æRv†B6â&R'V–ÇBæB†÷rF†Rf–ÆÆ—2÷&–VçFVBâpĞ¢ĞĞ¢ÒÀĞ¢°Ğ¢†VF–æs¢²#¢}Š}ŠİŠ­˜­Š}ŠÍŠ}Š¢Š}˜M‹Š}Šm˜MŠ’rÂVã¢u–÷W"fÖ–Ç(	—2æVVG2rÒÀĞ¢&öG“¢°Ğ¢#¢}‹ŠıŠòŠ}˜M‹­‹˜ˆÂ˜‹Š}‹­Š}Š¢Š}˜M‹m˜­Š}˜ŠˆÂŠí‹]˜‹]˜­Š’Š}˜M˜m‹=Š}ŠˆÂŠ}ŠİŠ­˜­Š}ŠÍŠ}Š¢Š}˜M‹=Š}Šm˜"˜Š}˜MŠíŠı˜]ˆÂ˜Š}˜M˜]‹=Š­˜-Š˜BŠ­˜‹=™‹ˆÂŠ=‹}˜Š}˜B’â˜=˜M˜]Šr‹]Šı˜-Š¢Š}˜M˜-Š}Šm˜]ŠˆÂ˜mŠÍŠÒŠ}˜MŠ­‹]˜]˜­˜RârÀĞ¢Vã¢tçVÖ&W"öb&öö×2Â†÷7—FÆ—G’76W2ÂvöÖVî(	—2&—f7’ÂG&—fW"æB7FfbæVVG2ÂæBF†RgWGW&R†W‡ç6–öâÂ6†–ÆG&Vâ’âF†RÖ÷&R†öæW7BF†RÆ—7BÂF†R&WGFW"F†RFW6–vââpĞ¢ĞĞ¢ÒÀĞ¢°Ğ¢†VF–æs¢²#¢}Š}˜M˜]˜­‹-Š}˜m˜­Š’˜Š}˜M˜]‹Š}ŠÍ‹’rÂVã¢t'VFvWBæB&VfW&Væ6W2rÒÀĞ¢&öG“¢°Ğ¢#¢}˜m‹}Š}˜"˜]˜­‹-Š}˜m˜­Š’˜Š}˜-‹˜¢˜‹]˜‹˜M˜]‹MŠ}‹˜­‹’Š­‹ŠÍŠ˜2(	B˜MŠr˜M˜m˜m‹=Ší˜}Š}ˆÂŠ˜B˜M˜m˜˜}˜R‹˜˜-˜2ŠŠı˜-Š’ârÀĞ¢Vã¢t&VÆ—7F–2'VFvWB&ævRæB–ÖvW2öb&ö¦V7G2–÷RÆ–¶R(	Bæ÷BFò6÷’Â'WBFòVæFW'7FæB–÷W"F7FR&V6—6VÇ’âpĞ¢ĞĞ¢ĞĞ¢ÒÀĞ¢&VÆFVC¢²wf–ÆÆÖFW6–vâÖ¦VFF‚rÂvÖöFW&â×f–ÆÆÖFW6–vâÖ¦VFF‚uĞĞ¢ÒÀĞ¢°Ğ¢6ÇVs¢v6öæ6WBÖFW6–vâ×g2ÖW†V7WF–öâÖG&v–æw2rÀĞ¢FFS¢s##bÓBÓrÀĞ¢F—FÆS¢²#¢}Š}˜MŠ­‹]˜‹Š}˜M˜]ŠŠıŠm˜¢˜]˜-Š}Š˜B˜]Ší‹}‹}Š}Š¢Š}˜MŠ­˜m˜˜­‹¢Š}˜M˜‹˜"(	Bt"7GVF–òrÂVã¢t6öæ6WBFW6–vâg2âW†V7WF–öâG&v–æw3¢F†RF–ffW&Væ6R(	Bt"7GVF–òrÒÀĞ¢FW63¢°Ğ¢#¢}˜]ŠrŠ}˜M˜‹˜"Š˜­˜bŠ}˜MŠ­‹]˜‹Š}˜M˜]‹˜]Š}‹˜¢˜˜]Ší‹}‹}Š}Š¢Š}˜MŠ­˜m˜˜­‹„”d2ˆÂ˜˜M˜]Š}‹ŠrŠ­ŠİŠ­Š}ŠÂŠ}˜MŠ}Š½˜m˜­˜b˜MŠ˜mŠ}Š˜˜­˜MŠr˜mŠ}ŠÍŠİŠ’˜˜¢ŠÍŠıŠ’ârÀĞ¢Vã¢uF†RF–ffW&Væ6R&WGvVVâ&6†—FV7GW&Â6öæ6WBæBW†V7WF–öâ„”d2’G&v–æw2ÂæBv‡’–÷RæVVB&÷F‚Fò'V–ÆB7V66W76gVÂf–ÆÆ–â¦VFF‚âpĞ¢ÒÀĞ¢ƒ¢²#¢}Š}˜MŠ­‹]˜‹Š}˜M˜]ŠŠıŠm˜¢˜]˜-Š}Š˜B˜]Ší‹}‹}Š}Š¢Š}˜MŠ­˜m˜˜­‹rÂVã¢t6öæ6WBFW6–vâg2âW†V7WF–öâG&v–æw2rÒÀĞ¢–çG&ó¢°Ğ¢#¢}˜=Š½˜­‹˜]˜bŠ}˜M˜]‹MŠ}˜=˜B˜˜¢Š}˜M˜]˜˜-‹’Š­ŠŠıŠ2˜]˜bŠí˜M‹r˜}Š}Š­˜­˜bŠ}˜M˜]‹Šİ˜MŠ­˜­˜bâ˜˜}˜RŠ}˜M˜‹˜"˜­Šİ˜]˜­˜2˜]˜bŠ}˜MŠ­Š=Ší˜­‹˜Š}˜MŠ­˜=Š}˜M˜­˜Š}˜MŠ]‹mŠ}˜˜­Š’ârÀĞ¢Vã¢tÖç’&ö&ÆV×2öâ6—FR&Vv–âv—F‚6öægW6–ærF†W6RGvò7FvW2âVæFW'7FæF–ærF†RF–ffW&Væ6R&÷FV7G2–÷Rg&öÒFVÆ—2æBW‡G&6÷7G2âpĞ¢ÒÀĞ¢6V7F–öç3¢°Ğ¢°Ğ¢†VF–æs¢²#¢}Š}˜MŠ­‹]˜‹Š}˜M˜]‹˜]Š}‹˜¢rÂVã¢uF†R&6†—FV7GW&Â6öæ6WBrÒÀĞ¢&öG“¢°Ğ¢#¢}˜­ŠİŠı™ŠòŠ}˜M˜˜=‹Š’˜Š}˜M˜=Š­˜B˜Š}˜M˜‹Š}‹­Š}Š¢˜Š}˜MŠ=ŠÍ˜Š}Š(	BŠ}˜M‹ŠM˜­Š’â˜­ŠÍ˜­Š‚‹˜b*½˜=˜­˜‹=Š­ŠŠı˜‚Š}˜M˜˜­˜MŠr˜˜=˜­˜˜m‹˜­‹B˜˜­˜}Š|+²ârÀĞ¢Vã¢tFVf–æW2F†R–FVÂÖ76–ærÂ76W2æBFÖ÷7†W&R(	BF†Rf—6–öââ—Bç7vW'2(	Æ†÷rv–ÆÂF†Rf–ÆÆÆöö²æB†÷rv–ÆÂvRÆ—fR–â—Bî(	ÒpĞ¢ĞĞ¢ÒÀĞ¢°Ğ¢†VF–æs¢²#¢}˜]Ší‹}‹}Š}Š¢Š}˜MŠ­˜m˜˜­‹rÂVã¢tW†V7WF–öâG&v–æw2rÒÀĞ¢&öG“¢°Ğ¢#¢}Š­Š­‹ŠÍ˜RŠ}˜M‹ŠM˜­Š’Š]˜M˜’Š­˜Š}‹]˜­˜BŠı˜-˜­˜-Š’˜Š=Š‹Š}Šò˜˜]˜Š}‹]˜Š}Š¢˜˜]Ší‹}‹}Š}Š¢˜]˜m‹=™˜-Š’Š˜­˜bŠ}˜MŠ­Ší‹]‹]Š}Š¢(	B˜]Šr˜­Š˜m˜¢˜]˜m˜rŠ}˜M˜]˜-Š}˜˜B˜‹˜MŠ}˜²ârÀĞ¢Vã¢uG&ç6ÆFRF†Rf—6–öâ–çFò&V6—6RFWF–Ç2ÂF–ÖVç6–öç2Â7V6–f–6F–öç2æB6ö÷&F–æFVB×VÇF’ÖF—66—Æ–æRG&v–æw2(	Bv†BF†R6öçG&7F÷"7GVÆÇ’'V–ÆG2g&öÒâpĞ¢ĞĞ¢ÒÀĞ¢°Ğ¢†VF–æs¢²#¢}˜M˜]Š}‹ŠrŠ­ŠİŠ­Š}ŠÂŠ}˜MŠ}Š½˜m˜­˜brÂVã¢uv‡’–÷RæVVB&÷F‚rÒÀĞ¢&öG“¢°Ğ¢#¢}Š­‹]˜‹Š˜MŠrŠ­˜m˜˜­‹˜­Š˜-˜’Šİ˜M˜]Š}˜½ˆÂ˜Š­˜m˜˜­‹Š˜MŠrŠ­‹]˜‹˜-˜˜¢˜­Š˜m˜¢Š˜­Š­Š}˜²Š˜MŠr‹˜ŠÒâ˜m˜-˜ŠòŠ}˜M˜]‹M‹˜‹’‹Š‹Š}˜M˜]‹Šİ˜MŠ­˜­˜bŠŠ­˜m‹=˜­˜"$”Ò˜=Š}˜]˜BârÀĞ¢Vã¢t6öæ6WBv—F†÷WBW†V7WF–öâ7F—2G&VÓ²W†V7WF–öâv—F†÷WB7G&öær6öæ6WB'V–ÆG2†÷W6Rv—F†÷WB6÷VÂâvRÆVBF†R&ö¦V7BF‡&÷Vv‚&÷F‚Âv—F‚gVÆÂ$”Ò6ö÷&F–æF–öââpĞ¢ĞĞ¢ĞĞ¢ÒÀĞ¢&VÆFVC¢²wf–ÆÆÖFW6–vâÖ¦VFF‚rÂvÖöFW&â×f–ÆÆÖFW6–vâÖ¦VFF‚rÂwf–ÆÆ×&Væ÷fF–öâÖFW6–vâÖ¦VFF‚uĞĞ¢ÒÀĞ¢°Ğ¢6ÇVs¢vö&‡W"×f–ÆÆÖFW6–vâÖ6öç6–FW&F–öç2rÀĞ¢FFS¢s##bÓ2Ó#"rÀĞ¢F—FÆS¢²#¢}Š}‹Š­ŠŠ}‹Š}Š¢Š­‹]˜]˜­˜R˜˜M˜BŠ=ŠŠİ‹Š}˜M‹=Š}Šİ˜M˜­Š’(	Bt"7GVF–òrÂVã¢tö&‡W"6ö7FÂf–ÆÆFW6–vâ6öç6–FW&F–öç2(	Bt"7GVF–òrÒÀĞ¢FW63¢°Ğ¢#¢}˜]Šr˜­ŠÍŠ‚˜]‹Š}‹Š}Š­˜r‹˜mŠòŠ­‹]˜]˜­˜R˜˜­˜MŠr˜˜¢Š=ŠŠİ‹¢Š}˜MŠ]‹}˜MŠ}˜MŠˆÂŠ}˜MŠí‹]˜‹]˜­Š’Š}˜M‹=Š}Šİ˜M˜­ŠˆÂŠ}˜M˜]˜M˜ŠİŠ’˜Š}˜M‹˜­Š}ŠİˆÂ˜Š}˜MŠİ˜­Š}Š’Š}˜MŠíŠ}‹ŠÍ˜­Š’ârÀĞ¢Vã¢uv†BFò6öç6–FW"v†VâFW6–væ–ærf–ÆÆ–âö&‡W#¢F†Rf–WrÂ6ö7FÂ&—f7’Â6ÇBæBv–æBÂæB÷WFFö÷"Æ—f–ærâpĞ¢ÒÀĞ¢ƒ¢²#¢}Š}‹Š­ŠŠ}‹Š}Š¢Š­‹]˜]˜­˜R˜˜M˜BŠ=ŠŠİ‹rÂVã¢tö&‡W"6ö7FÂf–ÆÆFW6–vâ6öç6–FW&F–öç2rÒÀĞ¢–çG&ó¢°Ğ¢#¢}Š=‹‹bŠ=ŠŠİ‹˜‹‹]Š’Š½˜]˜­˜mŠ’˜Š­ŠİŠı˜İ™˜˜¢Š-˜m˜Òâ˜}‹˜rŠ=˜}˜RŠ}˜M˜m˜-Š}‹rŠ}˜MŠ­˜¢˜m‹Š}‹˜­˜}Šr˜M˜mŠİ˜™˜BŠ}˜MŠ]‹}˜MŠ}˜MŠ’Š]˜M˜’˜-˜­˜]Š’ŠıŠ}Šm˜]Š’ârÀĞ¢Vã¢tâö&‡W"Æ÷B—2&÷F‚&V6–÷W2÷÷'GVæ—G’æB6†ÆÆVævRâF†W6R&RF†R¶W’ö–çG2vR66÷VçBf÷"FòGW&âF†Rf–Wr–çFòÆ7F–ærfÇVRâpĞ¢ÒÀĞ¢6V7F–öç3¢°Ğ¢°Ğ¢†VF–æs¢²#¢}Š}˜MŠ]‹}˜MŠ}˜MŠ’˜]˜-Š}Š˜BŠ}˜MŠí‹]˜‹]˜­Š’rÂVã¢uf–Wrg2â&—f7’rÒÀĞ¢&öG“¢°Ğ¢#¢}Š}˜MŠ}˜m˜Š­Š}ŠÒ‹˜M˜’Š}˜MŠŠİ‹˜]‹}˜M˜ŠˆÂ˜M˜=˜bŠı˜˜b˜=‹M˜Š}˜M‹Š}Šm˜MŠ’˜M˜MŠÍ˜­‹Š}˜b˜Š}˜M‹}‹˜­˜"âŠ}˜MŠİ˜B˜˜¢Š}˜MŠ­˜ŠÍ˜­˜r˜Š­Šı‹™ŠÂŠ}˜M‹M‹˜Š}Š¢˜Š}˜M‹=Š­Š}Šm‹Š}˜M˜]‹˜]Š}‹˜­Š’ârÀĞ¢Vã¢t÷Væ–ærFòF†R6V—2FW6—&&ÆRÂ'WBv—F†÷WBW‡÷6–ærF†RfÖ–Ç’FòæV–v†&÷W'2æBF†R7G&VWBâF†Rç7vW"—2÷&–VçFF–öâÂÆ–W&VBFW'&6W2æB&6†—FV7GW&Â67&VVç2âpĞ¢ĞĞ¢ÒÀĞ¢°Ğ¢†VF–æs¢²#¢}Š}˜M˜]˜mŠ}ŠâŠ}˜M‹=Š}Šİ˜M˜¢rÂVã¢uF†R6ö7FÂ6Æ–ÖFRrÒÀĞ¢&öG“¢°Ğ¢#¢}Š}˜M˜]˜M˜ŠİŠ’˜Š}˜M‹‹}˜ŠŠ’˜Š}˜M‹˜­Š}ŠÒŠ­Š­‹}˜MŠ‚˜]˜Š}Šò˜Š­˜Š}‹]˜­˜B˜]˜-Š}˜˜]ŠˆÂ˜Š­‹˜M˜­˜MŠ}˜²˜­Šİ˜]˜¢˜]˜b‹M˜]‹2˜]˜m‹˜=‹=Š’‹˜M˜’Š}˜M˜]Š}ŠârÀĞ¢Vã¢u6ÇBÂ‡VÖ–F—G’æBv–æBFVÖæB&W6—7FçBÖFW&–Ç2æBFWF–Æ–ærÂæB6†F–ærF†B&÷FV7G2g&öÒ7Vâ&VfÆV7FVBöfbF†RvFW"âpĞ¢ĞĞ¢ÒÀĞ¢°Ğ¢†VF–æs¢²#¢}Š}˜MŠİ˜­Š}Š’Š}˜MŠíŠ}‹ŠÍ˜­Š’rÂVã¢t÷WFFö÷"Æ—f–ærrÒÀĞ¢&öG“¢°Ğ¢#¢}˜]‹=ŠŠÒŠŠ]‹}˜MŠ}˜MŠˆÂŠÍ˜M‹=Š}Š¢˜]‹˜M˜MŠˆÂ˜‹=‹}ŠÒ˜]‹˜­‹MŠ’(	B˜-˜­˜]Š’Š=‹‹bŠ=ŠŠİ‹˜˜¢ŠíŠ}‹ŠÍ˜}ŠrŠ˜-Šı‹ŠıŠ}Ší˜M˜}ŠrârÀĞ¢Vã¢tf–WrÖf6–ærööÂÂ6†FVB6VF–æræB&öögF÷(	BF†RfÇVRöbâö&‡W"Æ÷B—2–â—G2W‡FW&–÷"2×V6‚2—G2–çFW&–÷"âpĞ¢ĞĞ¢ĞĞ¢ÒÀĞ¢&VÆFVC¢²vö&‡W"×f–ÆÆÖFW6–vârÂvÇW‡W'’×f–ÆÆÖFW6–vâÖ¦VFF‚uĞĞ¢ĞĞ¢ĞĞ§Ó°Ğ
