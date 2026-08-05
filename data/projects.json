@@ -73,8 +73,8 @@
           "en": "The site study translates the slope into terraced levels that open and protect view corridors while bringing daylight deep into the homes. Arrival begins from the upper road; independent residential access and vehicle circulation are absorbed along the site edge, leaving the central landscape calm and legible."
         },
         {
-          "ar": "تشكّل المسابح والحدائق وملعب البادل ومسارات المشاة طبقة مشتركة للحياة الاجتماعية، تقابلها تراسات وحدائق خاصة ومسابح صغيرة تمنح الوحدات امتداداً خارجياً محمياً. ويصل الحجر والخشب والزجاج الواسع الفراغات الداخلية بضوء المتوسط ومشهد الساحل.",
-          "en": "Shared pools, gardens, a padel court and pedestrian paths form a social layer, balanced by private terraces, gardens and plunge pools that give the residences protected outdoor space. Stone, timber and broad glazing connect the interiors to Mediterranean light and the coastal landscape."
+          "ar": "تشكّل المسابح والحدائق وملاعب البادل ومسارات المشاة طبقة مشتركة للحياة الاجتماعية، تقابلها تراسات وحدائق خاصة ومسابح صغيرة تمنح الوحدات امتداداً خارجياً محمياً. وتصل الواجهات الزجاجية الواسعة مع الحجر والخشب الفراغات الداخلية بضوء المتوسط ومشهد الساحل.",
+          "en": "Shared pools, gardens, padel courts and pedestrian paths form a social layer, balanced by private terraces, gardens and plunge pools that give the residences protected outdoor space. Stone, timber and broad glazing connect the interiors to Mediterranean light and the coastal landscape."
         }
       ],
       "services": {
@@ -96,7 +96,7 @@
         {
           "src": "/assets/projects/byblos-resort/gallery-02.webp",
           "w": 2000, "h": 660,
-          "alt": { "ar": "منظور أكسونومتري يوضح تدرّج الوحدات على المنحدر وتوزيع المسبح والحدائق وملعب البادل", "en": "Axonometric view showing residences stepped down the slope with the shared pool, gardens and padel court" },
+          "alt": { "ar": "منظور أكسونومتري يوضح تدرّج الوحدات على المنحدر وتوزيع المسبح والحدائق وملاعب البادل", "en": "Axonometric view showing residences stepped down the slope with the shared pool, gardens and padel courts" },
           "caption": { "ar": "المخطط العام — تنظيم متدرّج يوازن المرافق المشتركة والخصوصية", "en": "Master plan — stepped organization balancing shared amenities and privacy" }
         },
         {
@@ -118,7 +118,7 @@
           "w": 1800, "h": 1125,
           "layout": "half",
           "alt": { "ar": "مساحة معيشة هادئة تنفتح بالكامل على تراس مزروع ومسبح صغير والبحر", "en": "Calm living space opening fully to a planted terrace, plunge pool and the sea" },
-          "caption": { "ar": "المعيشة — امتداد مباشر إلى التراس والبحر", "en": "Living space — a direct extension to terrace and sea" }
+          "caption": { "ar": "المعيشة — امتداد مباشر إلى التراس والبحر", "en": "Living space — a direct extension to the terrace and sea" }
         },
         {
           "src": "/assets/projects/byblos-resort/gallery-06.webp",

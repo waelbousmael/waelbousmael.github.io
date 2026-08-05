@@ -8,6 +8,58 @@ import site from '../data/site.mjs';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (relative) => fs.readFileSync(path.join(ROOT, relative), 'utf8');
 const has = (text, fragment, label) => assert.ok(text.includes(fragment), label);
+const webpDimensions = (relative, label) => {
+  const file = path.join(ROOT, relative.replace(/^\//, ''));
+  assert.ok(fs.existsSync(file), `${label} must exist`);
+  const buffer = fs.readFileSync(file);
+  assert.equal(buffer.toString('ascii', 0, 4), 'RIFF', `${label} must be a RIFF file`);
+  assert.equal(buffer.toString('ascii', 8, 12), 'WEBP', `${label} must be a WebP file`);
+
+  for (let offset = 12; offset + 8 <= buffer.length;) {
+    const chunk = buffer.toString('ascii', offset, offset + 4);
+    const size = buffer.readUInt32LE(offset + 4);
+    const data = offset + 8;
+    if (chunk === 'VP8 ' && data + 10 <= buffer.length) {
+      assert.equal(buffer.toString('hex', data + 3, data + 6), '9d012a', `${label} must contain a valid VP8 frame`);
+      return { width: buffer.readUInt16LE(data + 6) & 0x3fff, height: buffer.readUInt16LE(data + 8) & 0x3fff, bytes: buffer.length };
+    }
+    if (chunk === 'VP8L' && data + 5 <= buffer.length) {
+      assert.equal(buffer[data], 0x2f, `${label} must contain a valid VP8L frame`);
+      const b1 = buffer[data + 1];
+      const b2 = buffer[data + 2];
+      const b3 = buffer[data + 3];
+      const b4 = buffer[data + 4];
+      return {
+        width: 1 + b1 + ((b2 & 0x3f) << 8),
+        height: 1 + (b2 >> 6) + (b3 << 2) + ((b4 & 0x0f) << 10),
+        bytes: buffer.length
+      };
+    }
+    if (chunk === 'VP8X' && data + 10 <= buffer.length) {
+      return {
+        width: 1 + buffer.readUIntLE(data + 4, 3),
+        height: 1 + buffer.readUIntLE(data + 7, 3),
+        bytes: buffer.length
+      };
+    }
+    offset = data + size + (size % 2);
+  }
+  assert.fail(`${label} must contain a supported WebP image chunk`);
+};
+const assertProjectMedia = (project, label) => {
+  const media = [{ ...project.cover, kind: 'cover' }, ...project.gallery.map((image) => ({ ...image, kind: 'gallery' }))];
+  media.forEach((image, index) => {
+    const imageLabel = `${label} ${image.kind} image ${index + 1}`;
+    const dimensions = webpDimensions(image.src, imageLabel);
+    assert.deepEqual(
+      { width: dimensions.width, height: dimensions.height },
+      { width: image.w, height: image.h },
+      `${imageLabel} intrinsic dimensions must match portfolio data`
+    );
+    const byteLimit = image.kind === 'cover' ? 350 * 1024 : 300 * 1024;
+    assert.ok(dimensions.bytes <= byteLimit, `${imageLabel} must remain within its optimized file-size limit`);
+  });
+};
 const htmlEscape = (value) => String(value)
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
   .replaceAll('"', '&quot;');
@@ -856,6 +908,7 @@ byblosProject.gallery.forEach((image, index) => {
   assertPair(image.alt, `Byblos Resort gallery image ${index + 1} alt text`);
   assertPair(image.caption, `Byblos Resort gallery image ${index + 1} caption`);
 });
+assertProjectMedia(byblosProject, 'Byblos Resort');
 has(
   licenses,
   'Public crops remove the internal project/plot numbers, developer attribution, contact details, presentation borders, and watermarks.',
