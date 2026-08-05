@@ -821,6 +821,46 @@ const siteJs = read('assets/js/site.js');
 const contactJs = read('assets/js/contact.js');
 const buildSource = read('scripts/build.mjs');
 const sitemap = read('sitemap.xml');
+const licenses = read('assets/licenses/LICENSES.md');
+
+const byblosProject = projects.find((project) => project.slug === 'byblos-resort');
+assert.ok(byblosProject, 'Byblos Resort project must remain in portfolio data');
+assert.deepEqual(byblosProject.title, { ar: 'منتجع جبيل', en: 'Byblos Resort' }, 'Byblos Resort must retain its bilingual title');
+assert.deepEqual(byblosProject.location, { ar: 'جبيل، لبنان', en: 'Byblos, Lebanon' }, 'Byblos Resort must retain its bilingual location');
+assert.deepEqual(byblosProject.category, { ar: 'منتجعات', en: 'Hospitality' }, 'Byblos Resort must retain its bilingual category');
+assert.equal(byblosProject.year, 2026, 'Byblos Resort year must reflect the current design phase');
+assert.deepEqual(byblosProject.status, { ar: 'قيد التصميم', en: 'In design' }, 'Byblos Resort must remain described as in design');
+assert.deepEqual(byblosProject.services, {
+  ar: ['تحليل الموقع', 'المخطط العام للمنتجع', 'التخطيط المعماري والسكني', 'التوجه الداخلي', 'تصميم المناظر والمسابح'],
+  en: ['Site analysis', 'Resort master planning', 'Architectural & residential planning', 'Interior direction', 'Landscape & pool design']
+}, 'Byblos Resort must retain the approved bilingual service scope');
+assert.deepEqual(
+  { src: byblosProject.cover.src, w: byblosProject.cover.w, h: byblosProject.cover.h },
+  { src: '/assets/projects/byblos-resort/cover.webp', w: 1920, h: 1200 },
+  'Byblos Resort cover must retain its approved path and dimensions'
+);
+assertPair(byblosProject.cover.alt, 'Byblos Resort cover alt text');
+assert.deepEqual(
+  byblosProject.gallery.map(({ src, w, h, layout }) => ({ src, w, h, layout: layout ?? 'full' })),
+  [
+    { src: '/assets/projects/byblos-resort/gallery-01.webp', w: 2000, h: 813, layout: 'full' },
+    { src: '/assets/projects/byblos-resort/gallery-02.webp', w: 2000, h: 660, layout: 'full' },
+    { src: '/assets/projects/byblos-resort/gallery-03.webp', w: 1800, h: 1125, layout: 'half' },
+    { src: '/assets/projects/byblos-resort/gallery-04.webp', w: 1800, h: 1125, layout: 'half' },
+    { src: '/assets/projects/byblos-resort/gallery-05.webp', w: 1800, h: 1125, layout: 'half' },
+    { src: '/assets/projects/byblos-resort/gallery-06.webp', w: 1800, h: 1125, layout: 'half' }
+  ],
+  'Byblos Resort gallery must retain the approved image order, dimensions and layouts'
+);
+byblosProject.gallery.forEach((image, index) => {
+  assertPair(image.alt, `Byblos Resort gallery image ${index + 1} alt text`);
+  assertPair(image.caption, `Byblos Resort gallery image ${index + 1} caption`);
+});
+has(
+  licenses,
+  'Public crops remove the internal project/plot numbers, developer attribution, contact details, presentation borders, and watermarks.',
+  'Byblos Resort license entry must document removal of identifying presentation details'
+);
 
 const renovationProject = projects.find((project) => project.slug === 'private-villa-renovation-chouf');
 assert.ok(renovationProject, 'Private villa renovation project must remain in portfolio data');
