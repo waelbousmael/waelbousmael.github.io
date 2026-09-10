@@ -66,6 +66,7 @@ a { color: inherit; }
 
 /* ── layout primitives ── */
 .wrap { width: min(100%, var(--wrap-max)); margin-inline: auto; padding-inline: var(--pad); }
+.wrap.full-bleed { width: 100%; max-width: none; padding-inline: 0; }
 .narrow { max-width: 760px; margin-inline: auto; }
 .centered { text-align: center; }
 .measure { max-width: 62ch; }
@@ -336,11 +337,11 @@ html[lang="ar"] .mobile-links a { font-weight: 700; }
 .home-hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
-  align-items: end;
+  align-items: center;
   gap: clamp(2.5rem, 6vw, 6rem);
 }
 
-.home-hero-copy h1 { max-width: 13ch; }
+.home-hero-copy h1 { max-width: none; }
 html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
 .home-hero-copy .lead { max-width: 54ch; }
 .home-hero-copy .offer { max-width: 45ch; }
@@ -448,8 +449,7 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
   grid-template-columns: 1fr;
   gap: clamp(3.5rem, 7vw, 6rem);
   /* project photos run full-bleed, edge to edge */
-  width: 100vw;
-  margin-inline: calc(50% - 50vw);
+  width: 100%;
 }
 
 .project-card { display: block; text-decoration: none; color: inherit; }
@@ -551,7 +551,7 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
 .article-reading-column { max-width: 70ch; margin-inline: auto; }
 .article-reading-column p { line-height: 1.9; }
 
-.project-cover { margin: 0; width: 100vw; margin-inline: calc(50% - 50vw); }
+.project-cover { margin: 0; width: 100%; }
 .project-cover img { width: 100%; }
 .project-cover.fit-contain img {
   height: auto;
@@ -583,8 +583,7 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(2rem, 4vw, 3.5rem);
-  width: 100vw;
-  margin-inline: calc(50% - 50vw);
+  width: 100%;
 }
 .gallery figure { grid-column: 1 / -1; margin: 0; }
 .gallery figure.g-half { grid-column: auto; }
@@ -595,7 +594,11 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
   font-size: 0.82rem;
 }
 
-.gallery-note { margin-block-start: 1.5rem; }
+.gallery-note {
+  max-width: var(--wrap-max);
+  margin: 1.5rem auto 0;
+  padding-inline: var(--pad);
+}
 
 .work-credits { margin-block-start: clamp(2.5rem, 5vw, 4rem); font-size: 0.85rem; }
 
@@ -714,7 +717,7 @@ input, select {
   padding: 0.55rem 0;
   transition: border-color 0.25s var(--ease);
 }
-input::placeholder { color: var(--muted); opacity: 0.8; }
+input::placeholder { color: var(--ink-soft); opacity: 1; }
 input:focus-visible, select:focus-visible { outline: none; border-color: var(--ink); }
 
 select { appearance: none; cursor: pointer; }
@@ -796,6 +799,33 @@ form .btn-solid { justify-self: start; margin-block-start: 0.5rem; }
 }
 .footer-bottom-inner a { color: inherit; }
 
+/* ── related reading ── */
+.related-guide-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+}
+.related-guide-list li { border-block-end: 1px solid var(--line); }
+.related-guide-list a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+.related-guide-list a:hover { color: var(--ink); text-decoration: underline; }
+.related-guide-list span { flex: 0 0 auto; }
+
+/* Small text needs the existing darker ink token for readable contrast. */
+.eyebrow, .note, .lang-link, .card-meta, .tag, .crumb, .crumb a,
+.svc-more, .home-services-all, .footer-brand p, .footer-bottom-inner,
+.journal-editorial-list time, .details dt, .gallery figcaption,
+.footer-title, .contact-field-group legend, .form-helper, .step-num {
+  color: var(--ink-soft);
+}
+
 /* ── reveal animation ── */
 [data-reveal] {
   opacity: 0;
@@ -820,8 +850,8 @@ form .btn-solid { justify-self: start; margin-block-start: 0.5rem; }
   .home-hero-copy h1,
   html[lang="ar"] .home-hero-copy h1 { max-width: none; }
   .home-hero-media {
-    width: 100vw;
-    margin-inline: calc(50% - 50vw);
+    width: calc(100% + var(--pad) + var(--pad));
+    margin-inline: calc(0px - var(--pad));
   }
   .home-hero-media img { height: auto; aspect-ratio: 16 / 10; }
 

@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import site from '../data/site.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -19,7 +20,9 @@ const trackedGeneratedFiles = run('git', ['ls-files', '-z'])
   .filter((file) => file === 'index.html' || file.endsWith('/index.html') || file === 'sitemap.xml')
   .sort();
 
-assert.equal(trackedGeneratedFiles.length, 47, 'Expected 46 generated index pages plus sitemap.xml');
+const { projects } = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/projects.json'), 'utf8'));
+const expectedPages = 2 * (8 + projects.length + site.landings.length + site.journal.length);
+assert.equal(trackedGeneratedFiles.length, expectedPages + 1, 'Tracked generated output must match the bilingual site data and sitemap');
 
 const snapshot = () => trackedGeneratedFiles.map((file) => [
   file,

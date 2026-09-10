@@ -6,12 +6,12 @@
 export default {
   domain: 'https://wbstudio.xyz',
   brand: 'WB Studio',
+  author: { name: { ar: 'وائل بو سماعيل', en: 'Wael Bousmael' } },
 
   // ── Contact (do not change without the owner's approval — used in JSON-LD claims) ──
   phoneDisplay: '+966 53 806 0383',
   phoneE164: '+966538060383',
   email: 'w.bousmael@wbstudio.xyz',
-  gmailCompose: 'https://mail.google.com/mail/?view=cm&fs=1&to=w.bousmael@wbstudio.xyz',
   whatsappNumber: '966538060383',
   formAction: 'https://formsubmit.co/ajax/wael.bousmael@gmail.com',
   ogImage: 'https://wbstudio.xyz/assets/images/og.jpg',
@@ -75,8 +75,8 @@ export default {
       en: 'We design private villas and homes in Jeddah and the Gulf'
     },
     positioning: {
-      ar: 'استوديو معماري بوتيكي لعملاء الفلل الخاصة في جدة — تصميم حديث مدروس، وعينٌ دقيقة على الحجر والضوء والنسب، وفهمٌ عميق لطريقة عيش العائلات في جدة وعموم الخليج.',
-      en: 'A boutique architecture studio for private villa clients in Jeddah — refined modern design, a careful eye for stone, light and proportion, and a close understanding of how families live in Jeddah and across the Gulf.'
+      ar: 'تصميم معماري يقوده وائل بو سماعيل، يراعي خصوصية عائلتك وضوء البيت وتفاصيل الحياة اليومية — من الفكرة إلى مخططات التنفيذ.',
+      en: 'Architecture led by Wael Bousmael, shaped around your family’s privacy, daylight and daily life — from concept to construction drawings.'
     },
     ctaWhatsapp: { ar: 'احجز مكالمة مجانية عبر واتساب', en: 'Book a free call on WhatsApp' },
     ctaWork: { ar: 'شاهد الأعمال', en: 'View the work' },
@@ -551,8 +551,8 @@ export default {
       relatedProjects: ['private-villa-renovation-chouf'],
       image: {
         src: '/assets/projects/private-villa-renovation-chouf/cover.webp',
-        w: 1920,
-        h: 1199,
+        w: 1601,
+        h: 983,
         alt: { ar: 'تصور لتجديد فيلا حجرية بشرفات وتراسات جديدة', en: 'Visualization of a renovated stone villa with new balconies and terraces' }
       }
     },
@@ -607,7 +607,7 @@ export default {
       ],
       related: ['villa-design-jeddah', 'modern-villa-design-jeddah', 'obhur-villa-design', 'modern-hijazi-villa-design'],
       relatedProjects: ['byblos-resort', 'montashiri-villa'],
-      image: { src: '/assets/projects/byblos-resort/cover.webp', w: 1536, h: 826, alt: { ar: 'فراغ معيشة فاخر مزدوج الارتفاع بإطلالة', en: 'Luxurious double-height living space with a view' } }
+      image: { src: '/assets/projects/byblos-resort/cover.webp', w: 1920, h: 1200, alt: { ar: 'وحدات سكنية بكساء حجري تحيط بمسبح وحدائق في منتجع جبيل', en: 'Stone-clad residences surrounding a pool and gardens at Byblos Resort' } }
     },
     {
       slug: 'modern-villa-design-jeddah',
@@ -783,6 +783,8 @@ export default {
       en: 'Short, honest guides for anyone considering building a private villa in Jeddah — to help you make clearer decisions before you start.'
     },
     readMore: { ar: 'اقرأ الدليل', en: 'Read the guide' },
+    byline: { ar: 'بقلم', en: 'By' },
+    guidesTitle: { ar: 'أدلة تساعدك على البدء', en: 'Guides to help you get started' },
     backToJournal: { ar: 'المدوّنة', en: 'Journal' },
     relatedTitle: { ar: 'خدمات ذات صلة', en: 'Related services' }
   },
@@ -790,6 +792,7 @@ export default {
   journal: [
     {
       slug: 'villa-design-cost-jeddah',
+      imageProject: 'montashiri-villa',
       date: '2026-05-20',
       title: { ar: 'كم تكلفة تصميم فيلا في جدة؟ دليل عملي — WB Studio', en: 'How Much Does Villa Design Cost in Jeddah? A Practical Guide — WB Studio' },
       desc: {
@@ -828,6 +831,7 @@ export default {
     },
     {
       slug: 'before-designing-private-villa',
+      imageProject: 'montashiri-villa',
       date: '2026-04-28',
       title: { ar: 'ما الذي تجهّزه قبل تصميم فيلتك الخاصة — WB Studio', en: 'What to Prepare Before Designing Your Private Villa — WB Studio' },
       desc: {
@@ -866,6 +870,7 @@ export default {
     },
     {
       slug: 'concept-design-vs-execution-drawings',
+      imageProject: 'private-villa-renovation-chouf',
       date: '2026-04-10',
       title: { ar: 'التصور المبدئي مقابل مخططات التنفيذ: الفرق — WB Studio', en: 'Concept Design vs. Execution Drawings: The Difference — WB Studio' },
       desc: {
@@ -904,6 +909,7 @@ export default {
     },
     {
       slug: 'obhur-villa-design-considerations',
+      imageProject: 'montashiri-villa',
       date: '2026-03-22',
       title: { ar: 'اعتبارات تصميم فلل أبحر الساحلية — WB Studio', en: 'Obhur Coastal Villa Design Considerations — WB Studio' },
       desc: {

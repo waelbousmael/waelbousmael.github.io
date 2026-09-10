@@ -3,6 +3,7 @@
   "projects": [
     {
       "slug": "montashiri-villa",
+      "relatedGuides": ["obhur-villa-design-considerations", "before-designing-private-villa"],
       "featured": true,
       "placeholder": false,
       "year": 2025,
@@ -40,18 +41,19 @@
       "gallery": [
         {
           "src": "/assets/projects/montashiri-villa/gallery-01.webp",
-          "w": 1600, "h": 900,
+          "w": 1672, "h": 941,
           "alt": { "ar": "منظور أكسونومتري من الشارع يُظهر الكتل والبوابة والتراسات المزروعة", "en": "Street-corner axonometric showing the massing, gate and planted terraces" }
         },
         {
           "src": "/assets/projects/montashiri-villa/gallery-02.webp",
-          "w": 1600, "h": 900,
+          "w": 1448, "h": 1086,
           "alt": { "ar": "منظور علوي لسطح الفيلا يُظهر المسبح والبرجولات والزراعة", "en": "Aerial view of the villa roofscape with pool, pergolas and planting" }
         }
       ]
     },
     {
       "slug": "byblos-resort",
+      "relatedGuides": ["before-designing-private-villa"],
       "featured": true,
       "placeholder": false,
       "year": 2026,
@@ -131,6 +133,7 @@
     },
     {
       "slug": "private-villa-renovation-chouf",
+      "relatedGuides": ["concept-design-vs-execution-drawings"],
       "featured": true,
       "placeholder": false,
       "year": 2026,
@@ -271,14 +274,14 @@
       },
       "cover": {
         "src": "/assets/projects/coastal-villa/cover.webp",
-        "w": 2000, "h": 1250,
+        "w": 1448, "h": 1086,
         "alt": { "ar": "فيلا بيضاء حديثة بمسبح وشرفات مفتوحة على الحديقة", "en": "Modern white villa with a pool and terraces opening to the garden" },
         "sourceId": "photo-1613977257363-707ba9348227"
       },
       "gallery": [
         {
           "src": "/assets/projects/coastal-villa/gallery-01.webp",
-          "w": 1100, "h": 1375,
+          "w": 1122, "h": 1402,
           "alt": { "ar": "واجهة مثقّبة بيضاء تظلل شرفة المسبح وجدار خشبي دافئ", "en": "Perforated white screen shading the pool terrace beside a warm timber wall" },
           "sourceId": "photo-1600573472592-401b489a3cdc"
         },
@@ -290,7 +293,7 @@
         },
         {
           "src": "/assets/projects/coastal-villa/gallery-03.webp",
-          "w": 1600, "h": 1067,
+          "w": 1448, "h": 1086,
           "alt": { "ar": "كتلة بيضاء بسيطة للفيلا مع مسبح أزرق صافٍ", "en": "Simple white villa volumes beside a clear blue pool" },
           "sourceId": "photo-1600596542815-ffad4c1539a9"
         }
@@ -457,14 +460,14 @@
       },
       "cover": {
         "src": "/assets/projects/garden-house/cover.webp",
-        "w": 1800, "h": 1125,
+        "w": 1586, "h": 992,
         "alt": { "ar": "بيت بواجهة خشبية وداكنة خلف سور معدني هادئ", "en": "House with timber and dark cladding behind a quiet metal fence" },
         "sourceId": "photo-1600566753190-17f0baa2a6c3"
       },
       "gallery": [
         {
           "src": "/assets/projects/garden-house/gallery-01.webp",
-          "w": 1400, "h": 933,
+          "w": 1536, "h": 1024,
           "alt": { "ar": "بيت داكن مضاء عند الغسق تحت شجرة كبيرة وحديقة خضراء", "en": "Dark house glowing at dusk beneath a large tree and green lawn" },
           "sourceId": "photo-1600585154340-be6161a56a0c"
         },

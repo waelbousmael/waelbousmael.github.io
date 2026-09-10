@@ -53,6 +53,19 @@ node scripts/build.mjs        # regenerate all pages + sitemap
 python -m http.server 8123    # preview at http://localhost:8123
 ```
 
+After adding or replacing images, run `python scripts/prepare-images.py`
+(requires Pillow) before the build. It converts mislabeled or oversized WebP
+sources, corrects project dimensions without reformatting the JSON, and writes
+640px/960px derivatives plus `data/image-variants.json`. Correct any reported
+dimensions in `data/site.mjs`. Existing source images within budget remain
+unchanged; new variants preserve the source composition and never upscale.
+Commit the manifest and derivatives with the sources and generated HTML.
+
+Validation: `python scripts/verify-media.py`, `node scripts/verify-seo.mjs`,
+`node scripts/verify.mjs`, and `node scripts/check-reproducible-build.mjs`.
+The media preparation command is only needed when images change; the regular
+Node build remains dependency-free.
+
 Requires only Node ≥ 18. GitHub Pages serves the committed HTML as-is; run the
 build locally and commit the output.
 
@@ -64,7 +77,8 @@ build locally and commit the output.
    field needs both `ar` and `en`. Record real image `w`/`h` values.
 3. If the images are not yours, add them to `assets/licenses/LICENSES.md`;
    if they are yours, set `"placeholder": false`.
-4. `node scripts/build.mjs` → review → commit (including the generated HTML).
+4. `python scripts/prepare-images.py` → `node scripts/build.mjs` → review →
+   commit (including responsive images, their manifest, and generated HTML).
 
 ## Remove / reorder projects
 
@@ -76,7 +90,7 @@ projects with `"featured": true` (the first renders full-width).
 
 See `assets/projects/_incoming/README.md` — short version: drop your files in,
 swap paths in `data/projects.json`, set `placeholder: false`, update
-`LICENSES.md`, rebuild.
+`LICENSES.md`, run `python scripts/prepare-images.py`, then rebuild.
 
 ## Bilingual content rules
 

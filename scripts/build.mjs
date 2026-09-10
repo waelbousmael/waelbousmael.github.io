@@ -17,6 +17,13 @@ import site from '../data/site.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const projects = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'projects.json'), 'utf8')).projects;
+const imageVariants = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'image-variants.json'), 'utf8'));
+const IMAGE_SIZES = {
+  full: '(min-width: 1200px) 1120px, (min-width: 1000px) calc(100vw - 80px), calc(100vw - 8vw)',
+  half: '(max-width: 860px) calc(100vw - 2.5rem), (min-width: 1200px) 540px, 46vw',
+  hero: '(max-width: 860px) 100vw, (min-width: 1200px) 500px, 43vw',
+  portrait: '(max-width: 860px) min(420px, calc(100vw - 2.5rem)), 380px'
+};
 
 const LANGS = ['ar', 'en'];
 const HOME_HERO_SOURCE_ID = 'photo-1613490493576-7fde63acd811';
@@ -40,15 +47,21 @@ const waUrl = (lang) => `https://wa.me/${site.whatsappNumber}?text=${encodeURICo
 
 const arrow = (lang) => (lang === 'ar' ? '←' : '→');
 
-function img(image, lang, { eager = false, sizes = '100vw', className = '' } = {}) {
+function img(image, lang, { eager = false, sizes = IMAGE_SIZES.full, className = '' } = {}) {
   const cls = className ? ` class="${className}"` : '';
   const loading = eager ? 'fetchpriority="high"' : 'loading="lazy"';
-  return `<img${cls} src="${image.src}" width="${image.w}" height="${image.h}" alt="${esc(t(image.alt, lang))}" ${loading} decoding="async" />`;
+  const media = imageVariants[image.src];
+  if (!media) throw new Error(`Unprepared image ${image.src}; run python scripts/prepare-images.py`);
+  const candidates = [...media.variants, { src: image.src, w: media.w }];
+  const responsive = media.variants.length
+    ? ` srcset="${candidates.map((v) => `${v.src} ${v.w}w`).join(', ')}" sizes="${esc(sizes)}"`
+    : '';
+  return `<img${cls} src="${image.src}"${responsive} width="${media.w}" height="${media.h}" alt="${esc(t(image.alt, lang))}" ${loading} decoding="async" />`;
 }
 
 /* ───────────────────────── document shell ───────────────────────── */
 
-function head({ lang, title, desc, logicalPath, ogImage, jsonld = [], isHome = false }) {
+function head({ lang, title, desc, logicalPath, ogImage, ogType = 'website', jsonld = [], isHome = false }) {
   const dir = lang === 'ar' ? 'rtl' : 'ltr';
   const ogLocale = lang === 'ar' ? 'ar_SA' : 'en_US';
   const ogAlt = lang === 'ar' ? 'en_US' : 'ar_SA';
@@ -78,7 +91,7 @@ function head({ lang, title, desc, logicalPath, ogImage, jsonld = [], isHome = f
   <link rel="icon" href="/assets/icons/favicon.ico" sizes="any" />
   <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
   <link rel="manifest" href="/manifest.webmanifest" />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="${ogType}" />
   <meta property="og:site_name" content="${site.brand}" />
   <meta property="og:url" content="${absUrl(lang, logicalPath)}" />
   <meta property="og:title" content="${esc(title)}" />
@@ -138,7 +151,7 @@ function header(lang, active) {
   </nav>
   <div class="mobile-contact">
     <a href="${waUrl(lang)}" target="_blank" rel="noopener">${esc(t(site.footer.whatsappLabel, lang))}</a>
-    <a href="${site.gmailCompose}" target="_blank" rel="noopener" dir="ltr">${site.email}</a>
+    <a href="mailto:${site.email}" dir="ltr">${site.email}</a>
   </div>
 </div>`;
 }
@@ -167,7 +180,7 @@ function footer(lang) {
     </nav>
     <div class="footer-col">
       <p class="footer-title">${esc(t(f.contactTitle, lang))}</p>
-      <a href="${site.gmailCompose}" target="_blank" rel="noopener" dir="ltr">${site.email}</a>
+      <a href="mailto:${site.email}" dir="ltr">${site.email}</a>
       <a href="tel:${site.phoneE164}" dir="ltr">${site.phoneDisplay}</a>
       <a href="${waUrl(lang)}" target="_blank" rel="noopener">${esc(t(f.whatsappLabel, lang))}</a>
     </div>
@@ -198,10 +211,10 @@ function contactBand(lang) {
 </section>`;
 }
 
-function projectCard(p, lang, { wide = false, eager = false } = {}) {
+function projectCard(p, lang, { wide = false, eager = false, sizes = wide ? IMAGE_SIZES.full : IMAGE_SIZES.half } = {}) {
   const meta = [t(p.category, lang), t(p.location, lang), p.year].join(' · ');
   return `<a class="project-card${wide ? ' is-wide' : ''}${p.cover.fit === 'contain' ? ' fit-contain' : ''}" href="${langPath(lang, `/work/${p.slug}/`)}" data-reveal>
-  <div class="card-media">${img(p.cover, lang, { eager })}</div>
+  <div class="card-media">${img(p.cover, lang, { eager, sizes })}</div>
   <div class="card-text">
     <h3>${esc(t(p.title, lang))}</h3>
     <p class="card-meta">${esc(meta)}${p.placeholder ? ` <span class="tag">${esc(t(p.status, lang))}</span>` : ''}</p>
@@ -296,9 +309,39 @@ function articleSchema(a, lang) {
   return {
     '@type': 'Article', headline: t(a.h1, lang), description: t(a.desc, lang),
     inLanguage: lang, datePublished: a.date, dateModified: a.date,
-    mainEntityOfPage: absUrl(lang, `/journal/${a.slug}/`), image: site.ogImage,
-    author: { '@id': `${site.domain}/#wael` }, publisher: { '@id': `${site.domain}/#organization` }
+    mainEntityOfPage: absUrl(lang, `/journal/${a.slug}/`), image: articleImage(a),
+    author: {
+      '@type': 'Person', '@id': `${site.domain}/#wael`,
+      name: site.author.name.en, alternateName: site.author.name.ar, url: absUrl(lang, '/about/')
+    },
+    publisher: {
+      '@type': 'Organization', '@id': `${site.domain}/#organization`, name: site.brand,
+      url: site.domain + '/', logo: { '@type': 'ImageObject', url: `${site.domain}/assets/icons/apple-touch-icon.png` }
+    }
   };
+}
+
+function articleImage(article) {
+  const project = projects.find((p) => p.slug === article.imageProject);
+  if (!project) throw new Error(`Unknown article image project: ${article.imageProject}`);
+  return site.domain + project.cover.src;
+}
+
+function relatedGuides(slugs, lang) {
+  if (!slugs?.length) return '';
+  const articles = slugs.map((slug) => {
+    const article = site.journal.find((a) => a.slug === slug);
+    if (!article) throw new Error(`Unknown related guide: ${slug}`);
+    return article;
+  });
+  return `<section class="section-sm divided" data-reveal>
+    <div class="wrap narrow">
+      <h2 class="display">${esc(t(site.journalMeta.guidesTitle, lang))}</h2>
+      <ul class="related-guide-list">
+        ${articles.map((a) => `<li><a href="${langPath(lang, `/journal/${a.slug}/`)}">${esc(t(a.h1, lang))} <span aria-hidden="true">${arrow(lang)}</span></a></li>`).join('\n        ')}
+      </ul>
+    </div>
+  </section>`;
 }
 
 /* Visible breadcrumb nav (logical trail; last item is the current page). */
@@ -356,7 +399,7 @@ ${header(lang, null)}
         </div>
       </div>
       <div class="home-hero-media">
-        ${img(h.heroImage, lang, { eager: true })}
+        ${img(h.heroImage, lang, { eager: true, sizes: IMAGE_SIZES.hero })}
       </div>
     </div>
   </section>
@@ -373,7 +416,7 @@ ${header(lang, null)}
         <a class="text-link" href="${langPath(lang, '/work/')}">${esc(t(h.allWork, lang))} ${arrow(lang)}</a>
       </div>
       <div class="home-work-grid">
-        ${featured.map((p, i) => projectCard(p, lang, { wide: i === 0 })).join('\n        ')}
+        ${featured.map((p, i) => projectCard(p, lang, { wide: i === 0, sizes: i === 0 ? '(max-width: 860px) calc(100vw - 2.5rem), (min-width: 1200px) 712px, 61vw' : '(max-width: 860px) calc(100vw - 2.5rem), (min-width: 1200px) 368px, 32vw' })).join('\n        ')}
       </div>
     </div>
   </section>
@@ -415,7 +458,7 @@ ${header(lang, null)}
   <section class="section divided" data-reveal>
     <div class="wrap about-preview">
       <div class="about-portrait">
-        ${img(site.about.portrait, lang)}
+        ${img(site.about.portrait, lang, { sizes: IMAGE_SIZES.portrait })}
       </div>
       <div>
         <h2 class="display">${esc(t(h.aboutTitle, lang))}</h2>
@@ -471,7 +514,7 @@ function renderProject(p, lang) {
   const metaTitle = `${t(p.title, lang)} — ${t(p.category, lang)} · ${t(p.location, lang)} | ${site.brand}`;
   const gallery = p.gallery.map((g) => {
     const layoutClass = g.layout === 'half' ? 'g-half' : (g.w >= g.h ? 'g-wide' : 'g-tall');
-    return `<figure class="${layoutClass}" data-reveal>${img(g, lang)}${g.caption ? `
+    return `<figure class="${layoutClass}" data-reveal>${img(g, lang, { sizes: layoutClass === 'g-half' ? '(max-width: 860px) 100vw, (min-width: 1400px) calc(50vw - 28px), 48vw' : '100vw' })}${g.caption ? `
           <figcaption>${esc(t(g.caption, lang))}</figcaption>` : ''}</figure>`;
   }).join('\n        ');
   const details = [
@@ -504,8 +547,8 @@ ${header(lang, 'work')}
         <p class="card-meta">${esc([t(p.category, lang), t(p.location, lang), p.year].join(' · '))}${p.placeholder ? ` <span class="tag">${esc(t(p.status, lang))}</span>` : ''}</p>
       </div>
     </section>
-    <div class="wrap" data-reveal>
-      <figure class="project-cover${p.cover.fit === 'contain' ? ' fit-contain' : ''}">${img(p.cover, lang, { eager: true })}</figure>
+    <div class="wrap full-bleed" data-reveal>
+      <figure class="project-cover${p.cover.fit === 'contain' ? ' fit-contain' : ''}">${img(p.cover, lang, { eager: true, sizes: '100vw' })}</figure>
     </div>
     <section class="section-sm" data-reveal>
       <div class="wrap project-intro-grid">
@@ -520,13 +563,14 @@ ${header(lang, 'work')}
       </div>
     </section>
     <section class="section-sm">
-      <div class="wrap">
+      <div class="wrap full-bleed">
         <div class="gallery">
         ${gallery}
         </div>${p.placeholder ? `
         <p class="note gallery-note">${esc(t(pr.galleryNote, lang))} <a href="${langPath(lang, '/credits/')}">${esc(t(pr.galleryNoteLink, lang))}</a>.</p>` : ''}
       </div>
     </section>
+${relatedGuides(p.relatedGuides, lang)}
     <section class="section-sm divided" data-reveal>
       <div class="wrap next-project">
         <p class="eyebrow">${esc(t(pr.nextProject, lang))}</p>
@@ -612,7 +656,7 @@ ${header(lang, 'about')}
   </section>
   <section class="section divided" data-reveal>
     <div class="wrap founder-grid">
-      <div class="about-portrait">${img(a.portrait, lang)}</div>
+      <div class="about-portrait">${img(a.portrait, lang, { sizes: IMAGE_SIZES.portrait })}</div>
       <div class="flow">
         <h2 class="display">${esc(t(a.name, lang))}</h2>
         <p>${esc(t(a.bio, lang))}</p>
@@ -657,7 +701,7 @@ ${header(lang, 'contact')}
       </div>
       <div class="direct-contact">
         <p class="footer-title">${esc(t(c.directTitle, lang))}</p>
-        <a href="${site.gmailCompose}" target="_blank" rel="noopener" dir="ltr">${site.email}</a>
+        <a href="mailto:${site.email}" dir="ltr">${site.email}</a>
         <a href="tel:${site.phoneE164}" dir="ltr">${site.phoneDisplay}</a>
       </div>
     </div>
@@ -819,6 +863,7 @@ function renderLanding(l, lang) {
   const relLandings = (l.related || []).map((slug) => site.landings.find((x) => x.slug === slug)).filter(Boolean);
   return `${head({
     lang, title: t(l.seoTitle, lang), desc: t(l.seoDesc, lang), logicalPath: `/${l.slug}/`,
+    ogImage: site.domain + l.image.src,
     jsonld: [serviceSchema(l, lang), faqSchema(l.faq, lang), breadcrumb(lang, trail)]
   })}
 <body data-page="landing">
@@ -836,7 +881,7 @@ ${header(lang, 'services')}
       </div>
     </div>
   </section>
-  ${l.image ? `<div class="bleed" data-reveal>${img(l.image, lang, { eager: true })}</div>` : ''}
+  ${l.image ? `<div class="bleed" data-reveal>${img(l.image, lang, { eager: true, sizes: '100vw' })}</div>` : ''}
   <section class="section" data-reveal>
     <div class="wrap landing-content-grid">
       ${l.sections.map((sec) => `<section class="landing-section-row">
@@ -851,9 +896,9 @@ ${header(lang, 'services')}
         <h2 class="display">${lang === 'ar' ? 'من أعمالنا' : 'From our work'}</h2>
         <a class="text-link" href="${langPath(lang, '/work/')}">${esc(t(site.home.allWork, lang))} ${arrow(lang)}</a>
       </div>
-      <div class="project-grid">
-        ${relProjects.map((p) => projectCard(p, lang)).join('\n        ')}
-      </div>
+    </div>
+    <div class="project-grid">
+      ${relProjects.map((p) => projectCard(p, lang, { sizes: '100vw' })).join('\n      ')}
     </div>
   </section>` : ''}
   <section class="section divided" data-reveal>
@@ -867,6 +912,7 @@ ${header(lang, 'services')}
       </div>
     </div>
   </section>
+${relatedGuides(site.journal.filter((a) => a.related.includes(l.slug)).map((a) => a.slug), lang)}
   ${relLandings.length ? `<section class="section divided" data-reveal>
     <div class="wrap">
       <h2 class="display">${lang === 'ar' ? 'خدمات ذات صلة' : 'Related services'}</h2>
@@ -930,6 +976,7 @@ function renderArticle(a, lang) {
   const relLandings = (a.related || []).map((slug) => site.landings.find((x) => x.slug === slug)).filter(Boolean);
   return `${head({
     lang, title: t(a.title, lang), desc: t(a.desc, lang), logicalPath: `/journal/${a.slug}/`,
+    ogImage: articleImage(a), ogType: 'article',
     jsonld: [articleSchema(a, lang), breadcrumb(lang, trail)]
   })}
 <body data-page="article">
@@ -940,7 +987,7 @@ ${header(lang, 'journal')}
       <div class="wrap narrow">
         ${breadcrumbUI(lang, trail)}
         <h1 class="display-xl">${esc(t(a.h1, lang))}</h1>
-        <p class="note"><time datetime="${a.date}">${fmtDate(a.date, lang)}</time></p>
+        <p class="note"><span class="article-byline">${esc(t(j.byline, lang))} <a href="${langPath(lang, '/about/')}">${esc(t(site.author.name, lang))}</a></span> · <time datetime="${a.date}">${fmtDate(a.date, lang)}</time></p>
         <p class="lead">${esc(t(a.intro, lang))}</p>
       </div>
     </section>
