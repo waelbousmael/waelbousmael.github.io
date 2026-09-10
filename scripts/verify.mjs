@@ -8,6 +8,13 @@ import site from '../data/site.mjs';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (relative) => fs.readFileSync(path.join(ROOT, relative), 'utf8');
 const has = (text, fragment, label) => assert.ok(text.includes(fragment), label);
+const assertInlineSizing = (html, label) => {
+  for (const style of html.matchAll(/\bstyle\s*=\s*["']([^"']*)["']/gi)) {
+    assert.doesNotMatch(style[1], /(?:width|min-width|max-width)\s*:\s*\d{4,}px|margin-(?:left|right)\s*:\s*-\d{3,}px/i, `${label} must not contain obvious inline overflow-prone fixed sizing`);
+  }
+};
+assertInlineSizing('<img sizes="(min-width: 1200px) 540px, 46vw" />', 'Responsive image sizes');
+assert.throws(() => assertInlineSizing('<div style="width: 2000px"></div>', 'Inline style probe'), /overflow-prone/);
 const webpDimensions = (relative, label) => {
   const file = path.join(ROOT, relative.replace(/^\//, ''));
   assert.ok(fs.existsSync(file), `${label} must exist`);
@@ -855,7 +862,7 @@ const assertContactPage = (page, lang, label) => {
   has(page, 'window.GOOGLE_MAPS_API_KEY', `${label} must retain the Google Maps hook`);
   has(page, `href="https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(site.waMessage[lang])}"`, `${label} must retain its WhatsApp contact CTA`);
   has(page, `href="tel:${site.phoneE164}"`, `${label} must retain direct phone contact`);
-  has(page, `href="${site.gmailCompose}"`, `${label} must retain direct email contact`);
+  has(page, `href="mailto:${site.email}"`, `${label} must retain direct email contact`);
   for (const field of [site.contactPage.h1, site.contactPage.intro, site.contactPage.whatsappCta, site.contactPage.directTitle, site.contactPage.faqTitle]) {
     has(page, htmlEscape(field[lang]), `${label} must retain all localized contact content`);
   }
@@ -1609,7 +1616,7 @@ for (const { relativePath, page } of generatedHtml) {
     assert.match(attribute(script, 'src', `${label} script must have src`), /^\/assets\/js\/(?:site|contact)\.js$/, `${label} may load only first-party protected scripts`);
   }
   assert.doesNotMatch(page, /\b(?:googletagmanager|google-analytics|gtag\s*\(|analytics\.js|plausible|hotjar|segment\.com)\b/i, `${label} must remain analytics-free`);
-  assert.doesNotMatch(page, /(?:width|min-width|max-width)\s*:\s*\d{4,}px|margin-(?:left|right)\s*:\s*-\d{3,}px/i, `${label} must not contain obvious inline overflow-prone fixed sizing`);
+  assertInlineSizing(page, label);
 
   for (const openingTag of page.matchAll(/<[^>]+>/g)) {
     const tokens = classTokens(openingTag[0]);

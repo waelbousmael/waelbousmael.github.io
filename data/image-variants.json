@@ -1,0 +1,608 @@
+{
+  "/assets/images/about-hero.jpg": {
+    "w": 584,
+    "h": 800,
+    "sha256": "fad3676b5f3e8738cfc733ba0810bfe9260cf970d981cb17e814736813c5ec2c",
+    "variants": []
+  },
+  "/assets/images/home-hero.webp": {
+    "w": 1448,
+    "h": 1086,
+    "sha256": "3552dcc3b61c6b1be98e04d9b1162d34e60c13b159d35cbc2964162b2164678e",
+    "variants": [
+      {
+        "src": "/assets/images/home-hero-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/images/home-hero-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/byblos-resort/cover.webp": {
+    "w": 1920,
+    "h": 1200,
+    "sha256": "e6c44dbe2320afb64a7a60286521cb8a434accedd03fa3681cf276ad6c9780c4",
+    "variants": [
+      {
+        "src": "/assets/projects/byblos-resort/cover-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/byblos-resort/cover-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/byblos-resort/gallery-01.webp": {
+    "w": 2000,
+    "h": 813,
+    "sha256": "17b8baacaf201d75abf29b6c1c455823b4361a91b15380dab08545ace57f3dfd",
+    "variants": [
+      {
+        "src": "/assets/projects/byblos-resort/gallery-01-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/byblos-resort/gallery-01-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/byblos-resort/gallery-02.webp": {
+    "w": 2000,
+    "h": 660,
+    "sha256": "b7576360b2d680186776927c209844d5f429970b5470d223d4233dc6a9e33c8b",
+    "variants": [
+      {
+        "src": "/assets/projects/byblos-resort/gallery-02-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/byblos-resort/gallery-02-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/byblos-resort/gallery-03.webp": {
+    "w": 1800,
+    "h": 1125,
+    "sha256": "de24c365602ed6fcc1d22c1ca69c02043223368e49351bd0cd7a8d117c52bb64",
+    "variants": [
+      {
+        "src": "/assets/projects/byblos-resort/gallery-03-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/byblos-resort/gallery-03-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/byblos-resort/gallery-04.webp": {
+    "w": 1800,
+    "h": 1125,
+    "sha256": "90810ed520f342403f267f6acdba32e8f689b277fb74c74b96adac812bb6706e",
+    "variants": [
+      {
+        "src": "/assets/projects/byblos-resort/gallery-04-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/byblos-resort/gallery-04-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/byblos-resort/gallery-05.webp": {
+    "w": 1800,
+    "h": 1125,
+    "sha256": "ae6e26e48d09c96c9826c9a455b8e6c36b6c8781feec9b6c0921983da6130641",
+    "variants": [
+      {
+        "src": "/assets/projects/byblos-resort/gallery-05-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/byblos-resort/gallery-05-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/byblos-resort/gallery-06.webp": {
+    "w": 1800,
+    "h": 1125,
+    "sha256": "b62ba6d00547d3c9d3b1b5e98d01e26308e45fe26a5d03fdf39fa78d74a5972a",
+    "variants": [
+      {
+        "src": "/assets/projects/byblos-resort/gallery-06-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/byblos-resort/gallery-06-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/coastal-villa/cover.webp": {
+    "w": 1448,
+    "h": 1086,
+    "sha256": "b115457869ae627d3b1acdf63d7c39500fe06791fb7d6a2b4a41e02a8e61062b",
+    "variants": [
+      {
+        "src": "/assets/projects/coastal-villa/cover-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/coastal-villa/cover-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/coastal-villa/gallery-01.webp": {
+    "w": 1122,
+    "h": 1402,
+    "sha256": "e310e75dfcdc7f6423cd8bc6b1eb3513c45ad957d7cd0684a26f4fa04081cbf2",
+    "variants": [
+      {
+        "src": "/assets/projects/coastal-villa/gallery-01-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/coastal-villa/gallery-01-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/coastal-villa/gallery-02.webp": {
+    "w": 1400,
+    "h": 933,
+    "sha256": "e6b7066cc5abf044112f6b5da140e1f8026ae0e02ca7126f411ffff87db3c76b",
+    "variants": [
+      {
+        "src": "/assets/projects/coastal-villa/gallery-02-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/coastal-villa/gallery-02-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/coastal-villa/gallery-03.webp": {
+    "w": 1448,
+    "h": 1086,
+    "sha256": "51f13e535f9977c0a2ec1cc3f04ed61ec1cfa91a0b3877dcc5340f10e50b6b3f",
+    "variants": [
+      {
+        "src": "/assets/projects/coastal-villa/gallery-03-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/coastal-villa/gallery-03-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/courtyard-villa/cover.webp": {
+    "w": 1800,
+    "h": 1125,
+    "sha256": "4d15e2a8800f1a22a554fb68918601f0768aace887daa8356766120897146a6b",
+    "variants": [
+      {
+        "src": "/assets/projects/courtyard-villa/cover-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/courtyard-villa/cover-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/courtyard-villa/gallery-01.webp": {
+    "w": 1600,
+    "h": 1067,
+    "sha256": "23ac95bf15301016f366f48e266573b65da7564ee6f455de8e7e1c793fe3c316",
+    "variants": [
+      {
+        "src": "/assets/projects/courtyard-villa/gallery-01-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/courtyard-villa/gallery-01-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/courtyard-villa/gallery-02.webp": {
+    "w": 1200,
+    "h": 1500,
+    "sha256": "82be31d711851fa7b5e750520caa196ac1c6b853645b5adead917245ac655e1a",
+    "variants": [
+      {
+        "src": "/assets/projects/courtyard-villa/gallery-02-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/courtyard-villa/gallery-02-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/courtyard-villa/gallery-03.webp": {
+    "w": 1600,
+    "h": 1067,
+    "sha256": "305c3f11fa5e3b046832470fb1946f7e5aa60b3b1d8caa2ba49187e410fa1f56",
+    "variants": [
+      {
+        "src": "/assets/projects/courtyard-villa/gallery-03-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/courtyard-villa/gallery-03-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/courtyard-villa/gallery-04.webp": {
+    "w": 1400,
+    "h": 933,
+    "sha256": "96f1223ee5d48d5ed69d2ffb918cf032f9516b12213ceafc64c4415bb50310db",
+    "variants": [
+      {
+        "src": "/assets/projects/courtyard-villa/gallery-04-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/courtyard-villa/gallery-04-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/garden-house/cover.webp": {
+    "w": 1586,
+    "h": 992,
+    "sha256": "b99fe3b106980d9733d1e4e9948640686f81cdc69804150c6297478ca66be4c3",
+    "variants": [
+      {
+        "src": "/assets/projects/garden-house/cover-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/garden-house/cover-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/garden-house/gallery-01.webp": {
+    "w": 1536,
+    "h": 1024,
+    "sha256": "66de55a42504f2765ea0606052b3fc1adde8c65c24bd51d4841838ddbf7485d1",
+    "variants": [
+      {
+        "src": "/assets/projects/garden-house/gallery-01-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/garden-house/gallery-01-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/garden-house/gallery-02.webp": {
+    "w": 1100,
+    "h": 1375,
+    "sha256": "68b572a26772fed7f8f28b0f54ef3832754039694ff912996a78da90f035cbbe",
+    "variants": [
+      {
+        "src": "/assets/projects/garden-house/gallery-02-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/garden-house/gallery-02-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/garden-house/gallery-03.webp": {
+    "w": 1600,
+    "h": 1067,
+    "sha256": "69f6f87f8c81afb0b02b2b1080f514c73868d0266c537240b5519b429a2390cb",
+    "variants": [
+      {
+        "src": "/assets/projects/garden-house/gallery-03-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/garden-house/gallery-03-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/garden-house/gallery-04.webp": {
+    "w": 1400,
+    "h": 933,
+    "sha256": "d6bf6eade8cc5e32703f2150e7451b4ecc4dd1e5332afcdbc5c041d8b93bbe16",
+    "variants": [
+      {
+        "src": "/assets/projects/garden-house/gallery-04-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/garden-house/gallery-04-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/montashiri-villa/cover.webp": {
+    "w": 1536,
+    "h": 960,
+    "sha256": "357d4cd295efeb76c011bc5ed65c6d23c118900e72b6ebb64dd71f4cc85c8d57",
+    "variants": [
+      {
+        "src": "/assets/projects/montashiri-villa/cover-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/montashiri-villa/cover-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/montashiri-villa/gallery-01.webp": {
+    "w": 1672,
+    "h": 941,
+    "sha256": "bb2e7d59fe001f63cbcd59229d3fd39775da7d30208f88cec25850583160b723",
+    "variants": [
+      {
+        "src": "/assets/projects/montashiri-villa/gallery-01-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/montashiri-villa/gallery-01-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/montashiri-villa/gallery-02.webp": {
+    "w": 1448,
+    "h": 1086,
+    "sha256": "7b13a2c9387d550ac8a3bd0c29cf809de283d58bc8a8f5adc4c4ab4f48cf5a71",
+    "variants": [
+      {
+        "src": "/assets/projects/montashiri-villa/gallery-02-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/montashiri-villa/gallery-02-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/private-villa-renovation-chouf/cover.webp": {
+    "w": 1601,
+    "h": 983,
+    "sha256": "64aa35b78f25ea1c95a0c05196fe418398477787341aa876d3cb146a34339df1",
+    "variants": [
+      {
+        "src": "/assets/projects/private-villa-renovation-chouf/cover-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/private-villa-renovation-chouf/cover-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/private-villa-renovation-chouf/gallery-01.webp": {
+    "w": 1600,
+    "h": 1192,
+    "sha256": "c733e953b246999adb80f0b8d1e19be8e138033ac0cd8f13c8d6d8aaca071d62",
+    "variants": [
+      {
+        "src": "/assets/projects/private-villa-renovation-chouf/gallery-01-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/private-villa-renovation-chouf/gallery-01-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/private-villa-renovation-chouf/gallery-02.webp": {
+    "w": 1600,
+    "h": 1192,
+    "sha256": "d2832d53a58fe785d54dfd84992eba8fa25bd860c75f6f37dbb88cc585cbc904",
+    "variants": [
+      {
+        "src": "/assets/projects/private-villa-renovation-chouf/gallery-02-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/private-villa-renovation-chouf/gallery-02-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/private-villa-renovation-chouf/gallery-03.webp": {
+    "w": 1600,
+    "h": 1192,
+    "sha256": "f8fbd7683340364a90efcef1adf7f063f288dede3168b481ede4d781111c214a",
+    "variants": [
+      {
+        "src": "/assets/projects/private-villa-renovation-chouf/gallery-03-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/private-villa-renovation-chouf/gallery-03-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/private-villa-renovation-chouf/gallery-04.webp": {
+    "w": 1600,
+    "h": 1192,
+    "sha256": "40576671724347e0185b23723b59cb7815c92fab732e68f4f48e2bb091e79e23",
+    "variants": [
+      {
+        "src": "/assets/projects/private-villa-renovation-chouf/gallery-04-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/private-villa-renovation-chouf/gallery-04-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/private-villa-renovation-chouf/gallery-05.webp": {
+    "w": 1600,
+    "h": 1192,
+    "sha256": "8daa56c64cd7ca98f5bdf9849aeab10651e0bc25277aabb1f64d7fb9b05094e2",
+    "variants": [
+      {
+        "src": "/assets/projects/private-villa-renovation-chouf/gallery-05-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/private-villa-renovation-chouf/gallery-05-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/private-villa-renovation-chouf/gallery-06.webp": {
+    "w": 1600,
+    "h": 1192,
+    "sha256": "ddc6211e09bccfaf38047407af2ab2976b9d2c62b46c1bcf554d3b7c1fded104",
+    "variants": [
+      {
+        "src": "/assets/projects/private-villa-renovation-chouf/gallery-06-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/private-villa-renovation-chouf/gallery-06-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/private-villa-renovation-chouf/gallery-07.webp": {
+    "w": 1600,
+    "h": 1192,
+    "sha256": "dfc44bb27a5515b610f1b632aa092f6a2fe5e7dd816581a2989c1cd192d2b9a7",
+    "variants": [
+      {
+        "src": "/assets/projects/private-villa-renovation-chouf/gallery-07-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/private-villa-renovation-chouf/gallery-07-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/private-villa-renovation-chouf/gallery-08.webp": {
+    "w": 1600,
+    "h": 1192,
+    "sha256": "ae68affacbf11d7e08e5bf816493cf05f688d8468a57c3c6a50ab9aab70a348e",
+    "variants": [
+      {
+        "src": "/assets/projects/private-villa-renovation-chouf/gallery-08-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/private-villa-renovation-chouf/gallery-08-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/private-villa-renovation-chouf/gallery-09.webp": {
+    "w": 1600,
+    "h": 1192,
+    "sha256": "57b2fd432e06ac8472f9a194302660bc190b35724dd2cfd0fc5716ea76e51f29",
+    "variants": [
+      {
+        "src": "/assets/projects/private-villa-renovation-chouf/gallery-09-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/private-villa-renovation-chouf/gallery-09-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/stone-majlis/cover.webp": {
+    "w": 1800,
+    "h": 1125,
+    "sha256": "b6c399231ee094c849c746639ab144ece758c82565780b56eb8db1e3e8746a6b",
+    "variants": [
+      {
+        "src": "/assets/projects/stone-majlis/cover-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/stone-majlis/cover-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/stone-majlis/gallery-01.webp": {
+    "w": 1600,
+    "h": 1067,
+    "sha256": "f8d5becab9b0dbf2aa5a8778e88a46e1a316c4e7caf943cbfdb343385a151d8a",
+    "variants": [
+      {
+        "src": "/assets/projects/stone-majlis/gallery-01-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/stone-majlis/gallery-01-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/stone-majlis/gallery-02.webp": {
+    "w": 1600,
+    "h": 1067,
+    "sha256": "04b570b0bdb5efc6346ccb5b4e58a2d14ead95267a1de94a555fba36b46e2956",
+    "variants": [
+      {
+        "src": "/assets/projects/stone-majlis/gallery-02-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/stone-majlis/gallery-02-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/stone-majlis/gallery-03.webp": {
+    "w": 1200,
+    "h": 1500,
+    "sha256": "0ef97f372e483048606426a2b6682c00e39a4e756cb253bfc27af41d4471e61d",
+    "variants": [
+      {
+        "src": "/assets/projects/stone-majlis/gallery-03-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/stone-majlis/gallery-03-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/stone-majlis/gallery-04.webp": {
+    "w": 1200,
+    "h": 1500,
+    "sha256": "1651487c9f621767427b7fe320f819204817221b7035e37aca610d80cef89dc9",
+    "variants": [
+      {
+        "src": "/assets/projects/stone-majlis/gallery-04-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/stone-majlis/gallery-04-960w.webp",
+        "w": 960
+      }
+    ]
+  }
+}

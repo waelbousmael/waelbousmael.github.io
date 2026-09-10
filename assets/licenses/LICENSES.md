@@ -30,6 +30,12 @@ A human-readable version of this register is published on the site at
 
 ## Register
 
+Responsive files ending in `-640w.webp` or `-960w.webp` are locally resized
+derivatives of the corresponding registered source in the same directory.
+They retain that source's ownership/license and attribution. The complete
+source-to-derivative mapping is recorded in `data/image-variants.json`.
+No new external images were introduced by the September 2026 SEO pass.
+
 | Local file | Source (Unsplash CDN) |
 | --- | --- |
 | assets/images/home-hero.webp | https://images.unsplash.com/photo-1613490493576-7fde63acd811 |
