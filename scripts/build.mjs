@@ -141,7 +141,7 @@ function header(lang, active) {
     </div>
   </div>
 </header>
-<div class="mobile-menu" id="mobileMenu" hidden>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="${esc(t(n.menuTitle, lang))}" hidden>
   <div class="mobile-menu-head">
     <span class="menu-brand"><img class="stamp" src="/assets/icons/brand-logo.png" alt="" width="40" height="40" decoding="async" /><span class="wordmark">WB&nbsp;Studio</span></span>
     <button class="mobile-close" type="button" data-nav-close aria-label="${esc(t(n.menuClose, lang))}">✕</button>
@@ -722,10 +722,10 @@ ${header(lang, 'contact')}
           <input id="name" name="name" type="text" autocomplete="name" placeholder="${esc(t(f.namePh, lang))}" required />
 
           <label for="phone"><span>${esc(t(f.phone, lang))}</span> <span class="required-mark" aria-hidden="true">*</span></label>
-          <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="${esc(t(f.phonePh, lang))}" pattern="^[+\\d\\s]{7,}$" required />
+          <input id="phone" name="phone" type="tel" dir="ltr" autocomplete="tel" placeholder="${esc(t(f.phonePh, lang))}" pattern="^[+\\d\\s]{7,}$" required />
 
           <label for="email"><span>${esc(t(f.email, lang))}</span> <span class="required-mark" aria-hidden="true">*</span></label>
-          <input id="email" name="email" type="email" autocomplete="email" placeholder="${esc(t(f.emailPh, lang))}" required />
+          <input id="email" name="email" type="email" dir="ltr" autocomplete="email" placeholder="${esc(t(f.emailPh, lang))}" required />
         </fieldset>
 
         <fieldset class="contact-field-group">
@@ -737,7 +737,7 @@ ${header(lang, 'contact')}
             </div>
             <div class="field-group">
               <label for="maps">${esc(t(f.maps, lang))}</label>
-              <input id="maps" name="maps" type="url" placeholder="${esc(t(f.mapsPh, lang))}" />
+              <input id="maps" name="maps" type="url" dir="ltr" placeholder="${esc(t(f.mapsPh, lang))}" />
             </div>
           </div>
           <p class="form-helper">${esc(t(f.locationHelper, lang))}</p>

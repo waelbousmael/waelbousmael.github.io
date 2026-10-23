@@ -60,7 +60,7 @@
     </div>
   </div>
 </header>
-<div class="mobile-menu" id="mobileMenu" hidden>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu" hidden>
   <div class="mobile-menu-head">
     <span class="menu-brand"><img class="stamp" src="/assets/icons/brand-logo.png" alt="" width="40" height="40" decoding="async" /><span class="wordmark">WB&nbsp;Studio</span></span>
     <button class="mobile-close" type="button" data-nav-close aria-label="Close menu">✕</button>
@@ -109,10 +109,10 @@
           <input id="name" name="name" type="text" autocomplete="name" placeholder="Enter your full name" required />
 
           <label for="phone"><span>Phone Number</span> <span class="required-mark" aria-hidden="true">*</span></label>
-          <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Example: +966 5X XXX XXXX" pattern="^[+\d\s]{7,}$" required />
+          <input id="phone" name="phone" type="tel" dir="ltr" autocomplete="tel" placeholder="Example: +966 5X XXX XXXX" pattern="^[+\d\s]{7,}$" required />
 
           <label for="email"><span>Email</span> <span class="required-mark" aria-hidden="true">*</span></label>
-          <input id="email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required />
+          <input id="email" name="email" type="email" dir="ltr" autocomplete="email" placeholder="name@example.com" required />
         </fieldset>
 
         <fieldset class="contact-field-group">
@@ -124,10 +124,10 @@
             </div>
             <div class="field-group">
               <label for="maps">Google Maps Link</label>
-              <input id="maps" name="maps" type="url" placeholder="https://maps.google.com/..." />
+              <input id="maps" name="maps" type="url" dir="ltr" placeholder="https://maps.google.com/..." />
             </div>
           </div>
-          <p class="form-helper">Start typing to get faster suggestions when Google Maps is enabled.</p>
+          <p class="form-helper">Enter the city or district, or paste the plot’s Google Maps link if available.</p>
         </fieldset>
 
         <fieldset class="contact-field-group">

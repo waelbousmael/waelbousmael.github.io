@@ -23,16 +23,28 @@
   const toggle = document.querySelector('[data-nav-toggle]');
   const closeBtn = document.querySelector('[data-nav-close]');
   const menu = document.getElementById('mobileMenu');
+  const backgroundState = new Map();
+  let previousOverflow = '';
 
   const openMenu = () => {
+    if (!menu.hidden) return;
     menu.hidden = false;
+    previousOverflow = document.body.style.overflow;
+    Array.from(document.body.children).filter((el) => el !== menu).forEach((el) => {
+      backgroundState.set(el, el.inert);
+      el.inert = true;
+    });
     document.body.style.overflow = 'hidden';
     toggle.setAttribute('aria-expanded', 'true');
+    closeBtn.focus();
   };
 
   const closeMenu = () => {
+    if (menu.hidden) return;
     menu.hidden = true;
-    document.body.style.overflow = '';
+    backgroundState.forEach((inert, el) => { el.inert = inert; });
+    backgroundState.clear();
+    document.body.style.overflow = previousOverflow;
     toggle.setAttribute('aria-expanded', 'false');
     requestAnimationFrame(() => requestAnimationFrame(() => toggle.focus()));
   };
@@ -45,7 +57,24 @@
       if (window.innerWidth > 860 && !menu.hidden) closeMenu();
     });
     document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && !menu.hidden) closeMenu();
+      if (menu.hidden) return;
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeMenu();
+      }
+      if (event.key === 'Tab') {
+        const controls = menu.querySelectorAll('a[href], button:not([disabled])');
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        const outside = !menu.contains(document.activeElement);
+        if (event.shiftKey && (document.activeElement === first || outside)) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && (document.activeElement === last || outside)) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
     });
   }
 

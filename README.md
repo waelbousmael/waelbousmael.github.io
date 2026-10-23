@@ -61,8 +61,9 @@ dimensions in `data/site.mjs`. Existing source images within budget remain
 unchanged; new variants preserve the source composition and never upscale.
 Commit the manifest and derivatives with the sources and generated HTML.
 
-Validation: `python scripts/verify-media.py`, `node scripts/verify-seo.mjs`,
-`node scripts/verify.mjs`, and `node scripts/check-reproducible-build.mjs`.
+Validation: `python scripts/verify-media.py`, `node scripts/verify-navigation.mjs`,
+`node scripts/verify-seo.mjs`, `node scripts/verify.mjs`, and
+`node scripts/check-reproducible-build.mjs`.
 The media preparation command is only needed when images change; the regular
 Node build remains dependency-free.
 
@@ -105,10 +106,11 @@ swap paths in `data/projects.json`, set `placeholder: false`, update
 
 ## Assets & licensing
 
-All current portfolio imagery is **temporary placeholder material** from
-Unsplash (free commercial license), and the projects are labeled on-site as
-concept studies. The full register: `assets/licenses/LICENSES.md`; the public
-credits pages: `/credits/` and `/en/credits/`.
+The portfolio includes studio projects and clearly labeled concept studies.
+The homepage hero and concept-study reference imagery use Unsplash material
+(free commercial license); studio project imagery is separate. The full
+register: `assets/licenses/LICENSES.md`; the public credits pages:
+`/credits/` and `/en/credits/`.
 
 ## Contact plumbing (do not break)
 
