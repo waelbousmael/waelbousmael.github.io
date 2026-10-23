@@ -161,6 +161,27 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/journal/"/>
   </url>
   <url>
+    <loc>https://wbstudio.xyz/work/hillside-villa-aley/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/work/hillside-villa-aley/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/hillside-villa-aley/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/hillside-villa-aley/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/hillside-villa-aley/"/>
+  </url>
+  <url>
+    <loc>https://wbstudio.xyz/en/work/hillside-villa-aley/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/work/hillside-villa-aley/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/hillside-villa-aley/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/hillside-villa-aley/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/hillside-villa-aley/"/>
+  </url>
+  <url>
+    <loc>https://wbstudio.xyz/de/projekte/hillside-villa-aley/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/work/hillside-villa-aley/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/hillside-villa-aley/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/hillside-villa-aley/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/hillside-villa-aley/"/>
+  </url>
+  <url>
     <loc>https://wbstudio.xyz/work/montashiri-villa/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/work/montashiri-villa/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/montashiri-villa/"/>

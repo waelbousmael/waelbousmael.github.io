@@ -30,13 +30,8 @@ const IMAGE_SIZES = {
 const LANGS = LANGUAGES;
 const LANGUAGE_NAMES = site.ui.languageNames;
 const { routes, path: langPath } = createRoutes(site, projects);
-const projectsFor = (lang) => lang === 'de'
-  ? projects.filter((p) => !p.placeholder).sort((a, b) => {
-    const order = ['montashiri-villa', 'private-villa-renovation-chouf', 'byblos-resort'];
-    return order.indexOf(a.slug) - order.indexOf(b.slug);
-  }) : projects;
+const projectsFor = (lang) => lang === 'de' ? projects.filter((p) => !p.placeholder) : projects;
 const landingsFor = (lang) => lang === 'de' ? site.berlin.landings : site.landings;
-const HOME_HERO_SOURCE_ID = 'photo-1613490493576-7fde63acd811';
 const assetUrl = (url) => `${url}?v=${createHash('sha256').update(fs.readFileSync(path.join(ROOT, url))).digest('hex').slice(0, 12)}`;
 
 /* ───────────────────────── helpers ───────────────────────── */
@@ -255,7 +250,7 @@ function projectCard(p, lang, { wide = false, eager = false, sizes = wide ? IMAG
   <div class="card-text">
     <h3>${esc(t(p.title, lang))}</h3>
     <p class="card-meta">${esc(meta)}${p.placeholder ? ` <span class="tag">${esc(t(p.status, lang))}</span>` : ''}</p>
-    ${!p.placeholder ? `<p class="card-status">${esc(t(p.status, lang))}</p>` : ''}
+    ${!p.placeholder ? `<p class="card-status">${esc(t(p.status, lang))}${p.comparison ? ` · ${esc(t(p.comparison.future.label, lang))}` : ''}</p>` : ''}
     <p class="card-excerpt">${esc(t(p.excerpt, lang))}</p>
     ${lang === 'de' ? `<p class="card-scope">${esc(ui('projectScope', lang))}: ${esc(t(p.services, lang).slice(0, 2).join(' · '))}</p>` : ''}
     <span class="card-action">${esc(t(site.work.viewProject, lang))} <span aria-hidden="true">${arrow(lang)}</span></span>
@@ -430,6 +425,7 @@ function fmtDate(iso, lang) {
 
 function renderHome(lang) {
   const h = site.home;
+  const spotlight = projects.find((p) => p.slug === h.spotlightProject);
   const featured = projectsFor(lang).filter((p) => p.featured).slice(0, 3);
   const steps = site.approach.steps;
   return `${head({
@@ -437,6 +433,7 @@ function renderHome(lang) {
     title: t(h.seoTitle, lang),
     desc: t(h.seoDesc, lang),
     logicalPath: '/',
+    ogMedia: h.heroImage,
     jsonld: businessGraph(lang)
   })}
 <body data-page="home">
@@ -455,7 +452,14 @@ ${header(lang, null)}
         </div>
       </div>
       <div class="home-hero-media">
-        ${img(h.heroImage, lang, { eager: true, sizes: IMAGE_SIZES.hero })}
+        ${spotlight ? `<a class="home-featured-link" href="${langPath(lang, `/work/${spotlight.slug}/`)}">
+          ${img(h.heroImage, lang, { eager: true, sizes: IMAGE_SIZES.hero })}
+          <span class="hero-project-caption">
+            <strong>${esc(t(spotlight.title, lang))}</strong>
+            <span>${esc(t(spotlight.status, lang))}${spotlight.comparison ? ` · ${esc(t(spotlight.comparison.future.label, lang))}` : ''}</span>
+            <span class="text-link">${esc(t(site.work.viewProject, lang))} ${arrow(lang)}</span>
+          </span>
+        </a>` : img(h.heroImage, lang, { eager: true, sizes: IMAGE_SIZES.hero })}
       </div>
     </div>
   </section>
@@ -585,6 +589,19 @@ function renderProject(p, lang) {
     [pr.status, t(p.status, lang)],
     [pr.services, t(p.services, lang).join(' · ')]
   ];
+  const comparison = p.comparison ? `<section class="section-sm divided" data-project-comparison>
+      <div class="wrap">
+        <h2 class="display">${esc(t(p.comparison.title, lang))}</h2>
+        <p class="lead measure comparison-intro">${esc(t(p.comparison.intro, lang))}</p>
+        <div class="project-comparison-grid">
+          ${[p.comparison.current, p.comparison.future].map((view) => `<figure data-reveal>
+            <h3 class="eyebrow">${esc(t(view.label, lang))}</h3>
+            ${img(view, lang, { sizes: IMAGE_SIZES.half })}
+            <figcaption>${esc(t(view.caption, lang))}</figcaption>
+          </figure>`).join('\n          ')}
+        </div>
+      </div>
+    </section>` : '';
   return `${head({
     lang,
     title: metaTitle,
@@ -609,7 +626,7 @@ ${header(lang, 'work')}
       </div>
     </section>
     <div class="wrap full-bleed" data-reveal>
-      <figure class="project-cover${p.cover.fit === 'contain' ? ' fit-contain' : ''}">${img(p.cover, lang, { eager: true, sizes: '100vw' })}</figure>
+      <figure class="project-cover${p.cover.fit === 'contain' ? ' fit-contain' : ''}">${img(p.cover, lang, { eager: true, sizes: '100vw' })}${p.cover.caption ? `<figcaption>${esc(t(p.cover.caption, lang))}</figcaption>` : ''}</figure>
     </div>
     <section class="section-sm" data-reveal>
       <div class="wrap project-intro-grid">
@@ -623,6 +640,7 @@ ${header(lang, 'work')}
         </dl>
       </div>
     </section>
+    ${comparison}
     <section class="section-sm">
       <div class="wrap full-bleed">
         <div class="gallery">
@@ -872,7 +890,7 @@ ${header(lang, null)}
     <div class="wrap narrow credits-list">
       <div class="credit-block">
         <h2>${esc(t(c.heroLabel, lang))}</h2>
-        <ul><li><span dir="ltr">home-hero.webp</span> — <a href="${src(HOME_HERO_SOURCE_ID)}" target="_blank" rel="noopener">${esc(t(c.sourceLabel, lang))}</a></li></ul>
+        <ul><li>${esc(t(c.ownedLabel, lang))}</li></ul>
       </div>
       ${rows}
     </div>

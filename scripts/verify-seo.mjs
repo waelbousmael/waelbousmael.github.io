@@ -136,7 +136,8 @@ test('email links work with the visitor\'s email client', () => {
 test('edge-to-edge project imagery requests full-width sources', () => {
   for (const [url, html] of pages) {
     if (!html.includes('data-page="project"') && !html.includes('data-page="landing"')) continue;
-    for (const match of html.matchAll(/<img\b[^>]*>/g)) {
+    const fullBleed = [...html.matchAll(/<div class="wrap full-bleed"[^>]*>([\s\S]*?)<\/div>/g)].map((match) => match[1]).join('\n');
+    for (const match of fullBleed.matchAll(/<img\b[^>]*>/g)) {
       const image = attributes(match[0]);
       if (!image.src.startsWith('/assets/projects/')) continue;
       assert.ok(image.sizes.startsWith('100vw') || image.sizes.startsWith('(max-width: 860px) 100vw'), `${url}: full-bleed image ${image.src} underestimates its display width`);

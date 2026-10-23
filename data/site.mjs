@@ -122,11 +122,12 @@ const site = {
         href: '/villa-renovation-design-jeddah/'
       }
     ],
+    spotlightProject: 'hillside-villa-aley',
     heroImage: {
-      src: '/assets/images/home-hero.webp', w: 1448, h: 1086,
+      src: '/assets/projects/hillside-villa-aley/cover.webp', w: 1464, h: 915,
       alt: {
-        ar: 'فيلا حديثة بسقف خشبي دافئ وفراغ معيشة مفتوح على مسبح هادئ',
-        en: 'Modern villa with a warm timber soffit and living space opening to a still pool'
+        ar: 'التصميم المقترح لفيلا قيد التنفيذ في قضاء عاليه بواجهات حجرية وتراسات وحديقة',
+        en: 'Proposed stone-clad hillside villa under construction in Aley District, with terraces and garden'
       }
     },
     selectedTitle: { ar: 'أعمال مختارة', en: 'Selected work' },
@@ -412,20 +413,21 @@ const site = {
   credits: {
     seoTitle: { ar: 'اعتمادات الصور | WB Studio', en: 'Image Credits | WB Studio' },
     seoDesc: {
-      ar: 'مصادر وتراخيص الصور المرجعية المستخدمة في صورة الواجهة الرئيسية والدراسات المفاهيمية على موقع WB Studio.',
-      en: 'Sources and licenses for reference imagery used in WB Studio’s homepage hero and concept studies.'
+      ar: 'اعتمادات صور مشاريع WB Studio والصور المرجعية المرخصة المستخدمة في الدراسات المفاهيمية.',
+      en: 'Credits for WB Studio project imagery and licensed reference images used in concept studies.'
     },
     h1: { ar: 'اعتمادات الصور', en: 'Image credits' },
     intro: {
-      ar: 'يجمع قسم الأعمال بين مشاريع الاستوديو ودراسات مفاهيمية موضّحة بهذه الصفة. تخص الاعتمادات أدناه صورة الواجهة الرئيسية والصور المرجعية في الدراسات المفاهيمية فقط؛ وهي من مصورين عبر Unsplash بموجب رخصة تتيح الاستخدام التجاري مجاناً. أما صور مشاريع الاستوديو فليست ضمن هذه المراجع المؤقتة.',
-      en: 'The Work section includes studio projects alongside clearly labeled concept studies. The credits below cover only the homepage hero and reference imagery used in concept studies, sourced from Unsplash under its free commercial-use license. Imagery for the studio’s own projects is separate from these temporary references.'
+      ar: 'صور المشاريع وصورة الواجهة الرئيسية مقدمة من WB Studio. أما الصور المرجعية في الدراسات المفاهيمية المعلّمة بهذه الصفة فهي من مصورين عبر Unsplash، وترد مصادرها أدناه بموجب الرخصة التي تتيح الاستخدام التجاري مجاناً.',
+      en: 'Project imagery and the homepage image are supplied by WB Studio. Reference images in the clearly labeled concept studies come from Unsplash photographers; their sources are listed below under its free commercial-use license.'
     },
     licenseNote: {
       ar: 'الرخصة: رخصة Unsplash (استخدام تجاري مجاني، لا تتطلب نسب العمل لصاحبه). روابط المصدر أدناه لكل صورة. القائمة الكاملة في ملف assets/licenses/LICENSES.md ضمن مستودع الموقع.',
       en: 'License: the Unsplash License (free commercial use, attribution not required). Source links for every image are listed below. The full register lives in assets/licenses/LICENSES.md in the site repository.'
     },
     sourceLabel: { ar: 'المصدر', en: 'Source' },
-    heroLabel: { ar: 'صورة الواجهة الرئيسية', en: 'Homepage hero image' }
+    heroLabel: { ar: 'صورة الواجهة الرئيسية', en: 'Homepage hero image' },
+    ownedLabel: { ar: 'صورة مشروع مقدمة من WB Studio — جميع الحقوق محفوظة للاستوديو.', en: 'Project imagery supplied by WB Studio — all rights reserved.', de: 'Von WB Studio bereitgestelltes Projektbild — alle Rechte vorbehalten.' }
   },
 
   // ── Services hub (lists the high-intent landing pages) ──
@@ -999,7 +1001,7 @@ const germanCopy = {
   'home.trustItems.1': 'Freier Planer und BIM-Koordinator',
   'home.trustItems.2': 'Berlin — digital und vor Ort nach Vereinbarung',
   'home.trustItems.3': 'Vom ersten Entwurf bis zur Ausführungsplanung',
-  'home.heroImage.alt': 'Moderne Villa mit warmer Holzuntersicht und einem Wohnbereich, der sich zu einem ruhigen Pool öffnet',
+  'home.heroImage.alt': 'Geplante Steinvilla im Bezirk Aley mit Terrassen und Garten — das Projekt befindet sich im Bau',
   'home.selectedTitle': 'Ausgewählte Projekte',
   'home.allWork': 'Alle Projekte',
   'home.approachTitle': 'Der Ablauf',
@@ -1108,9 +1110,9 @@ const germanCopy = {
   'contactBand.primary': 'Projektangaben senden',
   'contactBand.secondary': 'WhatsApp',
   'credits.seoTitle': 'Bildnachweise | WB Studio',
-  'credits.seoDesc': 'Quellen und Lizenzen der Referenzbilder auf der Startseite und in den Konzeptstudien von WB Studio.',
+  'credits.seoDesc': 'Bildnachweise zu den eigenen Projekten von WB Studio und den lizenzierten Referenzbildern der Konzeptstudien.',
   'credits.h1': 'Bildnachweise',
-  'credits.intro': 'Das Portfolio enthält eigene Studioprojekte und klar gekennzeichnete Konzeptstudien. Diese Nachweise betreffen das Titelbild der Startseite und die Unsplash-Referenzbilder der Konzeptstudien. Sie gelten nicht für die eigenen Projektbilder des Studios.',
+  'credits.intro': 'Die Projektbilder und das Titelbild der Startseite werden von WB Studio bereitgestellt. Die Referenzbilder der klar gekennzeichneten Konzeptstudien stammen von Unsplash. Ihre Quellen sind unten mit der Lizenz zur freien kommerziellen Nutzung aufgeführt.',
   'credits.licenseNote': 'Lizenz: Unsplash License mit kostenloser kommerzieller Nutzung; eine Namensnennung ist nicht vorgeschrieben. Die einzelnen Quellen sind unten verlinkt. Das vollständige Verzeichnis liegt unter assets/licenses/LICENSES.md im Website-Repository.',
   'credits.sourceLabel': 'Quelle',
   'credits.heroLabel': 'Titelbild der Startseite',

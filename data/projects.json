@@ -2,6 +2,107 @@
   "_readme": "Single source of truth for portfolio projects. Edit this file, then run `node scripts/build.mjs` to regenerate all pages and the sitemap. Every text field is bilingual: { ar, en }. Set `placeholder: false` once a project shows your own work. `featured: true` shows the project on the homepage (first featured project appears largest). Image paths live under /assets/projects/<slug>/. `sourceId` is the Unsplash CDN id recorded for licensing — see assets/licenses/LICENSES.md.",
   "projects": [
     {
+      "slug": "hillside-villa-aley",
+      "featured": true,
+      "placeholder": false,
+      "year": 2026,
+      "relatedGuides": ["before-designing-private-villa"],
+      "title": { "ar": "فيلا على سفح الجبل — عاليه", "en": "Hillside Villa — Aley", "de": "Villa am Hang — Aley" },
+      "category": { "ar": "فيلا خاصة", "en": "Private villa", "de": "Private Villa" },
+      "location": { "ar": "قضاء عاليه، جبل لبنان", "en": "Aley District, Mount Lebanon", "de": "Bezirk Aley, Libanongebirge" },
+      "status": { "ar": "قيد التنفيذ", "en": "Under construction", "de": "Im Bau" },
+      "excerpt": {
+        "ar": "فيلا قيد التنفيذ في قضاء عاليه، جبل لبنان. صور الموقع في أكتوبر 2026 إلى جانب تصور الواجهات الحجرية والتراسات والمعيشة المتصلة بالحديقة.",
+        "en": "A villa under construction in Aley District, Mount Lebanon. October 2026 site photographs meet a proposed design of stone, terraces and garden-facing living.",
+        "de": "Eine Villa im Bau im Bezirk Aley, Libanongebirge. Baustellenfotos vom Oktober 2026 zeigen den Weg zum geplanten Haus mit Stein, Terrassen und Gartenbezug."
+      },
+      "thesis": {
+        "ar": "بيت يتدرّج مع سفح الجبل ويترك المشهد جزءاً من الحياة اليومية. في قضاء عاليه، جبل لبنان، بدأ التصور يتحول إلى هيكل قائم؛ ونضع صور التنفيذ بجانب المشاهد المقترحة لقراءة المسافة بين ما تحقق وما هو مخطط له.",
+        "en": "A house that steps with the hillside and makes the landscape part of everyday life. In Aley District, Mount Lebanon, the design is taking shape as a built structure. Construction photographs are presented beside proposed views to show what is there today and what is planned next.",
+        "de": "Ein Haus, das dem Hang folgt und die Landschaft in den Alltag einbezieht. Im Bezirk Aley im Libanongebirge nimmt der Entwurf als Rohbau Gestalt an. Baustellenfotos stehen neben geplanten Ansichten und zeigen den heutigen Stand und die nächsten gestalterischen Schritte."
+      },
+      "body": [
+        {
+          "ar": "توثق صور أكتوبر 2026 الهيكل الخرساني والجدران المبنية وفتحات الحديقة الكبيرة. ويقترح التصميم واجهات حجرية وتراسات مزروعة وبرجولات خشبية تربط مستويات البيت بالحديقة والمسبح المقترح.",
+          "en": "The October 2026 photographs document the concrete frame, masonry and large garden openings. The proposed design adds stone facades, planted terraces and timber pergolas, connecting the levels of the house to the garden and a planned pool.",
+          "de": "Die Fotos vom Oktober 2026 dokumentieren das Betonskelett, Mauerwerk und die großen Öffnungen zum Garten. Geplant sind Steinfassaden, bepflanzte Terrassen und Holzpergolen, die die Wohnebenen mit dem Garten und einem vorgesehenen Pool verbinden."
+        },
+        {
+          "ar": "في الداخل، يحافظ التصور على الإطلالة المفتوحة نحو الأشجار ويختار مواد هادئة وإضاءة طبيعية. وتوضح مقتطفات رسومات 2024 علاقة الفراغات بالمناسيب والتضاريس. تعرض المشاهد الواقعية التوجه المقترح للمواد والتشطيبات، بينما توثق صور الموقع تقدم التنفيذ.",
+          "en": "Inside, the design retains the open view towards the trees, with quiet materials and natural light. Excerpts from the 2024 drawings explain the rooms, levels and terrain. The visualizations describe the planned materials and finishes, while site photographs document construction progress.",
+          "de": "Im Inneren bleibt der Blick auf die Bäume offen; ruhige Materialien und Tageslicht prägen den Entwurf. Auszüge aus den Zeichnungen von 2024 erläutern Räume, Ebenen und Gelände. Die Visualisierungen zeigen die geplanten Materialien und Oberflächen, während Baustellenfotos den Baufortschritt dokumentieren."
+        }
+      ],
+      "services": {
+        "ar": ["التصميم المعماري", "توثيق التصميم والرسومات", "التصور الداخلي", "الإظهار المعماري"],
+        "en": ["Architectural design", "Design documentation", "Interior concept", "Architectural visualization"],
+        "de": ["Gebäudeentwurf", "Planungszeichnungen", "Innenraumkonzept", "Architekturvisualisierung"]
+      },
+      "cover": {
+        "src": "/assets/projects/hillside-villa-aley/cover.webp", "w": 1464, "h": 915,
+        "alt": { "ar": "تصور للفيلا في عاليه بواجهات حجرية وتراسات وبرجولات مطلة على الحديقة والمسبح المقترح", "en": "Proposed hillside villa in Aley with stone facades, terraces and pergolas facing a garden and planned pool", "de": "Visualisierung der geplanten Villa in Aley mit Steinfassaden, Terrassen und Pergolen zum Garten und vorgesehenen Pool" },
+        "caption": { "ar": "التصميم المقترح — تصور معماري لمشروع قيد التنفيذ", "en": "Proposed design — visualization of a project under construction", "de": "Geplanter Entwurf — Visualisierung eines Projekts im Bau" }
+      },
+      "comparison": {
+        "title": { "ar": "من الموقع إلى التصور", "en": "From construction to the design ahead", "de": "Vom Rohbau zum geplanten Zuhause" },
+        "intro": { "ar": "زاويتان متقاربتان لقراءة الهيكل القائم والتوجه المقترح للواجهات والتراسات والحديقة.", "en": "Two similar viewpoints connect the existing structure with the proposed facades, terraces and garden.", "de": "Zwei ähnliche Blickwinkel verbinden den vorhandenen Rohbau mit den geplanten Fassaden, Terrassen und dem Garten." },
+        "current": {
+          "label": { "ar": "قيد التنفيذ", "en": "Under construction", "de": "Im Bau" },
+          "src": "/assets/projects/hillside-villa-aley/gallery-01.webp", "w": 1280, "h": 960,
+          "alt": { "ar": "صورة موقع للهيكل الخرساني والجدران المبنية للفيلا قيد التنفيذ في قضاء عاليه", "en": "Site photograph of the concrete frame and masonry of the villa under construction in Aley District", "de": "Baustellenfoto des Betonskeletts und Mauerwerks der Villa im Bezirk Aley" },
+          "caption": { "ar": "صورة موقع — أكتوبر 2026", "en": "Site photograph — October 2026", "de": "Baustellenfoto — Oktober 2026" }
+        },
+        "future": {
+          "label": { "ar": "التصميم المقترح", "en": "Proposed design", "de": "Geplanter Entwurf" },
+          "src": "/assets/projects/hillside-villa-aley/gallery-02.webp", "w": 1717, "h": 916,
+          "alt": { "ar": "تصور معماري لنفس الفيلا بكساء حجري وتراسات مزروعة وبرجولات ومسبح مقترح", "en": "Design visualization of the same villa with stone cladding, planted terraces, pergolas and a planned pool", "de": "Entwurfsvisualisierung derselben Villa mit Naturstein, bepflanzten Terrassen, Pergolen und geplantem Pool" },
+          "caption": { "ar": "تصور معماري — المشهد المخطط له", "en": "Design visualization — intended future appearance", "de": "Visualisierung — geplantes zukünftiges Erscheinungsbild" }
+        }
+      },
+      "gallery": [
+        {
+          "src": "/assets/projects/hillside-villa-aley/gallery-10.webp", "w": 1785, "h": 881,
+          "alt": { "ar": "تصور للواجهة المقابلة من الفيلا نفسها في عاليه يوضح الحجر والمدخل والدرج الخارجي والبرجولا", "en": "Proposed opposite facade of the same villa in Aley, showing stone cladding, entrance, external stair and pergola", "de": "Visualisierung der gegenüberliegenden Fassade derselben Villa in Aley mit Naturstein, Eingang, Außentreppe und Pergola" },
+          "caption": { "ar": "التصميم المقترح — الواجهة المقابلة من الفيلا نفسها", "en": "Proposed design — opposite facade of the same villa", "de": "Geplanter Entwurf — gegenüberliegende Fassade derselben Villa" }
+        },
+        {
+          "src": "/assets/projects/hillside-villa-aley/gallery-03.webp", "w": 1110, "h": 720, "layout": "half",
+          "alt": { "ar": "فتحة معيشة كبيرة في الطابق قيد التنفيذ تطل على الأشجار", "en": "Unfinished living-space opening looking towards the trees", "de": "Große Öffnung des Wohnraums im Rohbau mit Blick auf die Bäume" },
+          "caption": { "ar": "قيد التنفيذ — فتحة المعيشة والإطلالة نحو الحديقة", "en": "Under construction — the living-space opening towards the garden", "de": "Im Bau — Öffnung des Wohnraums zum Garten" }
+        },
+        {
+          "src": "/assets/projects/hillside-villa-aley/gallery-04.webp", "w": 1672, "h": 941, "layout": "half",
+          "alt": { "ar": "تصور داخلي للمعيشة بألوان هادئة وزجاج واسع يفتح الإطلالة نحو الأشجار", "en": "Proposed living interior with quiet materials and broad glazing towards the trees", "de": "Geplanter Wohnraum mit ruhigen Materialien und großer Verglasung zu den Bäumen" },
+          "caption": { "ar": "التصميم المقترح — تصور داخلي للمعيشة", "en": "Proposed design — living-space visualization", "de": "Geplanter Entwurf — Visualisierung des Wohnraums" }
+        },
+        {
+          "src": "/assets/projects/hillside-villa-aley/gallery-05.webp", "w": 1200, "h": 1600, "layout": "half",
+          "alt": { "ar": "أعمال الحفر والأساسات المبكرة وسط الأشجار في موقع الفيلا", "en": "Early excavation and foundation works among the trees on the villa site", "de": "Frühe Erd- und Fundamentarbeiten zwischen den Bäumen auf dem Villengrundstück" },
+          "caption": { "ar": "صورة موقع — أعمال الحفر والأساسات المبكرة", "en": "Site photograph — early excavation and foundation works", "de": "Baustellenfoto — frühe Erd- und Fundamentarbeiten" }
+        },
+        {
+          "src": "/assets/projects/hillside-villa-aley/gallery-06.webp", "w": 900, "h": 1600, "layout": "half",
+          "alt": { "ar": "الهيكل الخرساني والأعمدة والجدران المبنية أثناء تنفيذ الفيلا", "en": "Concrete columns, floor slabs and masonry during the villa construction", "de": "Betonstützen, Geschossdecken und Mauerwerk während des Villenbaus" },
+          "caption": { "ar": "قيد التنفيذ — الهيكل والجدران في أكتوبر 2026", "en": "Under construction — structure and masonry, October 2026", "de": "Im Bau — Tragstruktur und Mauerwerk, Oktober 2026" }
+        },
+        {
+          "src": "/assets/projects/hillside-villa-aley/gallery-07.webp", "w": 1901, "h": 1156, "fit": "contain",
+          "alt": { "ar": "مقطع معماري يوضح تدرج مستويات الفيلا وعلاقتها بسفح الجبل", "en": "Architectural section explaining the villa's stepped levels and hillside relationship", "de": "Gebäudeschnitt mit den gestaffelten Ebenen der Villa und ihrem Bezug zum Hang" },
+          "caption": { "ar": "رسومات 2024 — مقطع يقرأ المناسيب وعلاقة البيت بالتضاريس", "en": "2024 drawing — section through the house and hillside", "de": "Zeichnung von 2024 — Schnitt durch Haus und Hang" }
+        },
+        {
+          "src": "/assets/projects/hillside-villa-aley/gallery-08.webp", "w": 1801, "h": 1109, "layout": "half", "fit": "contain",
+          "alt": { "ar": "رسم واجهة للفيلا الحجرية مع الدرج الخارجي والتراسات", "en": "Villa elevation drawing with stone cladding, external stairs and terraces", "de": "Fassadenzeichnung der Villa mit Naturstein, Außentreppe und Terrassen" },
+          "caption": { "ar": "رسومات 2024 — الواجهة والدرج الخارجي", "en": "2024 drawing — elevation and external stair", "de": "Zeichnung von 2024 — Fassade und Außentreppe" }
+        },
+        {
+          "src": "/assets/projects/hillside-villa-aley/gallery-09.webp", "w": 1650, "h": 990, "layout": "half", "fit": "contain",
+          "alt": { "ar": "مقتطف مخطط طابق الحديقة يوضح توزيع الغرف والمعيشة والدرج", "en": "Garden-level plan excerpt showing rooms, living space and circulation", "de": "Ausschnitt des Gartengeschossgrundrisses mit Räumen, Wohnbereich und Erschließung" },
+          "caption": { "ar": "رسومات 2024 — مقتطف مخطط طابق الحديقة", "en": "2024 drawing — garden-level plan excerpt", "de": "Zeichnung von 2024 — Grundrissausschnitt des Gartengeschosses" }
+        }
+      ]
+    },
+    {
       "slug": "montashiri-villa",
       "relatedGuides": ["obhur-villa-design-considerations", "before-designing-private-villa"],
       "featured": true,
