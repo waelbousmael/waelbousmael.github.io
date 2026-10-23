@@ -17,9 +17,12 @@ the spirit of high-end architecture studios — while keeping the conversion pat
   Generated files carry a banner comment. **Never edit generated HTML by
   hand** — change the data or the templates in `scripts/build.mjs`, rebuild,
   and commit the regenerated output.
-- Arabic (RTL) is canonical at the root; English (LTR) is mirrored under
-  `/en/`. Every page links its alternate via `hreflang` and the header
-  language toggle. `sitemap.xml` is generated with alternates.
+- English is the default homepage at `/`, with no automatic language or country
+  redirects. Arabic home is `/ar/`; existing Arabic deep links remain at the
+  root. English deep links remain under `/en/`; `/en/` is a homepage alias
+  canonicalized to `/`. German Berlin content lives under `/de/` with localized
+  paths. `data/locales.mjs` is the published URL registry. Only actual equivalent
+  pages are listed as `hreflang` alternates and in the generated sitemap.
 - CSS: one file, `assets/css/site.css` — design tokens at the top, logical
   properties (`margin-inline`, `padding-block`, `inset-inline-start`) so RTL
   and LTR share all layout code. Do not introduce per-direction stylesheets.
@@ -32,9 +35,9 @@ the spirit of high-end architecture studios — while keeping the conversion pat
 - Palette is locked to the tokens in `site.css`: warm white `#faf8f4`,
   charcoal `#1e1c19`, stone `#f2eee7`, warm grey `#857f74`, hairlines at
   ~13% ink. No saturated colors, no gradients, no shadows, no rounded corners.
-- Type: AR display Amiri / body IBM Plex Sans Arabic; EN display Cormorant
+- Type: AR display Amiri / body IBM Plex Sans Arabic; EN/DE display Cormorant
   Garamond / body Inter. Never letterspace Arabic. Uppercase/letterspacing
-  effects are gated behind `html[lang="en"]`.
+  effects are limited to English/German selectors; never apply them to Arabic.
 - Whitespace is the main design material — section gaps use the
   `--gap-section` clamps; don't compress them to fit more content.
 - Motion: only the existing reveal fade and image hover scale. Everything
@@ -44,8 +47,9 @@ the spirit of high-end architecture studios — while keeping the conversion pat
 
 ## Bilingual rules
 
-- Every visible string is a `{ ar, en }` pair in `data/site.mjs` or
-  `data/projects.json`. No hardcoded visible text in templates.
+- Shared visible strings have `{ ar, en, de }` fields in `data/site.mjs` or
+  `data/projects.json`; market-specific pages may contain only their published
+  language. No hardcoded visible text in templates or silent English fallback.
 - Arabic copy is the primary voice (approachable professional register —
   keep it; do not switch to stiff classical or to slangy marketing tone).
 - Check both directions after layout changes: nav, cards, details rows,

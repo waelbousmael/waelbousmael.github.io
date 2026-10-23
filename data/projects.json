@@ -7,47 +7,47 @@
       "featured": true,
       "placeholder": false,
       "year": 2025,
-      "title": { "ar": "فيلا المنتشري", "en": "Montashiri Villa" },
-      "category": { "ar": "فلل", "en": "Villas" },
-      "location": { "ar": "أبحر، جدة", "en": "Obhur, Jeddah" },
-      "status": { "ar": "قيد التصميم", "en": "In design" },
+      "title": { "ar": "فيلا المنتشري", "en": "Montashiri Villa", "de": "Montashiri Villa" },
+      "category": { "ar": "فلل", "en": "Villas", "de": "Villen" },
+      "location": { "ar": "أبحر، جدة", "en": "Obhur, Jeddah", "de": "Obhur, Jeddah, Saudi-Arabien" },
+      "status": { "ar": "قيد التصميم", "en": "In design", "de": "In Planung" },
       "excerpt": {
         "ar": "فيلا عائلية على شارع سكني في أبحر: واجهة حجرية هادئة، شرفات مزروعة، وحياة خارجية تصعد حتى مسبح السطح.",
-        "en": "A family villa on a residential street in Obhur — a calm stone face, planted terraces, and outdoor life rising to a rooftop pool."
+        "en": "A family villa on a residential street in Obhur — a calm stone face, planted terraces, and outdoor life rising to a rooftop pool.", "de": "Eine Familienvilla an einer Wohnstraße in Obhur — mit ruhiger Steinfassade, bepflanzten Terrassen und einem Pool auf dem Dach als Teil des Lebens im Freien."
       },
       "thesis": {
         "ar": "كيف يحفظ بيتٌ حضري خصوصيته دون أن ينغلق على نفسه؟ تتدرج الواجهة الحجرية بين كتل صلبة وفتحات مظللة بستائر خشبية، بينما تتحول الأسطح إلى طبقة معيشة ثانية: تراسات مزروعة، وبرجولات، ومسبح سماوي يطل على أبحر.",
-        "en": "How does an urban house keep its privacy without closing itself off? The stone facade grades between solid volumes and openings shaded by timber screens, while the roofscape becomes a second layer of living — planted terraces, pergolas, and a sky pool overlooking Obhur."
+        "en": "How does an urban house keep its privacy without closing itself off? The stone facade grades between solid volumes and openings shaded by timber screens, while the roofscape becomes a second layer of living — planted terraces, pergolas, and a sky pool overlooking Obhur.", "de": "Wie bewahrt ein Stadthaus seine Privatsphäre, ohne sich abzuschotten? Die Steinfassade wechselt zwischen geschlossenen Volumen und Öffnungen mit verschattenden Holzlamellen. Auf dem Dach entsteht eine zweite Wohnebene mit bepflanzten Terrassen, Pergolen und einem Pool mit Blick über Obhur."
       },
       "body": [
         {
           "ar": "تترتب الكتل حول أفنية ضوء صغيرة، فيدخل الضوء الطبيعي إلى عمق البيت مع خصوصية كاملة تجاه الشارع والجيران. الزراعة ليست تجميلاً لاحقاً؛ بل جزء من تكوين الواجهة، تلطف المناخ وتظلل الفتحات.",
-          "en": "The volumes arrange themselves around small light courts, drawing daylight deep into the house while keeping full privacy from street and neighbours. Planting is not an afterthought — it is part of the facade's composition, tempering the climate and shading the openings."
+          "en": "The volumes arrange themselves around small light courts, drawing daylight deep into the house while keeping full privacy from street and neighbours. Planting is not an afterthought — it is part of the facade's composition, tempering the climate and shading the openings.", "de": "Die Baukörper gruppieren sich um kleine Lichthöfe. So gelangt Tageslicht tief ins Haus, während die Privatsphäre gegenüber Straße und Nachbarn erhalten bleibt. Die Bepflanzung ist Teil der Fassadengestaltung: Sie mildert das Mikroklima und beschattet die Öffnungen."
         },
         {
           "ar": "في الأعلى يستعيد البيت مساحة الأرض التي شغلها: تراسات مزروعة وجلسات مظللة ومسبح عائلي بإطلالة مفتوحة — طابق كامل للعيش في الهواء الطلق.",
-          "en": "Above, the house reclaims the ground it occupies: planted terraces, shaded sitting areas and a family pool with an open view — a full storey of open-air living."
+          "en": "Above, the house reclaims the ground it occupies: planted terraces, shaded sitting areas and a family pool with an open view — a full storey of open-air living.", "de": "Auf dem Dach gewinnt das Haus die von ihm belegte Fläche zurück: bepflanzte Terrassen, schattige Sitzplätze und ein Familienpool mit offenem Blick bilden eine vollständige Ebene für das Leben im Freien."
         }
       ],
       "services": {
         "ar": ["الفكرة المعمارية", "التوجه الداخلي", "تصميم جاهز للتنفيذ"],
-        "en": ["Architectural concept", "Interior direction", "Build-ready design"]
+        "en": ["Architectural concept", "Interior direction", "Build-ready design"], "de": ["Entwurf","Innenraumkonzept","Ausführungsplanung"]
       },
       "cover": {
         "src": "/assets/projects/montashiri-villa/cover.webp",
         "w": 1536, "h": 960,
-        "alt": { "ar": "واجهة فيلا المنتشري الحجرية مع شرفات مزروعة ونخيل في ضوء الغروب، أبحر، جدة", "en": "Stone street facade of Montashiri Villa with planted terraces and palms at dusk, Obhur, Jeddah" }
+        "alt": { "ar": "واجهة فيلا المنتشري الحجرية مع شرفات مزروعة ونخيل في ضوء الغروب، أبحر، جدة", "en": "Stone street facade of Montashiri Villa with planted terraces and palms at dusk, Obhur, Jeddah", "de": "Steinfassade der Montashiri Villa mit bepflanzten Terrassen und Palmen in der Abenddämmerung, Obhur, Jeddah" }
       },
       "gallery": [
         {
           "src": "/assets/projects/montashiri-villa/gallery-01.webp",
           "w": 1672, "h": 941,
-          "alt": { "ar": "منظور أكسونومتري من الشارع يُظهر الكتل والبوابة والتراسات المزروعة", "en": "Street-corner axonometric showing the massing, gate and planted terraces" }
+          "alt": { "ar": "منظور أكسونومتري من الشارع يُظهر الكتل والبوابة والتراسات المزروعة", "en": "Street-corner axonometric showing the massing, gate and planted terraces", "de": "Axonometrie von der Straßenecke mit Baukörpern, Eingangstor und bepflanzten Terrassen" }
         },
         {
           "src": "/assets/projects/montashiri-villa/gallery-02.webp",
           "w": 1448, "h": 1086,
-          "alt": { "ar": "منظور علوي لسطح الفيلا يُظهر المسبح والبرجولات والزراعة", "en": "Aerial view of the villa roofscape with pool, pergolas and planting" }
+          "alt": { "ar": "منظور علوي لسطح الفيلا يُظهر المسبح والبرجولات والزراعة", "en": "Aerial view of the villa roofscape with pool, pergolas and planting", "de": "Blick von oben auf die Dachlandschaft der Villa mit Pool, Pergolen und Bepflanzung" }
         }
       ]
     },
@@ -57,77 +57,77 @@
       "featured": true,
       "placeholder": false,
       "year": 2026,
-      "title": { "ar": "منتجع جبيل", "en": "Byblos Resort" },
-      "category": { "ar": "منتجعات", "en": "Hospitality" },
-      "location": { "ar": "جبيل، لبنان", "en": "Byblos, Lebanon" },
-      "status": { "ar": "قيد التصميم", "en": "In design" },
+      "title": { "ar": "منتجع جبيل", "en": "Byblos Resort", "de": "Byblos Resort" },
+      "category": { "ar": "منتجعات", "en": "Hospitality", "de": "Hotellerie und Ferienanlagen" },
+      "location": { "ar": "جبيل، لبنان", "en": "Byblos, Lebanon", "de": "Byblos, Libanon" },
+      "status": { "ar": "قيد التصميم", "en": "In design", "de": "In Planung" },
       "excerpt": {
         "ar": "منتجع ساحلي في جبيل تتدرّج وحداته السكنية بكساء حجري حول الحدائق والمسابح، ضمن مخطط يسعى إلى تعظيم الإطلالات نحو البحر المتوسط.",
-        "en": "A coastal resort in Byblos where stone-clad residences step around gardens and pools within a plan designed to maximize views towards the Mediterranean."
+        "en": "A coastal resort in Byblos where stone-clad residences step around gardens and pools within a plan designed to maximize views towards the Mediterranean.", "de": "Ein Küstenresort in Byblos, dessen steinverkleidete Wohnhäuser sich um Gärten und Pools staffeln. Der Gesamtplan ist auf möglichst freie Ausblicke zum Mittelmeer ausgerichtet."
       },
       "thesis": {
         "ar": "كيف يمكن لكل وحدة سكنية أن تحافظ على صلة حقيقية بالبحر ضمن موقع ساحلي شديد الانحدار؟ ينطلق التصميم من تضاريس الأرض، فتتوزّع الكتل السكنية على مستويات متدرّجة تحدّ من حجب الإطلالات، بينما ينظّم محور داخلي الوصول والحدائق والمرافق المشتركة من دون المساس بالخصوصية.",
-        "en": "How can every residence retain a meaningful relationship with the sea on a steep coastal site? The design begins with the terrain: stepped residential volumes avoid screening one another, while an internal spine organizes arrival, gardens and shared amenities without compromising privacy."
+        "en": "How can every residence retain a meaningful relationship with the sea on a steep coastal site? The design begins with the terrain: stepped residential volumes avoid screening one another, while an internal spine organizes arrival, gardens and shared amenities without compromising privacy.", "de": "Wie erhält jede Wohneinheit auf einem steilen Küstengrundstück einen spürbaren Bezug zum Meer? Der Entwurf beginnt beim Gelände: Gestaffelte Wohnbaukörper halten Sichtachsen frei. Eine innere Erschließungsachse ordnet Ankunft, Gärten und gemeinschaftliche Einrichtungen und wahrt zugleich die Privatsphäre."
       },
       "body": [
         {
           "ar": "تترجم دراسة الموقع الانحدار إلى مستويات متعاقبة تفتح ممرات الإطلالة وتحميها، وتسمح بوصول الضوء الطبيعي إلى عمق الوحدات. يبدأ الوصول من الطريق العلوي، وتندمج المداخل المستقلة وحركة المركبات بمحاذاة طرف الموقع، لتبقى المساحة الطبيعية الوسطية هادئة وواضحة.",
-          "en": "The site study translates the slope into terraced levels that open and protect view corridors while bringing daylight deep into the homes. Arrival begins from the upper road; independent residential access and vehicle circulation are absorbed along the site edge, leaving the central landscape calm and legible."
+          "en": "The site study translates the slope into terraced levels that open and protect view corridors while bringing daylight deep into the homes. Arrival begins from the upper road; independent residential access and vehicle circulation are absorbed along the site edge, leaving the central landscape calm and legible.", "de": "Die Grundstücksstudie übersetzt den Hang in terrassierte Ebenen, die Sichtachsen öffnen und schützen sowie Tageslicht tief in die Wohnräume führen. Die Ankunft erfolgt von der oberen Straße. Separate Zugänge und die Fahrzeugerschließung liegen am Grundstücksrand, sodass die zentrale Gartenlandschaft ruhig und übersichtlich bleibt."
         },
         {
           "ar": "تشكّل المسابح والحدائق وملاعب البادل ومسارات المشاة طبقة مشتركة للحياة الاجتماعية، تقابلها تراسات وحدائق خاصة ومسابح صغيرة تمنح الوحدات امتداداً خارجياً محمياً. وتصل الواجهات الزجاجية الواسعة مع الحجر والخشب الفراغات الداخلية بضوء المتوسط ومشهد الساحل.",
-          "en": "Shared pools, gardens, padel courts and pedestrian paths form a social layer, balanced by private terraces, gardens and plunge pools that give the residences protected outdoor space. Stone, timber and broad glazing connect the interiors to Mediterranean light and the coastal landscape."
+          "en": "Shared pools, gardens, padel courts and pedestrian paths form a social layer, balanced by private terraces, gardens and plunge pools that give the residences protected outdoor space. Stone, timber and broad glazing connect the interiors to Mediterranean light and the coastal landscape.", "de": "Gemeinschaftspools, Gärten, Padelplätze und Fußwege schaffen Räume der Begegnung. Private Terrassen, Gärten und kleine Pools ergänzen sie um geschützte Außenbereiche. Stein, Holz und große Verglasungen verbinden die Innenräume mit dem mediterranen Licht und der Küstenlandschaft."
         }
       ],
       "services": {
         "ar": ["تحليل الموقع", "المخطط العام للمنتجع", "التخطيط المعماري والسكني", "التوجه الداخلي", "تصميم المناظر والمسابح"],
-        "en": ["Site analysis", "Resort master planning", "Architectural & residential planning", "Interior direction", "Landscape & pool design"]
+        "en": ["Site analysis", "Resort master planning", "Architectural & residential planning", "Interior direction", "Landscape & pool design"], "de": ["Grundstücksanalyse","Gesamtplanung des Resorts","Gebäude- und Wohnraumplanung","Innenraumkonzept","Freiraum- und Poolgestaltung"]
       },
       "cover": {
         "src": "/assets/projects/byblos-resort/cover.webp",
         "w": 1920, "h": 1200,
-        "alt": { "ar": "وحدات سكنية في منتجع بكساء حجري تحيط بمسبح وسط الحدائق عند الغسق", "en": "Stone-clad resort residences arranged around a landscaped pool at dusk" }
+        "alt": { "ar": "وحدات سكنية في منتجع بكساء حجري تحيط بمسبح وسط الحدائق عند الغسق", "en": "Stone-clad resort residences arranged around a landscaped pool at dusk", "de": "Steinverkleidete Wohnhäuser des Resorts um einen Pool in einer Gartenanlage bei Abenddämmerung" }
       },
       "gallery": [
         {
           "src": "/assets/projects/byblos-resort/gallery-01.webp",
           "w": 2000, "h": 813,
-          "alt": { "ar": "صورة للموقع الساحلي بجانب مخطط طبوغرافي يوضح توزيع الكتل المتدرّجة لحماية ممرات الإطلالة نحو البحر", "en": "Coastal site photograph beside a topographic plan showing stepped building placement to protect sea-view corridors" },
-          "caption": { "ar": "دراسة الموقع — التضاريس واستراتيجية تعظيم الإطلالات البحرية", "en": "Site study — terrain and sea-view strategy" }
+          "alt": { "ar": "صورة للموقع الساحلي بجانب مخطط طبوغرافي يوضح توزيع الكتل المتدرّجة لحماية ممرات الإطلالة نحو البحر", "en": "Coastal site photograph beside a topographic plan showing stepped building placement to protect sea-view corridors", "de": "Foto des Küstengrundstücks neben einem topografischen Plan mit gestaffelten Baukörpern und freien Sichtachsen zum Meer" },
+          "caption": { "ar": "دراسة الموقع — التضاريس واستراتيجية تعظيم الإطلالات البحرية", "en": "Site study — terrain and sea-view strategy", "de": "Grundstücksstudie — Gelände und Sichtachsen zum Meer" }
         },
         {
           "src": "/assets/projects/byblos-resort/gallery-02.webp",
           "w": 2000, "h": 660,
-          "alt": { "ar": "منظور أكسونومتري يوضح تدرّج الوحدات على المنحدر وتوزيع المسبح والحدائق وملاعب البادل", "en": "Axonometric view showing residences stepped down the slope with the shared pool, gardens and padel courts" },
-          "caption": { "ar": "المخطط العام — تنظيم متدرّج يوازن المرافق المشتركة والخصوصية", "en": "Master plan — stepped organization balancing shared amenities and privacy" }
+          "alt": { "ar": "منظور أكسونومتري يوضح تدرّج الوحدات على المنحدر وتوزيع المسبح والحدائق وملاعب البادل", "en": "Axonometric view showing residences stepped down the slope with the shared pool, gardens and padel courts", "de": "Axonometrie der am Hang gestaffelten Wohnhäuser mit Gemeinschaftspool, Gärten und Padelplätzen" },
+          "caption": { "ar": "المخطط العام — تنظيم متدرّج يوازن المرافق المشتركة والخصوصية", "en": "Master plan — stepped organization balancing shared amenities and privacy", "de": "Gesamtplan — abgestufte Anordnung zwischen Gemeinschaft und Privatsphäre" }
         },
         {
           "src": "/assets/projects/byblos-resort/gallery-03.webp",
           "w": 1800, "h": 1125,
           "layout": "half",
-          "alt": { "ar": "منظور لطريق الوصول العلوي بين وحدات سكنية حجرية متدرّجة نحو البحر", "en": "View from the upper arrival road between stone-clad residences stepping towards the sea" },
-          "caption": { "ar": "الوصول — حركة واضحة من الطريق العلوي على طرف الموقع", "en": "Arrival — clear circulation from the upper road along the site edge" }
+          "alt": { "ar": "منظور لطريق الوصول العلوي بين وحدات سكنية حجرية متدرّجة نحو البحر", "en": "View from the upper arrival road between stone-clad residences stepping towards the sea", "de": "Blick von der oberen Zufahrtsstraße zwischen steinverkleideten Wohnhäusern, die sich zum Meer hinabstaffeln" },
+          "caption": { "ar": "الوصول — حركة واضحة من الطريق العلوي على طرف الموقع", "en": "Arrival — clear circulation from the upper road along the site edge", "de": "Ankunft — klare Erschließung von der oberen Straße am Grundstücksrand" }
         },
         {
           "src": "/assets/projects/byblos-resort/gallery-04.webp",
           "w": 1800, "h": 1125,
           "layout": "half",
-          "alt": { "ar": "تراس خاص مع مسبح صغير وبرجولة خشبية يواجه البحر المتوسط عند الغروب", "en": "Private terrace with a plunge pool and timber pergola facing the Mediterranean at sunset" },
-          "caption": { "ar": "المساحة الخارجية الخاصة — تراس ومسبح صغير باتجاه المتوسط", "en": "Private outdoor space — terrace and plunge pool facing the Mediterranean" }
+          "alt": { "ar": "تراس خاص مع مسبح صغير وبرجولة خشبية يواجه البحر المتوسط عند الغروب", "en": "Private terrace with a plunge pool and timber pergola facing the Mediterranean at sunset", "de": "Private Terrasse mit kleinem Pool und Holzpergola mit Blick auf das Mittelmeer bei Sonnenuntergang" },
+          "caption": { "ar": "المساحة الخارجية الخاصة — تراس ومسبح صغير باتجاه المتوسط", "en": "Private outdoor space — terrace and plunge pool facing the Mediterranean", "de": "Privater Außenraum — Terrasse und kleiner Pool mit Blick zum Mittelmeer" }
         },
         {
           "src": "/assets/projects/byblos-resort/gallery-05.webp",
           "w": 1800, "h": 1125,
           "layout": "half",
-          "alt": { "ar": "مساحة معيشة هادئة تنفتح بالكامل على تراس مزروع ومسبح صغير والبحر", "en": "Calm living space opening fully to a planted terrace, plunge pool and the sea" },
-          "caption": { "ar": "المعيشة — امتداد مباشر إلى التراس والبحر", "en": "Living space — a direct extension to the terrace and sea" }
+          "alt": { "ar": "مساحة معيشة هادئة تنفتح بالكامل على تراس مزروع ومسبح صغير والبحر", "en": "Calm living space opening fully to a planted terrace, plunge pool and the sea", "de": "Ruhiger Wohnraum, der sich vollständig zu einer bepflanzten Terrasse, einem kleinen Pool und dem Meer öffnet" },
+          "caption": { "ar": "المعيشة — امتداد مباشر إلى التراس والبحر", "en": "Living space — a direct extension to the terrace and sea", "de": "Wohnraum — direkte Verbindung zu Terrasse und Meer" }
         },
         {
           "src": "/assets/projects/byblos-resort/gallery-06.webp",
           "w": 1800, "h": 1125,
           "layout": "half",
-          "alt": { "ar": "فراغ معيشة مزدوج الارتفاع يطل عبر زجاج واسع على فناء مزروع بالنخيل", "en": "Double-height living space with broad glazing around a palm-planted courtyard" },
-          "caption": { "ar": "الداخل — فراغ مزدوج الارتفاع مرتبط بفناء مزروع", "en": "Interior — double-height space connected to a planted courtyard" }
+          "alt": { "ar": "فراغ معيشة مزدوج الارتفاع يطل عبر زجاج واسع على فناء مزروع بالنخيل", "en": "Double-height living space with broad glazing around a palm-planted courtyard", "de": "Zweigeschossiger Wohnraum mit großer Verglasung um einen mit Palmen bepflanzten Innenhof" },
+          "caption": { "ar": "الداخل — فراغ مزدوج الارتفاع مرتبط بفناء مزروع", "en": "Interior — double-height space connected to a planted courtyard", "de": "Innenraum — zweigeschossiger Wohnbereich mit bepflanztem Hof" }
         }
       ]
     },
@@ -137,35 +137,35 @@
       "featured": true,
       "placeholder": false,
       "year": 2026,
-      "title": { "ar": "تجديد فيلا خاصة", "en": "Private Villa Renovation" },
-      "category": { "ar": "تجديد سكني", "en": "Residential Renovation" },
-      "location": { "ar": "الشوف، جبل لبنان", "en": "Chouf, Mount Lebanon" },
-      "status": { "ar": "اكتملت مخططات التنفيذ", "en": "Execution drawings completed" },
+      "title": { "ar": "تجديد فيلا خاصة", "en": "Private Villa Renovation", "de": "Umbau einer privaten Villa" },
+      "category": { "ar": "تجديد سكني", "en": "Residential Renovation", "de": "Wohnhausumbau" },
+      "location": { "ar": "الشوف، جبل لبنان", "en": "Chouf, Mount Lebanon", "de": "Chouf, Libanongebirge" },
+      "status": { "ar": "اكتملت مخططات التنفيذ", "en": "Execution drawings completed", "de": "Ausführungsplanung abgeschlossen" },
       "excerpt": {
         "ar": "إعادة تنظيم فيلا حجرية قائمة في الشوف عبر توثيق الوضع القائم، ومخططات الهدم والإنشاء، وحزمة معمارية مكتملة للتنفيذ.",
-        "en": "The reworking of an existing stone villa in Chouf through existing-condition documentation, demolition and construction plans, and a completed architectural execution package."
+        "en": "The reworking of an existing stone villa in Chouf through existing-condition documentation, demolition and construction plans, and a completed architectural execution package.", "de": "Die Neuordnung einer bestehenden Steinvilla im Chouf: Bestandsdokumentation, Abbruch- und Neubaupläne sowie eine abgeschlossene Ausführungsplanung für das Gebäude."
       },
       "thesis": {
         "ar": "كيف يمكن لفيلا حجرية قائمة أن تستجيب لحياة عائلية معاصرة من دون أن تفقد ما يمنحها طابعها؟ يبدأ المشروع بقراءة دقيقة للمبنى، ثم يفصل كل تدخل بوضوح بين الوضع القائم والهدم والإنشاء والتوزيع المفروش.",
-        "en": "How can an existing stone villa support contemporary family life without losing the character that defines it? The project begins with a precise reading of the building, then separates every intervention clearly across existing, demolition, construction and furnished plans."
+        "en": "How can an existing stone villa support contemporary family life without losing the character that defines it? The project begins with a precise reading of the building, then separates every intervention clearly across existing, demolition, construction and furnished plans.", "de": "Wie kann eine bestehende Steinvilla zeitgemäßes Familienleben ermöglichen und ihren Charakter bewahren? Das Projekt beginnt mit einer genauen Untersuchung des Gebäudes. Alle Eingriffe werden in Bestands-, Abbruch-, Neubau- und Möblierungsplänen nachvollziehbar dargestellt."
       },
       "body": [
         {
           "ar": "يعيد التصميم تنظيم الطابق الأرضي حول مطبخ ومساحة إفطار أكثر انفتاحاً، مع وضوح أكبر بين الاستقبال والمعيشة العائلية. وتضيف الفتحات والتراسات الجديدة مساحات خارجية محسوبة من دون تجاهل هيكل البيت القائم.",
-          "en": "The design reorganizes the ground floor around a more open kitchen and breakfast area, with a clearer relationship between reception and family living. New openings and terraces add measured outdoor space while working carefully with the existing structure."
+          "en": "The design reorganizes the ground floor around a more open kitchen and breakfast area, with a clearer relationship between reception and family living. New openings and terraces add measured outdoor space while working carefully with the existing structure.", "de": "Der Entwurf ordnet das Erdgeschoss um eine offenere Küche mit Frühstücksbereich neu und klärt die Beziehung zwischen Empfang und Familienwohnen. Neue Öffnungen und Terrassen ergänzen gezielte Außenräume unter sorgfältiger Berücksichtigung der bestehenden Gebäudestruktur."
         },
         {
           "ar": "تُظهر المقاطع والمناظير الأكسونومترية المتقابلة الفرق بين المبنى القائم والمقترح، فيما تحوّل مخططات الهدم والإنشاء القرارات التصميمية إلى حزمة معمارية واضحة يمكن للاستشاريين والمقاولين البناء عليها.",
-          "en": "Paired sections and axonometric views make the existing-to-proposed transformation legible, while demolition and construction plans translate the design decisions into a clear architectural package for consultants and contractors to build upon."
+          "en": "Paired sections and axonometric views make the existing-to-proposed transformation legible, while demolition and construction plans translate the design decisions into a clear architectural package for consultants and contractors to build upon.", "de": "Gegenübergestellte Schnitte und Axonometrien zeigen die Veränderung vom Bestand zum Entwurf. Abbruch- und Neubaupläne übersetzen die Entwurfsentscheidungen in ein klares Planungspaket als Grundlage für Fachplaner und ausführende Unternehmen."
         }
       ],
       "services": {
         "ar": ["دراسة الوضع القائم", "تصميم التجديد المعماري", "مخططات الهدم والإنشاء", "مخططات تنفيذ معمارية"],
-        "en": ["Existing-condition study", "Architectural renovation design", "Demolition & construction plans", "Architectural execution drawings"]
+        "en": ["Existing-condition study", "Architectural renovation design", "Demolition & construction plans", "Architectural execution drawings"], "de": ["Bestandsanalyse","Entwurfsplanung für den Umbau","Abbruch- und Neubaupläne","Ausführungsplanung für das Gebäude"]
       },
       "relatedService": {
         "slug": "villa-renovation-design-jeddah",
-        "label": { "ar": "خدمة تجديد الفلل ومخططات التنفيذ", "en": "Villa renovation & execution-drawing service" }
+        "label": { "ar": "خدمة تجديد الفلل ومخططات التنفيذ", "en": "Villa renovation & execution-drawing service", "de": "Umbauplanung und Ausführungszeichnungen" }
       },
       "cover": {
         "src": "/assets/projects/private-villa-renovation-chouf/cover.webp",
@@ -173,7 +173,7 @@
         "fit": "contain",
         "alt": {
           "ar": "تصور معماري لتجديد فيلا حجرية لبنانية بشرفات وتراسات جديدة في الشوف",
-          "en": "Architectural visualization of a renovated Lebanese stone villa with new balconies and terraces in Chouf"
+          "en": "Architectural visualization of a renovated Lebanese stone villa with new balconies and terraces in Chouf", "de": "Visualisierung einer umgebauten libanesischen Steinvilla mit neuen Balkonen und Terrassen im Chouf"
         }
       },
       "gallery": [
@@ -181,63 +181,63 @@
           "src": "/assets/projects/private-villa-renovation-chouf/gallery-01.webp",
           "w": 1600, "h": 1192,
           "layout": "half",
-          "alt": { "ar": "مخطط الطابق الأرضي للفيلا قبل التجديد", "en": "Ground-floor plan of the villa before renovation" },
-          "caption": { "ar": "الوضع القائم — مخطط الطابق الأرضي", "en": "Existing condition — ground-floor plan" }
+          "alt": { "ar": "مخطط الطابق الأرضي للفيلا قبل التجديد", "en": "Ground-floor plan of the villa before renovation", "de": "Erdgeschossgrundriss der Villa vor dem Umbau" },
+          "caption": { "ar": "الوضع القائم — مخطط الطابق الأرضي", "en": "Existing condition — ground-floor plan", "de": "Bestand — Erdgeschossgrundriss" }
         },
         {
           "src": "/assets/projects/private-villa-renovation-chouf/gallery-02.webp",
           "w": 1600, "h": 1192,
           "layout": "half",
-          "alt": { "ar": "مخطط هدم الطابق الأرضي مع تمييز العناصر المراد إزالتها", "en": "Ground-floor demolition plan highlighting elements to be removed" },
-          "caption": { "ar": "مخطط الهدم — العناصر المراد إزالتها", "en": "Demolition plan — elements to be removed" }
+          "alt": { "ar": "مخطط هدم الطابق الأرضي مع تمييز العناصر المراد إزالتها", "en": "Ground-floor demolition plan highlighting elements to be removed", "de": "Abbruchplan des Erdgeschosses mit markierten Bauteilen zur Entfernung" },
+          "caption": { "ar": "مخطط الهدم — العناصر المراد إزالتها", "en": "Demolition plan — elements to be removed", "de": "Abbruchplan — zu entfernende Bauteile" }
         },
         {
           "src": "/assets/projects/private-villa-renovation-chouf/gallery-03.webp",
           "w": 1600, "h": 1192,
           "layout": "half",
-          "alt": { "ar": "مخطط إنشاء الطابق الأرضي مع الجدران والفتحات والتراسات الجديدة", "en": "Ground-floor construction plan with new walls, openings and terraces" },
-          "caption": { "ar": "مخطط الإنشاء — الجدران والفتحات والتراسات الجديدة", "en": "Construction plan — new walls, openings and terraces" }
+          "alt": { "ar": "مخطط إنشاء الطابق الأرضي مع الجدران والفتحات والتراسات الجديدة", "en": "Ground-floor construction plan with new walls, openings and terraces", "de": "Neubauplan des Erdgeschosses mit neuen Wänden, Öffnungen und Terrassen" },
+          "caption": { "ar": "مخطط الإنشاء — الجدران والفتحات والتراسات الجديدة", "en": "Construction plan — new walls, openings and terraces", "de": "Neubauplan — neue Wände, Öffnungen und Terrassen" }
         },
         {
           "src": "/assets/projects/private-villa-renovation-chouf/gallery-04.webp",
           "w": 1600, "h": 1192,
           "layout": "half",
-          "alt": { "ar": "المخطط المفروش المقترح للطابق الأرضي بعد إعادة تنظيم مساحات المعيشة", "en": "Proposed furnished ground-floor plan after reorganizing the living spaces" },
-          "caption": { "ar": "المخطط المفروش — إعادة تنظيم مساحات المعيشة اليومية", "en": "Furnished layout — reorganized daily living" }
+          "alt": { "ar": "المخطط المفروش المقترح للطابق الأرضي بعد إعادة تنظيم مساحات المعيشة", "en": "Proposed furnished ground-floor plan after reorganizing the living spaces", "de": "Vorgeschlagener möblierter Erdgeschossgrundriss nach Neuordnung der Wohnräume" },
+          "caption": { "ar": "المخطط المفروش — إعادة تنظيم مساحات المعيشة اليومية", "en": "Furnished layout — reorganized daily living", "de": "Möblierungsplan — neu geordneter Wohnalltag" }
         },
         {
           "src": "/assets/projects/private-villa-renovation-chouf/gallery-05.webp",
           "w": 1600, "h": 1192,
-          "alt": { "ar": "مقطع معماري ينسق مناسيب الفيلا القائمة والتدخلات المقترحة", "en": "Architectural section coordinating the existing villa levels and proposed interventions" },
-          "caption": { "ar": "مقطع معماري — تنسيق المناسيب والتدخلات", "en": "Architectural section — coordinating levels and interventions" }
+          "alt": { "ar": "مقطع معماري ينسق مناسيب الفيلا القائمة والتدخلات المقترحة", "en": "Architectural section coordinating the existing villa levels and proposed interventions", "de": "Gebäudeschnitt zur Abstimmung der Bestandsebenen und vorgeschlagenen Eingriffe" },
+          "caption": { "ar": "مقطع معماري — تنسيق المناسيب والتدخلات", "en": "Architectural section — coordinating levels and interventions", "de": "Gebäudeschnitt — Abstimmung von Ebenen und Eingriffen" }
         },
         {
           "src": "/assets/projects/private-villa-renovation-chouf/gallery-06.webp",
           "w": 1600, "h": 1192,
           "layout": "half",
-          "alt": { "ar": "منظور أكسونومتري أول للفيلا في وضعها القائم", "en": "First axonometric view of the villa in its existing condition" },
-          "caption": { "ar": "المنظور الأول — الوضع القائم", "en": "First view — existing" }
+          "alt": { "ar": "منظور أكسونومتري أول للفيلا في وضعها القائم", "en": "First axonometric view of the villa in its existing condition", "de": "Erste Axonometrie der Villa im bestehenden Zustand" },
+          "caption": { "ar": "المنظور الأول — الوضع القائم", "en": "First view — existing", "de": "Erste Ansicht — Bestand" }
         },
         {
           "src": "/assets/projects/private-villa-renovation-chouf/gallery-07.webp",
           "w": 1600, "h": 1192,
           "layout": "half",
-          "alt": { "ar": "منظور أكسونومتري أول للتجديد المقترح مع التراسات والفتحات الجديدة", "en": "First axonometric view of the proposed renovation with new terraces and openings" },
-          "caption": { "ar": "المنظور الأول — المقترح", "en": "First view — proposed" }
+          "alt": { "ar": "منظور أكسونومتري أول للتجديد المقترح مع التراسات والفتحات الجديدة", "en": "First axonometric view of the proposed renovation with new terraces and openings", "de": "Erste Axonometrie des vorgeschlagenen Umbaus mit neuen Terrassen und Öffnungen" },
+          "caption": { "ar": "المنظور الأول — المقترح", "en": "First view — proposed", "de": "Erste Ansicht — Entwurf" }
         },
         {
           "src": "/assets/projects/private-villa-renovation-chouf/gallery-08.webp",
           "w": 1600, "h": 1192,
           "layout": "half",
-          "alt": { "ar": "منظور أكسونومتري ثانٍ للواجهة الجانبية في الوضع القائم", "en": "Second axonometric view of the side facade in its existing condition" },
-          "caption": { "ar": "المنظور الثاني — الوضع القائم", "en": "Second view — existing" }
+          "alt": { "ar": "منظور أكسونومتري ثانٍ للواجهة الجانبية في الوضع القائم", "en": "Second axonometric view of the side facade in its existing condition", "de": "Zweite Axonometrie der seitlichen Bestandsfassade" },
+          "caption": { "ar": "المنظور الثاني — الوضع القائم", "en": "Second view — existing", "de": "Zweite Ansicht — Bestand" }
         },
         {
           "src": "/assets/projects/private-villa-renovation-chouf/gallery-09.webp",
           "w": 1600, "h": 1192,
           "layout": "half",
-          "alt": { "ar": "منظور أكسونومتري ثانٍ للتجديد المقترح مع شرفات وتفاصيل حجرية", "en": "Second axonometric view of the proposed renovation with balconies and stone detailing" },
-          "caption": { "ar": "المنظور الثاني — المقترح", "en": "Second view — proposed" }
+          "alt": { "ar": "منظور أكسونومتري ثانٍ للتجديد المقترح مع شرفات وتفاصيل حجرية", "en": "Second axonometric view of the proposed renovation with balconies and stone detailing", "de": "Zweite Axonometrie des vorgeschlagenen Umbaus mit Balkonen und Steindetails" },
+          "caption": { "ar": "المنظور الثاني — المقترح", "en": "Second view — proposed", "de": "Zweite Ansicht — Entwurf" }
         }
       ]
     },

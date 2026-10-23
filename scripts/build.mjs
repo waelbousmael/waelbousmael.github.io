@@ -3,7 +3,7 @@
  * WB Studio static site generator (zero dependencies).
  *
  * Reads  data/site.mjs + data/projects.json
- * Writes every HTML page (Arabic at the root, English under /en/) + sitemap.xml
+ * Writes published English, Arabic, and German routes + sitemap.xml
  *
  * Usage:  node scripts/build.mjs
  *
@@ -13,7 +13,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 import site from '../data/site.mjs';
+import { LANGUAGES, OG_LOCALES, createRoutes } from '../data/locales.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const projects = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'projects.json'), 'utf8')).projects;
@@ -25,8 +27,17 @@ const IMAGE_SIZES = {
   portrait: '(max-width: 860px) min(420px, calc(100vw - 2.5rem)), 380px'
 };
 
-const LANGS = ['ar', 'en'];
+const LANGS = LANGUAGES;
+const LANGUAGE_NAMES = site.ui.languageNames;
+const { routes, path: langPath } = createRoutes(site, projects);
+const projectsFor = (lang) => lang === 'de'
+  ? projects.filter((p) => !p.placeholder).sort((a, b) => {
+    const order = ['montashiri-villa', 'private-villa-renovation-chouf', 'byblos-resort'];
+    return order.indexOf(a.slug) - order.indexOf(b.slug);
+  }) : projects;
+const landingsFor = (lang) => lang === 'de' ? site.berlin.landings : site.landings;
 const HOME_HERO_SOURCE_ID = 'photo-1613490493576-7fde63acd811';
+const assetUrl = (url) => `${url}?v=${createHash('sha256').update(fs.readFileSync(path.join(ROOT, url))).digest('hex').slice(0, 12)}`;
 
 /* ───────────────────────── helpers ───────────────────────── */
 
@@ -35,13 +46,15 @@ const esc = (s) => String(s)
   .replaceAll('"', '&quot;');
 
 /** Pick the language variant of a bilingual field. */
-const t = (field, lang) => (field && typeof field === 'object' && !Array.isArray(field)) ? field[lang] : field;
+const t = (field, lang) => {
+  const value = (field && typeof field === 'object' && !Array.isArray(field)) ? field[lang] : field;
+  if (value === undefined || value === null) throw new Error(`Missing ${lang} translation: ${JSON.stringify(field)}`);
+  return value;
+};
 
 /** Logical path ("/work/slug/") → URL path for a language. */
-const langPath = (lang, p) => (lang === 'ar' ? p : `/en${p}`);
 const absUrl = (lang, p) => site.domain + langPath(lang, p);
-
-const otherLang = (lang) => (lang === 'ar' ? 'en' : 'ar');
+const ui = (key, lang) => t(site.ui[key], lang);
 
 const waUrl = (lang) => `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(site.waMessage[lang])}`;
 
@@ -61,10 +74,10 @@ function img(image, lang, { eager = false, sizes = IMAGE_SIZES.full, className =
 
 /* ───────────────────────── document shell ───────────────────────── */
 
-function head({ lang, title, desc, logicalPath, ogImage, ogType = 'website', jsonld = [], isHome = false }) {
+function head({ lang, title, desc, logicalPath, ogImage, ogType = 'website', jsonld = [], isHome = false, noindex = false }) {
   const dir = lang === 'ar' ? 'rtl' : 'ltr';
-  const ogLocale = lang === 'ar' ? 'ar_SA' : 'en_US';
-  const ogAlt = lang === 'ar' ? 'en_US' : 'ar_SA';
+  const ogLocale = OG_LOCALES[lang];
+  const alternates = routes.get(logicalPath);
   const image = ogImage || site.ogImage;
   const ld = jsonld.length
     ? `\n  <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': jsonld })}</script>`
@@ -77,17 +90,16 @@ function head({ lang, title, desc, logicalPath, ogImage, ogType = 'website', jso
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(desc)}" />
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="robots" content="${noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}" />
   <meta name="author" content="Wael Bousmael" />
   <meta name="theme-color" content="#faf8f4" />
-  <meta name="geo.region" content="SA-02" />
+  ${lang === 'de' ? '' : `<meta name="geo.region" content="SA-02" />
   <meta name="geo.placename" content="Jeddah" />
   <meta name="geo.position" content="21.5433;39.1728" />
-  <meta name="ICBM" content="21.5433, 39.1728" />
+  <meta name="ICBM" content="21.5433, 39.1728" />`}
   <link rel="canonical" href="${absUrl(lang, logicalPath)}" />
-  <link rel="alternate" hreflang="ar" href="${absUrl('ar', logicalPath)}" />
-  <link rel="alternate" hreflang="en" href="${absUrl('en', logicalPath)}" />
-  <link rel="alternate" hreflang="x-default" href="${absUrl('ar', logicalPath)}" />
+  ${Object.entries(alternates).map(([code, url]) => `<link rel="alternate" hreflang="${code}" href="${site.domain}${url}" />`).join('\n  ')}
+  <link rel="alternate" hreflang="x-default" href="${site.domain}${alternates.en || alternates[lang]}" />
   <link rel="icon" href="/assets/icons/favicon.ico" sizes="any" />
   <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
   <link rel="manifest" href="/manifest.webmanifest" />
@@ -98,7 +110,7 @@ function head({ lang, title, desc, logicalPath, ogImage, ogType = 'website', jso
   <meta property="og:description" content="${esc(desc)}" />
   <meta property="og:image" content="${image}" />
   <meta property="og:locale" content="${ogLocale}" />
-  <meta property="og:locale:alternate" content="${ogAlt}" />
+  ${Object.keys(alternates).filter((code) => code !== lang).map((code) => `<meta property="og:locale:alternate" content="${OG_LOCALES[code]}" />`).join('\n  ')}
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${esc(title)}" />
   <meta name="twitter:description" content="${esc(desc)}" />
@@ -106,7 +118,7 @@ function head({ lang, title, desc, logicalPath, ogImage, ogType = 'website', jso
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="${site.fonts[lang]}" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/site.css" />${ld}
+  <link rel="stylesheet" href="${assetUrl('/assets/css/site.css')}" />${ld}
 </head>`;
 }
 
@@ -116,25 +128,31 @@ function header(lang, active) {
     ['work', '/work/'],
     ['services', '/services/'],
     ['approach', '/approach/'],
-    ['journal', '/journal/'],
     ['about', '/about/'],
     ['contact', '/contact/']
   ];
   const link = ([key, p]) =>
     `<a href="${langPath(lang, p)}"${active === key ? ' aria-current="page"' : ''}>${esc(t(n[key], lang))}</a>`;
-  const langLink = (cls) =>
-    `<a class="${cls}" href="${langPath(otherLang(lang), activeLogicalPath)}" hreflang="${otherLang(lang)}" lang="${otherLang(lang)}" data-lang-switch="${otherLang(lang)}" aria-label="${esc(t(n.langAria, lang))}">${esc(t(n.langLabel, lang))}</a>`;
+  const languagePicker = () => `<details class="language-picker" data-language-picker>
+      <summary aria-label="${esc(ui('languageLabel', lang))}">${LANGUAGE_NAMES[lang]} <span aria-hidden="true">⌄</span></summary>
+      <nav class="language-options" aria-label="${esc(ui('languageLabel', lang))}">
+        ${LANGS.map((code) => {
+          const counterpart = routes.get(activeLogicalPath)?.[code];
+          return `<a href="${counterpart || langPath(code, '/')}" lang="${code}" hreflang="${code}" data-lang-switch="${code}"${code === lang ? ' aria-current="page"' : ''}>${LANGUAGE_NAMES[code]}${counterpart ? '' : ` <small>${esc(ui('languageFallback', lang))}</small>`}</a>`;
+        }).join('\n        ')}
+      </nav>
+    </details>`;
 
   return `<a class="skip-link" href="#main">${esc(t(n.skip, lang))}</a>
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="wordmark" href="${langPath(lang, '/')}" aria-label="${site.brand}">WB&nbsp;Studio</a>
-    <nav class="header-nav" aria-label="${lang === 'ar' ? 'التنقل الرئيسي' : 'Primary navigation'}">
+    <nav class="header-nav" aria-label="${esc(ui('primaryNav', lang))}">
       ${items.map(link).join('\n      ')}
-      ${langLink('lang-link')}
+      <a class="header-cta" href="${langPath(lang, '/contact/')}">${esc(ui('callCta', lang))}</a>
     </nav>
     <div class="mobile-header-actions">
-      ${langLink('mobile-lang-link')}
+      ${languagePicker()}
       <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobileMenu" aria-label="${esc(t(n.menuOpen, lang))}">
         <span></span><span></span>
       </button>
@@ -146,7 +164,7 @@ function header(lang, active) {
     <span class="menu-brand"><img class="stamp" src="/assets/icons/brand-logo.png" alt="" width="40" height="40" decoding="async" /><span class="wordmark">WB&nbsp;Studio</span></span>
     <button class="mobile-close" type="button" data-nav-close aria-label="${esc(t(n.menuClose, lang))}">✕</button>
   </div>
-  <nav class="mobile-links" aria-label="${lang === 'ar' ? 'قائمة الجوال' : 'Mobile navigation'}">
+  <nav class="mobile-links" aria-label="${esc(ui('mobileNav', lang))}">
     ${items.map(link).join('\n    ')}
   </nav>
   <div class="mobile-contact">
@@ -174,7 +192,7 @@ function footer(lang) {
       <a href="${langPath(lang, '/work/')}">${esc(t(n.work, lang))}</a>
       <a href="${langPath(lang, '/services/')}">${esc(t(n.services, lang))}</a>
       <a href="${langPath(lang, '/approach/')}">${esc(t(n.approach, lang))}</a>
-      <a href="${langPath(lang, '/journal/')}">${esc(t(n.journal, lang))}</a>
+      ${lang !== 'de' ? `<a href="${langPath(lang, '/journal/')}">${esc(t(n.journal, lang))}</a>` : ''}
       <a href="${langPath(lang, '/about/')}">${esc(t(n.about, lang))}</a>
       <a href="${langPath(lang, '/contact/')}">${esc(t(n.contact, lang))}</a>
     </nav>
@@ -183,6 +201,7 @@ function footer(lang) {
       <a href="mailto:${site.email}" dir="ltr">${site.email}</a>
       <a href="tel:${site.phoneE164}" dir="ltr">${site.phoneDisplay}</a>
       <a href="${waUrl(lang)}" target="_blank" rel="noopener">${esc(t(f.whatsappLabel, lang))}</a>
+      ${lang === 'de' ? site.berlin.legal.map((entry) => `<a href="${langPath(lang, `/${entry.slug}/`)}">${esc(t(entry.title, lang))}</a>`).join('\n      ') : ''}
     </div>
   </div>
   <div class="footer-bottom">
@@ -193,7 +212,7 @@ function footer(lang) {
     </div>
   </div>
 </footer>
-<script src="/assets/js/site.js" defer></script>`;
+<script src="${assetUrl('/assets/js/site.js')}" defer></script>`;
 }
 
 function contactBand(lang) {
@@ -218,6 +237,10 @@ function projectCard(p, lang, { wide = false, eager = false, sizes = wide ? IMAG
   <div class="card-text">
     <h3>${esc(t(p.title, lang))}</h3>
     <p class="card-meta">${esc(meta)}${p.placeholder ? ` <span class="tag">${esc(t(p.status, lang))}</span>` : ''}</p>
+    ${!p.placeholder ? `<p class="card-status">${esc(t(p.status, lang))}</p>` : ''}
+    <p class="card-excerpt">${esc(t(p.excerpt, lang))}</p>
+    ${lang === 'de' ? `<p class="card-scope">${esc(ui('projectScope', lang))}: ${esc(t(p.services, lang).slice(0, 2).join(' · '))}</p>` : ''}
+    <span class="card-action">${esc(t(site.work.viewProject, lang))} <span aria-hidden="true">${arrow(lang)}</span></span>
   </div>
 </a>`;
 }
@@ -226,6 +249,17 @@ function projectCard(p, lang, { wide = false, eager = false, sizes = wide ? IMAG
 
 function businessGraph(lang) {
   const d = site.domain;
+  if (lang === 'de') return [
+    { '@type': 'Organization', '@id': `${d}/#organization`, name: site.brand,
+      url: d + '/', email: site.email, telephone: site.phoneE164,
+      logo: `${d}/assets/icons/apple-touch-icon.png` },
+    { '@type': 'WebSite', '@id': `${d}/#website`, name: site.brand,
+      url: d + '/', inLanguage: LANGS, publisher: { '@id': `${d}/#organization` } },
+    { '@type': 'Person', '@id': `${d}/#wael`, name: site.author.name.en,
+      jobTitle: t(site.about.name, lang).split('—').pop().trim(),
+      description: t(site.about.bio, lang), url: absUrl(lang, '/about/'),
+      worksFor: { '@id': `${d}/#organization` } }
+  ];
   const desc = lang === 'ar'
     ? 'مهندس معماري لتصميم الفلل والمنازل الخاصة في جدة والسعودية والخليج، يبدأ العمل بمكالمة مجانية وتصور مبدئي مجاني قبل أي اتفاق مدفوع.'
     : 'Architect for private villas and homes in Jeddah, Saudi Arabia and the Gulf. Work begins with a free call and a free preliminary concept before any paid agreement.';
@@ -238,7 +272,7 @@ function businessGraph(lang) {
     },
     {
       '@type': 'WebSite', '@id': `${d}/#website`, url: `${d}/`,
-      name: 'WB Studio — Wael Bousmael', inLanguage: ['ar', 'en'],
+      name: 'WB Studio — Wael Bousmael', inLanguage: LANGS,
       publisher: { '@id': `${d}/#organization` }
     },
     {
@@ -254,7 +288,7 @@ function businessGraph(lang) {
         { '@type': 'Country', name: 'Saudi Arabia' },
         { '@type': 'Place', name: 'Gulf Cooperation Council (GCC)' }
       ],
-      knowsLanguage: ['ar', 'en'],
+      knowsLanguage: LANGS,
       openingHoursSpecification: [{
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
@@ -299,9 +333,9 @@ function serviceSchema(l, lang) {
     '@type': 'Service', '@id': `${absUrl(lang, `/${l.slug}/`)}#service`,
     serviceType: l.serviceType, name: t(l.h1, lang), description: t(l.seoDesc, lang),
     url: absUrl(lang, `/${l.slug}/`),
-    provider: { '@id': `${site.domain}/#business` },
-    areaServed: [{ '@type': 'City', name: 'Jeddah' }, { '@type': 'Country', name: 'Saudi Arabia' }],
-    availableChannel: { '@type': 'ServiceChannel', serviceUrl: waUrl(lang), availableLanguage: ['ar', 'en'] }
+    provider: lang === 'de' ? { '@type': 'Organization', '@id': `${site.domain}/#organization`, name: site.brand, url: site.domain + '/' } : { '@id': `${site.domain}/#business` },
+    areaServed: lang === 'de' ? [{ '@type': 'City', name: 'Berlin' }] : [{ '@type': 'City', name: 'Jeddah' }, { '@type': 'Country', name: 'Saudi Arabia' }],
+    availableChannel: { '@type': 'ServiceChannel', serviceUrl: absUrl(lang, '/contact/'), availableLanguage: LANGS }
   };
 }
 
@@ -328,7 +362,7 @@ function articleImage(article) {
 }
 
 function relatedGuides(slugs, lang) {
-  if (!slugs?.length) return '';
+  if (lang === 'de' || !slugs?.length) return '';
   const articles = slugs.map((slug) => {
     const article = site.journal.find((a) => a.slug === slug);
     if (!article) throw new Error(`Unknown related guide: ${slug}`);
@@ -352,7 +386,7 @@ function breadcrumbUI(lang, trail) {
       ? `<span aria-current="page">${esc(name)}</span>`
       : `<a href="${langPath(lang, p)}">${esc(name)}</a>`
   );
-  return `<nav class="crumb" aria-label="${lang === 'ar' ? 'مسار التنقل' : 'Breadcrumb'}">${parts.join(` <span aria-hidden="true">${sep}</span> `)}</nav>`;
+  return `<nav class="crumb" aria-label="${esc(ui('breadcrumb', lang))}">${parts.join(` <span aria-hidden="true">${sep}</span> `)}</nav>`;
 }
 
 /* Service / landing card (used on the services hub, home, related sections). */
@@ -374,7 +408,7 @@ function fmtDate(iso, lang) {
 
 function renderHome(lang) {
   const h = site.home;
-  const featured = projects.filter((p) => p.featured).slice(0, 3);
+  const featured = projectsFor(lang).filter((p) => p.featured).slice(0, 3);
   const steps = site.approach.steps;
   return `${head({
     lang,
@@ -394,7 +428,7 @@ ${header(lang, null)}
         <p class="lead measure">${esc(t(h.positioning, lang))}</p>
         <p class="offer measure">${esc(t(site.offer, lang))}</p>
         <div class="cta-row">
-          <a class="btn btn-solid" href="${waUrl(lang)}" target="_blank" rel="noopener">${esc(t(h.ctaWhatsapp, lang))}</a>
+          <a class="btn btn-solid" href="${langPath(lang, '/contact/')}">${esc(ui('callCta', lang))}</a>
           <a class="btn" href="${langPath(lang, '/work/')}">${esc(t(h.ctaWork, lang))}</a>
         </div>
       </div>
@@ -404,7 +438,7 @@ ${header(lang, null)}
     </div>
   </section>
   <div class="wrap">
-    <ul class="trust-strip" aria-label="${lang === 'ar' ? 'مزايا الاستوديو' : 'Studio credentials'}">
+    <ul class="trust-strip" aria-label="${esc(ui('credentialsLabel', lang))}">
       ${h.trustItems.map((item) => `<li>${esc(t(item, lang))}</li>`).join('\n      ')}
     </ul>
   </div>
@@ -428,7 +462,7 @@ ${header(lang, null)}
         <h2 class="display">${esc(t(site.services.h1, lang))}</h2>
       </div>
       <div class="home-service-list">
-        ${h.serviceThemes.map((item) => `<a href="${langPath(lang, item.href)}">
+        ${(lang === 'de' ? site.berlin.homeThemes : h.serviceThemes).map((item) => `<a href="${langPath(lang, item.href)}">
           <h3>${esc(t(item.title, lang))}</h3>
           <p>${esc(t(item.text, lang))}</p>
           <span aria-hidden="true">${arrow(lang)}</span>
@@ -482,7 +516,7 @@ function renderWork(lang) {
     title: t(w.seoTitle, lang),
     desc: t(w.seoDesc, lang),
     logicalPath: '/work/',
-    jsonld: [breadcrumb(lang, [[lang === 'ar' ? 'الرئيسية' : 'Home', '/'], [t(site.nav.work, lang), '/work/']])]
+    jsonld: [breadcrumb(lang, [[ui('homeLabel', lang), '/'], [t(site.nav.work, lang), '/work/']])]
   })}
 <body data-page="work">
 ${header(lang, 'work')}
@@ -495,7 +529,7 @@ ${header(lang, 'work')}
   <section class="section" data-reveal>
     <div class="wrap">
       <div class="work-editorial-grid">
-        ${projects.map((p, i) => projectCard(p, lang, { wide: i === 0, eager: i === 0 })).join('\n        ')}
+        ${projectsFor(lang).map((p, i) => projectCard(p, lang, { wide: i === 0, eager: i === 0 })).join('\n        ')}
       </div>
       <p class="note work-credits"><a href="${langPath(lang, '/credits/')}">${esc(t(w.noteLink, lang))}</a></p>
     </div>
@@ -509,8 +543,13 @@ ${footer(lang)}
 
 function renderProject(p, lang) {
   const pr = site.project;
-  const idx = projects.indexOf(p);
-  const next = projects[(idx + 1) % projects.length];
+  const available = projectsFor(lang);
+  const idx = available.indexOf(p);
+  const next = available[(idx + 1) % available.length];
+  const relatedService = lang === 'de'
+    ? { slug: p.slug === 'private-villa-renovation-chouf' ? 'hausumbau-berlin' : 'hausplanung-berlin',
+      label: landingsFor(lang).find((entry) => entry.slug === (p.slug === 'private-villa-renovation-chouf' ? 'hausumbau-berlin' : 'hausplanung-berlin')).label }
+    : p.relatedService;
   const metaTitle = `${t(p.title, lang)} — ${t(p.category, lang)} · ${t(p.location, lang)} | ${site.brand}`;
   const gallery = p.gallery.map((g) => {
     const layoutClass = g.layout === 'half' ? 'g-half' : (g.w >= g.h ? 'g-wide' : 'g-tall');
@@ -531,7 +570,7 @@ function renderProject(p, lang) {
     logicalPath: `/work/${p.slug}/`,
     ogImage: site.domain + p.cover.src,
     jsonld: [breadcrumb(lang, [
-      [lang === 'ar' ? 'الرئيسية' : 'Home', '/'],
+      [ui('homeLabel', lang), '/'],
       [t(site.nav.work, lang), '/work/'],
       [t(p.title, lang), `/work/${p.slug}/`]
     ])]
@@ -554,8 +593,8 @@ ${header(lang, 'work')}
       <div class="wrap project-intro-grid">
         <div class="project-story flow">
           <p class="thesis">${esc(t(p.thesis, lang))}</p>
-          ${p.body.map((para) => `<p>${esc(t(para, lang))}</p>`).join('\n          ')}${p.relatedService ? `
-          <a class="project-service-link text-link" href="${langPath(lang, `/${p.relatedService.slug}/`)}">${esc(t(p.relatedService.label, lang))} ${arrow(lang)}</a>` : ''}
+          ${p.body.map((para) => `<p>${esc(t(para, lang))}</p>`).join('\n          ')}${relatedService ? `
+          <a class="project-service-link text-link" href="${langPath(lang, `/${relatedService.slug}/`)}">${esc(t(relatedService.label, lang))} ${arrow(lang)}</a>` : ''}
         </div>
         <dl class="details">
           ${details.map(([l, v]) => `<div class="details-row"><dt>${esc(t(l, lang))}</dt><dd>${esc(v)}</dd></div>`).join('\n          ')}
@@ -592,7 +631,7 @@ function renderApproach(lang) {
     title: t(a.seoTitle, lang),
     desc: t(a.seoDesc, lang),
     logicalPath: '/approach/',
-    jsonld: [breadcrumb(lang, [[lang === 'ar' ? 'الرئيسية' : 'Home', '/'], [t(site.nav.approach, lang), '/approach/']])]
+    jsonld: [breadcrumb(lang, [[ui('homeLabel', lang), '/'], [t(site.nav.approach, lang), '/approach/']])]
   })}
 <body data-page="approach">
 ${header(lang, 'approach')}
@@ -643,7 +682,7 @@ function renderAbout(lang) {
     title: t(a.seoTitle, lang),
     desc: t(a.seoDesc, lang),
     logicalPath: '/about/',
-    jsonld: [...businessGraph(lang), breadcrumb(lang, [[lang === 'ar' ? 'الرئيسية' : 'Home', '/'], [t(site.nav.about, lang), '/about/']])]
+    jsonld: [...businessGraph(lang), breadcrumb(lang, [[ui('homeLabel', lang), '/'], [t(site.nav.about, lang), '/about/']])]
   })}
 <body data-page="about">
 ${header(lang, 'about')}
@@ -687,7 +726,7 @@ function renderContact(lang) {
     title: t(c.seoTitle, lang),
     desc: t(c.seoDesc, lang),
     logicalPath: '/contact/',
-    jsonld: [faqSchema(site.faq, lang), breadcrumb(lang, [[lang === 'ar' ? 'الرئيسية' : 'Home', '/'], [t(site.nav.contact, lang), '/contact/']])]
+    jsonld: [faqSchema(site.faq, lang), breadcrumb(lang, [[ui('homeLabel', lang), '/'], [t(site.nav.contact, lang), '/contact/']])]
   })}
 <body data-page="contact">
 ${header(lang, 'contact')}
@@ -711,7 +750,7 @@ ${header(lang, 'contact')}
     <div class="wrap form-wrap">
       <h2 class="display">${esc(t(f.title, lang))}</h2>
       <p class="note">${esc(t(f.subtitle, lang))}</p>
-      <form id="leadForm" action="${site.formAction}" method="POST" novalidate>
+      <form id="leadForm" action="${site.formAction}" method="POST" data-msg-phone="${esc(t(f.phoneError, lang))}" novalidate>
         <input type="hidden" name="_subject" value="WB Studio - Plot Details Free Call Request" />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_captcha" value="false" />
@@ -746,10 +785,10 @@ ${header(lang, 'contact')}
         <fieldset class="contact-field-group">
           <legend>${esc(t(f.budgetGroupLabel, lang))}</legend>
           <label for="budget">${esc(t(f.budget, lang))}</label>
-          <select id="budget" name="budget">
+          ${lang === 'de' ? `<input id="budget" name="budget" type="text" placeholder="${esc(t(f.budgetPh, lang))}" />` : `<select id="budget" name="budget">
             <option value="">${esc(t(f.budgetPh, lang))}</option>
             ${f.budgetOptions[lang].map((o) => `<option>${esc(o)}</option>`).join('\n            ')}
-          </select>
+          </select>`}
         </fieldset>
 
         <button class="btn btn-solid" type="submit">${esc(t(f.submit, lang))}</button>
@@ -774,7 +813,7 @@ ${header(lang, 'contact')}
 </main>
 ${footer(lang)}
 <script>window.GOOGLE_MAPS_API_KEY = window.GOOGLE_MAPS_API_KEY || '';</script>
-<script src="/assets/js/contact.js" defer></script>
+<script src="${assetUrl('/assets/js/contact.js')}" defer></script>
 </body>
 </html>`;
 }
@@ -785,7 +824,7 @@ function renderCredits(lang) {
   const rows = projects.filter((p) => p.placeholder).map((p) => {
     const images = [p.cover, ...p.gallery].filter((i) => i.sourceId);
     return `<div class="credit-block">
-      <h2>${esc(t(p.title, lang))}</h2>
+      <h2>${esc(t(p.title, lang === 'de' ? 'en' : lang))}</h2>
       <ul>
         ${images.map((i) => `<li><span dir="ltr">${i.src.split('/').pop()}</span> — <a href="${src(i.sourceId)}" target="_blank" rel="noopener">${esc(t(c.sourceLabel, lang))}</a></li>`).join('\n        ')}
       </ul>
@@ -826,11 +865,11 @@ ${footer(lang)}
 
 function renderServicesHub(lang) {
   const s = site.services;
-  const home = lang === 'ar' ? 'الرئيسية' : 'Home';
+  const home = ui('homeLabel', lang);
   const trail = [[home, '/'], [t(site.nav.services, lang), '/services/']];
   return `${head({
     lang, title: t(s.seoTitle, lang), desc: t(s.seoDesc, lang), logicalPath: '/services/',
-    jsonld: [breadcrumb(lang, trail), ...site.landings.map((l) => serviceSchema(l, lang))]
+    jsonld: [breadcrumb(lang, trail), ...landingsFor(lang).map((l) => serviceSchema(l, lang))]
   })}
 <body data-page="services">
 ${header(lang, 'services')}
@@ -845,7 +884,7 @@ ${header(lang, 'services')}
   <section class="section" data-reveal>
     <div class="wrap">
       <div class="service-editorial-list">
-        ${site.landings.map((l) => svcCard(l, lang, 'h2')).join('\n        ')}
+        ${landingsFor(lang).map((l) => svcCard(l, lang, 'h2')).join('\n        ')}
       </div>
     </div>
   </section>
@@ -857,10 +896,10 @@ ${footer(lang)}
 }
 
 function renderLanding(l, lang) {
-  const home = lang === 'ar' ? 'الرئيسية' : 'Home';
+  const home = ui('homeLabel', lang);
   const trail = [[home, '/'], [t(site.nav.services, lang), '/services/'], [t(l.label, lang), `/${l.slug}/`]];
   const relProjects = (l.relatedProjects || []).map((slug) => projects.find((p) => p.slug === slug)).filter(Boolean);
-  const relLandings = (l.related || []).map((slug) => site.landings.find((x) => x.slug === slug)).filter(Boolean);
+  const relLandings = (l.related || []).map((slug) => landingsFor(lang).find((x) => x.slug === slug)).filter(Boolean);
   return `${head({
     lang, title: t(l.seoTitle, lang), desc: t(l.seoDesc, lang), logicalPath: `/${l.slug}/`,
     ogImage: site.domain + l.image.src,
@@ -876,8 +915,8 @@ ${header(lang, 'services')}
       <h1 class="display-xl">${esc(t(l.h1, lang))}</h1>
       <p class="lead measure">${esc(t(l.intro, lang))}</p>
       <div class="cta-row">
-        <a class="btn btn-solid" href="${waUrl(lang)}" target="_blank" rel="noopener">${esc(t(site.home.ctaWhatsapp, lang))}</a>
-        <a class="btn" href="${langPath(lang, '/contact/')}">${esc(t(site.contactBand.primary, lang))}</a>
+        <a class="btn btn-solid" href="${langPath(lang, '/contact/')}">${esc(ui('callCta', lang))}</a>
+        <a class="btn" href="${waUrl(lang)}" target="_blank" rel="noopener">${esc(t(site.contactBand.secondary, lang))}</a>
       </div>
     </div>
   </section>
@@ -893,7 +932,7 @@ ${header(lang, 'services')}
   ${relProjects.length ? `<section class="section divided" data-reveal>
     <div class="wrap">
       <div class="section-head">
-        <h2 class="display">${lang === 'ar' ? 'من أعمالنا' : 'From our work'}</h2>
+        <h2 class="display">${esc(ui('fromWork', lang))}</h2>
         <a class="text-link" href="${langPath(lang, '/work/')}">${esc(t(site.home.allWork, lang))} ${arrow(lang)}</a>
       </div>
     </div>
@@ -915,7 +954,7 @@ ${header(lang, 'services')}
 ${relatedGuides(site.journal.filter((a) => a.related.includes(l.slug)).map((a) => a.slug), lang)}
   ${relLandings.length ? `<section class="section divided" data-reveal>
     <div class="wrap">
-      <h2 class="display">${lang === 'ar' ? 'خدمات ذات صلة' : 'Related services'}</h2>
+      <h2 class="display">${esc(ui('relatedServices', lang))}</h2>
       <div class="service-editorial-list">
         ${relLandings.map((x) => svcCard(x, lang, 'h3')).join('\n        ')}
       </div>
@@ -932,7 +971,7 @@ ${footer(lang)}
 
 function renderJournalHub(lang) {
   const j = site.journalMeta;
-  const home = lang === 'ar' ? 'الرئيسية' : 'Home';
+  const home = ui('homeLabel', lang);
   const trail = [[home, '/'], [t(site.nav.journal, lang), '/journal/']];
   const sorted = [...site.journal].sort((a, b) => (a.date < b.date ? 1 : -1));
   return `${head({
@@ -971,7 +1010,7 @@ ${footer(lang)}
 
 function renderArticle(a, lang) {
   const j = site.journalMeta;
-  const home = lang === 'ar' ? 'الرئيسية' : 'Home';
+  const home = ui('homeLabel', lang);
   const trail = [[home, '/'], [t(site.nav.journal, lang), '/journal/'], [t(a.h1, lang), `/journal/${a.slug}/`]];
   const relLandings = (a.related || []).map((slug) => site.landings.find((x) => x.slug === slug)).filter(Boolean);
   return `${head({
@@ -1015,22 +1054,35 @@ ${footer(lang)}
 
 /* ───────────────────────── sitemap ───────────────────────── */
 
+function renderLegal(entry, lang) {
+  return `${head({ lang, title: `${t(entry.title, lang)} | ${site.brand}`,
+    desc: t(entry.seoDesc, lang), logicalPath: `/${entry.slug}/`, noindex: entry.draft })}
+<body data-page="legal"${entry.draft ? ' data-legal-draft' : ''}>
+${header(lang, null)}
+<main id="main">
+  <section class="page-head"><div class="wrap narrow">
+    <h1 class="display-xl">${esc(t(entry.title, lang))}</h1>
+  </div></section>
+  <div class="wrap narrow legal-copy">
+    ${entry.sections.map((section) => `<section class="section-sm divided">
+      <h2 class="display">${esc(t(section.h, lang))}</h2>
+      <p class="lead">${esc(t(section.p, lang))}</p>
+    </section>`).join('\n    ')}
+  </div>
+</main>
+${footer(lang)}
+</body></html>`;
+}
+
 function renderSitemap() {
-  const logicalPaths = [
-    '/', '/work/', ...projects.map((p) => `/work/${p.slug}/`),
-    '/services/', ...site.landings.map((l) => `/${l.slug}/`),
-    '/approach/',
-    '/journal/', ...site.journal.map((a) => `/journal/${a.slug}/`),
-    '/about/', '/contact/', '/credits/'
-  ];
   const entries = [];
-  for (const p of logicalPaths) {
-    for (const lang of LANGS) {
+  for (const [p, alternates] of routes) {
+    if (site.berlin.legal.some((entry) => `/${entry.slug}/` === p && entry.draft)) continue;
+    for (const lang of Object.keys(alternates)) {
       entries.push(`  <url>
     <loc>${absUrl(lang, p)}</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="${absUrl('ar', p)}"/>
-    <xhtml:link rel="alternate" hreflang="en" href="${absUrl('en', p)}"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="${absUrl('ar', p)}"/>
+    ${Object.entries(alternates).map(([code, url]) => `<xhtml:link rel="alternate" hreflang="${code}" href="${site.domain}${url}"/>`).join('\n    ')}
+    <xhtml:link rel="alternate" hreflang="x-default" href="${site.domain}${alternates.en || alternates[lang]}"/>
   </url>`);
     }
   }
@@ -1047,52 +1099,32 @@ ${entries.join('\n')}
 function write(relPath, html) {
   const full = path.join(ROOT, relPath);
   fs.mkdirSync(path.dirname(full), { recursive: true });
-  fs.writeFileSync(full, html, 'utf8');
+  fs.writeFileSync(full, html.replace(/[\t ]+$/gm, ''), 'utf8');
   console.log('  wrote', relPath);
 }
 
 console.log('Building WB Studio…');
+let pageCount = 0;
+const corePages = { '/': renderHome, '/work/': renderWork, '/services/': renderServicesHub,
+  '/approach/': renderApproach, '/about/': renderAbout, '/contact/': renderContact,
+  '/credits/': renderCredits, '/journal/': renderJournalHub };
 for (const lang of LANGS) {
-  const prefix = lang === 'ar' ? '' : 'en/';
-
-  activeLogicalPath = '/';
-  write(`${prefix}index.html`, renderHome(lang));
-
-  activeLogicalPath = '/work/';
-  write(`${prefix}work/index.html`, renderWork(lang));
-
-  for (const p of projects) {
-    activeLogicalPath = `/work/${p.slug}/`;
-    write(`${prefix}work/${p.slug}/index.html`, renderProject(p, lang));
+  for (const [logical, alternates] of routes) {
+    if (!alternates[lang]) continue;
+    activeLogicalPath = logical;
+    let html;
+    if (corePages[logical]) html = corePages[logical](lang);
+    else if (logical.startsWith('/work/')) html = renderProject(projects.find((p) => logical === `/work/${p.slug}/`), lang);
+    else if (logical.startsWith('/journal/')) html = renderArticle(site.journal.find((a) => logical === `/journal/${a.slug}/`), lang);
+    else {
+      const legal = site.berlin.legal.find((entry) => logical === `/${entry.slug}/`);
+      html = legal ? renderLegal(legal, lang) : renderLanding(landingsFor(lang).find((entry) => logical === `/${entry.slug}/`), lang);
+    }
+    write(`${alternates[lang].slice(1)}index.html`, html);
+    pageCount += 1;
   }
-
-  activeLogicalPath = '/services/';
-  write(`${prefix}services/index.html`, renderServicesHub(lang));
-
-  for (const l of site.landings) {
-    activeLogicalPath = `/${l.slug}/`;
-    write(`${prefix}${l.slug}/index.html`, renderLanding(l, lang));
-  }
-
-  activeLogicalPath = '/approach/';
-  write(`${prefix}approach/index.html`, renderApproach(lang));
-
-  activeLogicalPath = '/journal/';
-  write(`${prefix}journal/index.html`, renderJournalHub(lang));
-
-  for (const a of site.journal) {
-    activeLogicalPath = `/journal/${a.slug}/`;
-    write(`${prefix}journal/${a.slug}/index.html`, renderArticle(a, lang));
-  }
-
-  activeLogicalPath = '/about/';
-  write(`${prefix}about/index.html`, renderAbout(lang));
-
-  activeLogicalPath = '/contact/';
-  write(`${prefix}contact/index.html`, renderContact(lang));
-
-  activeLogicalPath = '/credits/';
-  write(`${prefix}credits/index.html`, renderCredits(lang));
 }
+activeLogicalPath = '/';
+write('en/index.html', renderHome('en'));
 write('sitemap.xml', renderSitemap());
-console.log(`Done: ${LANGS.length * (8 + projects.length + site.landings.length + site.journal.length)} pages + sitemap.xml`);
+console.log(`Done: ${pageCount} canonical pages + English homepage alias + sitemap.xml`);

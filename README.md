@@ -1,6 +1,6 @@
 # WB Studio — wbstudio.xyz
 
-Bilingual (Arabic / English) portfolio website for **WB Studio**, the personal
+Multilingual (English / Arabic / German) portfolio website for **WB Studio**, the personal
 architecture practice of **Wael Bousmael** — luxury private villas, interiors,
 and spatial concepts in Jeddah, Saudi Arabia, and the Gulf.
 
@@ -13,6 +13,7 @@ Node script.
 ```
 data/projects.json      ← portfolio projects (bilingual) — EDIT THIS
 data/site.mjs           ← all other site copy + config (bilingual) — EDIT THIS
+data/locales.mjs        ← published language routes and page counterparts
 scripts/build.mjs       ← generator: templates + sitemap
 assets/css/site.css     ← the whole design system
 assets/js/site.js       ← reveal animation, mobile menu, language memory
@@ -24,10 +25,17 @@ assets/licenses/LICENSES.md ← license register for every external asset
 
 Generated output (do **not** edit by hand — files carry a banner comment):
 
-- Arabic (default, RTL) at the root: `/`, `/work/`, `/work/<slug>/`,
+- English is served directly at `/` for every visitor. There is no device,
+  location, or saved-preference redirect. `/en/` remains an English homepage
+  alias with its canonical URL pointing to `/`.
+- Arabic home (RTL): `/ar/`. Existing Arabic deep links stay at `/work/`, `/work/<slug>/`,
   `/services/`, `/<landing-slug>/`, `/approach/`, `/journal/`,
   `/journal/<article-slug>/`, `/about/`, `/contact/`, `/credits/`
-- English (LTR) mirrored under `/en/...`
+- English (LTR) deep links remain under `/en/...`.
+- German (LTR): `/de/`, `/de/projekte/`, `/de/leistungen/`, `/de/ablauf/`,
+  `/de/ueber-uns/`, `/de/kontakt/`, three real project presentations, two Berlin
+  service pages, and credits. The two legal drafts are noindex and excluded from
+  the sitemap while their publication details are reviewed.
 - `sitemap.xml` with `hreflang` alternates
 
 ### SEO landing pages & journal (data-driven)
@@ -62,6 +70,7 @@ unchanged; new variants preserve the source composition and never upscale.
 Commit the manifest and derivatives with the sources and generated HTML.
 
 Validation: `python scripts/verify-media.py`, `node scripts/verify-navigation.mjs`,
+`node scripts/verify-locales.mjs`,
 `node scripts/verify-seo.mjs`, `node scripts/verify.mjs`, and
 `node scripts/check-reproducible-build.mjs`.
 The media preparation command is only needed when images change; the regular
@@ -93,16 +102,21 @@ See `assets/projects/_incoming/README.md` — short version: drop your files in,
 swap paths in `data/projects.json`, set `placeholder: false`, update
 `LICENSES.md`, run `python scripts/prepare-images.py`, then rebuild.
 
-## Bilingual content rules
+## Language and market content rules
 
-- Arabic is the default language and lives at the root with `dir="rtl"`.
-- English mirrors every page under `/en/` with `dir="ltr"`.
-- The header toggle links to the same page in the other language and remembers
-  the choice in `localStorage` (`wb_lang`). There is no JS dictionary anymore —
-  each page is fully prerendered in its language (better SEO: both languages
-  are crawlable, with `hreflang` annotations).
+- English is the default homepage; Arabic has an explicit `/ar/` homepage.
+- The header language menu links to the equivalent published page, or clearly
+  labels a language-homepage fallback when no translation exists. All content
+  is prerendered. Arabic/English legacy deep links remain unchanged.
+- German content serves Berlin homeowners; Saudi service pages and guides remain
+  in Arabic/English. Distinct Berlin/Jeddah services are not language alternates.
+- Shared German copy is applied from the translation map in `data/site.mjs`;
+  Berlin services and legal drafts are in `site.berlin`. Real-project translations
+  are in `data/projects.json`. The build fails on missing rendered translations.
 - Never hardcode visible text in `scripts/build.mjs` — put it in `data/site.mjs`
-  or `data/projects.json` as `{ ar, en }`.
+  or `data/projects.json` with fields for every published language.
+- Stylesheet and script URLs carry deterministic content hashes to prevent
+  stale assets after deployment; no extra frontend libraries are loaded.
 
 ## Assets & licensing
 

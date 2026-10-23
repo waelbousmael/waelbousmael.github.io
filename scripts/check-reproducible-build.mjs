@@ -6,6 +6,7 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import site from '../data/site.mjs';
+import { createRoutes } from '../data/locales.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -21,10 +22,17 @@ const trackedGeneratedFiles = run('git', ['ls-files', '-z'])
   .sort();
 
 const { projects } = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/projects.json'), 'utf8'));
-const expectedPages = 2 * (8 + projects.length + site.landings.length + site.journal.length);
-assert.equal(trackedGeneratedFiles.length, expectedPages + 1, 'Tracked generated output must match the bilingual site data and sitemap');
+const { routes } = createRoutes(site, projects);
+const expectedGeneratedFiles = [...new Set([
+  ...[...routes.values()].flatMap((alternates) => Object.values(alternates).map((url) => `${url.slice(1)}index.html`)),
+  'en/index.html', // Legacy homepage alias shares the canonical English root.
+  'sitemap.xml'
+])].sort();
+for (const file of trackedGeneratedFiles) {
+  assert.ok(expectedGeneratedFiles.includes(file), `Tracked generated output must be covered by the locale registry or explicit alias: ${file}`);
+}
 
-const snapshot = () => trackedGeneratedFiles.map((file) => [
+const snapshot = () => expectedGeneratedFiles.map((file) => [
   file,
   createHash('sha256').update(fs.readFileSync(path.join(ROOT, file))).digest('hex')
 ]);
@@ -39,5 +47,5 @@ const first = snapshot();
 runBuild();
 const second = snapshot();
 
-assert.deepEqual(second, first, 'Two consecutive builds must produce byte-identical tracked generated output');
-console.log(`Reproducible build passed: ${trackedGeneratedFiles.length} tracked generated outputs are identical.`);
+assert.deepEqual(second, first, 'Two consecutive builds must produce byte-identical generated output, including newly generated locale pages');
+console.log(`Reproducible build passed: ${expectedGeneratedFiles.length} registry-derived generated outputs are identical.`);

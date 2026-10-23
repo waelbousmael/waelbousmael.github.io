@@ -79,6 +79,21 @@
   }
 
   /* ── remember language choice (mirrored /en/ pages; key kept from v1) ── */
+  const languagePickers = document.querySelectorAll('[data-language-picker]');
+  languagePickers.forEach((picker) => {
+    picker.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && picker.open) {
+        event.preventDefault();
+        picker.open = false;
+        picker.querySelector('summary').focus();
+      }
+    });
+  });
+  document.addEventListener('click', (event) => {
+    languagePickers.forEach((picker) => {
+      if (!picker.contains(event.target)) picker.open = false;
+    });
+  });
   document.querySelectorAll('[data-lang-switch]').forEach((link) => {
     link.addEventListener('click', () => {
       try { localStorage.setItem('wb_lang', link.dataset.langSwitch); } catch { /* private mode */ }

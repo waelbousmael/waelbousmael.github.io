@@ -1,12 +1,15 @@
 #!/usr/bin/env node
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import site from '../data/site.mjs';
+import { createRoutes, LANGUAGES } from '../data/locales.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (relative) => fs.readFileSync(path.join(ROOT, relative), 'utf8');
+const versionedAssetUrl = (url) => `${url}?v=${createHash('sha256').update(fs.readFileSync(path.join(ROOT, url.slice(1)))).digest('hex').slice(0, 12)}`;
 const has = (text, fragment, label) => assert.ok(text.includes(fragment), label);
 const assertInlineSizing = (html, label) => {
   for (const style of html.matchAll(/\bstyle\s*=\s*["']([^"']*)["']/gi)) {
@@ -153,6 +156,7 @@ const assertPair = (field, label) => {
   assert.equal(typeof field?.en, 'string', `${label}.en must be a string`);
   assert.ok(field.en.trim(), `${label}.en must not be empty`);
 };
+const originalLanguages = ({ ar, en }) => ({ ar, en });
 const withoutBlockComments = (text) => text.replace(/\/\*[\s\S]*?\*\//g, '');
 const skipBalanced = (text, start, open, close) => {
   let depth = 0;
@@ -356,8 +360,8 @@ const assertMobileMenuFocusRestoration = (text, label) => {
 const assertMinimumTouchTarget = (text, selector, label) => {
   const declarations = cssDeclarations(text).filter(({ selector: candidate }) => candidate === selector);
   const values = new Map(declarations.map(({ property, value }) => [property, value.trim()]));
-  const inlineSize = values.get('min-inline-size') ?? values.get('width');
-  const blockSize = values.get('min-block-size') ?? values.get('height');
+  const inlineSize = values.get('min-inline-size') ?? values.get('min-width') ?? values.get('width');
+  const blockSize = values.get('min-block-size') ?? values.get('min-height') ?? values.get('height');
   const isAtLeast48px = (value) => {
     const match = value?.match(/^(\d*\.?\d+)(px|rem)$/);
     if (!match) return false;
@@ -632,12 +636,13 @@ const jsonLdGraph = (page, label) => {
   return JSON.parse(match[1])['@graph'];
 };
 const assertSeoShell = (page, data, lang, logicalPath, label) => {
-  const localizedPath = lang === 'ar' ? logicalPath : `/en${logicalPath}`;
+  const localizedPath = langPath(lang, logicalPath);
   has(page, `<title>${htmlEscape(data.seoTitle[lang])}</title>`, `${label} must retain its SEO title`);
   has(page, `<meta name="description" content="${htmlEscape(data.seoDesc[lang])}" />`, `${label} must retain its SEO description`);
   has(page, `<link rel="canonical" href="${site.domain}${localizedPath}" />`, `${label} must retain its canonical URL`);
-  has(page, `<link rel="alternate" hreflang="ar" href="${site.domain}${logicalPath}" />`, `${label} must retain its Arabic alternate`);
-  has(page, `<link rel="alternate" hreflang="en" href="${site.domain}/en${logicalPath}" />`, `${label} must retain its English alternate`);
+  for (const [code, url] of Object.entries(routes.get(logicalPath))) {
+    has(page, `<link rel="alternate" hreflang="${code}" href="${site.domain}${url}" />`, `${label} must retain its ${code} alternate`);
+  }
 };
 const assertServiceRows = (scope, landings, lang, prefix, headingTag, label) => {
   const list = elementWithClasses(scope, 'service-editorial-list', `${label} must use service-editorial-list`);
@@ -814,6 +819,7 @@ const assertContactPage = (page, lang, label) => {
   const form = leadForm(page, label);
   assert.equal(attribute(elements(form, { tag: 'form' })[0], 'action', `${label} form must have action`), site.formAction, `${label} form must retain FormSubmit endpoint`);
   assert.equal(attribute(elements(form, { tag: 'form' })[0], 'method', `${label} form must have method`), 'POST', `${label} form must retain POST method`);
+  assert.equal(attribute(elements(form, { tag: 'form' })[0], 'data-msg-phone', `${label} form must supply phone validation copy`), htmlEscape(site.form.phoneError[lang]), `${label} form must retain localized phone validation copy`);
   assert.ok(hasAttribute(elements(form, { tag: 'form' })[0], 'novalidate'), `${label} form must retain novalidate behavior`);
   const hidden = elements(form, { tag: 'input' }).filter((input) => /\stype="hidden"/.test(input.open));
   assert.deepEqual(hidden.map((input) => [attribute(input, 'name', `${label} hidden field name`), attribute(input, 'value', `${label} hidden field value`)]), [
@@ -843,14 +849,21 @@ const assertContactPage = (page, lang, label) => {
   const email = assertField(groups[0].inner, { tag: 'input', name: 'email', attributes: { id: 'email', type: 'email', autocomplete: 'email', placeholder: htmlEscape(site.form.emailPh[lang]) }, booleanAttributes: ['required'] }, label);
   const location = assertField(groups[1].inner, { tag: 'input', name: 'location', attributes: { id: 'location', type: 'text', placeholder: htmlEscape(site.form.locationPh[lang]) } }, label);
   const maps = assertField(groups[1].inner, { tag: 'input', name: 'maps', attributes: { id: 'maps', type: 'url', placeholder: htmlEscape(site.form.mapsPh[lang]) } }, label);
-  const budget = assertField(groups[2].inner, { tag: 'select', name: 'budget', attributes: { id: 'budget' } }, label);
+  const budget = assertField(groups[2].inner, {
+    tag: lang === 'de' ? 'input' : 'select', name: 'budget',
+    attributes: lang === 'de'
+      ? { id: 'budget', type: 'text', placeholder: htmlEscape(site.form.budgetPh[lang]) }
+      : { id: 'budget' }
+  }, label);
   for (const field of [name, phone, email]) assert.ok(hasAttribute(field, 'required'), `${label} required contact fields must remain required`);
   for (const field of [location, maps, budget]) {
     assert.ok(!hasAttribute(field, 'required'), `${label} optional plot and budget fields must remain optional`);
     assert.ok(!hasAttribute(field, 'autocomplete'), `${label} optional plot and budget fields must not gain autocomplete attributes`);
   }
-  const options = elements(budget.inner, { tag: 'option' });
-  assert.deepEqual(options.map((option) => option.inner.trim()), [htmlEscape(site.form.budgetPh[lang]), ...site.form.budgetOptions[lang].map(htmlEscape)], `${label} must retain every budget option in order`);
+  if (lang !== 'de') {
+    const options = elements(budget.inner, { tag: 'option' });
+    assert.deepEqual(options.map((option) => option.inner.trim()), [htmlEscape(site.form.budgetPh[lang]), ...site.form.budgetOptions[lang].map(htmlEscape)], `${label} must retain every budget option in order`);
+  }
   has(groups[1].inner, htmlEscape(site.form.locationHelper[lang]), `${label} plot group must retain its helper text`);
   const feedback = elements(form, { tag: 'p', classes: 'form-feedback' })[0];
   assert.ok(feedback, `${label} must retain form feedback`);
@@ -868,13 +881,15 @@ const assertContactPage = (page, lang, label) => {
   }
 };
 
-const homeAr = read('index.html');
-const homeEn = read('en/index.html');
+const { projects } = JSON.parse(read('data/projects.json'));
+const { routes, path: langPath } = createRoutes(site, projects);
+const routeFile = (url) => `${url.slice(1)}index.html`;
+const homeAr = read(routeFile(langPath('ar', '/')));
+const homeEn = read(routeFile(langPath('en', '/')));
 const workAr = read('work/index.html');
 const workEn = read('en/work/index.html');
 const contactAr = read('contact/index.html');
 const contactEn = read('en/contact/index.html');
-const { projects } = JSON.parse(read('data/projects.json'));
 const css = read('assets/css/site.css');
 const siteJs = read('assets/js/site.js');
 const contactJs = read('assets/js/contact.js');
@@ -884,12 +899,12 @@ const licenses = read('assets/licenses/LICENSES.md');
 
 const byblosProject = projects.find((project) => project.slug === 'byblos-resort');
 assert.ok(byblosProject, 'Byblos Resort project must remain in portfolio data');
-assert.deepEqual(byblosProject.title, { ar: 'منتجع جبيل', en: 'Byblos Resort' }, 'Byblos Resort must retain its bilingual title');
-assert.deepEqual(byblosProject.location, { ar: 'جبيل، لبنان', en: 'Byblos, Lebanon' }, 'Byblos Resort must retain its bilingual location');
-assert.deepEqual(byblosProject.category, { ar: 'منتجعات', en: 'Hospitality' }, 'Byblos Resort must retain its bilingual category');
+assert.deepEqual(originalLanguages(byblosProject.title), { ar: 'منتجع جبيل', en: 'Byblos Resort' }, 'Byblos Resort must retain its bilingual title');
+assert.deepEqual(originalLanguages(byblosProject.location), { ar: 'جبيل، لبنان', en: 'Byblos, Lebanon' }, 'Byblos Resort must retain its bilingual location');
+assert.deepEqual(originalLanguages(byblosProject.category), { ar: 'منتجعات', en: 'Hospitality' }, 'Byblos Resort must retain its bilingual category');
 assert.equal(byblosProject.year, 2026, 'Byblos Resort year must reflect the current design phase');
-assert.deepEqual(byblosProject.status, { ar: 'قيد التصميم', en: 'In design' }, 'Byblos Resort must remain described as in design');
-assert.deepEqual(byblosProject.services, {
+assert.deepEqual(originalLanguages(byblosProject.status), { ar: 'قيد التصميم', en: 'In design' }, 'Byblos Resort must remain described as in design');
+assert.deepEqual(originalLanguages(byblosProject.services), {
   ar: ['تحليل الموقع', 'المخطط العام للمنتجع', 'التخطيط المعماري والسكني', 'التوجه الداخلي', 'تصميم المناظر والمسابح'],
   en: ['Site analysis', 'Resort master planning', 'Architectural & residential planning', 'Interior direction', 'Landscape & pool design']
 }, 'Byblos Resort must retain the approved bilingual service scope');
@@ -1147,12 +1162,12 @@ site.home.serviceThemes.forEach((theme, index) => {
   assert.ok(fs.existsSync(enTarget), `${label} English target must exist: /en${theme.href}index.html`);
 });
 
-has(homeAr, '<html lang="ar" dir="rtl">', 'Arabic root must use RTL Arabic markup');
-has(homeEn, '<html lang="en" dir="ltr">', 'English mirror must use LTR English markup');
+has(homeAr, '<html lang="ar" dir="rtl">', 'Arabic home must use RTL Arabic markup');
+has(homeEn, '<html lang="en" dir="ltr">', 'Default English home must use LTR English markup');
 
 for (const [label, page] of [['Arabic', homeAr], ['English', homeEn]]) {
   for (const className of [
-    'mobile-lang-link',
+    'language-picker',
     'home-hero-grid',
     'home-hero-copy',
     'home-hero-media',
@@ -1345,12 +1360,11 @@ assert.throws(
   'Project checks must reject a synthetic gallery note moved outside the gallery region'
 );
 
-has(homeAr, '<link rel="canonical" href="https://wbstudio.xyz/" />', 'Arabic home canonical must target the root');
-has(homeAr, '<link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/" />', 'Arabic home must link its Arabic alternate');
-has(homeAr, '<link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/" />', 'Arabic home must link its English alternate');
-has(homeEn, '<link rel="canonical" href="https://wbstudio.xyz/en/" />', 'English home canonical must target /en/');
-has(homeEn, '<link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/" />', 'English home must link its Arabic alternate');
-has(homeEn, '<link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/" />', 'English home must link its English alternate');
+for (const lang of LANGUAGES) {
+  const page = read(routeFile(langPath(lang, '/')));
+  assertSeoShell(page, site.home, lang, '/', `${lang} home`);
+}
+has(read('en/index.html'), `<link rel="canonical" href="${site.domain}/" />`, 'Legacy English homepage alias must canonicalize to the English root');
 
 const whatsappHrefAr = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(site.waMessage.ar)}`;
 const whatsappHrefEn = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(site.waMessage.en)}`;
@@ -1376,9 +1390,10 @@ for (const [label, page] of [['Arabic', contactAr], ['English', contactEn]]) {
 
 assert.equal(site.whatsappNumber, '966538060383', 'The WhatsApp number must remain unchanged');
 assert.equal(site.formAction, 'https://formsubmit.co/ajax/wael.bousmael@gmail.com', 'The FormSubmit endpoint must remain unchanged');
-assert.deepEqual(site.form.contactGroupLabel, { ar: 'بيانات التواصل', en: 'Contact details' }, 'Lead form contactGroupLabel must retain exact bilingual copy');
-assert.deepEqual(site.form.plotGroupLabel, { ar: 'بيانات الأرض', en: 'Plot details' }, 'Lead form plotGroupLabel must retain exact bilingual copy');
-assert.deepEqual(site.form.budgetGroupLabel, { ar: 'نطاق الميزانية', en: 'Budget range' }, 'Lead form budgetGroupLabel must retain exact bilingual copy');
+assertContactPage(read(routeFile(langPath('de', '/contact/'))), 'de', 'German contact');
+assert.deepEqual(originalLanguages(site.form.contactGroupLabel), { ar: 'بيانات التواصل', en: 'Contact details' }, 'Lead form contactGroupLabel must retain exact bilingual copy');
+assert.deepEqual(originalLanguages(site.form.plotGroupLabel), { ar: 'بيانات الأرض', en: 'Plot details' }, 'Lead form plotGroupLabel must retain exact bilingual copy');
+assert.deepEqual(originalLanguages(site.form.budgetGroupLabel), { ar: 'نطاق الميزانية', en: 'Budget range' }, 'Lead form budgetGroupLabel must retain exact bilingual copy');
 assert.doesNotMatch(sitemap, /<lastmod\b/i, 'Generated sitemap must omit unreliable lastmod values');
 const sitemapSourceStart = buildSource.indexOf('function renderSitemap()');
 const sitemapSourceEnd = buildSource.indexOf('write everything', sitemapSourceStart);
@@ -1400,6 +1415,7 @@ assert.throws(
   'Mobile menu verifier must reject focus restoration that can be overwritten by close-button click handling'
 );
 assert.match(withoutBlockComments(contactJs), /const\s+apiKey\s*=\s*typeof\s+window\.GOOGLE_MAPS_API_KEY\s*===\s*(['"])string\1[\s\S]*?;[\s\S]*?loadGoogleMapsPlaces\(\s*apiKey\s*\)/, 'The Google Maps API key must flow into the Places loader');
+assert.match(withoutBlockComments(contactJs), /setCustomValidity\(\s*validPhone\s*\?\s*''\s*:\s*form\.dataset\.msgPhone\s*\)/, 'Phone validation must use the rendered localized form message');
 assert.doesNotMatch(withoutBlockComments(css), /(?:repeating-)?(?:linear|radial|conic)-gradient\s*\(/i, 'CSS must not contain gradients');
 for (const selector of [
   '.home-hero-grid',
@@ -1569,27 +1585,30 @@ const collectHtml = (directory) => {
   }
 };
 collectHtml(ROOT);
-const expectedGeneratedPageCount = 2 * (8 + projects.length + site.landings.length + site.journal.length);
-assert.equal(generatedHtml.length, expectedGeneratedPageCount, 'Repository must contain the data-derived number of generated index pages');
+const expectedGeneratedRoutes = new Map();
+for (const [logicalPath, alternates] of routes) {
+  for (const [lang, url] of Object.entries(alternates)) {
+    expectedGeneratedRoutes.set(routeFile(url), { logicalPath, lang, url });
+  }
+}
+expectedGeneratedRoutes.set('en/index.html', { logicalPath: '/', lang: 'en', url: '/' });
+assert.deepEqual(generatedHtml.map(({ relativePath }) => relativePath).sort(), [...expectedGeneratedRoutes.keys()].sort(), 'Repository must contain exactly the registry-derived generated index pages and English homepage alias');
 for (const { relativePath, page } of generatedHtml) {
   const label = `Generated page ${relativePath}`;
   assert.ok(!/[ \t]+$/m.test(page), `${label} must not contain trailing whitespace`);
-  const isEnglish = relativePath.startsWith('en/');
-  const localizedPath = relativePath === 'index.html' ? '/' : `/${relativePath.replace(/index\.html$/, '')}`;
-  const logicalPath = isEnglish ? localizedPath.replace(/^\/en/, '') : localizedPath;
-  const expectedLang = isEnglish ? 'en' : 'ar';
-  const expectedDir = isEnglish ? 'ltr' : 'rtl';
+  const { logicalPath, lang: expectedLang, url: localizedPath } = expectedGeneratedRoutes.get(relativePath);
+  const expectedDir = expectedLang === 'ar' ? 'rtl' : 'ltr';
   const expectedCanonical = `${site.domain}${localizedPath}`;
 
   assert.match(page, new RegExp(`<html\\s+lang="${expectedLang}"\\s+dir="${expectedDir}">`), `${label} must use the correct language and direction`);
   assert.equal(elements(page, { tag: 'h1' }).length, 1, `${label} must contain exactly one h1`);
   assert.equal((page.match(/<link rel="canonical"/g) || []).length, 1, `${label} must contain exactly one canonical link`);
   has(page, `<link rel="canonical" href="${expectedCanonical}" />`, `${label} canonical must match its path`);
-  const alternates = [
-    ['ar', `${site.domain}${logicalPath}`],
-    ['en', `${site.domain}/en${logicalPath}`],
-    ['x-default', `${site.domain}${logicalPath}`]
-  ];
+  const publishedAlternates = routes.get(logicalPath);
+  const alternates = [...Object.entries(publishedAlternates),
+    ['x-default', publishedAlternates.en || publishedAlternates[expectedLang]]
+  ].map(([code, url]) => [code, `${site.domain}${url}`]);
+  assert.equal((page.match(/<link rel="alternate" hreflang=/g) || []).length, alternates.length, `${label} must advertise exactly its published counterparts and x-default`);
   for (const [hreflang, href] of alternates) {
     assert.equal((page.match(new RegExp(`<link rel="alternate" hreflang="${hreflang}"`, 'g')) || []).length, 1, `${label} must contain exactly one ${hreflang} alternate`);
     has(page, `<link rel="alternate" hreflang="${hreflang}" href="${href}" />`, `${label} must retain its ${hreflang} alternate`);
@@ -1607,14 +1626,22 @@ for (const { relativePath, page } of generatedHtml) {
     assert.ok(isHeaderStamp || isLazy || isPrioritized, `${imageLabel} must be lazy-loaded or explicitly prioritized`);
   }
 
+  const stylesheets = elements(page, { tag: 'link' })
+    .filter((link) => hasAttribute(link, 'rel') && attribute(link, 'rel', `${label} link relation`) === 'stylesheet')
+    .map((link) => attribute(link, 'href', `${label} stylesheet must have href`));
+  assert.deepEqual(stylesheets.sort(), [site.fonts[expectedLang], versionedAssetUrl('/assets/css/site.css')].sort(), `${label} must load only its configured fonts and the protected stylesheet with a current deterministic content hash`);
+
   const scripts = elements(page, { tag: 'script' });
   for (const script of scripts) {
     if (!hasAttribute(script, 'src')) {
       assert.ok(/type="application\/ld\+json"/.test(script.open) || /window\.GOOGLE_MAPS_API_KEY/.test(script.inner), `${label} must not contain unapproved inline scripts`);
       continue;
     }
-    assert.match(attribute(script, 'src', `${label} script must have src`), /^\/assets\/js\/(?:site|contact)\.js$/, `${label} may load only first-party protected scripts`);
+    const src = attribute(script, 'src', `${label} script must have src`);
+    assert.match(src, /^\/assets\/js\/(?:site|contact)\.js\?v=[a-f0-9]{12}$/, `${label} may load only first-party protected scripts with a deterministic version query`);
+    assert.equal(src, versionedAssetUrl(src.split('?')[0]), `${label} script version must match its current file content hash`);
   }
+  assert.equal(scripts.filter((script) => hasAttribute(script, 'src') && attribute(script, 'src', `${label} script src`) === versionedAssetUrl('/assets/js/site.js')).length, 1, `${label} must load the protected shared script exactly once`);
   assert.doesNotMatch(page, /\b(?:googletagmanager|google-analytics|gtag\s*\(|analytics\.js|plausible|hotjar|segment\.com)\b/i, `${label} must remain analytics-free`);
   assertInlineSizing(page, label);
 
@@ -1644,7 +1671,7 @@ assert.deepEqual(
 );
 
 assertCssDeclarations(css, '.btn', { 'min-height': '3rem' }, 'Primary control sizing');
-for (const selector of ['.mobile-lang-link', '.nav-toggle', '.mobile-close']) {
+for (const selector of ['.language-picker summary', '.language-options a', '.nav-toggle', '.mobile-close']) {
   assertMinimumTouchTarget(css, selector, selector);
 }
 assert.throws(
@@ -1659,4 +1686,4 @@ assert.doesNotThrow(
 hasCssSelectorBranch(css, '.work-editorial-grid .card-media img', 'CSS must size every editorial work-grid image, not only the first card image');
 assertEditorialCss(css, true);
 
-console.log('Verification passed: bilingual shell, SEO alternates, contact plumbing, and motion invariants.');
+console.log('Verification passed: multilingual shell, SEO alternates, contact plumbing, and motion invariants.');

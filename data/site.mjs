@@ -3,7 +3,7 @@
 // Every visible string is bilingual: { ar, en }.
 // After editing, run: node scripts/build.mjs
 
-export default {
+const site = {
   domain: 'https://wbstudio.xyz',
   brand: 'WB Studio',
   author: { name: { ar: 'وائل بو سماعيل', en: 'Wael Bousmael' } },
@@ -949,3 +949,330 @@ export default {
     }
   ]
 };
+
+// German copy is kept separate so the established Arabic and English voice stays intact.
+// Keys address existing translated fields; arrays retain their original order.
+const germanCopy = {
+  'author.name': 'Wael Bousmael',
+  waMessage: 'Guten Tag, ich möchte ein kostenloses Erstgespräch zu meinem Hausprojekt vereinbaren.\n• Name:\n• Standort des Grundstücks oder Hauses:\n• Fläche:\n• Geschätztes Budget in EUR:',
+  fonts: site.fonts.en,
+  'nav.work': 'Projekte',
+  'nav.services': 'Leistungen',
+  'nav.approach': 'Ablauf',
+  'nav.journal': 'Journal',
+  'nav.about': 'Über das Studio',
+  'nav.contact': 'Kontakt',
+  'nav.menuOpen': 'Menü öffnen',
+  'nav.menuClose': 'Menü schließen',
+  'nav.menuTitle': 'Navigation',
+  'nav.langLabel': 'EN',
+  'nav.langAria': 'Sprache wechseln',
+  'nav.skip': 'Zum Inhalt springen',
+  'footer.tagline': 'Persönliche Planung für private Häuser und Umbauten in Berlin — mit klaren Räumen, sorgfältigen Details und direktem Kontakt zum Planer.',
+  'footer.explore': 'Entdecken',
+  'footer.contactTitle': 'Kontakt',
+  'footer.whatsappLabel': 'WhatsApp',
+  'footer.rights': 'Alle Rechte vorbehalten.',
+  'footer.credits': 'Bildnachweise',
+  offer: 'Wir beginnen mit einem kostenlosen Erstgespräch und einem kostenlosen ersten Entwurf. Eine kostenpflichtige Beauftragung erfolgt erst, wenn die Richtung klar und gemeinsam abgestimmt ist.',
+  'home.seoTitle': 'Hausplanung & Hausumbau in Berlin | WB Studio — Wael Bousmael',
+  'home.seoDesc': 'Freier Planer für private Häuser und Hausumbauten in Berlin. Kostenloses Erstgespräch und erster Entwurf; kostenpflichtige Beauftragung erst nach gemeinsamer Abstimmung.',
+  'home.eyebrow': 'Private Häuser und Umbauten — Berlin',
+  'home.h1': 'Hausplanung und Umbau in Berlin.',
+  'home.positioning': 'Persönliche Planung für Ihr neues Zuhause oder den Umbau Ihres Hauses — mit klaren Grundrissen und einem Blick für Ihren Alltag. Digital und vor Ort nach Vereinbarung.',
+  'home.ctaWhatsapp': 'Kostenloses Erstgespräch über WhatsApp',
+  'home.ctaWork': 'Projekte ansehen',
+  'home.trustItems.0': 'Über 12 Jahre Erfahrung',
+  'home.trustItems.1': 'Freier Planer und BIM-Koordinator',
+  'home.trustItems.2': 'Berlin — digital und vor Ort nach Vereinbarung',
+  'home.trustItems.3': 'Vom ersten Entwurf bis zur Ausführungsplanung',
+  'home.heroImage.alt': 'Moderne Villa mit warmer Holzuntersicht und einem Wohnbereich, der sich zu einem ruhigen Pool öffnet',
+  'home.selectedTitle': 'Ausgewählte Projekte',
+  'home.allWork': 'Alle Projekte',
+  'home.approachTitle': 'Der Ablauf',
+  'home.approachLead': 'Drei klare Schritte schaffen Raum für gute Entscheidungen — vor einer kostenpflichtigen Beauftragung.',
+  'home.approachMore': 'Mehr über den Ablauf',
+  'home.aboutTitle': 'Wael Bousmael',
+  'home.aboutText': 'Freier Planer und BIM-Koordinator mit über 12 Jahren Erfahrung im privaten Wohnungsbau und Projekterfahrung in Deutschland, im Libanon und in Saudi-Arabien — vom ersten Entwurf bis zur Ausführungsplanung.',
+  'home.aboutMore': 'Mehr über das Studio',
+  'work.seoTitle': 'Projekte | Wohnhäuser, Umbau & Innenräume — WB Studio',
+  'work.seoDesc': 'Ausgewählte Projekte von WB Studio: private Wohnhäuser, Umbau und räumliche Planung. Die Projektorte und der jeweilige Planungsstand sind transparent ausgewiesen.',
+  'work.h1': 'Projekte',
+  'work.note': 'Die als Konzeptstudien gekennzeichneten Projekte veranschaulichen die gestalterische Richtung des Studios. Ihre Referenzbilder stammen von Fotografen auf Unsplash —',
+  'work.noteLink': 'zu den Bildnachweisen',
+  'work.viewProject': 'Projekt ansehen',
+  'project.backToWork': 'Projekte',
+  'project.detailsTitle': 'Projektdetails',
+  'project.location': 'Ort',
+  'project.year': 'Jahr',
+  'project.category': 'Kategorie',
+  'project.status': 'Stand',
+  'project.services': 'Leistungen',
+  'project.galleryNote': 'Diese Bilder sind Raum- und Materialreferenzen von Fotografen auf Unsplash und gehören zu einer vorläufigen Konzeptstudie.',
+  'project.galleryNoteLink': 'Bildnachweise',
+  'project.nextProject': 'Nächstes Projekt',
+  'approach.seoTitle': 'Ablauf | Hausplanung vor der Beauftragung — WB Studio',
+  'approach.seoDesc': 'So beginnt Ihre Hausplanung: kostenloses Erstgespräch, kostenloser erster Entwurf und kostenpflichtige Beauftragung erst nach gemeinsamer Abstimmung.',
+  'approach.h1': 'Der Ablauf',
+  'approach.intro': 'Ein ruhiger, transparenter Weg vom ersten Gespräch zur abgestimmten Planung. Für private Häuser und Umbauten in Berlin arbeiten wir digital und nach vorheriger Vereinbarung vor Ort. Nutzung, Bestand und ein bewusster Umgang mit Ressourcen stehen am Anfang.',
+  'approach.servicesTitle': 'Was wir planen',
+  'approach.services.0.title': 'Entwurf und Raumkonzept',
+  'approach.services.0.text': 'Erste Volumenstudien und Grundrissvarianten entwickeln die Identität Ihres Hauses — mit klaren Proportionen und sorgfältiger Einbindung in das Grundstück.',
+  'approach.services.1.title': 'Innenraumkonzept',
+  'approach.services.1.text': 'Raumfolgen, Materialien und natürliches Licht werden gemeinsam gedacht, damit Innenräume und Haus ein stimmiges Ganzes bilden.',
+  'approach.services.2.title': 'Ausführungsplanung',
+  'approach.services.2.text': 'Nach vereinbartem Leistungsumfang übersetzen wir den Entwurf in nachvollziehbare Zeichnungen und Details für die Abstimmung mit Fachplanern und ausführenden Unternehmen.',
+  'approach.services.3.title': 'Ressourcenbewusste Planung',
+  'approach.services.3.text': 'Wir berücksichtigen Tageslicht, Verschattung und langlebige Materialien früh im Entwurf. Erforderliche Energie- und Fachnachweise werden gesondert mit geeigneten Fachleuten abgestimmt.',
+  'approach.processTitle': 'Drei Schritte vor der Beauftragung',
+  'approach.steps.0.title': 'Kostenloses Erstgespräch',
+  'approach.steps.0.text': 'Wir besprechen Ihr Grundstück oder bestehendes Haus, Ihre Wünsche und den Alltag, den die Räume künftig ermöglichen sollen.',
+  'approach.steps.0.image.alt': 'Videogespräch mit dem Auftraggeber zur Besprechung von Grundstück und Projektzielen',
+  'approach.steps.1.title': 'Kostenloser erster Entwurf',
+  'approach.steps.1.text': 'Wir besprechen eine erste gestalterische Richtung im Videogespräch — mit einem Raumkonzept, das sich an Ihren Prioritäten orientiert, bevor Sie sich kostenpflichtig binden.',
+  'approach.steps.1.image.alt': 'Frühes Volumenmodell einer Villa zur Darstellung der ersten Entwurfsidee',
+  'approach.steps.2.title': 'Beauftragung nach gemeinsamer Abstimmung',
+  'approach.steps.2.text': 'Wenn die Richtung passt, vereinbaren wir Leistungsumfang, Honorar und nächste Schritte. Erst danach beginnt die kostenpflichtige Planung. Erforderliche Fachplaner und Genehmigungsleistungen klären wir projektbezogen.',
+  'approach.steps.2.image.alt': 'Fotorealistische Visualisierung einer Villa nach Ausarbeitung des Entwurfs',
+  'about.seoTitle': 'Über WB Studio | Wael Bousmael — Freier Planer',
+  'about.seoDesc': 'Wael Bousmael: Freier Planer und BIM-Koordinator mit über 12 Jahren Erfahrung. Persönliche Planung für Hausprojekte in Berlin, digital und vor Ort nach Vereinbarung.',
+  'about.h1': 'Über das Studio',
+  'about.intro': 'WB Studio ist das persönlich geführte Planungsbüro von Wael Bousmael. Für private Hausprojekte in Berlin verbinden wir klare Grundrisse, sorgfältige Materialwahl und einen genauen Blick auf den Alltag der Bewohner. Die Zusammenarbeit erfolgt digital und nach vorheriger Vereinbarung vor Ort.',
+  'about.name': 'Wael Bousmael — Freier Planer',
+  'about.bio': 'Wael Bousmael ist in Deutschland als freiberuflicher Planer registriert und arbeitet als Planer und BIM-Koordinator mit über 12 Jahren Erfahrung im privaten Wohnungsbau. Seine Projekterfahrung umfasst Deutschland, den Libanon und Saudi-Arabien. Er begleitet Entwurf und Ausführungsplanung und koordiniert die Abstimmung zwischen Gebäudeplanung, Tragwerk und technischer Gebäudeausrüstung im vereinbarten Umfang.',
+  'about.practiceTitle': 'Das Planungsbüro',
+  'about.practiceText': 'Jedes Projekt erhält direkte Aufmerksamkeit und eine durchgängige gestalterische Begleitung. Leistungsumfang und Zuständigkeiten klären wir gemeinsam; erforderliche Fachleistungen und die Verantwortung für Genehmigungsunterlagen werden projektbezogen vereinbart.',
+  'about.facts.0.label': 'Zusammenarbeit',
+  'about.facts.0.value': 'Digital — vor Ort nach vorheriger Vereinbarung',
+  'about.facts.1.label': 'Projektfokus',
+  'about.facts.1.value': 'Private Hausprojekte in Berlin',
+  'about.facts.2.label': 'Sprachen',
+  'about.facts.2.value': 'Deutsch · Englisch · Arabisch',
+  'about.facts.3.label': 'Schwerpunkte',
+  'about.facts.3.value': 'Hausplanung · Umbau · BIM-Koordination',
+  'about.portrait.alt': 'Wael Bousmael, freier Planer und BIM-Koordinator',
+  'contactPage.seoTitle': 'Kontakt | Kostenloses Erstgespräch zur Hausplanung — WB Studio',
+  'contactPage.seoDesc': 'Besprechen Sie Ihre Hausplanung oder Ihren Umbau in Berlin. Kostenloses Erstgespräch und erster Entwurf; kostenpflichtige Beauftragung erst nach gemeinsamer Abstimmung.',
+  'contactPage.h1': 'Kontakt',
+  'contactPage.intro': 'Was möchten Sie an Ihrem Haus verändern oder neu planen? Wir beginnen mit einem kostenlosen Erstgespräch und einem kostenlosen ersten Entwurf. Eine kostenpflichtige Beauftragung erfolgt erst, wenn die Richtung klar und gemeinsam abgestimmt ist.',
+  'contactPage.whatsappCta': 'Kostenloses Erstgespräch über WhatsApp',
+  'contactPage.directTitle': 'Direkter Kontakt',
+  'contactPage.faqTitle': 'Fragen zu Ihrer Hausplanung',
+  'form.title': 'Projektangaben für ein kostenloses Erstgespräch',
+  'form.subtitle': 'Nennen Sie uns den Standort Ihres Hauses oder Grundstücks und, falls bekannt, Ihr Budget. Wir sehen uns Ihre Angaben an und melden uns innerhalb von zwei Werktagen für den nächsten Schritt.',
+  'form.contactGroupLabel': 'Ihre Kontaktdaten',
+  'form.plotGroupLabel': 'Haus oder Grundstück',
+  'form.budgetGroupLabel': 'Budgetrahmen',
+  'form.name': 'Name',
+  'form.namePh': 'Ihr vollständiger Name',
+  'form.phone': 'Telefonnummer',
+  'form.phonePh': 'Mit Ländervorwahl, zum Beispiel +49 …',
+  'form.email': 'E-Mail',
+  'form.emailPh': 'name@beispiel.de',
+  'form.location': 'Standort des Hauses oder Grundstücks',
+  'form.locationPh': 'Stadt, Bezirk oder Adresse',
+  'form.locationHelper': 'Geben Sie Stadt oder Bezirk an. Einen Google-Maps-Link zum Haus oder Grundstück können Sie bei Bedarf ergänzen.',
+  'form.maps': 'Google-Maps-Link',
+  'form.mapsPh': 'https://maps.google.com/…',
+  'form.budget': 'Geschätztes Budget in EUR',
+  'form.budgetPh': 'Optional — Ihr ungefährer Budgetrahmen in EUR',
+  'form.budgetOptions': [],
+  'form.submit': 'Projektangaben senden',
+  'form.success': 'Ihre Anfrage wurde gesendet. Wir melden uns innerhalb von zwei Werktagen.',
+  'form.error': 'Ihre Anfrage konnte gerade nicht gesendet werden. Bitte versuchen Sie es erneut.',
+  'faq.0.q': 'Was kostet die Planung meines Hauses oder Umbaus?',
+  'faq.0.a': 'Das Honorar hängt von Größe, Bestand, Aufgabenstellung und vereinbartem Leistungsumfang ab. Das Erstgespräch und der erste Entwurf sind kostenlos. Umfang und Honorar klären wir vollständig vor einer kostenpflichtigen Beauftragung.',
+  'faq.1.q': 'Wie arbeiten wir bei einem Projekt in Berlin zusammen?',
+  'faq.1.a': 'Wir arbeiten digital mit Videogesprächen und gemeinsam besprochenen Zeichnungen. Termine vor Ort sind nach vorheriger Vereinbarung möglich. Was für Ihr Projekt erforderlich ist, klären wir im Erstgespräch.',
+  'faq.2.q': 'Welche Unterlagen erhalte ich?',
+  'faq.2.a': 'Je nach vereinbartem Umfang erhalten Sie Entwürfe, Grundrissvarianten, Innenraumkonzepte und Ausführungszeichnungen. Erforderliche Fachnachweise, Genehmigungsunterlagen und die jeweiligen Zuständigkeiten werden gesondert geklärt.',
+  'faq.3.q': 'Wie lange dauert die Planung?',
+  'faq.3.a': 'Das hängt von Größe, Bestand und Komplexität ab. Im Rahmen des ersten Entwurfs besprechen wir einen voraussichtlichen Zeitrahmen, bevor kostenpflichtige Leistungen beginnen.',
+  'faq.4.q': 'Ab wann entstehen Kosten?',
+  'faq.4.a': 'Das Erstgespräch und der erste Entwurf sind vollständig kostenlos. Eine kostenpflichtige Beauftragung erfolgt erst, wenn die Richtung klar ist und Sie dem vereinbarten Leistungsumfang und Honorar zustimmen.',
+  'contactBand.title': 'Was möchten Sie mit Ihrem Haus erreichen?',
+  'contactBand.text': 'Ein kostenloses Erstgespräch, dann ein kostenloser erster Entwurf. Eine kostenpflichtige Beauftragung beginnt erst nach gemeinsamer Abstimmung.',
+  'contactBand.primary': 'Projektangaben senden',
+  'contactBand.secondary': 'WhatsApp',
+  'credits.seoTitle': 'Bildnachweise | WB Studio',
+  'credits.seoDesc': 'Quellen und Lizenzen der Referenzbilder auf der Startseite und in den Konzeptstudien von WB Studio.',
+  'credits.h1': 'Bildnachweise',
+  'credits.intro': 'Das Portfolio enthält eigene Studioprojekte und klar gekennzeichnete Konzeptstudien. Diese Nachweise betreffen das Titelbild der Startseite und die Unsplash-Referenzbilder der Konzeptstudien. Sie gelten nicht für die eigenen Projektbilder des Studios.',
+  'credits.licenseNote': 'Lizenz: Unsplash License mit kostenloser kommerzieller Nutzung; eine Namensnennung ist nicht vorgeschrieben. Die einzelnen Quellen sind unten verlinkt. Das vollständige Verzeichnis liegt unter assets/licenses/LICENSES.md im Website-Repository.',
+  'credits.sourceLabel': 'Quelle',
+  'credits.heroLabel': 'Titelbild der Startseite',
+  'services.seoTitle': 'Hausplanung & Umbau in Berlin | Leistungen — WB Studio',
+  'services.seoDesc': 'Planungsleistungen für private Häuser und Hausumbauten in Berlin: Entwurf, Grundriss, Innenraumkonzept und Ausführungsplanung nach vereinbartem Umfang.',
+  'services.h1': 'Planung für Ihr Haus in Berlin',
+  'services.intro': 'Ob neues Haus oder Umbau eines bestehenden Zuhauses: Wir beginnen mit Ihren Bedürfnissen. Ein kostenloses Erstgespräch und ein kostenloser erster Entwurf gehen jeder kostenpflichtigen Beauftragung voraus.',
+  'services.explore': 'Mehr erfahren',
+  'journalMeta.seoTitle': 'Journal | Planung und Entwurf — WB Studio',
+  'journalMeta.seoDesc': 'Einblicke in Entwurf, Grundrisse und Ausführungsplanung bei WB Studio.',
+  'journalMeta.h1': 'Journal',
+  'journalMeta.intro': 'Gedanken zu klaren Räumen und nachvollziehbarer Planung.',
+  'journalMeta.readMore': 'Beitrag lesen',
+  'journalMeta.byline': 'Von',
+  'journalMeta.guidesTitle': 'Wissen für den Projektstart',
+  'journalMeta.backToJournal': 'Journal',
+  'journalMeta.relatedTitle': 'Passende Leistungen'
+};
+
+for (const [path, text] of Object.entries(germanCopy)) {
+  const target = path.split('.').reduce((value, key) => value[key], site);
+  if (!target || typeof target !== 'object' || !('en' in target)) {
+    throw new Error(`Unknown German translation field: ${path}`);
+  }
+  target.de = text;
+}
+
+site.berlin = {
+  homeThemes: [
+    {
+      title: { de: 'Hausplanung in Berlin' },
+      text: { de: 'Ein durchdachter Entwurf für Ihr Grundstück, Ihre Familie und Ihren Alltag — vom Raumprogramm zur klaren Planung.' },
+      href: '/hausplanung-berlin/'
+    },
+    {
+      title: { de: 'Hausumbau in Berlin' },
+      text: { de: 'Bestehende Räume neu ordnen und den Charakter Ihres Hauses bewahren — mit klaren Grundrissen und sorgfältigen Details.' },
+      href: '/hausumbau-berlin/'
+    }
+  ],
+  landings: [
+    {
+      slug: 'hausplanung-berlin',
+      label: { de: 'Hausplanung in Berlin' },
+      summary: { de: 'Persönliche Entwurfs- und Grundrissplanung für private Bauherren mit einem Grundstück in Berlin.' },
+      seoTitle: { de: 'Hausplanung Berlin | Freier Planer für private Häuser — WB Studio' },
+      seoDesc: { de: 'Individuelle Hausplanung in Berlin: Grundriss, Licht und Räume für Ihren Alltag. Kostenloses Erstgespräch und erster Entwurf, Beauftragung erst nach Abstimmung.' },
+      eyebrow: { de: 'Private Hausplanung — Berlin' },
+      h1: { de: 'Ihr Haus in Berlin beginnt mit einem klaren Entwurf.' },
+      intro: { de: 'Sie haben ein Grundstück in Berlin und möchten ein Haus planen, das zu Ihrem Leben passt? Als freier Planer entwickelt Wael Bousmael mit Ihnen Raumprogramm, Grundriss und gestalterische Richtung. Wir arbeiten digital und nach vorheriger Vereinbarung vor Ort — mit direktem Kontakt und einem verständlichen nächsten Schritt.' },
+      sections: [
+        {
+          heading: { de: 'Das Grundstück verstehen' },
+          body: { de: 'Ausrichtung, Zufahrt, Nachbarbebauung und Ihre Wünsche bilden den Ausgangspunkt. Wir prüfen die verfügbaren Unterlagen und entwickeln daraus erste räumliche Möglichkeiten. Baurechtliche Rahmenbedingungen und erforderliche Nachweise werden mit den zuständigen Fachleuten projektbezogen geklärt.' }
+        },
+        {
+          heading: { de: 'Räume für Ihren Alltag' },
+          body: { de: 'Wie kommen Sie nach Hause? Wo spielt sich das Familienleben ab? Welche Räume sollen später anders nutzbar sein? Grundrissvarianten machen solche Fragen anschaulich. Tageslicht, Rückzug, Stauraum und Übergänge zum Garten werden gemeinsam gedacht.' }
+        },
+        {
+          heading: { de: 'Planung mit klaren Zuständigkeiten' },
+          body: { de: 'Vom Entwurf bis zur Ausführungsplanung vereinbaren wir die benötigten Leistungen und die Abstimmung mit Fachplanern. Wer Genehmigungsunterlagen erstellt und einreicht sowie welche weiteren Fachleistungen notwendig sind, wird für Ihr Vorhaben gesondert festgelegt. Eine Bauvorlageberechtigung wird durch dieses Angebot nicht zugesagt.' }
+        }
+      ],
+      serviceType: 'Hausplanung',
+      faq: [
+        {
+          q: { de: 'Was brauche ich für das erste Gespräch?' },
+          a: { de: 'Den Standort des Grundstücks, vorhandene Lagepläne und eine Vorstellung Ihrer Wünsche. Falls vorhanden, helfen Angaben zur Fläche und zu Ihrem Budget. Wir beginnen mit einem kostenlosen Erstgespräch und einem kostenlosen ersten Entwurf.' }
+        },
+        {
+          q: { de: 'Übernimmt WB Studio auch den Bauantrag?' },
+          a: { de: 'Genehmigungsleistungen und die Verantwortung für Bauvorlagen sind nicht automatisch Teil des Angebots. Im Erstgespräch klären wir den Bedarf und die Einbindung entsprechend berechtigter Fachleute. Umfang und Zuständigkeiten werden vor einer Beauftragung vereinbart.' }
+        },
+        {
+          q: { de: 'Ist eine Zusammenarbeit vor Ort möglich?' },
+          a: { de: 'Ja, nach vorheriger Vereinbarung. Viele Abstimmungen finden digital statt. Ob ein Termin vor Ort für Ihr Hausprojekt sinnvoll ist, besprechen wir gemeinsam. Eine kostenpflichtige Beauftragung beginnt erst nach Abstimmung von Richtung, Umfang und Honorar.' }
+        }
+      ],
+      related: ['hausumbau-berlin'],
+      relatedProjects: ['montashiri-villa', 'byblos-resort'],
+      image: { src: '/assets/projects/montashiri-villa/cover.webp', w: 1536, h: 960, alt: { de: 'Entwurf der Montashiri Villa in Obhur, Jeddah, mit Steinfassade und bepflanzten Terrassen' } }
+    },
+    {
+      slug: 'hausumbau-berlin',
+      label: { de: 'Hausumbau in Berlin' },
+      summary: { de: 'Bestehende Häuser neu durchdenken: Bestandsanalyse, Grundrissvarianten und abgestimmte Umbauplanung.' },
+      seoTitle: { de: 'Hausumbau Berlin | Grundriss & Umbauplanung — WB Studio' },
+      seoDesc: { de: 'Hausumbau in Berlin mit durchdachten Grundrissen und klarer Bestandsplanung. Kostenloses Erstgespräch und erster Entwurf vor einer kostenpflichtigen Beauftragung.' },
+      eyebrow: { de: 'Planen im Bestand — Berlin' },
+      h1: { de: 'Mehr aus Ihrem bestehenden Haus in Berlin machen.' },
+      intro: { de: 'Ein Haus muss nicht vollständig neu sein, um besser zu Ihrem Leben zu passen. Wir untersuchen gemeinsam, wie sich Grundrisse öffnen, Wege verkürzen und Räume neu nutzen lassen. Am Anfang stehen Ihr Alltag und ein genauer Blick auf den Bestand — digital und vor Ort nach vorheriger Vereinbarung.' },
+      sections: [
+        {
+          heading: { de: 'Mit dem Bestand beginnen' },
+          body: { de: 'Vorhandene Pläne, Fotos und Ihre Beobachtungen zeigen erste Möglichkeiten und offene Fragen. Ein verlässliches Aufmaß und erforderliche Untersuchungen klären wir projektbezogen. Eingriffe in Tragwerk und technische Anlagen müssen von geeigneten Fachleuten geprüft werden.' }
+        },
+        {
+          heading: { de: 'Grundrisse, die den Unterschied zeigen' },
+          body: { de: 'Wir stellen Bestand und Entwurf gegenüber und machen Abbruch, neue Wände und Raumfolgen nachvollziehbar. So können Sie Varianten für Küche, Wohnbereiche, Rückzug und Gartenbezug vergleichen, bevor Sie sich auf eine Richtung festlegen.' }
+        },
+        {
+          heading: { de: 'Schrittweise zu klaren Unterlagen' },
+          body: { de: 'Nach gemeinsamer Abstimmung entsteht im vereinbarten Umfang eine Planung mit Grundrissen, Schnitten und Details. Genehmigungsbedarf, Fachnachweise und Zuständigkeiten werden vorab geklärt. Die gezeigte Villenrenovierung im Libanon veranschaulicht diese Arbeitsweise; sie ist kein Berliner Referenzprojekt.' }
+        }
+      ],
+      serviceType: 'Hausumbau und Umbauplanung',
+      faq: [
+        {
+          q: { de: 'Kann ich mit alten Plänen und Fotos starten?' },
+          a: { de: 'Ja. Für das kostenlose Erstgespräch reichen vorhandene Unterlagen und eine Beschreibung Ihrer Wünsche. Welche Bestandsaufnahme oder zusätzlichen Untersuchungen anschließend nötig sind, klären wir gemeinsam.' }
+        },
+        {
+          q: { de: 'Sind Wanddurchbrüche oder ein Anbau Teil der Planung?' },
+          a: { de: 'Wir können solche Wünsche in den Entwurfsvarianten untersuchen. Ob und wie sie umgesetzt werden können, hängt vom Bestand, der Tragwerksprüfung und den baurechtlichen Rahmenbedingungen ab. Erforderliche Fachleute und Genehmigungsleistungen werden gesondert vereinbart.' }
+        },
+        {
+          q: { de: 'Wann entscheide ich mich für eine Beauftragung?' },
+          a: { de: 'Erst nach dem kostenlosen Erstgespräch und dem kostenlosen ersten Entwurf. Wenn die Richtung passt, vereinbaren wir Leistungsumfang, Honorar und nächste Schritte, bevor kostenpflichtige Arbeit beginnt.' }
+        }
+      ],
+      related: ['hausplanung-berlin'],
+      relatedProjects: ['private-villa-renovation-chouf', 'montashiri-villa'],
+      image: { src: '/assets/projects/private-villa-renovation-chouf/cover.webp', w: 1601, h: 983, fit: 'contain', alt: { de: 'Visualisierung des Umbaus einer Steinvilla mit Balkonen und Terrassen im Chouf, Libanon' } }
+    }
+  ],
+  legal: [
+    {
+      slug: 'impressum',
+      title: { de: 'Impressum — Entwurf' },
+      seoDesc: { de: 'Entwurf der Anbieterangaben von WB Studio zur Prüfung vor Veröffentlichung.' },
+      draft: true,
+      sections: [
+        { h: { de: 'Entwurf — noch nicht zur Veröffentlichung freigegeben' }, p: { de: 'Diese Anbieterangaben sind ein Entwurf zur lokalen Prüfung. Die Aktualität der Geschäftsanschrift und weitere tatsächlich erforderliche Angaben sind vor Veröffentlichung zu bestätigen. Dieser Entwurf ist noch nicht zur Veröffentlichung freigegeben.' } },
+        { h: { de: 'Anbieter und Kontakt' }, p: { de: 'WB Studio — Wael Bousmael, freier Planer. Geschäftsanschrift laut vorliegender Registrierung: Flughafenstraße 66, 12049 Berlin, Deutschland. E-Mail: w.bousmael@wbstudio.xyz. Telefon: +966 53 806 0383. Die Zusammenarbeit erfolgt digital und vor Ort nach vorheriger Vereinbarung.' } },
+        { h: { de: 'Vor Veröffentlichung zu klären' }, p: { de: 'Die Aktualität der Anschrift, gegebenenfalls erforderliche Umsatzsteuerangaben sowie weitere tatsächlich einschlägige Anbieterangaben müssen bestätigt werden. Eine Eintragung in eine deutsche Architektenkammer und eine Bauvorlageberechtigung werden mit dieser Website nicht behauptet.' } }
+      ]
+    },
+    {
+      slug: 'datenschutz',
+      title: { de: 'Datenschutz — Entwurf' },
+      seoDesc: { de: 'Entwurf zu den Datenflüssen der WB-Studio-Website. Anbieterprüfung, Rechtsgrundlagen und weitere Angaben sind vor Veröffentlichung zu vervollständigen.' },
+      draft: true,
+      sections: [
+        { h: { de: 'Entwurf — Angaben noch zu vervollständigen' }, p: { de: 'Dieser Text beschreibt die derzeit erkennbaren Funktionen der Website und ist keine vollständige Datenschutzerklärung. Die konkreten Anbieterbedingungen, Rechtsgrundlagen, Speicherfristen und gegebenenfalls Angaben zu Drittlandübermittlungen müssen vor Veröffentlichung geprüft und ergänzt werden. Verantwortlicher laut vorliegender Registrierung: Wael Bousmael, WB Studio, Flughafenstraße 66, 12049 Berlin, Deutschland. Kontakt für Rückfragen: w.bousmael@wbstudio.xyz. Die Aktualität dieser Anschrift ist vor Veröffentlichung zu bestätigen.' } },
+        { h: { de: 'Website und Schriftarten' }, p: { de: 'Die statischen Seiten werden über GitHub Pages bereitgestellt. Beim Abruf erhält der Hostinganbieter technisch erforderliche Verbindungsdaten. Die Website lädt Schriftarten von Google Fonts; dabei stellt der Browser Verbindungen zu Google her. Die Website bindet keine Analysewerkzeuge ein.' } },
+        { h: { de: 'Kontaktformular' }, p: { de: 'Das Formular übermittelt Name, Telefonnummer, E-Mail-Adresse, Standort des Hauses oder Grundstücks, einen gegebenenfalls eingetragenen Google-Maps-Link und das gegebenenfalls eingetragene Budget über FormSubmit an wael.bousmael@gmail.com. Die Angaben dienen der Bearbeitung Ihrer Projektanfrage. Die Datenschutzhinweise und Verarbeitungsbedingungen von FormSubmit sowie die tatsächlichen Speicherfristen sind vor Freigabe zu prüfen und hier zu ergänzen.' } },
+        { h: { de: 'WhatsApp und Karten' }, p: { de: 'Die WhatsApp-Schaltflächen öffnen auf Ihre Auswahl einen externen WhatsApp-Link mit einem vorbereiteten Nachrichtentext. Für eine Nachricht wählen Sie diesen Kontaktweg selbst. Das Formular enthält ein Feld für einen Google-Maps-Link; allein das Eintragen eines Links bindet keine Karte ein. Eine technisch vorbereitete Google-Maps-Adressvervollständigung ist ohne API-Schlüssel inaktiv. Bei einer späteren Aktivierung müssen die Datenschutzhinweise vorab angepasst werden.' } },
+        { h: { de: 'Gespeicherte Sprache und offene Angaben' }, p: { de: 'Die Website kann Ihre gewählte Sprache lokal im Browser speichern. Es werden dafür keine Analysecookies eingesetzt. Angaben zu Betroffenenrechten, zuständiger Aufsichtsbehörde, Rechtsgrundlagen und Aufbewahrungsdauer müssen anhand der bestätigten Verantwortlichen- und Anbieterangaben vervollständigt werden.' } }
+      ]
+    }
+  ]
+};
+
+site.ui = {
+  projectScope: { ar: 'نطاق العمل', en: 'Project scope', de: 'Planungsumfang' },
+  languageNames: { ar: 'العربية', en: 'English', de: 'Deutsch' },
+  breadcrumb: { ar: 'مسار التنقل', en: 'Breadcrumb', de: 'Seitenpfad' },
+  homeLabel: { ar: 'الرئيسية', en: 'Home', de: 'Startseite' },
+  primaryNav: { ar: 'التنقل الرئيسي', en: 'Main navigation', de: 'Hauptnavigation' },
+  mobileNav: { ar: 'التنقل عبر الهاتف', en: 'Mobile navigation', de: 'Mobile Navigation' },
+  languageLabel: { ar: 'اختر اللغة', en: 'Choose language', de: 'Sprache wählen' },
+  languageFallback: { ar: 'الرئيسية', en: 'Homepage', de: 'Startseite' },
+  credentialsLabel: { ar: 'الخبرة وطريقة العمل', en: 'Experience and practice', de: 'Erfahrung und Arbeitsweise' },
+  fromWork: { ar: 'من أعمال الاستوديو', en: 'From the studio’s work', de: 'Aus den Projekten des Studios' },
+  relatedServices: { ar: 'خدمات ذات صلة', en: 'Related services', de: 'Passende Leistungen' },
+  projectAction: { ar: 'عرض المشروع', en: 'View project', de: 'Projekt ansehen' },
+  callCta: { ar: 'اطلب مكالمة مجانية', en: 'Request a free call', de: 'Kostenloses Erstgespräch' },
+  contactAlternative: { ar: 'أو تواصل معي مباشرة', en: 'Or contact me directly', de: 'Oder nehmen Sie direkt Kontakt auf' }
+};
+
+site.form.phoneError = {
+  ar: 'يرجى إدخال رقم هاتف صحيح مع رمز الدولة.',
+  en: 'Please enter a valid phone number with the country code.',
+  de: 'Bitte geben Sie eine gültige Telefonnummer mit Ländervorwahl ein.'
+};
+
+export default site;
