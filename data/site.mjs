@@ -1,6 +1,6 @@
 // Site-wide content and configuration — single source of truth for everything
 // that is not a project (see data/projects.json for projects).
-// Every visible string is bilingual: { ar, en }.
+// Shared visible strings use { ar, en, de }; market pages use published languages.
 // After editing, run: node scripts/build.mjs
 
 const site = {
@@ -11,10 +11,23 @@ const site = {
   // ── Contact (do not change without the owner's approval — used in JSON-LD claims) ──
   phoneDisplay: '+966 53 806 0383',
   phoneE164: '+966538060383',
+  phones: [
+    { e164: '+966538060383', display: '+966 53 806 0383', country: { ar: 'السعودية', en: 'Saudi Arabia', de: 'Saudi-Arabien' } },
+    { e164: '+4917683223821', display: '+49 176 83223821', country: { ar: 'ألمانيا', en: 'Germany', de: 'Deutschland' } },
+    { e164: '+9613038248', display: '+961 3 038 248', country: { ar: 'لبنان', en: 'Lebanon', de: 'Libanon' } }
+  ],
   email: 'w.bousmael@wbstudio.xyz',
   whatsappNumber: '966538060383',
   formAction: 'https://formsubmit.co/ajax/wael.bousmael@gmail.com',
   ogImage: 'https://wbstudio.xyz/assets/images/og.jpg',
+  ogImageMedia: {
+    src: '/assets/images/og.jpg', w: 1536, h: 1024,
+    alt: {
+      ar: 'تصور فيلا المنتشري في جدة بواجهات حجرية وشرفات مزروعة',
+      en: 'Montashiri Villa design in Jeddah with stone facades and planted terraces',
+      de: 'Entwurf der Montashiri Villa in Jeddah mit Steinfassade und bepflanzten Terrassen'
+    }
+  },
 
   // Pre-filled WhatsApp message (preserved from the original site).
   waMessage: {
@@ -63,12 +76,12 @@ const site = {
 
   home: {
     seoTitle: {
-      ar: 'تصميم فلل ومنازل خاصة في جدة والخليج | WB Studio — وائل بو سماعيل',
-      en: 'Private Villa & Home Design in Jeddah & the Gulf | WB Studio — Wael Bousmael'
+      ar: 'تصميم فلل ومنازل في جدة والخليج | WB Studio',
+      en: 'Villa & Home Design in Jeddah | WB Studio'
     },
     seoDesc: {
       ar: 'مهندس معماري لتصميم الفلل والمنازل الخاصة في جدة والسعودية والخليج. مكالمة مجانية، تصور مبدئي مجاني، واتفاق مدفوع فقط بعد وضوح الرؤية والتوافق.',
-      en: 'Architect for private villas and homes in Jeddah, Saudi Arabia and the Gulf. A free call, a free preliminary concept, and a paid agreement only after the vision is clear and aligned.'
+      en: 'Private villa and home design in Jeddah and the Gulf, from concept to construction drawings. Free call and preliminary concept before any paid agreement.'
     },
     eyebrow: { ar: 'عمارة الفلل الخاصة — جدة', en: 'Private villa architecture — Jeddah' },
     h1: {
@@ -134,8 +147,8 @@ const site = {
 
   work: {
     seoTitle: {
-      ar: 'الأعمال | تصميم فلل وتصميم داخلي — WB Studio',
-      en: 'Work | Villa Design & Interiors — WB Studio'
+      ar: 'أعمال تصميم الفلل والتجديد والتصميم الداخلي | WB Studio',
+      en: 'Villa Design, Renovation & Interior Projects | WB Studio'
     },
     seoDesc: {
       ar: 'أعمال ودراسات WB Studio في عمارة الفلل الخاصة والتصميم الداخلي والمفاهيم الفراغية في جدة والسعودية والخليج.',
@@ -169,12 +182,12 @@ const site = {
   // ── Approach page: services + process (copy preserved from the original site) ──
   approach: {
     seoTitle: {
-      ar: 'النهج | مسار تصميم الفيلا قبل الاتفاق المدفوع — WB Studio',
-      en: 'Approach | The Villa Design Path Before Any Paid Agreement — WB Studio'
+      ar: 'مراحل تصميم الفيلا في جدة | WB Studio',
+      en: 'Villa Design Process in Jeddah | WB Studio'
     },
     seoDesc: {
       ar: 'كيف يعمل WB Studio: مكالمة مجانية، تصور مبدئي مجاني، واتفاق مدفوع فقط بعد التوافق — مع خدمات تمتد من الفكرة المعمارية إلى تصميم جاهز للتنفيذ.',
-      en: 'How WB Studio works: a free call, a free preliminary concept, and a paid agreement only after alignment — with services from architectural concept to build-ready design.'
+      en: 'Explore our villa design process in Jeddah: free call, free preliminary concept, then an agreed scope and fee. From architectural concept to construction drawings.'
     },
     h1: { ar: 'النهج', en: 'Approach' },
     intro: {
@@ -252,8 +265,8 @@ const site = {
 
   about: {
     seoTitle: {
-      ar: 'عن WB Studio | وائل بو سماعيل — معماري فلل خاصة في جدة',
-      en: 'About WB Studio | Wael Bousmael — Private Villa Architect in Jeddah'
+      ar: 'وائل بو سماعيل | معماري فلل في جدة — WB Studio',
+      en: 'Wael Bousmael | Villa Architect in Jeddah — WB Studio'
     },
     seoDesc: {
       ar: 'تعرف على WB Studio بقيادة وائل بو سماعيل: ممارسة معمارية شخصية لتصميم الفلل والمنازل الخاصة في جدة والسعودية والخليج عبر مسار واضح، حضورياً أو عن بُعد.',
@@ -289,8 +302,8 @@ const site = {
 
   contactPage: {
     seoTitle: {
-      ar: 'تواصل | احجز مكالمة مجانية لتصميم فيلتك — WB Studio',
-      en: 'Contact | Book a Free Villa Design Call — WB Studio'
+      ar: 'تواصل مع WB Studio | تصميم فلل في جدة',
+      en: 'Contact WB Studio | Villa Design in Jeddah'
     },
     seoDesc: {
       ar: 'أرسل تفاصيل الأرض لطلب مكالمة مجانية وتصور مبدئي مجاني لتصميم فيلتك في جدة والسعودية والخليج. لا يبدأ أي اتفاق مدفوع إلا بعد التوافق.',
@@ -423,7 +436,7 @@ const site = {
     },
     seoDesc: {
       ar: 'خدمات تصميم الفلل الخاصة في جدة: فلل فاخرة، تصميم مودرن، فلل أبحر وشمال جدة، وعمارة حجازية حديثة — مكالمة مجانية وتصور مبدئي مجاني قبل أي اتفاق.',
-      en: 'Private villa design services in Jeddah: luxury villas, modern design, Obhur & North Jeddah villas, and modern Hijazi architecture — a free call and preliminary concept before any agreement.'
+      en: 'Villa design and renovation in Jeddah: modern homes, luxury villas, Obhur plots and Hijazi architecture. Start with a free call and preliminary concept.'
     },
     h1: { ar: 'خدمات تصميم الفلل في جدة', en: 'Villa design services in Jeddah' },
     intro: {
@@ -975,8 +988,8 @@ const germanCopy = {
   'footer.rights': 'Alle Rechte vorbehalten.',
   'footer.credits': 'Bildnachweise',
   offer: 'Wir beginnen mit einem kostenlosen Erstgespräch und einem kostenlosen ersten Entwurf. Eine kostenpflichtige Beauftragung erfolgt erst, wenn die Richtung klar und gemeinsam abgestimmt ist.',
-  'home.seoTitle': 'Hausplanung & Hausumbau in Berlin | WB Studio — Wael Bousmael',
-  'home.seoDesc': 'Freier Planer für private Häuser und Hausumbauten in Berlin. Kostenloses Erstgespräch und erster Entwurf; kostenpflichtige Beauftragung erst nach gemeinsamer Abstimmung.',
+  'home.seoTitle': 'Hausplanung & Hausumbau Berlin | WB Studio',
+  'home.seoDesc': 'Hausplanung und Umbau in Berlin mit freiem Planer: klare Grundrisse und persönliche Begleitung. Kostenloses Erstgespräch und erster Entwurf vor Beauftragung.',
   'home.eyebrow': 'Private Häuser und Umbauten — Berlin',
   'home.h1': 'Hausplanung und Umbau in Berlin.',
   'home.positioning': 'Persönliche Planung für Ihr neues Zuhause oder den Umbau Ihres Hauses — mit klaren Grundrissen und einem Blick für Ihren Alltag. Digital und vor Ort nach Vereinbarung.',
@@ -995,7 +1008,7 @@ const germanCopy = {
   'home.aboutTitle': 'Wael Bousmael',
   'home.aboutText': 'Freier Planer und BIM-Koordinator mit über 12 Jahren Erfahrung im privaten Wohnungsbau und Projekterfahrung in Deutschland, im Libanon und in Saudi-Arabien — vom ersten Entwurf bis zur Ausführungsplanung.',
   'home.aboutMore': 'Mehr über das Studio',
-  'work.seoTitle': 'Projekte | Wohnhäuser, Umbau & Innenräume — WB Studio',
+  'work.seoTitle': 'Wohnhäuser & Umbau: Projekte | WB Studio',
   'work.seoDesc': 'Ausgewählte Projekte von WB Studio: private Wohnhäuser, Umbau und räumliche Planung. Die Projektorte und der jeweilige Planungsstand sind transparent ausgewiesen.',
   'work.h1': 'Projekte',
   'work.note': 'Die als Konzeptstudien gekennzeichneten Projekte veranschaulichen die gestalterische Richtung des Studios. Ihre Referenzbilder stammen von Fotografen auf Unsplash —',
@@ -1011,7 +1024,7 @@ const germanCopy = {
   'project.galleryNote': 'Diese Bilder sind Raum- und Materialreferenzen von Fotografen auf Unsplash und gehören zu einer vorläufigen Konzeptstudie.',
   'project.galleryNoteLink': 'Bildnachweise',
   'project.nextProject': 'Nächstes Projekt',
-  'approach.seoTitle': 'Ablauf | Hausplanung vor der Beauftragung — WB Studio',
+  'approach.seoTitle': 'Hausplanung in Berlin: Ablauf | WB Studio',
   'approach.seoDesc': 'So beginnt Ihre Hausplanung: kostenloses Erstgespräch, kostenloser erster Entwurf und kostenpflichtige Beauftragung erst nach gemeinsamer Abstimmung.',
   'approach.h1': 'Der Ablauf',
   'approach.intro': 'Ein ruhiger, transparenter Weg vom ersten Gespräch zur abgestimmten Planung. Für private Häuser und Umbauten in Berlin arbeiten wir digital und nach vorheriger Vereinbarung vor Ort. Nutzung, Bestand und ein bewusster Umgang mit Ressourcen stehen am Anfang.',
@@ -1034,7 +1047,7 @@ const germanCopy = {
   'approach.steps.2.title': 'Beauftragung nach gemeinsamer Abstimmung',
   'approach.steps.2.text': 'Wenn die Richtung passt, vereinbaren wir Leistungsumfang, Honorar und nächste Schritte. Erst danach beginnt die kostenpflichtige Planung. Erforderliche Fachplaner und Genehmigungsleistungen klären wir projektbezogen.',
   'approach.steps.2.image.alt': 'Fotorealistische Visualisierung einer Villa nach Ausarbeitung des Entwurfs',
-  'about.seoTitle': 'Über WB Studio | Wael Bousmael — Freier Planer',
+  'about.seoTitle': 'Wael Bousmael | Freier Planer in Berlin — WB Studio',
   'about.seoDesc': 'Wael Bousmael: Freier Planer und BIM-Koordinator mit über 12 Jahren Erfahrung. Persönliche Planung für Hausprojekte in Berlin, digital und vor Ort nach Vereinbarung.',
   'about.h1': 'Über das Studio',
   'about.intro': 'WB Studio ist das persönlich geführte Planungsbüro von Wael Bousmael. Für private Hausprojekte in Berlin verbinden wir klare Grundrisse, sorgfältige Materialwahl und einen genauen Blick auf den Alltag der Bewohner. Die Zusammenarbeit erfolgt digital und nach vorheriger Vereinbarung vor Ort.',
@@ -1051,7 +1064,7 @@ const germanCopy = {
   'about.facts.3.label': 'Schwerpunkte',
   'about.facts.3.value': 'Hausplanung · Umbau · BIM-Koordination',
   'about.portrait.alt': 'Wael Bousmael, freier Planer und BIM-Koordinator',
-  'contactPage.seoTitle': 'Kontakt | Kostenloses Erstgespräch zur Hausplanung — WB Studio',
+  'contactPage.seoTitle': 'Kontakt | Hausplanung & Umbau Berlin — WB Studio',
   'contactPage.seoDesc': 'Besprechen Sie Ihre Hausplanung oder Ihren Umbau in Berlin. Kostenloses Erstgespräch und erster Entwurf; kostenpflichtige Beauftragung erst nach gemeinsamer Abstimmung.',
   'contactPage.h1': 'Kontakt',
   'contactPage.intro': 'Was möchten Sie an Ihrem Haus verändern oder neu planen? Wir beginnen mit einem kostenlosen Erstgespräch und einem kostenlosen ersten Entwurf. Eine kostenpflichtige Beauftragung erfolgt erst, wenn die Richtung klar und gemeinsam abgestimmt ist.',

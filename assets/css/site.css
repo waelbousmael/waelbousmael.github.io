@@ -738,6 +738,7 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
 .direct-contact { margin-block-start: 2.5rem; display: grid; gap: 0.45rem; justify-items: start; }
 .direct-contact a { color: var(--ink-soft); text-decoration: none; font-size: 0.95rem; }
 .direct-contact a:hover, .direct-contact a:focus-visible { color: var(--ink); }
+.phone-country { color: var(--muted); font-size: 0.85em; }
 
 .footer-title {
   font-size: 0.75rem;

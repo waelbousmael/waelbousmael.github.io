@@ -1,6 +1,9 @@
 # German Berlin branch review
 
-Branch: `codex/german-berlin`. No merge or deployment is included.
+Review branch: `codex/german-berlin`. On 24 October 2026 the owner authorized
+adding German/Lebanese direct phone contacts, improving all-language SEO, and
+integrating the reviewed work into local main. Publishing remains a separate
+step; the legal texts below still retain their draft status.
 
 Run `python -m http.server 8123` from the repository and review:
 

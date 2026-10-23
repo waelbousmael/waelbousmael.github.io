@@ -13,6 +13,63 @@ const graph = (html) => JSON.parse(html.match(/<script type="application\/ld\+js
 const sitemapPaths = [...fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8').matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
 const pages = new Map(sitemapPaths.map((url) => [url, page(url)]));
 
+test('country-labeled phone contacts retain Saudi-only WhatsApp routing in every language', () => {
+  for (const [url, html] of pages) {
+    for (const number of ['+966538060383', '+4917683223821', '+9613038248']) {
+      assert.ok(html.includes(`href="tel:${number}" dir="ltr"`), `${url}: missing phone ${number}`);
+    }
+    for (const match of html.matchAll(/href="https:\/\/wa\.me\/([^?"/]+)/g)) {
+      assert.equal(match[1], '966538060383', `${url}: WhatsApp must use the Saudi number`);
+    }
+    const lang = html.match(/<html lang="([^"]+)"/)[1];
+    for (const label of { en: ['Saudi Arabia', 'Germany', 'Lebanon'], ar: ['السعودية', 'ألمانيا', 'لبنان'], de: ['Saudi-Arabien', 'Deutschland', 'Libanon'] }[lang]) {
+      assert.match(html, new RegExp(`class="phone-country"[^>]*>${label}<`), `${url}: missing country label ${label}`);
+    }
+  }
+});
+
+test('organization contact points expose the owner-approved numbers without adding offices', () => {
+  for (const url of ['/', '/ar/', '/de/']) {
+    const organization = graph(page(url)).find((node) => node['@type'] === 'Organization');
+    assert.equal(organization.telephone, '+966538060383');
+    assert.ok(Array.isArray(organization.contactPoint), `${url}: missing additional contact points`);
+    assert.deepEqual(organization.contactPoint.map((point) => point.telephone).sort(),
+      ['+4917683223821', '+9613038248', '+966538060383'].sort());
+    assert.ok(organization.contactPoint.every((point) => !point.address && !point.areaServed), 'A phone country does not establish an office or service area');
+  }
+});
+
+test('indexable pages have distinct metadata and localized canonical page entities', () => {
+  const titles = new Set();
+  const descriptions = new Set();
+  for (const [url, html] of pages) {
+    const title = html.match(/<title>(.*?)<\/title>/)[1];
+    const desc = [...html.matchAll(/<meta\b[^>]*>/g)].map((m) => attributes(m[0])).find((m) => m.name === 'description').content;
+    assert.ok(!titles.has(title), `${url}: duplicate title`);
+    assert.ok(!descriptions.has(desc), `${url}: duplicate description`);
+    titles.add(title); descriptions.add(desc);
+    const entity = graph(html).find((node) => node['@id'] === site.domain + url + '#webpage');
+    assert.ok(entity, `${url}: missing canonical page entity`);
+    assert.equal(entity.url, site.domain + url);
+    assert.equal(entity.inLanguage, html.match(/<html lang="([^"]+)"/)[1]);
+    assert.equal(entity.isPartOf['@id'], site.domain + '/#website');
+    if (url.endsWith('/kontakt/') || url.endsWith('/contact/')) assert.equal(entity['@type'], 'ContactPage');
+    assert.equal(entity.primaryImageOfPage.url, [...html.matchAll(/<meta\b[^>]*>/g)].map((m) => attributes(m[0])).find((m) => m.property === 'og:image').content);
+  }
+});
+
+test('sharing previews describe the actual image with dimensions in every language', () => {
+  for (const [url, html] of pages) {
+    const meta = [...html.matchAll(/<meta\b[^>]*>/g)].map((m) => attributes(m[0]));
+    const value = (key) => meta.find((m) => m.property === key || m.name === key)?.content;
+    assert.ok(value('og:image:alt')?.trim(), `${url}: missing localized image description`);
+    assert.equal(value('twitter:image:alt'), value('og:image:alt'));
+    assert.ok(Number(value('og:image:width')) > 0, `${url}: missing image width`);
+    assert.ok(Number(value('og:image:height')) > 0, `${url}: missing image height`);
+    assert.equal(value('og:title'), html.match(/<title>(.*?)<\/title>/)[1]);
+  }
+});
+
 test('all content images have responsive sources and accurate markup', () => {
   for (const [url, html] of pages) {
     for (const match of html.matchAll(/<img\b[^>]*>/g)) {
