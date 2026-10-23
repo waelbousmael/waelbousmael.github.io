@@ -43,7 +43,8 @@ Eleven optimized source images and 21 responsive derivatives were added. Indepen
 source review found no blocking issues; optional spotlight comparison data is
 guarded so older projects can also be selected in the future.
 
-The owner specifically selected `1.png` as an additional view and confirmed it
-shows the opposite side of the same villa. It appears full-width immediately
-after the construction comparison, with a translated proposed/opposite-facade
-caption, and is retained at its full original composition.
+The owner selected `1.png` and confirmed it shows the opposite side of the same
+villa. Their latest direction makes it the project cover and homepage image,
+cropped to the required 16:10 ratio. Its full composition is also retained in
+the gallery with a translated proposed/opposite-facade caption. The garden-side
+`3.png` remains paired with the current construction photo in the comparison.

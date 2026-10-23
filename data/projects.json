@@ -39,9 +39,9 @@
         "de": ["Gebäudeentwurf", "Planungszeichnungen", "Innenraumkonzept", "Architekturvisualisierung"]
       },
       "cover": {
-        "src": "/assets/projects/hillside-villa-aley/cover.webp", "w": 1464, "h": 915,
-        "alt": { "ar": "تصور للفيلا في عاليه بواجهات حجرية وتراسات وبرجولات مطلة على الحديقة والمسبح المقترح", "en": "Proposed hillside villa in Aley with stone facades, terraces and pergolas facing a garden and planned pool", "de": "Visualisierung der geplanten Villa in Aley mit Steinfassaden, Terrassen und Pergolen zum Garten und vorgesehenen Pool" },
-        "caption": { "ar": "التصميم المقترح — تصور معماري لمشروع قيد التنفيذ", "en": "Proposed design — visualization of a project under construction", "de": "Geplanter Entwurf — Visualisierung eines Projekts im Bau" }
+        "src": "/assets/projects/hillside-villa-aley/cover.webp", "w": 1408, "h": 880,
+        "alt": { "ar": "التصميم المقترح للواجهة المقابلة من الفيلا نفسها في عاليه بكساء حجري ومدخل ودرج خارجي وبرجولا", "en": "Proposed opposite facade of the same hillside villa in Aley with stone cladding, entrance, external stairs and pergola", "de": "Geplante gegenüberliegende Fassade derselben Villa in Aley mit Naturstein, Eingang, Außentreppe und Pergola" },
+        "caption": { "ar": "التصميم المقترح — الواجهة المقابلة لفيلا قيد التنفيذ", "en": "Proposed design — opposite facade of a villa under construction", "de": "Geplanter Entwurf — gegenüberliegende Fassade einer Villa im Bau" }
       },
       "comparison": {
         "title": { "ar": "من الموقع إلى التصور", "en": "From construction to the design ahead", "de": "Vom Rohbau zum geplanten Zuhause" },
