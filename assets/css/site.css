@@ -116,6 +116,7 @@ p + p { margin-block-start: 1.1em; }
   margin-block-end: 1.25rem;
 }
 html[lang="en"] .eyebrow { text-transform: uppercase; letter-spacing: 0.2em; }
+html[lang="de"] .eyebrow { text-transform: uppercase; letter-spacing: 0.16em; }
 
 .note { font-size: 0.9rem; color: var(--muted); line-height: 1.8; }
 .note a { color: var(--ink-soft); }
@@ -206,7 +207,7 @@ html[lang="ar"] .thesis { line-height: 1.9; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 1.25rem;
   min-height: 4.25rem;
 }
 
@@ -237,9 +238,59 @@ html[lang="ar"] .thesis { line-height: 1.9; }
 .lang-link { font-size: 0.85rem; color: var(--muted); }
 
 .mobile-header-actions {
-  display: none;
+  display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.header-nav { gap: clamp(0.85rem, 1.6vw, 1.5rem); margin-inline-start: auto; }
+.header-nav .header-cta {
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  white-space: nowrap;
+}
+.header-nav .header-cta:hover { background: var(--ink); color: var(--bg); }
+
+.language-picker { position: relative; font-size: 0.82rem; flex-shrink: 0; }
+.language-picker summary {
+  min-inline-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  min-height: 3rem;
+  padding-inline: 0.3rem;
+  list-style: none;
+  cursor: pointer;
+}
+.language-picker summary::-webkit-details-marker { display: none; }
+.language-options {
+  position: absolute;
+  inset-inline-end: 0;
+  top: 100%;
+  min-width: 11rem;
+  padding: 0.4rem;
+  border: 1px solid var(--line-strong);
+  background: var(--bg);
+  z-index: 50;
+}
+.language-options a {
+  min-inline-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 3rem;
+  padding: 0.5rem 0.8rem;
+  text-decoration: none;
+}
+.language-options a:hover, .language-options a:focus-visible,
+.language-options a[aria-current="page"] { background: var(--surface); }
+.language-options small { font-size: 0.7rem; color: var(--ink-soft); }
+
+@media (max-width: 1100px) {
+  .header-nav .header-cta { display: none; }
 }
 
 .mobile-lang-link {
@@ -479,6 +530,23 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
   color: var(--muted);
 }
 
+.card-action {
+  display: inline-flex;
+  gap: 0.6rem;
+  align-items: center;
+  margin-block-start: 1rem;
+  padding-block: 0.25rem;
+  border-block-end: 1px solid var(--line-strong);
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+}
+.card-status { margin-block-start: 0.45rem; font-size: 0.8rem; color: var(--ink-soft); }
+.card-excerpt { margin-block-start: 0.85rem; max-width: 58ch; font-size: 0.92rem; color: var(--ink-soft); }
+.card-scope { margin-block-start: 0.65rem; font-size: 0.78rem; color: var(--ink-soft); }
+.project-card:focus-visible .card-action,
+.project-card:hover .card-action { color: var(--ink); border-color: var(--ink); }
+.legal-copy { padding-block-end: var(--gap-section-sm); }
+
 .tag {
   display: inline-block;
   border: 1px solid var(--line-strong);
@@ -677,6 +745,7 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
   margin-block-end: 0.6rem;
 }
 html[lang="en"] .footer-title { text-transform: uppercase; letter-spacing: 0.16em; }
+html[lang="de"] .footer-title { text-transform: uppercase; letter-spacing: 0.12em; }
 
 /* ── form ── */
 .form-wrap { max-width: 680px; }
@@ -702,6 +771,7 @@ form { margin-block-start: 2.25rem; display: grid; gap: 1.4rem; }
   font-size: 0.8rem;
 }
 html[lang="en"] .contact-field-group legend { text-transform: uppercase; letter-spacing: 0.12em; }
+html[lang="de"] .contact-field-group legend { text-transform: uppercase; letter-spacing: 0.1em; }
 
 label { font-size: 0.9rem; color: var(--ink-soft); display: inline-flex; gap: 0.3rem; margin-block-end: -0.9rem; }
 .required-mark { color: var(--ink); }
@@ -844,6 +914,9 @@ form .btn-solid { justify-self: start; margin-block-start: 0.5rem; }
   .header-nav { display: none; }
   .nav-toggle { display: flex; }
   .mobile-header-actions { display: flex; }
+  .header-inner { gap: 0.75rem; }
+  .mobile-header-actions { gap: 0.65rem; }
+  .language-picker { font-size: 0.8rem; }
 
   .home-hero { padding-block-start: 2.5rem; }
   .home-hero-grid { grid-template-columns: 1fr; gap: 2rem; }

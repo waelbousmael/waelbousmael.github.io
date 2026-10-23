@@ -6,7 +6,6 @@
 (() => {
   const form = document.getElementById('leadForm');
   const feedback = document.getElementById('formFeedback');
-  const isArabic = document.documentElement.lang === 'ar';
 
   const renderFeedback = (state) => {
     if (!feedback) return;
@@ -23,9 +22,7 @@
     const phonePattern = /^[+\d\s]{7,}$/;
     if (phoneInput) {
       const validPhone = phonePattern.test(phoneInput.value.trim());
-      phoneInput.setCustomValidity(validPhone ? '' : (isArabic
-        ? 'يرجى إدخال رقم هاتف صالح.'
-        : 'Please enter a valid phone number.'));
+      phoneInput.setCustomValidity(validPhone ? '' : form.dataset.msgPhone);
     }
 
     if (!form.checkValidity()) {

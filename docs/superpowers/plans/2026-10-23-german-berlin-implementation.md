@@ -11,25 +11,25 @@ English homepage alias canonicalized to root. No automatic locale detection.
 **Tech stack:** Node ESM, static HTML, shared logical CSS, the existing two JS files.
 
 - [x] Create separate branch and confirm the existing verification baseline.
-- [ ] Preserve previous fixes as a separate branch checkpoint.
-- [ ] Add German copy for the shared visitor journey, three real projects, two
+- [x] Preserve previous fixes as a separate branch checkpoint.
+- [x] Add German copy for the shared visitor journey, three real projects, two
   Berlin services, credits, and draft legal pages in the existing data sources.
-- [ ] Add failing route/locale tests for English root, explicit Arabic home,
+- [x] Add failing route/locale tests for English root, explicit Arabic home,
   published counterparts, Berlin service isolation, German contact fields,
   metadata, and stable direct links.
-- [ ] Generalize `scripts/build.mjs` to use a published-route registry for headers,
+- [x] Generalize `scripts/build.mjs` to use a published-route registry for headers,
   language selectors, canonical URLs, sitemap, project links, and German routes.
-- [ ] Simplify main navigation to five destinations, add an accessible language
+- [x] Simplify main navigation to five destinations, add an accessible language
   selector, strengthen primary contact actions, improve project-card affordance,
   and adapt mobile/long German text in `assets/css/site.css`.
-- [ ] Localize contact validation through data attributes without changing the
+- [x] Localize contact validation through data attributes without changing the
   form endpoint, field names, phone, existing WhatsApp messages, or Maps hook.
-- [ ] Adapt existing verification to the approved homepage routes and add
+- [x] Adapt existing verification to the approved homepage routes and add
   meaningful checks for three-language navigation and missing counterparts.
-- [ ] Build all pages; run locale, navigation, SEO, media, and reproducibility
+- [x] Build all pages; run locale, navigation, SEO, media, and reproducibility
   checks. Check desktop/mobile and keyboard behavior in Arabic, English, German.
-- [ ] Review spec compliance and code quality; resolve important findings.
-- [ ] Save screenshots, update README/AGENTS route guidance, and commit the
+- [x] Review spec compliance and code quality; resolve important findings.
+- [x] Save screenshots, update README/AGENTS route guidance, and commit the
   reviewable implementation on the feature branch. Do not merge or deploy.
 
 ## Data and publishing contract
@@ -54,8 +54,17 @@ project pages, language-switch fallbacks, form validation, and legal drafts.
 
 ## Release facts still required
 
-The German legal pages cannot be marked ready to publish without the owner's
-exact business designation and publishable business address. These facts do not
-block implementing and reviewing the rest of the German experience. The owner
-has been asked for them; do not invent professional registration, VAT numbers,
+The owner's April 2025 ELSTER documents supplied the business designation and
+registered address, which is also a residential address. These are used only in
+the local draft for review. Confirm current details and complete the privacy
+review before publication. Do not invent professional registration, VAT numbers,
 Berlin coordinates, a local office, or authority to submit permit applications.
+
+## Verification result
+
+All checks passed on 24 October 2026: shared invariants, 5 locale tests,
+6 navigation tests, 8 SEO tests, 2 media tests, and byte-identical rebuilding of
+66 generated outputs. Browser review covered English, Arabic RTL, and German,
+desktop/tablet/mobile layouts, German service/project journeys, and keyboard
+navigation. Spec and code reviews completed; the Node 18-compatible test path
+initialization was corrected after review. No inquiry was transmitted.
