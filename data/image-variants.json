@@ -321,9 +321,9 @@
     ]
   },
   "/assets/projects/hillside-villa-aley/cover.webp": {
-    "w": 1464,
-    "h": 915,
-    "sha256": "83bcaa660b565465594eaf1d4aa303a2530b51113219914fbd3ac93a854e5248",
+    "w": 1408,
+    "h": 880,
+    "sha256": "4530976b24d6eeb9754c57d488bc56c1c6d7160203216ee62bb69d69db86432b",
     "variants": [
       {
         "src": "/assets/projects/hillside-villa-aley/cover-640w.webp",

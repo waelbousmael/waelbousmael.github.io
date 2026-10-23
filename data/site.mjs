@@ -124,10 +124,10 @@ const site = {
     ],
     spotlightProject: 'hillside-villa-aley',
     heroImage: {
-      src: '/assets/projects/hillside-villa-aley/cover.webp', w: 1464, h: 915,
+      src: '/assets/projects/hillside-villa-aley/cover.webp', w: 1408, h: 880,
       alt: {
-        ar: 'التصميم المقترح لفيلا قيد التنفيذ في قضاء عاليه بواجهات حجرية وتراسات وحديقة',
-        en: 'Proposed stone-clad hillside villa under construction in Aley District, with terraces and garden'
+        ar: 'الواجهة المقابلة لفيلا قيد التنفيذ في قضاء عاليه — تصميم مقترح بكساء حجري ودرج خارجي',
+        en: 'Proposed opposite facade of a hillside villa under construction in Aley District, with stone cladding and external stairs'
       }
     },
     selectedTitle: { ar: 'أعمال مختارة', en: 'Selected work' },
@@ -1001,7 +1001,7 @@ const germanCopy = {
   'home.trustItems.1': 'Freier Planer und BIM-Koordinator',
   'home.trustItems.2': 'Berlin — digital und vor Ort nach Vereinbarung',
   'home.trustItems.3': 'Vom ersten Entwurf bis zur Ausführungsplanung',
-  'home.heroImage.alt': 'Geplante Steinvilla im Bezirk Aley mit Terrassen und Garten — das Projekt befindet sich im Bau',
+  'home.heroImage.alt': 'Geplante gegenüberliegende Fassade der Villa im Bezirk Aley mit Naturstein und Außentreppe — das Projekt befindet sich im Bau',
   'home.selectedTitle': 'Ausgewählte Projekte',
   'home.allWork': 'Alle Projekte',
   'home.approachTitle': 'Der Ablauf',
