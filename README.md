@@ -33,7 +33,7 @@ Generated output (do **not** edit by hand — files carry a banner comment):
   `/journal/<article-slug>/`, `/about/`, `/contact/`, `/credits/`
 - English (LTR) deep links remain under `/en/...`.
 - German (LTR): `/de/`, `/de/projekte/`, `/de/leistungen/`, `/de/ablauf/`,
-  `/de/ueber-uns/`, `/de/kontakt/`, three real project presentations, two Berlin
+  `/de/ueber-uns/`, `/de/kontakt/`, four real project presentations, two Berlin
   service pages, and credits. The two legal drafts are noindex and excluded from
   the sitemap while their publication details are reviewed.
 - `sitemap.xml` with `hreflang` alternates
@@ -71,6 +71,7 @@ Commit the manifest and derivatives with the sources and generated HTML.
 
 Validation: `python scripts/verify-media.py`, `node scripts/verify-navigation.mjs`,
 `node scripts/verify-locales.mjs`,
+`node scripts/verify-aley-project.mjs`,
 `node scripts/verify-seo.mjs`, `node scripts/verify.mjs`, and
 `node scripts/check-reproducible-build.mjs`.
 The media preparation command is only needed when images change; the regular
@@ -123,8 +124,9 @@ swap paths in `data/projects.json`, set `placeholder: false`, update
 ## Assets & licensing
 
 The portfolio includes studio projects and clearly labeled concept studies.
-The homepage hero and concept-study reference imagery use Unsplash material
-(free commercial license); studio project imagery is separate. The full
+The homepage hero uses the owner's Hillside Villa — Aley visualization.
+Concept-study reference imagery uses Unsplash material (free commercial license).
+Studio project imagery is supplied by the owner. The full
 register: `assets/licenses/LICENSES.md`; the public credits pages:
 `/credits/` and `/en/credits/`.
 
@@ -146,4 +148,14 @@ the website. Contact, about, and collection pages use their specific page types.
 Service, article, FAQ, and breadcrumb data remain in place. Organization contact
 points list the owner's three phones without implying additional offices.
 Sharing images carry accurate dimensions and translated descriptions. The SEO
-verification checks all 62 indexable pages; legal drafts remain noindex.
+verification checks all 65 indexable pages; legal drafts remain noindex.
+
+## Leading project and construction comparisons
+
+Hillside Villa — Aley leads the portfolio in every language. Its current
+construction photographs, proposed exterior/interior visualizations, and cropped
+2024 drawings are distinct and captioned. `site.home.spotlightProject` selects
+the homepage project link, while `site.home.heroImage` supplies its owned image.
+Project data order controls portfolio order in all languages. Optional
+`comparison` data supplies current/future image pairs; cover captions identify
+rendered design intent. Original PDFs and unprocessed photos are not published.

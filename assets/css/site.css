@@ -402,6 +402,10 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
   height: clamp(460px, 58vw, 700px);
   object-fit: cover;
 }
+.home-featured-link { display: block; color: inherit; text-decoration: none; }
+.hero-project-caption { display: grid; gap: 0.4rem; padding-block: 1.2rem; }
+.hero-project-caption strong { font-family: var(--font-display); font-size: 1.65rem; font-weight: 400; }
+.hero-project-caption > span { color: var(--ink-soft); font-size: 0.85rem; }
 
 .trust-strip {
   list-style: none;
@@ -621,6 +625,7 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
 
 .project-cover { margin: 0; width: 100%; }
 .project-cover img { width: 100%; }
+.project-cover figcaption { padding: 0.9rem var(--pad); color: var(--ink-soft); font-size: 0.85rem; }
 .project-cover.fit-contain img {
   height: auto;
   object-fit: contain;
@@ -634,6 +639,12 @@ html[lang="ar"] .home-hero-copy h1 { max-width: 15ch; }
 }
 .project-story { max-width: 70ch; }
 .project-service-link { display: inline-block; }
+.comparison-intro { margin-block: 1.25rem 2.25rem; }
+.project-comparison-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 3vw, 3rem); }
+.project-comparison-grid figure { margin: 0; min-width: 0; }
+.project-comparison-grid h3 { margin-block-end: 1rem; color: var(--ink-soft); }
+.project-comparison-grid img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.project-comparison-grid figcaption { padding-block-start: 0.8rem; color: var(--ink-soft); font-size: 0.85rem; }
 
 .details { margin: 0; }
 .details-row {
@@ -941,6 +952,8 @@ form .btn-solid { justify-self: start; margin-block-start: 0.5rem; }
 
   .work-editorial-grid,
   .project-intro-grid { grid-template-columns: 1fr; }
+  .project-comparison-grid { grid-template-columns: 1fr; }
+  .hero-project-caption { padding-inline: var(--pad); }
   .work-editorial-grid .project-card:first-child { grid-column: auto; }
   .gallery figure.g-half { grid-column: 1 / -1; }
 

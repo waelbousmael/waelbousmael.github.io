@@ -5,21 +5,6 @@
     "sha256": "fad3676b5f3e8738cfc733ba0810bfe9260cf970d981cb17e814736813c5ec2c",
     "variants": []
   },
-  "/assets/images/home-hero.webp": {
-    "w": 1448,
-    "h": 1086,
-    "sha256": "3552dcc3b61c6b1be98e04d9b1162d34e60c13b159d35cbc2964162b2164678e",
-    "variants": [
-      {
-        "src": "/assets/images/home-hero-640w.webp",
-        "w": 640
-      },
-      {
-        "src": "/assets/images/home-hero-960w.webp",
-        "w": 960
-      }
-    ]
-  },
   "/assets/projects/byblos-resort/cover.webp": {
     "w": 1920,
     "h": 1200,
@@ -331,6 +316,167 @@
       },
       {
         "src": "/assets/projects/garden-house/gallery-04-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/hillside-villa-aley/cover.webp": {
+    "w": 1464,
+    "h": 915,
+    "sha256": "83bcaa660b565465594eaf1d4aa303a2530b51113219914fbd3ac93a854e5248",
+    "variants": [
+      {
+        "src": "/assets/projects/hillside-villa-aley/cover-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/hillside-villa-aley/cover-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/hillside-villa-aley/gallery-01.webp": {
+    "w": 1280,
+    "h": 960,
+    "sha256": "f18397d1e4a5cc2a395dd2088b16d8afa38563b789d249269123dc9d74aaac43",
+    "variants": [
+      {
+        "src": "/assets/projects/hillside-villa-aley/gallery-01-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/hillside-villa-aley/gallery-01-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/hillside-villa-aley/gallery-02.webp": {
+    "w": 1717,
+    "h": 916,
+    "sha256": "680f8f1635958a663989e52805e910624c9403a84c2e620f64926ed2199a0fb7",
+    "variants": [
+      {
+        "src": "/assets/projects/hillside-villa-aley/gallery-02-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/hillside-villa-aley/gallery-02-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/hillside-villa-aley/gallery-03.webp": {
+    "w": 1110,
+    "h": 720,
+    "sha256": "4c342ccbcb222891ddd1a81052b8d6acb508607cec3a5eb9b6d467e724a2e4db",
+    "variants": [
+      {
+        "src": "/assets/projects/hillside-villa-aley/gallery-03-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/hillside-villa-aley/gallery-03-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/hillside-villa-aley/gallery-04.webp": {
+    "w": 1672,
+    "h": 941,
+    "sha256": "8d875bb06636cc7e5a244810fd33869bf9259f610b5716f3552bdf19986abfe5",
+    "variants": [
+      {
+        "src": "/assets/projects/hillside-villa-aley/gallery-04-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/hillside-villa-aley/gallery-04-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/hillside-villa-aley/gallery-05.webp": {
+    "w": 1200,
+    "h": 1600,
+    "sha256": "c16386be9438313087ef8cdb9068a18575e6df6dd4650250fbab7d3b815f83eb",
+    "variants": [
+      {
+        "src": "/assets/projects/hillside-villa-aley/gallery-05-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/hillside-villa-aley/gallery-05-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/hillside-villa-aley/gallery-06.webp": {
+    "w": 900,
+    "h": 1600,
+    "sha256": "8bd391eabb575cb8deadef63b2a5544b3e6d5fe8040e66b017eaf0a134ad22f4",
+    "variants": [
+      {
+        "src": "/assets/projects/hillside-villa-aley/gallery-06-640w.webp",
+        "w": 640
+      }
+    ]
+  },
+  "/assets/projects/hillside-villa-aley/gallery-07.webp": {
+    "w": 1901,
+    "h": 1156,
+    "sha256": "2dba6ea4140fedad9b29831f32bb6be9ae0550efcd30e9ed626fafd1503c723b",
+    "variants": [
+      {
+        "src": "/assets/projects/hillside-villa-aley/gallery-07-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/hillside-villa-aley/gallery-07-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/hillside-villa-aley/gallery-08.webp": {
+    "w": 1801,
+    "h": 1109,
+    "sha256": "f978a537a4dd1e86c956fa50b7327056169be90a4b9c2b7a37abb76f46147154",
+    "variants": [
+      {
+        "src": "/assets/projects/hillside-villa-aley/gallery-08-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/hillside-villa-aley/gallery-08-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/hillside-villa-aley/gallery-09.webp": {
+    "w": 1650,
+    "h": 990,
+    "sha256": "a0840f3ec6b0395b3525c26903e9539675782c9cc5bbfe2d7dc9bad55038749f",
+    "variants": [
+      {
+        "src": "/assets/projects/hillside-villa-aley/gallery-09-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/hillside-villa-aley/gallery-09-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/hillside-villa-aley/gallery-10.webp": {
+    "w": 1785,
+    "h": 881,
+    "sha256": "9b6971de0b3aa53b5a595fa8d42c50d2cb859258d408d748aa179048af6a88d4",
+    "variants": [
+      {
+        "src": "/assets/projects/hillside-villa-aley/gallery-10-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/hillside-villa-aley/gallery-10-960w.webp",
         "w": 960
       }
     ]

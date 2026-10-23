@@ -1294,6 +1294,7 @@ for (const [label, lang, prefix] of [
 
 const semanticProbeProject = projects[0];
 const semanticProbePage = read(`en/work/${semanticProbeProject.slug}/index.html`);
+const semanticProbeGallery = elementWithClasses(semanticProbePage, 'gallery', 'Semantic probe must contain its gallery');
 const sequenceProbeCover = elementWithClasses(semanticProbePage, 'project-cover', 'Sequence probe must contain its cover');
 const sequencePageWithoutCover = replaceElement(semanticProbePage, sequenceProbeCover, '');
 const sequenceProbeIntro = elementWithClasses(sequencePageWithoutCover, 'project-intro-grid', 'Sequence probe must contain its intro');
@@ -1307,7 +1308,7 @@ assert.throws(
 );
 assert.throws(
   () => assertProjectPage(
-    semanticProbePage.replace(/(<figure class="g-(?:wide|tall)") data-reveal/, '$1'),
+    semanticProbePage.replace(/(<figure class="g-(?:wide|tall|half)") data-reveal/, '$1'),
     semanticProbeProject,
     0,
     'en',
@@ -1319,7 +1320,7 @@ assert.throws(
 );
 assert.throws(
   () => assertProjectPage(
-    semanticProbePage.replace(' loading="lazy"', ''),
+    replaceElement(semanticProbePage, semanticProbeGallery, semanticProbeGallery.outer.replace(' loading="lazy"', '')),
     semanticProbeProject,
     0,
     'en',
