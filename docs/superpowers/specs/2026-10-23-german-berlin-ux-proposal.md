@@ -1,7 +1,17 @@
 # German Berlin launch and navigation improvement — proposal
 
-Status: proposed design for owner review. Planning only; no implementation,
-commit, merge, DNS change, or publication is authorized by this document.
+Status: approved for implementation on a separate review branch, with an English
+default for everyone. No merge to main or publication until owner review.
+
+## Approved amendment — English default
+
+The owner replaced all automatic language/country routing with English as the
+default for everyone. The root homepage will serve English directly. Arabic has
+an explicit homepage at /ar/; existing Arabic deep links stay unchanged. Existing
+/en/ deep links stay unchanged, with /en/ retained as a canonicalized homepage
+alias. German is chosen explicitly under /de/. There is no geography lookup,
+browser-language redirect, or saved-preference redirect. The historical routing
+proposal below is superseded by this amendment.
 
 ## Goal and confirmed business context
 
