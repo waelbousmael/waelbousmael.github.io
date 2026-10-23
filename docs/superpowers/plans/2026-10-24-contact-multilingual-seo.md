@@ -37,3 +37,9 @@ all 12 SEO checks passed afterward. Shared invariants, 5 locale checks, 6 menu
 checks, 2 media checks, and 66-output reproducibility passed. Browser review
 covered German/Arabic mobile and English desktop contact links and country
 labels. Independent read-only code review reported no actionable findings.
+
+The verification after merging exposed CRLF conversion during Windows checkout,
+which changed asset hashes. A failing regression check reproduced this. Explicit
+LF Git attributes for browser JS/CSS and normalization of the local asset files
+correct the cause without changing browser behavior. The SEO suite now includes
+13 checks, including this cross-platform asset invariant.

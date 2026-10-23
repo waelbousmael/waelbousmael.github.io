@@ -13,6 +13,15 @@ const graph = (html) => JSON.parse(html.match(/<script type="application\/ld\+js
 const sitemapPaths = [...fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8').matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
 const pages = new Map(sitemapPaths.map((url) => [url, page(url)]));
 
+test('content-versioned browser assets retain LF bytes across Windows checkouts', () => {
+  for (const file of ['assets/js/site.js', 'assets/js/contact.js', 'assets/css/site.css']) {
+    assert.ok(!fs.readFileSync(path.join(root, file), 'utf8').includes('\r\n'), `${file}: checkout changed the bytes used in generated asset hashes`);
+  }
+  const rules = fs.readFileSync(path.join(root, '.gitattributes'), 'utf8');
+  assert.match(rules, /^assets\/js\/\*\.js text eol=lf$/m);
+  assert.match(rules, /^assets\/css\/\*\.css text eol=lf$/m);
+});
+
 test('country-labeled phone contacts retain Saudi-only WhatsApp routing in every language', () => {
   for (const [url, html] of pages) {
     for (const number of ['+966538060383', '+4917683223821', '+9613038248']) {

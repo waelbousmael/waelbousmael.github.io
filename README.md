@@ -117,6 +117,8 @@ swap paths in `data/projects.json`, set `placeholder: false`, update
   or `data/projects.json` with fields for every published language.
 - Stylesheet and script URLs carry deterministic content hashes to prevent
   stale assets after deployment; no extra frontend libraries are loaded.
+- `.gitattributes` keeps browser scripts/styles in LF format so those content
+  hashes stay identical across Windows and Linux Git checkouts.
 
 ## Assets & licensing
 
