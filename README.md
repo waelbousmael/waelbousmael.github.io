@@ -130,5 +130,18 @@ register: `assets/licenses/LICENSES.md`; the public credits pages:
 
 - Lead form posts to FormSubmit: `https://formsubmit.co/ajax/wael.bousmael@gmail.com`
 - WhatsApp: `+966 53 806 0383` with a pre-filled bilingual message
+- Direct calls: Saudi Arabia `+966 53 806 0383`, Germany `+49 176 83223821`,
+  Lebanon `+961 3 038 248`. All three appear with translated country labels in
+  contact pages and footers; WhatsApp always uses the Saudi number.
 - Google Maps autocomplete on the contact form stays dormant until
   `window.GOOGLE_MAPS_API_KEY` is set (injected inline on the contact pages)
+
+## Multilingual SEO
+
+Each indexable page has a distinct title/description, its own canonical URL,
+reciprocal published-language alternates, and a localized page entity linked to
+the website. Contact, about, and collection pages use their specific page types.
+Service, article, FAQ, and breadcrumb data remain in place. Organization contact
+points list the owner's three phones without implying additional offices.
+Sharing images carry accurate dimensions and translated descriptions. The SEO
+verification checks all 62 indexable pages; legal drafts remain noindex.

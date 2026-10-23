@@ -698,7 +698,7 @@ const assertLandingPage = (page, landing, lang, prefix, label) => {
   const relatedLandings = (landing.related || []).map((slug) => site.landings.find((candidate) => candidate.slug === slug)).filter(Boolean);
   if (relatedLandings.length) assertServiceRows(page, relatedLandings, lang, prefix, 'h3', `${label} related services`);
   const graph = jsonLdGraph(page, label);
-  assert.deepEqual(graph.map((node) => node['@type']), ['Service', 'FAQPage', 'BreadcrumbList'], `${label} must retain its Service, FAQPage and BreadcrumbList graph`);
+  assert.deepEqual(graph.map((node) => node['@type']), ['Service', 'FAQPage', 'BreadcrumbList', 'WebPage'], `${label} must retain its Service, FAQPage and BreadcrumbList graph with its canonical WebPage`);
   const service = graph[0];
   assert.equal(service.name, landing.h1[lang], `${label} Service schema must retain its name`);
   assert.equal(service.description, landing.seoDesc[lang], `${label} Service schema must retain its description`);
@@ -797,7 +797,7 @@ const assertArticlePage = (page, article, lang, prefix, label) => {
   const related = (article.related || []).map((slug) => site.landings.find((candidate) => candidate.slug === slug)).filter(Boolean);
   if (related.length) assertServiceRows(page, related, lang, prefix, 'h3', `${label} related services`);
   const graph = jsonLdGraph(page, label);
-  assert.deepEqual(graph.map((node) => node['@type']), ['Article', 'BreadcrumbList'], `${label} must retain Article and BreadcrumbList schema`);
+  assert.deepEqual(graph.map((node) => node['@type']), ['Article', 'BreadcrumbList', 'WebPage'], `${label} must retain Article and BreadcrumbList schema with its canonical WebPage`);
   assert.equal(graph[0].headline, article.h1[lang], `${label} Article schema must retain its headline`);
   assert.equal(graph[0].description, article.desc[lang], `${label} Article schema must retain its description`);
   assert.equal(graph[0].datePublished, article.date, `${label} Article schema must retain its publication date`);
