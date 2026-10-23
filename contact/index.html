@@ -60,7 +60,7 @@
     </div>
   </div>
 </header>
-<div class="mobile-menu" id="mobileMenu" hidden>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="قائمة التنقل" hidden>
   <div class="mobile-menu-head">
     <span class="menu-brand"><img class="stamp" src="/assets/icons/brand-logo.png" alt="" width="40" height="40" decoding="async" /><span class="wordmark">WB&nbsp;Studio</span></span>
     <button class="mobile-close" type="button" data-nav-close aria-label="إغلاق القائمة">✕</button>
@@ -109,10 +109,10 @@
           <input id="name" name="name" type="text" autocomplete="name" placeholder="أدخل اسمك الكامل" required />
 
           <label for="phone"><span>رقم الهاتف</span> <span class="required-mark" aria-hidden="true">*</span></label>
-          <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="مثال: +966 5X XXX XXXX" pattern="^[+\d\s]{7,}$" required />
+          <input id="phone" name="phone" type="tel" dir="ltr" autocomplete="tel" placeholder="مثال: +966 5X XXX XXXX" pattern="^[+\d\s]{7,}$" required />
 
           <label for="email"><span>البريد الإلكتروني</span> <span class="required-mark" aria-hidden="true">*</span></label>
-          <input id="email" name="email" type="email" autocomplete="email" placeholder="example@email.com" required />
+          <input id="email" name="email" type="email" dir="ltr" autocomplete="email" placeholder="example@email.com" required />
         </fieldset>
 
         <fieldset class="contact-field-group">
@@ -124,10 +124,10 @@
             </div>
             <div class="field-group">
               <label for="maps">رابط Google Maps</label>
-              <input id="maps" name="maps" type="url" placeholder="https://maps.google.com/..." />
+              <input id="maps" name="maps" type="url" dir="ltr" placeholder="https://maps.google.com/..." />
             </div>
           </div>
-          <p class="form-helper">ابدأ بكتابة الموقع لاقتراحات أسرع عند تفعيل خدمة Google Maps.</p>
+          <p class="form-helper">اكتب المدينة أو الحي، أو أضف رابط موقع الأرض من Google Maps إن توفر.</p>
         </fieldset>
 
         <fieldset class="contact-field-group">

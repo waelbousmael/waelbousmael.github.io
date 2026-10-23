@@ -36,6 +36,7 @@ export default {
     contact: { ar: 'تواصل', en: 'Contact' },
     menuOpen: { ar: 'فتح القائمة', en: 'Open menu' },
     menuClose: { ar: 'إغلاق القائمة', en: 'Close menu' },
+    menuTitle: { ar: 'قائمة التنقل', en: 'Navigation menu' },
     langLabel: { ar: 'EN', en: 'عربي' },
     langAria: { ar: 'Switch to English', en: 'التبديل إلى العربية' },
     skip: { ar: 'تخطٍّ إلى المحتوى', en: 'Skip to content' }
@@ -324,8 +325,8 @@ export default {
     location: { ar: 'موقع الأرض', en: 'Land Location' },
     locationPh: { ar: 'المدينة أو الحي أو العنوان', en: 'City, district, or address' },
     locationHelper: {
-      ar: 'ابدأ بكتابة الموقع لاقتراحات أسرع عند تفعيل خدمة Google Maps.',
-      en: 'Start typing to get faster suggestions when Google Maps is enabled.'
+      ar: 'اكتب المدينة أو الحي، أو أضف رابط موقع الأرض من Google Maps إن توفر.',
+      en: 'Enter the city or district, or paste the plot’s Google Maps link if available.'
     },
     maps: { ar: 'رابط Google Maps', en: 'Google Maps Link' },
     mapsPh: { ar: 'https://maps.google.com/...', en: 'https://maps.google.com/...' },
@@ -398,13 +399,13 @@ export default {
   credits: {
     seoTitle: { ar: 'اعتمادات الصور | WB Studio', en: 'Image Credits | WB Studio' },
     seoDesc: {
-      ar: 'مصادر وتراخيص الصور المؤقتة المستخدمة في نماذج العرض على موقع WB Studio.',
-      en: 'Sources and licenses for the temporary placeholder imagery used in WB Studio’s sample presentations.'
+      ar: 'مصادر وتراخيص الصور المرجعية المستخدمة في صورة الواجهة الرئيسية والدراسات المفاهيمية على موقع WB Studio.',
+      en: 'Sources and licenses for reference imagery used in WB Studio’s homepage hero and concept studies.'
     },
     h1: { ar: 'اعتمادات الصور', en: 'Image credits' },
     intro: {
-      ar: 'المشاريع المعروضة في قسم الأعمال دراسات مفاهيمية ونماذج عرض مؤقتة. الصور المستخدمة فيها مراجع أجواء ومواد من مصورين عبر منصة Unsplash، مرخصة بموجب رخصة Unsplash التي تتيح الاستخدام التجاري مجاناً. ستُستبدل هذه الصور تدريجياً بصور أعمال الاستوديو المنفذة.',
-      en: 'The projects shown in the Work section are concept studies and temporary sample presentations. Their imagery consists of atmosphere and material references by photographers on Unsplash, licensed under the Unsplash License, which permits free commercial use. These images will be progressively replaced with photography of the studio’s own built work.'
+      ar: 'يجمع قسم الأعمال بين مشاريع الاستوديو ودراسات مفاهيمية موضّحة بهذه الصفة. تخص الاعتمادات أدناه صورة الواجهة الرئيسية والصور المرجعية في الدراسات المفاهيمية فقط؛ وهي من مصورين عبر Unsplash بموجب رخصة تتيح الاستخدام التجاري مجاناً. أما صور مشاريع الاستوديو فليست ضمن هذه المراجع المؤقتة.',
+      en: 'The Work section includes studio projects alongside clearly labeled concept studies. The credits below cover only the homepage hero and reference imagery used in concept studies, sourced from Unsplash under its free commercial-use license. Imagery for the studio’s own projects is separate from these temporary references.'
     },
     licenseNote: {
       ar: 'الرخصة: رخصة Unsplash (استخدام تجاري مجاني، لا تتطلب نسب العمل لصاحبه). روابط المصدر أدناه لكل صورة. القائمة الكاملة في ملف assets/licenses/LICENSES.md ضمن مستودع الموقع.',
