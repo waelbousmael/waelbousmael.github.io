@@ -4,4 +4,5 @@ assets/projects/_incoming/*
 
 # Scratch
 _tmp-images/
+/tmp/pdfs/
 .worktrees/
