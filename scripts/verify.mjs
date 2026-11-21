@@ -557,16 +557,19 @@ const assertProjectPage = (page, project, projectIndex, lang, prefix, label, por
     has(descriptions[0].inner, htmlEscape(value), `${pageLabel} detail row ${detailIndex + 1} must retain its data-derived value`);
   });
   const relatedServiceLinks = elements(intro.inner, { classes: 'project-service-link', tag: 'a' });
-  if (project.relatedService) {
+  const serviceSlug = project.relatedService?.saudi;
+  if (serviceSlug) {
+    const service = site.landings.find((entry) => entry.slug === serviceSlug);
+    assert.ok(service, `${pageLabel} must reference a published service`);
     assert.equal(relatedServiceLinks.length, 1, `${pageLabel} must render one related service link`);
     assert.equal(
       attribute(relatedServiceLinks[0], 'href', `${pageLabel} related service link must have an href`),
-      `${prefix}/${project.relatedService.slug}/`,
+      `${prefix}/${serviceSlug}/`,
       `${pageLabel} related service link must use the localized service path`
     );
     assert.equal(
       relatedServiceLinks[0].inner.trim(),
-      `${htmlEscape(project.relatedService.label[lang])} ${lang === 'ar' ? '←' : '→'}`,
+      `${htmlEscape(service.label[lang])} ${lang === 'ar' ? '←' : '→'}`,
       `${pageLabel} related service link must retain its localized label and arrow`
     );
   } else {
@@ -694,7 +697,7 @@ const assertLandingPage = (page, landing, lang, prefix, label) => {
     has(page, htmlEscape(item.a[lang]), `${label} must retain every FAQ answer`);
   });
   has(page, `href="https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(site.waMessage[lang])}"`, `${label} must retain its WhatsApp CTA`);
-  has(page, `href="${prefix}/contact/"`, `${label} must retain its contact CTA`);
+  has(page, `class="btn btn-solid" href="${prefix}/contact/#leadForm"`, `${label} must link directly to the inquiry form`);
   has(page, htmlEscape(site.contactBand.text[lang]), `${label} must retain the core offer copy`);
   for (const slug of landing.relatedProjects || []) has(page, `href="${prefix}/work/${slug}/"`, `${label} must retain related project links`);
   const relatedLandings = (landing.related || []).map((slug) => site.landings.find((candidate) => candidate.slug === slug)).filter(Boolean);
@@ -1395,7 +1398,7 @@ assert.equal(site.whatsappNumber, '966538060383', 'The WhatsApp number must rema
 assert.equal(site.formAction, 'https://formsubmit.co/ajax/wael.bousmael@gmail.com', 'The FormSubmit endpoint must remain unchanged');
 assertContactPage(read(routeFile(langPath('de', '/contact/'))), 'de', 'German contact');
 assert.deepEqual(originalLanguages(site.form.contactGroupLabel), { ar: 'بيانات التواصل', en: 'Contact details' }, 'Lead form contactGroupLabel must retain exact bilingual copy');
-assert.deepEqual(originalLanguages(site.form.plotGroupLabel), { ar: 'بيانات الأرض', en: 'Plot details' }, 'Lead form plotGroupLabel must retain exact bilingual copy');
+assert.deepEqual(originalLanguages(site.form.plotGroupLabel), { ar: 'المنزل أو الأرض', en: 'House or plot' }, 'Lead form location group must welcome both renovation and new-build inquiries');
 assert.deepEqual(originalLanguages(site.form.budgetGroupLabel), { ar: 'نطاق الميزانية', en: 'Budget range' }, 'Lead form budgetGroupLabel must retain exact bilingual copy');
 assert.doesNotMatch(sitemap, /<lastmod\b/i, 'Generated sitemap must omit unreliable lastmod values');
 const sitemapSourceStart = buildSource.indexOf('function renderSitemap()');

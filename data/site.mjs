@@ -29,10 +29,10 @@ const site = {
     }
   },
 
-  // Pre-filled WhatsApp message (preserved from the original site).
+  // Used outside the homepage hero, which opens an empty conversation.
   waMessage: {
-    ar: 'السلام عليكم، أرغب في حجز استشارة لتصميم فيلا. هذه تفاصيل أرضي:\n• الاسم:\n• موقع الأرض:\n• المساحة:\n• الميزانية التقريبية:',
-    en: 'Hello, I would like to book a consultation for a villa design. Here are my land details:\n• Name:\n• Land location:\n• Area:\n• Estimated budget:'
+    ar: 'السلام عليكم، أرغب في مكالمة مجانية لمناقشة مشروعي.\n• الاسم:\n• نوع المشروع (بناء جديد أو تجديد):\n• المدينة أو الحي:\n• المساحة التقريبية:\n• الميزانية التقريبية:',
+    en: 'Hello, I’d like to arrange a free call about my home.\n• Name:\n• Project (new home or renovation):\n• City or district:\n• Approximate area:\n• Estimated budget:'
   },
 
   fonts: {
@@ -306,28 +306,28 @@ const site = {
       en: 'Contact WB Studio | Villa Design in Jeddah'
     },
     seoDesc: {
-      ar: 'أرسل تفاصيل الأرض لطلب مكالمة مجانية وتصور مبدئي مجاني لتصميم فيلتك في جدة والسعودية والخليج. لا يبدأ أي اتفاق مدفوع إلا بعد التوافق.',
-      en: 'Send your plot details to request a free call and a free preliminary concept for your villa in Jeddah, Saudi Arabia or the Gulf. No paid agreement before alignment.'
+      ar: 'تواصل مع وائل بو سماعيل لتصميم فيلا أو تجديد منزلك في جدة أو السعودية أو الخليج. نبدأ بمكالمة مجانية وتصور مبدئي مجاني قبل الاتفاق على نطاق العمل وأتعابه.',
+      en: 'Talk to Wael Bousmael about a new villa or home renovation in Jeddah, Saudi Arabia or the Gulf. Start with a free call and a free preliminary concept.'
     },
     h1: { ar: 'تواصل', en: 'Contact' },
     intro: {
-      ar: 'جاهز لمراجعة أرضك؟ نبدأ بمكالمة مجانية وتصور مبدئي مجاني — ولا يبدأ أي اتفاق مدفوع إلا بعد وضوح الرؤية والتوافق.',
-      en: 'Ready to review your plot? We begin with a free call and a free preliminary concept — a paid agreement starts only once the direction is clear and aligned.'
+      ar: 'هل تفكّر ببناء فيلا أو تجديد منزلك؟ نناقش ما تحتاجه في مكالمة مجانية، ثم نراجع معاً تصوراً مبدئياً مجانياً. يبدأ العمل المدفوع بعد اتفاقنا على التصميم ونطاق العمل والأتعاب.',
+      en: 'Are you building a villa or renovating your home? We’ll discuss what you need on a free call, then review a free preliminary concept together. Paid work starts once we agree on the direction, scope and fee.'
     },
     whatsappCta: { ar: 'احجز مكالمة مجانية عبر واتساب', en: 'Book a free call on WhatsApp' },
     directTitle: { ar: 'تواصل مباشر', en: 'Direct contact' },
     faqTitle: { ar: 'أسئلة شائعة عن تصميم الفلل الخاصة', en: 'Frequently asked questions about private villa design' }
   },
 
-  // ── Lead form (labels, placeholders and options preserved verbatim) ──
+  // ── Lead form ──
   form: {
-    title: { ar: 'أرسل تفاصيل الأرض لطلب مكالمة مجانية', en: 'Send plot details to request a free call' },
+    title: { ar: 'اطلب مكالمة مجانية لمناقشة مشروعك', en: 'Request a free call about your project' },
     subtitle: {
-      ar: 'شارك موقع الأرض والميزانية التقريبية. سنراجع التفاصيل ونعود إليك خلال يومين عمل لتحديد الخطوة الأنسب.',
-      en: 'Share the plot location and estimated budget. We will review the details and get back to you within two business days to define the right next step.'
+      ar: 'اترك بيانات التواصل. ويمكنك إضافة موقع المنزل أو الأرض والميزانية التقريبية إن توفّرت. سأردّ عليك خلال يومي عمل لترتيب المكالمة.',
+      en: 'Leave your contact details. You can also share the location of your house or plot and your approximate budget. I’ll get back to you within two business days to arrange the call.'
     },
     contactGroupLabel: { ar: 'بيانات التواصل', en: 'Contact details' },
-    plotGroupLabel: { ar: 'بيانات الأرض', en: 'Plot details' },
+    plotGroupLabel: { ar: 'المنزل أو الأرض', en: 'House or plot' },
     budgetGroupLabel: { ar: 'نطاق الميزانية', en: 'Budget range' },
     name: { ar: 'الاسم', en: 'Name' },
     namePh: { ar: 'أدخل اسمك الكامل', en: 'Enter your full name' },
@@ -335,11 +335,11 @@ const site = {
     phonePh: { ar: 'مثال: +966 5X XXX XXXX', en: 'Example: +966 5X XXX XXXX' },
     email: { ar: 'البريد الإلكتروني', en: 'Email' },
     emailPh: { ar: 'example@email.com', en: 'name@example.com' },
-    location: { ar: 'موقع الأرض', en: 'Land Location' },
+    location: { ar: 'موقع المشروع', en: 'Project location' },
     locationPh: { ar: 'المدينة أو الحي أو العنوان', en: 'City, district, or address' },
     locationHelper: {
-      ar: 'اكتب المدينة أو الحي، أو أضف رابط موقع الأرض من Google Maps إن توفر.',
-      en: 'Enter the city or district, or paste the plot’s Google Maps link if available.'
+      ar: 'يكفي اسم المدينة أو الحي. ويمكنك أيضاً إضافة رابط الموقع على خرائط Google.',
+      en: 'The city or district is enough. You can also include a Google Maps link.'
     },
     maps: { ar: 'رابط Google Maps', en: 'Google Maps Link' },
     mapsPh: { ar: 'https://maps.google.com/...', en: 'https://maps.google.com/...' },
@@ -349,7 +349,7 @@ const site = {
       ar: ['أقل من 1 مليون ريال', '1 إلى 2 مليون ريال', '2 إلى 4 مليون ريال', 'أكثر من 4 مليون ريال'],
       en: ['Below SAR 1M', 'SAR 1M to 2M', 'SAR 2M to 4M', 'Above SAR 4M']
     },
-    submit: { ar: 'أرسل تفاصيل الأرض', en: 'Send plot details' },
+    submit: { ar: 'أرسل طلب المكالمة', en: 'Request a free call' },
     sending: { ar: 'جارٍ إرسال طلبك…', en: 'Sending your request…', de: 'Ihre Anfrage wird gesendet…' },
     success: {
       ar: 'تم إرسال طلبك بنجاح. سنعاود التواصل معك خلال يومين عمل.',
@@ -401,12 +401,12 @@ const site = {
   ],
 
   contactBand: {
-    title: { ar: 'جاهز لمراجعة أرضك؟', en: 'Ready to review your plot?' },
+    title: { ar: 'ما الذي تخطّط له في منزلك؟', en: 'What are you planning for your home?' },
     text: {
       ar: 'مكالمة مجانية، ثم تصور مبدئي مجاني — ولا نبدأ أي اتفاق مدفوع إلا بعد وضوح الرؤية والتوافق.',
       en: 'A free call, then a free preliminary concept — we only begin a paid agreement after the direction is clear and aligned.'
     },
-    primary: { ar: 'أرسل تفاصيل الأرض', en: 'Send plot details' },
+    primary: { ar: 'أرسل تفاصيل مشروعك', en: 'Share your project details' },
     secondary: { ar: 'واتساب', en: 'WhatsApp' }
   },
 
@@ -433,17 +433,17 @@ const site = {
   // ── Services hub (lists the high-intent landing pages) ──
   services: {
     seoTitle: {
-      ar: 'خدمات تصميم الفلل في جدة | WB Studio',
-      en: 'Villa Design Services in Jeddah | WB Studio'
+      ar: 'خدمات تصميم الفلل وتجديدها في جدة | WB Studio',
+      en: 'Villa Design & Renovation Services in Jeddah | WB Studio'
     },
     seoDesc: {
-      ar: 'خدمات تصميم الفلل الخاصة في جدة: فلل فاخرة، تصميم مودرن، فلل أبحر وشمال جدة، وعمارة حجازية حديثة — مكالمة مجانية وتصور مبدئي مجاني قبل أي اتفاق.',
-      en: 'Villa design and renovation in Jeddah: modern homes, luxury villas, Obhur plots and Hijazi architecture. Start with a free call and preliminary concept.'
+      ar: 'تخطط لبناء فيلا في جدة أو تجديد بيتك؟ تعرّف على خدمات التصميم من دراسة الأرض أو المبنى القائم إلى مخططات التنفيذ، وابدأ بمكالمة مجانية مع وائل بو سماعيل.',
+      en: 'Planning a new villa or renovating a home in Jeddah? Explore design services from plot or building review to construction drawings. Start with a free call.'
     },
-    h1: { ar: 'خدمات تصميم الفلل في جدة', en: 'Villa design services in Jeddah' },
+    h1: { ar: 'تصميم الفلل وتجديدها في جدة', en: 'Villa design and renovation in Jeddah' },
     intro: {
-      ar: 'مسارات تصميم مركّزة لعملاء الفلل الخاصة في جدة وعموم الخليج. اختر ما يناسب أرضك ورؤيتك — وكلها تبدأ بمكالمة مجانية وتصور مبدئي مجاني.',
-      en: 'Focused design paths for private villa clients in Jeddah and across the Gulf. Choose what fits your plot and vision — each begins with a free call and a free preliminary concept.'
+      ar: 'للبيت الجديد نبدأ من أرضك وطريقة عيش عائلتك. وللتجديد نبدأ من البيت نفسه وما تودّ الاحتفاظ به أو تغييره. في الحالتين نبدأ بمكالمة مجانية ثم نناقش تصوراً مبدئياً مجانياً قبل الاتفاق على العمل المدفوع.',
+      en: 'For a new villa, we start with your plot and how your family lives. For a renovation, we look at the house you have and what you want to keep or change. Both begin with a free call and a free preliminary concept before we agree on paid work.'
     },
     explore: { ar: 'تعرّف أكثر', en: 'Learn more' }
   },
@@ -454,33 +454,40 @@ const site = {
       slug: 'villa-design-jeddah',
       label: { ar: 'تصميم فيلا في جدة', en: 'Villa design in Jeddah' },
       summary: {
-        ar: 'نقطة البداية لأصحاب الأراضي والعائلات: كيف نصمم فيلا خاصة في جدة من الفكرة حتى التنفيذ.',
-        en: 'The starting point for landowners and families: how we design a private villa in Jeddah from concept to construction.'
+        ar: 'من دراسة أرضك وتحديد احتياجات العائلة والضيافة إلى توزيع الغرف ومخططات التنفيذ.',
+        en: 'Plan a home around your plot, family routine and guests, from the first layout to construction drawings.'
       },
-      seoTitle: { ar: 'تصميم فيلا في جدة | مصمم فلل خاصة — WB Studio', en: 'Villa Design in Jeddah | Private Villa Designer — WB Studio' },
+      seoTitle: { ar: 'تصميم الفلل في جدة من الداخل والخارج | WB Studio', en: 'Villa Design in Jeddah – Interiors and Facades | WB Studio' },
       seoDesc: {
-        ar: 'تصميم فلل خاصة في جدة لأصحاب الأراضي والعائلات والمستثمرين. استوديو بوتيكي يقود المشروع من الفكرة حتى مخططات التنفيذ. مكالمة مجانية وتصور مبدئي مجاني.',
-        en: 'Private villa design in Jeddah for landowners, families and investors. A boutique studio that leads the project from concept to construction drawings. Free call and preliminary concept.'
+        ar: 'تصميم معماري للفلل في جدة يربط توزيع الغرف والضيافة بالواجهة والفناء. شاهد كيف عالج تصميم فيلا المنتشري الضوء والخصوصية، وابدأ بمكالمة مجانية مع وائل بو سماعيل.',
+        en: 'Plan your villa’s interiors, facade and outdoor spaces together. See how the Montashiri Villa design in Obhur balances daylight and privacy. Start with a free call.'
       },
       eyebrow: { ar: 'تصميم الفلل الخاصة — جدة', en: 'Private villa design — Jeddah' },
       h1: { ar: 'تصميم فيلا خاصة في جدة', en: 'Private villa design in Jeddah' },
       intro: {
-        ar: 'إذا كنت تملك أرضاً في جدة وتخطّط لبناء فيلتك، فأنت بحاجة إلى مصمم يفهم الأرض والخصوصية وطريقة عيش عائلتك. WB Studio استوديو بوتيكي يصمم الفلل الخاصة في جدة وعموم الخليج — من الفكرة الأولى حتى مخططات قابلة للتنفيذ.',
-        en: 'If you own a plot in Jeddah and plan to build your villa, you need a designer who understands the land, privacy, and how your family lives. WB Studio is a boutique studio designing private villas in Jeddah and across the Gulf — from the first idea to build-ready drawings.'
+        ar: 'أين تستقبل الضيوف، وإلى أين تطلّ غرفة المعيشة، وكيف تدخل البيت من السيارة؟ تناقش هذه التفاصيل مباشرة مع وائل بو سماعيل. نرسم التوزيع الأول للفيلا على أرضك في جدة حول ما يهمّ عائلتك.',
+        en: 'Where do guests arrive, what can you see from the living room, and how do you get from the car to the kitchen? You work directly with Wael Bousmael to turn those everyday decisions into a first layout for your plot in Jeddah.'
       },
       sections: [
         {
-          heading: { ar: 'لمن نصمم', en: 'Who we design for' },
+          heading: { ar: 'مداخل العائلة والضيوف', en: 'Family and guest entrances' },
           body: {
-            ar: 'نعمل مع أصحاب الأراضي والعائلات والمستثمرين الخاصين الذين يريدون فيلا مدروسة لا نسخة مكرّرة. كل مشروع يحصل على اهتمام مباشر من المصمم، لا على خط إنتاج.',
-            en: 'We work with landowners, families and private investors who want a considered villa, not a repeated template. Every project gets the designer’s direct attention, not a production line.'
+            ar: 'نحدّد على المخطط كيف يصل الضيف إلى المجلس ودورة المياه، وأين تمرّ العائلة بين غرف المعيشة والمطبخ والفناء. عندها يسهل أن تقرر أين تحتاج إلى مدخل مستقل وأي الغرف تفضّل أن تتصل ببعضها.',
+            en: 'On the plan, we trace a guest’s route to the majlis and bathroom alongside the family’s routes between the kitchen, living rooms and courtyard. You can then decide where a separate entrance matters and which rooms should open into each other.'
           }
         },
         {
-          heading: { ar: 'من الفكرة إلى التنفيذ', en: 'From concept to construction' },
+          heading: { ar: 'كيف يرتبط التصميم الداخلي بواجهة الفيلا؟', en: 'How the interior plan shapes the facade' },
           body: {
-            ar: 'يبدأ المسار بدراسة الأرض والخصوصية والتوجيه الشمسي، ثم فكرة معمارية وأجواء داخلية، وصولاً إلى حزمة تصميم تقود الاستشاريين والمقاولين بوضوح وتقلّل التعارضات في الموقع.',
-            en: 'The path starts with a study of the plot, privacy and solar orientation, then an architectural concept and interior atmosphere, through to a design package that leads consultants and contractors clearly and reduces clashes on site.'
+            ar: 'نحدّد موضع النافذة من داخل الغرفة أولاً. ما الذي تراه العائلة من جلستها، ومن يستطيع أن يراها من الشارع؟ في تصميم فيلا المنتشري بأبحر، تطلّ غرفة المعيشة المزدوجة الارتفاع على فناء مزروع من خلال واجهة زجاجية واسعة. أمّا جهة الشارع، فتحدّد الجدران الحجرية والسواتر الخشبية ما ينكشف من البيت للمارة.',
+            en: 'We start each window from inside the room. What will you see from the sofa, and what can someone see from the street? In the Montashiri Villa design in Obhur, the double-height living room looks through broad glazing into a planted courtyard. Facing the street, stone walls and timber screens limit views into the house.'
+          }
+        },
+        {
+          heading: { ar: 'ما الذي يوضّحه التصور الأول؟', en: 'What the first concept helps you decide' },
+          body: {
+            ar: 'نراجع معك موقع الغرف واتجاه الفتحات وعلاقة البيت بالفناء. في تصميم فيلا خميس مشيط مثلاً، يربط درج خارجي منحني بين الجلسة المظللة والشرفة، فتتنقل العائلة بين المستويين من دون المرور داخل البيت. بعد الاتفاق على الفكرة نحدّد نطاق مخططات التنفيذ وأتعابها.',
+            en: 'We review room positions, window orientation and how you reach the courtyard. In the Khamis Mushait Villa design, for example, a curved outdoor stair connects the shaded terrace to the balcony so the family can move between floors from the courtyard. Once the concept feels right, we agree on the scope and fee for the drawings.'
           }
         }
       ],
@@ -488,11 +495,11 @@ const site = {
       faq: [
         {
           q: { ar: 'كيف أبدأ تصميم فيلتي في جدة؟', en: 'How do I start designing my villa in Jeddah?' },
-          a: { ar: 'أرسل موقع الأرض ومساحتها وفكرتك العامة عبر واتساب أو النموذج. نبدأ بمكالمة مجانية وتصور مبدئي مجاني قبل أي اتفاق مدفوع.', en: 'Send the plot location, area and your general idea via WhatsApp or the form. We start with a free call and a free preliminary concept before any paid agreement.' }
+          a: { ar: 'ابدأ بموقع الأرض في نموذج التواصل، أو أرسله عبر واتساب. للمكالمة الأولى، حضّر مساحة الأرض إن عرفتها وأهم ما تريده في البيت. نبدأ بمكالمة مجانية يتبعها تصور مبدئي مجاني، ونتّفق على الأتعاب بعد أن يناسبك التوجّه.', en: 'Start with the plot location in the inquiry form or on WhatsApp. For the first call, have the plot size to hand if you know it, along with your priorities for the house. The call and preliminary concept are free. We agree fees once you are happy with the direction.' }
         },
         {
-          q: { ar: 'هل تصممون لأراضٍ في كل أحياء جدة؟', en: 'Do you design for plots in any Jeddah district?' },
-          a: { ar: 'نعم — شمال جدة وأبحر والأحياء الراقية وغيرها. نراعي أنظمة البناء والخصوصية وطبيعة كل حي.', en: 'Yes — North Jeddah, Obhur, premium districts and beyond. We account for building regulations, privacy and the character of each district.' }
+          q: { ar: 'هل يمكن أن نلتقي في الأرض؟', en: 'Can we meet on my plot in Jeddah?' },
+          a: { ar: 'نعم، يمكن ترتيب زيارة للأرض بموعد مسبق لمعاينة المداخل والإطلالات والمباني المجاورة. اذكر الحي في طلبك، وفي المكالمة الأولى نقرّر معاً ما إذا كانت الزيارة مفيدة في هذه المرحلة.', en: 'Yes. We can arrange a visit to look at access, views and neighbouring buildings together. Include the district in your inquiry so we can discuss on the first call whether a visit would help at this stage.' }
         },
         {
           q: { ar: 'هل يمكن العمل إذا كنت خارج جدة؟', en: 'Can we work together if I’m outside Jeddah?' },
@@ -500,26 +507,26 @@ const site = {
         }
       ],
       related: ['luxury-villa-design-jeddah', 'modern-villa-design-jeddah', 'obhur-villa-design', 'modern-hijazi-villa-design'],
-      relatedProjects: ['montashiri-villa', 'byblos-resort'],
+      relatedProjects: ['montashiri-villa', 'khamis-mushait-villa'],
       image: { src: '/assets/projects/montashiri-villa/cover.webp', w: 1536, h: 960, alt: { ar: 'فيلا حجرية حديثة في جدة بشرفات مزروعة', en: 'Modern stone villa in Jeddah with planted terraces' } }
     },
     {
       slug: 'villa-renovation-design-jeddah',
-      label: { ar: 'تجديد الفلل ومخططات التنفيذ', en: 'Villa renovation & execution drawings' },
+      label: { ar: 'تصميم وتجديد الفلل في جدة', en: 'Villa renovation design in Jeddah' },
       summary: {
         ar: 'لأصحاب الفلل القائمة في جدة: من توثيق الوضع الحالي وإعادة تنظيم البيت إلى مخططات هدم وإنشاء واضحة.',
         en: 'For owners of existing villas in Jeddah: from documenting the current building and reorganizing the home to clear demolition and construction drawings.'
       },
-      seoTitle: { ar: 'تجديد الفلل ومخططات التنفيذ في جدة — WB Studio', en: 'Villa Renovation & Execution Drawings Jeddah — WB Studio' },
+      seoTitle: { ar: 'تجديد الفلل في جدة من التصميم إلى مخططات التنفيذ | WB Studio', en: 'Villa Renovation Design in Jeddah | WB Studio' },
       seoDesc: {
-        ar: 'تصميم تجديد الفلل في جدة ومخططات التنفيذ المعمارية: توثيق الوضع القائم، إعادة تنظيم المساحات، ومخططات هدم وإنشاء واضحة. مكالمة وتصور مبدئي مجاني.',
-        en: 'Villa renovation design and architectural execution drawings in Jeddah: existing-condition documentation, spatial redesign, and clear demolition and construction plans.'
+        ar: 'تخطط لتجديد فيلتك في جدة؟ نراجع مخططات بيتك ونبحث في توزيع الغرف وما يمكن الاحتفاظ به. اطّلع على مثال لمخططات الهدم والإنشاء وابدأ بمكالمة مجانية.',
+        en: 'Planning to renovate a villa in Jeddah? Review your existing layout, explore what to keep or change, and see an example set of demolition and construction drawings.'
       },
       eyebrow: { ar: 'تجديد الفلل — جدة والخليج', en: 'Villa renovation — Jeddah & GCC' },
-      h1: { ar: 'تجديد فيلا قائمة بوضوح من أول قياس حتى مخططات التنفيذ', en: 'Renovate an existing villa with clarity from first survey to execution drawings' },
+      h1: { ar: 'التصميم المعماري لتجديد فيلتك في جدة', en: 'Renovation design for existing villas in Jeddah' },
       intro: {
-        ar: 'تجديد الفيلا ليس تغيير واجهة أو توزيع أثاث فقط؛ بل قراءة دقيقة لما يمكن الحفاظ عليه، وما يجب تعديله، وكيف تتحول القرارات إلى تعليمات واضحة للاستشاريين والمقاولين. نبدأ بمكالمة مجانية وتصور مبدئي مجاني، ولا يبدأ أي اتفاق مدفوع إلا بعد التوافق.',
-        en: 'Villa renovation is more than changing a facade or rearranging furniture. It requires a precise reading of what can remain, what must change, and how each decision becomes clear information for consultants and contractors. We begin with a free call and a free preliminary concept, with no paid agreement until alignment.'
+        ar: 'ما الذي تحبّه في بيتك اليوم، وأين يضيق على احتياجات العائلة؟ في المكالمة المجانية الأولى نناقش معك ما تودّ تغييره. تساعدنا الصور والمخططات القديمة إن توفرت، ويمكن ترتيب زيارة للفيلا بموعد مسبق. نعرض عليك تصوراً مبدئياً مجانياً قبل أن نتفق على نطاق العمل المدفوع.',
+        en: 'What already works in your home, and where does the layout get in the way? On the free first call we discuss the changes you have in mind. Photos and any old plans help, and a visit to the property can be arranged by appointment. You review a free preliminary concept before agreeing to paid work.'
       },
       sections: [
         {
@@ -530,10 +537,10 @@ const site = {
           }
         },
         {
-          heading: { ar: 'نفصل القائم عن الهدم والإنشاء', en: 'Separate existing, demolition and construction work' },
+          heading: { ar: 'أربعة مخططات للطابق نفسه', en: 'Four drawings of the same floor' },
           body: {
-            ar: 'نحوّل إعادة التنظيم إلى سلسلة مقروءة من المخططات: ما يبقى، وما يُزال، وما يُبنى. يشمل ذلك الجدران والفتحات والسلالم والتراسات والعلاقات الجديدة بين الغرف بحسب نطاق المشروع.',
-            en: 'We translate the redesign into a legible drawing sequence: what remains, what is removed and what is built. Depending on scope, this covers walls, openings, stairs, terraces and the new relationships between rooms.'
+            ar: 'في مشروع تجديد فيلا الشوف بلبنان، يمكنك تتبّع الطابق الأرضي في أربعة مخططات. يبدأ التسلسل بالوضع القائم، ثم ما يُزال، فالجدران والفتحات الجديدة. ويبيّن المخطط المفروش كيف تتصل مساحة الإفطار بالمطبخ وكيف تتوزع جلسات العائلة والاستقبال.',
+            en: 'In the Chouf villa renovation in Lebanon, you can follow the ground floor through four plans. The first records the existing house. The next two show what is removed and where walls and openings are added. The furnished plan shows how the breakfast area connects to the kitchen and how reception and family living areas fit together.'
           }
         },
         {
@@ -569,7 +576,7 @@ const site = {
         src: '/assets/projects/private-villa-renovation-chouf/cover.webp',
         w: 1601,
         h: 983,
-        alt: { ar: 'تصور لتجديد فيلا حجرية بشرفات وتراسات جديدة', en: 'Visualization of a renovated stone villa with new balconies and terraces' }
+        alt: { ar: 'تصور لتجديد فيلا الشوف الحجرية في لبنان مع شرفات وتراسات جديدة', en: 'Proposed new balconies and terraces on the stone villa in Chouf, Lebanon' }
       }
     },
     {
@@ -682,33 +689,33 @@ const site = {
       slug: 'obhur-villa-design',
       label: { ar: 'تصميم فلل أبحر', en: 'Obhur villa design' },
       summary: {
-        ar: 'للأراضي الساحلية في أبحر وشمال جدة: ضوء البحر، الخصوصية على الواجهة البحرية، والحياة الخارجية.',
-        en: 'For coastal plots in Obhur and North Jeddah: sea light, waterfront privacy and outdoor living.'
+        ar: 'اختيار موقع الجلسات الخارجية وفتحات الواجهة بحسب إطلالة أرضك والبيوت المجاورة، مع مثال من أبحر.',
+        en: 'Choose where to place windows and outdoor seating around the views and neighbours on your plot, with a villa design from Obhur.'
       },
       seoTitle: { ar: 'تصميم فلل أبحر | فلل شمال جدة الساحلية — WB Studio', en: 'Obhur Villa Design | North Jeddah Coastal Villas — WB Studio' },
       seoDesc: {
-        ar: 'تصميم فلل في أبحر وشمال جدة: استثمار ضوء البحر مع خصوصية كاملة، شرفات مظللة، ومسابح بإطلالة. مكالمة وتصور مبدئي مجاني.',
-        en: 'Villa design in Obhur and North Jeddah: capturing sea light with full privacy, shaded terraces and view-facing pools. Free call and preliminary concept.'
+        ar: 'تصميم فلل في أبحر وشمال جدة. شاهد كيف تطلّ غرفة المعيشة على الفناء في فيلا المنتشري، وكيف تتعامل الواجهة مع الشارع. ناقش إطلالة أرضك وخصوصيتها في مكالمة مجانية.',
+        en: 'Explore villa design in Obhur and North Jeddah. See Montashiri Villa’s street facade and courtyard-facing living room, then discuss the outlook and privacy of your plot.'
       },
       eyebrow: { ar: 'الساحل — أبحر وشمال جدة', en: 'The coast — Obhur & North Jeddah' },
       h1: { ar: 'تصميم فلل في أبحر وشمال جدة', en: 'Villa design in Obhur & North Jeddah' },
       intro: {
-        ar: 'أبحر ساحل مختلف: ضوء قوي، نسيم بحري، وقيمة عالية للإطلالة. لكنها تتطلب توازناً دقيقاً بين الانفتاح على البحر والخصوصية تجاه الجيران والطريق. نصمم فللاً ساحلية تستثمر الإطلالة دون أن تفقد حميميتها.',
-        en: 'Obhur is a different coast: strong light, sea breeze, and a high premium on the view. But it demands a careful balance between opening to the sea and privacy from neighbours and the street. We design coastal villas that capture the view without losing their intimacy.'
+        ar: 'تختلف أولويات الأرض المطلة على البحر عن أرض تحيط بها بيوت الجيران. نبدأ بتحديد الإطلالة التي تهمّك، والجهات المكشوفة على الشارع، والوقت الذي تحبّ فيه الجلوس خارج البيت. هذه التفاصيل تساعدنا في اختيار موضع الشرفة أو الفناء.',
+        en: 'A waterfront plot and a plot between neighbours call for different plans. We start with the view you want to keep, the sides exposed to the street and the time of day you like to sit outside. Those details help us place a terrace or courtyard where you will use it.'
       },
       sections: [
         {
-          heading: { ar: 'ضوء البحر والخصوصية', en: 'Sea light and privacy' },
+          heading: { ar: 'أين نضع الجلسة الخارجية؟', en: 'Where should the terrace go?' },
           body: {
-            ar: 'نوجّه فراغات المعيشة نحو البحر بشرفات عميقة تظلّل من شمس الظهيرة، ونحجب الجهات الأخرى بذكاء — فتطلّ على الماء دون أن يطلّ عليك أحد.',
-            en: 'We orient living spaces toward the sea with deep terraces that shade the midday sun, and screen the other sides intelligently — so you face the water without anyone facing you.'
+            ar: 'إذا كانت الإطلالة من الطابق العلوي، ندرس شرفة تتصل بغرفة تستخدمها يومياً. وإذا كانت الأنظار تأتي من فوق السور، نبحث عن موضع أكثر خصوصية للجلسة وندرس ارتفاع الحاجز وعمق الظل من مستوى الشخص الجالس.',
+            en: 'If the view opens up on an upper floor, we look at placing a terrace beside a room you use every day. If neighbouring windows overlook the boundary wall, we study where the seating can go and how high a screen needs to be from a seated person’s point of view.'
           }
         },
         {
-          heading: { ar: 'الحياة الخارجية', en: 'Outdoor living' },
+          heading: { ar: 'الشارع والفناء في فيلا المنتشري', en: 'Street and courtyard at Montashiri Villa' },
           body: {
-            ar: 'مسابح بإطلالة، جلسات مظللة، وأسطح معيشة — لأن قيمة أرض أبحر في حياتها الخارجية بقدر داخلها.',
-            en: 'View-facing pools, shaded seating and rooftop living — because the value of an Obhur plot is in its outdoor life as much as its interior.'
+            ar: 'في صفحة المشروع يمكنك أن ترى الفيلا من الشارع ثم من داخلها. تظهر من الخارج شرفات مزروعة فوق الواجهة الحجرية. ومن الداخل تطلّ جلسة المعيشة على الفناء عبر الزجاج، وفي المطبخ باب زجاجي يفتح على مساحة مزروعة.',
+            en: 'The project page shows the villa first from the street, then from inside. Planted terraces rise above the stone street facade. In the living room, the seating faces broad courtyard windows. In the kitchen, a glazed door opens towards planting.'
           }
         }
       ],
@@ -716,27 +723,27 @@ const site = {
       faq: [
         {
           q: { ar: 'هل لديكم خبرة بأراضي أبحر تحديداً؟', en: 'Do you have experience with Obhur plots specifically?' },
-          a: { ar: 'نعم، من أعمالنا فلل في أبحر مثل فيلا المنتشري — نراعي الملوحة والرياح والإطلالة والخصوصية الساحلية.', en: 'Yes — our work includes Obhur villas such as Montashiri Villa. We account for salt, wind, the view and coastal privacy.' }
+          a: { ar: 'نعم. فيلا المنتشري من تصاميم الاستوديو في أبحر. تعرض صفحة المشروع تصوّرات الواجهة المطلة على الشارع وغرفة المعيشة والمطبخ.', en: 'Yes. Montashiri Villa is a studio design for Obhur. Its project page shows renderings of the street facade, living room and kitchen.' }
         },
         {
           q: { ar: 'كيف تحمون الخصوصية على واجهة بحرية مفتوحة؟', en: 'How do you protect privacy on an open waterfront?' },
-          a: { ar: 'عبر تدرّج الشرفات، التوجيه، والستائر المعمارية — انفتاح كامل على البحر وحجب كامل عن الجيران.', en: 'Through layered terraces, orientation and architectural screens — full openness to the sea, full screening from neighbours.' }
+          a: { ar: 'نحدّد أولاً الجهات التي تطلّ على الجلسة، ثم ندرس توجيهها وموضع الحواجز الجانبية بحيث تحتفظ بالإطلالة التي تهمّك.', en: 'We identify which directions overlook the seating area, then study its orientation and the position of side screens to preserve the view you value.' }
         },
         {
           q: { ar: 'هل تصممون فللاً في شمال جدة عموماً؟', en: 'Do you design villas in North Jeddah generally?' },
-          a: { ar: 'نعم، أبحر وشمال جدة من أكثر المناطق التي نعمل فيها.', en: 'Yes — Obhur and North Jeddah are among the areas we work in most.' }
+          a: { ar: 'نعم. اذكر الحي ومساحة الأرض التقريبية عند التواصل. وإذا توفرت لديك صور من حدود الأرض باتجاه الشارع والجيران، يمكننا مراجعتها في المكالمة الأولى.', en: 'Yes. Tell us the district and approximate plot size when you get in touch. If you have photos taken from the plot towards the street and neighbours, we can review them on the first call.' }
         }
       ],
       related: ['villa-design-jeddah', 'luxury-villa-design-jeddah', 'modern-villa-design-jeddah', 'modern-hijazi-villa-design'],
-      relatedProjects: ['montashiri-villa', 'coastal-villa', 'byblos-resort'],
-      image: { src: '/assets/projects/montashiri-villa/cover.webp', w: 1536, h: 960, alt: { ar: 'فيلا ساحلية في أبحر بإطلالة وخصوصية', en: 'Coastal villa in Obhur with a view and privacy' } }
+      relatedProjects: ['montashiri-villa'],
+      image: { src: '/assets/projects/montashiri-villa/cover.webp', w: 1536, h: 960, alt: { ar: 'واجهة فيلا المنتشري الحجرية في أبحر مع شرفات مزروعة ونخيل عند الغروب', en: 'Montashiri Villa’s stone facade and planted terraces in Obhur at dusk' } }
     },
     {
       slug: 'modern-hijazi-villa-design',
       label: { ar: 'تصميم فلل حجازية حديثة', en: 'Modern Hijazi villa design' },
       summary: {
-        ar: 'إعادة تأويل العمارة الحجازية — الروشان والفناء والحجر — بلغة حديثة تناسب الحياة اليوم.',
-        en: 'Reinterpreting Hijazi architecture — rawasheen, courtyards and stone — in a modern language for life today.'
+        ar: 'نصمّم واجهة تستلهم رواشين جدة، ونختار مواضع الفتحات والظل بحسب الغرف التي تطلّ على الشارع.',
+        en: 'A facade inspired by Jeddah’s timber rawasheen, with shade and openings designed around the rooms facing the street.'
       },
       seoTitle: { ar: 'تصميم فلل حجازية حديثة في جدة | روشان وفناء — WB Studio', en: 'Modern Hijazi Villa Design in Jeddah | Rawasheen & Courtyards — WB Studio' },
       seoDesc: {
@@ -746,22 +753,22 @@ const site = {
       eyebrow: { ar: 'العمارة الحجازية الحديثة — جدة', en: 'Modern Hijazi architecture — Jeddah' },
       h1: { ar: 'تصميم فلل حجازية حديثة', en: 'Modern Hijazi villa design' },
       intro: {
-        ar: 'العمارة الحجازية حلّت مشكلات المناخ والخصوصية قبل قرون عبر الروشان والفناء والحجر. نعيد تأويل هذه الحكمة بلغة حديثة نظيفة — فيلا تنتمي إلى جدة بهوية واضحة، لا نسخة غربية ولا استنساخ تراثي.',
-        en: 'Hijazi architecture solved climate and privacy centuries ago through the rawshan, the courtyard and stone. We reinterpret that wisdom in a clean modern language — a villa that belongs to Jeddah with a clear identity, neither a Western copy nor a heritage replica.'
+        ar: 'إذا أعجبتك الرواشين الخشبية في بيوت جدة التاريخية، فأي غرفة في بيتك تودّ أن تطلّ على الشارع من خلف روشان؟ نبدأ من هذه الغرفة ومكان الجلسة فيها، ثم نرسم البروز والفتحات لنرى كيف تبدو الواجهة من الشارع والإطلالة من الداخل.',
+        en: 'A timber rawshan gives a room a sheltered view of the street. If you like the wooden windows of historic Jeddah, we start by choosing the room where you would use one. A sketch from your seat inside and another from the street show how far the window projects and where the openings should be.'
       },
       sections: [
         {
           heading: { ar: 'الروشان والمشربية', en: 'Rawshan and mashrabiya' },
           body: {
-            ar: 'الستائر الخشبية المثقّبة تظلّل وتهوّي وتمنح خصوصية — نعيد تصميمها بنِسب حديثة وتنفيذ معاصر بدل النسخ الحرفي.',
-            en: 'Perforated timber screens shade, ventilate and give privacy — we redesign them in modern proportions and contemporary fabrication rather than literal copying.'
+            ar: 'قد يحتاج المجلس المطلّ على الرصيف إلى حجب الرؤية عند مستوى الجالسين، بينما يمكن ترك الفتحات العلوية أوسع لدخول الضوء. ندرس ارتفاع المشربية وتباعد شرائحها وعمقها مع اتجاه الشمس وموقع نوافذ الجيران.',
+            en: 'A street-facing majlis may need screening at seated eye level, with wider openings above to admit daylight. We study the height, spacing and depth of the timber screen against the sun and the positions of neighbouring windows.'
           }
         },
         {
           heading: { ar: 'الفناء والحجر', en: 'Courtyard and stone' },
           body: {
-            ar: 'فناء داخلي يجلب الضوء والهواء إلى عمق البيت بخصوصية تامة، وحجر محلي يربط الفيلا بأرضها ويلطّف مناخها.',
-            en: 'An internal courtyard brings light and air deep into the home in full privacy, and local stone ties the villa to its ground while tempering its climate.'
+            ar: 'في الفيلا المعاصرة يمكن أن تطلّ جلسة العائلة على فناء مزروع. في تصميم فيلا المنتشري بأبحر، يبيّن منظر الشارع تدرّج الشرفات فوق الواجهة الحجرية، بينما يوضّح المنظور الداخلي كيف تطلّ صالة المعيشة على الزرع عبر نوافذ بارتفاع طابقين.',
+            en: 'In a contemporary villa, a planted courtyard can give the family living room its own outlook. The Montashiri Villa design in Obhur shows both sides of this decision. The street view shows planted terraces above a stone facade, while the interior rendering shows windows on two levels looking into the courtyard.'
           }
         }
       ],
@@ -769,20 +776,20 @@ const site = {
       faq: [
         {
           q: { ar: 'ما الفرق بين الحجازي الحديث والتراثي؟', en: 'What’s the difference between modern Hijazi and traditional?' },
-          a: { ar: 'نأخذ مبادئ الحجازي (الخصوصية، التظليل، الفناء) ونعبّر عنها بخطوط ومواد حديثة، لا بزخرفة منسوخة.', en: 'We take Hijazi principles (privacy, shading, the courtyard) and express them in modern lines and materials, not copied ornament.' }
+          a: { ar: 'في البيت المعاصر نختار من عناصر العمارة الحجازية ما يناسب الغرفة. مثلاً، يمكن أن تستلهم نافذة المجلس الروشان في بروزها وتظليلها، مع اختيار أبعادها وشكل شرائحها بحسب إطلالة المجلس اليوم.', en: 'We adapt individual elements to the room. A majlis window might borrow the projection and shade of a traditional rawshan, with dimensions and timber spacing chosen for the view from this particular room.' }
         },
         {
           q: { ar: 'هل تصممون واجهات فلل بطابع حجازي حديث؟', en: 'Do you design villa façades with a modern Hijazi character?' },
-          a: { ar: 'نعم — الواجهة الحجازية الحديثة من أكثر ما يميّز أعمالنا: حجر، روشان معاصر، وتدرّج للظل.', en: 'Yes — the modern Hijazi façade is among the most distinctive parts of our work: stone, a contemporary rawshan and layered shade.' }
+          a: { ar: 'نعم. تساعدنا صورة لروشان يعجبك ومخطط الطابق، إن توفّر، على اقتراح موضعه وحجمه وعلاقته بالغرفة خلفه.', en: 'Yes. A photo of a rawshan you like and a floor plan, if you have one, help us propose where it should sit, how large it should be and how it connects to the room behind it.' }
         },
         {
           q: { ar: 'هل يناسب هذا الطابع الأحياء الحديثة في جدة؟', en: 'Does this character suit Jeddah’s modern districts?' },
-          a: { ar: 'تماماً — يمنح الفيلا تميّزاً وهوية بين الفلل المتشابهة، مع أداء مناخي أفضل.', en: 'Perfectly — it gives the villa distinction and identity among look-alike houses, with better climate performance.' }
+          a: { ar: 'نعم. يختلف تصميم الروشان باختلاف اتجاه الشارع والمسافة إلى الجيران. اذكر الحي في طلبك، ويمكننا مراجعة صور الموقع في المكالمة الأولى.', en: 'Yes. The direction of the street and the distance to neighbouring houses guide the design. Include the district in your inquiry and we can look at site photos together on the first call.' }
         }
       ],
       related: ['villa-design-jeddah', 'luxury-villa-design-jeddah', 'modern-villa-design-jeddah', 'obhur-villa-design'],
       relatedProjects: ['montashiri-villa', 'stone-majlis'],
-      image: { src: '/assets/projects/montashiri-villa/cover.webp', w: 1536, h: 960, alt: { ar: 'واجهة فيلا حجازية حديثة بالحجر في جدة', en: 'Modern Hijazi villa façade in stone, Jeddah' } }
+      image: { src: '/assets/projects/montashiri-villa/cover.webp', w: 1536, h: 960, alt: { ar: 'واجهة فيلا المنتشري الحجرية وشرفاتها المزروعة في أبحر، جدة', en: 'Montashiri Villa design in Obhur, Jeddah, with a stone street facade and planted terraces' } }
     }
   ],
 
@@ -812,8 +819,8 @@ const site = {
       slug: 'villa-design-cost-jeddah',
       imageProject: 'montashiri-villa',
       projectCaption: {
-        ar: 'في هذه الفيلا بأبحر، شمل نطاق التصميم المصاطب المزروعة ومسبح السطح إلى جانب مساحات البيت الداخلية.',
-        en: 'At this villa in Obhur, the design scope includes planted terraces and a rooftop pool as well as the rooms inside.'
+        ar: 'الواجهة الحجرية جزء من تصميم هذه الفيلا في أبحر. في صفحة المشروع ترى أيضاً المعيشة والمطبخ. عند طلب عرض أتعاب، حدّد الغرف التي تريد أن يشملها التصميم الداخلي.',
+        en: 'The stone facade is one part of this villa design in Obhur. The project page also shows the living room and kitchen. When requesting a fee proposal, specify which rooms you want the interior design to cover.'
       },
       date: '2026-05-20',
       updated: '2026-11-21',
@@ -838,8 +845,8 @@ const site = {
         {
           heading: { ar: 'رسوم التصميم مقابل تكلفة البناء', en: 'Design fees vs. construction cost' },
           body: {
-            ar: 'رسوم التصميم جزء صغير من ميزانية المشروع الكلية، لكنها الأكثر تأثيراً على النتيجة. تصميم جيد يوفّر أضعافه في التنفيذ بتقليل الأخطاء والهدر.',
-            en: 'Design fees are a small part of the total project budget, but the most influential on the outcome. Good design saves many times its cost in construction by reducing errors and waste.'
+            ar: 'تغطّي أتعاب التصميم العمل والمخططات المذكورة في العرض. أمّا ميزانية البناء فتشمل البنود التي يسعّرها المقاول، مثل المواد والعمالة والتشطيبات. عند مقارنة عرضين للتصميم، راجع نطاق المخططات والتنسيق المشمول في كل منهما.',
+            en: 'Design fees cover the work and drawings listed in the proposal. The construction budget covers items the contractor prices, including materials, labour and finishes. When comparing two design proposals, check which drawings and coordination work each fee includes.'
           }
         },
         {
@@ -856,8 +863,8 @@ const site = {
       slug: 'before-designing-private-villa',
       imageProject: 'montashiri-villa',
       projectCaption: {
-        ar: 'في هذه الفيلا بأبحر، توفّر الأفنية الصغيرة ضوء النهار مع الحفاظ على خصوصية العائلة. أي الغرف تحتاج فيها إلى الضوء والخصوصية معاً؟',
-        en: 'Small light courts bring daylight into this family home in Obhur while preserving privacy. Which rooms in your own home need both?'
+        ar: 'تُظهر الواجهة المطلة على الشارع كيف تتوزع الفتحات بين الحجر والسواتر. قبل المكالمة، فكّر في الغرف التي تريد أن تطلّ على الشارع وتلك التي تفضّل أن تطلّ على فناء.',
+        en: 'The street elevation shows where openings sit between walls and screens. Before the first call, think about which rooms you want to face the street and which you would prefer to face a courtyard.'
       },
       date: '2026-04-28',
       updated: '2026-11-21',
@@ -944,8 +951,8 @@ const site = {
       slug: 'obhur-villa-design-considerations',
       imageProject: 'montashiri-villa',
       projectCaption: {
-        ar: 'تظلّل السواتر الخشبية فتحات الواجهة المطلة على الشارع، وتمنح المصاطب المزروعة العائلة جلسات خارجية خاصة في أبحر.',
-        en: 'Timber screens shade the street-facing openings, and planted terraces give the family private outdoor space in Obhur.'
+        ar: 'تظهر الشرفات المزروعة فوق واجهة هذه الفيلا في أبحر. وفي صفحة المشروع ترى الإطلالة من داخل غرفة المعيشة نحو الفناء.',
+        en: 'Planted terraces sit above the street facade of this villa in Obhur. The project page also shows the view from the living room towards the courtyard.'
       },
       date: '2026-03-22',
       updated: '2026-11-21',
@@ -1182,12 +1189,12 @@ site.berlin = {
       seoTitle: { de: 'Hausplanung Berlin | Freier Planer für private Häuser — WB Studio' },
       seoDesc: { de: 'Individuelle Hausplanung in Berlin: Grundriss, Licht und Räume für Ihren Alltag. Kostenloses Erstgespräch und erster Entwurf, Beauftragung erst nach Abstimmung.' },
       eyebrow: { de: 'Private Hausplanung — Berlin' },
-      h1: { de: 'Ihr Haus in Berlin beginnt mit einem klaren Entwurf.' },
+      h1: { de: 'Hausplanung für Ihr Grundstück in Berlin' },
       intro: { de: 'Sie haben ein Grundstück in Berlin und möchten ein Haus planen, das zu Ihrem Leben passt? Als freier Planer entwickelt Wael Bousmael mit Ihnen Raumprogramm, Grundriss und gestalterische Richtung. Wir arbeiten digital und nach vorheriger Vereinbarung vor Ort — mit direktem Kontakt und einem verständlichen nächsten Schritt.' },
       sections: [
         {
           heading: { de: 'Das Grundstück verstehen' },
-          body: { de: 'Ausrichtung, Zufahrt, Nachbarbebauung und Ihre Wünsche bilden den Ausgangspunkt. Wir prüfen die verfügbaren Unterlagen und entwickeln daraus erste räumliche Möglichkeiten. Baurechtliche Rahmenbedingungen und erforderliche Nachweise werden mit den zuständigen Fachleuten projektbezogen geklärt.' }
+          body: { de: 'Wo liegt der Zugang, wie fällt das Gelände ab und von welchen Nachbarfenstern aus ist der Garten einsehbar? Ein Lageplan und Fotos helfen beim ersten Gespräch. Bei der Villa am Hang in Aley im Libanon zeigt der Gebäudeschnitt, wie die Wohnebenen dem Gelände folgen. Baustellenfotos und Entwurfsansichten ergänzen die Zeichnungen.' }
         },
         {
           heading: { de: 'Räume für Ihren Alltag' },
@@ -1210,11 +1217,11 @@ site.berlin = {
         },
         {
           q: { de: 'Ist eine Zusammenarbeit vor Ort möglich?' },
-          a: { de: 'Ja, nach vorheriger Vereinbarung. Viele Abstimmungen finden digital statt. Ob ein Termin vor Ort für Ihr Hausprojekt sinnvoll ist, besprechen wir gemeinsam. Eine kostenpflichtige Beauftragung beginnt erst nach Abstimmung von Richtung, Umfang und Honorar.' }
+          a: { de: 'Ja. Wir können uns nach Vereinbarung auf Ihrem Grundstück treffen und gemeinsam Zufahrt, Ausblick und Nachbarbebauung ansehen. Das erste Gespräch ist auch per Video möglich. Dafür genügen zunächst der Standort und Ihre Fragen.' }
         }
       ],
       related: ['hausumbau-berlin'],
-      relatedProjects: ['montashiri-villa', 'byblos-resort'],
+      relatedProjects: ['hillside-villa-aley', 'montashiri-villa'],
       image: { src: '/assets/projects/montashiri-villa/cover.webp', w: 1536, h: 960, alt: { de: 'Entwurf der Montashiri Villa in Obhur, Jeddah, mit Steinfassade und bepflanzten Terrassen' } }
     },
     {
@@ -1224,7 +1231,7 @@ site.berlin = {
       seoTitle: { de: 'Hausumbau Berlin | Grundriss & Umbauplanung — WB Studio' },
       seoDesc: { de: 'Hausumbau in Berlin mit durchdachten Grundrissen und klarer Bestandsplanung. Kostenloses Erstgespräch und erster Entwurf vor einer kostenpflichtigen Beauftragung.' },
       eyebrow: { de: 'Planen im Bestand — Berlin' },
-      h1: { de: 'Mehr aus Ihrem bestehenden Haus in Berlin machen.' },
+      h1: { de: 'Umbauplanung für Ihr Haus in Berlin' },
       intro: { de: 'Ein Haus muss nicht vollständig neu sein, um besser zu Ihrem Leben zu passen. Wir untersuchen gemeinsam, wie sich Grundrisse öffnen, Wege verkürzen und Räume neu nutzen lassen. Am Anfang stehen Ihr Alltag und ein genauer Blick auf den Bestand — digital und vor Ort nach vorheriger Vereinbarung.' },
       sections: [
         {
@@ -1233,11 +1240,11 @@ site.berlin = {
         },
         {
           heading: { de: 'Grundrisse, die den Unterschied zeigen' },
-          body: { de: 'Wir stellen Bestand und Entwurf gegenüber und machen Abbruch, neue Wände und Raumfolgen nachvollziehbar. So können Sie Varianten für Küche, Wohnbereiche, Rückzug und Gartenbezug vergleichen, bevor Sie sich auf eine Richtung festlegen.' }
+          body: { de: 'Beim Umbau einer Villa in der libanesischen Region Chouf stand die Verbindung von Küche, Frühstücksplatz und Wohnräumen im Mittelpunkt. Vier Pläne zeigen dasselbe Erdgeschoss. Auf den Bestands- und den Abbruchplan folgt ein Grundriss mit den neuen Wänden und Öffnungen. Der möblierte Entwurf zeigt, wie die Familie die Räume nutzen kann.' }
         },
         {
           heading: { de: 'Schrittweise zu klaren Unterlagen' },
-          body: { de: 'Nach gemeinsamer Abstimmung entsteht im vereinbarten Umfang eine Planung mit Grundrissen, Schnitten und Details. Genehmigungsbedarf, Fachnachweise und Zuständigkeiten werden vorab geklärt. Die gezeigte Villenrenovierung im Libanon veranschaulicht diese Arbeitsweise; sie ist kein Berliner Referenzprojekt.' }
+          body: { de: 'Bevor Sie die weitere Planung beauftragen, legen wir gemeinsam fest, welche Grundrisse, Schnitte und Details Sie benötigen. Dabei klären wir auch den Genehmigungsbedarf, die erforderlichen Fachnachweise und die Zuständigkeiten für Ihr Vorhaben.' }
         }
       ],
       serviceType: 'Hausumbau und Umbauplanung',
@@ -1256,7 +1263,7 @@ site.berlin = {
         }
       ],
       related: ['hausplanung-berlin'],
-      relatedProjects: ['private-villa-renovation-chouf', 'montashiri-villa'],
+      relatedProjects: ['private-villa-renovation-chouf'],
       image: { src: '/assets/projects/private-villa-renovation-chouf/cover.webp', w: 1601, h: 983, fit: 'contain', alt: { de: 'Visualisierung des Umbaus einer Steinvilla mit Balkonen und Terrassen im Chouf, Libanon' } }
     }
   ],

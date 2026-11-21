@@ -235,7 +235,7 @@ function contactBand(lang) {
     <h2 class="display">${esc(t(c.title, lang))}</h2>
     <p class="lead">${esc(t(c.text, lang))}</p>
     <div class="cta-row">
-      <a class="btn btn-solid" href="${langPath(lang, '/contact/')}">${esc(t(c.primary, lang))}</a>
+      <a class="btn btn-solid" href="${langPath(lang, '/contact/')}#leadForm">${esc(t(c.primary, lang))}</a>
       <a class="btn" href="${waUrl(lang)}" target="_blank" rel="noopener">${esc(t(c.secondary, lang))}</a>
     </div>
   </div>
@@ -292,7 +292,7 @@ function businessGraph(lang) {
       publisher: { '@id': `${d}/#organization` }
     },
     {
-      '@type': ['ProfessionalService', 'Architect', 'LocalBusiness'], '@id': `${d}/#business`,
+      '@type': 'LocalBusiness', '@id': `${d}/#business`,
       name: 'WB Studio — Wael Bousmael', description: desc, url: `${d}/`,
       image: site.ogImage, logo: `${d}/assets/icons/apple-touch-icon.png`,
       telephone: site.phoneE164, email: site.email,
@@ -567,10 +567,9 @@ function renderProject(p, lang) {
   const available = projectsFor(lang);
   const idx = available.indexOf(p);
   const next = available[(idx + 1) % available.length];
-  const relatedService = lang === 'de'
-    ? { slug: p.slug === 'private-villa-renovation-chouf' ? 'hausumbau-berlin' : 'hausplanung-berlin',
-      label: landingsFor(lang).find((entry) => entry.slug === (p.slug === 'private-villa-renovation-chouf' ? 'hausumbau-berlin' : 'hausplanung-berlin')).label }
-    : p.relatedService;
+  const serviceSlug = p.relatedService?.[lang === 'de' ? 'berlin' : 'saudi'];
+  const relatedService = landingsFor(lang).find((entry) => entry.slug === serviceSlug);
+  if (serviceSlug && !relatedService) throw new Error(`Unknown service ${serviceSlug} for ${p.slug} (${lang})`);
   const metaTitle = `${t(p.title, lang)} | ${t(p.location, lang)} — ${site.brand}`;
   const gallery = p.gallery.map((g) => {
     const layoutClass = g.layout === 'half' ? 'g-half' : (g.w >= g.h ? 'g-wide' : 'g-tall');
@@ -951,7 +950,7 @@ ${header(lang, 'services')}
       <h1 class="display-xl">${esc(t(l.h1, lang))}</h1>
       <p class="lead measure">${esc(t(l.intro, lang))}</p>
       <div class="cta-row">
-        <a class="btn btn-solid" href="${langPath(lang, '/contact/')}">${esc(ui('callCta', lang))}</a>
+        <a class="btn btn-solid" href="${langPath(lang, '/contact/')}#leadForm">${esc(ui('callCta', lang))}</a>
         <a class="btn" href="${waUrl(lang)}" target="_blank" rel="noopener">${esc(t(site.contactBand.secondary, lang))}</a>
       </div>
     </div>

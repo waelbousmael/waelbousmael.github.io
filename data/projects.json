@@ -3,6 +3,7 @@
   "projects": [
     {
       "slug": "khamis-mushait-villa",
+      "relatedService": { "saudi": "modern-villa-design-jeddah", "berlin": "hausplanung-berlin" },
       "featured": true,
       "placeholder": false,
       "year": 2026,
@@ -58,6 +59,7 @@
     },
     {
       "slug": "hillside-villa-aley",
+      "relatedService": { "berlin": "hausplanung-berlin" },
       "featured": true,
       "placeholder": false,
       "year": 2026,
@@ -159,6 +161,7 @@
     },
     {
       "slug": "montashiri-villa",
+      "relatedService": { "saudi": "obhur-villa-design", "berlin": "hausplanung-berlin" },
       "relatedGuides": ["obhur-villa-design-considerations", "before-designing-private-villa"],
       "featured": true,
       "placeholder": false,
@@ -168,21 +171,25 @@
       "location": { "ar": "أبحر، جدة", "en": "Obhur, Jeddah", "de": "Obhur, Jeddah, Saudi-Arabien" },
       "status": { "ar": "قيد التصميم", "en": "In design", "de": "In Planung" },
       "excerpt": {
-        "ar": "فيلا عائلية على شارع سكني في أبحر: واجهة حجرية هادئة، شرفات مزروعة، وحياة خارجية تصعد حتى مسبح السطح.",
-        "en": "A family villa on a residential street in Obhur — a calm stone face, planted terraces, and outdoor life rising to a rooftop pool.", "de": "Eine Familienvilla an einer Wohnstraße in Obhur — mit ruhiger Steinfassade, bepflanzten Terrassen und einem Pool auf dem Dach als Teil des Lebens im Freien."
+        "ar": "تصميم فيلا عائلية في أبحر بجدة. تتجه نوافذ صالة المعيشة الممتدة على ارتفاع طابقين نحو الفناء، ويطل المطبخ على الزرع من خلف جزيرة تتسع لأربعة مقاعد.",
+        "en": "Design for a family villa in Obhur, Jeddah. A planted courtyard brings daylight into the double-height living room, and four stools line the kitchen island.",
+        "de": "Entwurf für eine Familienvilla in Obhur, Jeddah. Der zweigeschossige Wohnraum öffnet sich zum bepflanzten Hof. An der Kücheninsel finden vier Personen Platz."
       },
       "thesis": {
-        "ar": "كيف يحفظ بيتٌ حضري خصوصيته دون أن ينغلق على نفسه؟ تتدرج الواجهة الحجرية بين كتل صلبة وفتحات مظللة بستائر خشبية، بينما تتحول الأسطح إلى طبقة معيشة ثانية: تراسات مزروعة، وبرجولات، ومسبح سماوي يطل على أبحر.",
-        "en": "How does an urban house keep its privacy without closing itself off? The stone facade grades between solid volumes and openings shaded by timber screens, while the roofscape becomes a second layer of living — planted terraces, pergolas, and a sky pool overlooking Obhur.", "de": "Wie bewahrt ein Stadthaus seine Privatsphäre, ohne sich abzuschotten? Die Steinfassade wechselt zwischen geschlossenen Volumen und Öffnungen mit verschattenden Holzlamellen. Auf dem Dach entsteht eine zweite Wohnebene mit bepflanzten Terrassen, Pergolen und einem Pool mit Blick über Obhur."
+        "ar": "على الشارع السكني في أبحر، تحجب الشرائح الأفقية جزءاً من الواجهة عند مستوى المارّة. أما صالة المعيشة العائلية فتطل من الداخل على فناء مزروع، بواجهة زجاجية تمتد على ارتفاع طابقين.",
+        "en": "Horizontal screens along the street edge limit the view into the house at eye level. The family living room faces a planted court, with windows on two levels.",
+        "de": "Waagerechte Lamellen begrenzen auf Augenhöhe den Einblick von der Wohnstraße. Der Wohnraum der Familie öffnet sich mit Fenstern auf zwei Ebenen zu einem bepflanzten Hof."
       },
       "body": [
         {
-          "ar": "تترتب الكتل حول أفنية ضوء صغيرة، فيدخل الضوء الطبيعي إلى عمق البيت مع خصوصية كاملة تجاه الشارع والجيران. الزراعة ليست تجميلاً لاحقاً؛ بل جزء من تكوين الواجهة، تلطف المناخ وتظلل الفتحات.",
-          "en": "The volumes arrange themselves around small light courts, drawing daylight deep into the house while keeping full privacy from street and neighbours. Planting is not an afterthought — it is part of the facade's composition, tempering the climate and shading the openings.", "de": "Die Baukörper gruppieren sich um kleine Lichthöfe. So gelangt Tageslicht tief ins Haus, während die Privatsphäre gegenüber Straße und Nachbarn erhalten bleibt. Die Bepflanzung ist Teil der Fassadengestaltung: Sie mildert das Mikroklima und beschattet die Öffnungen."
+          "ar": "يطل الممر العلوي على جلسة العائلة. وفي المطبخ تتركز حركة التحضير حول الجزيرة، مع أربعة مقاعد على جانبها الطويل وباب زجاجي يطل على الزرع.",
+          "en": "An upper gallery looks down into the seating area. In the kitchen, the island brings the sink and four counter seats together within sight of planting beyond the glass door.",
+          "de": "Von der Galerie im Obergeschoss fällt der Blick auf die Sitzgruppe. In der Küche liegen Spüle und vier Sitzplätze an einer Insel. Durch die Glastür sieht man ins Grüne."
         },
         {
-          "ar": "في الأعلى يستعيد البيت مساحة الأرض التي شغلها: تراسات مزروعة وجلسات مظللة ومسبح عائلي بإطلالة مفتوحة — طابق كامل للعيش في الهواء الطلق.",
-          "en": "Above, the house reclaims the ground it occupies: planted terraces, shaded sitting areas and a family pool with an open view — a full storey of open-air living.", "de": "Auf dem Dach gewinnt das Haus die von ihm belegte Fläche zurück: bepflanzte Terrassen, schattige Sitzplätze und ein Familienpool mit offenem Blick bilden eine vollständige Ebene für das Leben im Freien."
+          "ar": "يمتد الزرع إلى التراسات العلوية، وتظهر أشجار النخيل فوق الواجهة الحجرية. ويضم تصميم السطح جلسات مظللة ببرجولات ومسبحاً عائلياً.",
+          "en": "Planting continues on the upper terraces, where palms rise above the stone street facade. The roof design includes pergola-shaded seating and a family pool.",
+          "de": "Die Bepflanzung setzt sich auf den oberen Terrassen fort. Über der Steinfassade zur Straße ragen Palmen auf. Auf dem Dach sind Sitzplätze unter Pergolen und ein Pool für die Familie vorgesehen."
         }
       ],
       "services": {
@@ -198,12 +205,14 @@
         {
           "src": "/assets/projects/montashiri-villa/gallery-01.webp",
           "w": 1672, "h": 941,
-          "alt": { "ar": "منظور أكسونومتري من الشارع يُظهر الكتل والبوابة والتراسات المزروعة", "en": "Street-corner axonometric showing the massing, gate and planted terraces", "de": "Axonometrie von der Straßenecke mit Baukörpern, Eingangstor und bepflanzten Terrassen" }
+          "alt": { "ar": "صالة معيشة بارتفاع طابقين مع ممر علوي وواجهة زجاجية تطل على فناء مزروع", "en": "Double-height living room with an upper gallery and broad windows onto a planted courtyard", "de": "Zweigeschossiger Wohnraum mit Galerie und breiten Fenstern zum bepflanzten Hof" },
+          "caption": { "ar": "تصور صالة المعيشة كما تبدو من الداخل باتجاه الفناء", "en": "Living room design viewed from inside the house towards the courtyard", "de": "Entwurf des Wohnraums mit Blick aus dem Haus in den Hof" }
         },
         {
           "src": "/assets/projects/montashiri-villa/gallery-02.webp",
           "w": 1448, "h": 1086,
-          "alt": { "ar": "منظور علوي لسطح الفيلا يُظهر المسبح والبرجولات والزراعة", "en": "Aerial view of the villa roofscape with pool, pergolas and planting", "de": "Blick von oben auf die Dachlandschaft der Villa mit Pool, Pergolen und Bepflanzung" }
+          "alt": { "ar": "جزيرة مطبخ فاتحة مع أربعة مقاعد أمام خزائن خشبية وباب زجاجي يطل على الزرع", "en": "Pale kitchen island with four stools, timber cabinets and a glazed door overlooking planting", "de": "Helle Kücheninsel mit vier Hockern vor Holzschränken, daneben eine Glastür mit Blick ins Grüne" },
+          "caption": { "ar": "تصور المطبخ مع مقاعد الإفطار على جانب الجزيرة", "en": "Kitchen design with breakfast seating along the island", "de": "Küchenentwurf mit Frühstücksplätzen an der Insel" }
         }
       ]
     },
@@ -289,6 +298,7 @@
     },
     {
       "slug": "private-villa-renovation-chouf",
+      "relatedService": { "saudi": "villa-renovation-design-jeddah", "berlin": "hausumbau-berlin" },
       "relatedGuides": ["concept-design-vs-execution-drawings"],
       "featured": true,
       "placeholder": false,
@@ -298,30 +308,30 @@
       "location": { "ar": "الشوف، جبل لبنان", "en": "Chouf, Mount Lebanon", "de": "Chouf, Libanongebirge" },
       "status": { "ar": "اكتملت مخططات التنفيذ", "en": "Execution drawings completed", "de": "Ausführungsplanung abgeschlossen" },
       "excerpt": {
-        "ar": "إعادة تنظيم فيلا حجرية قائمة في الشوف عبر توثيق الوضع القائم، ومخططات الهدم والإنشاء، وحزمة معمارية مكتملة للتنفيذ.",
-        "en": "The reworking of an existing stone villa in Chouf through existing-condition documentation, demolition and construction plans, and a completed architectural execution package.", "de": "Die Neuordnung einer bestehenden Steinvilla im Chouf: Bestandsdokumentation, Abbruch- und Neubaupläne sowie eine abgeschlossene Ausführungsplanung für das Gebäude."
+        "ar": "تجديد فيلا حجرية في الشوف. توضح مخططات التنفيذ كيف يمكن تحويل المرآب إلى مساحة إفطار متصلة بالمطبخ وإضافة تراسات إلى البيت القائم.",
+        "en": "Renovation plans for a stone villa in Chouf, Lebanon. Compare the existing ground floor with a proposal to turn the garage into a breakfast area and add terraces.",
+        "de": "Umbau einer Steinvilla im Chouf, Libanon. Bestandsplan und Entwurf zeigen, wie aus der Garage ein Frühstücksplatz an der Küche wird und wo Terrassen hinzukommen."
       },
       "thesis": {
-        "ar": "كيف يمكن لفيلا حجرية قائمة أن تستجيب لحياة عائلية معاصرة من دون أن تفقد ما يمنحها طابعها؟ يبدأ المشروع بقراءة دقيقة للمبنى، ثم يفصل كل تدخل بوضوح بين الوضع القائم والهدم والإنشاء والتوزيع المفروش.",
-        "en": "How can an existing stone villa support contemporary family life without losing the character that defines it? The project begins with a precise reading of the building, then separates every intervention clearly across existing, demolition, construction and furnished plans.", "de": "Wie kann eine bestehende Steinvilla zeitgemäßes Familienleben ermöglichen und ihren Charakter bewahren? Das Projekt beginnt mit einer genauen Untersuchung des Gebäudes. Alle Eingriffe werden in Bestands-, Abbruch-, Neubau- und Möblierungsplänen nachvollziehbar dargestellt."
+        "ar": "في المخطط الأصلي للفيلا، يفصل جدار بين المرآب والمطبخ. يقترح التصميم فتح المساحتين على بعضهما ووضع طاولة الإفطار مكان المرآب، مع الإبقاء على غرفة الاستقبال وصالة العائلة في موقعيهما.",
+        "en": "In the original villa, a wall separates the garage from the kitchen. The proposal opens the two spaces to each other, with a breakfast table where the garage stood. The reception and family rooms keep their places on the ground floor.",
+        "de": "Im Bestand trennt eine Wand die Garage von der Küche. Der Entwurf verbindet die beiden Räume. Wo das Auto stand, ist jetzt ein Frühstückstisch vorgesehen. Empfangsraum und Familienwohnzimmer bleiben an ihrem Platz im Erdgeschoss."
       },
       "body": [
         {
-          "ar": "يعيد التصميم تنظيم الطابق الأرضي حول مطبخ ومساحة إفطار أكثر انفتاحاً، مع وضوح أكبر بين الاستقبال والمعيشة العائلية. وتضيف الفتحات والتراسات الجديدة مساحات خارجية محسوبة من دون تجاهل هيكل البيت القائم.",
-          "en": "The design reorganizes the ground floor around a more open kitchen and breakfast area, with a clearer relationship between reception and family living. New openings and terraces add measured outdoor space while working carefully with the existing structure.", "de": "Der Entwurf ordnet das Erdgeschoss um eine offenere Küche mit Frühstücksbereich neu und klärt die Beziehung zwischen Empfang und Familienwohnen. Neue Öffnungen und Terrassen ergänzen gezielte Außenräume unter sorgfältiger Berücksichtigung der bestehenden Gebäudestruktur."
+          "ar": "توضح أربعة مخططات للطابق نفسه مراحل هذا التغيير. يبين الأول توزيع الغرف القائم، ثم تظهر بالأصفر الجدران المقرر إزالتها وبالأحمر الأعمال الجديدة. وفي المخطط المفروش تتضح علاقة طاولة الإفطار بجزيرة المطبخ.",
+          "en": "Four plans trace that change on the same floor. The first records the existing rooms. Yellow marks the elements to remove on the demolition plan and red marks the new work on the construction plan. The furnished layout places the breakfast table beside the kitchen island.",
+          "de": "Vier Grundrisse machen den Eingriff im Erdgeschoss nachvollziehbar. Der erste zeigt den Bestand. Im Abbruchplan sind die zu entfernenden Bauteile gelb markiert, im Umbauplan die neuen Bauteile rot. Der Möblierungsplan zeigt den Frühstückstisch neben der Kücheninsel."
         },
         {
-          "ar": "تُظهر المقاطع والمناظير الأكسونومترية المتقابلة الفرق بين المبنى القائم والمقترح، فيما تحوّل مخططات الهدم والإنشاء القرارات التصميمية إلى حزمة معمارية واضحة يمكن للاستشاريين والمقاولين البناء عليها.",
-          "en": "Paired sections and axonometric views make the existing-to-proposed transformation legible, while demolition and construction plans translate the design decisions into a clear architectural package for consultants and contractors to build upon.", "de": "Gegenübergestellte Schnitte und Axonometrien zeigen die Veränderung vom Bestand zum Entwurf. Abbruch- und Neubaupläne übersetzen die Entwurfsentscheidungen in ein klares Planungspaket als Grundlage für Fachplaner und ausführende Unternehmen."
+          "ar": "عند المدخل يقترح التصميم فتحة مقوّسة بارتفاع طابقين وتراساً فوق المرآب السابق. ومن الجهة المقابلة تظهر الشرفات وفتحاتها الجديدة. اكتملت المخططات التنفيذية، وتعرض المناظير الشكل المقترح للبيت.",
+          "en": "At the entrance, the design introduces a two-storey arch and a terrace over the former garage. The opposite view shows how the balconies and new openings meet the side facade. The execution drawings are complete. The exterior views illustrate the proposal.",
+          "de": "Am Eingang sieht der Entwurf eine zweigeschossige Bogenöffnung und eine Terrasse über der bisherigen Garage vor. Die Gegenansicht zeigt die Balkone und neuen Öffnungen an der Seitenfassade. Die Ausführungsplanung ist abgeschlossen. Die Außenansichten zeigen den Entwurf."
         }
       ],
       "services": {
         "ar": ["دراسة الوضع القائم", "تصميم التجديد المعماري", "مخططات الهدم والإنشاء", "مخططات تنفيذ معمارية"],
         "en": ["Existing-condition study", "Architectural renovation design", "Demolition & construction plans", "Architectural execution drawings"], "de": ["Bestandsanalyse","Entwurfsplanung für den Umbau","Abbruch- und Neubaupläne","Ausführungsplanung für das Gebäude"]
-      },
-      "relatedService": {
-        "slug": "villa-renovation-design-jeddah",
-        "label": { "ar": "خدمة تجديد الفلل ومخططات التنفيذ", "en": "Villa renovation & execution-drawing service", "de": "Umbauplanung und Ausführungszeichnungen" }
       },
       "cover": {
         "src": "/assets/projects/private-villa-renovation-chouf/cover.webp",
@@ -329,8 +339,9 @@
         "fit": "contain",
         "alt": {
           "ar": "تصور معماري لتجديد فيلا حجرية لبنانية بشرفات وتراسات جديدة في الشوف",
-          "en": "Architectural visualization of a renovated Lebanese stone villa with new balconies and terraces in Chouf", "de": "Visualisierung einer umgebauten libanesischen Steinvilla mit neuen Balkonen und Terrassen im Chouf"
-        }
+          "en": "Rendering of the proposed stone villa renovation in Chouf with an arched entrance, balconies and terraces", "de": "Visualisierung des geplanten Umbaus der Steinvilla im Chouf mit Bogeneingang, Balkonen und Terrassen"
+        },
+        "caption": { "ar": "تصور الواجهة الحجرية والمدخل بعد التجديد المقترح", "en": "Proposed stone facade and entrance", "de": "Entwurf für die Steinfassade und den Eingang" }
       },
       "gallery": [
         {
@@ -338,7 +349,7 @@
           "w": 1600, "h": 1192,
           "layout": "half",
           "alt": { "ar": "مخطط الطابق الأرضي للفيلا قبل التجديد", "en": "Ground-floor plan of the villa before renovation", "de": "Erdgeschossgrundriss der Villa vor dem Umbau" },
-          "caption": { "ar": "الوضع القائم — مخطط الطابق الأرضي", "en": "Existing condition — ground-floor plan", "de": "Bestand — Erdgeschossgrundriss" }
+          "caption": { "ar": "الوضع القائم. المرآب يجاور المطبخ المغلق.", "en": "Existing ground floor. The garage adjoins the enclosed kitchen.", "de": "Bestand im Erdgeschoss. Die Garage grenzt an die geschlossene Küche." }
         },
         {
           "src": "/assets/projects/private-villa-renovation-chouf/gallery-02.webp",
@@ -359,7 +370,7 @@
           "w": 1600, "h": 1192,
           "layout": "half",
           "alt": { "ar": "المخطط المفروش المقترح للطابق الأرضي بعد إعادة تنظيم مساحات المعيشة", "en": "Proposed furnished ground-floor plan after reorganizing the living spaces", "de": "Vorgeschlagener möblierter Erdgeschossgrundriss nach Neuordnung der Wohnräume" },
-          "caption": { "ar": "المخطط المفروش — إعادة تنظيم مساحات المعيشة اليومية", "en": "Furnished layout — reorganized daily living", "de": "Möblierungsplan — neu geordneter Wohnalltag" }
+          "caption": { "ar": "المخطط المفروش. تتسع مساحة المرآب السابق لطاولة الإفطار بجوار المطبخ.", "en": "Furnished plan. The breakfast table occupies the former garage beside the kitchen.", "de": "Möblierungsplan. Der Frühstückstisch erhält seinen Platz in der ehemaligen Garage neben der Küche." }
         },
         {
           "src": "/assets/projects/private-villa-renovation-chouf/gallery-05.webp",
@@ -371,29 +382,29 @@
           "src": "/assets/projects/private-villa-renovation-chouf/gallery-06.webp",
           "w": 1600, "h": 1192,
           "layout": "half",
-          "alt": { "ar": "منظور أكسونومتري أول للفيلا في وضعها القائم", "en": "First axonometric view of the villa in its existing condition", "de": "Erste Axonometrie der Villa im bestehenden Zustand" },
-          "caption": { "ar": "المنظور الأول — الوضع القائم", "en": "First view — existing", "de": "Erste Ansicht — Bestand" }
+          "alt": { "ar": "منظور للفيلا القائمة يظهر سقف المرآب المائل إلى جانب درج المدخل", "en": "Model of the existing villa with a pitched garage roof beside the entrance steps", "de": "Bestandsmodell mit geneigtem Garagendach neben der Eingangstreppe" },
+          "caption": { "ar": "المدخل القائم وسقف المرآب المجاور له", "en": "Existing entrance and garage roof", "de": "Eingang und Garagendach im Bestand" }
         },
         {
           "src": "/assets/projects/private-villa-renovation-chouf/gallery-07.webp",
           "w": 1600, "h": 1192,
           "layout": "half",
-          "alt": { "ar": "منظور أكسونومتري أول للتجديد المقترح مع التراسات والفتحات الجديدة", "en": "First axonometric view of the proposed renovation with new terraces and openings", "de": "Erste Axonometrie des vorgeschlagenen Umbaus mit neuen Terrassen und Öffnungen" },
-          "caption": { "ar": "المنظور الأول — المقترح", "en": "First view — proposed", "de": "Erste Ansicht — Entwurf" }
+          "alt": { "ar": "منظور مقترح من الزاوية نفسها يبين تراساً فوق المرآب السابق ومدخلاً مقوّساً بارتفاع طابقين", "en": "Proposed entrance from the same angle with a terrace over the former garage and a two-storey arch", "de": "Entwurf aus gleichem Blickwinkel mit Terrasse über der bisherigen Garage und zweigeschossigem Eingangsbogen" },
+          "caption": { "ar": "المدخل المقترح والتراس فوق المرآب السابق", "en": "Proposed entrance and terrace above the former garage", "de": "Geplanter Eingang und Terrasse über der bisherigen Garage" }
         },
         {
           "src": "/assets/projects/private-villa-renovation-chouf/gallery-08.webp",
           "w": 1600, "h": 1192,
           "layout": "half",
-          "alt": { "ar": "منظور أكسونومتري ثانٍ للواجهة الجانبية في الوضع القائم", "en": "Second axonometric view of the side facade in its existing condition", "de": "Zweite Axonometrie der seitlichen Bestandsfassade" },
-          "caption": { "ar": "المنظور الثاني — الوضع القائم", "en": "Second view — existing", "de": "Zweite Ansicht — Bestand" }
+          "alt": { "ar": "منظور للواجهة الجانبية القائمة مع بروزين صغيرين أسفل فتحات الطابق العلوي", "en": "Existing side facade with two small projecting slabs beneath the upper openings", "de": "Seitenfassade im Bestand mit zwei kleinen auskragenden Platten unter den Öffnungen im Obergeschoss" },
+          "caption": { "ar": "الفتحات العلوية في الواجهة الجانبية القائمة", "en": "Upper-floor openings on the existing side facade", "de": "Öffnungen im Obergeschoss der bestehenden Seitenfassade" }
         },
         {
           "src": "/assets/projects/private-villa-renovation-chouf/gallery-09.webp",
           "w": 1600, "h": 1192,
           "layout": "half",
-          "alt": { "ar": "منظور أكسونومتري ثانٍ للتجديد المقترح مع شرفات وتفاصيل حجرية", "en": "Second axonometric view of the proposed renovation with balconies and stone detailing", "de": "Zweite Axonometrie des vorgeschlagenen Umbaus mit Balkonen und Steindetails" },
-          "caption": { "ar": "المنظور الثاني — المقترح", "en": "Second view — proposed", "de": "Zweite Ansicht — Entwurf" }
+          "alt": { "ar": "منظور مقترح للواجهة الجانبية بشرفات ذات درابزين ودرج خارجي يصعد إلى التراس", "en": "Proposed side facade with railed balconies and an outdoor stair rising to the terrace", "de": "Geplante Seitenfassade mit Balkongeländern und einer Außentreppe zur Terrasse" },
+          "caption": { "ar": "الشرفات والدرج الخارجي في التصميم المقترح", "en": "Proposed balconies and stair to the terrace", "de": "Geplante Balkone und Außentreppe zur Terrasse" }
         }
       ]
     },
