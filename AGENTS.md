@@ -34,7 +34,8 @@ the spirit of high-end architecture studios — while keeping the conversion pat
 
 - Palette is locked to the tokens in `site.css`: warm white `#faf8f4`,
   charcoal `#1e1c19`, stone `#f2eee7`, warm grey `#857f74`, hairlines at
-  ~13% ink. No saturated colors, no gradients, no shadows, no rounded corners.
+  ~13% ink. No saturated colors, gradients or shadows. Keep corners square
+  except on the outlined homepage button that opens the project inquiry form.
 - Type: AR display Amiri / body IBM Plex Sans Arabic; EN/DE display Cormorant
   Garamond / body Inter. Never letterspace Arabic. Uppercase/letterspacing
   effects are limited to English/German selectors; never apply them to Arabic.
@@ -74,7 +75,8 @@ the spirit of high-end architecture studios — while keeping the conversion pat
 
 - FormSubmit endpoint: `https://formsubmit.co/ajax/wael.bousmael@gmail.com`
   and the form's field set (name, phone, email, location, maps, budget).
-- WhatsApp number `+966538060383` and the pre-filled bilingual message.
+- WhatsApp number `+966538060383`. The homepage hero consultation button opens
+  an empty conversation. Other WhatsApp links use the localized pre-filled message.
 - Dormant Google Maps Places autocomplete (`window.GOOGLE_MAPS_API_KEY` hook).
 - `manifest.webmanifest`, `/assets/icons/*`, `CNAME`, `.nojekyll`.
 - JSON-LD business claims: phone, email, address (Jeddah), geo, opening hours

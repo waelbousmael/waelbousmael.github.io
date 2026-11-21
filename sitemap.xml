@@ -162,6 +162,36 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/journal/"/>
   </url>
   <url>
+    <loc>https://wbstudio.xyz/work/khamis-mushait-villa/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/work/khamis-mushait-villa/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/khamis-mushait-villa/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/khamis-mushait-villa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/khamis-mushait-villa/"/>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/cover.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/gallery-01.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/gallery-02.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://wbstudio.xyz/en/work/khamis-mushait-villa/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/work/khamis-mushait-villa/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/khamis-mushait-villa/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/khamis-mushait-villa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/khamis-mushait-villa/"/>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/cover.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/gallery-01.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/gallery-02.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://wbstudio.xyz/de/projekte/khamis-mushait-villa/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/work/khamis-mushait-villa/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/khamis-mushait-villa/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/khamis-mushait-villa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/khamis-mushait-villa/"/>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/cover.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/gallery-01.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/gallery-02.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://wbstudio.xyz/work/hillside-villa-aley/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/work/hillside-villa-aley/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/hillside-villa-aley/"/>
@@ -214,36 +244,6 @@
     <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-09.webp</image:loc></image:image>
     <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-01.webp</image:loc></image:image>
     <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-02.webp</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://wbstudio.xyz/work/khamis-mushait-villa/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/work/khamis-mushait-villa/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/khamis-mushait-villa/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/khamis-mushait-villa/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/khamis-mushait-villa/"/>
-    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/cover.webp</image:loc></image:image>
-    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/gallery-01.webp</image:loc></image:image>
-    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/gallery-02.webp</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://wbstudio.xyz/en/work/khamis-mushait-villa/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/work/khamis-mushait-villa/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/khamis-mushait-villa/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/khamis-mushait-villa/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/khamis-mushait-villa/"/>
-    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/cover.webp</image:loc></image:image>
-    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/gallery-01.webp</image:loc></image:image>
-    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/gallery-02.webp</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://wbstudio.xyz/de/projekte/khamis-mushait-villa/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/work/khamis-mushait-villa/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/khamis-mushait-villa/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/khamis-mushait-villa/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/khamis-mushait-villa/"/>
-    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/cover.webp</image:loc></image:image>
-    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/gallery-01.webp</image:loc></image:image>
-    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/gallery-02.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://wbstudio.xyz/work/montashiri-villa/</loc>

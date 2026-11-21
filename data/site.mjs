@@ -83,7 +83,6 @@ const site = {
       ar: 'مهندس معماري لتصميم الفلل والمنازل الخاصة في جدة والسعودية والخليج. مكالمة مجانية، تصور مبدئي مجاني، واتفاق مدفوع فقط بعد وضوح الرؤية والتوافق.',
       en: 'Private villa and home design in Jeddah and the Gulf, from concept to construction drawings. Free call and preliminary concept before any paid agreement.'
     },
-    eyebrow: { ar: 'عمارة الفلل الخاصة — جدة', en: 'Private villa architecture — Jeddah' },
     h1: {
       ar: 'نصمم فلل ومنازل خاصة في جدة والخليج',
       en: 'We design private villas and homes in Jeddah and the Gulf'
@@ -92,8 +91,8 @@ const site = {
       ar: 'تصميم معماري يقوده وائل بو سماعيل، يراعي خصوصية عائلتك وضوء البيت وتفاصيل الحياة اليومية — من الفكرة إلى مخططات التنفيذ.',
       en: 'Architecture led by Wael Bousmael, shaped around your family’s privacy, daylight and daily life — from concept to construction drawings.'
     },
-    ctaWhatsapp: { ar: 'احجز مكالمة مجانية عبر واتساب', en: 'Book a free call on WhatsApp' },
-    ctaWork: { ar: 'شاهد الأعمال', en: 'View the work' },
+    ctaWhatsapp: { ar: 'احجز استشارة مجانية', en: 'Book free consultation' },
+    ctaForm: { ar: 'أرسل تفاصيل مشروعك', en: 'Share your project details' },
     trustItems: [
       { ar: 'خبرة تتجاوز 12 عاماً', en: '12+ years of experience' },
       { ar: 'معماري ومنسق BIM', en: 'Architect & BIM coordinator' },
@@ -122,12 +121,12 @@ const site = {
         href: '/villa-renovation-design-jeddah/'
       }
     ],
-    spotlightProject: 'hillside-villa-aley',
+    spotlightProject: 'khamis-mushait-villa',
     heroImage: {
-      src: '/assets/projects/hillside-villa-aley/cover.webp', w: 1408, h: 880,
+      src: '/assets/projects/khamis-mushait-villa/gallery-02.webp', w: 1600, h: 900,
       alt: {
-        ar: 'الواجهة المقابلة لفيلا قيد التنفيذ في قضاء عاليه — تصميم مقترح بكساء حجري ودرج خارجي',
-        en: 'Proposed opposite facade of a hillside villa under construction in Aley District, with stone cladding and external stairs'
+        ar: 'تصوّر ليلي لفيلا خميس مشيط من البوابة الخشبية، مع إنارة لحافة السقف والدرج المنحني أمام الشرفة',
+        en: 'Night rendering of Khamis Mushait Villa through the timber gate, with a lit roof edge above the curved stair and terrace'
       }
     },
     selectedTitle: { ar: 'أعمال مختارة', en: 'Selected work' },
@@ -351,6 +350,7 @@ const site = {
       en: ['Below SAR 1M', 'SAR 1M to 2M', 'SAR 2M to 4M', 'Above SAR 4M']
     },
     submit: { ar: 'أرسل تفاصيل الأرض', en: 'Send plot details' },
+    sending: { ar: 'جارٍ إرسال طلبك…', en: 'Sending your request…', de: 'Ihre Anfrage wird gesendet…' },
     success: {
       ar: 'تم إرسال طلبك بنجاح. سنعاود التواصل معك خلال يومين عمل.',
       en: 'Your request was sent successfully. We will get back to you within two business days.'
@@ -1014,16 +1014,15 @@ const germanCopy = {
   offer: 'Wir beginnen mit einem kostenlosen Erstgespräch und einem kostenlosen ersten Entwurf. Eine kostenpflichtige Beauftragung erfolgt erst, wenn die Richtung klar und gemeinsam abgestimmt ist.',
   'home.seoTitle': 'Hausplanung & Hausumbau Berlin | WB Studio',
   'home.seoDesc': 'Hausplanung und Umbau in Berlin mit freiem Planer: klare Grundrisse und persönliche Begleitung. Kostenloses Erstgespräch und erster Entwurf vor Beauftragung.',
-  'home.eyebrow': 'Private Häuser und Umbauten — Berlin',
   'home.h1': 'Hausplanung und Umbau in Berlin.',
   'home.positioning': 'Persönliche Planung für Ihr neues Zuhause oder den Umbau Ihres Hauses — mit klaren Grundrissen und einem Blick für Ihren Alltag. Digital und vor Ort nach Vereinbarung.',
-  'home.ctaWhatsapp': 'Kostenloses Erstgespräch über WhatsApp',
-  'home.ctaWork': 'Projekte ansehen',
+  'home.ctaWhatsapp': 'Kostenlose Beratung buchen',
+  'home.ctaForm': 'Projekt vorstellen',
   'home.trustItems.0': 'Über 12 Jahre Erfahrung',
   'home.trustItems.1': 'Freier Planer und BIM-Koordinator',
   'home.trustItems.2': 'Berlin — digital und vor Ort nach Vereinbarung',
   'home.trustItems.3': 'Vom ersten Entwurf bis zur Ausführungsplanung',
-  'home.heroImage.alt': 'Geplante gegenüberliegende Fassade der Villa im Bezirk Aley mit Naturstein und Außentreppe — das Projekt befindet sich im Bau',
+  'home.heroImage.alt': 'Nachtansicht der geplanten Villa in Khamis Mushait durch das Holztor, mit beleuchteter Dachkante über der geschwungenen Treppe und der Terrasse',
   'home.selectedTitle': 'Ausgewählte Projekte',
   'home.allWork': 'Alle Projekte',
   'home.approachTitle': 'Der Ablauf',
@@ -1282,7 +1281,7 @@ site.berlin = {
         { h: { de: 'Entwurf — Angaben noch zu vervollständigen' }, p: { de: 'Dieser Text beschreibt die derzeit erkennbaren Funktionen der Website und ist keine vollständige Datenschutzerklärung. Die konkreten Anbieterbedingungen, Rechtsgrundlagen, Speicherfristen und gegebenenfalls Angaben zu Drittlandübermittlungen müssen vor Veröffentlichung geprüft und ergänzt werden. Verantwortlicher laut vorliegender Registrierung: Wael Bousmael, WB Studio, Flughafenstraße 66, 12049 Berlin, Deutschland. Kontakt für Rückfragen: w.bousmael@wbstudio.xyz. Die Aktualität dieser Anschrift ist vor Veröffentlichung zu bestätigen.' } },
         { h: { de: 'Website und Schriftarten' }, p: { de: 'Die statischen Seiten werden über GitHub Pages bereitgestellt. Beim Abruf erhält der Hostinganbieter technisch erforderliche Verbindungsdaten. Die Website lädt Schriftarten von Google Fonts; dabei stellt der Browser Verbindungen zu Google her. Die Website bindet keine Analysewerkzeuge ein.' } },
         { h: { de: 'Kontaktformular' }, p: { de: 'Das Formular übermittelt Name, Telefonnummer, E-Mail-Adresse, Standort des Hauses oder Grundstücks, einen gegebenenfalls eingetragenen Google-Maps-Link und das gegebenenfalls eingetragene Budget über FormSubmit an wael.bousmael@gmail.com. Die Angaben dienen der Bearbeitung Ihrer Projektanfrage. Die Datenschutzhinweise und Verarbeitungsbedingungen von FormSubmit sowie die tatsächlichen Speicherfristen sind vor Freigabe zu prüfen und hier zu ergänzen.' } },
-        { h: { de: 'WhatsApp und Karten' }, p: { de: 'Die WhatsApp-Schaltflächen öffnen auf Ihre Auswahl einen externen WhatsApp-Link mit einem vorbereiteten Nachrichtentext. Für eine Nachricht wählen Sie diesen Kontaktweg selbst. Das Formular enthält ein Feld für einen Google-Maps-Link; allein das Eintragen eines Links bindet keine Karte ein. Eine technisch vorbereitete Google-Maps-Adressvervollständigung ist ohne API-Schlüssel inaktiv. Bei einer späteren Aktivierung müssen die Datenschutzhinweise vorab angepasst werden.' } },
+        { h: { de: 'WhatsApp und Karten' }, p: { de: 'Die Schaltfläche für das Erstgespräch auf der Startseite öffnet einen leeren WhatsApp-Chat. Andere WhatsApp-Links enthalten einen Nachrichtenvorschlag, den Sie ändern können. Für eine Nachricht wählen Sie diesen Kontaktweg selbst. Das Formular enthält ein Feld für einen Google-Maps-Link; allein das Eintragen eines Links bindet keine Karte ein. Eine technisch vorbereitete Google-Maps-Adressvervollständigung ist ohne API-Schlüssel inaktiv. Bei einer späteren Aktivierung müssen die Datenschutzhinweise vorab angepasst werden.' } },
         { h: { de: 'Gespeicherte Sprache und offene Angaben' }, p: { de: 'Die Website kann Ihre gewählte Sprache lokal im Browser speichern. Es werden dafür keine Analysecookies eingesetzt. Angaben zu Betroffenenrechten, zuständiger Aufsichtsbehörde, Rechtsgrundlagen und Aufbewahrungsdauer müssen anhand der bestätigten Verantwortlichen- und Anbieterangaben vervollständigt werden.' } }
       ]
     }

@@ -388,12 +388,13 @@ const assertEditorialCss = (text, requireLockedTokens = false) => {
   for (const match of source.matchAll(/--radius(?:-sm|-pill)?\s*:\s*([^;{}]+)/gi)) {
     assert.ok(isZeroValue(match[1].trim()), `CSS radius token must be zero-valued: ${match[0].trim()}`);
   }
-  for (const match of source.matchAll(/\bborder(?:-[a-z]+)*-radius\s*:\s*([^;{}]+)/gi)) {
-    const values = match[1].trim().split(/\s+/);
+  for (const { selector, property, value } of declarations) {
+    if (!/^border(?:-[a-z]+)*-radius$/.test(property) || selector === '.hero-action-secondary') continue;
+    const values = value.trim().split(/\s+/);
     const isZeroRadius = values.every((value) =>
       isZeroValue(value) || /^var\(--radius(?:-sm|-pill)?\)$/i.test(value)
     );
-    assert.ok(isZeroRadius, `CSS radius must resolve to zero: ${match[0].trim()}`);
+    assert.ok(isZeroRadius, `CSS radius must resolve to zero: ${selector} { ${property}: ${value} }`);
   }
 
   const lockedColors = new Map([
@@ -1168,7 +1169,7 @@ has(homeEn, '<html lang="en" dir="ltr">', 'Default English home must use LTR Eng
 for (const [label, page] of [['Arabic', homeAr], ['English', homeEn]]) {
   for (const className of [
     'language-picker',
-    'home-hero-grid',
+    'home-hero',
     'home-hero-copy',
     'home-hero-media',
     'trust-strip',
@@ -1419,7 +1420,8 @@ assert.match(withoutBlockComments(contactJs), /const\s+apiKey\s*=\s*typeof\s+win
 assert.match(withoutBlockComments(contactJs), /setCustomValidity\(\s*validPhone\s*\?\s*''\s*:\s*form\.dataset\.msgPhone\s*\)/, 'Phone validation must use the rendered localized form message');
 assert.doesNotMatch(withoutBlockComments(css), /(?:repeating-)?(?:linear|radial|conic)-gradient\s*\(/i, 'CSS must not contain gradients');
 for (const selector of [
-  '.home-hero-grid',
+  '.home-hero-media',
+  '.hero-actions',
   '.trust-strip',
   '.home-work-grid',
   '.home-services-grid',

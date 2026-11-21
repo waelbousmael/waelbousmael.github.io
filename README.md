@@ -95,7 +95,7 @@ build locally and commit the output.
 
 Delete (or move) the entry in `data/projects.json`, delete the image folder,
 rebuild. Order on the Work page = array order. Homepage shows the first three
-projects with `"featured": true` (the first renders full-width).
+projects with `"featured": true`, with the first in the largest card.
 
 ## Replace placeholder images with your own
 
@@ -124,7 +124,7 @@ swap paths in `data/projects.json`, set `placeholder: false`, update
 ## Assets & licensing
 
 The portfolio includes studio projects and clearly labeled concept studies.
-The homepage hero uses the owner's Hillside Villa — Aley visualization.
+The homepage opens with WB Studio’s night rendering of Khamis Mushait Villa.
 Concept-study reference imagery uses Unsplash material (free commercial license).
 Studio project imagery is supplied by the owner. The full
 register: `assets/licenses/LICENSES.md`; the public credits pages:
@@ -133,7 +133,9 @@ register: `assets/licenses/LICENSES.md`; the public credits pages:
 ## Contact plumbing (do not break)
 
 - Lead form posts to FormSubmit: `https://formsubmit.co/ajax/wael.bousmael@gmail.com`
-- WhatsApp: `+966 53 806 0383` with a pre-filled bilingual message
+- The consultation button on the homepage opens a blank WhatsApp conversation
+  with `+966 53 806 0383`. Other WhatsApp links include the localized message.
+  The outlined homepage button opens the inquiry form in the visitor’s language.
 - Direct calls: Saudi Arabia `+966 53 806 0383`, Germany `+49 176 83223821`,
   Lebanon `+961 3 038 248`. All three appear with translated country labels in
   contact pages and footers; WhatsApp always uses the Saudi number.
@@ -153,10 +155,10 @@ cover and gallery images on each studio project page. Legal drafts remain noinde
 
 ## Leading project and construction comparisons
 
-Hillside Villa — Aley leads the portfolio in every language. Its current
-construction photographs, proposed exterior/interior visualizations, and cropped
-2024 drawings are distinct and captioned. `site.home.spotlightProject` selects
-the homepage project link, while `site.home.heroImage` supplies its owned image.
-Project data order controls portfolio order in all languages. Optional
+Khamis Mushait Villa leads the portfolio in every language.
+`site.home.spotlightProject` selects the homepage project link and
+`site.home.heroImage` supplies the night view. Project data order controls
+portfolio order in all languages. The Hillside Villa — Aley page pairs
+construction photographs with proposed visualizations and 2024 drawings. Optional
 `comparison` data supplies current/future image pairs; cover captions identify
 rendered design intent. Original PDFs and unprocessed photos are not published.

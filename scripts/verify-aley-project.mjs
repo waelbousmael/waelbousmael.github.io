@@ -9,32 +9,44 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (url) => fs.readFileSync(path.join(root, url, 'index.html'), 'utf8');
 const { projects } = JSON.parse(fs.readFileSync(path.join(root, 'data/projects.json'), 'utf8'));
 const slug = 'hillside-villa-aley';
+const featuredSlug = 'khamis-mushait-villa';
+const nightImage = `/assets/projects/${featuredSlug}/gallery-02.webp`;
 const locales = [
-  { lang: 'en', home: '/', work: '/en/work/', project: `/en/work/${slug}/`, current: 'Under construction', future: 'Proposed design' },
-  { lang: 'ar', home: '/ar/', work: '/work/', project: `/work/${slug}/`, current: 'قيد التنفيذ', future: 'التصميم المقترح' },
-  { lang: 'de', home: '/de/', work: '/de/projekte/', project: `/de/projekte/${slug}/`, current: 'Im Bau', future: 'Geplanter Entwurf' }
+  { lang: 'en', home: '/', work: '/en/work/', contact: '/en/contact/', project: `/en/work/${slug}/`, current: 'Under construction', future: 'Proposed design' },
+  { lang: 'ar', home: '/ar/', work: '/work/', contact: '/contact/', project: `/work/${slug}/`, current: 'قيد التنفيذ', future: 'التصميم المقترح' },
+  { lang: 'de', home: '/de/', work: '/de/projekte/', contact: '/de/kontakt/', project: `/de/projekte/${slug}/`, current: 'Im Bau', future: 'Geplanter Entwurf' }
 ];
 
-test('Aley villa leads the real portfolio in every language', () => {
-  assert.equal(projects[0].slug, slug);
+test('Khamis Mushait Villa leads the real portfolio in every language', () => {
+  assert.equal(projects[0].slug, featuredSlug);
   assert.equal(projects[0].placeholder, false);
   assert.equal(projects[0].featured, true);
   for (const locale of locales) {
     for (const url of [locale.home, locale.work]) {
       const first = read(url).match(/<a class="project-card[^>]*href="([^"]+)"/);
-      assert.equal(first?.[1], locale.project, `${locale.lang} ${url}: villa must be first`);
+      assert.equal(first?.[1], `${locale.work}${featuredSlug}/`, `${locale.lang} ${url}: villa must be first`);
     }
   }
 });
 
-test('homepage spotlight links the actual villa and identifies its design image', () => {
+test('the opening night view offers a blank WhatsApp conversation and the localized inquiry form', () => {
   for (const locale of locales) {
-    const hero = read(locale.home).match(/<div class="home-hero-media">([\s\S]*?)<\/div>/)?.[1];
-    assert.ok(hero?.includes(`href="${locale.project}"`), `${locale.lang}: homepage image needs project link`);
-    assert.ok(hero.includes('/assets/projects/hillside-villa-aley/cover.webp'));
-    assert.ok(hero.includes(locale.current));
-    assert.ok(hero.includes(locale.future));
-    assert.ok(read(locale.home).includes('property="og:image" content="https://wbstudio.xyz/assets/projects/hillside-villa-aley/cover.webp"'));
+    for (const url of locale.lang === 'en' ? [locale.home, '/en/'] : [locale.home]) {
+      const html = read(url);
+      const hero = html.match(/<main\b[^>]*>\s*<section\b[^>]*class="home-hero"[^>]*>([\s\S]*?)<\/section>/)?.[1];
+      assert.ok(hero, `${url}: opening section must contain the hero`);
+      const firstImage = hero.match(/<img\b[^>]*>/)?.[0] || '';
+      assert.ok(firstImage.includes(`src="${nightImage}"`), `${url}: show the night rendering first`);
+      assert.match(firstImage, /\bsizes="\(max-width: \d+px\) max\(100vw, [^"]+\), 100vw"/,
+        `${url}: request enough image detail for the mobile crop and full desktop width`);
+      assert.match(firstImage, /\bfetchpriority="high"/);
+      assert.ok(hero.includes(`href="${locale.work}${featuredSlug}/"`), `${url}: open the pictured villa's case study`);
+      const actions = hero.match(/<div class="hero-actions">([\s\S]*?)<\/div>/)?.[1] || '';
+      const targets = [...actions.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)].map((match) => match[1]);
+      assert.deepEqual(targets, ['https://wa.me/966538060383', `${locale.contact}#leadForm`], `${url}: hero actions`);
+      assert.match(read(locale.contact), /<form\b[^>]*\bid="leadForm"/);
+      assert.ok(html.includes(`property="og:image" content="https://wbstudio.xyz${nightImage}"`));
+    }
   }
 });
 

@@ -6,7 +6,7 @@ whenever an image is added, replaced, or removed.
 ## Studio work and concept studies
 
 WB Studio supplies the images for its own projects, including the homepage
-image of Hillside Villa in Aley. Their sources are recorded under Other assets.
+night view of Khamis Mushait Villa. Their sources are recorded under Other assets.
 Portfolio entries marked `"placeholder": true` in `data/projects.json` use
 the reference photographs listed in the Unsplash register below.
 

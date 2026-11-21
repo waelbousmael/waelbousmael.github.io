@@ -23,7 +23,6 @@ const imageVariants = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'image-
 const IMAGE_SIZES = {
   full: '(min-width: 1200px) 1120px, (min-width: 1000px) calc(100vw - 80px), calc(100vw - 8vw)',
   half: '(max-width: 860px) calc(100vw - 2.5rem), (min-width: 1200px) 540px, 46vw',
-  hero: '(max-width: 860px) 100vw, (min-width: 1200px) 500px, 43vw',
   portrait: '(max-width: 860px) min(420px, calc(100vw - 2.5rem)), 380px'
 };
 
@@ -420,6 +419,7 @@ function fmtDate(iso, lang) {
 function renderHome(lang) {
   const h = site.home;
   const spotlight = projects.find((p) => p.slug === h.spotlightProject);
+  if (!spotlight) throw new Error(`Unknown homepage project: ${h.spotlightProject}`);
   const featured = projectsFor(lang).filter((p) => p.featured).slice(0, 3);
   const steps = site.approach.steps;
   return `${head({
@@ -433,27 +433,28 @@ function renderHome(lang) {
 <body data-page="home">
 ${header(lang, null)}
 <main id="main">
-  <section class="home-hero" data-reveal>
-    <div class="wrap home-hero-grid">
-      <div class="home-hero-copy">
-        <p class="eyebrow">${esc(t(h.eyebrow, lang))}</p>
-        <h1 class="display-xl">${esc(t(h.h1, lang))}</h1>
-        <p class="lead measure">${esc(t(h.positioning, lang))}</p>
-        <p class="offer measure">${esc(t(site.offer, lang))}</p>
-        <div class="cta-row">
-          <a class="btn btn-solid" href="${langPath(lang, '/contact/')}">${esc(ui('callCta', lang))}</a>
-          <a class="btn" href="${langPath(lang, '/work/')}">${esc(t(h.ctaWork, lang))}</a>
-        </div>
+  <section class="home-hero" aria-labelledby="home-title">
+    <div class="home-hero-media">
+      ${img(h.heroImage, lang, { eager: true, sizes: '(max-width: 600px) max(100vw, min(133.34svh, 227.56vw)), 100vw' })}
+      <div class="hero-actions">
+        <a class="btn hero-action-primary" href="https://wa.me/${site.whatsappNumber}" target="_blank" rel="noopener" aria-label="${esc(t(h.ctaWhatsapp, lang))} · ${esc(t(site.footer.whatsappLabel, lang))}">${esc(t(h.ctaWhatsapp, lang))}<span aria-hidden="true">↗</span></a>
+        <a class="btn hero-action-secondary" href="${langPath(lang, '/contact/')}#leadForm">${esc(t(h.ctaForm, lang))}</a>
       </div>
-      <div class="home-hero-media">
-        ${spotlight ? `<a class="home-featured-link" href="${langPath(lang, `/work/${spotlight.slug}/`)}">
-          ${img(h.heroImage, lang, { eager: true, sizes: IMAGE_SIZES.hero })}
-          <span class="hero-project-caption">
-            <strong>${esc(t(spotlight.title, lang))}</strong>
-            <span>${esc(t(spotlight.status, lang))}${spotlight.comparison ? ` · ${esc(t(spotlight.comparison.future.label, lang))}` : ''}</span>
-            <span class="text-link">${esc(t(site.work.viewProject, lang))} ${arrow(lang)}</span>
-          </span>
-        </a>` : img(h.heroImage, lang, { eager: true, sizes: IMAGE_SIZES.hero })}
+    </div>
+    <div class="wrap">
+      <a class="home-featured-link" href="${langPath(lang, `/work/${spotlight.slug}/`)}">
+        <span class="hero-project-caption">
+          <strong>${esc(t(spotlight.title, lang))}</strong>
+          <span>${esc(t(spotlight.status, lang))}</span>
+        </span>
+        <span class="text-link"><span class="hero-project-action-label">${esc(t(site.work.viewProject, lang))}</span> <span aria-hidden="true">${arrow(lang)}</span></span>
+      </a>
+      <div class="home-hero-grid home-hero-copy">
+        <h1 id="home-title" class="display-xl">${esc(t(h.h1, lang))}</h1>
+        <div>
+          <p class="lead measure">${esc(t(h.positioning, lang))}</p>
+          <p class="offer measure">${esc(t(site.offer, lang))}</p>
+        </div>
       </div>
     </div>
   </section>
@@ -827,6 +828,7 @@ ${header(lang, 'contact')}
 
         <button class="btn btn-solid" type="submit">${esc(t(f.submit, lang))}</button>
         <p id="formFeedback" class="form-feedback" aria-live="polite"
+           data-msg-sending="${esc(t(f.sending, lang))}"
            data-msg-success="${esc(t(f.success, lang))}"
            data-msg-error="${esc(t(f.error, lang))}"></p>
       </form>
