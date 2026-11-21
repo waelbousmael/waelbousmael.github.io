@@ -403,6 +403,7 @@ const assertEditorialCss = (text, requireLockedTokens = false) => {
     ['--ink', '#1e1c19'],
     ['--ink-soft', '#4a463f'],
     ['--muted', '#857f74'],
+    ['--accent', '#a65d3f'],
     ['--line', 'rgba(30,28,25,.13)'],
     ['--line-strong', 'rgba(30,28,25,.38)']
   ]);
@@ -1463,7 +1464,7 @@ assert.throws(
   /must not add motion/,
   'Direct-contact verifier must reject interaction motion'
 );
-assertCssDeclarations(css, ':focus-visible', { outline: '2px solid var(--ink)', 'outline-offset': '3px' }, 'Global focus CSS');
+assertCssDeclarations(css, ':focus-visible', { outline: '2px solid var(--accent)', 'outline-offset': '3px' }, 'Global focus CSS');
 assertCssDeclarations(css, '.landing-content-grid', { 'border-block-start': '1px solid var(--line-strong)' }, 'Landing content CSS');
 assertCssDeclarations(css, '.landing-section-row', {
   display: 'grid',

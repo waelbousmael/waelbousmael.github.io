@@ -166,3 +166,7 @@ rendered design intent. Original PDFs and unprocessed photos are not published.
 The two homepage actions form a centered vertical stack on desktop and mobile.
 Buttons and larger controls share an 18px curve, with 12px curves on compact
 controls, form fields and menus. These shapes use the radius tokens in `site.css`.
+
+Muted terracotta (`#a65d3f`) accents primary actions and selected interactive
+details. The homepage consultation button has a 50%-transparent terracotta fill;
+the secondary action is outline-only. Both keep fully opaque lettering.
