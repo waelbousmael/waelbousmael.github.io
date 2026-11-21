@@ -19,9 +19,9 @@
     .error-code { font: 400 clamp(5rem, 17vw, 9rem)/1 var(--font-display); margin-block: 2rem 1.25rem; }
     .recovery { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .35rem 1.5rem; padding-block: .8rem; border-block-start: 1px solid var(--line); }
     .recovery h2 { font-size: 1.28rem; }
-    .recovery nav { display: flex; flex-wrap: wrap; gap: 0 1rem; }
-    .recovery nav a { display: inline-flex; align-items: center; min-height: 2.75rem; font-size: .94rem; text-underline-offset: .22em; }
-    .recovery nav a:hover { color: var(--ink-soft); }
+    .recovery nav { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .recovery nav a { display: inline-flex; align-items: center; min-height: 2.75rem; padding: .3rem .8rem; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); font-size: .94rem; text-decoration: none; }
+    .recovery nav a:hover, .recovery nav a:focus-visible { color: var(--ink); background: var(--surface); }
     .recovery[lang="ar"] { font-family: "IBM Plex Sans Arabic", system-ui, sans-serif; }
     .recovery[lang="ar"] h2 { font-family: "Amiri", serif; letter-spacing: 0; }
   </style>

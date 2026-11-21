@@ -162,3 +162,7 @@ portfolio order in all languages. The Hillside Villa — Aley page pairs
 construction photographs with proposed visualizations and 2024 drawings. Optional
 `comparison` data supplies current/future image pairs; cover captions identify
 rendered design intent. Original PDFs and unprocessed photos are not published.
+
+The two homepage actions form a centered vertical stack on desktop and mobile.
+Buttons and larger controls share an 18px curve, with 12px curves on compact
+controls, form fields and menus. These shapes use the radius tokens in `site.css`.

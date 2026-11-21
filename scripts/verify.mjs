@@ -386,15 +386,15 @@ const assertEditorialCss = (text, requireLockedTokens = false) => {
   }
 
   for (const match of source.matchAll(/--radius(?:-sm|-pill)?\s*:\s*([^;{}]+)/gi)) {
-    assert.ok(isZeroValue(match[1].trim()), `CSS radius token must be zero-valued: ${match[0].trim()}`);
+    assert.match(match[1].trim(), /^\d*\.?\d+(?:px|rem)$/, 'CSS radius tokens must use nonnegative lengths');
   }
   for (const { selector, property, value } of declarations) {
-    if (!/^border(?:-[a-z]+)*-radius$/.test(property) || selector === '.hero-action-secondary') continue;
+    if (!/^border(?:-[a-z]+)*-radius$/.test(property)) continue;
     const values = value.trim().split(/\s+/);
-    const isZeroRadius = values.every((value) =>
+    const usesRadiusTokens = values.every((value) =>
       isZeroValue(value) || /^var\(--radius(?:-sm|-pill)?\)$/i.test(value)
     );
-    assert.ok(isZeroRadius, `CSS radius must resolve to zero: ${selector} { ${property}: ${value} }`);
+    assert.ok(usesRadiusTokens, `CSS radius must use shared tokens: ${selector} { ${property}: ${value} }`);
   }
 
   const lockedColors = new Map([
@@ -1049,15 +1049,15 @@ for (const [probe, expected] of [
   ['.stamp { animation : 900ms ease stamp-in both; }', /stamp-in motion token/],
   ['.stamp { animation-name : stamp-in; }', /stamp-in motion token/],
   ['@keyframes stamp-in { from { opacity: 0; } }', /stamp-in motion token/],
-  [':root { --radius : 1px; } .panel { border-radius : var(--radius); }', /radius token must be zero-valued/],
-  ['.panel { border-radius : 50%; }', /radius must resolve to zero/],
+  [':root { --radius : -1px; } .panel { border-radius : var(--radius); }', /nonnegative lengths/],
+  ['.panel { border-radius : 50%; }', /radius must use shared tokens/],
   ['.panel { color : #fff; }', /hardcoded or named colors/]
 ]) {
   assert.throws(() => assertEditorialCss(probe), expected, `Editorial CSS guard must reject: ${probe}`);
 }
 assert.doesNotThrow(
-  () => assertEditorialCss(':root { --bg: #faf8f4; --radius: 0px; } .panel { border-radius: var(--radius); }'),
-  'Editorial CSS guard must allow palette-token declarations and zero-valued radii'
+  () => assertEditorialCss(':root { --bg: #faf8f4; --radius: 1.125rem; } .panel { border-radius: var(--radius); }'),
+  'Editorial CSS guard must allow palette-token declarations and shared rounded corners'
 );
 assert.throws(
   () => assertEditorialCss(':root { --bg: #ffffff; }'),
@@ -1673,7 +1673,7 @@ assert.deepEqual(
   'The site must retain only its two protected JavaScript files'
 );
 
-assertCssDeclarations(css, '.btn', { 'min-height': '3rem' }, 'Primary control sizing');
+assertCssDeclarations(css, '.btn', { 'min-height': '3.25rem' }, 'Primary control sizing');
 for (const selector of ['.language-picker summary', '.language-options a', '.nav-toggle', '.mobile-close']) {
   assertMinimumTouchTarget(css, selector, selector);
 }

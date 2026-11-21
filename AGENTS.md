@@ -34,8 +34,9 @@ the spirit of high-end architecture studios — while keeping the conversion pat
 
 - Palette is locked to the tokens in `site.css`: warm white `#faf8f4`,
   charcoal `#1e1c19`, stone `#f2eee7`, warm grey `#857f74`, hairlines at
-  ~13% ink. No saturated colors, gradients or shadows. Keep corners square
-  except on the outlined homepage button that opens the project inquiry form.
+  ~13% ink. No saturated colors, gradients or shadows. Buttons, form fields,
+  menus and FAQ controls use the shared rounded-corner tokens in `site.css`.
+  The homepage's two image-overlay buttons stack vertically at every width.
 - Type: AR display Amiri / body IBM Plex Sans Arabic; EN/DE display Cormorant
   Garamond / body Inter. Never letterspace Arabic. Uppercase/letterspacing
   effects are limited to English/German selectors; never apply them to Arabic.
