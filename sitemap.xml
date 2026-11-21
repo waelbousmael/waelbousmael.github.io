@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://wbstudio.xyz/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/"/>
@@ -166,6 +167,17 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/hillside-villa-aley/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/hillside-villa-aley/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/hillside-villa-aley/"/>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/cover.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-10.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-03.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-04.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-05.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-06.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-07.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-08.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-09.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-01.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-02.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://wbstudio.xyz/en/work/hillside-villa-aley/</loc>
@@ -173,6 +185,17 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/hillside-villa-aley/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/hillside-villa-aley/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/hillside-villa-aley/"/>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/cover.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-10.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-03.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-04.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-05.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-06.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-07.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-08.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-09.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-01.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-02.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://wbstudio.xyz/de/projekte/hillside-villa-aley/</loc>
@@ -180,6 +203,47 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/hillside-villa-aley/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/hillside-villa-aley/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/hillside-villa-aley/"/>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/cover.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-10.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-03.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-04.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-05.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-06.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-07.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-08.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-09.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-01.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/hillside-villa-aley/gallery-02.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://wbstudio.xyz/work/khamis-mushait-villa/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/work/khamis-mushait-villa/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/khamis-mushait-villa/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/khamis-mushait-villa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/khamis-mushait-villa/"/>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/cover.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/gallery-01.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/gallery-02.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://wbstudio.xyz/en/work/khamis-mushait-villa/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/work/khamis-mushait-villa/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/khamis-mushait-villa/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/khamis-mushait-villa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/khamis-mushait-villa/"/>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/cover.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/gallery-01.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/gallery-02.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://wbstudio.xyz/de/projekte/khamis-mushait-villa/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wbstudio.xyz/work/khamis-mushait-villa/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/khamis-mushait-villa/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/khamis-mushait-villa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/khamis-mushait-villa/"/>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/cover.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/gallery-01.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/khamis-mushait-villa/gallery-02.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://wbstudio.xyz/work/montashiri-villa/</loc>
@@ -187,6 +251,9 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/montashiri-villa/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/montashiri-villa/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/montashiri-villa/"/>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/montashiri-villa/cover.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/montashiri-villa/gallery-01.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/montashiri-villa/gallery-02.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://wbstudio.xyz/en/work/montashiri-villa/</loc>
@@ -194,6 +261,9 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/montashiri-villa/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/montashiri-villa/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/montashiri-villa/"/>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/montashiri-villa/cover.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/montashiri-villa/gallery-01.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/montashiri-villa/gallery-02.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://wbstudio.xyz/de/projekte/montashiri-villa/</loc>
@@ -201,6 +271,9 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/montashiri-villa/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/montashiri-villa/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/montashiri-villa/"/>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/montashiri-villa/cover.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/montashiri-villa/gallery-01.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/montashiri-villa/gallery-02.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://wbstudio.xyz/work/byblos-resort/</loc>
@@ -208,6 +281,13 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/byblos-resort/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/byblos-resort/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/byblos-resort/"/>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/byblos-resort/cover.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/byblos-resort/gallery-01.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/byblos-resort/gallery-02.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/byblos-resort/gallery-03.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/byblos-resort/gallery-04.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/byblos-resort/gallery-05.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/byblos-resort/gallery-06.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://wbstudio.xyz/en/work/byblos-resort/</loc>
@@ -215,6 +295,13 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/byblos-resort/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/byblos-resort/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/byblos-resort/"/>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/byblos-resort/cover.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/byblos-resort/gallery-01.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/byblos-resort/gallery-02.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/byblos-resort/gallery-03.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/byblos-resort/gallery-04.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/byblos-resort/gallery-05.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/byblos-resort/gallery-06.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://wbstudio.xyz/de/projekte/byblos-resort/</loc>
@@ -222,6 +309,13 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/byblos-resort/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/byblos-resort/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/byblos-resort/"/>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/byblos-resort/cover.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/byblos-resort/gallery-01.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/byblos-resort/gallery-02.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/byblos-resort/gallery-03.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/byblos-resort/gallery-04.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/byblos-resort/gallery-05.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/byblos-resort/gallery-06.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://wbstudio.xyz/work/private-villa-renovation-chouf/</loc>
@@ -229,6 +323,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/private-villa-renovation-chouf/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/private-villa-renovation-chouf/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/private-villa-renovation-chouf/"/>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/cover.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-01.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-02.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-03.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-04.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-05.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-06.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-07.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-08.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-09.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://wbstudio.xyz/en/work/private-villa-renovation-chouf/</loc>
@@ -236,6 +340,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/private-villa-renovation-chouf/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/private-villa-renovation-chouf/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/private-villa-renovation-chouf/"/>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/cover.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-01.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-02.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-03.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-04.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-05.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-06.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-07.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-08.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-09.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://wbstudio.xyz/de/projekte/private-villa-renovation-chouf/</loc>
@@ -243,6 +357,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://wbstudio.xyz/en/work/private-villa-renovation-chouf/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://wbstudio.xyz/de/projekte/private-villa-renovation-chouf/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://wbstudio.xyz/en/work/private-villa-renovation-chouf/"/>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/cover.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-01.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-02.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-03.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-04.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-05.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-06.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-07.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-08.webp</image:loc></image:image>
+    <image:image><image:loc>https://wbstudio.xyz/assets/projects/private-villa-renovation-chouf/gallery-09.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://wbstudio.xyz/work/coastal-villa/</loc>

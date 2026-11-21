@@ -33,7 +33,7 @@ Generated output (do **not** edit by hand — files carry a banner comment):
   `/journal/<article-slug>/`, `/about/`, `/contact/`, `/credits/`
 - English (LTR) deep links remain under `/en/...`.
 - German (LTR): `/de/`, `/de/projekte/`, `/de/leistungen/`, `/de/ablauf/`,
-  `/de/ueber-uns/`, `/de/kontakt/`, four real project presentations, two Berlin
+  `/de/ueber-uns/`, `/de/kontakt/`, the studio’s own project presentations, two Berlin
   service pages, and credits. The two legal drafts are noindex and excluded from
   the sitemap while their publication details are reviewed.
 - `sitemap.xml` with `hreflang` alternates
@@ -148,7 +148,8 @@ the website. Contact, about, and collection pages use their specific page types.
 Service, article, FAQ, and breadcrumb data remain in place. Organization contact
 points list the owner's three phones without implying additional offices.
 Sharing images carry accurate dimensions and translated descriptions. The SEO
-verification checks all 65 indexable pages; legal drafts remain noindex.
+verification checks every indexable page. The sitemap also lists the original
+cover and gallery images on each studio project page. Legal drafts remain noindex.
 
 ## Leading project and construction comparisons
 

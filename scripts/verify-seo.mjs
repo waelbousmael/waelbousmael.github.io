@@ -5,13 +5,38 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 import site from '../data/site.mjs';
+import { createRoutes } from '../data/locales.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const page = (urlPath) => fs.readFileSync(path.join(root, urlPath, 'index.html'), 'utf8');
 const attributes = (tag) => Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map((m) => [m[1], m[2]]));
 const graph = (html) => JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
-const sitemapPaths = [...fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8').matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
+const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
+const sitemapPaths = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
 const pages = new Map(sitemapPaths.map((url) => [url, page(url)]));
+
+test('image sitemap lists the original images displayed on each studio project page', () => {
+  assert.match(sitemap, /xmlns:image="http:\/\/www\.google\.com\/schemas\/sitemap-image\/1\.1"/);
+  const { projects } = JSON.parse(fs.readFileSync(path.join(root, 'data/projects.json'), 'utf8'));
+  const { routes } = createRoutes(site, projects);
+  const expected = new Map();
+  for (const project of projects.filter((p) => !p.placeholder)) {
+    for (const url of Object.values(routes.get(`/work/${project.slug}/`))) {
+      const originals = [...pages.get(url).matchAll(/<img\b[^>]*>/g)]
+        .map(([tag]) => attributes(tag).src)
+        .filter((src) => src.startsWith('/assets/projects/'));
+      assert.ok(originals.length > 0, `${url}: expected published project images`);
+      assert.ok(originals.every((src) => !/-\d+w\.webp$/.test(src)), `${url}: expected original image paths`);
+      expected.set(url, [...new Set(originals)].map((src) => site.domain + src).sort());
+    }
+  }
+  for (const [entry] of sitemap.matchAll(/<url>[\s\S]*?<\/url>/g)) {
+    const url = new URL(entry.match(/<loc>(.*?)<\/loc>/)[1]).pathname;
+    const listed = [...entry.matchAll(/<image:image>\s*<image:loc>(.*?)<\/image:loc>\s*<\/image:image>/g)]
+      .map((match) => match[1]).sort();
+    assert.deepEqual(listed, expected.get(url) || [], `${url}: sitemap images must match unique studio originals`);
+  }
+});
 
 test('content-versioned browser assets retain LF bytes across Windows checkouts', () => {
   for (const file of ['assets/js/site.js', 'assets/js/contact.js', 'assets/css/site.css']) {
@@ -105,12 +130,28 @@ for (const lang of ['ar', 'en']) {
       const url = `${prefix}/journal/${article.slug}/`;
       const html = pages.get(url);
       const schema = graph(html).find((item) => item['@type'] === 'Article');
+      assert.equal(schema.datePublished, article.date);
+      assert.equal(schema.dateModified, article.updated || article.date);
+      if (article.updated) {
+        assert.ok(html.includes(`<time datetime="${article.updated}">`), `${url}: show the editorial update date alongside the publication date`);
+      }
       assert.equal(schema.author['@type'], 'Person');
       assert.equal(schema.author.name, 'Wael Bousmael');
       assert.equal(schema.author.url, `${site.domain}${prefix}/about/`);
       assert.equal(schema.publisher.name, site.brand);
       assert.ok(html.includes('class="article-byline"'), `${url}: missing visible author byline`);
       assert.notEqual(schema.image, site.ogImage, `${url}: needs a representative image`);
+      const projectPath = `${prefix}/work/${article.imageProject}/`;
+      const project = pages.get(projectPath);
+      assert.ok(project, `${url}: missing the referenced case study`);
+      const figure = html.match(/<figure\b[^>]*>([\s\S]*?)<\/figure>/)?.[1];
+      assert.ok(figure, `${url}: show the referenced project alongside the guide`);
+      const image = attributes(figure.match(/<img\b[^>]*>/)[0]);
+      assert.equal(site.domain + image.src, schema.image, `${url}: the visible and indexed article images differ`);
+      const caption = figure.match(/<figcaption\b[^>]*>([\s\S]*?)<\/figcaption>/)?.[1];
+      assert.ok(caption?.includes(`href="${projectPath}"`), `${url}: link the figure caption to its case study`);
+      const projectTitle = project.match(/<h1\b[^>]*>(.*?)<\/h1>/)[1];
+      assert.ok(caption.includes(projectTitle), `${url}: name the case study in the article's language`);
       assert.ok(html.includes('property="og:type" content="article"'));
       const inbound = [...pages].filter(([other, content]) => other !== url &&
         (lang === 'en' ? other.startsWith('/en/') : !other.startsWith('/en/')) && content.includes(`href="${url}"`));

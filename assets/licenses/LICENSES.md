@@ -3,15 +3,12 @@
 Every external asset used on wbstudio.xyz is recorded here. Update this file
 whenever an image is added, replaced, or removed.
 
-## Status: placeholder imagery (temporary)
+## Studio work and concept studies
 
-All project imagery under `/assets/projects/` and the homepage hero are
-**temporary placeholders**. The portfolio projects they illustrate are clearly
-labeled on the site as *concept studies / sample presentations* (AR: «دراسة
-مفاهيمية»). They must be progressively replaced with photography and renders of
-WB Studio's own work. When a project's imagery is replaced, set
-`"placeholder": false` for that project in `data/projects.json` and remove its
-rows from this register.
+WB Studio supplies the images for its own projects, including the homepage
+image of Hillside Villa in Aley. Their sources are recorded under Other assets.
+Portfolio entries marked `"placeholder": true` in `data/projects.json` use
+the reference photographs listed in the Unsplash register below.
 
 ## License
 
@@ -63,6 +60,7 @@ No new external images were introduced by the September 2026 SEO pass.
 
 | Local file | Origin / license |
 | --- | --- |
+| assets/projects/khamis-mushait-villa/* | WB Studio exterior design visualizations for a private villa in Khamis Mushait, September 2026 (© Wael Bousmael / WB Studio). The daylight cover is a 16:10 crop of `Render_4.png`. Gallery-01 details the stair from `Render_3.png`. Gallery-02 shows the night lighting study from `Render_NV.png`. Responsive versions share those sources. |
 | assets/projects/hillside-villa-aley/* | Owner-supplied construction photographs, design visualizations, and architectural drawing excerpts for a private villa in Aley District, Mount Lebanon (© Wael Bousmael / WB Studio). OCT2026 sources: `1.png` → cover and gallery-10 (opposite facade, selected and confirmed by the owner); `3.png` → gallery-02; `2026oct.jpeg` → gallery-01; `Indoor 1.jpeg` → gallery-03 (left edge cropped to omit the person); `4.png` → gallery-04; `1.jpg` → gallery-05; `oct2026.jpeg` → gallery-06. Gallery-07/08/09 are rendered excerpts from pages 13/8/3 of the owner-supplied 2024 drawing set, cropped to omit title blocks, client/project identifiers, parcel labels, and map. The raw PDF is not published. Cover is cropped to 16:10; responsive derivatives retain the same provenance. Renders are labeled as proposed design, distinct from construction photographs. |
 | assets/projects/montashiri-villa/* | Owner-supplied renders (Montashiri Villa, Obhur — © Wael Bousmael / WB Studio). Source files staged locally in `assets/projects/_incoming/montashiri-villa-source/` (git-ignored). |
 | assets/projects/byblos-resort/* | Owner-supplied renders and design-study imagery (Byblos Resort, Jbeil, Lebanon — © Wael Bousmael / WB Studio). Public crops remove the internal project/plot numbers, developer attribution, contact details, presentation borders, and watermarks. |

@@ -675,7 +675,7 @@ const site = {
         }
       ],
       related: ['villa-design-jeddah', 'luxury-villa-design-jeddah', 'modern-hijazi-villa-design', 'obhur-villa-design'],
-      relatedProjects: ['montashiri-villa', 'coastal-villa'],
+      relatedProjects: ['montashiri-villa', 'khamis-mushait-villa'],
       image: { src: '/assets/projects/montashiri-villa/cover.webp', w: 1536, h: 960, alt: { ar: 'فيلا مودرن بخطوط نظيفة وحجر في جدة', en: 'Modern villa with clean lines and stone in Jeddah' } }
     },
     {
@@ -800,6 +800,8 @@ const site = {
     },
     readMore: { ar: 'اقرأ الدليل', en: 'Read the guide' },
     byline: { ar: 'بقلم', en: 'By' },
+    publishedLabel: { ar: 'نُشر في', en: 'Published' },
+    updatedLabel: { ar: 'آخر تحديث في', en: 'Updated' },
     guidesTitle: { ar: 'أدلة تساعدك على البدء', en: 'Guides to help you get started' },
     backToJournal: { ar: 'المدوّنة', en: 'Journal' },
     relatedTitle: { ar: 'خدمات ذات صلة', en: 'Related services' }
@@ -809,7 +811,12 @@ const site = {
     {
       slug: 'villa-design-cost-jeddah',
       imageProject: 'montashiri-villa',
+      projectCaption: {
+        ar: 'في هذه الفيلا بأبحر، شمل نطاق التصميم المصاطب المزروعة ومسبح السطح إلى جانب مساحات البيت الداخلية.',
+        en: 'At this villa in Obhur, the design scope includes planted terraces and a rooftop pool as well as the rooms inside.'
+      },
       date: '2026-05-20',
+      updated: '2026-11-21',
       title: { ar: 'كم تكلفة تصميم فيلا في جدة؟ دليل عملي — WB Studio', en: 'How Much Does Villa Design Cost in Jeddah? A Practical Guide — WB Studio' },
       desc: {
         ar: 'ما الذي يحدّد تكلفة تصميم فيلا خاصة في جدة، وكيف تخطّط لميزانية التصميم بوضوح قبل أن تبدأ.',
@@ -848,7 +855,12 @@ const site = {
     {
       slug: 'before-designing-private-villa',
       imageProject: 'montashiri-villa',
+      projectCaption: {
+        ar: 'في هذه الفيلا بأبحر، توفّر الأفنية الصغيرة ضوء النهار مع الحفاظ على خصوصية العائلة. أي الغرف تحتاج فيها إلى الضوء والخصوصية معاً؟',
+        en: 'Small light courts bring daylight into this family home in Obhur while preserving privacy. Which rooms in your own home need both?'
+      },
       date: '2026-04-28',
+      updated: '2026-11-21',
       title: { ar: 'ما الذي تجهّزه قبل تصميم فيلتك الخاصة — WB Studio', en: 'What to Prepare Before Designing Your Private Villa — WB Studio' },
       desc: {
         ar: 'قائمة عملية بما تحتاج تجهيزه — صك الأرض، الاحتياجات، الميزانية، والمراجع — قبل بدء تصميم فيلتك في جدة.',
@@ -886,8 +898,13 @@ const site = {
     },
     {
       slug: 'concept-design-vs-execution-drawings',
-      imageProject: 'private-villa-renovation-chouf',
+      imageProject: 'khamis-mushait-villa',
+      projectCaption: {
+        ar: 'يوضّح هذا التصوّر شكل الشرفة والمدخل المقترحين. أمّا أبعادهما وتفاصيل بنائهما فتحدّدها مخططات التنفيذ.',
+        en: 'This rendering shows the proposed balcony and entrance. Execution drawings specify their dimensions and how to build them.'
+      },
       date: '2026-04-10',
+      updated: '2026-11-21',
       title: { ar: 'التصور المبدئي مقابل مخططات التنفيذ: الفرق — WB Studio', en: 'Concept Design vs. Execution Drawings: The Difference — WB Studio' },
       desc: {
         ar: 'ما الفرق بين التصور المعماري ومخططات التنفيذ (IFC)، ولماذا تحتاج الاثنين لبناء فيلا ناجحة في جدة.',
@@ -926,7 +943,12 @@ const site = {
     {
       slug: 'obhur-villa-design-considerations',
       imageProject: 'montashiri-villa',
+      projectCaption: {
+        ar: 'تظلّل السواتر الخشبية فتحات الواجهة المطلة على الشارع، وتمنح المصاطب المزروعة العائلة جلسات خارجية خاصة في أبحر.',
+        en: 'Timber screens shade the street-facing openings, and planted terraces give the family private outdoor space in Obhur.'
+      },
       date: '2026-03-22',
+      updated: '2026-11-21',
       title: { ar: 'اعتبارات تصميم فلل أبحر الساحلية — WB Studio', en: 'Obhur Coastal Villa Design Considerations — WB Studio' },
       desc: {
         ar: 'ما يجب مراعاته عند تصميم فيلا في أبحر: الإطلالة، الخصوصية الساحلية، الملوحة والرياح، والحياة الخارجية.',

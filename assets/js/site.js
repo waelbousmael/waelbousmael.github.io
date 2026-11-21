@@ -5,17 +5,20 @@
 
   /* ── scroll reveal ── */
   const revealElements = document.querySelectorAll('[data-reveal]');
-  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+  if (prefersReducedMotion || typeof window.IntersectionObserver !== 'function') {
     revealElements.forEach((el) => el.classList.add('is-visible'));
   } else {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting || entry.boundingClientRect.bottom <= 0) {
+          entry.target.classList.remove('reveal-pending');
           entry.target.classList.add('is-visible');
           observer.unobserve(entry.target);
+        } else {
+          entry.target.classList.add('reveal-pending');
         }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -36px' });
+    });
     revealElements.forEach((el) => observer.observe(el));
   }
 

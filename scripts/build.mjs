@@ -98,7 +98,7 @@ function head({ lang, title, desc, logicalPath, ogMedia = site.ogImageMedia, ogT
   <meta name="robots" content="${noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}" />
   <meta name="author" content="Wael Bousmael" />
   <meta name="theme-color" content="#faf8f4" />
-  ${lang === 'de' ? '' : `<meta name="geo.region" content="SA-02" />
+  ${lang === 'de' || logicalPath.startsWith('/work/') ? '' : `<meta name="geo.region" content="SA-02" />
   <meta name="geo.placename" content="Jeddah" />
   <meta name="geo.position" content="21.5433;39.1728" />
   <meta name="ICBM" content="21.5433, 39.1728" />`}
@@ -356,11 +356,11 @@ function serviceSchema(l, lang) {
   };
 }
 
-function articleSchema(a, lang) {
+function articleSchema(a, lang, project) {
   return {
     '@type': 'Article', headline: t(a.h1, lang), description: t(a.desc, lang),
-    inLanguage: lang, datePublished: a.date, dateModified: a.date,
-    mainEntityOfPage: absUrl(lang, `/journal/${a.slug}/`), image: articleImage(a),
+    inLanguage: lang, datePublished: a.date, dateModified: a.updated || a.date,
+    mainEntityOfPage: absUrl(lang, `/journal/${a.slug}/`), image: site.domain + project.cover.src,
     author: {
       '@type': 'Person', '@id': `${site.domain}/#wael`,
       name: site.author.name.en, alternateName: site.author.name.ar, url: absUrl(lang, '/about/')
@@ -370,12 +370,6 @@ function articleSchema(a, lang) {
       url: site.domain + '/', logo: { '@type': 'ImageObject', url: `${site.domain}/assets/icons/apple-touch-icon.png` }
     }
   };
-}
-
-function articleImage(article) {
-  const project = projects.find((p) => p.slug === article.imageProject);
-  if (!project) throw new Error(`Unknown article image project: ${article.imageProject}`);
-  return site.domain + project.cover.src;
 }
 
 function relatedGuides(slugs, lang) {
@@ -1053,10 +1047,12 @@ function renderArticle(a, lang) {
   const home = ui('homeLabel', lang);
   const trail = [[home, '/'], [t(site.nav.journal, lang), '/journal/'], [t(a.h1, lang), `/journal/${a.slug}/`]];
   const relLandings = (a.related || []).map((slug) => site.landings.find((x) => x.slug === slug)).filter(Boolean);
+  const project = projects.find((p) => p.slug === a.imageProject && !p.placeholder);
+  if (!project) throw new Error(`Guide ${a.slug} must reference studio work: ${a.imageProject}`);
   return `${head({
     lang, title: t(a.title, lang), desc: t(a.desc, lang), logicalPath: `/journal/${a.slug}/`,
-    ogMedia: projects.find((p) => p.slug === a.imageProject).cover, ogType: 'article',
-    jsonld: [articleSchema(a, lang), breadcrumb(lang, trail)]
+    ogMedia: project.cover, ogType: 'article',
+    jsonld: [articleSchema(a, lang, project), breadcrumb(lang, trail)]
   })}
 <body data-page="article">
 ${header(lang, 'journal')}
@@ -1066,7 +1062,7 @@ ${header(lang, 'journal')}
       <div class="wrap narrow">
         ${breadcrumbUI(lang, trail)}
         <h1 class="display-xl">${esc(t(a.h1, lang))}</h1>
-        <p class="note"><span class="article-byline">${esc(t(j.byline, lang))} <a href="${langPath(lang, '/about/')}">${esc(t(site.author.name, lang))}</a></span> · <time datetime="${a.date}">${fmtDate(a.date, lang)}</time></p>
+        <p class="note"><span class="article-byline">${esc(t(j.byline, lang))} <a href="${langPath(lang, '/about/')}">${esc(t(site.author.name, lang))}</a></span> · ${esc(t(j.publishedLabel, lang))} <time datetime="${a.date}">${fmtDate(a.date, lang)}</time>${a.updated ? ` · ${esc(t(j.updatedLabel, lang))} <time datetime="${a.updated}">${fmtDate(a.updated, lang)}</time>` : ''}</p>
         <p class="lead">${esc(t(a.intro, lang))}</p>
       </div>
     </section>
@@ -1076,6 +1072,15 @@ ${header(lang, 'journal')}
         <p>${esc(t(sec.body, lang))}</p>`).join('\n        ')}
       </div>
     </section>
+    <div class="wrap narrow">
+      <figure class="project-cover">
+        ${img(project.cover, lang, { sizes: '(min-width: 760px) 700px, 94vw' })}
+        <figcaption>
+          ${esc(t(a.projectCaption, lang))}
+          <a class="text-link" href="${langPath(lang, `/work/${project.slug}/`)}">${esc(t(project.title, lang))} <span aria-hidden="true">${arrow(lang)}</span></a>
+        </figcaption>
+      </figure>
+    </div>
     ${relLandings.length ? `<section class="section-sm divided" data-reveal>
       <div class="wrap narrow">
         <h2 class="display">${esc(t(j.relatedTitle, lang))}</h2>
@@ -1115,6 +1120,15 @@ ${footer(lang)}
 }
 
 function renderSitemap() {
+  const projectImages = new Map();
+  for (const project of projects.filter((p) => !p.placeholder)) {
+    const media = [project.cover, ...project.gallery];
+    if (project.comparison) media.push(project.comparison.current, project.comparison.future);
+    const sources = new Set(media.map((image) => image.src));
+    const tags = [...sources].map((src) =>
+      `\n    <image:image><image:loc>${esc(site.domain + src)}</image:loc></image:image>`).join('');
+    projectImages.set(`/work/${project.slug}/`, tags);
+  }
   const entries = [];
   for (const [p, alternates] of routes) {
     if (site.berlin.legal.some((entry) => `/${entry.slug}/` === p && entry.draft)) continue;
@@ -1122,13 +1136,14 @@ function renderSitemap() {
       entries.push(`  <url>
     <loc>${absUrl(lang, p)}</loc>
     ${Object.entries(alternates).map(([code, url]) => `<xhtml:link rel="alternate" hreflang="${code}" href="${site.domain}${url}"/>`).join('\n    ')}
-    <xhtml:link rel="alternate" hreflang="x-default" href="${site.domain}${alternates.en || alternates[lang]}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${site.domain}${alternates.en || alternates[lang]}"/>${projectImages.get(p) || ''}
   </url>`);
     }
   }
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${entries.join('\n')}
 </urlset>
 `;

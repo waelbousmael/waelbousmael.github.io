@@ -103,6 +103,61 @@
       ]
     },
     {
+      "slug": "khamis-mushait-villa",
+      "featured": true,
+      "placeholder": false,
+      "year": 2026,
+      "relatedGuides": ["concept-design-vs-execution-drawings"],
+      "title": { "ar": "فيلا خميس مشيط", "en": "Khamis Mushait Villa", "de": "Villa in Khamis Mushait" },
+      "category": { "ar": "فيلا خاصة", "en": "Private villa", "de": "Private Villa" },
+      "location": { "ar": "عسير، السعودية", "en": "Aseer, Saudi Arabia", "de": "Asir, Saudi-Arabien" },
+      "status": { "ar": "تصميم مقترح", "en": "Proposed design", "de": "Entwurf" },
+      "excerpt": {
+        "ar": "تصميم فيلا خاصة في خميس مشيط بعسير. يربط درج خارجي منحني الجلسة المظللة بالشرفة العلوية. توضح المشاهد النهارية والليلية معالجة المدخل والإنارة.",
+        "en": "A private villa design in Khamis Mushait, Saudi Arabia. Day and night views show how a curved outdoor stair connects a shaded terrace to the upper balcony.",
+        "de": "Entwurf für eine private Villa in Khamis Mushait, Saudi-Arabien. Tag- und Nachtansichten zeigen die geschwungene Außentreppe zwischen Terrasse und Balkon."
+      },
+      "thesis": {
+        "ar": "من البوابة الخشبية يظهر الدرج أولاً. يلتف أمام الواجهة، فيربط الجلسة الأرضية بالشرفة ويتيح التنقل بينهما من الفناء.",
+        "en": "Through the timber gate, the stair is the first thing you see. It curves across the facade so you can walk from the shaded terrace to the balcony without going indoors.",
+        "de": "Durch das Holztor fällt der Blick zuerst auf die Treppe. Sie schwingt vor der Fassade entlang und verbindet den Sitzplatz im Erdgeschoss über den Hof direkt mit dem Balkon."
+      },
+      "body": [
+        {
+          "ar": "ترتفع الجلسة بضع درجات عن الفناء. يمر حوض الزرع بمحاذاة حافتها، وفوقها يمتد سقف ببطانة خشبية تحمله أعمدة دائرية. من أسفل الدرج تبدو البسطة العلوية امتداداً للشرفة.",
+          "en": "The terrace sits a few steps above the entrance court. A planted bed follows its edge. Above it, round columns carry a deep canopy lined in timber, and the top stair landing flows into the balcony.",
+          "de": "Die Terrasse liegt einige Stufen über dem Eingangshof. Ein Pflanzbeet fasst ihren Rand. Runde Stützen tragen das weit auskragende Dach mit seiner hölzernen Untersicht. Das obere Treppenpodest geht in den Balkon über."
+        },
+        {
+          "ar": "في المشهد الليلي يحدد خط ضوء أسفل حوض الزرع حافة الجلسة، ويظهر خط آخر عند طرف السقف. وبينهما تضيء المصابيح الجدران الفاتحة من الأسفل.",
+          "en": "In the night study, one line of light traces the planter at terrace level and another picks out the roof edge. Between them, uplights wash the pale walls.",
+          "de": "In der Nachtansicht zeichnet eine Lichtlinie das Pflanzbeet an der Terrasse nach, eine zweite die Dachkante. Dazwischen fällt Streiflicht von unten auf die hellen Wände."
+        }
+      ],
+      "services": {
+        "ar": ["التصميم المعماري", "الإظهار المعماري"],
+        "en": ["Architectural design", "Architectural visualization"],
+        "de": ["Gebäudeentwurf", "Architekturvisualisierung"]
+      },
+      "cover": {
+        "src": "/assets/projects/khamis-mushait-villa/cover.webp", "w": 1504, "h": 940,
+        "alt": { "ar": "من البوابة الخشبية المفتوحة تظهر شرفة فيلا خميس مشيط والدرج المنحني أمامها", "en": "View through an open timber gate toward the curved stair and shaded balcony of Khamis Mushait Villa", "de": "Blick durch das offene Holztor auf die geschwungene Treppe und den überdachten Balkon der Villa in Khamis Mushait" },
+        "caption": { "ar": "تصور التصميم من بوابة الفناء في ضوء النهار", "en": "Proposed entrance court seen from the gate in daylight", "de": "Entwurf des Eingangshofs bei Tageslicht, vom Tor aus gesehen" }
+      },
+      "gallery": [
+        {
+          "src": "/assets/projects/khamis-mushait-villa/gallery-01.webp", "w": 720, "h": 765, "layout": "half",
+          "alt": { "ar": "درجات مفتوحة تلتف من الجلسة الأرضية إلى الشرفة بين عمودين دائريين", "en": "Open stair treads curving from the terrace to the balcony between two round columns", "de": "Offene Treppenstufen winden sich zwischen zwei Rundstützen von der Terrasse zum Balkon" },
+          "caption": { "ar": "التقاء الدرج بالشرفة تحت السقف المبطن بالخشب", "en": "The stair meets the balcony beneath the timber-lined canopy.", "de": "Unter der hölzernen Dachuntersicht mündet die Treppe in den Balkon." }
+        },
+        {
+          "src": "/assets/projects/khamis-mushait-villa/gallery-02.webp", "w": 1600, "h": 900, "layout": "half",
+          "alt": { "ar": "واجهة الفيلا ليلاً مع إنارة على امتداد حافة السقف وأسفل حوض الزرع المطل على الفناء", "en": "Villa at night with light along the roof edge and beneath the planter facing the entrance court", "de": "Villa bei Nacht mit Lichtlinien an der Dachkante und unter dem Pflanzbeet zum Eingangshof" },
+          "caption": { "ar": "دراسة الإنارة الليلية من البوابة نفسها", "en": "Night lighting study from the same gate", "de": "Lichtstudie bei Nacht vom selben Tor aus" }
+        }
+      ]
+    },
+    {
       "slug": "montashiri-villa",
       "relatedGuides": ["obhur-villa-design-considerations", "before-designing-private-villa"],
       "featured": true,

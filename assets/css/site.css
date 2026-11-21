@@ -909,16 +909,14 @@ form .btn-solid { justify-self: start; margin-block-start: 0.5rem; }
 }
 
 /* ── reveal animation ── */
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
-}
-[data-reveal].is-visible { opacity: 1; transform: none; }
-
-/* no-js / fallback: if script fails, content must remain visible */
-@media (scripting: none) {
-  [data-reveal] { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal].reveal-pending:not(:focus-within) {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  [data-reveal].is-visible {
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  }
 }
 
 /* ── responsive ── */
@@ -1000,6 +998,5 @@ form .btn-solid { justify-self: start; margin-block-start: 0.5rem; }
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
   }
-  [data-reveal] { opacity: 1; transform: none; }
   .project-card:hover .card-media img { transform: none; }
 }

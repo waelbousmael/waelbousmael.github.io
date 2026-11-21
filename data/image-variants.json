@@ -481,6 +481,47 @@
       }
     ]
   },
+  "/assets/projects/khamis-mushait-villa/cover.webp": {
+    "w": 1504,
+    "h": 940,
+    "sha256": "c1516151ca9fdd2d4859738687390f33ed8af203d46239817b08c90088c7784c",
+    "variants": [
+      {
+        "src": "/assets/projects/khamis-mushait-villa/cover-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/khamis-mushait-villa/cover-960w.webp",
+        "w": 960
+      }
+    ]
+  },
+  "/assets/projects/khamis-mushait-villa/gallery-01.webp": {
+    "w": 720,
+    "h": 765,
+    "sha256": "a3b5ce66e8a29cd5ba86f62f509fd8521ee2e081482ac1a100a1a03581a50694",
+    "variants": [
+      {
+        "src": "/assets/projects/khamis-mushait-villa/gallery-01-640w.webp",
+        "w": 640
+      }
+    ]
+  },
+  "/assets/projects/khamis-mushait-villa/gallery-02.webp": {
+    "w": 1600,
+    "h": 900,
+    "sha256": "2443fc13af9e3444b363f67ed9c364403e802bd9992fbdd26359320dd38fb9f7",
+    "variants": [
+      {
+        "src": "/assets/projects/khamis-mushait-villa/gallery-02-640w.webp",
+        "w": 640
+      },
+      {
+        "src": "/assets/projects/khamis-mushait-villa/gallery-02-960w.webp",
+        "w": 960
+      }
+    ]
+  },
   "/assets/projects/montashiri-villa/cover.webp": {
     "w": 1536,
     "h": 960,
