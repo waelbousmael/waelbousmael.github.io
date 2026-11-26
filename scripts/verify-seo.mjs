@@ -15,11 +15,12 @@ const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 const sitemapPaths = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
 const pages = new Map(sitemapPaths.map((url) => [url, page(url)]));
 
-test('image sitemap lists the original images displayed on each studio project page', () => {
+test('image sitemap lists studio originals on project pages and in service examples', () => {
   assert.match(sitemap, /xmlns:image="http:\/\/www\.google\.com\/schemas\/sitemap-image\/1\.1"/);
   const { projects } = JSON.parse(fs.readFileSync(path.join(root, 'data/projects.json'), 'utf8'));
   const { routes } = createRoutes(site, projects);
   const expected = new Map();
+  const studioSources = new Set();
   for (const project of projects.filter((p) => !p.placeholder)) {
     for (const url of Object.values(routes.get(`/work/${project.slug}/`))) {
       const originals = [...pages.get(url).matchAll(/<img\b[^>]*>/g)]
@@ -27,7 +28,34 @@ test('image sitemap lists the original images displayed on each studio project p
         .filter((src) => src.startsWith('/assets/projects/'));
       assert.ok(originals.length > 0, `${url}: expected published project images`);
       assert.ok(originals.every((src) => !/-\d+w\.webp$/.test(src)), `${url}: expected original image paths`);
+      for (const src of originals) studioSources.add(src);
       expected.set(url, [...new Set(originals)].map((src) => site.domain + src).sort());
+    }
+  }
+  for (const landing of [...site.landings, ...site.berlin.landings]) {
+    for (const [lang, url] of Object.entries(routes.get(`/${landing.slug}/`))) {
+      const html = pages.get(url);
+      const sources = new Set();
+      const hero = html.match(/<div class="bleed"[^>]*>\s*(<img\b[^>]*>)/);
+      if (hero) sources.add(attributes(hero[1]).src);
+      const examples = landing.sections.flatMap((section) => section.example || []);
+      const rows = [...html.matchAll(/<section class="landing-section-row gallery">([\s\S]*?)<\/section>/g)];
+      assert.equal(rows.length, examples.length, `${url}: render every project example`);
+      rows.forEach(([, row], i) => {
+        const example = examples[i];
+        const projectUrl = routes.get(`/work/${example.project}/`)[lang];
+        assert.ok(row.includes(`href="${projectUrl}"`), `${url}: example must link to its localized project`);
+        const figures = [...row.matchAll(/<figure\b[^>]*>([\s\S]*?)<\/figure>/g)];
+        const images = figures.map(([, figure]) => {
+          const image = attributes(figure.match(/<img\b[^>]*>/)[0]);
+          assert.ok(image.alt && /<figcaption>[^<]+<\/figcaption>/.test(figure), `${url}: caption each example`);
+          assert.ok(figure.includes(`href="${image.src}"`), `${url}: open the full original`);
+          sources.add(image.src);
+          return image.src;
+        });
+        assert.deepEqual(images, example.images.map((name) => `/assets/projects/${example.project}/${name}`));
+      });
+      expected.set(url, [...sources].filter((src) => studioSources.has(src)).map((src) => site.domain + src).sort());
     }
   }
   for (const [entry] of sitemap.matchAll(/<url>[\s\S]*?<\/url>/g)) {

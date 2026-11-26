@@ -930,6 +930,41 @@ ${footer(lang)}
 </html>`;
 }
 
+function exampleImages(example) {
+  const project = projects.find((p) => p.slug === example.project && !p.placeholder);
+  if (!project) throw new Error(`Unknown studio project: ${example.project}`);
+  return example.images.map((filename) => {
+    const image = project.gallery.find((entry) => path.posix.basename(entry.src) === filename);
+    if (!image) throw new Error(`Missing gallery image: ${project.slug}/${filename}`);
+    return image;
+  });
+}
+
+function renderLandingSection(section, lang) {
+  const example = section.example;
+  const heading = `<h2 class="display">${esc(t(section.heading, lang))}</h2>`;
+  const body = `<p>${esc(t(section.body, lang))}</p>`;
+  if (!example) return `<section class="landing-section-row">
+        ${heading}
+        ${body}
+      </section>`;
+
+  const images = exampleImages(example);
+  const paired = images.length > 1;
+  const sizes = paired ? IMAGE_SIZES.half : IMAGE_SIZES.full;
+  return `<section class="landing-section-row gallery">
+        ${heading}
+        <div class="flow">
+          ${body}
+          <a class="text-link" href="${langPath(lang, `/work/${example.project}/`)}">${esc(t(example.link, lang))}</a>
+        </div>
+        ${images.map((image) => `<figure${paired ? ' class="g-half"' : ''}>
+          <a href="${image.src}">${img(image, lang, { sizes })}</a>
+          <figcaption>${esc(t(image.caption, lang))}</figcaption>
+        </figure>`).join('\n        ')}
+      </section>`;
+}
+
 function renderLanding(l, lang) {
   const home = ui('homeLabel', lang);
   const trail = [[home, '/'], [t(site.nav.services, lang), '/services/'], [t(l.label, lang), `/${l.slug}/`]];
@@ -958,10 +993,7 @@ ${header(lang, 'services')}
   ${l.image ? `<div class="bleed" data-reveal>${img(l.image, lang, { eager: true, sizes: '100vw' })}</div>` : ''}
   <section class="section" data-reveal>
     <div class="wrap landing-content-grid">
-      ${l.sections.map((sec) => `<section class="landing-section-row">
-        <h2 class="display">${esc(t(sec.heading, lang))}</h2>
-        <p>${esc(t(sec.body, lang))}</p>
-      </section>`).join('\n      ')}
+      ${l.sections.map((section) => renderLandingSection(section, lang)).join('\n      ')}
     </div>
   </section>
   ${relProjects.length ? `<section class="section divided" data-reveal>
@@ -1121,23 +1153,30 @@ ${footer(lang)}
 }
 
 function renderSitemap() {
-  const projectImages = new Map();
+  const imagesByPage = new Map();
+  const studioImages = new Set();
   for (const project of projects.filter((p) => !p.placeholder)) {
     const media = [project.cover, ...project.gallery];
     if (project.comparison) media.push(project.comparison.current, project.comparison.future);
-    const sources = new Set(media.map((image) => image.src));
-    const tags = [...sources].map((src) =>
-      `\n    <image:image><image:loc>${esc(site.domain + src)}</image:loc></image:image>`).join('');
-    projectImages.set(`/work/${project.slug}/`, tags);
+    const sources = media.map((image) => image.src);
+    for (const src of sources) studioImages.add(src);
+    imagesByPage.set(`/work/${project.slug}/`, sources);
+  }
+  for (const landing of [...site.landings, ...site.berlin.landings]) {
+    const examples = landing.sections.flatMap((section) => section.example ? exampleImages(section.example) : []);
+    const sources = [landing.image, ...examples].map((image) => image?.src).filter((src) => studioImages.has(src));
+    imagesByPage.set(`/${landing.slug}/`, sources);
   }
   const entries = [];
   for (const [p, alternates] of routes) {
     if (site.berlin.legal.some((entry) => `/${entry.slug}/` === p && entry.draft)) continue;
+    const imageTags = [...new Set(imagesByPage.get(p))].map((src) =>
+      `\n    <image:image><image:loc>${esc(site.domain + src)}</image:loc></image:image>`).join('');
     for (const lang of Object.keys(alternates)) {
       entries.push(`  <url>
     <loc>${absUrl(lang, p)}</loc>
     ${Object.entries(alternates).map(([code, url]) => `<xhtml:link rel="alternate" hreflang="${code}" href="${site.domain}${url}"/>`).join('\n    ')}
-    <xhtml:link rel="alternate" hreflang="x-default" href="${site.domain}${alternates.en || alternates[lang]}"/>${projectImages.get(p) || ''}
+    <xhtml:link rel="alternate" hreflang="x-default" href="${site.domain}${alternates.en || alternates[lang]}"/>${imageTags}
   </url>`);
     }
   }

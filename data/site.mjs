@@ -463,10 +463,10 @@ const site = {
         en: 'Plan your villa’s interiors, facade and outdoor spaces together. See how the Montashiri Villa design in Obhur balances daylight and privacy. Start with a free call.'
       },
       eyebrow: { ar: 'تصميم الفلل الخاصة — جدة', en: 'Private villa design — Jeddah' },
-      h1: { ar: 'تصميم فيلا خاصة في جدة', en: 'Private villa design in Jeddah' },
+      h1: { ar: 'تصميم الفلل في جدة من الداخل والخارج', en: 'Villa design in Jeddah, inside and out' },
       intro: {
-        ar: 'أين تستقبل الضيوف، وإلى أين تطلّ غرفة المعيشة، وكيف تدخل البيت من السيارة؟ تناقش هذه التفاصيل مباشرة مع وائل بو سماعيل. نرسم التوزيع الأول للفيلا على أرضك في جدة حول ما يهمّ عائلتك.',
-        en: 'Where do guests arrive, what can you see from the living room, and how do you get from the car to the kitchen? You work directly with Wael Bousmael to turn those everyday decisions into a first layout for your plot in Jeddah.'
+        ar: 'إذا كانت صالة العائلة تطلّ على الفناء، فأين يكون مكان الجلوس، وأي جزء من الغرفة ينكشف عند فتح الباب للضيوف؟ مع وائل بو سماعيل تراجع توزيع الغرف والفتحات والواجهة معاً. نبدأ من مخطط أرضك في جدة وما تحتاجه عائلتك يومياً.',
+        en: 'If the family living room opens onto a courtyard, where will you sit, and what can visitors see from the entrance? Work directly with Wael Bousmael to plan the rooms, windows and facade together, starting with your plot in Jeddah and the way your family lives.'
       },
       sections: [
         {
@@ -478,6 +478,11 @@ const site = {
         },
         {
           heading: { ar: 'كيف يرتبط التصميم الداخلي بواجهة الفيلا؟', en: 'How the interior plan shapes the facade' },
+          example: {
+            project: 'montashiri-villa',
+            images: ['gallery-01.webp'],
+            link: { ar: 'شاهد الواجهة والمطبخ في تصميم فيلا المنتشري', en: 'See the facade and kitchen at Montashiri Villa' }
+          },
           body: {
             ar: 'نحدّد موضع النافذة من داخل الغرفة أولاً. ما الذي تراه العائلة من جلستها، ومن يستطيع أن يراها من الشارع؟ في تصميم فيلا المنتشري بأبحر، تطلّ غرفة المعيشة المزدوجة الارتفاع على فناء مزروع من خلال واجهة زجاجية واسعة. أمّا جهة الشارع، فتحدّد الجدران الحجرية والسواتر الخشبية ما ينكشف من البيت للمارة.',
             en: 'We start each window from inside the room. What will you see from the sofa, and what can someone see from the street? In the Montashiri Villa design in Obhur, the double-height living room looks through broad glazing into a planted courtyard. Facing the street, stone walls and timber screens limit views into the house.'
@@ -538,9 +543,14 @@ const site = {
         },
         {
           heading: { ar: 'أربعة مخططات للطابق نفسه', en: 'Four drawings of the same floor' },
+          example: {
+            project: 'private-villa-renovation-chouf',
+            images: ['gallery-01.webp', 'gallery-04.webp'],
+            link: { ar: 'شاهد مخططات الهدم والإنشاء لفيلا الشوف', en: 'See the demolition and construction plans for the Chouf villa' }
+          },
           body: {
-            ar: 'في مشروع تجديد فيلا الشوف بلبنان، يمكنك تتبّع الطابق الأرضي في أربعة مخططات. يبدأ التسلسل بالوضع القائم، ثم ما يُزال، فالجدران والفتحات الجديدة. ويبيّن المخطط المفروش كيف تتصل مساحة الإفطار بالمطبخ وكيف تتوزع جلسات العائلة والاستقبال.',
-            en: 'In the Chouf villa renovation in Lebanon, you can follow the ground floor through four plans. The first records the existing house. The next two show what is removed and where walls and openings are added. The furnished plan shows how the breakfast area connects to the kitchen and how reception and family living areas fit together.'
+            ar: 'في فيلا الشوف بلبنان، كان المرآب يجاور مطبخاً مغلقاً. قارن موضعه في مخطط الوضع القائم بموضع طاولة الإفطار في المخطط المفروش المقترح. أمّا مخططا الهدم والإنشاء فيبيّنان أيّ جدار يُزال وأين تُفتح الممرات لتنفيذ هذا التغيير.',
+            en: 'In the Chouf villa in Lebanon, a garage stood beside the enclosed kitchen. Find it on the existing plan, then look for the breakfast table in the same spot on the proposed furnished plan. The demolition and construction drawings show which walls and openings change to make that connection.'
           }
         },
         {
