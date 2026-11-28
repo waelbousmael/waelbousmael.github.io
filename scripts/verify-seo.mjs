@@ -15,7 +15,7 @@ const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 const sitemapPaths = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
 const pages = new Map(sitemapPaths.map((url) => [url, page(url)]));
 
-test('image sitemap lists studio originals on project pages and in service examples', () => {
+test('image sitemap lists original studio images shown on project, service and guide pages', () => {
   assert.match(sitemap, /xmlns:image="http:\/\/www\.google\.com\/schemas\/sitemap-image\/1\.1"/);
   const { projects } = JSON.parse(fs.readFileSync(path.join(root, 'data/projects.json'), 'utf8'));
   const { routes } = createRoutes(site, projects);
@@ -56,6 +56,15 @@ test('image sitemap lists studio originals on project pages and in service examp
         assert.deepEqual(images, example.images.map((name) => `/assets/projects/${example.project}/${name}`));
       });
       expected.set(url, [...sources].filter((src) => studioSources.has(src)).map((src) => site.domain + src).sort());
+    }
+  }
+  for (const article of site.journal) {
+    for (const url of Object.values(routes.get(`/journal/${article.slug}/`))) {
+      const figure = pages.get(url).match(/<figure\b[^>]*>\s*(<img\b[^>]*>)/);
+      assert.ok(figure, `${url}: missing guide illustration`);
+      const src = attributes(figure[1]).src;
+      assert.ok(studioSources.has(src), `${url}: guide illustration must be an original studio image`);
+      expected.set(url, [site.domain + src]);
     }
   }
   for (const [entry] of sitemap.matchAll(/<url>[\s\S]*?<\/url>/g)) {
@@ -176,13 +185,18 @@ for (const lang of ['ar', 'en']) {
       assert.ok(figure, `${url}: show the referenced project alongside the guide`);
       const image = attributes(figure.match(/<img\b[^>]*>/)[0]);
       assert.equal(site.domain + image.src, schema.image, `${url}: the visible and indexed article images differ`);
+      assert.equal(image.src, `/assets/projects/${article.imageProject}/${article.imageFile || 'cover.webp'}`);
+      assert.ok(html.includes(`property="og:image" content="${schema.image}"`), `${url}: the share preview must use the guide illustration`);
       const caption = figure.match(/<figcaption\b[^>]*>([\s\S]*?)<\/figcaption>/)?.[1];
       assert.ok(caption?.includes(`href="${projectPath}"`), `${url}: link the figure caption to its case study`);
       const projectTitle = project.match(/<h1\b[^>]*>(.*?)<\/h1>/)[1];
       assert.ok(caption.includes(projectTitle), `${url}: name the case study in the article's language`);
       assert.ok(html.includes('property="og:type" content="article"'));
-      const inbound = [...pages].filter(([other, content]) => other !== url &&
-        (lang === 'en' ? other.startsWith('/en/') : !other.startsWith('/en/')) && content.includes(`href="${url}"`));
+      const inbound = [...pages].filter(([other, content]) => {
+        if (other === url || !content.includes(`<html lang="${lang}"`)) return false;
+        const main = content.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)[1];
+        return [...main.matchAll(/<a\b[^>]*>/g)].some(([tag]) => attributes(tag).href === url);
+      });
       assert.ok(inbound.length >= 2, `${url}: only ${inbound.length} same-language incoming page(s)`);
     }
   });

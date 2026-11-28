@@ -646,45 +646,50 @@ const site = {
       slug: 'modern-villa-design-jeddah',
       label: { ar: 'تصميم فيلا مودرن في جدة', en: 'Modern villa design in Jeddah' },
       summary: {
-        ar: 'خطوط نظيفة وضوء طبيعي وعلاقة سلسة بين الداخل والخارج — لعملاء يفضّلون العمارة الحديثة.',
-        en: 'Clean lines, natural light and a seamless indoor–outdoor relationship — for clients who prefer modern architecture.'
+        ar: 'تصميم الواجهة والنوافذ والتراسات المظللة بحسب اتجاه الشمس وما ينكشف من البيت للشارع.',
+        en: 'Shape the facade, windows and shaded terraces around the sun and the view from the street.'
       },
-      seoTitle: { ar: 'تصميم فيلا مودرن في جدة | معماري فلل حديثة — WB Studio', en: 'Modern Villa Design in Jeddah | Modern Villa Architect — WB Studio' },
+      seoTitle: { ar: 'تصميم فيلا مودرن في جدة | الواجهات والتظليل — WB Studio', en: 'Modern Villa Design in Jeddah – Facades & Shade | WB Studio' },
       seoDesc: {
-        ar: 'تصميم فيلا مودرن في جدة: خطوط نظيفة، ضوء متحكَّم فيه، وفراغات مفتوحة تحترم الخصوصية والمناخ. معماري فلل حديثة — مكالمة وتصور مبدئي مجاني.',
-        en: 'Modern villa design in Jeddah: clean lines, controlled light, and open spaces that respect privacy and climate. A modern villa architect — free call and preliminary concept.'
+        ar: 'تصميم واجهات فلل مودرن في جدة يراعي اتجاه الشمس وخصوصية العائلة. شاهد واجهة فيلا المنتشري في أبحر وتراساً مظللاً في تصميم فيلا خميس مشيط.',
+        en: 'Plan a modern villa facade for your Jeddah plot. See how street screens work in an Obhur design and how a deep canopy shades a Khamis Mushait terrace.'
       },
       eyebrow: { ar: 'الفلل الحديثة — جدة', en: 'Modern villas — Jeddah' },
       h1: { ar: 'تصميم فيلا مودرن في جدة', en: 'Modern villa design in Jeddah' },
       intro: {
-        ar: 'العمارة الحديثة في جدة ليست واجهات زجاجية تحت الشمس، بل ضوء يُدار بذكاء وفراغات تتنفّس. نصمم فللاً مودرن بخطوط هادئة وعلاقة سلسة بين الداخل والخارج، مع احترام الخصوصية والمناخ الحار.',
-        en: 'Modern architecture in Jeddah isn’t glass walls under the sun — it’s light handled intelligently and spaces that breathe. We design modern villas with calm lines and a seamless indoor–outdoor relationship, while respecting privacy and the hot climate.'
+        ar: 'أي نافذة تحب أن تفتحها على ضوء الصباح؟ وأين تفضّل الجلوس بعد العصر؟ من اتجاه أرضك في جدة وإجاباتك نحدّد عرض الفتحات، وموضع الشرائح التي تحجب النظر، والمساحة التي تحتاج إلى ظلّ عند باب التراس.',
+        en: 'Which room would you like to open to the morning light? Where would you sit in the late afternoon? Those choices and the orientation of your Jeddah plot guide the width of the windows, the position of privacy screens and the shade you need outside the terrace door.'
       },
       sections: [
         {
-          heading: { ar: 'حداثة تناسب المناخ', en: 'Modernism that suits the climate' },
+          heading: { ar: 'واجهة الشارع في فيلا المنتشري بأبحر', en: 'The street facade at Montashiri Villa in Obhur' },
           body: {
-            ar: 'شرفات عميقة، فتحات مدروسة، وتظليل معماري بدل الاعتماد على التكييف وحده — جمال حديث يعمل في حرّ جدة.',
-            en: 'Deep terraces, considered openings and architectural shading instead of relying on cooling alone — modern beauty that works in Jeddah’s heat.'
+            ar: 'في تصور الواجهة أعلاه، تتخلّل سور فيلا المنتشري فتحات بشرائح أفقية. تحجب الشرائح جزءاً من الطابق الأرضي عن المارّة، ويظل النخيل في التراسات العليا ظاهراً من الشارع. خلف هذه الواجهة تستقبل صالة العائلة الضوء من فناء مزروع. عند تصميم واجهتك نراجع ما يظهر من خلف كل فتحة على مستوى الرصيف ومن نوافذ الجيران المقابلة.',
+            en: 'In the proposed street view above, horizontal slats fill openings in the garden wall. They screen the ground floor from passers-by while palms on the upper terraces remain visible from the street. Behind this facade, the family living room draws daylight from a planted courtyard. On your plot, we check each opening from pavement level and from the windows opposite.'
           }
         },
         {
-          heading: { ar: 'الداخل والخارج', en: 'Indoor and outdoor' },
+          heading: { ar: 'مظلة واحدة للتراس والشرفة', en: 'One canopy for the terrace and balcony' },
+          example: {
+            project: 'khamis-mushait-villa',
+            images: ['gallery-01.webp', 'gallery-02.webp'],
+            link: { ar: 'شاهد تصميم فيلا خميس مشيط من بوابة الفناء', en: 'See the Khamis Mushait Villa design from the courtyard gate' }
+          },
           body: {
-            ar: 'نربط المعيشة بالحديقة والمسبح والسطح بانسياب، فتتضاعف مساحة العيش وتبقى الخصوصية محفوظة.',
-            en: 'We connect living spaces to the garden, pool and roof fluidly, so usable space multiplies while privacy stays protected.'
+            ar: 'في تصميمنا المقترح لفيلا في خميس مشيط بعسير، يمتد سقف ببطانة خشبية فوق الشرفة والدرج المنحني، وتقع الجلسة السفلية تحت الشرفة. يبيّن المشهد القريب عمق المظلة، بينما يوضح المشهد الليلي كيف ترسم الإنارة حافتها. إذا أحببت هذه الجلسة لأرضك في جدة، نحدّد وقت استخدامها ونراجع موضع الظل على المقاعد حين تكون الشمس منخفضة.',
+            en: 'In our proposed villa in Khamis Mushait, Asir, a timber-lined canopy extends over the balcony and curved stair. The balcony shelters the seating below. The close view shows the depth of the canopy and the night view traces its edge in light. For a terrace on your Jeddah plot, we start with the hour you’ll use it and check where the shade falls across the seats when the sun is low.'
           }
         }
       ],
       serviceType: 'Modern villa design',
       faq: [
         {
-          q: { ar: 'هل التصميم المودرن مناسب لمناخ جدة الحار؟', en: 'Is modern design suitable for Jeddah’s hot climate?' },
-          a: { ar: 'نعم، إذا صُمّم بذكاء: تظليل وتوجيه وفتحات مدروسة تجعل الفيلا الحديثة مريحة وموفّرة للطاقة.', en: 'Yes, when designed intelligently: shading, orientation and considered openings make a modern villa comfortable and energy-efficient.' }
+          q: { ar: 'كيف أظلّل نافذة تطل على الغرب؟', en: 'How can I shade a west-facing window?' },
+          a: { ar: 'تصل شمس العصر إلى الزجاج بزاوية منخفضة، وقد تمر تحت المظلة العلوية. ندرس إرجاع النافذة إلى داخل الواجهة أو إضافة شرائح أمامها، ثم نراجع من داخل الغرفة ما يبقى ظاهراً من الإطلالة.', en: 'Low afternoon sun can reach the glass beneath a horizontal overhang. We can set the window deeper into the facade or angle an exterior screen, then check how much of the view stays open from inside the room.' }
         },
         {
-          q: { ar: 'هل يمكن دمج لمسات محلية في تصميم مودرن؟', en: 'Can local touches blend into a modern design?' },
-          a: { ar: 'بالتأكيد — يمكن إعادة تأويل عناصر حجازية مثل المشربيات والأفنية بلغة حديثة نظيفة.', en: 'Absolutely — Hijazi elements like mashrabiya screens and courtyards can be reinterpreted in a clean modern language.' }
+          q: { ar: 'ما الذي أرسله لبدء تصميم الواجهة؟', en: 'What should I bring to the first facade discussion?' },
+          a: { ar: 'أرسل موقع الأرض، والمخطط إن توفر، وصورة من جهة الشارع. أخبرنا بأي غرفة تريد أن تستفيد من ضوء الصباح أو ظل العصر. نبدأ بمكالمة مجانية ثم تصور مبدئي مجاني، ونتّفق على النطاق والأتعاب عندما يناسبك التوجّه.', en: 'Send the plot location, a plan if you have one, and a view from the street. Tell us which room matters most for morning light or afternoon shade. We start with a free call and a free preliminary concept. Once the direction works for you, we agree on scope and fees.' }
         },
         {
           q: { ar: 'كيف تحافظون على الخصوصية مع الفتحات الكبيرة؟', en: 'How do you keep privacy with large openings?' },
@@ -693,7 +698,7 @@ const site = {
       ],
       related: ['villa-design-jeddah', 'luxury-villa-design-jeddah', 'modern-hijazi-villa-design', 'obhur-villa-design'],
       relatedProjects: ['montashiri-villa', 'khamis-mushait-villa'],
-      image: { src: '/assets/projects/montashiri-villa/cover.webp', w: 1536, h: 960, alt: { ar: 'فيلا مودرن بخطوط نظيفة وحجر في جدة', en: 'Modern villa with clean lines and stone in Jeddah' } }
+      image: { src: '/assets/projects/montashiri-villa/cover.webp', w: 1536, h: 960, alt: { ar: 'تصوّر لفيلا المنتشري في أبحر بجدة، بشرائح أفقية على سور الحديقة وتراسات مزروعة فوق الواجهة الحجرية', en: 'Proposed street facade of Montashiri Villa in Obhur, Jeddah, with horizontal garden screens and planted terraces above the stone frontage' } }
     },
     {
       slug: 'obhur-villa-design',
@@ -807,13 +812,13 @@ const site = {
   journalMeta: {
     seoTitle: { ar: 'المدوّنة | أدلة تصميم الفلل في جدة — WB Studio', en: 'Journal | Villa Design Guides for Jeddah — WB Studio' },
     seoDesc: {
-      ar: 'أدلة عملية لأصحاب الأراضي قبل تصميم فيلا في جدة: التكلفة، الاستعداد، الفرق بين التصور والتنفيذ، واعتبارات أبحر الساحلية.',
-      en: 'Practical guides for landowners before designing a villa in Jeddah: cost, preparation, concept vs. execution drawings, and Obhur coastal considerations.'
+      ar: 'أدلة لأصحاب الأراضي في جدة تساعدك على مراجعة توزيع الفيلا والمجلس، ومقارنة أتعاب التصميم، وفهم مخططات التنفيذ قبل البناء.',
+      en: 'Villa design guides for Jeddah homeowners. Review a floor plan for family privacy, compare design fees and understand the drawings you need before building.'
     },
     h1: { ar: 'المدوّنة', en: 'Journal' },
     intro: {
-      ar: 'أدلة قصيرة وصادقة لمن يفكّر في بناء فيلا خاصة في جدة — لتتّخذ قرارات أوضح قبل أن تبدأ.',
-      en: 'Short, honest guides for anyone considering building a private villa in Jeddah — to help you make clearer decisions before you start.'
+      ar: 'إذا كنت تخطّط لفيلا في جدة، ابدأ بالسؤال الذي يشغلك اليوم. ماذا تجهّز للمكالمة الأولى؟ كيف تقارن عرضَي تصميم؟ وأين تضع المجلس عندما تراجع المخطط؟',
+      en: 'If you’re planning a villa in Jeddah, start with the question in front of you. What should you bring to a first meeting? How do you compare two fee proposals? Where should the majlis go when you review a floor plan?'
     },
     readMore: { ar: 'اقرأ الدليل', en: 'Read the guide' },
     byline: { ar: 'بقلم', en: 'By' },
@@ -825,6 +830,57 @@ const site = {
   },
 
   journal: [
+    {
+      slug: 'majlis-family-living-villa-floor-plan',
+      imageProject: 'montashiri-villa',
+      imageFile: 'gallery-01.webp',
+      projectCaption: {
+        ar: 'في تصميم فيلا المنتشري بأبحر، تطلّ جلسة العائلة على الفناء المزروع ويشرف عليها ممرّ الطابق العلوي. إذا أعجبتك هذه الفكرة، اطلب من المعماري أن يرسم ما سيراه الشخص الواقف في الممرّ العلوي في بيتك.',
+        en: 'In the Montashiri Villa design in Obhur, the family seats face a planted courtyard. An upstairs gallery overlooks them. If you like this arrangement, ask your architect to sketch the view from the upstairs landing in your own home.'
+      },
+      date: '2026-11-28',
+      title: { ar: 'توزيع المجلس والصالة العائلية في مخطط الفيلا | WB Studio', en: 'Planning the Majlis and Family Living Room in a Saudi Villa | WB Studio' },
+      desc: {
+        ar: 'كيف تستقبل ضيوفك ويبقى لأهل البيت مجال للحركة؟ راجع مداخل الفيلا، وموقع مغاسل الضيوف، ومسار تقديم العشاء على مخطط الدور الأرضي.',
+        en: 'Review a Saudi villa floor plan before approving it. Trace guest and family routes, check the view from the front door and walk through serving dinner.'
+      },
+      h1: { ar: 'كيف توزّع المجلس والصالة العائلية في مخطط الفيلا؟', en: 'Where should the majlis and family living room go on a villa floor plan?' },
+      intro: {
+        ar: 'تخيّل مساءً تستقبل فيه ضيوفك في المجلس ويعود أحد أبنائك من التمرين. من أين يدخل كلّ منهم؟ افتح مخطط الدور الأرضي وجرّب عليه تفاصيل تلك الأمسية. ستعرف أيّ الغرف تحتاج إلى التقارب، وأين تحتاج العائلة إلى باب يمكن إغلاقه.',
+        en: 'Picture an evening when guests arrive for dinner just as someone gets home from football. Which door does each person use? Put a copy of the ground-floor plan on the table and walk through that evening. It will tell you which rooms belong together and where you need a door you can close.'
+      },
+      sections: [
+        {
+          heading: { ar: 'مدخل مشترك أم مدخل مستقل للمجلس؟', en: 'Can the majlis share the family entrance?' },
+          body: {
+            ar: 'ارسم بلون مسار ضيف من البوابة إلى المجلس، وبلون آخر مسار أحد أفراد العائلة من السيارة إلى الدرج. إذا كان اللقاء عند الباب يناسبكم، فقد يكفي بهو مشترك يتفرع منه الطريق. أمّا إذا أردتم دخول البيت وقت الضيافة من دون المرور بالمجلس، فجرّبوا موضع باب مستقل، ثم راجعوا أين يلتقي المساران بعده.',
+            en: 'Use one colour to trace a guest from the gate to a seat in the majlis, the room where you receive visitors. Use another to trace a family member from the car to the stairs. If you like greeting each other at the door, a shared hall with two onward routes may suit you. If the family wants to come and go independently, draw a separate entrance and check where the paths next meet.'
+          }
+        },
+        {
+          heading: { ar: 'ماذا يرى الضيف في طريقه إلى المغاسل؟', en: 'What can a guest see on the way to the washbasin?' },
+          body: {
+            ar: 'ضع علامة على باب المجلس وأخرى عند مغاسل الضيوف. تتبّع المسافة بينهما وتخيّل أبواب الصالة والمطبخ مفتوحة. إذا ظهرت جلسة العائلة مباشرة أمام الضيف، ارسم على نسخة من المخطط باب المجلس في موضع آخر أو جرّب مدخلاً ينعطف قبل الصالة. قارن ما يظهر من الجلسة في كل نسخة.',
+            en: 'Mark the majlis doorway and the guest washbasin. Follow the route between them with the kitchen and living room doors drawn open. Does the family sofa come into full view? On a second copy, move the majlis doorway along the wall or give the entrance a turn before the living room. Compare the view from the guest route in each version.'
+          }
+        },
+        {
+          heading: { ar: 'جرّب تقديم العشاء على المخطط', en: 'Walk a dinner tray from the kitchen to the table' },
+          body: {
+            ar: 'ضع طاولة الطعام والكراسي في مكانها على المخطط، واسحب كرسياً كأنّ عليه ضيفاً. تتبّع الطريق بصينية من المطبخ إلى السفرة ثم عُد بالأطباق بعد العشاء. إذا مررت بين الكنبة والتلفزيون أو اضطررت إلى إزاحة الكرسي، جرّب تدوير الطاولة أو تغيير موضع باب السفرة قبل أن تطلب غرفة أكبر.',
+            en: 'Draw the dining table and chairs, with one chair pulled out as if a guest were sitting in it. Trace a tray from the kitchen to the table, then take the empty plates back. If the route crosses between the sofa and the television or clips the occupied chair, try turning the table or moving the dining room door before asking for a bigger room.'
+          }
+        },
+        {
+          heading: { ar: 'اكتب ملاحظة محددة على الرسم', en: 'Give your architect one specific note on the drawing' },
+          body: {
+            ar: 'ضع دائرة حيث يتقاطع مساران يهمّك فصلهما، واكتب بجانبها ما يحدث في بيتك. مثلاً «نجتمع للعشاء كل جمعة، ونريد أن يصل الأطفال من الدرج إلى المطبخ فيما الضيوف في المجلس». يتيح هذا الوصف للمعماري أن يقترح توزيعاً آخر، ولك أن تختبره بالأمسية نفسها.',
+            en: 'Circle a crossing you would like to avoid and write what happens there in your household. For example, “We host Friday dinner and want the children to reach the kitchen from the stairs while guests are in the majlis.” Your architect can draw another layout, and you can test it against the same evening.'
+          }
+        }
+      ],
+      related: ['villa-design-jeddah', 'luxury-villa-design-jeddah']
+    },
     {
       slug: 'villa-design-cost-jeddah',
       imageProject: 'montashiri-villa',
@@ -877,37 +933,50 @@ const site = {
         en: 'The street elevation shows where openings sit between walls and screens. Before the first call, think about which rooms you want to face the street and which you would prefer to face a courtyard.'
       },
       date: '2026-04-28',
-      updated: '2026-11-21',
-      title: { ar: 'ما الذي تجهّزه قبل تصميم فيلتك الخاصة — WB Studio', en: 'What to Prepare Before Designing Your Private Villa — WB Studio' },
+      updated: '2026-11-28',
+      title: { ar: 'قبل تصميم الفيلا في جدة، ماذا تحضّر للقاء المعماري؟ | WB Studio', en: 'Villa Design Checklist for Meeting an Architect | WB Studio' },
       desc: {
-        ar: 'قائمة عملية بما تحتاج تجهيزه — صك الأرض، الاحتياجات، الميزانية، والمراجع — قبل بدء تصميم فيلتك في جدة.',
-        en: 'A practical checklist of what to prepare — your deed, needs, budget and references — before starting your villa design in Jeddah.'
+        ar: 'تخطّط لفيلا في جدة؟ جهّز ملاحظة قصيرة عن الأرض واحتياجات العائلة وما تشمله الميزانية. اعرف أيّ الصور والمخططات تفيد في المكالمة الأولى وما يمكن تأجيله.',
+        en: 'Planning a villa in Jeddah? Bring a short brief on your plot, household and budget. See which sketches and photos help on the first call and what can wait.'
       },
-      h1: { ar: 'ما الذي تجهّزه قبل تصميم فيلتك', en: 'What to prepare before designing your villa' },
+      h1: { ar: 'ماذا تجهّز قبل لقاء المعماري لتصميم فيلتك؟', en: 'What to prepare before meeting your villa architect' },
       intro: {
-        ar: 'كلما وضحت رؤيتك وأوراقك من البداية، كان التصميم أسرع وأدق. إليك ما نطلبه عادةً قبل الخطوة الأولى.',
-        en: 'The clearer your vision and paperwork from the start, the faster and more accurate the design. Here’s what we usually ask for before the first step.'
+        ar: 'للمكالمة المجانية الأولى، يكفي أن تصف أين تريد البناء وما الذي تحتاجه عائلتك من البيت. انسخ القائمة التالية في ملاحظات هاتفك واملأ ما تعرفه. اترك ما لم تحسمه كسؤال نناقشه معاً.',
+        en: 'For the first free call, start with where you want to build and what your family needs from the house. Copy the checklist into a phone note and fill in what you know. Anything you haven’t settled yet can be a question for the call.'
       },
       sections: [
         {
-          heading: { ar: 'أوراق الأرض', en: 'The plot documents' },
+          heading: { ar: 'قائمة تحضير المكالمة الأولى', en: 'Your first meeting checklist' },
           body: {
-            ar: 'صك الأرض، الكروكي/المخطط، ومساحة وأبعاد الأرض واتجاهها — تحدّد ما يمكن بناؤه وكيف توجَّه الفيلا.',
-            en: 'The deed, the site plan/croquis, and the plot’s area, dimensions and orientation — these define what can be built and how the villa is oriented.'
+            ar: 'يكفي سطر لكل بند. هذه التفاصيل تساعدنا على طرح أسئلة تخصّ بيتك منذ بداية الحديث.',
+            en: 'One line per item is enough. These details help us ask questions specific to your house from the start.'
+          },
+          items: [
+            { ar: 'الأرض — المدينة أو الحي، المساحة التقريبية إن عرفتَها، وأيّ ضلع يطلّ على الشارع. إذا كنت ما زلت تفاضل بين أرضين، اذكر ما يعجبك في كلّ منهما.', en: 'Plot — city or district, approximate area if known, and which side faces the street. If you’re still choosing between two plots, note what appeals to you about each.' },
+            { ar: 'أهل البيت — عدد من سيسكنون فيه وما يحتاجونه يومياً، مثل غرفة في الدور الأرضي لأحد الوالدين أو مكان هادئ للعمل من المنزل.', en: 'Household — how many people will live there and one daily need for each, such as a ground-floor bedroom for a parent or a quiet place to work.' },
+            { ar: 'الأولويات — شيء أساسي وشيء يمكن تأجيله. مثلاً، إذا ضاقت المساحة، هل تفضّل غرفة ضيوف إضافية أم حديقة تتّسع للعب الأطفال؟', en: 'Priorities — one essential and one thing that could wait. If space gets tight, would an extra guest bedroom or a garden big enough for the children to play come first?' },
+            { ar: 'الميزانية — نطاق تقريبي بالريال إن تكوّنت لديك فكرة عنه. اكتب ما حسبته ضمنه، مثل البناء والتشطيبات والأثاث والأتعاب، وما خصّصت له مبلغاً منفصلاً.', en: 'Budget — a range in Saudi riyals if you have one. Note whether it covers construction, finishes, furniture and fees, and which of those have their own allowance.' }
+          ]
+        },
+        {
+          heading: { ar: 'أيّ رسم أو صورة يفيد في شرح الأرض؟', en: 'Which plot sketch or photos would help?' },
+          body: {
+            ar: 'إن كان لديك كروكي، علّم عليه جهة الشارع والمدخل الذي تتخيّله. صورة من جهة المدخل باتجاه داخل الأرض وأخرى من مكان الصالة المقترح باتجاه الإطلالة تشرحان ما يصعب وصفه. إذا كانت الأبعاد تقريبية فاكتب ذلك على الرسم. يمكنك ترتيب المكالمة حتى لو لم يتوفّر رفع مساحي بعد، والاحتفاظ بصكّ الأرض وبيانات الهوية لديك في هذه المرحلة.',
+            en: 'If you have a plot sketch, mark the street and where you imagine arriving. A photo looking into the plot from that entrance and another looking out from the proposed living room can explain a view better than a description. Mark estimated dimensions as approximate. You can book a call before you have a measured survey and keep your deed and personal ID details private at this stage.'
           }
         },
         {
-          heading: { ar: 'احتياجات العائلة', en: 'Your family’s needs' },
+          heading: { ar: 'اختر صورة تستطيع أن تشرح ما أعجبك فيها', en: 'Pick one reference you can explain' },
           body: {
-            ar: 'عدد الغرف، فراغات الضيافة، خصوصية النساء، احتياجات السائق والخدم، والمستقبل (توسّع، أطفال). كلما صدقت القائمة، نجح التصميم.',
-            en: 'Number of rooms, hospitality spaces, women’s privacy, driver and staff needs, and the future (expansion, children). The more honest the list, the better the design.'
+            ar: 'إذا لفتتك صورة لفيلا، حدّد التفصيل الذي تتمنّاه في بيتك. قد يعجبك في صورة الشرفة اتساع الجلسة المظللة، بينما تفضّل أن تكون أقرب إلى المطبخ لتتناول الفطور فيها. بهذا التعليق نفهم كيف تريد استخدام الفراغ حتى لو اختلف شكل الواجهة.',
+            en: 'If a villa image catches your eye, mark the detail you would actually use. You might like the deep shade over a terrace but want that terrace beside the kitchen so you can eat breakfast there. That note tells your architect what to carry into your design even if the facade looks quite different.'
           }
         },
         {
-          heading: { ar: 'الميزانية والمراجع', en: 'Budget and references' },
+          heading: { ar: 'ما الذي يخرج به صاحب الفيلا من المكالمة؟', en: 'What happens after the first call?' },
           body: {
-            ar: 'نطاق ميزانية واقعي وصور لمشاريع تعجبك — لا لننسخها، بل لنفهم ذوقك بدقة.',
-            en: 'A realistic budget range and images of projects you like — not to copy, but to understand your taste precisely.'
+            ar: 'نراجع أولوياتك ونحدّد أيّ معلومة عن الأرض ستساعد في الخطوة التالية. بعدها نعرض عليك تصوّراً مبدئياً مجانياً لتناقش التوزيع المقترح مع عائلتك. عندما يناسبك التوجّه، نتفق على المخططات المطلوبة والأتعاب قبل بدء العمل المدفوع.',
+            en: 'We review your priorities and identify any plot information needed for the next step. WB Studio then shares a free preliminary concept so you can discuss the proposed layout with your family. Once the direction suits you, we agree which drawings you need and what they will cost before paid work begins.'
           }
         }
       ],

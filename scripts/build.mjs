@@ -355,11 +355,21 @@ function serviceSchema(l, lang) {
   };
 }
 
-function articleSchema(a, lang, project) {
+function guideIllustration(article) {
+  const project = projects.find((p) => p.slug === article.imageProject && !p.placeholder);
+  if (!project) throw new Error(`Guide ${article.slug} must reference studio work: ${article.imageProject}`);
+  const image = article.imageFile
+    ? project.gallery.find((entry) => path.posix.basename(entry.src) === article.imageFile)
+    : project.cover;
+  if (!image) throw new Error(`Unknown guide image: ${project.slug}/${article.imageFile}`);
+  return { project, image };
+}
+
+function articleSchema(a, lang, image) {
   return {
     '@type': 'Article', headline: t(a.h1, lang), description: t(a.desc, lang),
     inLanguage: lang, datePublished: a.date, dateModified: a.updated || a.date,
-    mainEntityOfPage: absUrl(lang, `/journal/${a.slug}/`), image: site.domain + project.cover.src,
+    mainEntityOfPage: absUrl(lang, `/journal/${a.slug}/`), image: site.domain + image.src,
     author: {
       '@type': 'Person', '@id': `${site.domain}/#wael`,
       name: site.author.name.en, alternateName: site.author.name.ar, url: absUrl(lang, '/about/')
@@ -1080,12 +1090,11 @@ function renderArticle(a, lang) {
   const home = ui('homeLabel', lang);
   const trail = [[home, '/'], [t(site.nav.journal, lang), '/journal/'], [t(a.h1, lang), `/journal/${a.slug}/`]];
   const relLandings = (a.related || []).map((slug) => site.landings.find((x) => x.slug === slug)).filter(Boolean);
-  const project = projects.find((p) => p.slug === a.imageProject && !p.placeholder);
-  if (!project) throw new Error(`Guide ${a.slug} must reference studio work: ${a.imageProject}`);
+  const { project, image } = guideIllustration(a);
   return `${head({
     lang, title: t(a.title, lang), desc: t(a.desc, lang), logicalPath: `/journal/${a.slug}/`,
-    ogMedia: project.cover, ogType: 'article',
-    jsonld: [articleSchema(a, lang, project), breadcrumb(lang, trail)]
+    ogMedia: image, ogType: 'article',
+    jsonld: [articleSchema(a, lang, image), breadcrumb(lang, trail)]
   })}
 <body data-page="article">
 ${header(lang, 'journal')}
@@ -1102,12 +1111,15 @@ ${header(lang, 'journal')}
     <section class="section-sm" data-reveal>
       <div class="wrap article-reading-column flow">
         ${a.sections.map((sec) => `<h2 class="display">${esc(t(sec.heading, lang))}</h2>
-        <p>${esc(t(sec.body, lang))}</p>`).join('\n        ')}
+        <p>${esc(t(sec.body, lang))}</p>${sec.items ? `
+        <ul>
+          ${sec.items.map((item) => `<li>${esc(t(item, lang))}</li>`).join('\n          ')}
+        </ul>` : ''}`).join('\n        ')}
       </div>
     </section>
     <div class="wrap narrow">
       <figure class="project-cover">
-        ${img(project.cover, lang, { sizes: '(min-width: 760px) 700px, 94vw' })}
+        ${img(image, lang, { sizes: '(min-width: 760px) 700px, 94vw' })}
         <figcaption>
           ${esc(t(a.projectCaption, lang))}
           <a class="text-link" href="${langPath(lang, `/work/${project.slug}/`)}">${esc(t(project.title, lang))} <span aria-hidden="true">${arrow(lang)}</span></a>
@@ -1166,6 +1178,9 @@ function renderSitemap() {
     const examples = landing.sections.flatMap((section) => section.example ? exampleImages(section.example) : []);
     const sources = [landing.image, ...examples].map((image) => image?.src).filter((src) => studioImages.has(src));
     imagesByPage.set(`/${landing.slug}/`, sources);
+  }
+  for (const article of site.journal) {
+    imagesByPage.set(`/journal/${article.slug}/`, [guideIllustration(article).image.src]);
   }
   const entries = [];
   for (const [p, alternates] of routes) {

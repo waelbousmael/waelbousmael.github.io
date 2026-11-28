@@ -162,7 +162,7 @@
     {
       "slug": "montashiri-villa",
       "relatedService": { "saudi": "obhur-villa-design", "berlin": "hausplanung-berlin" },
-      "relatedGuides": ["obhur-villa-design-considerations", "before-designing-private-villa"],
+      "relatedGuides": ["obhur-villa-design-considerations", "majlis-family-living-villa-floor-plan", "before-designing-private-villa"],
       "featured": true,
       "placeholder": false,
       "year": 2025,
@@ -171,9 +171,9 @@
       "location": { "ar": "أبحر، جدة", "en": "Obhur, Jeddah", "de": "Obhur, Jeddah, Saudi-Arabien" },
       "status": { "ar": "قيد التصميم", "en": "In design", "de": "In Planung" },
       "excerpt": {
-        "ar": "تصميم فيلا عائلية في أبحر بجدة. تتجه نوافذ صالة المعيشة الممتدة على ارتفاع طابقين نحو الفناء، ويطل المطبخ على الزرع من خلف جزيرة تتسع لأربعة مقاعد.",
-        "en": "Design for a family villa in Obhur, Jeddah. A planted courtyard brings daylight into the double-height living room, and four stools line the kitchen island.",
-        "de": "Entwurf für eine Familienvilla in Obhur, Jeddah. Der zweigeschossige Wohnraum öffnet sich zum bepflanzten Hof. An der Kücheninsel finden vier Personen Platz."
+        "ar": "تصميم فيلا عائلية في أبحر بجدة. تمنح الشرائح الأفقية البيت خصوصية من جهة الشارع، وتطل صالة المعيشة بارتفاع طابقين على فناء مزروع.",
+        "en": "Design for a family villa in Obhur, Jeddah. Screens give the ground floor privacy from the street, and a double-height living room opens onto a planted courtyard.",
+        "de": "Entwurf einer Familienvilla in Obhur, Jeddah. Lamellen schützen das Erdgeschoss vor Einblicken. Der zweigeschossige Wohnraum öffnet sich zum bepflanzten Hof."
       },
       "thesis": {
         "ar": "على الشارع السكني في أبحر، تحجب الشرائح الأفقية جزءاً من الواجهة عند مستوى المارّة. أما صالة المعيشة العائلية فتطل من الداخل على فناء مزروع، بواجهة زجاجية تمتد على ارتفاع طابقين.",
@@ -199,7 +199,8 @@
       "cover": {
         "src": "/assets/projects/montashiri-villa/cover.webp",
         "w": 1536, "h": 960,
-        "alt": { "ar": "واجهة فيلا المنتشري الحجرية مع شرفات مزروعة ونخيل في ضوء الغروب، أبحر، جدة", "en": "Stone street facade of Montashiri Villa with planted terraces and palms at dusk, Obhur, Jeddah", "de": "Steinfassade der Montashiri Villa mit bepflanzten Terrassen und Palmen in der Abenddämmerung, Obhur, Jeddah" }
+        "alt": { "ar": "واجهة فيلا المنتشري الحجرية مع شرفات مزروعة ونخيل في ضوء الغروب، أبحر، جدة", "en": "Stone street facade of Montashiri Villa with planted terraces and palms at dusk, Obhur, Jeddah", "de": "Steinfassade der Montashiri Villa mit bepflanzten Terrassen und Palmen in der Abenddämmerung, Obhur, Jeddah" },
+        "caption": { "ar": "تصور الواجهة من الشارع في أبحر. تمتد الشرائح الأفقية بين دعامات سور الحديقة.", "en": "Proposed street frontage in Obhur. Horizontal slats span the openings in the garden wall.", "de": "Entwurf der Straßenansicht in Obhur. Waagerechte Lamellen füllen die Öffnungen in der Gartenmauer." }
       },
       "gallery": [
         {
@@ -227,8 +228,9 @@
       "location": { "ar": "جبيل، لبنان", "en": "Byblos, Lebanon", "de": "Byblos, Libanon" },
       "status": { "ar": "قيد التصميم", "en": "In design", "de": "In Planung" },
       "excerpt": {
-        "ar": "منتجع ساحلي في جبيل تتدرّج وحداته السكنية بكساء حجري حول الحدائق والمسابح، ضمن مخطط يسعى إلى تعظيم الإطلالات نحو البحر المتوسط.",
-        "en": "A coastal resort in Byblos where stone-clad residences step around gardens and pools within a plan designed to maximize views towards the Mediterranean.", "de": "Ein Küstenresort in Byblos, dessen steinverkleidete Wohnhäuser sich um Gärten und Pools staffeln. Der Gesamtplan ist auf möglichst freie Ausblicke zum Mittelmeer ausgerichtet."
+        "ar": "المخطط العام لمنتجع على ساحل جبيل في لبنان. تتدرّج المساكن المكسوّة بالحجر مع انحدار الأرض لتبقى الإطلالات على البحر مفتوحة من مستويات مختلفة.",
+        "en": "Master plan for a coastal resort in Byblos, Lebanon. Stone-clad residences step down the hillside to keep views of the Mediterranean open at each level.",
+        "de": "Masterplan für ein Küstenresort in Byblos, Libanon. Die steinverkleideten Wohnhäuser staffeln sich am Hang, damit der Blick aufs Mittelmeer auf jeder Ebene frei bleibt."
       },
       "thesis": {
         "ar": "كيف يمكن لكل وحدة سكنية أن تحافظ على صلة حقيقية بالبحر ضمن موقع ساحلي شديد الانحدار؟ ينطلق التصميم من تضاريس الأرض، فتتوزّع الكتل السكنية على مستويات متدرّجة تحدّ من حجب الإطلالات، بينما ينظّم محور داخلي الوصول والحدائق والمرافق المشتركة من دون المساس بالخصوصية.",
@@ -251,7 +253,8 @@
       "cover": {
         "src": "/assets/projects/byblos-resort/cover.webp",
         "w": 1920, "h": 1200,
-        "alt": { "ar": "وحدات سكنية في منتجع بكساء حجري تحيط بمسبح وسط الحدائق عند الغسق", "en": "Stone-clad resort residences arranged around a landscaped pool at dusk", "de": "Steinverkleidete Wohnhäuser des Resorts um einen Pool in einer Gartenanlage bei Abenddämmerung" }
+        "alt": { "ar": "وحدات سكنية في منتجع بكساء حجري تحيط بمسبح وسط الحدائق عند الغسق", "en": "Stone-clad resort residences arranged around a landscaped pool at dusk", "de": "Steinverkleidete Wohnhäuser des Resorts um einen Pool in einer Gartenanlage bei Abenddämmerung" },
+        "caption": { "ar": "تصور المساكن المقترحة في جبيل كما تبدو من المسبح المشترك", "en": "The proposed residences in Byblos seen from the shared pool", "de": "Blick vom Gemeinschaftspool auf die geplanten Wohnhäuser in Byblos" }
       },
       "gallery": [
         {

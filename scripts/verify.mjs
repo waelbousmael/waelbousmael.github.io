@@ -798,6 +798,9 @@ const assertArticlePage = (page, article, lang, prefix, label) => {
   article.sections.forEach((section) => {
     has(readingColumn.inner, htmlEscape(section.heading[lang]), `${label} must retain every section heading`);
     has(readingColumn.inner, htmlEscape(section.body[lang]), `${label} must retain every section body`);
+    for (const item of section.items || []) {
+      has(readingColumn.inner, `<li>${htmlEscape(item[lang])}</li>`, `${label} must render every checklist item`);
+    }
   });
   const related = (article.related || []).map((slug) => site.landings.find((candidate) => candidate.slug === slug)).filter(Boolean);
   if (related.length) assertServiceRows(page, related, lang, prefix, 'h3', `${label} related services`);
