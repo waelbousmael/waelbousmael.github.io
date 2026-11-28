@@ -985,6 +985,23 @@ form .btn-solid:disabled { cursor: progress; background: var(--ink-soft); border
 }
 .footer-bottom-inner a { color: inherit; }
 
+.measurement-settings {
+  padding: 0.5rem 0; border: 0; background: transparent;
+  color: inherit; font: inherit; text-decoration: underline; cursor: pointer;
+}
+.measurement-panel {
+  position: fixed; inset-block-end: 0.75rem; inset-inline-end: 0.75rem; z-index: 35;
+  width: min(25rem, calc(100% - 1.5rem)); max-height: 55dvh; overflow: auto;
+  border: 1px solid var(--line-strong); border-radius: var(--radius);
+  background: var(--bg); color: var(--ink); padding: 1rem 1.25rem;
+  font-size: 0.875rem; line-height: 1.55; text-align: start;
+}
+.measurement-panel h2 { font-size: 1.45rem; margin: 0 0 0.4rem; }
+.measurement-panel summary { cursor: pointer; padding-block: 0.5rem; text-decoration: underline; }
+.measurement-panel details p { padding-block-end: 0.75rem; }
+.measurement-actions { display: flex; gap: 0.6rem; }
+.measurement-actions .btn { flex: 1; min-height: 2.75rem; padding: 0.45rem 0.75rem; }
+
 /* ── related reading ── */
 .related-guide-list {
   list-style: none;

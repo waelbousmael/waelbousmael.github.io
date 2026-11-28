@@ -41,7 +41,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=d259cc8b55f0" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=1b18e059cd66" />
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"FAQPage","inLanguage":"en","mainEntity":[{"@type":"Question","name":"How much does private villa design cost?","acceptedAnswer":{"@type":"Answer","text":"Cost depends on the plot size, scope of work, and required deliverables. We always start with a free call and a free preliminary concept, and clarify the full cost and path before any paid agreement."}},{"@type":"Question","name":"Do you design villas remotely outside Jeddah?","acceptedAnswer":{"@type":"Answer","text":"Yes. We serve clients in Jeddah, Saudi Arabia, and the Gulf in person or remotely via video calls and shared drawings, keeping the same clarity at every step."}},{"@type":"Question","name":"What deliverables do I get?","acceptedAnswer":{"@type":"Answer","text":"From the architectural concept and interior direction through to build-ready design that aligns consultants and contractors and protects the project’s original vision."}},{"@type":"Question","name":"How long does villa design take?","acceptedAnswer":{"@type":"Answer","text":"It varies with the size and complexity of the project. We outline the expected timeline within the preliminary concept before any paid work begins."}},{"@type":"Question","name":"When does payment start?","acceptedAnswer":{"@type":"Answer","text":"The first call and preliminary concept are completely free; a paid agreement only begins after the vision is clear and the direction is agreed."}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wbstudio.xyz/"},{"@type":"ListItem","position":2,"name":"Contact","item":"https://wbstudio.xyz/en/contact/"}]},{"@type":"ContactPage","@id":"https://wbstudio.xyz/en/contact/#webpage","url":"https://wbstudio.xyz/en/contact/","name":"Contact WB Studio | Villa Design in Jeddah","description":"Talk to Wael Bousmael about a new villa or home renovation in Jeddah, Saudi Arabia or the Gulf. Start with a free call and a free preliminary concept.","inLanguage":"en","isPartOf":{"@id":"https://wbstudio.xyz/#website"},"about":{"@id":"https://wbstudio.xyz/#organization"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://wbstudio.xyz/assets/images/og.jpg","width":1536,"height":1024,"caption":"Montashiri Villa design in Jeddah with stone facades and planted terraces"}}]}</script>
 </head>
 <body data-page="contact">
@@ -148,10 +148,10 @@
           <label for="budget">Estimated Budget</label>
           <select id="budget" name="budget">
             <option value="">Optional</option>
-            <option>Below SAR 1M</option>
-            <option>SAR 1M to 2M</option>
-            <option>SAR 2M to 4M</option>
-            <option>Above SAR 4M</option>
+            <option data-budget-band="under_1m">Below SAR 1M</option>
+            <option data-budget-band="1m_2m">SAR 1M to 2M</option>
+            <option data-budget-band="2m_4m">SAR 2M to 4M</option>
+            <option data-budget-band="over_4m">Above SAR 4M</option>
           </select>
         </fieldset>
 
@@ -222,12 +222,24 @@
     <div class="wrap footer-bottom-inner">
       <p>© <span data-year>2026</span> WB Studio. All rights reserved.</p>
       <p><a href="/en/credits/">Image credits</a></p>
+      <div data-measurement data-endpoint="https://wbstudio-inquiries.wbstudio2025.workers.dev/event" data-page-group="contact" data-nosnippet>
+        <button type="button" class="measurement-settings" data-measurement-settings aria-controls="measurement-panel" aria-expanded="false" hidden>Measurement preferences</button>
+        <section id="measurement-panel" class="measurement-panel" data-measurement-dialog aria-labelledby="measurement-title" hidden>
+          <h2 id="measurement-title">May we measure how this site is used?</h2>
+          <p>With your permission, we count page views, contact clicks and inquiries to understand how project owners find the studio.</p>
+          <details><summary>What gets counted?</summary><p>Cloudflare processes daily totals by source, page category, language and whether the connection is from Saudi Arabia. For a submitted inquiry we also count the optional SAR budget band. Contact details and plot locations stay out of these totals. This browser remembers your choice. You can change it in the footer.</p></details>
+          <div class="measurement-actions">
+            <button class="btn" type="button" data-measurement-allow>Allow</button>
+            <button class="btn" type="button" data-measurement-decline>Decline</button>
+          </div>
+        </section>
+      </div>
       <p dir="ltr">Jeddah · Berlin</p>
     </div>
   </div>
 </footer>
-<script src="/assets/js/site.js?v=11e0674c329a" defer></script>
+<script src="/assets/js/site.js?v=845b95d1fa86" defer></script>
 <script>window.GOOGLE_MAPS_API_KEY = window.GOOGLE_MAPS_API_KEY || '';</script>
-<script src="/assets/js/contact.js?v=88d3f6a73216" defer></script>
+<script src="/assets/js/contact.js?v=6444ec5e119a" defer></script>
 </body>
 </html>

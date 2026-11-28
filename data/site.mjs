@@ -111,9 +111,9 @@ const site = {
         href: '/modern-villa-design-jeddah/'
       },
       {
-        title: { ar: 'تصميم جاهز للتنفيذ وتنسيق BIM', en: 'Build-ready design & BIM coordination' },
-        text: { ar: 'وضوح بين المعماري والإنشائي والميكانيكي قبل الوصول إلى الموقع.', en: 'Clarity across architectural, structural and MEP disciplines before site work.' },
-        href: '/approach/'
+        title: { ar: 'تصميم الفلل الفاخرة ومجالس الضيافة', en: 'Luxury villas and private entertaining spaces' },
+        text: { ar: 'من جلسة الإفطار العائلية إلى مأدبة في التراس، نرسم البيت حول طريقة استقبالكم للضيوف.', en: 'Plan the house around how you host, from breakfast at the kitchen island to dinner on the terrace.' },
+        href: '/luxury-villa-design-jeddah/'
       },
       {
         title: { ar: 'تجديد الفلل ومخططات التنفيذ', en: 'Villa renovation & execution drawings' },
@@ -345,10 +345,12 @@ const site = {
     mapsPh: { ar: 'https://maps.google.com/...', en: 'https://maps.google.com/...' },
     budget: { ar: 'الميزانية التقريبية', en: 'Estimated Budget' },
     budgetPh: { ar: 'اختياري', en: 'Optional' },
-    budgetOptions: {
-      ar: ['أقل من 1 مليون ريال', '1 إلى 2 مليون ريال', '2 إلى 4 مليون ريال', 'أكثر من 4 مليون ريال'],
-      en: ['Below SAR 1M', 'SAR 1M to 2M', 'SAR 2M to 4M', 'Above SAR 4M']
-    },
+    budgetOptions: [
+      { band: 'under_1m', ar: 'أقل من 1 مليون ريال', en: 'Below SAR 1M' },
+      { band: '1m_2m', ar: '1 إلى 2 مليون ريال', en: 'SAR 1M to 2M' },
+      { band: '2m_4m', ar: '2 إلى 4 مليون ريال', en: 'SAR 2M to 4M' },
+      { band: 'over_4m', ar: 'أكثر من 4 مليون ريال', en: 'Above SAR 4M' }
+    ],
     submit: { ar: 'أرسل طلب المكالمة', en: 'Request a free call' },
     sending: { ar: 'جارٍ إرسال طلبك…', en: 'Sending your request…', de: 'Ihre Anfrage wird gesendet…' },
     success: {
@@ -593,54 +595,64 @@ const site = {
       slug: 'luxury-villa-design-jeddah',
       label: { ar: 'تصميم فلل فاخرة في جدة', en: 'Luxury villa design in Jeddah' },
       summary: {
-        ar: 'للفلل الفاخرة التي توازن بين الخصوصية والضيافة والتفاصيل الراقية والقيمة طويلة المدى.',
-        en: 'For luxury villas that balance privacy, hospitality, refined detail and long-term value.'
+        ar: 'تصميم المجلس والسفرة وتراس الضيافة حول عدد من تستقبلهم وما ترغب في إبقائه خاصاً بالعائلة.',
+        en: 'Plan the majlis, dining room and terrace around the people you host and the rooms you keep for family.'
       },
-      seoTitle: { ar: 'تصميم فلل فاخرة في جدة | عمارة راقية — WB Studio', en: 'Luxury Villa Design in Jeddah | Refined Architecture — WB Studio' },
+      seoTitle: { ar: 'تصميم فلل فاخرة في جدة | مجالس وضيافة عائلية — WB Studio', en: 'Luxury Villa Architect in Jeddah | Private Residences — WB Studio' },
       seoDesc: {
-        ar: 'تصميم فلل فاخرة في جدة: خصوصية متدرّجة، فراغات ضيافة، مواد راقية، وتفاصيل مصمّمة لتدوم. استوديو بوتيكي — مكالمة وتصور مبدئي مجاني.',
-        en: 'Luxury villa design in Jeddah: layered privacy, hospitality spaces, refined materials and detail built to last. A boutique studio — free call and preliminary concept.'
+        ar: 'خطّط لمجلس الضيوف وصالة العائلة وتراس فيلتك مع المعماري وائل بو سماعيل. شاهد تصاميم من أبحر وخميس مشيط وابدأ بمكالمة مجانية عن أرضك.',
+        en: 'Design a private villa with Wael Bousmael. Explore family interiors in Obhur and a terrace lighting study in Khamis Mushait, then discuss your plot on a free call.'
       },
-      eyebrow: { ar: 'الفلل الفاخرة — جدة', en: 'Luxury villas — Jeddah' },
-      h1: { ar: 'تصميم فلل فاخرة في جدة', en: 'Luxury villa design in Jeddah' },
+      eyebrow: { ar: 'وائل بو سماعيل · معماري', en: 'Wael Bousmael · Architect' },
+      h1: { ar: 'تصميم فلل عائلية فاخرة في جدة', en: 'Luxury villa design for families in Jeddah' },
       intro: {
-        ar: 'الفخامة الحقيقية هدوء لا ضجيج: نِسب مدروسة، مواد صادقة، وخصوصية تُدار بعناية. نصمم فللاً فاخرة في جدة توازن بين استقبال الضيوف وراحة العائلة، وتحتفظ بقيمتها مع الزمن.',
-        en: 'Real luxury is calm, not loud: considered proportions, honest materials, and privacy handled with care. We design luxury villas in Jeddah that balance receiving guests with family comfort — and hold their value over time.'
+        ar: 'حين يجتمع الأهل على العشاء، هل تفتح السفرة على المجلس والتراس، أم تفضّل أن يبقى الفناء للعائلة؟ في مكالمتك الأولى مع وائل بو سماعيل، نرسم ملامح البيت من تفاصيل كهذه ومن طبيعة أرضك. نبدأ بمكالمة مجانية، ثم نراجع معك تصوراً مبدئياً مجانياً، ونتفق على المخططات والأتعاب عندما يناسبك التوجّه.',
+        en: 'When the extended family comes for dinner, should the dining room open to the majlis and terrace, or should the courtyard stay private? Your first conversation with architect Wael Bousmael starts with your plot and the way you host. The call and preliminary concept are free. Once the direction suits you, we agree on the drawings and fee.'
       },
       sections: [
         {
-          heading: { ar: 'الخصوصية والضيافة', en: 'Privacy and hospitality' },
+          heading: { ar: 'مطبخ الإفطار ومائدة الضيوف', en: 'Breakfast in the kitchen, dinner with guests' },
           body: {
-            ar: 'مسار ضيوف مستقل، مجلس رجال ومجلس عائلي، وتدرّج واضح بين العام والخاص — جوهر الفيلا السعودية الفاخرة، مُعاد تصوّره بلغة حديثة.',
-            en: 'An independent guest route, men’s and family majlis, and a clear gradient between public and private — the heart of the luxury Saudi villa, reimagined in a modern language.'
+            ar: 'في تصميم فيلا المنتشري بأبحر، تصطفّ أربعة مقاعد على طول جزيرة المطبخ، ويطلّ الجالس على الزرع من خلال الباب الزجاجي. أمّا عند تخطيط مائدة أكبر للضيافة، فنرسمها بكامل مقاعدها ونتتبّع طريق الأطباق من المطبخ. بهذه الطريقة نحدّد معك أيّ باب يبقى مفتوحاً على السفرة وأين تحتاج مساحة التحضير إلى خصوصية.',
+            en: 'In the Montashiri Villa design in Obhur, four stools run along the kitchen island. From a seat at breakfast you can see planting beyond the glazed door. To plan a larger dinner in your own home, we draw the table with every seat occupied and trace how the dishes reach it. That helps you decide which door to leave open to guests and where to keep preparation out of view.'
+          },
+          example: {
+            project: 'montashiri-villa',
+            images: ['gallery-02.webp'],
+            link: { ar: 'شاهد المطبخ وصالة العائلة في فيلا المنتشري', en: 'Explore the kitchen and family living room at Montashiri Villa' }
           }
         },
         {
-          heading: { ar: 'مواد تدوم', en: 'Materials that last' },
+          heading: { ar: 'كيف يبدو الوصول إلى البيت مساءً؟', en: 'Arriving for an evening on the terrace' },
           body: {
-            ar: 'نختار مواد قليلة وراقية تتقادم بكرامة: حجر طبيعي، خشب دافئ، ومعادن مدروسة. الفخامة في الملمس والنسب، لا في الزخرفة الزائدة.',
-            en: 'We choose a short, refined material palette that ages with dignity: natural stone, warm timber and considered metals. Luxury lives in texture and proportion, not excess ornament.'
+            ar: 'في التصوّر المقترح لفيلا خميس مشيط، يقود الدرج المنحني من التراس إلى الشرفة تحت سقف مبطّن بالخشب. في الدراسة الليلية يظهر الضوء أسفل حوض الزرع وعلى حافة السقف. عند مراجعة مدخل فيلتك، ننظر إليه من البوابة ثم من مكان الجلوس لنختار ما يراه الضيف لدى وصوله وما تراه العائلة من الداخل.',
+            en: 'In the Khamis Mushait Villa proposal, a curved stair leads from the terrace to a balcony beneath a timber-lined canopy. The night study picks out the planter and roof edge with light. For your own entrance, we consider the view from the gate and then from a seat indoors to decide what a guest sees on arrival and what the family sees from the house.'
+          },
+          example: {
+            project: 'khamis-mushait-villa',
+            images: ['gallery-01.webp', 'gallery-02.webp'],
+            link: { ar: 'استكشف مدخل فيلا خميس مشيط كما يبدو نهاراً ومساءً', en: 'Explore the Khamis Mushait Villa entrance by day and at night' }
           }
         }
       ],
       serviceType: 'Luxury villa design',
       faq: [
         {
-          q: { ar: 'ما الذي يجعل تصميم الفيلا فاخراً فعلاً؟', en: 'What makes a villa design truly luxurious?' },
-          a: { ar: 'ليست المساحة وحدها، بل النسب والضوء والخصوصية وجودة المواد والتفاصيل. هذه ما نركّز عليه.', en: 'Not size alone, but proportion, light, privacy, and the quality of materials and detail. That is what we focus on.' }
+          q: { ar: 'هل يشمل تصميم الفيلا التفاصيل الداخلية؟', en: 'Can the villa commission include interior detailing?' },
+          a: { ar: 'نعم. حدّد الغرف التي ترغب في تفصيلها، مثل المجلس أو المطبخ أو الجناح الرئيسي. قبل الاتفاق المدفوع نوضّح لك ما يشمله العرض من توزيع الأثاث والمواد والرسومات التفصيلية، وأيّ بنود تحتاج إلى تنسيق مع مختصين.', en: 'Yes. Tell us which rooms you want to develop in detail, such as the majlis, kitchen or principal suite. Before you commission the work, the proposal sets out which furniture layouts, material choices and detail drawings are included and where specialist coordination is needed.' }
         },
         {
-          q: { ar: 'هل تصممون المجالس وفراغات الضيافة؟', en: 'Do you design majlis and hospitality spaces?' },
-          a: { ar: 'نعم، وهي محور تصميم الفيلا الفاخرة في جدة: استقبال كريم مع حماية كاملة لخصوصية العائلة.', en: 'Yes — they are central to luxury villa design in Jeddah: gracious reception with full protection of family privacy.' }
+          q: { ar: 'ماذا نجهّز إذا كانت أرضنا خارج جدة؟', en: 'What should we bring if our plot is elsewhere in Saudi Arabia?' },
+          a: { ar: 'يكفي اسم المدينة ومساحة الأرض التقريبية إن عرفتَها. وإذا توفر لديك كروكي يوضح جهة الشارع أو صور للإطلالة التي تهمّك، يمكننا مراجعتها في مكالمة عن بُعد. نناقش معك بعدها الحاجة إلى زيارة الموقع وترتيباتها.', en: 'Start with the city and approximate plot area if you know it. A sketch showing the street edge or photos of a view you want to keep can be reviewed together on a video call. We can then discuss whether a site visit would help and how to arrange it.' }
         },
         {
-          q: { ar: 'هل تعملون ضمن ميزانية فاخرة محددة؟', en: 'Do you work to a defined luxury budget?' },
-          a: { ar: 'نوضح نطاق الميزانية مبكراً ونصمم ضمنه بذكاء، فالقيمة طويلة المدى أهم من الإبهار اللحظي.', en: 'We clarify the budget range early and design within it intelligently — long-term value matters more than momentary impact.' }
+          q: { ar: 'كيف نحدّد ميزانية التصميم والتشطيبات؟', en: 'How do we set a budget for design and finishes?' },
+          a: { ar: 'في المكالمة الأولى نناقش ما خصّصته للبناء والتشطيبات، والغرف التي تودّ أن تعطيها الأولوية. بعد مراجعة التصوّر المجاني نبيّن أتعاب التصميم وما تشمله من مخططات حتى تتمكن من فصلها عن المبالغ المخصّصة للمقاول والمورّدين.', en: 'On the first call we discuss your allowance for construction and finishes and the rooms you want to prioritise. After you review the free concept, the proposal identifies the design fee and its drawings so you can budget separately for the contractor and suppliers.' }
         }
       ],
       related: ['villa-design-jeddah', 'modern-villa-design-jeddah', 'obhur-villa-design', 'modern-hijazi-villa-design'],
-      relatedProjects: ['byblos-resort', 'montashiri-villa'],
-      image: { src: '/assets/projects/byblos-resort/cover.webp', w: 1920, h: 1200, alt: { ar: 'وحدات سكنية بكساء حجري تحيط بمسبح وحدائق في منتجع جبيل', en: 'Stone-clad residences surrounding a pool and gardens at Byblos Resort' } }
+      relatedProjects: ['montashiri-villa', 'khamis-mushait-villa'],
+      image: { src: '/assets/projects/montashiri-villa/gallery-01.webp', w: 1672, h: 941, alt: { ar: 'تصوّر لصالة عائلية بارتفاع طابقين تطلّ على فناء مزروع في فيلا المنتشري بأبحر', en: 'Proposed double-height family living room facing a planted courtyard at Montashiri Villa in Obhur, Jeddah' } }
     },
     {
       slug: 'modern-villa-design-jeddah',
@@ -1198,7 +1210,6 @@ const germanCopy = {
   'form.mapsPh': 'https://maps.google.com/…',
   'form.budget': 'Geschätztes Budget in EUR',
   'form.budgetPh': 'Optional — Ihr ungefährer Budgetrahmen in EUR',
-  'form.budgetOptions': [],
   'form.submit': 'Projektangaben senden',
   'form.success': 'Ihre Anfrage wurde gesendet. Wir melden uns innerhalb von zwei Werktagen.',
   'form.error': 'Ihre Anfrage konnte gerade nicht gesendet werden. Bitte versuchen Sie es erneut.',
@@ -1365,13 +1376,33 @@ site.berlin = {
       draft: true,
       sections: [
         { h: { de: 'Entwurf — Angaben noch zu vervollständigen' }, p: { de: 'Dieser Text beschreibt die derzeit erkennbaren Funktionen der Website und ist keine vollständige Datenschutzerklärung. Die konkreten Anbieterbedingungen, Rechtsgrundlagen, Speicherfristen und gegebenenfalls Angaben zu Drittlandübermittlungen müssen vor Veröffentlichung geprüft und ergänzt werden. Verantwortlicher laut vorliegender Registrierung: Wael Bousmael, WB Studio, Flughafenstraße 66, 12049 Berlin, Deutschland. Kontakt für Rückfragen: w.bousmael@wbstudio.xyz. Die Aktualität dieser Anschrift ist vor Veröffentlichung zu bestätigen.' } },
-        { h: { de: 'Website und Schriftarten' }, p: { de: 'Die statischen Seiten werden über GitHub Pages bereitgestellt. Beim Abruf erhält der Hostinganbieter technisch erforderliche Verbindungsdaten. Die Website lädt Schriftarten von Google Fonts; dabei stellt der Browser Verbindungen zu Google her. Die Website bindet keine Analysewerkzeuge ein.' } },
+        { h: { de: 'Website und Schriftarten' }, p: { de: 'Die statischen Seiten werden über GitHub Pages bereitgestellt. Beim Abruf erhält der Hostinganbieter technisch erforderliche Verbindungsdaten. Die Website lädt Schriftarten von Google Fonts; dabei stellt der Browser Verbindungen zu Google her.' } },
+        { h: { de: 'Optionale Reichweitenmessung' }, p: { de: 'Mit Ihrer Einwilligung zählt das Studio über Cloudflare Seitenaufrufe, Kontaktklicks und erfolgreich übermittelte Anfragen. Die Statistik gruppiert sie nach Sprache, Zugriffsquelle, Seitenkategorie und Zugriff aus Saudi-Arabien oder anderen Regionen. Kontaktdaten, eingegebene Adressen und das deutsche Budgetfreitextfeld werden nicht in die Statistik übertragen. Der Browser speichert Ihre Messauswahl sowie nach Zustimmung Quelle und Einstiegsseitenkategorie für den Tab. Über die Messeinstellungen in der Fußzeile können Sie weitere Messungen jederzeit beenden.' } },
         { h: { de: 'Kontaktformular' }, p: { de: 'Das Formular übermittelt Name, Telefonnummer, E-Mail-Adresse, Standort des Hauses oder Grundstücks, einen gegebenenfalls eingetragenen Google-Maps-Link und das gegebenenfalls eingetragene Budget über FormSubmit an wael.bousmael@gmail.com. Die Angaben dienen der Bearbeitung Ihrer Projektanfrage. Die Datenschutzhinweise und Verarbeitungsbedingungen von FormSubmit sowie die tatsächlichen Speicherfristen sind vor Freigabe zu prüfen und hier zu ergänzen.' } },
         { h: { de: 'WhatsApp und Karten' }, p: { de: 'Die Schaltfläche für das Erstgespräch auf der Startseite öffnet einen leeren WhatsApp-Chat. Andere WhatsApp-Links enthalten einen Nachrichtenvorschlag, den Sie ändern können. Für eine Nachricht wählen Sie diesen Kontaktweg selbst. Das Formular enthält ein Feld für einen Google-Maps-Link; allein das Eintragen eines Links bindet keine Karte ein. Eine technisch vorbereitete Google-Maps-Adressvervollständigung ist ohne API-Schlüssel inaktiv. Bei einer späteren Aktivierung müssen die Datenschutzhinweise vorab angepasst werden.' } },
         { h: { de: 'Gespeicherte Sprache und offene Angaben' }, p: { de: 'Die Website kann Ihre gewählte Sprache lokal im Browser speichern. Es werden dafür keine Analysecookies eingesetzt. Angaben zu Betroffenenrechten, zuständiger Aufsichtsbehörde, Rechtsgrundlagen und Aufbewahrungsdauer müssen anhand der bestätigten Verantwortlichen- und Anbieterangaben vervollständigt werden.' } }
       ]
     }
   ]
+};
+
+site.measurement = {
+  endpoint: 'https://wbstudio-inquiries.wbstudio2025.workers.dev/event',
+  settings: { ar: 'تفضيلات القياس', en: 'Measurement preferences', de: 'Messeinstellungen' },
+  question: { ar: 'هل تسمح لنا بقياس استخدام الموقع؟', en: 'May we measure how this site is used?', de: 'Dürfen wir die Nutzung der Website messen?' },
+  purpose: {
+    ar: 'بموافقتك، نحصي زيارات الصفحات ونقرات التواصل وطلبات الاستشارة لمعرفة كيف يصل إلينا أصحاب المشاريع.',
+    en: 'With your permission, we count page views, contact clicks and inquiries to understand how project owners find the studio.',
+    de: 'Mit Ihrer Zustimmung zählen wir Seitenaufrufe, Kontaktklicks und Anfragen, um zu verstehen, wie Bauherren das Studio finden.'
+  },
+  details: { ar: 'ما الذي يُحتسب؟', en: 'What gets counted?', de: 'Welche Angaben werden gezählt?' },
+  explanation: {
+    ar: 'تجمع خدمة Cloudflare الأعداد اليومية بحسب مصدر الزيارة ونوع الصفحة واللغة، وما إذا كان الاتصال من السعودية. عند إرسال طلب نحصي أيضاً فئة الميزانية بالريال إذا اخترتها. وتبقى بيانات التواصل وموقع المشروع خارج الإحصاءات. يُحفظ اختيارك في هذا المتصفح، ويمكنك تغييره من تذييل الصفحة.',
+    en: 'Cloudflare processes daily totals by source, page category, language and whether the connection is from Saudi Arabia. For a submitted inquiry we also count the optional SAR budget band. Contact details and plot locations stay out of these totals. This browser remembers your choice. You can change it in the footer.',
+    de: 'Cloudflare verarbeitet Tageszahlen nach Zugriffsquelle, Seitenkategorie, Sprache und danach, ob der Zugriff aus Saudi-Arabien kommt. Kontaktdaten, Grundstücksadressen und freie Budgetangaben bleiben von der Statistik ausgeschlossen. Ihre Auswahl wird in diesem Browser gespeichert und lässt sich in der Fußzeile ändern.'
+  },
+  allow: { ar: 'أوافق', en: 'Allow', de: 'Erlauben' },
+  decline: { ar: 'أرفض', en: 'Decline', de: 'Ablehnen' }
 };
 
 site.ui = {

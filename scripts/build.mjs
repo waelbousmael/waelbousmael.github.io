@@ -189,6 +189,32 @@ function phoneLinks(lang) {
   return site.phones.map((phone) => `<a href="tel:${phone.e164}" dir="ltr">${esc(phone.display)} <span aria-hidden="true">·</span> <bdi class="phone-country">${esc(t(phone.country, lang))}</bdi></a>`).join('\n      ');
 }
 
+function measurementGroup(logicalPath, lang) {
+  if (logicalPath === '/') return 'home';
+  if (logicalPath === '/contact/') return 'contact';
+  if (logicalPath === '/luxury-villa-design-jeddah/') return 'luxury_villa';
+  if (logicalPath.startsWith('/journal/')) return 'guide';
+  if (logicalPath.startsWith('/work/')) return 'project';
+  if (logicalPath === '/services/' || landingsFor(lang).some((entry) => logicalPath === `/${entry.slug}/`)) return 'service';
+  return 'other';
+}
+
+function measurementPreferences(lang) {
+  const copy = site.measurement;
+  return `<div data-measurement data-endpoint="${esc(copy.endpoint)}" data-page-group="${measurementGroup(activeLogicalPath, lang)}" data-nosnippet>
+        <button type="button" class="measurement-settings" data-measurement-settings aria-controls="measurement-panel" aria-expanded="false" hidden>${esc(t(copy.settings, lang))}</button>
+        <section id="measurement-panel" class="measurement-panel" data-measurement-dialog aria-labelledby="measurement-title" hidden>
+          <h2 id="measurement-title">${esc(t(copy.question, lang))}</h2>
+          <p>${esc(t(copy.purpose, lang))}</p>
+          <details><summary>${esc(t(copy.details, lang))}</summary><p>${esc(t(copy.explanation, lang))}</p></details>
+          <div class="measurement-actions">
+            <button class="btn" type="button" data-measurement-allow>${esc(t(copy.allow, lang))}</button>
+            <button class="btn" type="button" data-measurement-decline>${esc(t(copy.decline, lang))}</button>
+          </div>
+        </section>
+      </div>`;
+}
+
 function footer(lang) {
   const f = site.footer;
   const n = site.nav;
@@ -220,6 +246,7 @@ function footer(lang) {
     <div class="wrap footer-bottom-inner">
       <p>© <span data-year>2026</span> ${site.brand}. ${esc(t(f.rights, lang))}</p>
       <p><a href="${langPath(lang, '/credits/')}">${esc(t(f.credits, lang))}</a></p>
+      ${measurementPreferences(lang)}
       <p dir="ltr">${f.locations}</p>
     </div>
   </div>
@@ -831,7 +858,7 @@ ${header(lang, 'contact')}
           <label for="budget">${esc(t(f.budget, lang))}</label>
           ${lang === 'de' ? `<input id="budget" name="budget" type="text" placeholder="${esc(t(f.budgetPh, lang))}" />` : `<select id="budget" name="budget">
             <option value="">${esc(t(f.budgetPh, lang))}</option>
-            ${f.budgetOptions[lang].map((o) => `<option>${esc(o)}</option>`).join('\n            ')}
+            ${f.budgetOptions.map((option) => `<option data-budget-band="${option.band}">${esc(t(option, lang))}</option>`).join('\n            ')}
           </select>`}
         </fieldset>
 

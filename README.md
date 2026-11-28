@@ -142,6 +142,35 @@ register: `assets/licenses/LICENSES.md`; the public credits pages:
 - Google Maps autocomplete on the contact form stays dormant until
   `window.GOOGLE_MAPS_API_KEY` is set (injected inline on the contact pages)
 
+## Measuring private villa inquiries
+
+The footer's measurement preferences control optional, studio-run counts.
+The existing browser scripts send allowed events to the Cloudflare Worker in
+`measurement/worker.mjs`. Its `COUNTS` binding points to the private
+`wbstudio-inquiries` D1 database, initialized with `measurement/schema.sql`.
+Worker request logging is disabled. After opt-in the browser keeps only the
+source channel and entry-page category for the tab. An accepted Arabic or
+English inquiry can include the optional SAR project-budget band. Contact
+details continue to go to the studio through the normal inquiry form.
+
+To redeploy a collector change, upload `worker.mjs` and `metadata.json` as
+the module and metadata parts of the Cloudflare Workers script upload for
+`wbstudio-inquiries`. Keep its workers.dev endpoint enabled and preview URLs
+disabled. Run `node --test scripts/verify-measurement-*.mjs` when changing
+the browser events or collector. These tests require Node 22.13 or newer.
+
+In Cloudflare D1 Studio, run either query for the last 30 Riyadh calendar days:
+
+```sql
+SELECT * FROM source_funnel_30d ORDER BY inquiries DESC, whatsapp_clicks DESC;
+SELECT * FROM inquiry_budgets_30d ORDER BY inquiries DESC;
+```
+
+`country_group = 'SA'` means the connection was in Saudi Arabia. The budget
+report covers project estimates selected by the owner. Contact clicks count
+attempts to open a channel, and `inquiries` counts accepted form submissions.
+Visitors who decline, block measurement, or signal GPC/DNT are excluded.
+
 ## Multilingual SEO
 
 Each indexable page has a distinct title/description, its own canonical URL,

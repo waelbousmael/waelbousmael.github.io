@@ -87,8 +87,9 @@ the spirit of high-end architecture studios — while keeping the conversion pat
   (Sun–Thu 09:00–18:00), priceRange `$$$`, areaServed (Jeddah/SA/GCC).
 - The core offer copy: free call → free preliminary concept → paid agreement
   only after alignment. This is the business's promise; restyle, never remove.
-- The site stays script-free beyond its own two small JS files (owner's
-  decision: no analytics).
+- Keep the two local browser scripts. The owner authorizes opt-in aggregate
+  measurement of discovery and inquiries. Exclude identifying information and
+  free-text form values; only the voluntary SAR budget band may be counted.
 - `skills/` folder (agent reference material).
 
 ## Workflow

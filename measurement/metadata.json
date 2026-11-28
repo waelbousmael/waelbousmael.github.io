@@ -1,0 +1,15 @@
+{
+  "main_module": "worker.mjs",
+  "compatibility_date": "2026-10-01",
+  "bindings": [
+    {
+      "type": "d1",
+      "name": "COUNTS",
+      "id": "3f908b89-a27f-410c-8fb3-254ca5df4d4b"
+    }
+  ],
+  "observability": {
+    "enabled": false
+  },
+  "logpush": false
+}

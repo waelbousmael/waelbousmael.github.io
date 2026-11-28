@@ -870,7 +870,8 @@ const assertContactPage = (page, lang, label) => {
   }
   if (lang !== 'de') {
     const options = elements(budget.inner, { tag: 'option' });
-    assert.deepEqual(options.map((option) => option.inner.trim()), [htmlEscape(site.form.budgetPh[lang]), ...site.form.budgetOptions[lang].map(htmlEscape)], `${label} must retain every budget option in order`);
+    assert.deepEqual(options.map((option) => option.inner.trim()), [htmlEscape(site.form.budgetPh[lang]), ...site.form.budgetOptions.map((option) => htmlEscape(option[lang]))], `${label} must retain every budget option in order`);
+    assert.deepEqual(options.slice(1).map((option) => attribute(option, 'data-budget-band', label)), ['under_1m', '1m_2m', '2m_4m', 'over_4m']);
   }
   has(groups[1].inner, htmlEscape(site.form.locationHelper[lang]), `${label} plot group must retain its helper text`);
   const feedback = elements(form, { tag: 'p', classes: 'form-feedback' })[0];
@@ -1652,7 +1653,7 @@ for (const { relativePath, page } of generatedHtml) {
     assert.equal(src, versionedAssetUrl(src.split('?')[0]), `${label} script version must match its current file content hash`);
   }
   assert.equal(scripts.filter((script) => hasAttribute(script, 'src') && attribute(script, 'src', `${label} script src`) === versionedAssetUrl('/assets/js/site.js')).length, 1, `${label} must load the protected shared script exactly once`);
-  assert.doesNotMatch(page, /\b(?:googletagmanager|google-analytics|gtag\s*\(|analytics\.js|plausible|hotjar|segment\.com)\b/i, `${label} must remain analytics-free`);
+  assert.doesNotMatch(page, /\b(?:googletagmanager|google-analytics|gtag\s*\(|analytics\.js|plausible|hotjar|segment\.com)\b/i, `${label} must use only the studio’s opt-in measurement`);
   assertInlineSizing(page, label);
 
   for (const openingTag of page.matchAll(/<[^>]+>/g)) {

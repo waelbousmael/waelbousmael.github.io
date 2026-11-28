@@ -46,6 +46,7 @@
       if (result.success !== true && result.success !== 'true') throw new Error('Submission declined');
 
       renderFeedback('success');
+      document.dispatchEvent(new Event('wb:inquiry-sent'));
       form.reset();
     } catch {
       renderFeedback('error');

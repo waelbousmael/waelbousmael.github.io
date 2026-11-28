@@ -41,7 +41,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=d259cc8b55f0" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=1b18e059cd66" />
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"FAQPage","inLanguage":"ar","mainEntity":[{"@type":"Question","name":"كم تكلفة تصميم فيلا خاصة؟","acceptedAnswer":{"@type":"Answer","text":"تعتمد التكلفة على مساحة الأرض ونطاق العمل والمخرجات المطلوبة. نبدأ دائماً بمكالمة مجانية وتصور مبدئي مجاني، ونوضح التكلفة والمسار بالكامل قبل أي اتفاق مدفوع."}},{"@type":"Question","name":"هل تقدمون تصميم الفلل عن بُعد خارج جدة؟","acceptedAnswer":{"@type":"Answer","text":"نعم. نخدم عملاء جدة والسعودية ودول الخليج حضورياً أو عن بُعد عبر مكالمات الفيديو ومشاركة المخططات، مع الحفاظ على نفس الوضوح في كل خطوة."}},{"@type":"Question","name":"ما المخرجات التي أحصل عليها؟","acceptedAnswer":{"@type":"Answer","text":"من الفكرة المعمارية والتوجه الداخلي حتى تصميم جاهز للتنفيذ يوحد فهم الاستشاريين والمقاولين ويحافظ على الرؤية الأصلية للمشروع."}},{"@type":"Question","name":"كم تستغرق مدة تصميم الفيلا؟","acceptedAnswer":{"@type":"Answer","text":"تختلف المدة حسب حجم المشروع وتعقيده. نوضح الجدول الزمني المتوقع ضمن التصور المبدئي قبل بدء أي عمل مدفوع."}},{"@type":"Question","name":"متى يبدأ الدفع؟","acceptedAnswer":{"@type":"Answer","text":"المكالمة الأولى والتصور المبدئي مجانيان تماماً، ولا يبدأ أي اتفاق مدفوع إلا بعد وضوح الرؤية والتوافق على الاتجاه."}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"الرئيسية","item":"https://wbstudio.xyz/ar/"},{"@type":"ListItem","position":2,"name":"تواصل","item":"https://wbstudio.xyz/contact/"}]},{"@type":"ContactPage","@id":"https://wbstudio.xyz/contact/#webpage","url":"https://wbstudio.xyz/contact/","name":"تواصل مع WB Studio | تصميم فلل في جدة","description":"تواصل مع وائل بو سماعيل لتصميم فيلا أو تجديد منزلك في جدة أو السعودية أو الخليج. نبدأ بمكالمة مجانية وتصور مبدئي مجاني قبل الاتفاق على نطاق العمل وأتعابه.","inLanguage":"ar","isPartOf":{"@id":"https://wbstudio.xyz/#website"},"about":{"@id":"https://wbstudio.xyz/#organization"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://wbstudio.xyz/assets/images/og.jpg","width":1536,"height":1024,"caption":"تصور فيلا المنتشري في جدة بواجهات حجرية وشرفات مزروعة"}}]}</script>
 </head>
 <body data-page="contact">
@@ -148,10 +148,10 @@
           <label for="budget">الميزانية التقريبية</label>
           <select id="budget" name="budget">
             <option value="">اختياري</option>
-            <option>أقل من 1 مليون ريال</option>
-            <option>1 إلى 2 مليون ريال</option>
-            <option>2 إلى 4 مليون ريال</option>
-            <option>أكثر من 4 مليون ريال</option>
+            <option data-budget-band="under_1m">أقل من 1 مليون ريال</option>
+            <option data-budget-band="1m_2m">1 إلى 2 مليون ريال</option>
+            <option data-budget-band="2m_4m">2 إلى 4 مليون ريال</option>
+            <option data-budget-band="over_4m">أكثر من 4 مليون ريال</option>
           </select>
         </fieldset>
 
@@ -222,12 +222,24 @@
     <div class="wrap footer-bottom-inner">
       <p>© <span data-year>2026</span> WB Studio. جميع الحقوق محفوظة.</p>
       <p><a href="/credits/">اعتمادات الصور</a></p>
+      <div data-measurement data-endpoint="https://wbstudio-inquiries.wbstudio2025.workers.dev/event" data-page-group="contact" data-nosnippet>
+        <button type="button" class="measurement-settings" data-measurement-settings aria-controls="measurement-panel" aria-expanded="false" hidden>تفضيلات القياس</button>
+        <section id="measurement-panel" class="measurement-panel" data-measurement-dialog aria-labelledby="measurement-title" hidden>
+          <h2 id="measurement-title">هل تسمح لنا بقياس استخدام الموقع؟</h2>
+          <p>بموافقتك، نحصي زيارات الصفحات ونقرات التواصل وطلبات الاستشارة لمعرفة كيف يصل إلينا أصحاب المشاريع.</p>
+          <details><summary>ما الذي يُحتسب؟</summary><p>تجمع خدمة Cloudflare الأعداد اليومية بحسب مصدر الزيارة ونوع الصفحة واللغة، وما إذا كان الاتصال من السعودية. عند إرسال طلب نحصي أيضاً فئة الميزانية بالريال إذا اخترتها. وتبقى بيانات التواصل وموقع المشروع خارج الإحصاءات. يُحفظ اختيارك في هذا المتصفح، ويمكنك تغييره من تذييل الصفحة.</p></details>
+          <div class="measurement-actions">
+            <button class="btn" type="button" data-measurement-allow>أوافق</button>
+            <button class="btn" type="button" data-measurement-decline>أرفض</button>
+          </div>
+        </section>
+      </div>
       <p dir="ltr">Jeddah · Berlin</p>
     </div>
   </div>
 </footer>
-<script src="/assets/js/site.js?v=11e0674c329a" defer></script>
+<script src="/assets/js/site.js?v=845b95d1fa86" defer></script>
 <script>window.GOOGLE_MAPS_API_KEY = window.GOOGLE_MAPS_API_KEY || '';</script>
-<script src="/assets/js/contact.js?v=88d3f6a73216" defer></script>
+<script src="/assets/js/contact.js?v=6444ec5e119a" defer></script>
 </body>
 </html>
